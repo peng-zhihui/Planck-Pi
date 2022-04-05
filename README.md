@@ -1,6 +1,36 @@
+- [ 0.说明](#head1)
+	- [ 芯片介绍](#head2)
+	- [ 基础知识](#head3)
+		- [1. F1Cxxxs芯片的上电启动顺序](#head4)
+		- [2. 开发工具链下载](#head5)
+- [ 1.硬件开发](#head6)
+- [ 2.环境准备](#head7)
+	- [2.1 准备Docker开发环境](#head8)
+		- [2.1.1 安装依赖软件](#head9)
+		- [2.2.2 安装编译工具链](#head10)
+	- [2.3 编译一遍buildroot获取基础源码](#head11)
+	- [2.4 常规编译方法](#head12)
+	- [2.5 烧写方法](#head13)
+- [ 3.u-boot开发](#head14)
+- [ 4.Linux内核开发](#head15)
+- [ 5.root-fs开发](#head16)
+	- [5.1 准备环境](#head17)
+	- [5.2 构建Debian文件系统](#head18)
+	- [5.3 配置文件系统](#head19)
+		- [5.3.1 最小配置](#head20)
+		- [5.3.2 增加开机自启脚本](#head21)
+		- [5.3.3 解决root-fs分区开机后被挂载为*Read-Only*的问题](#head22)
+		- [5.3.4 添加USB-OTG  & Gadget-RNDIS功能](#head23)
+		- [5.3.5 启用swap](#head24)
+	- [ 5.4 打包&部署文件系统](#head25)
+- [ 6.应用开发](#head26)
+	- [6.1 系统应用集成](#head27)
+	- [6.2 驱动开发](#head28)
+	- [6.3 Linux App开发](#head29)
+- [ 7.问题总结](#head30)
 [TOC]
 
-## 0.说明
+## <span id="head1"> 0.说明</span>
 
 > 本项目是一个基于全志F1C200s芯片的超迷你&低成本的Linux开发板，本来是用于个人的某个小项目调试，现把所有硬件、软件（u-boot、内核、root-fs）开源出来。
 >
@@ -19,7 +49,7 @@
 
 ![](7.Docs/2.Images/2.jpg)
 
-### 芯片介绍
+### <span id="head2"> 芯片介绍</span>
 
 > 全志F1C200s是全志的一款高度集成、低功耗的移动应用处理器，可用于多种多媒体音视频设备中。
 
@@ -45,9 +75,9 @@
 
 ![image-20220401222336539](https://pengzhihui-markdown.oss-cn-shanghai.aliyuncs.com/img/20220401222336.png)
 
-### 基础知识
+### <span id="head3"> 基础知识</span>
 
-#### 1. F1Cxxxs芯片的上电启动顺序
+#### <span id="head4">1. F1Cxxxs芯片的上电启动顺序</span>
 
 > 芯片可以从SPI Flash或者SD-Card中启动，因为Flash容量较小可玩性不高，后文都是以SD卡启动为主的。
 >
@@ -59,14 +89,14 @@
 > 4. 检测SPI0 NAND FLASH 是否存在, 是否有合法的启动数据, 如果是BROM 引导结束, 否则进入下一步；
 > 5. 因为找不到任何可以引导的介质， 系统进入usb fel 模式， 可以用USB烧录了。
 
-#### 2. 开发工具链下载
+#### <span id="head5">2. 开发工具链下载</span>
 
 > 编译工具链官网：https://www.linaro.org/
 >
 > 或[Arm GNU Toolchain](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain)，以linaro为例：进入`support->downloads`可以看到下载页面，点击`GNU cross-toolchain binary archives`，可以进入对应[下载列表](https://releases.linaro.org/components/toolchain/binaries/)，可以看到各个版本的toolchain，这里我使用的`latest-7/arm-linux-gnueabi/`即`gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabi`即可。
 >
 
-## 1.硬件开发
+## <span id="head6"> 1.硬件开发</span>
 
 ![](7.Docs/2.Images/3.jpg)
 
@@ -80,7 +110,7 @@
 
   正常情况下不接跳线的话OTG功能为Device模式，也就是可以通过TypeC接口模拟网卡或者其他设备如MTP；当插上跳线帽之后，就可以作为Host在右边的A口插入USB设备了如U盘、键盘、鼠标等，**注意此时C口的USB功能失效，需要通过串口登录板子。**
 
-## 2.环境准备
+## <span id="head7"> 2.环境准备</span>
 
 **推荐直接使用我配置好的完整镜像，用Etcher等工具直接烧写到SD卡里即可以使用，方便又好用~**
 
@@ -93,11 +123,11 @@
 
 下面的教程是给需要自己配置uboot、内核、文件系统的人看的。
 
-### 2.1 准备Docker开发环境
+### <span id="head8">2.1 准备Docker开发环境</span>
 
 为了最小化编译环境，这里采用Docker构建ubuntu20.04镜像的方式来搭建环境。
 
-#### 2.1.1 安装依赖软件
+#### <span id="head9">2.1.1 安装依赖软件</span>
 
 首先需要自己安装一下Docker（百度一下教程），然后pull一下Ubuntu官方的Docker镜像到本地，选择版本为`ubuntu:20.04`：
 
@@ -123,7 +153,7 @@ planck-pi-env.image:latest
 sudo apt-get install xz-utils nano wget unzip build-essential git bc swig libncurses5-dev libpython3-dev libssl-dev pkg-config zlib1g-dev libusb-dev libusb-1.0-0-dev python3-pip gawk bison flex 
 ```
 
-#### 2.2.2 安装编译工具链
+#### <span id="head10">2.2.2 安装编译工具链</span>
 
 按照前文介绍的地址下载工具链（可以在VMware宿主机进入共享文件夹操作）：
 
@@ -171,7 +201,7 @@ sudo docker commit planck-pi-env planck-pi-env.image
 sudo docker save -o planck-pi-env.image.tar planck-pi-env.image
 ```
 
-### 2.3 编译一遍buildroot获取基础源码
+### <span id="head11">2.3 编译一遍buildroot获取基础源码</span>
 
 cd到源码目录，然后调用defconfig：
 
@@ -214,7 +244,7 @@ output/images/sysimage-nand.img  output/images/sysimage-nor.img  output/images/s
 > make -j4  (4线程编译)
 > ```
 
-### 2.4 常规编译方法
+### <span id="head12">2.4 常规编译方法</span>
 
 进入源码目录, 执行下述命令进行编译: 
 
@@ -233,7 +263,7 @@ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j4
 > CROSS_COMPILE ?= arm-linux-gnueabi-
 > ```
 
-### 2.5 烧写方法
+### <span id="head13">2.5 烧写方法</span>
 
 > FEL烧写方法这里不使用, 有兴趣可以参考这些教程了解: 
 >
@@ -355,7 +385,7 @@ sync
 > * 关于上面`partition-type`的含义可以参考：[Listing of MBR/EBR Partition Types](https://thestarman.pcministry.com/asm/mbr/PartTypes.htm) 。
 > * 对于内核的FAT分区，分区完挂载之后直接把zImage和dtb文件放进去就行了，至于如何指定内核镜像和设备树所在分区，可以参考`configs/uboot.env`里面的配置，启动的时候相关参数是在这里被传递给内核的。
 
-## 3.u-boot开发
+## <span id="head14"> 3.u-boot开发</span>
 
 **【待补充】**
 
@@ -405,15 +435,15 @@ sync
 ├── scripts 
 ```
 
-## 4.Linux内核开发
+## <span id="head15"> 4.Linux内核开发</span>
 
-## 5.root-fs开发
+## <span id="head16"> 5.root-fs开发</span>
 
 由于F1C200s的RAM只有64M，无法支持像是Ubuntu-Core这样的文件系统（最低RAM需求512M），所以一般只能用buildroot来生成简单的文件系统，或者裸机开发。
 
 但是为了方便地使用Debian系的丰富软件，我们可以自己构建Debian最小系统，最小rootfs在180MB左右。
 
-### 5.1 准备环境
+### <span id="head17">5.1 准备环境</span>
 
 安装构建文件系统的工具主要有两个：
 
@@ -430,7 +460,7 @@ apt install debootstrap
 mkdir path/to/rootfs-debian
 ```
 
-### 5.2 构建Debian文件系统
+### <span id="head18">5.2 构建Debian文件系统</span>
 
 构建文件系统之前，需要知道我们想要构建哪个版本的文件系统，这里从[Debian 全球镜像站](https://www.debian.org/mirror/list.zh-cn.html)选择访问速度快的源，这里使用华为源：mirrors.huaweicloud.com。
 
@@ -458,9 +488,9 @@ LC_ALL=C LANGUAGE=C LANG=C chroot rootfs-debian /debootstrap/debootstrap --secon
 LC_ALL=C LANGUAGE=C LANG=C chroot rootfs-debian
 ```
 
-### 5.3 配置文件系统
+### <span id="head19">5.3 配置文件系统</span>
 
-#### 5.3.1 最小配置
+#### <span id="head20">5.3.1 最小配置</span>
 
 构建完成之后，需要在Docker中chroot进去修改密码等配置，通过下面的命令进入chroot环境：
 
@@ -484,7 +514,7 @@ nano /etc/ssh/sshd_config
 
 > 可能会出现无法使用方向键的问题，输入`bash`命令进入bash窗口即可。
 
-#### 5.3.2 增加开机自启脚本
+#### <span id="head21">5.3.2 增加开机自启脚本</span>
 
 文件系统中的`/etc/init.d`负责linux的服务的开启和关闭等，为了能使系统开机自动运行一些脚本和命令，这里介绍如何新添加一个自启动项。
 
@@ -541,7 +571,7 @@ ln -s /etc/init.d/runOnBoot /etc/rc2.d/S99runOnBoot
 
 重启即可看到命令和脚本自动执行了。
 
-#### 5.3.3 解决root-fs分区开机后被挂载为*Read-Only*的问题
+#### <span id="head22">5.3.3 解决root-fs分区开机后被挂载为*Read-Only*的问题</span>
 
 新配置的文件系统需要添加fstab进行对应分区的自动挂载，修改`/etc/fstab`文件：
 
@@ -557,7 +587,7 @@ sysfs		/sys		sysfs	defaults	0	0
 /opt/images/swap swap swap defaults 0 0
 ```
 
-#### 5.3.4 添加USB-OTG  & Gadget-RNDIS功能
+#### <span id="head23">5.3.4 添加USB-OTG  & Gadget-RNDIS功能</span>
 
 > **参考资料：**
 >
@@ -638,7 +668,7 @@ nameserver 8.8.8.8
 
 如果可以ping通www.baidu.com就说明配置完成了。
 
-#### 5.3.5 启用swap
+#### <span id="head24">5.3.5 启用swap</span>
 
 芯片的SiP内存只有64MB，大部分情况下都不够用，所以需要开启swap使用内存卡的一部分空间来作为交换内存。
 
@@ -683,7 +713,7 @@ nano /etc/fstab
 /opt/images/swap swap swap defaults 0 0
 ```
 
-###  5.4 打包&部署文件系统
+### <span id="head25"> 5.4 打包&部署文件系统</span>
 
  配置完成后清理一下缓存，然后退出chroot环境：
 
@@ -725,16 +755,16 @@ nano /etc/hosts
 在localhost后面添加一个自己的用户名如pi
 ```
 
-## 6.应用开发
+## <span id="head26"> 6.应用开发</span>
 
-### 6.1 系统应用集成
+### <span id="head27">6.1 系统应用集成</span>
 
-### 6.2 驱动开发
+### <span id="head28">6.2 驱动开发</span>
 
-### 6.3 Linux App开发
+### <span id="head29">6.3 Linux App开发</span>
 
 
 
-## 7.问题总结
+## <span id="head30"> 7.问题总结</span>
 
 * [SSH无法连接：Permissions xxx for '/etc/ssh/ssh_host_rsa_key' are too open](https://blog.csdn.net/fly_520/article/details/79991229)
