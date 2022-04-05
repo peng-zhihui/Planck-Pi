@@ -202,49 +202,6 @@ sudo docker commit planck-pi-env planck-pi-env.image
 sudo docker save -o planck-pi-env.image.tar planck-pi-env.image
 ```
 
-### <span id="head11">2.3 编译一遍buildroot获取基础源码</span>
-
-cd到源码目录，然后调用defconfig：
-
-```
-make widora_mangopi_r3_defconfig
-```
-
-`make -j4`是多线程编译方式，后边的数字代表你的计算机内核线程数。
-
-```
-make -j4
-```
-
-编译完后，输出文件在 `output/images/`下：
-
-```
-ls output/images/*.img
-output/images/sysimage-nand.img  output/images/sysimage-nor.img  output/images/sysimage-sdcard.img
-```
-
-> **修改dts后，如何编译生效：**
->
-> ```
-> rm ./output/images/*.dtb
-> make linux-clean-for-rebuild
-> make linux -j8
-> make
-> ```
->
-> 所有被支持的make命令可以通过`make help`打印出来：
->
-> ```
-> make clean   (清理编译输出文件)
-> make distclean   (不仅清理编译输出，还清理dl目录以及config文件，慎用)
-> make toolchain  (编译一份适应目标cpu的工具链)
-> make menuconfig (配置软件包菜单)
-> make busybox-menuconfig  (busybox软件包配置)
-> make uboot-menuconfig (uboot软件包配置)
-> make linux-menuconfig (linux软件包配置)
-> make -j4  (4线程编译)
-> ```
-
 ### <span id="head12">2.4 常规编译方法</span>
 
 进入源码目录, 执行下述命令进行编译: 
