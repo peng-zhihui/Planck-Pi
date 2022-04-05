@@ -41,10 +41,7 @@
 | Process      | 40nm                                                         |
 | 特点         | 支持H.264 1920x1080@30fps 解码<br/>支持MJPEG 1280x720@30fps 编码<br/>集成 64MB DDR1,集成音频CODEC<br/>低成本，低功耗，开发简单 |
 
-
-​	![在这里插入图片描述](https://pengzhihui-markdown.oss-cn-shanghai.aliyuncs.com/img/20220401221925)
-
-**与其他系列芯片的对比：**
+![20220401221925](https://pengzhihui-markdown.oss-cn-shanghai.aliyuncs.com/img/20220405172955.png)**与其他系列芯片的对比：**
 
 ![image-20220401222336539](https://pengzhihui-markdown.oss-cn-shanghai.aliyuncs.com/img/20220401222336.png)
 
