@@ -725,3 +725,10 @@ nano /etc/hosts
 ## <span id="head30"> 7.问题总结</span>
 
 * [SSH无法连接：Permissions xxx for '/etc/ssh/ssh_host_rsa_key' are too open](https://blog.csdn.net/fly_520/article/details/79991229)
+
+### 其他参考资料
+
+* [【目录】全志F1C100S/F1C200S学习笔记](https://blog.csdn.net/p1279030826/article/details/113370239) 
+* [《保姆级教程》全志F1C100S/F1C200S spi-flash 启动全流程适配烧录及踩坑指南 ](https://whycan.com/t_7558.html)
+* [MangoPi 芒果派 | f1c200s](https://mangopi.cc/f1c200s)
+* [荔枝派Nano 全流程指南](http://www.xn--bnq31s.xn--fiqs8s/?id=141)
