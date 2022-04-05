@@ -1,0 +1,71 @@
+;
+; FIH Device Driver
+;
+; This INF works for Windows XP SP2, Windows XP x64,
+; Windows Vista x86, Windows Vista x64, and Windows 7 x86 and x64.
+; This INF will work with Windows XP, and Windows XP SP1
+; after applying specific hotfixes.
+;
+
+[Version]
+Signature    = "$Chicago$"
+Class        = Ports
+ClassGuid    = {4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider     = %Provider%
+DriverVer    = 05/31/2010,3.1.0.0
+CatalogFile  = g_serial.cat
+
+[Manufacturer]
+%Provider%=GSerialDeviceList, NTamd64, NTia64
+
+[GSerialDeviceList]
+%GSERIAL%=GSerialInstall, USB\VID_0502&PID_3235&MI_02
+%GSERIAL%=GSerialInstall, USB\VID_0502&PID_3230&MI_02
+
+[GSerialDeviceList.NTamd64]
+%GSERIAL%=GSerialInstall, USB\VID_0502&PID_3235&MI_02
+%GSERIAL%=GSerialInstall, USB\VID_0502&PID_3230&MI_02
+
+[GSerialDeviceList.NTia64]
+%GSERIAL%=GSerialInstall, USB\VID_0502&PID_3235&MI_02
+%GSERIAL%=GSerialInstall, USB\VID_0502&PID_3230&MI_02
+
+[GSerialInstall]
+include=mdmcpq.inf
+CopyFiles=GSerialCopyFiles
+AddReg=GSerialAddReg
+
+[GSerialCopyFiles]
+
+[SourceDisksFiles]
+
+[SourceDisksNames]
+1=%Linux_Gadget_Rocks%,,,
+
+[DestinationDirs]
+DefaultDestDir           = 10
+GSerialCopyFiles         = 12
+
+[GSerialAddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,usbser.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[GSerialInstall.Services]
+include=mdmcpq.inf
+AddService = usbser,0x0002,GSerialService
+
+[GSerialService]
+include=mdmcpq.inf
+DisplayName = %GSERIAL_DISPLAY_NAME%
+ServiceType = 1                  ; SERVICE_KERNEL_DRIVER
+StartType = 3                    ; SERVICE_DEMAND_START
+ErrorControl = 1                 ; SERVICE_ERROR_NORMAL
+ServiceBinary = %10%\System32\Drivers\usbser.sys
+LoadOrderGroup = Base
+
+[Strings]
+Provider             = "Acer Incorporated."
+GSERIAL              = "Acer Gadget Serial"
+GSERIAL_DISPLAY_NAME = "Acer USB Gadget Serial Driver"
+LINUX_GADGET_ROCKS   = "Acer USB Gadget Serial Driver"

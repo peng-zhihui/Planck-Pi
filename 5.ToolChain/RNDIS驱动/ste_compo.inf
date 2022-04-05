@@ -1,0 +1,133 @@
+;
+; FIH Device Driver
+;
+; This INF works for Windows XP SP2, Windows XP x64,
+; Windows Vista x86, Windows Vista x64, and Windows 7 x86 and x64.
+; This INF will work with Windows XP, and Windows XP SP1
+; after applying specific hotfixes.
+;
+
+[Version]
+Signature="$CHICAGO$"
+Class=USB
+ClassGUID={36FC9E60-c465-11cf-8056-444553540000}
+Provider=%Provider%
+DriverVer=05/31/2010,6.0.6000.16386
+CatalogFile=ste_compo.cat
+
+[Manufacturer]
+%Provider% = STE, NTia64, NTamd64
+
+[STE]
+%Composite% = SteComposite, USB\VID_0502&PID_3235
+%Composite% = SteComposite, USB\VID_0502&PID_3230
+
+[STE.NTia64]
+%Composite% = SteComposite, USB\VID_0502&PID_3235
+%Composite% = SteComposite, USB\VID_0502&PID_3230
+
+[STE.NTamd64]
+%Composite% = SteComposite, USB\VID_0502&PID_3235
+%Composite% = SteComposite, USB\VID_0502&PID_3230
+
+[SteComposite.NT]
+CopyFiles=SteComposite.CopyFiles.NT
+DelReg=SteComposite.DelReg.NT
+AddReg=SteComposite.NT.AddReg
+
+[SteComposite.NTia64]
+CopyFiles=SteComposite.CopyFiles.NTia64
+DelReg=SteComposite.DelReg.NT
+AddReg=SteComposite.NT.AddReg
+
+[SteComposite.NTamd64]
+CopyFiles=SteComposite.CopyFiles.NTamd64
+DelReg=SteComposite.DelReg.NT
+AddReg=SteComposite.NT.AddReg
+
+[SteComposite.NT.HW]
+AddReg=SteComposite.Hardware.AddReg
+
+[SteComposite.NT.Services]
+AddService = SteComposite, 0x00000002, SteComposite.AddService
+
+[SteComposite.NTia64.Services]
+AddService = SteComposite, 0x00000002, SteComposite.AddService.NTia64
+
+[SteComposite.NTamd64.Services]
+AddService = SteComposite, 0x00000002, SteComposite.AddService.NTamd64
+
+[SteComposite.AddService]
+DisplayName    = %CcgpSvc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\ste_compo.sys
+LoadOrderGroup = Base
+;AddReg=NxpComposite.Service.AddReg
+
+[SteComposite.AddService.NTia64]
+DisplayName    = %CcgpSvc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\ste_compo_x64.sys
+LoadOrderGroup = Base
+;AddReg=NxpComposite.Service.AddReg
+
+[SteComposite.AddService.NTamd64]
+DisplayName    = %CcgpSvc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\ste_compo_x64.sys
+LoadOrderGroup = Base
+;AddReg=NxpComposite.Service.AddReg
+
+[SteComposite.DelReg.NT]
+HKR,,EnumPropPages32
+
+[SteComposite.NT.AddReg]
+HKR,,EnumeratorClass,1,02,02,01
+
+[SteComposite.Hardware.AddReg]
+HKR,,OriginalConfigurationValue,0x00010001,00
+HKR,,AltConfigurationValue,0x00010001,00
+
+[SteComposite.Service.AddReg]
+HKR,,OriginalConfigurationValue,0x00010001,02
+HKR,,AltConfigurationValue,0x00010001,00
+
+[SteComposite.CopyFiles.NT]
+ste_compo.sys,,,0x100
+
+[SteComposite.CopyFiles.NTia64]
+ste_compo_x64.sys,,,0x100
+
+[SteComposite.CopyFiles.NTamd64]
+ste_compo_x64.sys,,,0x100
+
+[SourceDisksNames]
+1=%SourceDisk%,,,
+
+[SourceDisksFiles]
+ste_compo.sys = 1
+ste_compo_x64.sys = 1
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[DestinationDirs]
+FakeModemCopyFileSection=12
+DefaultDestDir = 12
+
+
+;---------------------------------------------------------------------------------
+; Localizable area
+;---------------------------------------------------------------------------------
+
+[Strings]
+Provider   = "Acer Incorporated."
+Composite  = "Acer Composite USB Device"
+CcgpSvc    = "Acer Composite USB Service"
+SourceDisk = "Acer Driver Install Disk"

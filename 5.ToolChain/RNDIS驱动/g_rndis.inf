@@ -1,0 +1,164 @@
+;
+; FIH Device Driver
+;
+; This INF works for Windows XP SP2, Windows XP x64,
+; Windows Vista x86, Windows Vista x64, and Windows 7 x86 and x64.
+; This INF will work with Windows XP, and Windows XP SP1
+; after applying specific hotfixes.
+;
+
+[Version]
+Signature           = "$CHICAGO$"
+Class               = Net
+ClassGUID           = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider            = %Provider%
+Compatible          = 1
+DriverVer           = 05/31/2010,1.0.0.0
+CatalogFile         = g_rndis.cat
+
+[Manufacturer]
+%Provider%          = LinuxDevices,NT.5.1,NTia64,NTamd64
+
+[LinuxDevices]
+%LinuxDevice%    = RNDIS, USB\VID_0502&PID_3235&MI_00
+%LinuxDevice%    = RNDIS, USB\VID_0502&PID_3230&MI_00
+
+[LinuxDevices.NT.5.1]
+%LinuxDevice%    = RNDIS.NT.5.1, USB\VID_0502&PID_3235&MI_00
+%LinuxDevice%    = RNDIS.NT.5.1, USB\VID_0502&PID_3230&MI_00
+
+[LinuxDevices.NTamd64]
+%LinuxDevice%    = RNDIS.NT.X64, USB\VID_0502&PID_3235&MI_00
+%LinuxDevice%    = RNDIS.NT.X64, USB\VID_0502&PID_3230&MI_00
+
+[LinuxDevices.NTia64]
+%LinuxDevice%    = RNDIS.NT.X64, USB\VID_0502&PID_3235&MI_00
+%LinuxDevice%    = RNDIS.NT.X64, USB\VID_0502&PID_3230&MI_00
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+; Windows 2000 specific sections ---------------------------------
+
+[RNDIS.NT]
+Characteristics = 0x84   ; NCF_PHYSICAL + NCF_HAS_UI
+BusType         = 15
+AddReg          = RNDIS_AddReg_NT, RNDIS_AddReg_Common
+CopyFiles       = RNDIS_CopyFiles_NT
+
+[RNDIS.NT.Services]
+AddService = USB_RNDIS, 2, RNDIS_ServiceInst_NT, RNDIS_EventLog
+
+[RNDIS_CopyFiles_NT]
+; no rename of files on Windows 2000, use the 'k' names as is
+;usb8023k.sys, , , 0 
+;rndismpk.sys, , , 0 
+
+[RNDIS_ServiceInst_NT]
+DisplayName     = %ServiceDisplayName%
+ServiceType     = 1 
+StartType       = 3 
+ErrorControl    = 1 
+ServiceBinary   = %12%\usb8023k.sys    
+LoadOrderGroup  = NDIS
+AddReg          = RNDIS_WMI_AddReg_NT
+
+[RNDIS_WMI_AddReg_NT]
+HKR, , MofImagePath, 0x00020000, "System32\drivers\rndismpk.sys"
+
+; Windows XP specific sections -----------------------------------
+
+[RNDIS.NT.5.1]
+Characteristics = 0x84   ; NCF_PHYSICAL + NCF_HAS_UI
+BusType         = 15
+AddReg          = RNDIS_AddReg_NT, RNDIS_AddReg_Common
+; no copyfiles - the files are already in place
+
+[RNDIS.NT.5.1.Services]
+AddService      = USB_RNDIS, 2, RNDIS_ServiceInst_51, RNDIS_EventLog
+
+[RNDIS_ServiceInst_51]
+DisplayName     = %ServiceDisplayName%
+ServiceType     = 1 
+StartType       = 3 
+ErrorControl    = 1 
+ServiceBinary   = %12%\usb8023.sys    
+LoadOrderGroup  = NDIS
+AddReg          = RNDIS_WMI_AddReg_51
+
+[RNDIS_WMI_AddReg_51]
+HKR, , MofImagePath, 0x00020000, "System32\drivers\rndismp.sys"
+
+; Windows 2000 and Windows XP common sections --------------------
+
+[RNDIS_AddReg_NT]
+HKR, Ndi,               Service,        0, "USB_RNDIS"
+HKR, Ndi\Interfaces,    UpperRange,     0, "ndis5" 
+HKR, Ndi\Interfaces,    LowerRange,     0, "ethernet"
+
+[RNDIS_EventLog]
+AddReg = RNDIS_EventLog_AddReg
+
+[RNDIS_EventLog_AddReg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[RNDIS.NT.X64]
+Characteristics = 0x84   ; NCF_PHYSICAL + NCF_HAS_UI
+BusType         = 15
+AddReg          = RNDIS_AddReg_X64, RNDIS_AddReg_Common
+; no copyfiles - the files are already in place
+
+[RNDIS.NT.X64.Services]
+AddService      = USB_RNDIS, 2, RNDIS_ServiceInst_X64, RNDIS_EventLog
+
+[RNDIS_ServiceInst_X64]
+DisplayName     = %ServiceDisplayName%
+ServiceType     = 1 
+StartType       = 3 
+ErrorControl    = 1 
+ServiceBinary   = %12%\usb8023.sys    
+LoadOrderGroup  = NDIS
+AddReg          = RNDIS_WMI_AddReg_X64
+
+[RNDIS_WMI_AddReg_X64]
+HKR, , MofImagePath, 0x00020000, "System32\drivers\rndismp.sys"
+
+
+[RNDIS_AddReg_X64]
+HKR, Ndi,               Service,        0, "USB_RNDIS"
+HKR, Ndi\Interfaces,    UpperRange,     0, "ndis5" 
+HKR, Ndi\Interfaces,    LowerRange,     0, "ethernet"
+
+; Common Sections -------------------------------------------------
+
+[RNDIS_AddReg_Common]
+HKR, NDI\params\NetworkAddress, ParamDesc,  0, %NetworkAddress%
+HKR, NDI\params\NetworkAddress, type,       0, "edit"
+HKR, NDI\params\NetworkAddress, LimitText,  0, "12"
+HKR, NDI\params\NetworkAddress, UpperCase,  0, "1"
+HKR, NDI\params\NetworkAddress, default,    0, " "
+HKR, NDI\params\NetworkAddress, optional,   0, "1"
+
+[SourceDisksNames]
+1=%SourceDisk%,,1
+
+[SourceDisksFiles]
+usb8023m.sys=1
+rndismpm.sys=1
+usb8023.sys=1
+rndismp.sys=1
+usb8023w.sys=1
+rndismpw.sys=1
+usb8023k.sys=1
+rndismpk.sys=1
+
+[DestinationDirs]
+RNDIS_CopyFiles_NT    = 12
+
+[Strings]
+ServiceDisplayName    = "Acer USB Remote NDIS Network Device Driver"
+NetworkAddress        = "Acer Network Address"
+Provider              = "Acer Incorporated."
+LinuxDevice           = "Acer USB Ethernet/RNDIS Gadget"
+SourceDisk            = "Acer Ethernet/RNDIS Gadget Driver Install Disk"
