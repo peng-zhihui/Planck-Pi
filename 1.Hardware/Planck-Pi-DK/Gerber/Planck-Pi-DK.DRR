@@ -1,0 +1,20 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: Planck-Pi-DK.PcbDoc   ÖÜ¶þ 04-05  17:27:41
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top1 to Bottom4
+ASCII RoundHoles File : Planck-Pi-DK-RoundHoles.TXT
+ASCII SlotHoles File : Planck-Pi-DK-SlotHoles.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      10mil (0.254mm)                                           Round             223       PTH        18.50inch (469.80mm)
+T2      24mil (0.6mm)                                             Slot              4         PTH        1.47inch (37.27mm)
+T3      26mil (0.65mm)                                            Round             2         PTH        0.23inch (5.78mm)
+T4      32mil (0.813mm)                                           Round             38        PTH        4.42inch (112.27mm)
+T5      39mil (1mm)                                               Round             2         PTH        0.31inch (7.98mm)
+T6      40mil (1.016mm)                                           Round             2         NPTH       0.19inch (4.90mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              271
+
+Total Processing Time (hh:mm:ss) : 00:00:00
