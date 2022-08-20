@@ -1,0 +1,3 @@
+# SPDX-License-Identifier: GPL-2.0
+source "drivers/staging/media/sunxi/cedar/ve/Kconfig"
+source "drivers/staging/media/sunxi/cedar/ion/Kconfig"
