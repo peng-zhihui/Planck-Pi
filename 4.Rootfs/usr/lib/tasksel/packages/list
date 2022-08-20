@@ -1,0 +1,3 @@
+#!/bin/sh
+shift 1 # task name
+echo $@

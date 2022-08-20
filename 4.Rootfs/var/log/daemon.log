@@ -1,0 +1,682 @@
+Feb 14 10:12:15 ubuntu systemd-fsck[72]: /dev/mmcblk0p3: clean, 13838/3720808 files, 650249/15424512 blocks
+Feb 14 10:12:15 ubuntu systemd[1]: Started Apply Kernel Variables.
+Feb 14 10:12:15 ubuntu systemd[1]: Started Remount Root and Kernel File Systems.
+Feb 14 10:12:15 ubuntu systemd[1]: Starting Load/Save Random Seed...
+Feb 14 10:12:15 ubuntu systemd[1]: Activating swap /opt/images/swap...
+Feb 14 10:12:15 ubuntu systemd[1]: Condition check resulted in Rebuild Hardware Database being skipped.
+Feb 14 10:12:15 ubuntu systemd[1]: Starting Flush Journal to Persistent Storage...
+Feb 14 10:12:15 ubuntu systemd[1]: Starting Create System Users...
+Feb 14 10:12:15 ubuntu swapon[91]: swapon: /opt/images/swap: insecure permissions 0644, 0600 suggested.
+Feb 14 10:12:15 ubuntu swapon[91]: swapon: /opt/images/swap: swapon failed: Invalid argument
+Feb 14 10:12:15 ubuntu systemd[1]: opt-images-swap.swap: Swap process exited, code=exited, status=255/EXCEPTION
+Feb 14 10:12:15 ubuntu systemd[1]: opt-images-swap.swap: Failed with result 'exit-code'.
+Feb 14 10:12:15 ubuntu systemd[1]: Failed to activate swap /opt/images/swap.
+Feb 14 10:12:15 ubuntu systemd[1]: Dependency failed for Swap.
+Feb 14 10:12:15 ubuntu systemd[1]: swap.target: Job swap.target/start failed with result 'dependency'.
+Feb 14 10:12:15 ubuntu systemd[1]: Started Load/Save Random Seed.
+Feb 14 10:12:15 ubuntu systemd-sysusers[93]: Creating group systemd-coredump with gid 999.
+Feb 14 10:12:15 ubuntu systemd-sysusers[93]: Creating user systemd-coredump (systemd Core Dumper) with uid 999 and gid 999.
+Feb 14 10:12:15 ubuntu systemd[1]: Started Flush Journal to Persistent Storage.
+Feb 14 10:12:15 ubuntu systemd[1]: Started Create System Users.
+Feb 14 10:12:15 ubuntu systemd[1]: Starting Create Static Device Nodes in /dev...
+Feb 14 10:12:15 ubuntu systemd[1]: Started udev Coldplug all Devices.
+Feb 14 10:12:15 ubuntu systemd[1]: Starting Helper to synchronize boot up for ifupdown...
+Feb 14 10:12:15 ubuntu systemd[1]: Started Helper to synchronize boot up for ifupdown.
+Feb 14 10:12:15 ubuntu systemd[1]: Started Create Static Device Nodes in /dev.
+Feb 14 10:12:15 ubuntu systemd[1]: Starting udev Kernel Device Manager...
+Feb 14 10:12:15 ubuntu systemd[1]: Reached target Local File Systems (Pre).
+Feb 14 10:12:15 ubuntu systemd[1]: Mounting /tmp...
+Feb 14 10:12:15 ubuntu systemd[1]: Mounted /tmp.
+Feb 14 10:12:15 ubuntu systemd[1]: Reached target Local File Systems.
+Feb 14 10:12:15 ubuntu systemd[1]: Condition check resulted in Commit a transient machine-id on disk being skipped.
+Feb 14 10:12:15 ubuntu systemd-udevd[98]: Network interface NamePolicy= disabled on kernel command line, ignoring.
+Feb 14 10:12:15 ubuntu systemd[1]: Starting Raise network interfaces...
+Feb 14 10:12:15 ubuntu systemd[1]: Starting Create Volatile Files and Directories...
+Feb 14 10:12:15 ubuntu systemd[1]: Started udev Kernel Device Manager.
+Feb 14 10:12:15 ubuntu systemd[1]: Started Raise network interfaces.
+Feb 14 10:12:15 ubuntu systemd[1]: Started Create Volatile Files and Directories.
+Feb 14 10:12:15 ubuntu systemd[1]: Starting Network Time Synchronization...
+Feb 14 10:12:15 ubuntu systemd[1]: Starting Update UTMP about System Boot/Shutdown...
+Feb 14 10:12:15 ubuntu systemd-udevd[118]: audio: Failed to apply ACL: Operation not supported
+Feb 14 10:12:15 ubuntu systemd-udevd[110]: dsp: Failed to apply ACL: Operation not supported
+Feb 14 10:12:15 ubuntu systemd-udevd[107]: pcmC0D0p: Failed to apply ACL: Operation not supported
+Feb 14 10:12:15 ubuntu systemd-udevd[120]: mixer: Failed to apply ACL: Operation not supported
+Feb 14 10:12:15 ubuntu systemd-udevd[121]: pcmC0D0c: Failed to apply ACL: Operation not supported
+Feb 14 10:12:15 ubuntu systemd-udevd[117]: controlC0: Failed to apply ACL: Operation not supported
+Feb 14 10:12:15 ubuntu systemd-udevd[120]: card0: Failed to apply ACL: Operation not supported
+Feb 14 10:12:15 ubuntu systemd-udevd[121]: link_config: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Feb 14 10:12:15 ubuntu systemd-udevd[122]: timer: Failed to apply ACL: Operation not supported
+Feb 14 10:12:15 ubuntu systemd[1]: Started Network Time Synchronization.
+Feb 14 10:12:15 ubuntu systemd[1]: Found device /dev/ttyS0.
+Feb 14 10:12:15 ubuntu systemd[1]: Started Update UTMP about System Boot/Shutdown.
+Feb 14 10:12:15 ubuntu systemd[1]: Reached target Sound Card.
+Feb 14 10:12:15 ubuntu systemd[1]: Reached target System Initialization.
+Feb 14 10:12:15 ubuntu systemd[1]: Listening on D-Bus System Message Bus Socket.
+Feb 14 10:12:15 ubuntu systemd[1]: Reached target Sockets.
+Feb 14 10:12:15 ubuntu systemd[1]: Started Daily Cleanup of Temporary Directories.
+Feb 14 10:12:15 ubuntu systemd[1]: Reached target Basic System.
+Feb 14 10:12:15 ubuntu systemd[1]: Condition check resulted in getty on tty2-tty6 if dbus and logind are not available being skipped.
+Feb 14 10:12:15 ubuntu systemd[1]: Started D-Bus System Message Bus.
+Feb 14 10:12:15 ubuntu systemd[1]: Starting runOnBoot.service...
+Feb 14 10:12:15 ubuntu systemd[1]: Starting System Logging Service...
+Feb 14 10:12:15 ubuntu systemd[1]: Starting Login Service...
+Feb 14 10:12:15 ubuntu systemd[1]: Started Regular background program processing daemon.
+Feb 14 10:12:15 ubuntu systemd[1]: Reached target System Time Synchronized.
+Feb 14 10:12:15 ubuntu dbus-daemon[128]: dbus[128]: Failed to start message bus: Error in file /usr/share/dbus-1/system.conf, line 1, column 0: no element found
+Feb 14 10:12:15 ubuntu systemd[1]: Started Daily rotation of log files.
+Feb 14 10:12:15 ubuntu systemd[1]: Started Daily apt download activities.
+Feb 14 10:12:15 ubuntu runOnBoot[129]: swapon: /opt/images/swap: insecure permissions 0644, 0600 suggested.
+Feb 14 10:12:15 ubuntu systemd[1]: Started Daily apt upgrade and clean activities.
+Feb 14 10:12:15 ubuntu runOnBoot[129]: swapon: /opt/images/swap: swapon failed: Invalid argument
+Feb 14 10:12:15 ubuntu systemd[1]: Reached target Timers.
+Feb 14 10:12:15 ubuntu systemd[1]: dbus.service: Main process exited, code=exited, status=1/FAILURE
+Feb 14 10:12:15 ubuntu systemd[1]: dbus.service: Failed with result 'exit-code'.
+Feb 14 10:12:15 ubuntu systemd[1]: Started System Logging Service.
+Feb 14 10:12:15 ubuntu systemd[1]: Started D-Bus System Message Bus.
+Feb 14 10:12:15 ubuntu systemd-udevd[122]: Using default interface naming scheme 'v240'.
+Feb 14 10:12:15 ubuntu systemd-udevd[122]: link_config: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Feb 14 10:12:16 ubuntu dbus-daemon[141]: dbus[141]: Failed to start message bus: Error in file /usr/share/dbus-1/system.conf, line 1, column 0: no element found
+Feb 14 10:13:45 ubuntu systemd[1]: Failed to get initial list of names: Connection timed out
+Feb 14 10:13:45 ubuntu systemd[1]: systemd-fsckd.service: Succeeded.
+Feb 14 10:13:45 ubuntu systemd[1]: Started runOnBoot.service.
+Feb 14 10:13:46 ubuntu systemd[1]: dbus.service: Main process exited, code=exited, status=1/FAILURE
+Feb 14 10:13:46 ubuntu systemd[1]: dbus.service: Failed with result 'exit-code'.
+Feb 14 10:13:46 ubuntu systemd[1]: systemd-logind.service: Start operation timed out. Terminating.
+Feb 14 10:13:46 ubuntu systemd[1]: Started D-Bus System Message Bus.
+Feb 14 10:13:46 ubuntu dbus-daemon[150]: dbus[150]: Failed to start message bus: Error in file /usr/share/dbus-1/system.conf, line 1, column 0: no element found
+Feb 14 10:13:46 ubuntu systemd[1]: Reached target Network.
+Feb 14 10:13:46 ubuntu systemd[1]: Starting Permit User Sessions...
+Feb 14 10:13:46 ubuntu systemd[1]: Starting OpenBSD Secure Shell server...
+Feb 14 10:13:46 ubuntu systemd[1]: Reached target Network is Online.
+Feb 14 10:13:46 ubuntu systemd[1]: systemd-logind.service: Failed with result 'timeout'.
+Feb 14 10:13:46 ubuntu systemd[1]: Failed to start Login Service.
+Feb 14 10:13:46 ubuntu systemd[1]: dbus.service: Main process exited, code=exited, status=1/FAILURE
+Feb 14 10:13:46 ubuntu systemd[1]: dbus.service: Failed with result 'exit-code'.
+Feb 14 10:13:46 ubuntu systemd[1]: systemd-logind.service: Service has no hold-off time (RestartSec=0), scheduling restart.
+Feb 14 10:13:46 ubuntu systemd[1]: systemd-logind.service: Scheduled restart job, restart counter is at 1.
+Feb 14 10:13:46 ubuntu systemd[1]: Started D-Bus System Message Bus.
+Feb 14 10:13:47 ubuntu systemd[1]: Stopped Login Service.
+Feb 14 10:13:47 ubuntu dbus-daemon[153]: dbus[153]: Failed to start message bus: Error in file /usr/share/dbus-1/system.conf, line 1, column 0: no element found
+Feb 14 10:13:47 ubuntu systemd[1]: Starting Login Service...
+Feb 14 10:13:47 ubuntu systemd[1]: Started Permit User Sessions.
+Feb 14 10:13:47 ubuntu systemd[1]: dbus.service: Main process exited, code=exited, status=1/FAILURE
+Feb 14 10:13:47 ubuntu systemd[1]: dbus.service: Failed with result 'exit-code'.
+Feb 14 10:13:47 ubuntu systemd[1]: Started D-Bus System Message Bus.
+Feb 14 10:13:47 ubuntu dbus-daemon[155]: dbus[155]: Failed to start message bus: Error in file /usr/share/dbus-1/system.conf, line 1, column 0: no element found
+Feb 14 10:13:47 ubuntu systemd[1]: Started Serial Getty on ttyS0.
+Feb 14 10:13:47 ubuntu systemd[1]: Started Getty on tty1.
+Feb 14 10:13:47 ubuntu systemd[1]: Reached target Login Prompts.
+Feb 14 10:13:47 ubuntu systemd[1]: dbus.service: Main process exited, code=exited, status=1/FAILURE
+Feb 14 10:13:47 ubuntu systemd[1]: dbus.service: Failed with result 'exit-code'.
+Feb 14 10:13:48 ubuntu systemd[1]: Started D-Bus System Message Bus.
+Feb 14 10:13:48 ubuntu dbus-daemon[160]: dbus[160]: Failed to start message bus: Error in file /usr/share/dbus-1/system.conf, line 1, column 0: no element found
+Feb 14 10:13:48 ubuntu systemd[1]: dbus.service: Main process exited, code=exited, status=1/FAILURE
+Feb 14 10:13:48 ubuntu systemd[1]: dbus.service: Failed with result 'exit-code'.
+Feb 14 10:13:48 ubuntu systemd[1]: Started D-Bus System Message Bus.
+Feb 14 10:13:48 ubuntu dbus-daemon[162]: dbus[162]: Failed to start message bus: Error in file /usr/share/dbus-1/system.conf, line 1, column 0: no element found
+Feb 14 10:12:25 ubuntu systemd-fsck[74]: /dev/mmcblk0p3: Superblock last mount time (Sun Apr  3 13:36:27 2022,
+Feb 14 10:12:25 ubuntu systemd-fsck[74]: #011now = Thu Feb 14 10:12:05 2019) is in the future.
+Feb 14 10:12:25 ubuntu systemd-fsck[74]: FIXED.
+Feb 14 10:12:25 ubuntu systemd-fsck[74]: /dev/mmcblk0p3: Superblock last write time (Sun Apr  3 13:36:27 2022,
+Feb 14 10:12:25 ubuntu systemd-fsck[74]: #011now = Thu Feb 14 10:12:05 2019) is in the future.
+Feb 14 10:12:25 ubuntu systemd-fsck[74]: FIXED.
+Feb 14 10:12:25 ubuntu systemd[1]: Started Apply Kernel Variables.
+Feb 14 10:12:25 ubuntu systemd[1]: Started udev Coldplug all Devices.
+Feb 14 10:12:25 ubuntu systemd[1]: Starting Helper to synchronize boot up for ifupdown...
+Feb 14 10:12:25 ubuntu systemd[1]: Started Helper to synchronize boot up for ifupdown.
+Feb 14 10:12:25 ubuntu systemd-fsck[74]: /dev/mmcblk0p3: 13859/3720808 files (0.1% non-contiguous), 1243945/15424512 blocks
+Feb 14 10:12:25 ubuntu systemd[1]: Started File System Check on Root Device.
+Feb 14 10:12:25 ubuntu systemd[1]: Starting Remount Root and Kernel File Systems...
+Feb 14 10:12:25 ubuntu systemd[1]: Started Remount Root and Kernel File Systems.
+Feb 14 10:12:25 ubuntu systemd[1]: Activating swap /opt/images/swap...
+Feb 14 10:12:25 ubuntu systemd[1]: Starting Create System Users...
+Feb 14 10:12:25 ubuntu systemd[1]: Condition check resulted in Rebuild Hardware Database being skipped.
+Feb 14 10:12:25 ubuntu systemd[1]: Starting Load/Save Random Seed...
+Feb 14 10:12:25 ubuntu swapon[92]: swapon: /opt/images/swap: insecure permissions 0644, 0600 suggested.
+Feb 14 10:12:25 ubuntu systemd[1]: Starting Flush Journal to Persistent Storage...
+Feb 14 10:12:25 ubuntu systemd[1]: Started Load/Save Random Seed.
+Feb 14 10:12:25 ubuntu systemd-sysusers[93]: Creating group systemd-coredump with gid 999.
+Feb 14 10:12:25 ubuntu systemd-sysusers[93]: Creating user systemd-coredump (systemd Core Dumper) with uid 999 and gid 999.
+Feb 14 10:12:25 ubuntu systemd[1]: Started Create System Users.
+Feb 14 10:12:25 ubuntu systemd[1]: Starting Create Static Device Nodes in /dev...
+Feb 14 10:12:25 ubuntu systemd[1]: Started Flush Journal to Persistent Storage.
+Feb 14 10:12:25 ubuntu systemd[1]: Started Create Static Device Nodes in /dev.
+Feb 14 10:12:25 ubuntu systemd[1]: Reached target Local File Systems (Pre).
+Feb 14 10:12:25 ubuntu systemd[1]: Starting udev Kernel Device Manager...
+Feb 14 10:12:25 ubuntu systemd[1]: Activated swap /opt/images/swap.
+Feb 14 10:12:25 ubuntu systemd[1]: Reached target Swap.
+Feb 14 10:12:25 ubuntu systemd-udevd[98]: Network interface NamePolicy= disabled on kernel command line, ignoring.
+Feb 14 10:12:25 ubuntu systemd[1]: Mounting /tmp...
+Feb 14 10:12:25 ubuntu systemd[1]: Mounted /tmp.
+Feb 14 10:12:25 ubuntu systemd[1]: Reached target Local File Systems.
+Feb 14 10:12:25 ubuntu systemd[1]: Starting Create Volatile Files and Directories...
+Feb 14 10:12:25 ubuntu systemd[1]: Starting Raise network interfaces...
+Feb 14 10:12:25 ubuntu systemd[1]: Condition check resulted in Commit a transient machine-id on disk being skipped.
+Feb 14 10:12:25 ubuntu systemd[1]: Started udev Kernel Device Manager.
+Feb 14 10:12:25 ubuntu systemd[1]: Started Raise network interfaces.
+Feb 14 10:12:25 ubuntu systemd[1]: Started Create Volatile Files and Directories.
+Feb 14 10:12:25 ubuntu systemd-udevd[101]: dsp: Failed to apply ACL: Operation not supported
+Feb 14 10:12:25 ubuntu systemd-udevd[104]: audio: Failed to apply ACL: Operation not supported
+Feb 14 10:12:25 ubuntu systemd-udevd[112]: pcmC0D0c: Failed to apply ACL: Operation not supported
+Feb 14 10:12:25 ubuntu systemd-udevd[103]: pcmC0D0p: Failed to apply ACL: Operation not supported
+Feb 14 10:12:25 ubuntu systemd-udevd[110]: mixer: Failed to apply ACL: Operation not supported
+Feb 14 10:12:26 ubuntu systemd-udevd[113]: controlC0: Failed to apply ACL: Operation not supported
+Feb 14 10:12:26 ubuntu systemd-udevd[104]: card0: Failed to apply ACL: Operation not supported
+Feb 14 10:12:26 ubuntu systemd-udevd[110]: timer: Failed to apply ACL: Operation not supported
+Feb 14 10:12:26 ubuntu systemd-udevd[101]: link_config: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Feb 14 10:12:26 ubuntu systemd[1]: Found device /dev/ttyS0.
+Feb 14 10:12:26 ubuntu systemd[1]: Reached target Sound Card.
+Feb 14 10:12:26 ubuntu systemd[1]: Starting Update UTMP about System Boot/Shutdown...
+Feb 14 10:12:26 ubuntu systemd[1]: Starting Network Time Synchronization...
+Feb 14 10:12:26 ubuntu systemd[1]: Started Update UTMP about System Boot/Shutdown.
+Feb 14 10:12:26 ubuntu systemd[1]: Started Network Time Synchronization.
+Feb 14 10:12:26 ubuntu systemd[1]: Reached target System Initialization.
+Feb 14 10:12:26 ubuntu systemd[1]: Started Daily Cleanup of Temporary Directories.
+Feb 14 10:12:26 ubuntu systemd[1]: Listening on D-Bus System Message Bus Socket.
+Feb 14 10:12:26 ubuntu systemd[1]: Reached target Sockets.
+Feb 14 10:12:26 ubuntu systemd[1]: Reached target Basic System.
+Feb 14 10:12:26 ubuntu systemd[1]: Condition check resulted in getty on tty2-tty6 if dbus and logind are not available being skipped.
+Feb 14 10:12:26 ubuntu systemd[1]: Starting Login Service...
+Feb 14 10:12:26 ubuntu systemd[1]: Started Regular background program processing daemon.
+Feb 14 10:12:26 ubuntu systemd[1]: Starting runOnBoot.service...
+Feb 14 10:12:26 ubuntu systemd[1]: Started D-Bus System Message Bus.
+Feb 14 10:12:26 ubuntu systemd[1]: Starting System Logging Service...
+Feb 14 10:12:26 ubuntu systemd[1]: Reached target System Time Synchronized.
+Feb 14 10:12:26 ubuntu systemd[1]: Started Daily apt download activities.
+Feb 14 10:12:26 ubuntu systemd[1]: Started Daily apt upgrade and clean activities.
+Feb 14 10:12:26 ubuntu systemd[1]: Started Daily rotation of log files.
+Feb 14 10:12:26 ubuntu runOnBoot[130]: swapon: /opt/images/swap: insecure permissions 0644, 0600 suggested.
+Feb 14 10:12:26 ubuntu runOnBoot[130]: swapon: /opt/images/swap: swapon failed: Device or resource busy
+Feb 14 10:12:26 ubuntu systemd[1]: Reached target Timers.
+Feb 14 10:12:26 ubuntu systemd-udevd[100]: Using default interface naming scheme 'v240'.
+Feb 14 10:12:26 ubuntu systemd-udevd[100]: link_config: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Feb 14 10:12:26 ubuntu systemd[1]: Started System Logging Service.
+Feb 14 10:12:26 ubuntu systemd[1]: Started runOnBoot.service.
+Feb 14 10:12:26 ubuntu systemd[1]: Started Login Service.
+Feb 14 10:12:26 ubuntu systemd[1]: Reached target Network.
+Feb 14 10:12:26 ubuntu systemd[1]: Starting OpenBSD Secure Shell server...
+Feb 14 10:12:26 ubuntu systemd[1]: Starting Permit User Sessions...
+Feb 14 10:12:26 ubuntu systemd[1]: Reached target Network is Online.
+Feb 14 10:12:27 ubuntu systemd[1]: Started Permit User Sessions.
+Feb 14 10:12:27 ubuntu systemd[1]: Started Serial Getty on ttyS0.
+Feb 14 10:12:27 ubuntu systemd[1]: Started Getty on tty1.
+Feb 14 10:12:27 ubuntu systemd[1]: Reached target Login Prompts.
+Feb 14 10:12:28 ubuntu systemd[1]: Started OpenBSD Secure Shell server.
+Feb 14 10:12:28 ubuntu systemd[1]: Reached target Multi-User System.
+Feb 14 10:12:28 ubuntu systemd[1]: Reached target Graphical Interface.
+Feb 14 10:12:28 ubuntu systemd[1]: Starting Update UTMP about System Runlevel Changes...
+Feb 14 10:12:28 ubuntu systemd[1]: systemd-update-utmp-runlevel.service: Succeeded.
+Feb 14 10:12:28 ubuntu systemd[1]: Started Update UTMP about System Runlevel Changes.
+Feb 14 10:12:28 ubuntu systemd[1]: Startup finished in 4.515s (kernel) + 30.958s (userspace) = 35.473s.
+Feb 14 10:12:35 ubuntu systemd[1]: Created slice User Slice of UID 0.
+Feb 14 10:12:35 ubuntu systemd[1]: Starting User Runtime Directory /run/user/0...
+Feb 14 10:12:36 ubuntu systemd[1]: Started User Runtime Directory /run/user/0.
+Feb 14 10:12:36 ubuntu systemd[1]: Starting User Manager for UID 0...
+Feb 14 10:12:37 ubuntu systemd[167]: Reached target Sockets.
+Feb 14 10:12:37 ubuntu systemd[167]: Reached target Paths.
+Feb 14 10:12:37 ubuntu systemd[167]: Reached target Timers.
+Feb 14 10:12:37 ubuntu systemd[167]: Reached target Basic System.
+Feb 14 10:12:37 ubuntu systemd[1]: Started User Manager for UID 0.
+Feb 14 10:12:37 ubuntu systemd[167]: Reached target Default.
+Feb 14 10:12:37 ubuntu systemd[167]: Startup finished in 669ms.
+Feb 14 10:12:37 ubuntu systemd[1]: Started Session c1 of user root.
+Feb 14 10:12:44 ubuntu systemd[1]: systemd-fsckd.service: Succeeded.
+Apr  3 13:45:18 ubuntu systemd[1]: Starting Daily apt download activities...
+Apr  3 13:45:18 ubuntu systemd[1]: Starting Rotate log files...
+Apr  3 13:45:22 ubuntu systemd[1]: apt-daily.service: Succeeded.
+Apr  3 13:45:22 ubuntu systemd[1]: Started Daily apt download activities.
+Apr  3 13:45:22 ubuntu systemd[1]: Starting Daily apt upgrade and clean activities...
+Apr  3 13:45:25 ubuntu systemd[1]: apt-daily-upgrade.service: Succeeded.
+Apr  3 13:45:25 ubuntu systemd[1]: Started Daily apt upgrade and clean activities.
+Apr  3 13:45:33 ubuntu systemd[1]: logrotate.service: Succeeded.
+Apr  3 13:45:33 ubuntu systemd[1]: Started Rotate log files.
+Apr  3 13:56:25 ubuntu systemd[1]: Starting Cleanup of Temporary Directories...
+Apr  3 13:56:26 ubuntu systemd[1]: systemd-tmpfiles-clean.service: Succeeded.
+Apr  3 13:56:26 ubuntu systemd[1]: Started Cleanup of Temporary Directories.
+Apr  3 14:01:53 planck systemd[1]: Started Apply Kernel Variables.
+Apr  3 14:01:53 planck systemd-fsck[75]: /dev/mmcblk0p3: Superblock last mount time (Sun Apr  3 14:02:41 2022,
+Apr  3 14:01:53 planck systemd-fsck[75]: #011now = Thu Feb 14 10:12:04 2019) is in the future.
+Apr  3 14:01:53 planck systemd-fsck[75]: FIXED.
+Apr  3 14:01:53 planck systemd-fsck[75]: /dev/mmcblk0p3: Superblock last write time (Sun Apr  3 14:02:41 2022,
+Apr  3 14:01:53 planck systemd-fsck[75]: #011now = Thu Feb 14 10:12:04 2019) is in the future.
+Apr  3 14:01:53 planck systemd-fsck[75]: FIXED.
+Apr  3 14:01:53 planck systemd[1]: Started udev Coldplug all Devices.
+Apr  3 14:01:53 planck systemd[1]: Starting Helper to synchronize boot up for ifupdown...
+Apr  3 14:01:53 planck systemd[1]: Started Helper to synchronize boot up for ifupdown.
+Apr  3 14:01:53 planck systemd-fsck[75]: /dev/mmcblk0p3: 15494/3720808 files (0.2% non-contiguous), 1341025/15424512 blocks
+Apr  3 14:01:53 planck systemd[1]: Started File System Check on Root Device.
+Apr  3 14:01:53 planck systemd[1]: Starting Remount Root and Kernel File Systems...
+Apr  3 14:01:53 planck systemd[1]: Started Remount Root and Kernel File Systems.
+Apr  3 14:01:53 planck systemd[1]: Activating swap /opt/images/swap...
+Apr  3 14:01:53 planck systemd[1]: Starting Load/Save Random Seed...
+Apr  3 14:01:53 planck systemd[1]: Starting Flush Journal to Persistent Storage...
+Apr  3 14:01:53 planck systemd[1]: Condition check resulted in Rebuild Hardware Database being skipped.
+Apr  3 14:01:53 planck systemd[1]: Starting Create System Users...
+Apr  3 14:01:53 planck swapon[92]: swapon: /opt/images/swap: insecure permissions 0644, 0600 suggested.
+Apr  3 14:01:53 planck systemd[1]: Started Load/Save Random Seed.
+Apr  3 14:01:53 planck systemd-sysusers[95]: Creating group systemd-coredump with gid 999.
+Apr  3 14:01:53 planck systemd-sysusers[95]: Creating user systemd-coredump (systemd Core Dumper) with uid 999 and gid 999.
+Apr  3 14:01:53 planck systemd[1]: Started Flush Journal to Persistent Storage.
+Apr  3 14:01:53 planck systemd[1]: Activated swap /opt/images/swap.
+Apr  3 14:01:53 planck systemd[1]: Reached target Swap.
+Apr  3 14:01:53 planck systemd[1]: Started Create System Users.
+Apr  3 14:01:53 planck systemd[1]: Starting Create Static Device Nodes in /dev...
+Apr  3 14:01:53 planck systemd[1]: Started Create Static Device Nodes in /dev.
+Apr  3 14:01:53 planck systemd[1]: Starting udev Kernel Device Manager...
+Apr  3 14:01:53 planck systemd[1]: Reached target Local File Systems (Pre).
+Apr  3 14:01:53 planck systemd[1]: Mounting /tmp...
+Apr  3 14:01:53 planck systemd[1]: Mounted /tmp.
+Apr  3 14:01:53 planck systemd[1]: Reached target Local File Systems.
+Apr  3 14:01:53 planck systemd-udevd[98]: Network interface NamePolicy= disabled on kernel command line, ignoring.
+Apr  3 14:01:53 planck systemd[1]: Starting Create Volatile Files and Directories...
+Apr  3 14:01:53 planck systemd[1]: Condition check resulted in Commit a transient machine-id on disk being skipped.
+Apr  3 14:01:53 planck systemd[1]: Starting Raise network interfaces...
+Apr  3 14:01:53 planck systemd[1]: Started udev Kernel Device Manager.
+Apr  3 14:01:53 planck systemd[1]: Started Raise network interfaces.
+Apr  3 14:01:53 planck systemd[1]: Started Create Volatile Files and Directories.
+Apr  3 14:01:53 planck systemd[1]: Starting Network Time Synchronization...
+Apr  3 14:01:53 planck systemd[1]: Starting Update UTMP about System Boot/Shutdown...
+Apr  3 14:01:53 planck systemd-udevd[106]: dsp: Failed to apply ACL: Operation not supported
+Apr  3 14:01:53 planck systemd-udevd[122]: mixer: Failed to apply ACL: Operation not supported
+Apr  3 14:01:53 planck systemd-udevd[120]: pcmC0D0c: Failed to apply ACL: Operation not supported
+Apr  3 14:01:53 planck systemd-udevd[124]: audio: Failed to apply ACL: Operation not supported
+Apr  3 14:01:53 planck systemd-udevd[123]: pcmC0D0p: Failed to apply ACL: Operation not supported
+Apr  3 14:01:53 planck systemd-udevd[119]: controlC0: Failed to apply ACL: Operation not supported
+Apr  3 14:01:53 planck systemd-udevd[122]: card0: Failed to apply ACL: Operation not supported
+Apr  3 14:01:53 planck systemd-udevd[120]: link_config: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Apr  3 14:01:53 planck systemd-udevd[117]: timer: Failed to apply ACL: Operation not supported
+Apr  3 14:01:53 planck systemd[1]: Started Network Time Synchronization.
+Apr  3 14:01:53 planck systemd[1]: Found device /dev/ttyS0.
+Apr  3 14:01:53 planck systemd[1]: Started Update UTMP about System Boot/Shutdown.
+Apr  3 14:01:53 planck systemd[1]: Reached target Sound Card.
+Apr  3 14:01:53 planck systemd[1]: Reached target System Time Synchronized.
+Apr  3 14:01:53 planck systemd[1]: Reached target System Initialization.
+Apr  3 14:01:53 planck systemd[1]: Started Daily rotation of log files.
+Apr  3 14:01:53 planck systemd[1]: Started Daily Cleanup of Temporary Directories.
+Apr  3 14:01:53 planck systemd[1]: Started Daily apt download activities.
+Apr  3 14:01:53 planck systemd[1]: Started Daily apt upgrade and clean activities.
+Apr  3 14:01:53 planck systemd[1]: Reached target Timers.
+Apr  3 14:01:53 planck systemd[1]: Listening on D-Bus System Message Bus Socket.
+Apr  3 14:01:53 planck systemd[1]: Reached target Sockets.
+Apr  3 14:01:53 planck systemd[1]: Reached target Basic System.
+Apr  3 14:01:53 planck systemd[1]: Started Regular background program processing daemon.
+Apr  3 14:01:53 planck systemd[1]: Condition check resulted in getty on tty2-tty6 if dbus and logind are not available being skipped.
+Apr  3 14:01:53 planck systemd[1]: Starting runOnBoot.service...
+Apr  3 14:01:53 planck systemd[1]: Starting System Logging Service...
+Apr  3 14:01:53 planck systemd[1]: Starting Login Service...
+Apr  3 14:01:53 planck systemd[1]: Started D-Bus System Message Bus.
+Apr  3 14:01:53 planck runOnBoot[130]: swapon: /opt/images/swap: insecure permissions 0644, 0600 suggested.
+Apr  3 14:01:53 planck runOnBoot[130]: swapon: /opt/images/swap: swapon failed: Device or resource busy
+Apr  3 14:01:54 planck systemd-udevd[117]: Using default interface naming scheme 'v240'.
+Apr  3 14:01:54 planck systemd-udevd[117]: link_config: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Apr  3 14:01:54 planck systemd[1]: Started System Logging Service.
+Apr  3 14:01:54 planck systemd[1]: Started runOnBoot.service.
+Apr  3 14:01:54 planck systemd[1]: Reached target Network.
+Apr  3 14:01:54 planck systemd[1]: Starting OpenBSD Secure Shell server...
+Apr  3 14:01:54 planck systemd[1]: Starting Permit User Sessions...
+Apr  3 14:01:54 planck systemd[1]: Reached target Network is Online.
+Apr  3 14:01:54 planck systemd[1]: Started Login Service.
+Apr  3 14:01:55 planck systemd[1]: Started Permit User Sessions.
+Apr  3 14:01:55 planck systemd[1]: Started Getty on tty1.
+Apr  3 14:01:55 planck systemd[1]: Started Serial Getty on ttyS0.
+Apr  3 14:01:55 planck systemd[1]: Reached target Login Prompts.
+Apr  3 14:01:56 planck systemd[1]: Started OpenBSD Secure Shell server.
+Apr  3 14:01:56 planck systemd[1]: Reached target Multi-User System.
+Apr  3 14:01:56 planck systemd[1]: Reached target Graphical Interface.
+Apr  3 14:01:56 planck systemd[1]: Starting Update UTMP about System Runlevel Changes...
+Apr  3 14:01:56 planck systemd[1]: systemd-update-utmp-runlevel.service: Succeeded.
+Apr  3 14:01:56 planck systemd[1]: Started Update UTMP about System Runlevel Changes.
+Apr  3 14:01:56 planck systemd[1]: Startup finished in 4.342s (kernel) + 32.230s (userspace) = 36.573s.
+Apr  3 14:02:11 planck systemd[1]: systemd-fsckd.service: Succeeded.
+Apr  3 14:02:16 planck systemd[1]: Created slice User Slice of UID 0.
+Apr  3 14:02:16 planck systemd[1]: Starting User Runtime Directory /run/user/0...
+Apr  3 14:02:16 planck systemd[1]: Started User Runtime Directory /run/user/0.
+Apr  3 14:02:16 planck systemd[1]: Starting User Manager for UID 0...
+Apr  3 14:02:17 planck systemd[170]: Reached target Sockets.
+Apr  3 14:02:17 planck systemd[170]: Reached target Timers.
+Apr  3 14:02:17 planck systemd[170]: Reached target Paths.
+Apr  3 14:02:17 planck systemd[170]: Reached target Basic System.
+Apr  3 14:02:17 planck systemd[1]: Started User Manager for UID 0.
+Apr  3 14:02:17 planck systemd[170]: Reached target Default.
+Apr  3 14:02:17 planck systemd[170]: Startup finished in 706ms.
+Apr  3 14:02:17 planck systemd[1]: Started Session c1 of user root.
+Apr  3 14:06:34 planck systemd[1]: Stopped target Graphical Interface.
+Apr  3 14:06:34 planck systemd[1]: Stopped target Network is Online.
+Apr  3 14:06:34 planck systemd[1]: Stopped target Sound Card.
+Apr  3 14:06:34 planck systemd[1]: Stopped target Multi-User System.
+Apr  3 14:06:34 planck systemd[1]: Stopping OpenBSD Secure Shell server...
+Apr  3 14:06:34 planck systemd[1]: Stopping Session c1 of user root.
+Apr  3 14:06:35 planck systemd[1]: Stopped target Login Prompts.
+Apr  3 14:06:35 planck systemd[1]: Stopping Getty on tty1...
+Apr  3 14:06:35 planck systemd[1]: Stopping Serial Getty on ttyS0...
+Apr  3 14:06:35 planck systemd[1]: Stopping System Logging Service...
+Apr  3 14:01:52 localhost systemd-fsck[74]: /dev/mmcblk0p3: Superblock last mount time is in the future.
+Apr  3 14:01:52 localhost systemd-fsck[74]: #011(by less than a day, probably due to the hardware clock being incorrectly set)
+Apr  3 14:01:52 localhost systemd-fsck[74]: /dev/mmcblk0p3: clean, 15492/3720808 files, 1341094/15424512 blocks
+Apr  3 14:01:52 localhost systemd[1]: Started Apply Kernel Variables.
+Apr  3 14:01:52 localhost systemd[1]: Started Remount Root and Kernel File Systems.
+Apr  3 14:01:52 localhost systemd[1]: Activating swap /opt/images/swap...
+Apr  3 14:01:52 localhost systemd[1]: Starting Create System Users...
+Apr  3 14:01:52 localhost systemd[1]: Condition check resulted in Rebuild Hardware Database being skipped.
+Apr  3 14:01:52 localhost systemd[1]: Starting Load/Save Random Seed...
+Apr  3 14:01:52 localhost systemd[1]: Starting Flush Journal to Persistent Storage...
+Apr  3 14:01:52 localhost swapon[90]: swapon: /opt/images/swap: insecure permissions 0644, 0600 suggested.
+Apr  3 14:01:52 localhost systemd[1]: Started udev Coldplug all Devices.
+Apr  3 14:01:52 localhost systemd[1]: Starting Helper to synchronize boot up for ifupdown...
+Apr  3 14:01:52 localhost systemd[1]: Started Load/Save Random Seed.
+Apr  3 14:01:52 localhost systemd[1]: Started Create System Users.
+Apr  3 14:01:52 localhost systemd[1]: Started Helper to synchronize boot up for ifupdown.
+Apr  3 14:01:52 localhost systemd[1]: Starting Create Static Device Nodes in /dev...
+Apr  3 14:01:52 localhost systemd[1]: Started Flush Journal to Persistent Storage.
+Apr  3 14:01:52 localhost systemd[1]: Started Create Static Device Nodes in /dev.
+Apr  3 14:01:52 localhost systemd[1]: Reached target Local File Systems (Pre).
+Apr  3 14:01:52 localhost systemd[1]: Starting udev Kernel Device Manager...
+Apr  3 14:01:52 localhost systemd[1]: Activated swap /opt/images/swap.
+Apr  3 14:01:52 localhost systemd-udevd[98]: Network interface NamePolicy= disabled on kernel command line, ignoring.
+Apr  3 14:01:52 localhost systemd[1]: Reached target Swap.
+Apr  3 14:01:52 localhost systemd[1]: Mounting /tmp...
+Apr  3 14:01:52 localhost systemd[1]: Mounted /tmp.
+Apr  3 14:01:52 localhost systemd[1]: Reached target Local File Systems.
+Apr  3 14:01:52 localhost systemd[1]: Condition check resulted in Commit a transient machine-id on disk being skipped.
+Apr  3 14:01:52 localhost systemd[1]: Starting Create Volatile Files and Directories...
+Apr  3 14:01:52 localhost systemd[1]: Starting Raise network interfaces...
+Apr  3 14:01:52 localhost systemd[1]: Started udev Kernel Device Manager.
+Apr  3 14:01:52 localhost systemd[1]: Started Raise network interfaces.
+Apr  3 14:01:52 localhost systemd[1]: Started Create Volatile Files and Directories.
+Apr  3 14:01:52 localhost systemd-udevd[106]: mixer: Failed to apply ACL: Operation not supported
+Apr  3 14:01:52 localhost systemd-udevd[102]: dsp: Failed to apply ACL: Operation not supported
+Apr  3 14:01:52 localhost systemd-udevd[107]: pcmC0D0p: Failed to apply ACL: Operation not supported
+Apr  3 14:01:52 localhost systemd-udevd[100]: pcmC0D0c: Failed to apply ACL: Operation not supported
+Apr  3 14:01:52 localhost systemd-udevd[121]: audio: Failed to apply ACL: Operation not supported
+Apr  3 14:01:52 localhost systemd-udevd[119]: controlC0: Failed to apply ACL: Operation not supported
+Apr  3 14:01:52 localhost systemd-udevd[120]: card0: Failed to apply ACL: Operation not supported
+Apr  3 14:01:52 localhost systemd-udevd[120]: link_config: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Apr  3 14:01:52 localhost systemd-udevd[121]: timer: Failed to apply ACL: Operation not supported
+Apr  3 14:01:52 localhost systemd[1]: Found device /dev/ttyS0.
+Apr  3 14:01:52 localhost systemd[1]: Reached target Sound Card.
+Apr  3 14:01:52 localhost systemd[1]: Starting Network Time Synchronization...
+Apr  3 14:01:52 localhost systemd[1]: Starting Update UTMP about System Boot/Shutdown...
+Apr  3 14:01:52 localhost systemd[1]: Started Update UTMP about System Boot/Shutdown.
+Apr  3 14:01:52 localhost systemd[1]: Started Network Time Synchronization.
+Apr  3 14:01:52 localhost systemd[1]: Reached target System Initialization.
+Apr  3 14:01:52 localhost systemd[1]: Started Daily Cleanup of Temporary Directories.
+Apr  3 14:01:52 localhost systemd[1]: Listening on D-Bus System Message Bus Socket.
+Apr  3 14:01:52 localhost systemd[1]: Reached target Sockets.
+Apr  3 14:01:52 localhost systemd[1]: Reached target Basic System.
+Apr  3 14:01:52 localhost systemd[1]: Condition check resulted in getty on tty2-tty6 if dbus and logind are not available being skipped.
+Apr  3 14:01:52 localhost systemd[1]: Starting runOnBoot.service...
+Apr  3 14:01:52 localhost systemd[1]: Started Regular background program processing daemon.
+Apr  3 14:01:52 localhost systemd[1]: Started D-Bus System Message Bus.
+Apr  3 14:01:52 localhost systemd[1]: Starting System Logging Service...
+Apr  3 14:01:52 localhost runOnBoot[129]: swapon: /opt/images/swap: insecure permissions 0644, 0600 suggested.
+Apr  3 14:01:52 localhost runOnBoot[129]: swapon: /opt/images/swap: swapon failed: Device or resource busy
+Apr  3 14:01:52 localhost systemd[1]: Starting Login Service...
+Apr  3 14:01:52 localhost systemd[1]: Reached target System Time Synchronized.
+Apr  3 14:01:52 localhost systemd[1]: Started Daily apt download activities.
+Apr  3 14:01:52 localhost systemd[1]: Started Daily rotation of log files.
+Apr  3 14:01:52 localhost systemd[1]: Started Daily apt upgrade and clean activities.
+Apr  3 14:01:52 localhost systemd[1]: Reached target Timers.
+Apr  3 14:01:52 localhost systemd-udevd[105]: Using default interface naming scheme 'v240'.
+Apr  3 14:01:52 localhost systemd-udevd[105]: link_config: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Apr  3 14:01:52 localhost systemd[1]: Started System Logging Service.
+Apr  3 14:01:52 localhost systemd[1]: Started runOnBoot.service.
+Apr  3 14:01:52 localhost systemd[1]: Reached target Network.
+Apr  3 14:01:52 localhost systemd[1]: Starting Permit User Sessions...
+Apr  3 14:01:52 localhost systemd[1]: Starting OpenBSD Secure Shell server...
+Apr  3 14:01:52 localhost systemd[1]: Reached target Network is Online.
+Apr  3 14:01:53 localhost systemd[1]: Started Login Service.
+Apr  3 14:01:53 localhost systemd[1]: Started Permit User Sessions.
+Apr  3 14:01:53 localhost systemd[1]: Started Getty on tty1.
+Apr  3 14:01:53 localhost systemd[1]: Started Serial Getty on ttyS0.
+Apr  3 14:01:53 localhost systemd[1]: Reached target Login Prompts.
+Apr  3 14:02:11 localhost systemd[1]: systemd-fsckd.service: Succeeded.
+Apr  3 14:02:11 localhost systemd[1]: Started OpenBSD Secure Shell server.
+Apr  3 14:02:11 localhost systemd[1]: Reached target Multi-User System.
+Apr  3 14:02:11 localhost systemd[1]: Reached target Graphical Interface.
+Apr  3 14:02:11 localhost systemd[1]: Starting Update UTMP about System Runlevel Changes...
+Apr  3 14:02:12 localhost systemd[1]: systemd-update-utmp-runlevel.service: Succeeded.
+Apr  3 14:02:12 localhost systemd[1]: Started Update UTMP about System Runlevel Changes.
+Apr  3 14:02:12 localhost systemd[1]: Startup finished in 3.063s (kernel) + 38.732s (userspace) = 41.796s.
+Apr  3 14:02:27 localhost systemd[1]: Created slice User Slice of UID 0.
+Apr  3 14:02:27 localhost systemd[1]: Starting User Runtime Directory /run/user/0...
+Apr  3 14:02:28 localhost systemd[1]: Started User Runtime Directory /run/user/0.
+Apr  3 14:02:28 localhost systemd[1]: Starting User Manager for UID 0...
+Apr  3 14:02:29 localhost systemd[174]: Reached target Sockets.
+Apr  3 14:02:29 localhost systemd[174]: Reached target Paths.
+Apr  3 14:02:29 localhost systemd[174]: Reached target Timers.
+Apr  3 14:02:29 localhost systemd[174]: Reached target Basic System.
+Apr  3 14:02:29 localhost systemd[1]: Started User Manager for UID 0.
+Apr  3 14:02:29 localhost systemd[174]: Reached target Default.
+Apr  3 14:02:29 localhost systemd[174]: Startup finished in 683ms.
+Apr  3 14:02:29 localhost systemd[1]: Started Session c1 of user root.
+Apr  3 14:03:01 localhost systemd[1]: Stopped target Network is Online.
+Apr  3 14:03:02 localhost systemd[1]: Stopping Session c1 of user root.
+Apr  3 14:03:02 localhost systemd[1]: Stopped target Graphical Interface.
+Apr  3 14:03:02 localhost systemd[1]: Stopped target Multi-User System.
+Apr  3 14:03:02 localhost systemd[1]: Stopping OpenBSD Secure Shell server...
+Apr  3 14:01:52 localhost systemd-fsck[70]: /dev/mmcblk0p3: Superblock last mount time is in the future.
+Apr  3 14:01:52 localhost systemd-fsck[70]: #011(by less than a day, probably due to the hardware clock being incorrectly set)
+Apr  3 14:01:52 localhost systemd-fsck[70]: /dev/mmcblk0p3: Superblock last write time is in the future.
+Apr  3 14:01:52 localhost systemd-fsck[70]: #011(by less than a day, probably due to the hardware clock being incorrectly set)
+Apr  3 14:01:52 localhost systemd-fsck[70]: /dev/mmcblk0p3: clean, 15492/3720808 files, 1341166/15424512 blocks
+Apr  3 14:01:52 localhost systemd[1]: Started Remount Root and Kernel File Systems.
+Apr  3 14:01:52 localhost systemd[1]: Starting Create System Users...
+Apr  3 14:01:52 localhost systemd[1]: Condition check resulted in Rebuild Hardware Database being skipped.
+Apr  3 14:01:52 localhost systemd[1]: Starting Load/Save Random Seed...
+Apr  3 14:01:52 localhost systemd[1]: Activating swap /opt/images/swap...
+Apr  3 14:01:52 localhost systemd[1]: Starting Flush Journal to Persistent Storage...
+Apr  3 14:01:52 localhost swapon[92]: swapon: /opt/images/swap: insecure permissions 0644, 0600 suggested.
+Apr  3 14:01:52 localhost systemd[1]: Started Load/Save Random Seed.
+Apr  3 14:01:52 localhost systemd[1]: Started Create System Users.
+Apr  3 14:01:52 localhost systemd[1]: Starting Create Static Device Nodes in /dev...
+Apr  3 14:01:52 localhost systemd[1]: Started Flush Journal to Persistent Storage.
+Apr  3 14:01:52 localhost systemd[1]: Started udev Coldplug all Devices.
+Apr  3 14:01:52 localhost systemd[1]: Starting Helper to synchronize boot up for ifupdown...
+Apr  3 14:01:52 localhost systemd[1]: Started Helper to synchronize boot up for ifupdown.
+Apr  3 14:01:52 localhost systemd[1]: Started Create Static Device Nodes in /dev.
+Apr  3 14:01:52 localhost systemd[1]: Starting udev Kernel Device Manager...
+Apr  3 14:01:52 localhost systemd[1]: Reached target Local File Systems (Pre).
+Apr  3 14:01:52 localhost systemd-udevd[98]: Network interface NamePolicy= disabled on kernel command line, ignoring.
+Apr  3 14:01:52 localhost systemd[1]: Activated swap /opt/images/swap.
+Apr  3 14:01:52 localhost systemd[1]: Reached target Swap.
+Apr  3 14:01:52 localhost systemd[1]: Mounting /tmp...
+Apr  3 14:01:52 localhost systemd[1]: Started udev Kernel Device Manager.
+Apr  3 14:01:52 localhost systemd[1]: Mounted /tmp.
+Apr  3 14:01:52 localhost systemd[1]: Reached target Local File Systems.
+Apr  3 14:01:52 localhost systemd[1]: Condition check resulted in Commit a transient machine-id on disk being skipped.
+Apr  3 14:01:52 localhost systemd[1]: Starting Raise network interfaces...
+Apr  3 14:01:52 localhost systemd[1]: Starting Create Volatile Files and Directories...
+Apr  3 14:01:52 localhost systemd[1]: Started Raise network interfaces.
+Apr  3 14:01:52 localhost systemd-udevd[106]: audio: Failed to apply ACL: Operation not supported
+Apr  3 14:01:52 localhost systemd-udevd[104]: mixer: Failed to apply ACL: Operation not supported
+Apr  3 14:01:52 localhost systemd-udevd[109]: pcmC0D0p: Failed to apply ACL: Operation not supported
+Apr  3 14:01:52 localhost systemd-udevd[103]: dsp: Failed to apply ACL: Operation not supported
+Apr  3 14:01:52 localhost systemd-udevd[100]: pcmC0D0c: Failed to apply ACL: Operation not supported
+Apr  3 14:01:52 localhost systemd-udevd[108]: controlC0: Failed to apply ACL: Operation not supported
+Apr  3 14:01:52 localhost systemd-udevd[104]: card0: Failed to apply ACL: Operation not supported
+Apr  3 14:01:52 localhost systemd[1]: Started Create Volatile Files and Directories.
+Apr  3 14:01:52 localhost systemd-udevd[106]: timer: Failed to apply ACL: Operation not supported
+Apr  3 14:01:52 localhost systemd-udevd[102]: link_config: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Apr  3 14:01:52 localhost systemd[1]: Found device /dev/ttyS0.
+Apr  3 14:01:52 localhost systemd[1]: Reached target Sound Card.
+Apr  3 14:01:52 localhost systemd[1]: Starting Network Time Synchronization...
+Apr  3 14:01:52 localhost systemd[1]: Starting Update UTMP about System Boot/Shutdown...
+Apr  3 14:01:52 localhost systemd[1]: Started Update UTMP about System Boot/Shutdown.
+Apr  3 14:01:52 localhost systemd[1]: Started Network Time Synchronization.
+Apr  3 14:01:52 localhost systemd[1]: Reached target System Time Synchronized.
+Apr  3 14:01:52 localhost systemd[1]: Reached target System Initialization.
+Apr  3 14:01:52 localhost systemd[1]: Listening on D-Bus System Message Bus Socket.
+Apr  3 14:01:52 localhost systemd[1]: Reached target Sockets.
+Apr  3 14:01:52 localhost systemd[1]: Reached target Basic System.
+Apr  3 14:01:52 localhost systemd[1]: Started Regular background program processing daemon.
+Apr  3 14:01:52 localhost systemd[1]: Starting runOnBoot.service...
+Apr  3 14:01:52 localhost systemd[1]: Condition check resulted in getty on tty2-tty6 if dbus and logind are not available being skipped.
+Apr  3 14:01:52 localhost systemd[1]: Started Daily rotation of log files.
+Apr  3 14:01:52 localhost systemd[1]: Starting System Logging Service...
+Apr  3 14:01:52 localhost systemd[1]: Started Daily apt download activities.
+Apr  3 14:01:52 localhost systemd[1]: Starting Login Service...
+Apr  3 14:01:52 localhost systemd[1]: Started D-Bus System Message Bus.
+Apr  3 14:01:52 localhost runOnBoot[130]: swapon: /opt/images/swap: insecure permissions 0644, 0600 suggested.
+Apr  3 14:01:52 localhost runOnBoot[130]: swapon: /opt/images/swap: swapon failed: Device or resource busy
+Apr  3 14:01:52 localhost systemd[1]: Started Daily Cleanup of Temporary Directories.
+Apr  3 14:01:52 localhost systemd[1]: Started Daily apt upgrade and clean activities.
+Apr  3 14:01:52 localhost systemd[1]: Reached target Timers.
+Apr  3 14:01:52 localhost systemd-udevd[102]: Using default interface naming scheme 'v240'.
+Apr  3 14:01:52 localhost systemd-udevd[102]: link_config: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Apr  3 14:01:52 localhost systemd[1]: Started System Logging Service.
+Apr  3 14:01:52 localhost systemd[1]: Started runOnBoot.service.
+Apr  3 14:01:52 localhost systemd[1]: Reached target Network.
+Apr  3 14:01:52 localhost systemd[1]: Starting Permit User Sessions...
+Apr  3 14:01:52 localhost systemd[1]: Starting OpenBSD Secure Shell server...
+Apr  3 14:01:53 localhost systemd[1]: Reached target Network is Online.
+Apr  3 14:01:53 localhost systemd[1]: Started Login Service.
+Apr  3 14:01:53 localhost systemd[1]: Started Permit User Sessions.
+Apr  3 14:01:53 localhost systemd[1]: Started Getty on tty1.
+Apr  3 14:01:53 localhost systemd[1]: Started Serial Getty on ttyS0.
+Apr  3 14:01:53 localhost systemd[1]: Reached target Login Prompts.
+Apr  3 14:02:05 localhost systemd[1]: Created slice User Slice of UID 1000.
+Apr  3 14:02:05 localhost systemd[1]: Starting User Runtime Directory /run/user/1000...
+Apr  3 14:02:06 localhost systemd[1]: Started User Runtime Directory /run/user/1000.
+Apr  3 14:02:06 localhost systemd[1]: Starting User Manager for UID 1000...
+Apr  3 14:02:07 localhost systemd[162]: Reached target Timers.
+Apr  3 14:02:07 localhost systemd[162]: Reached target Sockets.
+Apr  3 14:02:07 localhost systemd[162]: Reached target Paths.
+Apr  3 14:02:07 localhost systemd[162]: Reached target Basic System.
+Apr  3 14:02:07 localhost systemd[1]: Started User Manager for UID 1000.
+Apr  3 14:02:07 localhost systemd[162]: Reached target Default.
+Apr  3 14:02:07 localhost systemd[162]: Startup finished in 710ms.
+Apr  3 14:02:07 localhost systemd[1]: Started Session c1 of user pi.
+Apr  3 14:02:10 localhost systemd[1]: systemd-fsckd.service: Succeeded.
+Apr  3 14:02:59 localhost systemd[1]: Started OpenBSD Secure Shell server.
+Apr  3 14:02:59 localhost systemd[1]: Reached target Multi-User System.
+Apr  3 14:02:59 localhost systemd[1]: Reached target Graphical Interface.
+Apr  3 14:02:59 localhost systemd[1]: Starting Update UTMP about System Runlevel Changes...
+Apr  3 14:03:00 localhost systemd[1]: systemd-update-utmp-runlevel.service: Succeeded.
+Apr  3 14:03:00 localhost systemd[1]: Started Update UTMP about System Runlevel Changes.
+Apr  3 14:03:00 localhost systemd[1]: Startup finished in 3.104s (kernel) + 1min 26.713s (userspace) = 1min 29.818s.
+Apr  3 14:21:05 localhost systemd[1]: Reloading.
+Apr  3 14:21:11 localhost systemd[1]: serial-getty@ttyS0.service: Current command vanished from the unit file, execution of the command list won't be resumed.
+Apr  3 14:21:11 localhost systemd[1]: getty@tty1.service: Current command vanished from the unit file, execution of the command list won't be resumed.
+Apr  3 14:21:13 localhost systemd[1]: Reloading.
+Apr  3 14:21:19 localhost systemd[1]: Reloading.
+Apr  3 14:21:25 localhost systemd[1]: Started Entropy daemon using the HAVEGE algorithm.
+Apr  3 14:21:26 localhost systemd[1]: Reloading.
+Apr  3 14:21:39 localhost haveged[288]: haveged: ver: 1.9.1; arch: generic; vend: ; build: (gcc 8.3.0 CTV); collect: 128K
+Apr  3 14:21:39 localhost haveged[288]: haveged: cpu: (VC); data: 16K (D); inst: 16K (D); idx: 11/40; sz: 14768/63488
+Apr  3 14:21:39 localhost haveged[288]: haveged: tot tests(BA8): A:1/1 B:1/1 continuous tests(B):  last entropy estimate 8.00724
+Apr  3 14:21:39 localhost haveged[288]: haveged: fills: 0, generated: 0
+Apr  3 14:23:17 localhost systemd[1]: Stopped target Graphical Interface.
+Apr  3 14:23:17 localhost systemd[1]: Stopped target Timers.
+Apr  3 14:23:17 localhost systemd[1]: logrotate.timer: Succeeded.
+Apr  3 14:23:17 localhost systemd[1]: Stopped Daily rotation of log files.
+Apr  3 14:23:17 localhost systemd[1]: apt-daily-upgrade.timer: Succeeded.
+Apr  3 14:23:17 localhost systemd[1]: Stopped Daily apt upgrade and clean activities.
+Apr  3 14:23:17 localhost systemd[1]: Stopped target Network is Online.
+Apr  3 14:23:17 localhost systemd[1]: Stopping Session c1 of user pi.
+Apr  3 14:23:17 localhost systemd[1]: Stopped target Multi-User System.
+Apr  3 14:23:22 localhost systemd-fsck[71]: /dev/mmcblk0p3: Superblock last mount time is in the future.
+Apr  3 14:23:22 localhost systemd-fsck[71]: #011(by less than a day, probably due to the hardware clock being incorrectly set)
+Apr  3 14:23:22 localhost systemd-fsck[71]: /dev/mmcblk0p3: clean, 15538/3720808 files, 1341504/15424512 blocks
+Apr  3 14:23:22 localhost systemd[1]: Started Remount Root and Kernel File Systems.
+Apr  3 14:23:22 localhost systemd[1]: Starting Load/Save Random Seed...
+Apr  3 14:23:22 localhost systemd[1]: Activating swap /opt/images/swap...
+Apr  3 14:23:22 localhost systemd[1]: Starting Flush Journal to Persistent Storage...
+Apr  3 14:23:22 localhost systemd[1]: Condition check resulted in Rebuild Hardware Database being skipped.
+Apr  3 14:23:22 localhost systemd[1]: Starting Create System Users...
+Apr  3 14:23:22 localhost swapon[91]: swapon: /opt/images/swap: insecure permissions 0644, 0600 suggested.
+Apr  3 14:23:22 localhost systemd[1]: Started Load/Save Random Seed.
+Apr  3 14:23:22 localhost systemd[1]: Started Create System Users.
+Apr  3 14:23:22 localhost systemd[1]: Starting Create Static Device Nodes in /dev...
+Apr  3 14:23:22 localhost systemd[1]: Started Flush Journal to Persistent Storage.
+Apr  3 14:23:22 localhost systemd[1]: Started udev Coldplug all Devices.
+Apr  3 14:23:22 localhost systemd[1]: Starting Helper to synchronize boot up for ifupdown...
+Apr  3 14:23:22 localhost systemd[1]: Started Helper to synchronize boot up for ifupdown.
+Apr  3 14:23:22 localhost systemd[1]: Started Create Static Device Nodes in /dev.
+Apr  3 14:23:22 localhost systemd[1]: Reached target Local File Systems (Pre).
+Apr  3 14:23:22 localhost systemd[1]: Starting udev Kernel Device Manager...
+Apr  3 14:23:22 localhost systemd-udevd[98]: Network interface NamePolicy= disabled on kernel command line, ignoring.
+Apr  3 14:23:22 localhost systemd[1]: Activated swap /opt/images/swap.
+Apr  3 14:23:22 localhost systemd[1]: Reached target Swap.
+Apr  3 14:23:22 localhost systemd[1]: Mounting /tmp...
+Apr  3 14:23:22 localhost systemd[1]: Started udev Kernel Device Manager.
+Apr  3 14:23:22 localhost systemd[1]: Mounted /tmp.
+Apr  3 14:23:22 localhost systemd[1]: Reached target Local File Systems.
+Apr  3 14:23:22 localhost systemd[1]: Starting Create Volatile Files and Directories...
+Apr  3 14:23:22 localhost systemd[1]: Starting Raise network interfaces...
+Apr  3 14:23:22 localhost systemd[1]: Condition check resulted in Commit a transient machine-id on disk being skipped.
+Apr  3 14:23:22 localhost systemd[1]: Started Raise network interfaces.
+Apr  3 14:23:22 localhost systemd[1]: Started Create Volatile Files and Directories.
+Apr  3 14:23:22 localhost systemd-udevd[110]: audio: Failed to apply ACL: Operation not supported
+Apr  3 14:23:22 localhost systemd-udevd[107]: mixer: Failed to apply ACL: Operation not supported
+Apr  3 14:23:22 localhost systemd-udevd[109]: pcmC0D0c: Failed to apply ACL: Operation not supported
+Apr  3 14:23:22 localhost systemd-udevd[104]: pcmC0D0p: Failed to apply ACL: Operation not supported
+Apr  3 14:23:22 localhost systemd-udevd[112]: dsp: Failed to apply ACL: Operation not supported
+Apr  3 14:23:22 localhost systemd-udevd[113]: controlC0: Failed to apply ACL: Operation not supported
+Apr  3 14:23:22 localhost systemd-udevd[108]: card0: Failed to apply ACL: Operation not supported
+Apr  3 14:23:22 localhost systemd-udevd[110]: timer: Failed to apply ACL: Operation not supported
+Apr  3 14:23:22 localhost systemd-udevd[108]: link_config: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Apr  3 14:23:22 localhost systemd[1]: Found device /dev/ttyS0.
+Apr  3 14:23:22 localhost systemd[1]: Reached target Sound Card.
+Apr  3 14:23:22 localhost systemd[1]: Starting Network Time Synchronization...
+Apr  3 14:23:22 localhost systemd[1]: Started Entropy daemon using the HAVEGE algorithm.
+Apr  3 14:23:22 localhost systemd[1]: Starting Update UTMP about System Boot/Shutdown...
+Apr  3 14:23:22 localhost systemd[1]: Started Update UTMP about System Boot/Shutdown.
+Apr  3 14:23:22 localhost systemd[1]: Started Network Time Synchronization.
+Apr  3 14:23:22 localhost systemd[1]: Reached target System Time Synchronized.
+Apr  3 14:23:22 localhost systemd[1]: Reached target System Initialization.
+Apr  3 14:23:22 localhost systemd[1]: Started Daily apt download activities.
+Apr  3 14:23:22 localhost systemd[1]: Started Daily rotation of log files.
+Apr  3 14:23:22 localhost systemd[1]: Started Daily apt upgrade and clean activities.
+Apr  3 14:23:22 localhost systemd[1]: Listening on D-Bus System Message Bus Socket.
+Apr  3 14:23:22 localhost systemd[1]: Reached target Sockets.
+Apr  3 14:23:22 localhost systemd[1]: Reached target Basic System.
+Apr  3 14:23:22 localhost systemd[1]: Starting System Logging Service...
+Apr  3 14:23:22 localhost systemd[1]: Started D-Bus System Message Bus.
+Apr  3 14:23:22 localhost systemd[1]: Started Regular background program processing daemon.
+Apr  3 14:23:22 localhost systemd[1]: Starting Login Service...
+Apr  3 14:23:22 localhost systemd[1]: Started Daily Cleanup of Temporary Directories.
+Apr  3 14:23:22 localhost systemd[1]: Reached target Timers.
+Apr  3 14:23:22 localhost systemd[1]: Starting runOnBoot.service...
+Apr  3 14:23:22 localhost systemd[1]: Condition check resulted in getty on tty2-tty6 if dbus and logind are not available being skipped.
+Apr  3 14:23:22 localhost systemd[1]: Started System Logging Service.
+Apr  3 14:23:22 localhost runOnBoot[134]: swapon: /opt/images/swap: insecure permissions 0644, 0600 suggested.
+Apr  3 14:23:22 localhost runOnBoot[134]: swapon: /opt/images/swap: swapon failed: Device or resource busy
+Apr  3 14:23:22 localhost systemd-udevd[102]: Using default interface naming scheme 'v240'.
+Apr  3 14:23:22 localhost systemd-udevd[102]: link_config: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Apr  3 14:23:23 localhost systemd[1]: Started runOnBoot.service.
+Apr  3 14:23:23 localhost systemd[1]: Reached target Network.
+Apr  3 14:23:23 localhost systemd[1]: Starting OpenBSD Secure Shell server...
+Apr  3 14:23:23 localhost systemd[1]: Starting Permit User Sessions...
+Apr  3 14:23:23 localhost systemd[1]: Reached target Network is Online.
+Apr  3 14:23:23 localhost systemd[1]: Started Login Service.
+Apr  3 14:23:24 localhost systemd[1]: Started Permit User Sessions.
+Apr  3 14:23:24 localhost systemd[1]: Started Getty on tty1.
+Apr  3 14:23:24 localhost systemd[1]: Started Serial Getty on ttyS0.
+Apr  3 14:23:24 localhost systemd[1]: Reached target Login Prompts.
+Apr  3 14:23:30 localhost haveged[125]: haveged: ver: 1.9.1; arch: generic; vend: ; build: (gcc 8.3.0 CTV); collect: 128K
+Apr  3 14:23:30 localhost haveged[125]: haveged: cpu: (VC); data: 16K (D); inst: 16K (D); idx: 11/40; sz: 14768/63488
+Apr  3 14:23:30 localhost haveged[125]: haveged: tot tests(BA8): A:1/1 B:1/1 continuous tests(B):  last entropy estimate 8.00051
+Apr  3 14:23:30 localhost haveged[125]: haveged: fills: 0, generated: 0
+Apr  3 14:23:30 localhost systemd[1]: Started OpenBSD Secure Shell server.
+Apr  3 14:23:30 localhost systemd[1]: Reached target Multi-User System.
+Apr  3 14:23:30 localhost systemd[1]: Reached target Graphical Interface.
+Apr  3 14:23:30 localhost systemd[1]: Starting Update UTMP about System Runlevel Changes...
+Apr  3 14:23:31 localhost systemd[1]: systemd-update-utmp-runlevel.service: Succeeded.
+Apr  3 14:23:31 localhost systemd[1]: Started Update UTMP about System Runlevel Changes.
+Apr  3 14:23:31 localhost systemd[1]: Startup finished in 3.090s (kernel) + 28.441s (userspace) = 31.532s.
+Apr  3 14:23:40 localhost systemd[1]: systemd-fsckd.service: Succeeded.
+Apr  3 14:25:03 localhost systemd[1]: Created slice User Slice of UID 1000.
+Apr  3 14:25:03 localhost systemd[1]: Starting User Runtime Directory /run/user/1000...
+Apr  3 14:25:03 localhost systemd[1]: Started User Runtime Directory /run/user/1000.
+Apr  3 14:25:03 localhost systemd[1]: Starting User Manager for UID 1000...
+Apr  3 14:25:04 localhost systemd[169]: Reached target Paths.
+Apr  3 14:25:04 localhost systemd[169]: Reached target Sockets.
+Apr  3 14:25:04 localhost systemd[169]: Reached target Timers.
+Apr  3 14:25:04 localhost systemd[169]: Reached target Basic System.
+Apr  3 14:25:04 localhost systemd[1]: Started User Manager for UID 1000.
+Apr  3 14:25:04 localhost systemd[169]: Reached target Default.
+Apr  3 14:25:04 localhost systemd[169]: Startup finished in 683ms.
+Apr  3 14:25:04 localhost systemd[1]: Started Session c1 of user pi.
+Apr  3 14:31:34 localhost systemd[1]: Stopped target Graphical Interface.
+Apr  3 14:31:34 localhost systemd[1]: Stopped target Multi-User System.
+Apr  3 14:31:34 localhost systemd[1]: Stopping Regular background program processing daemon...

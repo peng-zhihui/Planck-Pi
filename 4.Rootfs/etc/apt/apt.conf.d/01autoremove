@@ -1,0 +1,59 @@
+APT
+{
+  NeverAutoRemove
+  {
+	"^firmware-linux.*";
+	"^linux-firmware$";
+	"^linux-image-[a-z0-9]*$";
+	"^linux-image-[a-z0-9]*-[a-z0-9]*$";
+  };
+
+  VersionedKernelPackages
+  {
+	# linux kernels
+	"linux-image";
+	"linux-headers";
+	"linux-image-extra";
+	"linux-modules";
+	"linux-modules-extra";
+	"linux-signed-image";
+	"linux-image-unsigned";
+	# kfreebsd kernels
+	"kfreebsd-image";
+	"kfreebsd-headers";
+	# hurd kernels
+	"gnumach-image";
+	# (out-of-tree) modules
+	".*-modules";
+	".*-kernel";
+	"linux-backports-modules-.*";
+	"linux-modules-.*";
+        # tools
+        "linux-tools";
+        "linux-cloud-tools";
+	# build info
+	"linux-buildinfo";
+	# source code
+	"linux-source";
+  };
+
+  Never-MarkAuto-Sections
+  {
+	"metapackages";
+	"contrib/metapackages";
+	"non-free/metapackages";
+	"restricted/metapackages";
+	"universe/metapackages";
+	"multiverse/metapackages";
+  };
+
+  Move-Autobit-Sections
+  {
+	"oldlibs";
+	"contrib/oldlibs";
+	"non-free/oldlibs";
+	"restricted/oldlibs";
+	"universe/oldlibs";
+	"multiverse/oldlibs";
+  };
+};

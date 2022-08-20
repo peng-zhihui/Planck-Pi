@@ -1,0 +1,52 @@
+#! /bin/sh
+set -e
+
+LC_ALL=C
+LANG=C
+unset TZ
+umask 022
+
+. /usr/share/debconf/confmodule
+db_version 2.0
+
+if [ "$1" = configure ]; then
+    # If the user prefers to manage the time zone by itself, let him doing that.
+
+    if ! [ -e /etc/timezone ] && [ -z "$DEBCONF_RECONFIGURE" ] ; then
+        db_stop
+        echo
+        echo "User defined time zone, leaving /etc/localtime unchanged."
+    else
+    
+        # Get the values from debconf
+        AREA=Etc
+        ZONE=UTC
+        db_get tzdata/Areas && AREA="$RET"
+        db_get tzdata/Zones/$AREA && ZONE="$RET"
+        db_stop
+    
+        # Update the time zone
+        echo $AREA/$ZONE > /etc/timezone
+	ln -nsf /usr/share/zoneinfo/$AREA/$ZONE /etc/localtime.dpkg-new && \
+	    mv -f /etc/localtime.dpkg-new /etc/localtime
+	which restorecon >/dev/null 2>&1 && restorecon /etc/localtime
+    
+        echo 
+        echo "Current default time zone: '$AREA/$ZONE'"
+    fi
+
+    # Show the new setting to the user
+    TZBase=$(LC_ALL=C TZ=UTC0 date)
+    UTdate=$(LC_ALL=C TZ=UTC0 date -d "$TZBase")
+    TZdate=$(unset TZ ; LANG=C date -d "$TZBase")
+    echo "Local time is now:      $TZdate."
+    echo "Universal Time is now:  $UTdate."
+    if [ -z "$DEBCONF_RECONFIGURE" ] ; then
+        echo "Run 'dpkg-reconfigure tzdata' if you wish to change it."
+    fi
+    echo
+fi
+
+
+
+exit 0

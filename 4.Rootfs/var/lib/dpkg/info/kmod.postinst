@@ -1,0 +1,70 @@
+#!/bin/sh -e
+
+create_etc_modules() {
+  [ -e /etc/modules ] && return 0
+  cat <<END > /etc/modules
+# /etc/modules: kernel modules to load at boot time.
+#
+# This file contains the names of kernel modules that should be loaded
+# at boot time, one per line. Lines beginning with "#" are ignored.
+# Parameters can be specified after the module name.
+
+END
+  chmod 644 /etc/modules
+}
+
+# move the modules parameters from /etc/modules to a new file in modprobe.d
+convert_etc_modules() {
+  if dpkg --compare-versions "$2" ge "18-2"; then
+    return
+  fi
+
+  [ -e /etc/modules ] || return 0
+
+  if [ -e /etc/modprobe.d/etc-modules-parameters.conf ]; then
+    echo "/etc/modprobe.d/etc-modules-parameters.conf already exists."
+    return
+  fi
+
+  perl -e '
+  use warnings;
+  use strict;
+
+  my @parameters;
+  while (<>) {
+    /^# Parameters can be specified after the module name\.$/ && next;
+    push(@parameters, $1) if s/^( (\s* \w+) \s+ \w.* )$/$2/x;
+    print $_;
+  }
+  exit 0 if not @parameters;
+
+  open(OUT, "> /etc/modprobe.d/etc-modules-parameters.conf") or die "open: $!";
+  print OUT "# These parameters have been moved from /etc/modules by the kmod package.\n\n";
+  print OUT "options $_\n" foreach @parameters;
+  close OUT or die "close: $!";
+  ' < /etc/modules > /etc/modules.kmod-postinst
+
+  # replace the old file if it has been changed
+  if cmp --quiet /etc/modules /etc/modules.kmod-postinst; then
+    rm /etc/modules.kmod-postinst
+  else
+    mv /etc/modules.kmod-postinst /etc/modules
+  fi
+}
+
+case "$1" in
+  configure)
+  create_etc_modules
+  convert_etc_modules "$@"
+esac
+
+# Automatically added by dh_installinit/12
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-deconfigure" ] || [ "$1" = "abort-remove" ] ; then
+	if [ -x "/etc/init.d/kmod" ]; then
+		update-rc.d kmod defaults >/dev/null || exit 1
+	fi
+fi
+# End automatically added section
+
+
+exit 0

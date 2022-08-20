@@ -1,0 +1,47 @@
+XZ Utils for Debian
+===================
+
+Contents:
+ 1. History
+ 2. LZMA Utils compatibility
+ 3. Configuration
+
+History
+-------
+
+XZ Utils should have been called LZMA Utils 4.42, but it came too late.
+The old .lzma file format has some problems, worst of which is the lack
+of magic number, but it gets enough use to still need to be supported.
+See /usr/share/doc/xz-utils/history.txt.gz for the full story.
+
+LZMA Utils compatibility
+------------------------
+
+To support old scripts and muscle memory, XZ Utils can emulate the
+legacy LZMA Utils interface.  To use this feature, you can install some
+subset of the following list of symbolic links to your $PATH.
+
+	lzma, unlzma, lzcat -> /usr/bin/xz
+	lzgrep, lzegrep, lzfgrep -> /usr/bin/xzgrep
+	lzless -> /usr/bin/xzless
+	lzmore -> /usr/bin/xzmore
+	lzdiff, lzcmp -> /usr/bin/xzdiff
+
+If you would like XZ Utils to provide these commands by default for
+all users, use "update-alternatives --config lzma".
+
+Configuration
+-------------
+
+The memory usage of xz can vary from a few hundred kilobytes to several
+gigabytes depending on the compression settings.  If you would like xz
+to automatically scale down its settings while compressing to decrease
+memory usage, you can declare so by adding an option like the
+following to your environment (e.g., in ~/.profile):
+
+	XZ_DEFAULTS=--memlimit-compress=256MiB
+	export XZ_DEFAULTS
+
+See the "Memory usage" section of the xz(1) manual page for details.
+
+ -- Jonathan Nieder <jrnieder@gmail.com>  Sun, 27 Jan 2019 15:32:33 -0800

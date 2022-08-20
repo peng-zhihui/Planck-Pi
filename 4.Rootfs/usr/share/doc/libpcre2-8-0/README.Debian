@@ -1,0 +1,12 @@
+			   PCRE2 for Debian
+			   ----------------
+
+This is PCRE2, the newer version of the PCRE (perl-compatible regular
+expression) library. New projects should use this library in
+preference the older PCRE library (which is, for historical reasons,
+called pcre3 in Debian).
+
+The names of functions in libpcre2-posix are prefixed with PCRE2_, so
+they don't clash with the names in libc.
+
+ -- Matthew Vernon <matthew@debian.org>, Sun, 22 Nov 2015 16:07:27 +0000

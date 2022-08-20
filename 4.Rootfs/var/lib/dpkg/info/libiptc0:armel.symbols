@@ -1,0 +1,2 @@
+libiptc.so.0 libiptc0 #MINVER#
+* Build-Depends-Package: libiptc-dev

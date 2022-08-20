@@ -1,0 +1,101 @@
+# -*-Shell-script-*-
+# /lib/lsb/init-functions
+
+_use_systemctl=0
+if [ -d /run/systemd/system ]; then
+
+    if [ -n "${__init_d_script_name:-}" ]; then # scripts run with new init-d-script
+        executable="$__init_d_script_name"
+        argument="$1"
+    elif [ "${0##*/}" = "init-d-script" ] ||
+         [ "${0##*/}" = "${1:-}" ]; then # scripts run with old init-d-script
+        executable="$1"
+        argument="$2"
+    else # plain old scripts
+        executable="$0"
+        argument="${1:-}"
+    fi
+
+    prog=${executable##*/}
+    service="${prog%.sh}.service"
+
+    # Don't try to run masked services. systemctl <= 230 always succeeds here,
+    # but later systemctls fail on nonexisting units; be compatible with both
+    state=$(systemctl -p LoadState --value show $service 2>/dev/null) || state="not-found"
+    [ "$state" = "masked" ] && exit 0
+
+    # Redirect SysV init scripts when executed by the user
+    if [ $PPID -ne 1 ] && [ -z "${SYSTEMCTL_SKIP_REDIRECT:-}" ]; then
+        case $(readlink -f "$executable") in
+            /etc/init.d/*)
+                # If the state is not-found, this might be a newly installed SysV init
+                # script where systemd-sysv-generator has not been run yet.
+                [ "$state" != "not-found" ] || [ "$(id -u)" != 0 ] || systemctl --no-ask-password daemon-reload
+
+                _use_systemctl=1
+                # Some services can't reload through the .service file,
+                # but can through the init script.
+                if [ "$(systemctl -p CanReload --value show $service 2>/dev/null)" = "no" ] && [ "${argument:-}" = "reload" ]; then
+                    _use_systemctl=0
+                fi
+                ;;
+        esac
+    fi
+fi
+
+systemctl_redirect () {
+    local s
+    local rc
+    local prog=${1##*/}
+    local command=$2
+
+    case "$command" in
+        start)
+            s="Starting $prog (via systemctl)"
+            ;;
+        stop)
+            s="Stopping $prog (via systemctl)"
+            ;;
+        reload|force-reload)
+            s="Reloading $prog configuration (via systemctl)"
+            ;;
+        try-restart)
+            s="Restarting $prog if running (via systemctl)"
+            ;;
+        restart)
+            s="Restarting $prog (via systemctl)"
+            ;;
+    esac
+
+    service="${prog%.sh}.service"
+
+    # avoid deadlocks during bootup and shutdown from units/hooks
+    # which call "invoke-rc.d service reload" and similar, since
+    # the synchronous wait plus systemd's normal behaviour of
+    # transactionally processing all dependencies first easily
+    # causes dependency loops
+    if ! OUT=$(systemctl is-system-running 2>/dev/null) && [ "$OUT" != "degraded" ]; then
+        sctl_args="--job-mode=ignore-dependencies"
+    fi
+
+    [ "$command" = status ] || log_daemon_msg "$s" "$service"
+    /bin/systemctl --no-pager $sctl_args $command "$service"
+    rc=$?
+    [ "$command" = status ] || log_end_msg $rc
+
+    return $rc
+}
+
+if [ "$_use_systemctl" = "1" ]; then
+    # Some init scripts use "set -e" and "set -u", we don't want that
+    # here
+    set +e
+    set +u
+
+    case "$argument" in
+        start|stop|restart|reload|force-reload|try-restart|status)
+            systemctl_redirect $executable $argument
+            exit $?
+            ;;
+    esac
+fi

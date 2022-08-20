@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 1. On the move to Python 3</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Debian Python Policy" /><link rel="up" href="index.html" title="Debian Python Policy" /><link rel="prev" href="index.html" title="Debian Python Policy" /><link rel="next" href="python.html" title="Chapter 2. Python Packaging" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 1. On the move to Python 3</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="index.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="python.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="python3"></a>Chapter 1. On the move to Python 3</h1></div></div></div><p>
+	  Debian currently supports two Python stacks, one for Python 3
+	  and one for Python 2.  The long term goal for Debian is to
+	  reduce this to one stack, dropping the Python 2 stack at some
+	  time.
+	</p><p>
+	  <a class="ulink" href="https://www.python.org/dev/peps/pep-0404/" target="_blank">PEP 404</a> states that no more major Python 2 releases
+	  are planned, although the latest released minor version 2.7
+	  will see some extended support, documented in
+	  <a class="ulink" href="https://www.python.org/dev/peps/pep-0466/" target="_blank">PEP 466</a>.
+	</p><p>
+	  Packages in Debian should use Python 3 if Python 3 is
+	  supported.  New packages should use Python 3 from the initial
+	  upload, new upstream versions for existing packages should
+	  use Python 3 if the new upstream version supports it.
+	</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+	      Programs should use Python 3, and should not be packaged
+	      for Python 2 as well.  Python 3 should be used for the
+	      packaging if the packaging scripts use Python.
+	    </p></li><li class="listitem"><p>
+	      Python libraries, if they support Python 3, should be always
+	      packaged for Python 3. If an application supports only Python
+	      2, the Python libraries for that application should also be
+	      packaged for Python 2.
+	    </p></li><li class="listitem"><p>
+	      Existing Python 2 libraries should not be dropped before
+	      the last reverse dependency is removed.
+	    </p></li></ol></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="index.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="python.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Debian Python Policy </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 2. Python Packaging</td></tr></table></div></body></html>

@@ -1,0 +1,2 @@
+# vim.xxx files are alternatives for (g)vim, which has a manpage in vim(-gui)-common
+vim-tiny binary: binary-without-manpage usr/bin/vim.tiny

@@ -1,0 +1,32 @@
+Adjusting limits to mitigate denial of service
+==============================================
+
+'dbus-daemon --system' has several arbitrary limits which are a trade-off
+between working correctly when not under attack, and preventing local
+denial of service attacks. System administrators with particularly hostile
+local users should review these limits and tune them if necessary.
+
+In particular, the fix for CVE-2014-3639 in dbus-1.8.8 makes it difficult
+for local users to prevent connections completely, but they can still
+introduce a delay which increases with larger authentication timeout
+(auth_timeout) values, by opening many parallel connections from
+different processes and never completing the authentication handshake.
+As a result, dbus 1.8.8 also reduced the auth_timeout from 30 seconds
+to 5 seconds to mitigate this delay. However, this change resulted in
+boot failures on some systems because systemd could not authenticate
+sufficiently quickly while the system was busy, and was reverted in 1.8.12.
+
+On fast systems with hostile local users, administrators can reduce this
+delay by returning to the 5 second timeout (or any other value in
+milliseconds), by saving this as /etc/dbus-1/system-local.conf or a file
+matching /etc/dbus-1/system.d/*.conf:
+
+  <busconfig>
+    <limit name="auth_timeout">5000</limit>
+  </busconfig>
+
+If applying this change, please reboot several times and check the
+syslog or Journal for messages containing "Connection has not authenticated
+soon enough, closing it". Seeing that message while not subject to a
+denial-of-service attack indicates that the auth_timeout has been set
+too short.

@@ -1,0 +1,120 @@
+#!/bin/sh
+# Try to guess at whether the user would like a desktop installed on their
+# system. Of course Debian has many users who use it on a wide array of
+# hardware, so this is tricky, but it's only a default.
+set -e
+
+if ! [ "$NEW_INSTALL" ]; then
+	exit 3
+fi
+
+arch="$(dpkg --print-architecture)"
+
+unmark () {
+	exit 3
+}
+mark () {
+	exit 2
+}
+
+# A few arches have the lion's share of desktops.
+common_desktop_architecture () {
+	case "$arch" in
+	i386|amd64|powerpc*)
+		return 0
+	;;
+	*)
+		return 1
+	;;
+	esac
+}
+
+# On some arches it's almost unheard of to run a desktop, at least using
+# this task.
+unlikely_desktop_architecture () {
+	case "$arch" in
+	m68k|s390|s390x|hppa)
+		return 0
+	;;
+	*)
+		return 1
+	;;
+	esac
+}
+
+# Modern desktops take a lot of ram.
+enough_ram () {
+	min_ram=64
+	ram=$(grep ^MemTotal: /proc/meminfo | { read x y z; echo $y; }) || true # kb
+	# The 4 is a fuzz factor to allow for kernel ram usage.
+	if [ "$ram" ] && [ "$ram" -ge "$(expr $(expr $min_ram - 4) \* 1024)" ]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
+# The desktop task requires 2 gb or so of disk in /usr, and .5 in /var for
+# the debs.
+# FIXME: this should really be generalised and used for tasksel to not
+# suggest any task for which there is not enough disk.
+enough_disk () {
+	min_disk=3
+	disk=$(df -P /usr | tail -1 | awk '{print $4}')
+	if [ "$disk" ] && [ "$disk" -ge "$(expr $min_disk \* 1024 \* 1024)" ]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
+desktop_hardware () {
+	if which laptop-detect >/dev/null 2>&1 && \
+		laptop-detect; then
+		# Nearly always appropriate to include a desktop.
+		return 0
+	else
+		# TODO: test for the existence of a framebuffer and a mouse.
+		# A mouse, in particular, almost always indicates a
+		# desktop.
+		:
+	fi
+	return 1
+}
+
+rack_hardware () {
+	if which dmidecode >/dev/null 2>&1 && \
+		dmidecode | grep -q 'Type: Rack Mount Chassis'; then
+		return 0
+	fi
+		
+	# XXX further heuristics here to avoid selecting the task on
+	# high-end hardware that's intended to be used as a server.
+	# For example, if it has two NICs with link, it's probably a
+	# server.
+
+	return 1
+}
+
+if ! enough_ram || ! enough_disk; then
+	unmark
+fi
+
+if desktop_hardware; then
+	mark
+fi
+
+if unlikely_desktop_architecture; then
+	unmark
+elif common_desktop_architecture; then
+	if rack_hardware; then
+		unmark
+	else
+		mark # probably a desktop ...
+	fi
+else
+	# XXX further heuristics here
+	:
+fi
+
+unmark

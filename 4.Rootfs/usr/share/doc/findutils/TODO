@@ -1,0 +1,102 @@
+-*-outline-*-
+* Internationalization
+** updatedb.sh should be internationalized
+
+* man page for frcode
+Perhaps a better description in texi pages as well.
+
+* Add option for find to sort output in lexical order for use for updatedb
+olarsac@airfrance.fr (Olivier) made the following suggestion:
+
+As I was running thru the code looking for the bug I wondered why the updatedb
+has to use sort...
+why not add an option to find that sorts the output in lexical order?
+my point is:
+- sort on a big list is costly (here we do locate on big big file system)
+- find may (in theory) sort incrementally very easily by sorting only the current
+directory entries before recursion
+
+* Include example of use of updatedb in documentation.
+Use something close to the Debian daily cron job.
+
+* Supply example for time range commands for find.
+
+* Test Coverage improvements
+ pred_closeparen pred_openparen
+ find -delete dir
+ find foo -empty where foo is an unreadable directory
+ find -printf %i
+ find -printf %l
+ find -printf %M
+ find -printf %u %U
+ find -nogroup
+ find -nouser
+ find -links +400 on a file.
+ find -perm : savannah bug 14748
+ The close_stdin=1 case of prep_child_for_exec
+ find -printf with no argument
+ find -regextype with no argument
+ find -size with no argument
+ find -size 1e6 (invalid)
+ find -warn
+ find -xdev
+ find -type c
+ locate or
+ locate and
+ locate visit_justprint_unquoted
+ locate on slocate format db
+ locate: the "procdata->count += procdata->c - 256" case
+ locate -b
+ locate -P -e
+ locate -P -E
+ locate -S
+ locate with limit
+ locate with count only, no printing
+ locate with $LOCATE_PATH
+ loate -0
+ locate -w
+ locate with regextype
+ locate -L
+ locate -H
+ locate -P
+ locate -l
+ locate -d -
+ locate with a database it cannot open
+ xargs escape processing
+ xargs -i -n1
+ xargs -a
+ xargs EOF string on first line
+ xargs blank line (state = SPACE)
+ xargs parse_num on non-number
+ xargs parse_num on a number with trailing junk
+
+
+
+
+Locale-dependent coverage:
+ locate: visit_substring_match_nocasefold_narrow
+
+
+
+                        --//--
+This is used by Emacs' spell checker ispell.el:
+
+LocalWords: xargs updatedb sh lib frcode bigram texi
+LocalWords: findutils Debian cron
+
+-----
+
+Copyright (C) 1996-2019 Free Software Foundation, Inc.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.

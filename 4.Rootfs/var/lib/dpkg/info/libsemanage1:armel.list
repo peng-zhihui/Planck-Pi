@@ -1,0 +1,10 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libsemanage.so.1
+/usr/share
+/usr/share/doc
+/usr/share/doc/libsemanage1
+/usr/share/doc/libsemanage1/changelog.Debian.gz
+/usr/share/doc/libsemanage1/copyright

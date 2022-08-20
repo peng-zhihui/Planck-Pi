@@ -1,0 +1,33 @@
+#!/bin/sh
+set -e
+
+rm_conffile() {
+    PKGNAME="$1"
+    CONFFILE="$2"
+    if [ -e "$CONFFILE" ]; then
+        md5sum="$(md5sum "$CONFFILE" | sed -e 's/ .*//')"
+        old_md5sum="$(dpkg-query -W -f='${Conffiles}\n' $PKGNAME | sed -n -e "\\' $CONFFILE '{s/ obsolete$//;s/.* //p}")"
+        if [ "$md5sum" != "$old_md5sum" ]; then
+            echo "Obsolete conffile $CONFFILE has been modified by you."
+            echo "Saving as $CONFFILE.dpkg-bak ..."
+            mv -f "$CONFFILE" "$CONFFILE".dpkg-bak
+        else
+            echo "Removing obsolete conffile $CONFFILE ..."
+            rm -f "$CONFFILE"
+        fi
+    fi
+}
+
+case "$1" in
+    install|upgrade)
+    if dpkg --compare-versions "$2" le "1:7.1.293-1"; then
+        rm_conffile vim-common /etc/vim/vimrc.tiny
+    fi
+esac
+
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper symlink_to_dir /usr/share/vim/vimfiles /etc/vim 2:8.1.0639-2\~ vim-common -- "$@"
+# End automatically added section
+
+
+exit 0

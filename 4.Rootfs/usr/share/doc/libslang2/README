@@ -1,0 +1,6 @@
+New features and upgrade information for version 2 are described in
+the appendices of doc/text/slang.txt and doc/text/cslang.txt.  If you
+upgrading from version 1, then you should read these appendices.
+
+One final note: The license for the library has changed to the GNU
+Public License.  The Perl Artistic License is no longer supported.

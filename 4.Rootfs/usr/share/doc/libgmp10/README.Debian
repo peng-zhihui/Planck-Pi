@@ -1,0 +1,10 @@
+		Documentation and Example Code
+		------------------------------
+
+Sadly, due to licensing the GMP documentation is no longer shipped in
+Debian.  The package libgmp10-doc now contains only demo code.
+
+Please see http://gmplib.org/manual/ for the documentation.
+
+
+ -- Steve M. Robbins <smr@debian.org>, Sat, 06 Nov 2010 18:00:53 -0500

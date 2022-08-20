@@ -1,0 +1,27 @@
+#!/bin/sh
+set -e
+
+action=$1
+version=$2
+
+if [ "$action" = upgrade ] || [ "$action" = install ]
+then
+  if dpkg --compare-versions "$version" lt 1:5.5p1-6 && \
+     [ -d /run/sshd ]; then
+    # make sure /run/sshd is not removed on upgrades
+    touch /run/sshd/.placeholder
+  fi
+fi
+
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper mv_conffile /etc/pam.d/ssh /etc/pam.d/sshd 1:4.7p1-4~ -- "$@"
+# End automatically added section
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/init/ssh.conf 1:7.5p1-6~ -- "$@"
+# End automatically added section
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/network/if-up.d/openssh-server 1:7.9p1-1~ -- "$@"
+# End automatically added section
+
+
+exit 0

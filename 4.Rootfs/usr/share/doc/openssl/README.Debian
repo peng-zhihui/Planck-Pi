@@ -1,0 +1,70 @@
+openssl for DEBIAN
+----------------------
+
+openssl replaces ssleay.
+
+The application links to openssl like req, ca, verify and s_client
+have been removed.
+
+Instead of `<application>` please call now `openssl <application>`
+
+eg: 
+instead of `req` please call `openssl req`
+
+TLS protovol version and RSA key size
+-------------------------------------
+The default system global policy is to support TLSv1.2+ and security level two.
+Please see
+  https://www.openssl.org/docs/man1.1.1/man5/config.html
+  https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
+for configurations details of `MinProtocol' and `CipherString' in
+/etc/ssl/openssl.cnf case you really require to support legacy systems.
+
+PATENT ISSUES
+-------------
+
+Some algorithms used in the library are covered by patents.  As
+a result, the following algorithms in libcrypto have been disabled:
+- RC5
+- MDC2
+- IDEA
+
+Also see the patents section in the README file.
+
+
+Self-signed certs and webservers:
+---------------------------------
+
+If you get with a selfsigned certificate and a webserver:
+ > "The certificate is not approved for the attempted operation."
+
+Bodo_Moeller@public.uni-hamburg.de (Bodo Moeller) writes:
+>Probably you are using a CA certificate for your server; if you use
+>"openssl req" to generate a new key and self-signed certificate with
+>the default openssl.cnf, the certificate you get includes certain
+>X.509v3 extensions that make it unfit for use as a server certificate.
+>This was not so with earlier versions of the software because back
+>then there was far less X.509v3 support.
+>
+>To look at the certificate some HTTPS server presents to its cliens,
+>use "openssl s_client -port 443 -host your.server", store the output
+>(at least the part from "-----BEGIN CERTIFICATE-----" up to "-----END
+>CERTIFICATE-----", including these separators) in a file and use
+>"openssl x509 -in the_file_you_just_stored -text" to look at it in
+>readable form.  If it has in the "X509v3 extensions section" any of
+>the following entries, it is not usable as a server certificate:
+>
+>            X509v3 Basic Constraints:
+>                CA:TRUE
+>
+>            X509v3 Key Usage:
+>                Certificate Sign, CRL Sign
+>
+>To quickly create a new server key and certificate that works with
+>Netscape, you can just copy the original openssl.cnf file and comment
+>out the "x509_extensions" entry in the "[ req ]" section.
+>The, use "openssl req ..." as before to create a new certificate and
+>key.
+
+
+Christoph Martin <martin@uni-mainz.de>, Wed, 31 Mar 1999 16:00:51 +0200

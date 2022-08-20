@@ -1,0 +1,25 @@
+#! /bin/sh
+
+set -e
+
+case "$1" in
+    upgrade|failed-upgrade|abort-install|abort-upgrade)
+	;;
+    remove|purge|disappear)
+	if which remove-shell >/dev/null && [ -f /etc/shells ]; then
+	    remove-shell /bin/bash
+	    remove-shell /bin/rbash
+	fi
+	;;
+    *)
+        echo "postrm called with unknown argument \`$1'" >&2
+        exit 1
+	;;
+esac
+
+# Automatically added by dh_installmenu/12.1.1
+if [ -x "`which update-menus 2>/dev/null`" ]; then update-menus ; fi
+# End automatically added section
+
+
+exit 0

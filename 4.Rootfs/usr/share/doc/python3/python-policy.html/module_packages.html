@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 3. Packaged Modules</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Debian Python Policy" /><link rel="up" href="index.html" title="Debian Python Policy" /><link rel="prev" href="python.html" title="Chapter 2. Python Packaging" /><link rel="next" href="programs.html" title="Chapter 4. Python Programs" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 3. Packaged Modules</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="python.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="programs.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="module_packages"></a>Chapter 3. Packaged Modules</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="section"><a href="module_packages.html#idm302">3.1. Types of Python Modules</a></span></dt><dt><span class="section"><a href="module_packages.html#wheels">3.2. Wheels</a></span></dt><dt><span class="section"><a href="module_packages.html#package_names">3.3. Module Package Names</a></span></dt><dt><span class="section"><a href="module_packages.html#specifying_versions">3.4. Specifying Supported Versions</a></span></dt><dt><span class="section"><a href="module_packages.html#dependencies">3.5. Dependencies</a></span></dt><dt><span class="section"><a href="module_packages.html#provides">3.6. Provides</a></span></dt><dt><span class="section"><a href="module_packages.html#byte_compilation">3.7. Modules Byte-Compilation</a></span></dt></dl></div><p>
+	The goal of these policies is to reduce the work necessary for
+	Python transitions. Python modules are internally very dependent on
+	a specific Python version. However, we want to automate recompiling
+	modules when possible, either during the upgrade itself
+	(re-compiling bytecode files <code class="filename">*.pyc</code>
+	and <code class="filename">*.pyo</code>) or shortly thereafter with automated
+	rebuilds (to handle C extensions). These policies encourage
+	automated dependency generation and loose version bounds whenever
+	possible.
+	</p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm302"></a>3.1. Types of Python Modules</h2></div></div></div><p>
+	  There are two kinds of Python modules, "pure" Python
+	  modules, and extension modules. Pure Python modules are
+	  Python source code that generally works across many versions of
+	  Python. Extensions are C code compiled and linked against a
+	  specific version of the Python runtime, and so can only
+	  be used by one version of Python.
+	</p><p>
+	  Debian Python does not link extensions to <code class="filename">libpython</code>
+	  (as is done in some operating systems). Symbols are resolved by
+	  <code class="filename">/usr/bin/python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em></code> which is not
+	  linked to <code class="filename">libpython</code>.
+	</p><p>
+	  Python packages are a way of structuring Python’s module namespace
+	  by using “dotted module names”. See
+	  <a class="ulink" href="https://docs.python.org/3/glossary.html#term-package" target="_blank">Python's glossary</a> for details on how packages are defined
+	  in Python terms (a package in the Python sense is unrelated to a
+	  Debian package). Python packages must be packaged into the same
+	  directory (as done by upstream). Splitting components of a package
+	  across directories changes the import order and may confuse
+	  documentation tools and IDEs.
+	</p><p>
+	  There are two ways to distribute Python modules. Public modules
+	  are installed in a public directory as listed in <a class="xref" href="python.html#paths" title="2.5. Module Path">Section 2.5, “Module Path”</a>.
+	  They are accessible to any program. Private modules are installed
+	  in a private directory such
+	  as <code class="filename">/usr/share/<em class="replaceable"><code>package-name</code></em></code>
+	  or <code class="filename">/usr/lib/<em class="replaceable"><code>package-name</code></em></code>. They are
+	  generally only accessible to a specific program or suite of
+	  programs included in the same package.
+	</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="wheels"></a>3.2. Wheels</h2></div></div></div><p>
+	  <a class="ulink" href="https://www.python.org/dev/peps/pep-0427/" target="_blank">PEP 427</a>
+	  defines a built-package format called "wheels", which is a Zip
+	  format archive containing Python code and
+	  a <code class="filename">*.dist-info</code> metadata directory, in a single file
+	  named with the <code class="filename">.whl</code> suffix. As Zip files, wheels
+	  containing pure Python can be put on sys.path and modules in the
+	  wheel can be imported directly by Python's <code class="literal">import</code>
+	  statement. (Importing extension modules from wheels is not yet
+	  supported as of Python 3.4.)
+	</p><p>
+	  Except as described below, packages must not build or provide
+	  wheels. They are redundant to the established way of providing
+	  Python libraries to Debian users, take no advantage of
+	  distro-based tools, and are less convenient to use. E.g. they must
+	  be explicitly added to <code class="literal">sys.path</code>, cannot be easily
+	  grepped, and stack traces through Zip files are more difficult to
+	  debug.
+	</p><p>
+	  A very limited set of wheel packages are available in the archive,
+	  but these support the narrow purpose of enabling
+	  the <code class="filename">pip</code>, <code class="filename">virtualenv</code>,
+	  and <code class="filename">pyvenv</code> tools in a Debian policy compliant way.
+	  These packages build their own dependent wheels through the use of
+	  the <code class="filename">dirtbike</code> "rewheeling" tool, which takes installed
+	  Debian packages and turns them back into wheels.  Only universal
+	  wheels (i.e. pure-Python, Python 3 and 2 compatible packages) are
+	  supported.  Since only the programs that require wheels need build
+	  them, only they may provide <code class="filename">-whl</code> packages,
+	  e.g. <code class="literal">python3-pip-whl</code>.
+	</p><p>
+	  When these binary packages are installed, <code class="filename">*.whl</code> files
+	  must be placed in the <code class="filename">/usr/share/python-wheels</code>
+	  directory. The location inside a virtual environment will be
+	  rooted in the virtual environment, instead of <code class="filename">/usr</code>.
+	</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="package_names"></a>3.3. Module Package Names</h2></div></div></div><p>
+	  Public Python modules must be packages separately by major Python
+	  version, to preserve run time separation between Python 2 and
+	  Python 3.
+	</p><p>
+	  Public Python 3 modules used by other packages must have their
+	  binary package name prefixed with <code class="literal">python3-</code>.
+	  Public Python 2 modules used by other packages must have their
+	  binary package name prefixed with <code class="literal">python-</code>.
+	  It is recommended to use this prefix for all packages with public
+	  modules as they may be used by other packages in the future.
+	</p><p>
+	  The binary package for module <em class="replaceable"><code>foo</code></em> should preferably be
+	  named <code class="literal">python3-<em class="replaceable"><code>foo</code></em></code> (for Python 3)
+	  or <code class="literal">python-<em class="replaceable"><code>foo</code></em></code> (for Python 2), if the
+	  module name allows. This is not required if the binary package
+	  installs multiple modules, in which case the maintainer shall
+	  choose the name of the module which best represents the package.
+	</p><p>
+	  For subpackages such as <em class="replaceable"><code>foo.bar</code></em>, the recommendation is
+	  to name the binary
+	  package <code class="literal">python3-<em class="replaceable"><code>foo.bar</code></em></code> (for Python
+	  3) or <code class="literal">python-<em class="replaceable"><code>foo.bar</code></em></code> (for Python 2).
+	</p><p>
+	  Such a package should support the current Debian Python version,
+	  and more if possible (there are several tools to help implement
+	  this, see <a class="xref" href="packaging_tools.html" title="Appendix B. Packaging Tools">Appendix B, <em>Packaging Tools</em></a>). For example, if Python 3.3,
+	  3.4, and 3.5 are supported, the Python statement
+	  </p><pre class="programlisting">
+import foo
+	  </pre><p>
+	  should import the module when the program interpreter is any
+	  of <code class="filename">/usr/bin/python3.3</code>, <code class="filename">/usr/bin/python3.4</code>,
+	  and <code class="filename">/usr/bin/python3.5</code>. This requirement also applies
+	  to extension modules; binaries for all the supported Python
+	  versions should be included in a single package.
+	</p><p>
+          Packages intended for use with Django (<code class="literal">python3-django</code>/
+          <code class="literal">python-django</code>) are installed in the same namespace as
+          other python packages for a variety of reasons.  Many such packages are
+          named django_$name upstream.  These are then packaged as
+          <code class="literal">python3-django-$name</code> and
+          <code class="literal">python-django-$name</code>.
+          This makes it clear that they are intended for use with Django
+          and not general purpose Python modules.  Debian maintainers are
+          encouraged to work with their upstreams to support consistent use of
+	  this approach.
+	</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="specifying_versions"></a>3.4. Specifying Supported Versions</h2></div></div></div><p>
+	  The <code class="filename">debian/control</code> source paragraph may contain
+	  optional fields to specify the versions of Python the package
+	  supports.
+	</p><p>
+	  The optional <code class="literal">X-Python3-Version</code> field specifies the
+	  versions of Python 3 supported. When not specified, it defaults to
+	  all currently supported Python 3 versions.
+	</p><p>
+	  Similarly, the optional fields <code class="literal">X-Python-Version</code>
+	  or <code class="literal">XS-Python-Version</code> were used to specify the versions of
+	  Python 2 supported by the source package. They are obsolete and
+	  can be removed now that only Python 2.7 is supported.
+	</p><p>
+	  These fields are used by some packaging scripts to automatically
+	  generate appropriate Depends and Provides lines. The format of the
+	  field may be one of the following:
+	  </p><pre class="programlisting">
+X-Python3-Version: &gt;= X.Y
+X-Python3-Version: &gt;= A.B, &lt;&lt; X.Y
+XS-Python-Version: A.B, X.Y
+XS-Python-Version: all
+	  </pre><p>
+	</p><p>
+	  The keyword <code class="literal">all</code> means that the package supports any
+	  Python 2 version available but might be deprecated in the future
+	  since using version numbers is clearer than <code class="literal">all</code> and
+	  encodes more information. The keyword <code class="literal">all</code> is limited to
+	  Python 2 versions and must be ignored for Python 3 versions.
+	</p><p>
+	  A comma-separated list of multiple individual versions
+	  (e.g. <code class="literal">3.3, 3.4, 3.5</code>) in <code class="literal">XS-Python-Version</code> will
+	  continue to be supported, but is not recommended. The use of
+	  multiple individual versions in <code class="literal">X-Python-Version</code>
+	  or <code class="literal">X-Python3-Version</code> is not supported for Wheezy and
+	  later releases.
+	</p><p>
+	  The keyword <code class="literal">current</code> has been deprecated and used to mean
+	  that the package would only have to support a single Python 2
+	  version (even across default version changes). It must be ignored
+	  for Python 3 versions.
+	</p><p>
+	  The use of <code class="literal">XB-Python-Version</code> in the binary package
+	  paragraphs of <code class="filename">debian/control</code> file has been deprecated
+	  and should be removed in the normal course of package updates. It
+	  never achieved sufficient deployment to support its intended
+	  purpose of managing Python transitions. This purpose can be
+	  adequately accomplished by examining package dependencies.
+	</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="dependencies"></a>3.5. Dependencies</h2></div></div></div><p>
+	  Any package that installs modules for the default Python version
+	  (or many versions including the default) as described
+	  in <a class="xref" href="module_packages.html#package_names" title="3.3. Module Package Names">Section 3.3, “Module Package Names”</a>, must declare a dependency on the
+	  default Python runtime package. If it requires other modules to
+	  work, the package must declare dependencies on the corresponding
+	  packaged modules. The package must not declare dependency on any
+	  version-specific Python runtime or module package.
+	</p><p>
+	  For Python 3, the correct dependencies are <code class="literal">Depends:
+	  python3 (&gt;= 3.<em class="replaceable"><code>Y</code></em>)</code> and any
+	  corresponding <code class="literal">python3-<em class="replaceable"><code>foo</code></em></code> packages.
+	</p><p>
+	  For Python 2, the correct dependencies are <code class="literal">Depends:
+	  python (&gt;= 2.<em class="replaceable"><code>Y</code></em>)</code> and any
+	  corresponding <code class="literal">python-<em class="replaceable"><code>foo</code></em></code> packages.
+	</p><p>
+	  Any package that installs Python modules or Python 3 binary
+	  extensions must also declare a maximum version it supports as
+	  currently built. This is accomplished by declaring a maximum
+	  version constraint strictly less than one higher than the current
+	  maximum version, i.e. <code class="literal">Depends:
+	  python3 (&lt;&lt; <em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em>)</code>.
+	</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="provides"></a>3.6. Provides</h2></div></div></div><p>
+	  Binary packages that declare Provides dependencies of the form
+	  <code class="literal">python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em>-<em class="replaceable"><code>foo</code></em></code>
+	  were never supported for Python 3 and are no longer useful for
+	  Python 2. They should be removed in the normal course of package
+	  updates. Future provision of values for the substituation variable
+	  <code class="literal">python:Provides</code> is not guaranteed.
+	</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="byte_compilation"></a>3.7. Modules Byte-Compilation</h2></div></div></div><p>
+	  If a binary package provides any binary-independent modules
+	  (<code class="filename"><em class="replaceable"><code>foo</code></em>.py</code> files), the corresponding
+	  byte-compiled modules (<code class="filename"><em class="replaceable"><code>foo</code></em>.pyc</code> files) and
+	  optimized modules (<code class="filename"><em class="replaceable"><code>foo</code></em>.pyo</code> files) must not
+	  ship in the package. Instead, they should be generated in the
+	  package's post-install script, and removed in the package's
+	  pre-remove script. The package's prerm has to make sure that
+	  both <code class="filename"><em class="replaceable"><code>foo</code></em>.pyc</code> and
+	  <code class="filename"><em class="replaceable"><code>foo</code></em>.pyo</code> are removed.
+	</p><p>
+	  A binary package should only byte-compile the files which belong to
+	  the package.
+	</p><p>
+	  The file <code class="filename">/etc/python/debian_config</code> allows
+	  configuration how modules should be byte-compiled. The
+	  post-install scripts should respect these settings.
+	</p><p>
+	  Pure Python modules in private installation directories that are
+	  byte-compiled with the default Python version must be forcefully
+	  byte-compiled again when the default Python version changes.
+	</p><p>
+	  Public Python extensions should be bin-NMUed.
+	</p><p>
+	  Private Python extensions should be subject to binary NMUs every
+	  time the default interpreter changes, unless the extension is
+	  updated through a <code class="filename">*.rtupdate</code> script.
+	</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="python.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="programs.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 2. Python Packaging </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 4. Python Programs</td></tr></table></div></body></html>

@@ -1,0 +1,11 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libnftnl.so.11.0.0
+/usr/share
+/usr/share/doc
+/usr/share/doc/libnftnl11
+/usr/share/doc/libnftnl11/changelog.Debian.gz
+/usr/share/doc/libnftnl11/copyright
+/usr/lib/arm-linux-gnueabi/libnftnl.so.11

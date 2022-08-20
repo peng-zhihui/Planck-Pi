@@ -1,0 +1,85 @@
+base-passwd for Debian
+----------------------
+
+This package supplies the "master" copies of /etc/passwd and /etc/group,
+in /usr/share/base-passwd. It also supplies the utility "update-passwd",
+which automatically makes sure that uids and gids in the 0-99 range on
+your system are consistent with the Debian master copies. This means
+that all entries in the masterfiles in that range have to be present on
+your system, and only those entries. The reason for not allowing other
+entries is that Debian reserves that range for future use.
+
+All packages assume that the users and groups listed in those
+master-files are always present on a system. If they are not present for
+some reason they may break unexpectedly. To ensure your system is
+correct you can use the update-passwd utility to check it and optionally
+make the necessary changes.
+
+There are some exceptions to this:
+* root is never removed or changed. If it doesn't exist a root account will
+  be added though.
+* the home directory for the ftp user is preserved, and it is neither added
+  nor removed automatically since this can affect how FTP daemons handle
+  anonymous access
+* the home directory for the www-data user is preserved 
+* if a user or group exists but with an uid outside our reserved range
+  we don't change it
+
+The following uid/gid pairs have been allocated in the static range
+60000-64999. They are created by their respective packages. This is the
+registry of allocations.
+
+Reserved uids:
+    uid   | name              | description
+    ------+-------------------+---------------
+    63434 | netplan           | netplan
+    64000 | ftn               | fidogate
+    64001 | mysql             | mysql-server
+    64005 | tac-plus          | tac-plus user
+    64010 | alias             | qmail alias
+    64011 | qmaild            | qmail daemon
+    64012 | qmails            | qmail send
+    64013 | qmailr            | qmail remove
+    64015 | qmailq            | qmail queue
+    64016 | qmaill            | qmail log
+    64017 | qmailp            | qmail pw
+    64020 | asterisk          | asterisk
+    64025 | vpopmail          | vpopmail
+    64030 | slurm             | slurm-llnl package
+    64035 | hacluster         | heartbeat
+    64045 | ceph              | ceph object storage
+    64050 | opensrf           | Evergreen ILS
+    64055 | libvirt-qemu      | libvirt guest migration support
+    64060 | nova              | OpenStack Compute
+    64061 | cinder            | OpenStack Block Storage
+    64062 | glance            | OpenStack Image
+
+Reserved gids:
+    gid   | name              | description
+    ------+-------------------+---------------
+    63434 | netplan           | netplan
+    64000 | ftn               | fidogate
+    64001 | mysql             | mysql-server
+    64005 | tac-plus          | tac-plus group
+    64010 | qmail             | qmail
+    64020 | asterisk          | asterisk
+    64025 | vchkpw            | vpopmail group
+    64030 | slurm             | slurm-llnl package
+    64035 | haclient          | heartbeat
+    64040 | grsec-tpe         | linux-grsec-base
+    64041 | grsec-sock-all    | linux-grsec-base
+    64042 | grsec-sock-clt    | linux-grsec-base
+    64043 | grsec-sock-srv    | linux-grsec-base
+    64044 | grsec-proc        | linux-grsec-base
+    64045 | ceph              | ceph object storage
+    64050 | opensrf           | Evergreen ILS
+    64055 | libvirt-qemu      | libvirt guest migration support
+    64060 | nova              | OpenStack Compute
+    64061 | cinder            | OpenStack Block Storage
+    64062 | glance            | OpenStack Image
+
+(Next uid/gid allocation: 64065.)
+
+You *may not* use any uids or gids in the 60000-64999 range without *first*
+requesting an allocation from base-passwd@packages.debian.org and waiting
+for confirmation that the allocation has been granted.

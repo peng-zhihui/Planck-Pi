@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+
+# Stop the socket on remove so rsyslog is not restarted via socket activation
+if [ -d /run/systemd/system ] && [ "$1" = remove ] ; then
+	systemctl stop syslog.socket || true
+fi
+
+# Automatically added by dh_installsystemd/12.1.1
+if [ -d /run/systemd/system ] && [ "$1" = remove ]; then
+	deb-systemd-invoke stop 'rsyslog.service' >/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_installinit/12.1.1
+if [ -x "/etc/init.d/rsyslog" ] && [ "$1" = remove ]; then
+	invoke-rc.d --skip-systemd-native rsyslog stop || exit 1
+fi
+# End automatically added section
+

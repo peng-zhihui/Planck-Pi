@@ -1,0 +1,20 @@
+logrotate state -- version 2
+"/var/log/syslog" 2022-4-3-13:0:0
+"/var/log/dpkg.log" 2022-4-3-13:0:0
+"/var/log/auth.log" 2022-4-3-13:0:0
+"/var/log/apt/term.log" 2022-4-3-13:0:0
+"/var/log/apt/history.log" 2022-4-3-13:0:0
+"/var/log/alternatives.log" 2022-4-3-13:0:0
+"/var/log/debug" 2022-4-3-13:0:0
+"/var/log/mail.log" 2022-4-3-13:0:0
+"/var/log/kern.log" 2022-4-3-13:0:0
+"/var/log/wtmp" 2022-4-3-13:0:0
+"/var/log/daemon.log" 2022-4-3-13:0:0
+"/var/log/mail.warn" 2022-4-3-13:0:0
+"/var/log/btmp" 2022-4-3-13:0:0
+"/var/log/lpr.log" 2022-4-3-13:0:0
+"/var/log/mail.err" 2022-4-3-13:0:0
+"/var/log/user.log" 2022-4-3-13:0:0
+"/var/log/mail.info" 2022-4-3-13:0:0
+"/var/log/cron.log" 2022-4-3-13:0:0
+"/var/log/messages" 2022-4-3-13:0:0

@@ -1,0 +1,369 @@
+Format: http://dep.debian.net/deps/dep5
+Upstream-Name: p11-kit
+Source: https://p11-glue.github.io/p11-glue/p11-kit.html
+
+Files: *
+Copyright: 2011 Collabora Ltd.
+License: BSD-3-Clause
+
+Files: p11-kit/conf.* p11-kit/proxy.c
+ common/dict.c common/dict.h
+Copyright: 2011 Collabora Ltd.
+           2004 Stefan Walter
+License: BSD-3-Clause
+
+Files: p11-kit/modules.c
+ common/dict.c common/dict.h
+Copyright: 2008 Stefan Walter
+           2011 Collabora Ltd.
+           2017 Red Hat, Inc.
+License: BSD-3-Clause
+
+Files: common/buffer.c common/buffer.h
+Copyright: 2007, 2012 Stefan Walter
+           2013 Red Hat Inc.
+License: BSD-3-Clause
+
+Files: common/library.c common/library.h common/message.c
+ p11-kit/client-init.c p11-kit/proxy-init.c common/init.h
+Copyright: 2011 Collabora Ltd.
+ 2012 Stef Walter
+License: BSD-3-Clause
+
+Files: common/url.c common/url.h
+Copyright: 2011 Collabora Ltd.
+ 2013 Red Hat Inc.
+License: BSD-3-Clause
+
+Files: p11-kit/log.c
+Copyright: 2007, Stefan Walter
+ 2013, Red Hat Inc.
+License: BSD-3-Clause
+
+Files: common/pkcs11.h
+Copyright: 2006, 2007 g10 Code GmbH
+           2006 Andreas Jellinghaus
+           Copyright 2017 Red Hat, Inc.
+License: permissive-like-automake-output
+   This file is free software; as a special exception the author gives
+   unlimited permission to copy and/or distribute it, with or without
+   modifications, as long as this notice is preserved.
+ .
+   This file is distributed in the hope that it will be useful, but
+   WITHOUT ANY WARRANTY, to the extent permitted by law; without even
+   the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+   PURPOSE.  */
+
+Files: common/argv.c common/argv.h common/hash.h
+ trust/oid.c trust/oid.h
+ trust/pem.c trust/pem.h common/argv.c common/argv.h common/pkcs11x.h
+ common/pkcs11i.h
+ common/test-constants.c common/test-hash.c
+ p11-kit/pkcs11.h p11-kit/test-managed.c
+ trust/builder.c trust/builder.h trust/digest.h trust/module.c
+ trust/module.h trust/module-init.c trust/pem.c
+ trust/pem.h trust/oid.c trust/oid.h trust/parser.h
+ trust/session.c trust/session.h trust/frob-cert.c
+ trust/frob-eku.c trust/frob-token.c
+ trust/test-digest.c trust/test-enumerate.c
+ trust/test-index.c trust/test-module.c trust/test-oid.c
+ trust/test-parser.c trust/test-pem.c trust/test-token.c
+ trust/token.c trust/token.h trust/test-trust.c
+ trust/test-trust.h trust/x509.c trust/x509.h p11-kit/frob-setuid.c
+Copyright: 2012 Red Hat Inc.
+License: BSD-3-Clause
+
+Files: common/attrs.c common/attrs.h
+Copyright: 2012, Redhat Inc.
+           2011, Collabora Ltd.
+License: BSD-3-Clause
+
+
+Files: common/test-attrs.c common/test-buffer.c
+ trust/frob-ku.c trust/frob-oid.c trust/test-asn1.c
+Copyright: 2012, Redhat Inc.
+License: BSD-3-Clause
+
+
+Files: p11-kit/test-modules.c
+Copyright: 2012, 2015, 2016 Red Hat Inc
+License: BSD-3-Clause
+
+
+Files: common/constants.c common/constants.h common/test.c
+ common/test.h common/test-compat.c common/test-tests.c
+ common/tool.h p11-kit/deprecated.h
+ p11-kit/docs.h p11-kit/log.h p11-kit/modules.h p11-kit/proxy.h
+ p11-kit/test-log.c trust/anchor.c trust/anchor.h
+ trust/enumerate.c trust/enumerate.h trust/extract.c
+ trust/extract-cer.c trust/extract.h
+ trust/extract-openssl.c trust/extract-pem.c trust/index.c
+ trust/index.h trust/list.c trust/list.h trust/persist.c
+ trust/persist.h trust/save.c trust/save.h trust/frob-bc.c
+ trust/frob-ext.c trust/frob-pow.c
+ trust/test-base64.c
+ trust/test-builder.c trust/test-save.c
+ trust/test-utf8.c trust/test-x509.c
+ trust/types.h trust/utf8.c trust/utf8.h
+Copyright: 2013, Redhat Inc.
+License: BSD-3-Clause
+
+Files: p11-kit/remote.h common/frob-getenv.c
+ common/unix-peer.h
+Copyright: 2014 Red Hat Inc.
+License: BSD-3-Clause
+
+
+Files: p11-kit/server.c
+ common/unix-peer.h
+Copyright: 2014 Red Hat Inc.
+License: BSD-3-Clause
+Comment: make_private_security_descriptor() and the helper functions were
+ * copied from putty/windows/winsecur.c in the PuTTY source code as of
+ * git commit 12bd5a6c722152aa27f24598785593e72b3284ea.
+ *
+ * PuTTY is copyright 1997-2017 Simon Tatham.
+ *
+ * Portions copyright Robert de Bath, Joris van Rantwijk, Delian
+ * Delchev, Andreas Schultz, Jeroen Massar, Wez Furlong, Nicolas Barry,
+ * Justin Bradford, Ben Harris, Malcolm Smith, Ahmad Khalifa, Markus
+ * Kuhn, Colin Watson, Christopher Staite, and CORE SDI S.A.
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation files
+ * (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge,
+ * publish, distribute, sublicense, and/or sell copies of the Software,
+ * and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+
+
+Files: p11-kit/remote.c
+Copyright: 2014,2016 Red Hat Inc.
+License: BSD-3-Clause
+
+
+Files: p11-kit/test-mock.c
+Copyright: 2012 Stefan Walter
+ 2012-2013 Red Hat Inc.
+License: BSD-3-Clause
+
+Files: p11-kit/test-virtual.c
+Copyright: 2012 Stefan Walter
+ 2012 Red Hat Inc.
+License: BSD-3-Clause
+
+
+Files: p11-kit/test-transport.c
+Copyright: 2012 Stefan Walter
+ 2012-2017 Red Hat Inc.
+License: BSD-3-Clause
+
+
+Files: p11-kit/test-rpc.c
+Copyright: 2012 Stefan Walter
+ Copyright (C) 2012-2017 Red Hat Inc.
+License: BSD-3-Clause
+
+
+Files: common/runtime.* common/test-runtime.c p11-kit/test-server.*
+ trust/extract-edk2.c
+Copyright: (C) 2018 Red Hat Inc.
+License: BSD-3-Clause
+
+Files: p11-kit/mock-module-ep5.c
+Copyright: 2012 Stefan Walter
+ 2018 Red Hat Inc.
+License: BSD-3-Clause
+
+Files: trust/test-edk2.c
+Copyright: 2011, Collabora Ltd.
+ 2018 Red Hat Inc.
+License: BSD-3-Clause
+
+Files: trust/extract-jks.c trust/test-jks.c
+Copyright: 2019, Red Hat Inc.
+License: BSD-3-Clause
+
+Files: p11-kit/rpc-transport.c
+Copyright: 2012 Stefan Walter
+ 2013 Red Hat Inc.
+License: BSD-3-Clause
+
+Files: p11-kit/test-deprecated.c
+Copyright: 2011, Collabora Ltd.
+ 2012 Red Hat Inc.
+License: BSD-3-Clause
+
+Files: p11-kit/virtual.c trust/asn1.c trust/asn1.h p11-kit/rpc-client.c
+ p11-kit/rpc-message.c p11-kit/rpc-message.h p11-kit/rpc-server.c
+Copyright: 2008 Stefan Walter
+ 2012 Red Hat Inc.
+License: BSD-3-Clause
+
+Files: p11-kit/rpc.h
+Copyright: 2012-2013 Stefan Walter
+License: BSD-3-Clause
+
+Files: trust/digest.c trust/digest.c common/hash.c
+Copyright: 2004, 2005, 2007, 2011  Internet Systems Consortium, Inc. ("ISC")
+           2000, 2001, 2003  Internet Software Consortium.
+License: ISC
+ Permission to use, copy, modify, and/or distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND ISC DISCLAIMS ALL WARRANTIES WITH
+ REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+ AND FITNESS.  IN NO EVENT SHALL ISC BE LIABLE FOR ANY SPECIAL, DIRECT,
+ INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
+ OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ PERFORMANCE OF THIS SOFTWARE.
+
+
+Files: trust/base64.c trust/base64.h
+Copyright: 1996, 1998 by Internet Software Consortium
+  Portions Copyright (c) 1995 by International Business Machines, Inc.
+License: ISC+IBM
+ Copyright (c) 1996, 1998 by Internet Software Consortium.
+ .
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND INTERNET SOFTWARE CONSORTIUM DISCLAIMS
+ ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL INTERNET SOFTWARE
+ CONSORTIUM BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
+ ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+ SOFTWARE.
+ .
+ .
+ Portions Copyright (c) 1995 by International Business Machines, Inc.
+ .
+ International Business Machines, Inc. (hereinafter called IBM) grants
+ permission under its copyrights to use, copy, modify, and distribute this
+ Software with or without fee, provided that the above copyright notice and
+ all paragraphs of this notice appear in all copies, and that the name of IBM
+ not be used in connection with the marketing of any product incorporating
+ the Software or modifications thereof, without specific, written prior
+ permission.
+ .
+ To the extent it has a right to do so, IBM grants an immunity from suit
+ under its patents, if any, for the use, sale or manufacture of products to
+ the extent that such products are used for performing Domain Name System
+ dynamic updates in TCP/IP networks by means of the Software.  No immunity is
+ granted for any product per se or for any other function of any product.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", AND IBM DISCLAIMS ALL WARRANTIES,
+ INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ PARTICULAR PURPOSE.  IN NO EVENT SHALL IBM BE LIABLE FOR ANY SPECIAL,
+ DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER ARISING
+ OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE, EVEN
+ IF IBM IS APPRISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+Files: common/lexer.c common/lexer.h common/path.c
+Copyright: 2005 Stefan Walter
+ 2011 Collabora Ltd.
+ 2013 Red Hat Inc.
+License: BSD-3-Clause
+
+Files: common/compat.c
+Copyright: Copyright (c) 2011 Collabora Ltd.
+ Portions of this file are covered by the following copyright:
+ Copyright (c) 2001 Mike Barcroft <mike@FreeBSD.org>
+ Copyright (c) 1990, 1993
+ Copyright (c) 1987, 1993
+      The Regents of the University of California.
+Comment: This code is derived from software contributed to Berkeley by
+ Chris Torek.
+License: BSD-3-Clause
+
+Files: common/mock.h common/path.h common/frob-getauxval.c
+ common/test-lexer.c common/test-message.c
+ common/test-path.c common/test-url.c
+ p11-kit/test-proxy.c p11-kit/virtual.h p11-kit/test-util.c
+ trust/frob-nss-trust.c trust/test-parser.c
+ trust/test-persist.c p11-kit/client.h
+Copyright: 2013 Red Hat Inc.
+License: BSD-3-Clause
+
+
+Files: p11-kit/iter.c p11-kit/iter.h p11-kit/test-iter.c p11-kit/iter.gnu.c
+Copyright: 2013,2016 Red Hat Inc.
+License: BSD-3-Clause
+
+
+Files: p11-kit/client.c p11-kit/filter.c p11-kit/filter.h
+ p11-kit/test-filter.c p11-kit/virtual-fixed.h
+Copyright: 2016 Red Hat Inc.
+License: BSD-3-Clause
+
+
+Files: common/test-argv.c
+Copyright: 2017 Red Hat Inc.
+License: BSD-3-Clause
+
+
+Files: p11-kit/mock-module-ep.c p11-kit/test-progname.c
+ p11-kit/mock-module-ep3.c p11-kit/mock-module-ep4.c
+Copyright: 2012 Stefan Walter
+License: BSD-3-Clause
+
+
+Files: common/unix-peer.c
+Copyright: 2013 Nikos Mavrogiannopoulos
+License: BSD-3-Clause
+
+
+Files: debian/*
+Copyright: 2011 Chris Coulson <chris.coulson@canonical.com>
+           2011-2013 Andreas Metzler <ametzler@debian.org>
+License: BSD-3-Clause
+
+
+Files: po/de.po
+Copyright: 2011 Chris Leick
+Comment: This file is distributed under the same license as the
+ debian files of the p11-kit package.
+License: BSD-3-Clause
+
+Files: po/fi.po
+Copyright: 2012 Rosetta Contributors and Canonical Ltd 2012
+ Eerik Uusi-Illikainen https://launchpad.net/~ekiuusi-4, 2012
+ Timo Jyrinki <timo.jyrinki@iki.fi>, 2012
+License: same-as-rest-of-p11kit
+ This file is distributed under the same license as the p11-kit
+ package.
+
+
+License: BSD-3-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.

@@ -1,0 +1,88 @@
+#!/bin/sh
+set -e
+
+# Automatically added by dh_installinit/12.1.1
+if [ "$1" = "purge" ] ; then
+	update-rc.d ssh remove >/dev/null
+fi
+# End automatically added section
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/network/if-up.d/openssh-server 1:7.9p1-1~ -- "$@"
+# End automatically added section
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/init/ssh.conf 1:7.5p1-6~ -- "$@"
+# End automatically added section
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper mv_conffile /etc/pam.d/ssh /etc/pam.d/sshd 1:4.7p1-4~ -- "$@"
+# End automatically added section
+# Automatically added by dh_systemd_start/12.1.1
+if [ -d /run/systemd/system ]; then
+	systemctl --system daemon-reload >/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_systemd_enable/12.1.1
+if [ "$1" = "remove" ]; then
+	if [ -x "/usr/bin/deb-systemd-helper" ]; then
+		deb-systemd-helper mask 'ssh.socket' >/dev/null || true
+	fi
+fi
+
+if [ "$1" = "purge" ]; then
+	if [ -x "/usr/bin/deb-systemd-helper" ]; then
+		deb-systemd-helper purge 'ssh.socket' >/dev/null || true
+		deb-systemd-helper unmask 'ssh.socket' >/dev/null || true
+	fi
+fi
+# End automatically added section
+# Automatically added by dh_systemd_enable/12.1.1
+if [ "$1" = "remove" ]; then
+	if [ -x "/usr/bin/deb-systemd-helper" ]; then
+		deb-systemd-helper mask 'ssh.service' >/dev/null || true
+	fi
+fi
+
+if [ "$1" = "purge" ]; then
+	if [ -x "/usr/bin/deb-systemd-helper" ]; then
+		deb-systemd-helper purge 'ssh.service' >/dev/null || true
+		deb-systemd-helper unmask 'ssh.service' >/dev/null || true
+	fi
+fi
+# End automatically added section
+# Automatically added by dh_installdebconf/12.1.1
+if [ "$1" = purge ] && [ -e /usr/share/debconf/confmodule ]; then
+	. /usr/share/debconf/confmodule
+	db_purge
+fi
+# End automatically added section
+
+
+case $1 in
+	purge)
+		# Remove all non-conffiles that ssh might create, so that we
+		# can smoothly remove /etc/ssh if and only if the user
+		# hasn't dropped some other files in there. Conffiles have
+		# already been removed at this point.
+		rm -f /etc/ssh/ssh_host_key /etc/ssh/ssh_host_key.pub
+		rm -f /etc/ssh/ssh_host_rsa_key /etc/ssh/ssh_host_rsa_key.pub
+		rm -f /etc/ssh/ssh_host_dsa_key /etc/ssh/ssh_host_dsa_key.pub
+		rm -f /etc/ssh/ssh_host_ecdsa_key /etc/ssh/ssh_host_ecdsa_key.pub
+		rm -f /etc/ssh/ssh_host_ed25519_key /etc/ssh/ssh_host_ed25519_key.pub
+		for ext in .ucf-new .ucf-old .ucf-dist ""; do
+			rm -f "/etc/ssh/sshd_config$ext"
+		done
+		if which ucf >/dev/null 2>&1; then
+			ucf --purge /etc/ssh/sshd_config
+		fi
+		if which ucfr >/dev/null 2>&1; then
+			ucfr --purge openssh-server /etc/ssh/sshd_config
+		fi
+		rm -f /etc/ssh/sshd_not_to_be_run
+		[ ! -d /etc/ssh ] || rmdir --ignore-fail-on-non-empty /etc/ssh
+
+		if which deluser >/dev/null 2>&1; then
+			deluser --quiet sshd > /dev/null || true
+		fi
+		;;
+esac
+
+exit 0

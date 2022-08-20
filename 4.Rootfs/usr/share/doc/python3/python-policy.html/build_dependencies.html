@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Appendix A. Build Dependencies</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Debian Python Policy" /><link rel="up" href="index.html" title="Debian Python Policy" /><link rel="prev" href="other.html" title="Chapter 6. Interaction with Locally Installed Python Versions" /><link rel="next" href="packaging_tools.html" title="Appendix B. Packaging Tools" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Appendix A. Build Dependencies</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="other.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="packaging_tools.html">Next</a></td></tr></table><hr /></div><div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a id="build_dependencies"></a>Appendix A. Build Dependencies</h1></div></div></div><p>
+	Build dependencies for Python-dependent packages must be declared
+	for every Python version that the package is built for.
+      </p><p>
+	The <code class="literal">python3-all-dev</code> should be used when building
+	extensions for any or all Python 3 versions.
+	The <code class="literal">python-all-dev</code> should be used when building
+	extensions for any or all Python 2 versions. To build for a specific
+	version or versions, declare <code class="literal">Build-Depends</code> on
+	<code class="literal">python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em>-dev</code>.
+      </p><p>
+	Some applications and pure Python modules may be able to avoid
+	dependency on the <code class="literal">-dev</code> packages, and declare
+	<code class="literal">Build-Depends</code> on the runtime environment only
+	(<code class="literal">python3</code>, <code class="literal">python3-all</code>,
+	<code class="literal">python</code>, <code class="literal">python-all</code>). A package
+	that does not require the <code class="literal">-dev</code> packages must not
+	declare <code class="literal">Build-Depends</code> on them.
+      </p><p>
+	Declare <code class="literal">Build-Depends</code> on at least:
+	</p><pre class="programlisting">
+Build-Depends: python2.7
+Build-Depends: python2.6 (&gt;= 2.6-1)
+Build-Depends: python (&gt;= 2.6.6-9)
+Build-Depends: python-all
+
+Build-Depends: python2.7-dev
+Build-Depends: python3.5-dev (&gt;= 3.5.1-1)
+Build-Depends: python-dev (&gt;= 2.6.6-9)
+Build-Depends: python-all-dev
+Build-Depends: python3-all-dev (&gt;= 3.2)
+	</pre><p>
+      </p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="other.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="packaging_tools.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 6. Interaction with Locally Installed Python Versions </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix B. Packaging Tools</td></tr></table></div></body></html>

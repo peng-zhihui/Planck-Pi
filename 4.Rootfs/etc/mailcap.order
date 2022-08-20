@@ -1,0 +1,10 @@
+###############################################################################
+#
+#  Mailcap.order:  This file allows a system-wide override of MIME program
+#  preferences.  See the mailcap.order(5) man page for more information.
+#
+#  After modifying this file, be sure to run /usr/sbin/update-mime (as root)
+#  to propagate the changes into the /etc/mailcap file.
+#
+################################################################################
+

@@ -1,0 +1,13 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libip6tc.so.0.1.0
+/usr/share
+/usr/share/doc
+/usr/share/doc/libip6tc0
+/usr/share/doc/libip6tc0/NEWS.Debian.gz
+/usr/share/doc/libip6tc0/changelog.Debian.gz
+/usr/share/doc/libip6tc0/changelog.gz
+/usr/share/doc/libip6tc0/copyright
+/usr/lib/arm-linux-gnueabi/libip6tc.so.0

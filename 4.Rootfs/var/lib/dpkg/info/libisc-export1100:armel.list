@@ -1,0 +1,12 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libisc-export.so.1100.0.0
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libisc-export1100
+/usr/share/doc/libisc-export1100/changelog.Debian.gz
+/usr/share/doc/libisc-export1100/changelog.gz
+/usr/share/doc/libisc-export1100/copyright
+/lib/arm-linux-gnueabi/libisc-export.so.1100

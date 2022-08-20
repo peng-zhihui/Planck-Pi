@@ -1,0 +1,14 @@
+#!/bin/sh
+
+iface="$1"
+if [ -z "$iface" ] ; then
+	echo "Usage: $0 IFACE"
+	exit 1
+fi
+
+if ifconfig "$iface" | grep -Fw UP >/dev/null
+then
+	echo UP
+else
+	echo DOWN
+fi

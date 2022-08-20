@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+
+# directory turned into symlink; give dpkg a hand.
+if dpkg --compare-versions "$2" lt 3.14; then
+	if [ ! -L /usr/share/doc/tasksel-data ] && \
+	   [ -d /usr/share/doc/tasksel-data ] && \
+	   rmdir /usr/share/doc/tasksel-data 2>/dev/null; then
+		ln -sf tasksel /usr/share/doc/tasksel-data
+	fi
+fi

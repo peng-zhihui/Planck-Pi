@@ -1,0 +1,59 @@
+From the man page:
+       You  may  define an "input preprocessor" for less.  Before
+       less opens a file, it first gives your input  preprocessor
+       a  chance  to  modify the way the contents of the file are
+       displayed.
+
+What this means is that less(1) can automatically open up tar files,
+uncompress gzipped files, and even display something reasonable for
+graphics files.
+
+You just need to put the following in your
+.zlogin/.login/.bash_profile/whatever:
+
+eval $(lesspipe)
+or
+eval $(lessfile)
+
+lesspipe will toss the contents/info on stdout and less will read them
+as they come across.  This means that you don't have to wait for the
+decoding to finish before less shows you the file.  This also means that
+you'll get a 'byte N' instead of an N% as your file position.  You can
+seek to the end and back to get the N% but that means you have to wait
+for the pipe to finish.
+
+lessfile will toss the contents/info on a file which less will then
+read.  After you're done, lessfile will then delete the file.  This
+means that the process has to finish before you see it, but you get nice
+percentages (N%) up front.
+
+If you have some additional tests for binary files that I don't handle, go
+ahead and send them to me.  Note that I will never integrate commands
+for text files.  If you want to add man-ifying or html-izing commands to 
+your copy of lesspipe, go ahead, they just won't be integrated in the
+main distribution.
+
+Here are two additional tests that you might like to use but aren't in
+the lesspipe script due to speed or principle of least surprise.
+
+    # Decode directories:
+    if [ -d "$1" ]; then
+	echo "$1:"; ls -l $1
+    else
+
+    # view strings inside of an executable
+    if [ -x "$1" ]; then
+        type=$(file "$1")
+        case "$type" in 
+          *executable* )
+            echo -e "$type\n"
+            strings "$1"
+            ;;
+        esac
+    fi
+
+These two entries courtesy of Adrian Bridgett <adrian.bridgett@poboxes.com>.
+Please send in your entries as well.
+
+If you have any questions, send me e-mail at <torin@daft.com>.
+Mentioning less in the subject line will help.

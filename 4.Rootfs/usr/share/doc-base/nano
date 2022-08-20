@@ -1,0 +1,9 @@
+Document: nano
+Title: GNU nano User Manual
+Author: Chris Allegreta, David Lawrence Ramsey and others.
+Abstract: This manual describes the usage of the GNU nano text editor.
+Section: Editors
+
+Format: info
+Index: /usr/share/info/nano.info.gz
+Files: /usr/share/info/nano*

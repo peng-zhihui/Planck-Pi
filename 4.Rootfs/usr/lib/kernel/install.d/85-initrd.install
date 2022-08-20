@@ -1,0 +1,29 @@
+#!/bin/sh
+set -eu
+# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
+# ex: ts=8 sw=4 sts=4 et filetype=sh
+
+COMMAND="$1"
+KERNEL_VERSION="$2"
+BOOT_DIR_ABS="$3"
+
+INITRD_SRC="/boot/initrd.img-$KERNEL_VERSION"
+INITRD_DEST="$BOOT_DIR_ABS/initrd"
+
+if [ "$COMMAND" = remove ]; then
+    rm -f "$INITRD_DEST"
+    exit 0
+fi
+
+if [ "$COMMAND" != add ]; then
+    echo "Invalid command $COMMAND" >&2
+    exit 1
+fi
+
+if [ -e "$INITRD_SRC" ];then
+    cp "$INITRD_SRC" "$INITRD_DEST"
+else
+    echo "$INITRD_SRC does not exist, not installing an initrd"
+fi
+
+exit 0

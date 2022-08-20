@@ -1,0 +1,5 @@
+# no, used conditionally
+bash binary: manpage-has-errors-from-man
+
+# we have NEWS, CHANGES and changelog ...
+bash binary: wrong-name-for-upstream-changelog

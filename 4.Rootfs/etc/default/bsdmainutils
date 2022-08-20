@@ -1,0 +1,4 @@
+# Uncomment the following line if you'd like all of your users'
+# ~/calendar files to be checked daily.  Calendar will send them mail
+# to remind them of upcoming events.  See calendar(1) for more details.
+#RUN_DAILY=true

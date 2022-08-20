@@ -1,0 +1,1 @@
+/etc/vim/vimrc

@@ -1,0 +1,22 @@
+/*
+ * $FreeBSD: head/usr.bin/calendar/calendars/pt_BR.UTF-8/calendar.mcommemorative 219937 2011-03-23 21:22:03Z edwin $
+ *
+ * Originally submitted by Renato Tambellini <rtsanch@gmail.com>
+ *
+ * Brazilian mobile commemorative days
+ *
+ * http://www.novomilenio.inf.br/porto/mapas/nmcalenp.htm
+ */
+
+#ifndef _pt_BR_UTF_8_mcommemorative_
+#define _pt_BR_UTF_8_mcommemorative_
+
+LANG=UTF-8
+
+Easter-47	Carnaval
+Easter-7	Domingo de Ramos
+Easter-2	Sexta-feira Santa
+Easter	Páscoa
+Easter+60	Corpus Christi
+
+#endif

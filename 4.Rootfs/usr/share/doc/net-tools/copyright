@@ -1,0 +1,38 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: net-tools
+Upstream-Contact: Phil Blundell <philb@gnu.org>
+                  Bernd Eckenfels <net-tools@lina.inka.de>
+Source: http://sourceforge.net/projects/net-tools/
+
+Files: *
+Copyright: © 1988-1994 MicroWalt Corporation
+ © 1995-1996 Bernd Eckenfels
+ © 1997-2000 Andi Kleen
+ © 1997-2000 Donald Becker
+License: GPL-2+
+
+Files: debian/*
+Copyright: © 2008-2009 Luk Claes, Martín Ferrari
+ © 2000-2007 Bernd Eckenfels
+ © 2000 Anthony Towns
+License: GPL-2+
+Comment:
+ It is assumed that all contributors put their work under the same license
+ as the module itself.
+
+Files: debian/iptunnel.8
+Copyright: © 2018 Sergio Durigan Junior
+License: GPL-2+
+
+License: GPL-2+
+ The copyright attribution has been derived from individual files' text, but
+ each file may have different copyright holders, and some may be missing. See
+ the source code for details.
+ .
+ This program is free software; you can redistribute it and/or modify it under
+ the terms of  the GNU General Public  License as  published by  the  Free
+ Software Foundation;  either  version 2 of the License, or  (at your option)
+ any later version.
+ .
+ On Debian GNU/Linux systems, the complete text of the GNU General Public
+ License can be found in `/usr/share/common-licenses/GPL-2'

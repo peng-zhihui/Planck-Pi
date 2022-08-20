@@ -1,0 +1,3 @@
+login: setuid-binary usr/bin/newgrp 4755 root/root
+login: setuid-binary bin/su 4755 root/root
+login: possible-missing-colon-in-closes l667:closes bug 336321

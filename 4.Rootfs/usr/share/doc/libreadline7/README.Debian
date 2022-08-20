@@ -1,0 +1,54 @@
+A kind of FAQ for libreadline on Debian GNU/{Linux,Hurd}
+--------------------------------------------------------
+
+0. symlinked directory completion behavior
+
+   Starting with readline-4.2a, completion on symlinks that point
+   to directories does not append the slash. To restore the behaviour
+   found in readline-4.2, add to /etc/inputrc or ~/.inputrc:
+
+       set mark-symlinked-directories on
+
+1. re-enable the paren matching feature in readline-4.1
+
+   Add to /etc/inputrc or ~/.inputrc:
+
+       set blink-matching-paren on
+
+2. key bindings for ESC
+
+   Consider the following .inputrc:
+
+   set editing-mode vi
+
+   keymap vi
+       "\M-[D":        backward-char
+       "\M-[C":        forward-char
+       "\M-[A":        previous-history
+       "\M-[B":        next-history
+
+   And, just to be certain, set -o reports that vi is on.
+
+   However, ESC k does not send me to the previous line.
+
+   I'm guessing that this is a conflict between bash's concept of a meta
+   keymap and its concept of vi's command-mode character -- which is to
+   say that its data structures don't properly reflect its implementation.
+
+   Note that if I remove the meta prefix, leaving lines like:
+       "[A":        previous-history
+
+   That vi command mode keys work fine, and I can use the arrow keys in vi
+   mode, *provided I'm already in command mode already*.  In other words,
+   bash is doing something wrong here such that it doesn't see the escape
+   character at the beginning of the key sequence even when in vi insert mode.
+
+   Comment from the upstream author: "This guy destroyed the key binding for
+   ESC, which effectively disabled vi command mode.  It's not as simple as he
+   paints it to be -- the binding for ESC in the vi insertion keymap *must*
+   be a function because of the other things needed when switching
+   from insert mode to command mode.
+
+   If he wants to change something in vi's command mode, he needs
+   to use `set keymap vi-command' and enter key bindings without
+   the \M- prefix (as he discovered)."

@@ -1,0 +1,12 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libuuid.so.1.3.0
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libuuid1
+/usr/share/doc/libuuid1/changelog.Debian.gz
+/usr/share/doc/libuuid1/changelog.gz
+/usr/share/doc/libuuid1/copyright
+/lib/arm-linux-gnueabi/libuuid.so.1

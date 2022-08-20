@@ -1,0 +1,66 @@
+#!/bin/sh
+set -e
+
+pkg=vim-tiny
+variant=tiny
+mandir=/usr/share/man
+
+# add /usr/bin/vim.variant as alternative for /usr/bin/vim. Priority are
+# chosen accordingly to the principle: ``more features, higher priority''
+
+add_variant_alternative () {
+  if [ "$variant" != "tiny" ]; then
+    update-alternatives --install /usr/bin/vim vim /usr/bin/vim.$variant $1
+    update-alternatives --install /usr/bin/vimdiff vimdiff /usr/bin/vim.$variant $1
+    update-alternatives --install /usr/bin/rvim rvim /usr/bin/vim.$variant $1
+  fi
+  update-alternatives --install /usr/bin/rview rview /usr/bin/vim.$variant $1
+  # Since other packages provide these commands, we'll setup alternatives for
+  # their manpages, too.
+  for i in vi view ex editor ; do
+    update-alternatives \
+      --install /usr/bin/$i $i /usr/bin/vim.$variant $1 \
+      --slave $mandir/da/man1/$i.1.gz $i.da.1.gz $mandir/da/man1/vim.1.gz \
+      --slave $mandir/de/man1/$i.1.gz $i.de.1.gz $mandir/de/man1/vim.1.gz \
+      --slave $mandir/fr/man1/$i.1.gz $i.fr.1.gz $mandir/fr/man1/vim.1.gz \
+      --slave $mandir/it/man1/$i.1.gz $i.it.1.gz $mandir/it/man1/vim.1.gz \
+      --slave $mandir/ja/man1/$i.1.gz $i.ja.1.gz $mandir/ja/man1/vim.1.gz \
+      --slave $mandir/pl/man1/$i.1.gz $i.pl.1.gz $mandir/pl/man1/vim.1.gz \
+      --slave $mandir/ru/man1/$i.1.gz $i.ru.1.gz $mandir/ru/man1/vim.1.gz \
+      --slave $mandir/man1/$i.1.gz $i.1.gz \
+              $mandir/man1/vim.1.gz
+  done
+  case "$variant" in
+    gtk|gtk3|athena) # gui enabled variants
+      add_gui_variant_alternative $1
+      ;;
+  esac
+}
+
+add_gui_variant_alternative () {
+  for i in gvim gview rgview rgvim evim eview gvimdiff ; do
+    update-alternatives --install /usr/bin/$i $i /usr/bin/vim.$variant $1
+  done
+}
+
+case "$pkg" in
+  vim-tiny)
+    add_variant_alternative 15
+    ;;
+  vim)
+    add_variant_alternative 30
+    ;;
+  vim-nox)
+    add_variant_alternative 40
+    ;;
+  vim-gtk|vim-gtk3|vim-athena)
+    add_variant_alternative 50
+    ;;
+esac
+
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper symlink_to_dir /usr/share/doc/vim-tiny vim-common 2:8.0.1451-1\~ vim-tiny -- "$@"
+# End automatically added section
+
+
+exit 0

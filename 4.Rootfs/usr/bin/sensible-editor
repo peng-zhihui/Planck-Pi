@@ -1,0 +1,44 @@
+#!/bin/sh
+
+ret="$?"
+
+# Prevent recursive loops, where these values are set to this script
+p="$(which sensible-editor)"
+[ "$(which $EDITOR || true)" = "$p" ] && EDITOR=
+[ "$(which $VISUAL || true)" = "$p" ] && VISUAL=
+[ "$(which $SELECTED_EDITOR || true)" = "$p" ] && SELECTED_EDITOR=
+
+if [ -n "$VISUAL" ]; then
+	${VISUAL} "$@"
+	ret="$?"
+	if [ "$ret" -ne 126 ] && [ "$ret" -ne 127 ]; then
+		exit "$ret"
+	fi
+fi
+
+if [ -r ~/.selected_editor ]; then
+	. ~/.selected_editor 2>/dev/null || true
+elif [ -z "$EDITOR" ] && [ -z "$SELECTED_EDITOR" ] && [ -t 0 ]; then
+	select-editor && . ~/.selected_editor 2>/dev/null || true
+fi
+
+${EDITOR:-${SELECTED_EDITOR:-editor}} "$@"
+ret="$?"
+if [ "$ret" -eq 126 ] || [ "$ret" -eq 127 ]; then
+	nano "$@"
+	ret="$?"
+	if [ "$ret" -eq 126 ] || [ "$ret" -eq 127 ]; then
+		nano-tiny "$@"
+		ret="$?"
+		if [ "$ret" -eq 126 ] || [ "$ret" -eq 127 ]; then
+			vi "$@"
+			ret="$?"
+			if [ "$ret" -eq 126 ] || [ "$ret" -eq 127 ]; then
+				echo "Couldn't find an editor!" 1>&2
+				echo "Set the \$EDITOR environment variable to your desired editor." 1>&2
+				exit 1
+			fi
+		fi
+	fi
+fi
+exit "$ret"

@@ -1,0 +1,11 @@
+#! /bin/sh
+
+ssh_session_pattern='sshd: \S.*@pts/[0-9]+'
+
+IFS="$IFS@"
+pgrep -a -f "$ssh_session_pattern" | while read pid daemon user pty; do
+	echo "Found ${daemon%:} session $pid on $pty; sending SIGTERM"
+	kill "$pid" || true
+done
+
+exit 0

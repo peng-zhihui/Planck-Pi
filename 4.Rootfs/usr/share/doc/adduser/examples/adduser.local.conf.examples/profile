@@ -1,0 +1,88 @@
+#########################################################################
+#    /etc/profile: System-wide initialisation file for Bourne shells    #
+#########################################################################
+
+# [JNZ] Modified 21-Jun-2013
+
+# This script file is sourced by Bourne-compatible shells, such as sh(1),
+# bash(1), ksh(1) and ash(1), when those shells are run as a login shell.
+#
+# When a login shell starts, the following script files are sourced, in
+# this order:
+#
+#   /etc/profile          - this file
+#   /etc/profile.d/*.sh   - additional profile scripts
+#   /etc/bash.bashrc      - sourced by this file (only for bash(1))
+#   $HOME/.bash_profile   - run by bash(1)
+#   $HOME/.bashrc         - sourced by the default $HOME/.bash_profile
+#
+# When a normal (non-login) bash(1) shell starts, the following files are
+# sourced:
+#
+#   /etc/bash.bashrc      - run by bash(1)
+#   $HOME/.bashrc         - run by bash(1)
+#
+# Written by John Zaitseff and released into the public domain.
+
+
+umask 022
+
+# Set the default executable path, as ENV_PATH and ENV_SUPATH in
+# /etc/login.defs does not always seem to be consulted
+
+if [ "`id -u`" -eq 0 ]; then
+    PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+else
+    PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+fi
+
+# Augment various paths as required
+
+if [ -d $HOME/bin ]; then
+    PATH=$HOME/bin:$PATH
+fi
+
+if [ -d $HOME/man ]; then
+    MANPATH=$HOME/man:$MANPATH
+    export MANPATH
+fi
+if [ -d $HOME/lib/man ]; then
+    MANPATH=$HOME/lib/man:$MANPATH
+    export MANPATH
+fi
+
+export PATH
+
+# Set the default prompt for interactive shells
+
+if [ "$PS1" ]; then
+    if [ "$BASH" ] && [ "$BASH" != "/bin/sh" ]; then
+	PS1="\u@\h:\w \\\$ "
+    else
+	if [ "`id -u`" -eq 0 ]; then
+	    PS1='# '
+	else
+	    PS1='$ '
+	fi
+    fi
+fi
+
+# Source all *.sh scripts in /etc/profile.d
+
+if [ -d /etc/profile.d ]; then
+    for i in /etc/profile.d/*.sh; do
+	if [ -r "$i" ]; then
+	    . "$i"
+	fi
+    done
+    unset i
+fi
+
+# If this is a bash(1) shell, source an additional initialisation script.
+# This may override variables, functions and aliases set above.
+
+if [ "$BASH" ] && [ "$BASH" != "/bin/sh" ]; then
+    if [ -r /etc/bash.bashrc ]; then
+	. /etc/bash.bashrc
+    fi
+fi

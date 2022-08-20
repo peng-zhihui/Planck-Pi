@@ -1,0 +1,75 @@
+Template: openssh-server/permit-root-login
+Type: boolean
+Default: true
+Description: Disable SSH password authentication for root?
+ Previous versions of openssh-server permitted logging in as root over SSH
+ using password authentication. The default for new installations is now
+ "PermitRootLogin prohibit-password", which disables password authentication
+ for root without breaking systems that have explicitly configured SSH
+ public key authentication for root.
+ .
+ This change makes systems more secure against brute-force password
+ dictionary attacks on the root user (a very common target for such
+ attacks). However, it may break systems that are set up with the
+ expectation of being able to SSH as root using password authentication. You
+ should only make this change if you do not need to do that.
+Description-cs.UTF-8: Zakázat ověřování heslem pro uživatele root?
+ Předchozí verze openssh-server dovolovala přihlašovat se přes SSH jako root pomocí ověřování heslem. Výchozí volba pro nové instalace je nyní "PermitRootLogin prohibit-password", která zakazuje ověřování heslem pro uživatele root, aniž by to omezilo systémy, které mají explicitně nastaveno ověřování veřejným SSH klíčem pro uživatele root.
+ .
+ Tato změna činí systémy zabezpečenějšími proti útokům hrubou silou na heslo  uživatele root pomocí slovníku (velmi častý cíl útoků). Nicméně, to může poškodit systémy, které jsou nastaveny s předpokladem, že bude možné se přihlašovat přes SSH jako root pomocí ověřování heslem. Změnu této volby byste měli provést pouze pokud ověřování heslem potřebujete.
+Description-da.UTF-8: Deaktiver SSH-adgangskodegodkendelse for root?
+ Tidligere versioner af openssh-server tillod indlogning som root over SSH med brug af adgangskodegodkendelse. Standarden for nye installationer er nu »PermitRootLogin prohibit-password«, som deaktiverer adgangskodegodkendelse for root uden at ødelægge systemer, som eksplicit har konfigureret SSH-offentlig nøglegodkendelse for root.
+ .
+ Denne ændring gør systemer mere sikre mod brute-force angreb vis ordlister med adgangskoder på root-brugeren (et meget ofte mål for sådanne angreb). Det kan dog ødelægge systemer, som er opsat med forventning om at kunne SSH som root via brug af adgangskodegodkendelse. Du skal kun lave denne ændring, hvis du ikke har brug for dette.
+Description-de.UTF-8: SSH Passwort-Authentifizierung für »root« deaktivieren?
+ Vorherige Versionen von openssh-server erlaubten das Anmelden als »root« über SSH unter Verwendung von Passwort-Authentifizierung. Die Standardeinstellung für Neuinstallationen lautet nun »PermitRootLogin prohibit-password«, wodurch die Passwort-Authentifizierung für »root« deaktiviert wird, und Systeme dennoch funktionsfähig bleiben, bei denen ausdrücklich die Authentifizierung als »root« mittels öffentlichem SSH-Schlüssel konfiguriert ist.
+ .
+ Diese Änderung sichert Systeme besser gegen jene Angriffe auf den Benutzer »root« (ein verbreitetes Ziel solcher Angriffe) ab, die das Passwort durch simples Ausprobieren aller Einträge von Wörterbüchern zu erraten versuchen. Sie kann allerdings dazu führen, dass Systeme nicht mehr funktionieren, die in der Absicht konfiguriert wurden, die Anmeldung als »root« über SSH unter Verwendung von Passwort-Authentifizierung zuzulassen. Sie sollten diese Änderung nur vornehmen, wenn Sie auf Letzteres verzichten können.
+Description-es.UTF-8: ¿Desea desactivar la autenticación SSH mediante contraseña para el usuario root?
+ Las versiones anteriores de openssh-server permitían iniciar sesión como usuario root utilizando autenticación con contraseña. La configuración predeterminada para las nuevas instalaciones ahora incluye «PermitRootLogin prohibit-password», lo que desactiva la autenticación con contraseña para el usuario root sin romper los sistemas que tienen configurado explícitamente la autenticación SSH utilizando claves públicas para el usuario root.
+ .
+ Este cambio hace que los sistemas sean más resistentes contra ataques de fuerza bruta basados en diccionarios sobre el usuario root (un objetivo muy común para este tipo de ataques). Sin embargo, podría romper sistemas cuya configuración permite que el usuario root inicie sesión a través de SSH utilizando una contraseña. Sólo debería realizar este cambio si no necesita este comportamiento.
+Description-fr.UTF-8: Désactiver l’authentification SSH par mot de passe pour le superutilisateur ?
+ Les versions précédentes du paquet openssh-server autorisaient la connexion par SSH du superutilisateur (root) en utilisant l’authentification par mot de passe. Par défaut, les nouvelles installations ont maintenant l’option « PermitRootLogin prohibit-password », qui désactive l’authentification par mot de passe pour le compte « root », sans casser les systèmes qui ont configuré explicitement l’authentification SSH par clé publique pour ce compte.
+ .
+ Cette modification rend les systèmes plus robustes face aux attaques par force brute et par dictionnaire contre le superutilisateur (très souvent pris pour cible par ce type d’attaque). Cependant, cela peut rendre inutilisables les systèmes reposant sur la possibilité de se connecter au compte « root » par SSH avec authentification par mot de passe. Vous ne devriez appliquer cette modification que si ce n’est pas votre cas.
+Description-it.UTF-8: Disabilitare l'autenticazione SSH con password per root?
+ Le versioni precedenti di openssh-server permettevano il login come root via SSH, usando l'autenticazione con password. Il comportamento predefinito delle nuove installazioni è «PermitRootLogin prohibit-password» che disabilita l'autenticazione con password per root, senza rendere non funzionanti sistemi che hanno esplicitamente configurato l'autenticazione SSH con chiave pubblica per root.
+ .
+ Questo cambiamento rende i sistemi più al sicuro da attacchi di forza bruta a dizionario sulle password per l'utente root (un obiettivo molto comune per tali attacchi). Tuttavia, può rendere non funzionanti sistemi che sono impostati facendo affidamento sulla possibilità di autenticazione SSH come root usando la password. Si dovrebbe fare questo cambiamento solo se non si ha bisogno di tale comportamento.
+Description-ja.UTF-8: root での SSH パスワード認証を無効にしますか?
+ openssh-server の以前のバージョンではパスワード認証を利用した SSH 経由の root のログインを許可していました。新しくインストールした場合のデフォルト値が現在は「PermitRootLogin prohibit-password」になり、root のパスワード認証を無効化しますが SSH の公開鍵認証を root 用に明示的に設定しているシステムでは特に問題はありません。
+ .
+ この変更によりシステムは root ユーザ (こういった攻撃ではとても一般的な攻撃対象です) へのブルートフォースによるパスワード辞書攻撃に対してはより安全になります。しかしパスワード認証により root で SSH 接続できることを前提として構成したシステムでは問題が発生する可能性があります。そういった必要のない場合にのみこの変更を行うようにしてください。
+Description-nl.UTF-8: Wachtwoordauthenticatie over SSH voor de systeembeheerder uitschakelen?
+ Eerdere versies van de openssh-server lieten de systeembeheerder toe om zich over SSH te authenticeren met een wachtwoord. Voor nieuwe installaties is de standaard nu "PermitRootLogin prohibit-password". Deze standaardinstelling maakt het voor de systeembeheerder onmogelijk om zich via een wachtwoord te authenticeren. Deze instelling heeft geen impact op systemen waarbij de SSH-configuratie expliciet vereist dat de systeembeheerder zich authenticeert via een publieke sleutel.
+ .
+ Deze wijziging maakt systemen veiliger tegenover aanvallen met brute kracht (met een wachtwoordenwoordenboek) op de systeembeheerder, een zeer courant doelwit voor zulke aanvallen. Maar het kan systemen onbruikbaar maken die ingesteld werden vanuit de verwachting dat de systeembeheerder SSH kan gebruiken met authenticatie via wachtwoord. Enkel wanneer u dit laatste niet nodig heeft, zou u deze wijziging kunnen doorvoeren.
+Description-pt.UTF-8: Desactivar a autenticação SSH por palavra passe para o root?
+ As versões anteriores do servidor openssh permitiam iniciar sessão como root sobre SSH usando autenticação por palavra-passe. A predefinição para novas instalações é agora "PermitRootLogin prohibit-password", a qual desactiva a autenticação por palavra-passe para o root sem danificar os sistemas que têm configurados explicitamente autenticação SSH por chave pública para o root.
+ .
+ Esta alteração torna os sistemas mais seguros contra ataques em que se forçam dicionários de palavras-passe no utilizador root (um alvo muito comum para tais ataques). No entanto, pode danificar sistemas que estão configurados com a expectativa de serem capazes de SSH como root usando autenticação por palavra-passe. Apenas deverá fazer esta alteração se não precisa de tal método de autenticação.
+Description-pt_BR.UTF-8: Desabilitar autenticação por senha do SSH para root?
+ Versões anteriores do openssh-server permitiam login como root sobre SSH usando autenticação por senha. O padrão para as novas instalações agora é "PermitRootLogin prohibit-password", que desabilita a autenticação por senha para root sem quebrar sistemas que tenham configurado explicitamente o SSH para autenticação por chave pública para root.
+ .
+ Esta alteração torna sistemas mais seguros contra ataques de força bruta por dicionário de senhas no usuário root (um alvo muito comum destes ataques). Entretanto, ela pode quebrar sistemas que foram configurados com a expectativa de acesso SSH com root usando autenticação por senha. Você deve fazer esta mudança somente se você não precisa fazer isso.
+Description-ru.UTF-8: Выключить в SSH аутентификацию по паролю для root?
+ В предыдущих версиях openssh-server разрешён вход с правами пользователя root через SSH с помощью аутентификации по паролю. При новых установках по умолчанию теперь используется настройка «PermitRootLogin prohibit-password», которая отключает аутентификацию по паролю для root, что не вредит системам, у которых в SSH для root настроена аутентификация по открытому ключу.
+ .
+ Это изменение делает системы более стойкими к атакам методом перебора словарных паролей для пользователя root (самая распространённая цель таких атак). Однако, это вредит системам, в которых специально настроен вход для root по SSH с парольной аутентификацией. Если это не ваш случай, то ответьте утвердительно.
+Description-sv.UTF-8: Inaktivera SSH-lösenordsautentisering för root?
+ Tidigare versioner av openssh-server tillät inloggning som root över SSH med hjälp av lösenordsautentisering. Standardinställningen för nya installationer är nu "PermitRootLogin prohibit-password", vilket inaktiverar lösenordsautentisering för root utan att förstöra system som explicit har konfigurerat nyckelautentisering med hjälp av publika nycklar för root.
+ .
+ Denna förändring gör system säkrare mot brute-force-angrepp med hjälp av ordlistor med lösenord på root-användaren (ett väldigt vanligt mål för sådana angrepp). Dock så kan detta förstöra system som förväntas kunna använda SSH som root med hjälp av lösenordsautentisering. Du skall endast göra denna förändring om du inte har ett behov av att kunna göra detta.
+Description-tr.UTF-8: root kullanıcısının parola ile kimlik doğrulaması engellensin mi?
+ openssh-server'ın önceki sürümleri parola ile kimlik doğrulama kullanılarak root kullanıcısının SSH üzerinden oturum açmasına izin veriyordu. Artık yeni kurulumların öntanımlı ayarı "PermitRootLogin prohibit-password" şeklindedir. Bu ayar root kullanıcısının parola kullanarak oturum açmasını yasaklar. SSH genel anahtar doğrulama yöntemine ayrıca izin veren mevcut sistemler bu ayardan etkilenmez.
+ .
+ Bu ayar sistemleri kaba kuvvet sözlükten parola saldırılarına karşı güvenli hale getirir (root kullanıcısı bu tarz saldırıların en büyük hedeflerindendir). Fakat bu ayarın etkinleştirilmesi, root kullanıcısına parola doğrulama yöntemiyle oturum açılabileceği varsayımıyla hareket eden sistemlerde eskiden çalışan düzenin bozulmasına sebep olacaktır. Bu değişikliği yalnızca sorun çıkarmayacağından eminseniz yapın.
+
+Template: openssh-server/password-authentication
+Type: boolean
+Default: true
+Description: Allow password authentication?
+ By default, the SSH server will allow authenticating using a password.
+ You may want to change this if all users on this system authenticate using
+ a stronger authentication method, such as public keys.

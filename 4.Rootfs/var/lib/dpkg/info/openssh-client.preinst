@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/ssh/moduli 1:7.9p1-8~ -- "$@"
+# End automatically added section

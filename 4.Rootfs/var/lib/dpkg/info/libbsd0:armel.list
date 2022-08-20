@@ -1,0 +1,12 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libbsd.so.0.9.1
+/usr/share
+/usr/share/doc
+/usr/share/doc/libbsd0
+/usr/share/doc/libbsd0/changelog.Debian.gz
+/usr/share/doc/libbsd0/changelog.gz
+/usr/share/doc/libbsd0/copyright
+/usr/lib/arm-linux-gnueabi/libbsd.so.0

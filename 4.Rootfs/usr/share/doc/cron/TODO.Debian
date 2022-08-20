@@ -1,0 +1,46 @@
+
+TODO stuff
+----------
+
+- Split of standard tasks to cron-standard, preliminary packages
+  currently available at 
+  http://people.debian.org/~jfs/cron-standard
+  but we need to handle the conffiles so that they don't get messed up
+  See bug #257393 and 
+  Message-ID: <20050309142043.GB16617@dat.etsit.upm.es>
+
+- Better behave with cron replacements, investigate how cron packages
+  (like fcron or bcron) can be installed/deinstalled without breaking 
+  the system. 
+  This might imply fixing #304036 (which might help fix #312614 too BTW)
+
+- Debate changing the policy of /etc/cron.d being a drop-in for packages
+  only vs. a general drop-in for crontabs
+
+
+Milestones
+----------
+
+- Convert source package to source format 3.0 (quilt)
+  The current cron source package is the result of a 1993 upstream and
+  17 years of commits. This organic growth must be normalized before an
+  upgrade to upstream cron-4.1 can be considered.
+
+- Compare our resulting cron-3.0 patches to FreeBSD's where possible
+  This is intended as a safety measure; the goal is to identify any grave
+  errors or other larger issues in our patches so we don't carry them on
+  into cron-4.1.
+
+- Review and update the ancient Debian packaging
+  Certain elements are heavily outdated and must be either brought
+  up-to-date, or dropped.
+
+- Update to upstream cron-4.1
+
+- Compare our resulting cron-4.1 to RHEL/SLES, with a focus on possible
+  security issues (SUID/SGID, SELinux, ...)
+
+- Compare our resulting cron-4.1 to Fedora's cronie (a fork of ISC cron)
+
+- Consider switching upstream to cronie, or at least grabbing some
+  of it's features such as INOTIFY support.

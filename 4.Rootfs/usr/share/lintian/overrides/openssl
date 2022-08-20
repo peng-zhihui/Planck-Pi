@@ -1,0 +1,3 @@
+# Policy §10.9 wants 755 but since private keys could be stored there
+# we want this only accessed by root
+non-standard-dir-perm etc/ssl/private/ 0700 != 0755

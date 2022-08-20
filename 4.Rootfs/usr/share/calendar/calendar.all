@@ -1,0 +1,47 @@
+/*
+ * International and national calendar files
+ *
+ * This is the calendar master file.  In the standard setup, it is
+ * included by /etc/calendar/default, so you can make any system-wide
+ * changes there and they will be kept when you upgrade.  If you want
+ * to edit this file, copy it into /etc/calendar/calendar.all and
+ * edit it there.
+ *
+ */
+
+#ifndef _calendar_all_
+#define _calendar_all_
+
+#include <calendar.world>
+#include <calendar.argentina>
+#include <calendar.australia>
+#include <calendar.belgium>
+#include <calendar.birthday>
+#include <calendar.christian>
+#include <calendar.computer>
+#include <calendar.croatian>
+#include <calendar.debian>
+#include <calendar.discordian>
+#include <calendar.dutch>
+#include <calendar.eu>
+#include <calendar.freebsd>
+#include <calendar.french>
+#include <calendar.german>
+#include <calendar.history>
+#include <calendar.holiday>
+#include <calendar.hungarian>
+#include <calendar.judaic>
+#include <calendar.kazakhstan>
+#include <calendar.lotr>
+#include <calendar.music>
+#include <calendar.newzealand>
+#include <calendar.pagan>
+#include <calendar.russian>
+#include <calendar.southafrica>
+#include <calendar.thai>
+#include <calendar.ubuntu>
+#include <calendar.ukrainian>
+#include <calendar.unitedkingdom>
+#include <calendar.usholiday>
+
+#endif /* !_calendar_all_ */

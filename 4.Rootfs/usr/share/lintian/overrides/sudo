@@ -1,0 +1,6 @@
+sudo: non-standard-file-perm etc/sudoers.d/README 0440 != 0644
+sudo: setuid-binary usr/bin/sudo 4755 root/root
+sudo: setuid-binary usr/bin/sudoedit 4755 root/root
+sudo: read-in-maintainer-script
+sudo: duplicate-updaterc.d-calls-in-postinst
+sudo: hardening-no-stackprotector usr/lib/sudo/sudo_noexec.so

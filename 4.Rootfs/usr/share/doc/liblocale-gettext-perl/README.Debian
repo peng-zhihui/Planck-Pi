@@ -1,0 +1,12 @@
+liblocale-gettext-perl for Debian
+---------------------------------
+
+This module is used to internationalize all Perl programs in the
+same way than the C programs. You only need to create *.mo file in order
+to translate your Perl program if you used the gettext functions where
+strings were needed.
+
+The man page is not very instructive, take a look at the README file
+shipped in the /usr/share/doc/liblocale-gettext-perl directory.
+
+Raphael Hertzog <hertzog@debian.org>, Tue, 29 Dec 1998 12:11:58 +0100

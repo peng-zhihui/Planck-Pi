@@ -1,0 +1,9 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libatomic.so.1.2.0
+/usr/share
+/usr/share/doc
+/usr/lib/arm-linux-gnueabi/libatomic.so.1
+/usr/share/doc/libatomic1

@@ -1,0 +1,8 @@
+# See sources.list(5) manpage for more information
+# Remember that CD-ROMs, DVDs and such are managed through the apt-cdrom tool.
+deb http://deb.debian.org/debian buster main contrib non-free
+deb http://security.debian.org buster/updates main contrib non-free
+
+# Uncomment if you want the apt-get source function to work
+#deb-src http://deb.debian.org/debian buster main contrib non-free
+#deb-src http://security.debian.org buster/updates main contrib non-free

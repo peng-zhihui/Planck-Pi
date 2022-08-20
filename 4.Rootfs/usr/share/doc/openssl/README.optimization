@@ -1,0 +1,32 @@
+openssl ships optimized libraries for some cpus. The loading of these
+libraries depends on the ability of the dynamic linker to automaticly
+search additional directories depending on the cpu. If you want to
+find out which are these directories for your computer, run the
+following command:
+
+LD_LIBRARY_PATH=/usr/lib strace true 2>&1 | fgrep "open(\"/usr/lib"
+
+On a Pentium III this gives:
+
+open("/usr/lib/i686/mmx/libc.so.6", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/i686/libc.so.6", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/mmx/libc.so.6", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/libc.so.6", O_RDONLY)    = -1 ENOENT (No such file or directory)
+
+Following is a list of cpus, library paths and possible optimizations:
+
+486		/usr/lib/i486	-march=i486 -mcpu=i486 +asm
+Pentium 	/usr/lib/i586	-march=i586 -mcpu=i586 +asm
+Pentium MMX	/usr/lib/i586	-march=i586 -mcpu=i586 +asm
+Pentium II	/usr/lib/i686	-march=i686 -mcpu=i686 +asm
+Pentium III	/usr/lib/i686	-march=i686 -mcpu=i686 +asm
+AMD-K6		/usr/lib/i586	-march=i586 -mcpu=i586 +asm
+AMD-K7		/usr/lib/i686	-march=i686 -mcpu=i686 +asm
+
+Sparc v8	/usr/lib/v8	-mcpu=v8              +asm
+Sparc v9	/usr/lib/v9	-mcpu=v9 -Wa,-Av8plus +asm
+
+Alpha EV4	/usr/lib/ev4	-mcpu=ev4
+Alpha EV5	/usr/lib/ev5	-mcpu=ev5
+
++asm means that the handcrafted 586 assembler routines can be used. 

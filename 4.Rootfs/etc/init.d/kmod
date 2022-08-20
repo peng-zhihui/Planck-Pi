@@ -1,0 +1,92 @@
+#!/bin/sh -e
+### BEGIN INIT INFO
+# Provides:          kmod
+# Required-Start:    
+# Required-Stop:     
+# Should-Start:      checkroot
+# Should-Stop:
+# Default-Start:     S
+# Default-Stop:
+# Short-Description: Load the modules listed in /etc/modules.
+# Description:       Load the modules listed in /etc/modules.
+### END INIT INFO
+
+# Silently exit if the kernel does not support modules.
+[ -f /proc/modules ] || exit 0
+[ -x /sbin/modprobe  ] || exit 0
+
+[ -f /etc/default/rcS ] && . /etc/default/rcS
+. /lib/lsb/init-functions
+
+PATH='/sbin:/bin'
+
+case "$1" in
+  start)
+  ;;
+
+  stop|restart|reload|force-reload)
+  log_warning_msg "Action '$1' is meaningless for this init script"
+  exit 0
+  ;;
+
+  *)
+  log_success_msg "Usage: $0 start"
+  exit 1
+esac
+
+load_module() {
+  local module args
+  module="$1"
+  args="$2"
+
+  if [ "$VERBOSE" != no ]; then
+    log_action_msg "Loading kernel module $module"
+    modprobe $module $args || true
+  else
+    modprobe $module $args > /dev/null 2>&1 || true
+  fi
+}
+
+modules_files() {
+  local modules_load_dirs='/etc/modules-load.d /run/modules-load.d /usr/local/lib/modules-load.d /usr/lib/modules-load.d /lib/modules-load.d'
+  local processed=' '
+  local add_etc_modules=true
+
+  for dir in $modules_load_dirs; do
+    [ -d $dir ] || continue
+    for file in $(run-parts --list --regex='\.conf$' $dir 2> /dev/null || true); do
+      local base=${file##*/}
+      if echo -n "$processed" | grep -qF " $base "; then
+        continue
+      fi
+      if [ "$add_etc_modules" -a -L $file \
+	  -a "$(readlink -f $file)" = /etc/modules ]; then
+        add_etc_modules=
+      fi
+      processed="$processed$base "
+      echo $file
+    done
+  done
+
+  if [ "$add_etc_modules" ]; then
+    echo /etc/modules
+  fi
+}
+
+if [ "$VERBOSE" = no ]; then
+  log_action_begin_msg 'Loading kernel modules'
+fi
+
+files=$(modules_files)
+if [ "$files" ] ; then
+  grep -h '^[^#]' $files |
+  while read module args; do
+    [ "$module" ] || continue
+    load_module "$module" "$args"
+  done
+fi
+
+if [ "$VERBOSE" = no ]; then
+  log_action_end_msg 0
+fi
+

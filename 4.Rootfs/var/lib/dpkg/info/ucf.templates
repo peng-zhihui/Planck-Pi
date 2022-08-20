@@ -1,0 +1,242 @@
+
+Template: ucf/title
+Type: title
+Description: Modified configuration file
+Description-ca.UTF-8: Fitxer de configuració modificat
+Description-cs.UTF-8: Změněný konfigurační soubor
+Description-da.UTF-8: Ændret opsætningsfil
+Description-de.UTF-8: Geänderte Konfigurationsdatei
+Description-es.UTF-8: Archivo de configuración modificado
+Description-eu.UTF-8: Aldatutako konfigurazio-fitxategia
+Description-fi.UTF-8: Muokattu asetustiedosto
+Description-fr.UTF-8: Fichier de configuration modifié
+Description-gl.UTF-8: Ficheiro de configuración modificado
+Description-it.UTF-8: File di configurazione modificato
+Description-ja.UTF-8: 変更された設定ファイル
+Description-nl.UTF-8: Gewijzigd configuratiebestand
+Description-pl.UTF-8: Zmodyfikowany plik konfiguracyjny
+Description-pt.UTF-8: Ficheiro de configuração modificado
+Description-pt_BR.UTF-8: Arquivo de configuração modificado
+Description-ru.UTF-8: Изменён файл настройки
+Description-sk.UTF-8: Zmenený konfiguračný súbor
+Description-sv.UTF-8: Ändrad konfigurationsfil
+Description-vi.UTF-8: Tập tin cấu hình đã sửa đổi
+
+Template: ucf/changeprompt_threeway
+Type: select
+Choices: install the package maintainer's version, keep the local version currently installed, show the differences between the versions, show a side-by-side difference between the versions, show a 3-way difference between available versions, do a 3-way merge between available versions, start a new shell to examine the situation
+Choices-da.UTF-8: installer pakkevedligeholderens udgave, bevar din aktuelt installerede udgave, vis forskellene mellem udgaverne, vis forskellene mellem versionerne overfor hinanden, vis 3-vejs forskelle mellem de tilgængelige udgaver af filen, lav 3-vejs forskelle mellem de tilgængelige udgaver af filen, start en ny skal for at undersøge situationen
+Choices-de.UTF-8: Version des Paketbetreuers installieren, aktuell lokal installierte Version beibehalten, Unterschiede zwischen den Versionen anzeigen, Unterschiede zwischen den Versionen nebeneinander anzeigen, 3-Wege-Unterschiede verfügbarer Versionen anzeigen, eine 3-Wege-Zusammenführung der verfügbaren Versionen durchführen, die Angelegenheit in einer neu gestarteten Shell untersuchen
+Choices-es.UTF-8: instalar la versión del responsable del paquete, conservar la versión local actualmente instalada, mostrar las diferencias entre las versiones, mostrar las diferencias entre las versiones lado a lado, comparar a tres bandas las versiones disponibles, hacer una fusión a tres bandas de las versiones disponibles, ejecutar un nuevo intérprete para analizar la situación
+Choices-fr.UTF-8: Installer la version du responsable du paquet, Garder la version actuellement installée, Montrer les différences entre les versions, Montrer côte à côte les différences entre les versions, Montrer les différences entre les trois versions du fichier, Fusionner les différences entre les trois versions du fichier, Lancer un shell pour examiner la situation
+Choices-ja.UTF-8: パッケージメンテナのバージョンをインストール, 現在インストールされているローカルバージョンを保持, バージョン間の差異を表示, バージョン間の差異を並行表示, 利用可能なバージョン間の 3 ウェイ差分を表示, 利用可能なバージョン間の 3 ウェイマージを実行, 状況を検討するための新しいシェルを起動
+Choices-pt.UTF-8: instalar a versão do criador do pacote, manter a versão actualmente instalada, mostrar a diferença entre as versões, mostrar uma diferença lado-a-lado entre as versões, mostrar uma diferença em 3 vias entre as versões disponíveis, faz uma fusão de 3-vias entre as versões disponíveis, iniciar uma nova consola para examinar a situação
+Choices-pt_BR.UTF-8: instalar a versão do mantenedor do pacote, manter a versão local atualmente instalada, exibir as diferenças entre as versões, exibir as diferenças entre as versões lado-a-lado, exibir as diferenças entre as 3 versões disponíveis, juntar as 3 versões disponíveis, iniciar um novo shell para examinar a situação
+Choices-ru.UTF-8: установить версию из пакета, сохранить установленную локальную версию, показать различия между версиями, показать различия между версиями параллельно, показать 3-x стороннее различие между доступными версиями, показать 3-x стороннее слияние между доступными версиями, запустить новую оболочку для прояснения ситуации
+Choices-C: install_new, keep_current, diff, sdiff, diff_threeway, merge_threeway, shell
+Default: keep_current
+Description: What do you want to do about modified configuration file ${BASENAME}?
+ A new version (${NEW}) of configuration file ${FILE} is available, but the version installed
+ currently has been locally modified.
+Description-cs.UTF-8: Co chcete provést se změněným konfiguračním souborem ${BASENAME}?
+ K dispozici je novější verze (${NEW}) konfiguračního souboru ${FILE}, avšak nainstalovaná verze obsahuje lokální úpravy.
+Description-da.UTF-8: Hvad vil du gøre med ændret opsætningsfil ${BASENAME}?
+ En ny version (${NEW}) af opsætningsfilen ${FILE} er tilgængelig, men den installerede version er blevet ændret lokalt.
+Description-de.UTF-8: Wie wollen Sie mit der geänderten Konfigurationsdatei ${BASENAME} verfahren?
+ Eine neue Version (${NEW}) der Konfigurationsdatei ${FILE} ist verfügbar, aber die derzeit installierte Version wurde verändert.
+Description-es.UTF-8: ¿Qué desea hacer con el archivo de configuración modificado «${BASENAME}»?
+ Hay una nueva versión («${NEW}») del archivo de configuración «${FILE}» , pero la versión que está instalada ha sido modificada localmente.
+Description-eu.UTF-8: Zer egitea nahi duzu aldatutako ${BASENAME} konfigurazioko fitxategiarekin?
+ ${FILE} konfigurazioko fitxategiaren bertsio berri bat (${NEW}) dago eskuragarri, baina instalatutako bertsioa lokalki aldatua izan da.
+Description-fi.UTF-8: Miten muokattu asetustiedosto ${BASENAME} käsitellään?
+ Asetustiedostosta ${FILE} on tarjolla uusi versio (${NEW}), mutta nykyistä versiota on muokattu paikallisesti.
+Description-fr.UTF-8: Action souhaitée pour le fichier de configuration modifié ${BASENAME} :
+ Une nouvelle version (${NEW}) du fichier de configuration ${FILE} est disponible mais la version actuellement utilisée a été modifiée localement.
+Description-ja.UTF-8: 変更された設定ファイル ${BASENAME} について何を行いたいですか?
+ 設定ファイル ${FILE} の新しいバージョン  (${NEW}) が利用可能ですが、現在インストールされているバージョンは、ローカルで変更されています。
+Description-nl.UTF-8: Wat wilt u met het aangepaste configuratiebestand ${BASENAME} doen?
+ Een nieuwe versie (${NEW}) van het configuratiebestand ${FILE} is beschikbaar, maar de geïnstalleerde versie is lokaal gewijzigd.
+Description-pl.UTF-8: Jakie działanie ma zostać wykonane w związku z modyfikacją pliku ${BASENAME}?
+ Dostępna jest nowa wersja (${NEW}) pliku konfiguracyjnego ${FILE}, ale obecna wersja została lokalnie zmodyfikowana.
+Description-pt.UTF-8: O que deseja fazer acerca do ficheiro de configuração modificado ${BASENAME}?
+ Está disponível nova versão (${NEW}) do ficheiro de configuração ${FILE}, mas a versão actualmente instalada foi modificada localmente.
+Description-pt_BR.UTF-8: O que você quer fazer sobre o arquivo de configuração modificado ${BASENAME}?
+ Uma nova versão (${NEW}) do arquivo de configuração ${FILE} está disponível, mas a versão atualmente instalada foi modificada localmente.
+Description-ru.UTF-8: Что нужно сделать с изменённым файлом настройки ${BASENAME}?
+ Доступна новая версия (${NEW}) файла настройки ${FILE}, но версия файла, находящаяся в системе, была изменёна локально.
+Description-sk.UTF-8: Čo chcete urobiť so zmeneným konfiguračným súborom ${BASENAME}?
+ Je dostupná nová verzia (${NEW}) konfiguračného súboru ${FILE}, ale aktuálne nainštalovaná verzia bola lokálne upravená.
+Description-sv.UTF-8: Vad vill du göra med den uppdaterade filen ${BASENAME}?
+ En ny version (${NEW}) av konfigurationsfilen ${FILE} finns tillgänglig, men versionen som är installerad har ändrats lokalt.
+
+Template: ucf/changeprompt
+Type: select
+Choices: install the package maintainer's version, keep the local version currently installed, show the differences between the versions, show a side-by-side difference between the versions, start a new shell to examine the situation
+Choices-ca.UTF-8: instal·la la versió del mantenidor del paquet, mantín la versió instal·lada actualment, mostra les diferències entre les versions, mostra les diferències en paral·lel entre les versions, inicia un nou intèrpret d'ordres per examinar la situació
+Choices-cs.UTF-8: instalovat verzi od správce balíku, ponechat aktuálně instalovanou lokální verzi, zobrazit rozdíly mezi verzemi, zobrazit rozdíly mezi verzemi vedle sebe, spustit nový shell a prozkoumat situaci
+Choices-da.UTF-8: installer pakkevedligeholderens udgave, bevar din aktuelt installerede udgave, vis forskellene mellem udgaverne, vis forskellene mellem versionerne overfor hinanden, start en ny skal for at undersøge situationen
+Choices-de.UTF-8: Version des Paketbetreuers installieren, aktuell lokal installierte Version beibehalten, Unterschiede zwischen den Versionen anzeigen, Unterschiede zwischen den Versionen nebeneinander anzeigen, die Angelegenheit in einer neu gestarteten Shell untersuchen
+Choices-es.UTF-8: instalar la versión del responsable del paquete, conservar la versión local actualmente instalada, mostrar las diferencias entre las versiones, mostrar las diferencias entre las versiones lado a lado, ejecutar un nuevo intérprete para analizar la situación
+Choices-eu.UTF-8: instalatu mantentzailearen bertsioaren paketea, mantendu lokalean unean instalatutako bertsioa, erakutsi bertsioen arteko desberdintasunak, erakutsi bertsioen arteko desberdintasunak aldez-alde, abiarazi shell berri bat egoera aztertzeko
+Choices-fi.UTF-8: Asenna paketin ylläpitäjän versio, Säilytä tämän hetkinen paikallinen versio, Näytä versioiden väliset erot, Näytä versioiden väliset erot rinnakkain, Käynnistä uusi komentotulkki tilanteen tutkimiseksi
+Choices-fr.UTF-8: Installer la version du responsable du paquet, Garder la version actuellement installée, Montrer les différences entre les versions, Montrer côte à côte les différences entre les versions, Lancer un shell pour examiner la situation
+Choices-gl.UTF-8: instalar a versión do mantenedor do paquete, conservar a versión local instalada actualmente, mostrar as diferenzas entre as versións, mostrar unha comparación entre as versións, iniciar unha shell para examinar a situación
+Choices-it.UTF-8: installare la versione del manutentore del pacchetto, mantenere la propria versione attualmente installata, mostrare le differenze tra le versioni, mostrare affiancate le differenze tra le versioni, eseguire una nuova shell per esaminare la situazione
+Choices-ja.UTF-8: パッケージメンテナのバージョンをインストール, 現在インストールされているローカルバージョンを保持, バージョン間の差異を表示, バージョン間の差異を並行表示, 状況を検討するための新しいシェルを起動
+Choices-nl.UTF-8: installeer de versie van de pakketbeheerder, behoud de reeds geïnstalleerde versie, toon de verschillen tussen de versies, toon de verschillende versies zij-aan-zij, start een nieuwe shell om de situatie te onderzoeken
+Choices-pl.UTF-8: zainstalowanie wersji przygotowanej przez opiekuna pakietu, zachowanie lokalnie zainstalowanej wersji, pokazanie różnic pomiędzy wersjami, pokazanie różnic - obok siebie - pomiędzy wersjami, uruchomienie powłoki w celu zbadania sytuacji
+Choices-pt.UTF-8: instalar a versão do criador do pacote, manter a versão actualmente instalada, mostrar a diferença entre as versões, mostrar uma diferença lado-a-lado entre as versões, iniciar uma nova consola para examinar a situação
+Choices-pt_BR.UTF-8: instalar a versão do mantenedor do pacote, manter a versão local atualmente instalada, exibir as diferenças entre as versões, exibir as diferenças entre as versões lado-a-lado, iniciar um novo shell para examinar a situação
+Choices-ru.UTF-8: установить версию из пакета, сохранить установленную локальную версию, показать различия между версиями, показать различия между версиями параллельно, запустить новую оболочку для прояснения ситуации
+Choices-sk.UTF-8: nainštalovať verziu správcu balíka, zachovať aktuálne nainštalovanú lokálnu verziu, zobraziť rozdiely medzi verziami, zobraziť rozdiely medzi verziami vedľa seba, spustiť nový shell na preverenie situácie
+Choices-sv.UTF-8: installera paketansvariges version, behåll den lokalt installerade version, visa skillnaderna mellan versionerna, visa skillnaderna sida vid sida mellan versionerna, starta ett nytt skal för att undersöka situationen
+Choices-vi.UTF-8: cài đặt phiên bản của nhà duy trì gói, giữ phiên bản cục bộ được cài đặt hiện thời, hiển thị khác biệt giữa những phiên bản, hiển thị khác biệt cạnh nhau giữa những phiên bản, khởi chạy trình bao mới để khám xét trường hợp
+Choices-C: install_new, keep_current, diff, sdiff, shell
+Default: keep_current
+Description: What do you want to do about modified configuration file ${BASENAME}?
+ ${BASENAME}: A new version (${NEW}) of configuration file ${FILE} is available, but the version installed
+ currently has been locally modified.
+Description-da.UTF-8: Hvad vil du gøre med ændret opsætningsfil ${BASENAME}?
+ ${BASENAME}: En ny version (${NEW}) af opsætningsfilen ${FILE} er tilgængelig, men den installerede version er blevet ændret lokalt.
+Description-de.UTF-8: Wie wollen Sie mit der geänderten Konfigurationsdatei ${BASENAME} verfahren?
+ ${BASENAME}: Eine neue Version (${NEW}) der Konfigurationsdatei ${FILE} ist verfügbar, aber die derzeit installierte Version wurde verändert.
+Description-es.UTF-8: ¿Qué desea hacer con el archivo de configuración modificado «${BASENAME}»?
+ ${BASENAME}: Hay una nueva versión («${NEW}») del archivo de configuración «${FILE}», pero la versión que está instalada ha sido modificada localmente.
+Description-fr.UTF-8: Action souhaitée pour le fichier de configuration modifié ${BASENAME} :
+ ${BASENAME} : Une nouvelle version (${NEW}) du fichier de configuration ${FILE} est disponible mais la version actuellement utilisée a été modifiée localement.
+Description-ja.UTF-8: 変更された設定ファイル ${BASENAME} について何を行いたいですか?
+ ${BASENAME}: 設定ファイル ${FILE} の新しいバージョン  (${NEW}) が利用可能ですが、現在インストールされているバージョンは、ローカルで変更されています。
+Description-pt.UTF-8: O que deseja fazer acerca do ficheiro de configuração modificado ${BASENAME}?
+ ${BASENAME}: Está disponível uma nova versão (${NEW}) do ficheiro de configuração ${FILE}, mas a versão actualmente instalada foi modificada localmente.
+Description-pt_BR.UTF-8: O que você quer fazer sobre o arquivo de configuração modificado ${BASENAME}?
+ ${BASENAME}: Uma nova versão (${NEW}) do arquivo de configuração ${FILE} está disponível, mas a versão atualmente instalada foi modificada localmente.
+Description-ru.UTF-8: Что нужно сделать с изменённым файлом настройки ${BASENAME}?
+ ${BASENAME}: Доступна новая версия (${NEW}) файла настройки ${FILE}, но версия файла, находящаяся в системе, была изменёна локально.
+
+Template: ucf/show_diff
+Type: note
+Description: Line by line differences between versions
+ ${DIFF}
+Description-ca.UTF-8: Diferències línia a línia entre les versions
+ ${DIFF}
+Description-cs.UTF-8: Rozdíly mezi verzemi řádek po řádku
+ ${DIFF}
+Description-da.UTF-8: vis forskellene mellem udgaverne
+ ${DIFF}
+Description-de.UTF-8: Unterschiede zwischen den Versionen zeilenweise anzeigen
+ ${DIFF}
+Description-es.UTF-8: Mostrar las diferencias línea a línea entre las versiones
+ ${DIFF}
+Description-eu.UTF-8: Bertsioen arteko desberdintasunak lerroz lerro
+ ${DIFF}
+Description-fi.UTF-8: Versioiden väliset erot rivi riviltä
+ ${DIFF}
+Description-fr.UTF-8: Montrer, ligne par ligne, les différences entre les versions
+ ${DIFF}
+Description-gl.UTF-8: Diferenzas liña por liña entre as versións
+ ${DIFF}
+Description-it.UTF-8: Differenze riga per riga tra le versioni
+ ${DIFF}
+Description-ja.UTF-8: バージョン間の行ごとの差異
+ ${DIFF}
+Description-nl.UTF-8: Toon de verschillen tussen de versies
+ ${DIFF}
+Description-pl.UTF-8: Różnice pomiędzy wersjami - wiersz po wierszu
+ ${DIFF}
+Description-pt.UTF-8: Diferenças entre as versões linha por linha
+ ${DIFF}
+Description-pt_BR.UTF-8: Diferenças entre as versões linha por linha
+ ${DIFF}
+Description-ru.UTF-8: Различия между версиями построчно
+ ${DIFF}
+Description-sk.UTF-8: Rozdiely medzi verziami, riadok po riadku
+ ${DIFF}
+Description-sv.UTF-8: Visa skillnaderna rad för rad mellan versionerna
+ ${DIFF}
+Description-vi.UTF-8: Khác biệt từng dòng giữa những phiên bản
+ ${DIFF}
+
+Template: ucf/conflicts_found
+Type: error
+Description: Conflicts found in three-way merge
+ Conflicts found during three-way merge! Please edit `${dest_file}' and sort
+ them out manually.
+ .
+ The file `${dest_file}.${ERR_SUFFIX}' has a record of the failed merge of
+ the configuration file.
+Description-ca.UTF-8: S'han trobat conflictes en la fusió a tres bandes
+ S'han trobat conflictes durant la fusió a tres bandes! Editeu «${dest_file}» i solucioneu-los manualment.
+ .
+ El fitxer «${dest_file}.${ERR_SUFFIX}» té un registre de la fusió fallida del fitxer de configuració.
+Description-cs.UTF-8: Co chcete udělat s ${BASENAME}?
+ Během třícestného sloučení byly nalezeny konflikty! Upravte prosím soubor „${dest_file}“ a opravte je ručně.
+ .
+ Soubor „${dest_file}.${ERR_SUFFIX}“ obsahuje záznam nepodařeného sloučení konfiguračního souboru.
+Description-da.UTF-8: Konflikter fundet i trevejssammenføjning
+ Konflikter fundet under trevejssammenføjning! Rediger venligst `${dest_file}' og ret dem manuelt.
+ .
+ Filen `${dest_file}.${ERR_SUFFIX}' har en post over den mislykkede sammenføjning af opsætningsfilen.
+Description-de.UTF-8: Konflikte bei der 3-Wege-Zusammenführung
+ Es wurden Konflikte bei der 3-Wege-Zusammenführung festgestellt! Bitte passen Sie die Datei »${dest_file}« selbst an, um die Konflikte zu beseitigen.
+ .
+ Die Datei »${dest_file}.${ERR_SUFFIX}« enthält eine Aufzeichnung der fehlgeschlagenen Zusammenführung der Konfigurationsdateien.
+Description-es.UTF-8: Se encontraron conflictos al intentar fusionar a tres bandas
+ ¡Se encontraron conflictos al intentar la fusionar a tres bandas! Edite «${dest_file}» y resuélvalos manualmente.
+ .
+ El archivo «${dest_file}.${ERR_SUFFIX}» tiene un registro del fallo de fusión del archivo de configuración.
+Description-eu.UTF-8: Gatazkak aurkitu dira 3-moduko baturan
+ Gatazkak aurkitu dira 3-moduko baturan. Editatu '${dest_file}' eta ordenatu eskuz.
+ .
+ '${dest_file}.${ERR_SUFFIX}' fitxategiak erregistro bat du konfigurazioko fitxategiak batzean huts egin duten sarrerekin.
+Description-fi.UTF-8: Kolmisuuntaisessa yhdistyksessä ilmeni ristiriitoja
+ Kolmesta yhdistettävästä tiedostosta löytyi ristiriitoja. Muokkaa tiedostoa ”${dest_file}” ja ratkaise ne käsin.
+ .
+ Tiedostossa ”${dest_file}.${ERR_SUFFIX}” on tiedot asetustiedoston epäonnistuneesta yhdistämisestä.
+Description-fr.UTF-8: Conflits pendant la fusion des 3 versions
+ Des conflits ont été trouvés pendant la fusion des trois versions (« 3-way merge »). Veuillez ouvrir « ${dest_file} » et les corriger vous-même.
+ .
+ Le fichier « ${dest_file}.${ERR_SUFFIX} » contient une trace de la fusion qui a échoué.
+Description-gl.UTF-8: Atopáronse conflitos na fusión a tres bandas
+ Atopáronse conflitos durante a fusión a tres bandas! Edite «${dest_file}» e ordéneos manualmente.
+ .
+ O ficheiro «${dest_file}.{ERR_SUFFIX}» contén un rexistro da fusión fracasada do ficheiro de configuración.
+Description-it.UTF-8: Conflitto nell'integrazione delle 3 versioni
+ Si sono verificati conflitti nell'integrazione delle 3 versioni! Modificare il file «${dest_file}» e risolvere manualmente la situazione.
+ .
+ Il file «${dest_file}.${ERR_SUFFIX}» contiene il resoconto della tentata integrazione del file di configurazione.
+Description-ja.UTF-8: 3 ウェイマージ中に競合を発見しました
+ 3 ウェイマージ中に競合を発見しました! `${dest_file}' を編集して手動でそれらを整理してください。
+ .
+ ファイル `${dest_file}.${ERR_SUFFIX}' に設定ファイルのマージに失敗した記録が保持されています。
+Description-nl.UTF-8: Tegenstrijdigheden gevonden in de drievoudige samenvoeging
+ Tegenstrijdigheden gevonden tijdens de drievoudige samenvoeging! Wijzig alstublieft `${dest_file}` handmatig om dit op te lossen.
+ .
+ Het bestand `${dest_file}.${ERR_SUFFIX}' bevat een verslag van de mislukte samenvoeging van het configuratiebestand.
+Description-pl.UTF-8: Znaleziono konflikt podczas scalania pomiędzy trzema wersjami
+ Wystąpił konflikt podczas scalania pomiędzy trzema wersjami! Proszę dokonać edycji "${dest_file}" i rozwiązać problem samodzielnie.
+ .
+ Plik "${dest_file}.${ERR_SUFFIX}" posiada wpis o niepoprawnym scalaniu pliku konfiguracyjnego.
+Description-pt.UTF-8: Conflitos encontrados na fusão de três vias
+ Conflitos encontrados na fusão de três vias! Por favor edite '${dest_file}' e organize-os manualmente.
+ .
+ O ficheiro '${dest_file}.${ERR_SUFFIX}' tem um registo da fusão falhada do ficheiro de configuração.
+Description-pt_BR.UTF-8: Conflitos encontrados na junção das três versões
+ Foram encontrados conflitos durante a junção das três versões! Por favor edite "${dest_file}" e os corrija manualmente.
+ .
+ O arquivo "${dest_file}.${ERR_SUFFIX}" contém um registro da falha na junção do arquivo de configuração.
+Description-ru.UTF-8: Проблемы при 3-x стороннем слиянии
+ Обнаружены конфликты при 3-x стороннем слиянии! Отредактируйте `${dest_file}' и сопоставьте их вручную.
+ .
+ Файл `${dest_file}.${ERR_SUFFIX}' содержит элементы, которые не дают объединить файлы настройки.
+Description-sk.UTF-8: Zistené konflikty pri trojcestnom zlúčení
+ Zistené konflikty pri trojcestnom zlúčení! Prosím upravte „${dest_file}” a opravte ich manuálne.
+ .
+ Súbor „${dest_file}.${ERR_SUFFIX}” má záznam o neúspešnom zlúčení konfiguračného súboru.
+Description-sv.UTF-8: Konflikter i trevägssammanslagning
+ En eller flera konflikter uppstod vid trevägssammanslagningen! Redigera "${dest_file}" och lös konflikterna manuellt.
+ .
+ Filen "${dest_file}.${ERR_SUFFIX}"  innehåller en notering av den misslyckade sammanslagningen av inställningsfilerna.
+Description-vi.UTF-8: Xung đột được tìm trong sự hoà trộn ba hướng
+ Tìm thấy sự xung đột trong khi hoà trộn về ba hướng. Hãy sửa đổi tập tin đích « ${dest_file} » và giải quyết bằng tay.
+ .
+ Tập tin đích « ${dest_file}.${ERR_SUFFIX} » đã ghi lưu tiến trình hoà trộn bị lỗi của tập tin cấu hình.

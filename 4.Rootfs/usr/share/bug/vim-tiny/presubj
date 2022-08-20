@@ -1,0 +1,15 @@
+Before filing a bug, please ensure that your configuration is not the cause of
+the bug.  At the very least, this can help narrow down exactly where the bug
+exists or what option is causing the behavior.
+
+If the potential bug is part of Vim's basic functionality, run
+
+  (g)vim -u NONE -U NONE -N
+
+If the potential bug is part of Vim's plugins, run
+
+  (g)vim -u NORC -U NORC -N
+
+If the potential bug is part of Vim's filetype-specific functionality, run
+
+  (g)vim -u NORC -U NORC --cmd 'filetype plugin indent on' -N

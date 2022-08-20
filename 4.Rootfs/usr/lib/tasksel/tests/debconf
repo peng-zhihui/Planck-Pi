@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# Allows a task to be enabled or disabled if tasksel is running inside a
+# debconf instance, as in the first stage Debian install.
+#
+# To enable this test insert your tasks stanza a keyword like:
+#
+# Test-debconf: false
+#
+# This will cause the task to be available only if tasksel is not running
+# in debconf.
+
+if [ "$DEBIAN_HAS_FRONTEND" ] || [ "$DEBCONF_READFD" ]; then
+	if [ "$2" = true ]; then
+		exit 3 # display task, not marked for installation
+	fi
+else
+	if [ "$2" = false ]; then
+		exit 3 # display task, not marked for installation
+	fi
+fi
+
+exit 1 # do not display task

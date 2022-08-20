@@ -1,0 +1,47 @@
+#! /bin/sh
+
+dpkg="dpkg"
+
+echo "Info for debian package '$1':"
+dpkg-deb --info $1
+
+echo     " "
+echo     "Do you wish to:"
+echo     " - I)nstall the package now,"
+echo     " - S)ave it to a file, or"
+echo     " - Q)uit now"
+echo -n "Your choice (I/S/Q)? "
+read choice
+
+case "$choice" in
+
+  [iI])
+    if [ `id --user` -ne 0 ]
+	then
+	echo    "Installation of Debian packages needs to be done as root."
+	echo -n "Enter command used to become root (default=sudo): "
+	read sudo
+	if [ -z "$sudo" ]; then
+	    sudo="sudo"
+	fi
+	dpkg="$sudo $dpkg"
+    fi
+
+    echo " "
+    echo "Installing package..."
+    eval "$dpkg --install '$1'"
+    ;;
+
+  [sS])
+    echo -n "Save as? "
+    read filename
+    echo "Saving '$filename'..."
+    cat "$1" >$filename
+    ;;
+
+esac
+
+echo " "
+echo -n "Done.  Press <return> to continue: "
+read dummy
+echo " "

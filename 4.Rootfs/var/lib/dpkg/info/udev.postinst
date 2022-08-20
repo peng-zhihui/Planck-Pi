@@ -1,0 +1,156 @@
+#!/bin/sh -e
+
+chrooted() {
+  if [ "$(stat -c %d/%i /)" = "$(stat -Lc %d/%i /proc/1/root 2>/dev/null)" ];
+  then
+    # the devicenumber/inode pair of / is the same as that of /sbin/init's
+    # root, so we're *not* in a chroot and hence return false.
+    return 1
+  fi
+  echo "A chroot environment has been detected, udev not started."
+  return 0
+}
+
+in_debootstrap() {
+  # debootstrap --second-stage may be run in an emulator instead of a chroot,
+  # we need to check for this special case because start-stop-daemon would
+  # not be available. (#520742)
+  if [ -d /debootstrap/ ]; then
+    echo "Being installed by debootstrap, udev not started."
+    return 0
+  fi
+  return 1
+}
+
+can_start_udevd() {
+  if [ ! -d /sys/class/ ]; then
+    echo "udev requires a mounted sysfs, not started."
+    return 1
+  fi
+  return 0
+}
+
+enable_udev() {
+  can_start_udevd || return 0
+  invoke-rc.d udev start
+}
+
+update_initramfs() {
+  [ -x /usr/sbin/update-initramfs -a -e /etc/initramfs-tools/initramfs.conf ] \
+    || return 0
+  update-initramfs -u
+}
+
+upgrade_fixes() {
+  if dpkg --compare-versions "$2" lt "226-1"; then
+    update-rc.d udev-finish remove
+  fi
+
+  # we enabled net.ifnames in 220-7 by default; don't change iface names in
+  # virtualized envs (where 75-persistent-net-generator.rules didn't work)
+  if dpkg --compare-versions "$2" lt-nl "220-7~" &&
+     [ ! -e /etc/udev/rules.d/70-persistent-net.rules ] &&
+     [ ! -e /etc/udev/rules.d/80-net-setup-link.rules ] &&
+     [ ! -e /etc/systemd/network/99-default.link ] &&
+     [ ! -L /etc/systemd/network/99-default.link ] &&
+     ! grep -q net.ifnames /proc/cmdline && ! chrooted; then
+    mkdir -p /etc/systemd/network
+    cat <<EOF > /etc/systemd/network/99-default.link
+# This machine is most likely a virtualized guest, where the old persistent
+# network interface mechanism (75-persistent-net-generator.rules) did not work.
+# This file disables /lib/systemd/network/99-default.link to avoid
+# changing network interface names on upgrade. Please read
+# /usr/share/doc/udev/README.Debian.gz about how to migrate to the currently
+# supported mechanism.
+EOF
+  fi
+
+  # 226 introduced predictable interface names for virtio
+  # (https://github.com/systemd/systemd/pull/1119); disable for upgrades
+  if dpkg --compare-versions "$2" lt-nl "226-2~" &&
+      [ ! -e /etc/systemd/network/50-virtio-kernel-names.link ] &&
+      ls -d /sys/bus/virtio/drivers/virtio_net/virt* >/dev/null 2>&1; then
+    echo "virtio network devices detected, disabling predictable interface names in /etc/systemd/network/50-virtio-kernel-names.link"
+    mkdir -p /etc/systemd/network/
+    cat <<EOF > /etc/systemd/network/50-virtio-kernel-names.link
+# udev 226 introduced predictable interface names for virtio;
+# disable this for upgrades. You can remove this file if you update your
+# network configuration to move to the ens* names instead.
+# See /usr/share/doc/udev/README.Debian.gz for details about predictable
+# network interface names.
+[Match]
+Driver=virtio_net
+
+[Link]
+NamePolicy=onboard kernel
+EOF
+  fi
+
+  # new Default-Stop (see #791944)
+  if dpkg --compare-versions "$2" lt-nl "239-8"; then
+    update-rc.d -f udev remove
+  fi
+}
+
+update_hwdb() {
+  systemd-hwdb --usr update || true
+}
+
+case "$1" in
+    configure)
+    # update/create hwdb before we (re)start udev
+    update_hwdb
+
+    # Add new system group used by udev rules
+    addgroup --quiet --system input
+
+    # Make /dev/kvm accessible to kvm group
+    addgroup --quiet --system kvm
+
+    # Make /dev/dri/renderD* accessible to render group
+    addgroup --quiet --system render
+
+    if [ -z "$2" ]; then # first install
+      if ! chrooted && ! in_debootstrap; then
+	enable_udev
+      fi
+    else # upgrades
+      upgrade_fixes "$@"
+      if ! chrooted; then
+	if can_start_udevd; then
+	  if [ -d /run/systemd/system ] ; then
+	    systemctl daemon-reload || true
+	  fi
+	  invoke-rc.d udev restart
+	fi
+      fi
+    fi
+
+    update_initramfs
+    ;;
+
+    triggered)
+    update_hwdb
+    exit 0
+    ;;
+esac
+
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/init.d/udev-finish 226-1\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/udev-finish.conf 226-1\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/udev-fallback-graphics.conf 226-1\~ -- "$@"
+dpkg-maintscript-helper symlink_to_dir /usr/share/doc/udev libudev1 221-2\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/modprobe.d/fbdev-blacklist.conf 229-6\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/udev.conf 233-1\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/udevmonitor.conf 233-1\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/udevtrigger.conf 233-1\~ -- "$@"
+# End automatically added section
+# Automatically added by dh_installinit/12.1.1
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-deconfigure" ] || [ "$1" = "abort-remove" ] ; then
+	if [ -x "/etc/init.d/udev" ]; then
+		update-rc.d udev defaults >/dev/null || exit 1
+	fi
+fi
+# End automatically added section
+
+

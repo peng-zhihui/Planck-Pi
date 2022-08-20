@@ -1,0 +1,26 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    install)
+	# remember newly installed runtime
+	mkdir -p /var/lib/python
+	touch /var/lib/python/python3.7_installed
+    ;;
+    upgrade)
+	:
+    ;;
+
+    abort-upgrade)
+    ;;
+
+    *)
+        echo "preinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+
+
+exit 0

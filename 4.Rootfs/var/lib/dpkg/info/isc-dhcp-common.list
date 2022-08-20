@@ -1,0 +1,13 @@
+/.
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/isc-dhcp-common
+/usr/share/doc/isc-dhcp-common/README.gz
+/usr/share/doc/isc-dhcp-common/changelog.Debian.gz
+/usr/share/doc/isc-dhcp-common/changelog.gz
+/usr/share/doc/isc-dhcp-common/copyright
+/usr/share/man
+/usr/share/man/man5
+/usr/share/man/man5/dhcp-eval.5.gz
+/usr/share/man/man5/dhcp-options.5.gz

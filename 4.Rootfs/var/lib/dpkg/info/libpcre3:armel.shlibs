@@ -1,0 +1,4 @@
+libpcre 3 libpcre3 (>= 1:8.35)
+libpcreposix 3 libpcre3 (>= 1:8.35)
+udeb: libpcre 3 libpcre3-udeb (>= 1:8.35)
+udeb: libpcreposix 3 libpcre3-udeb (>= 1:8.35)

@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_installinit/12.1.1
+if [ -x "/etc/init.d/haveged" ]; then
+	invoke-rc.d haveged stop || exit 1
+fi
+# End automatically added section

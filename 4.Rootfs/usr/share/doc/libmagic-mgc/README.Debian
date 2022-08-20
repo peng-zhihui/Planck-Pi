@@ -1,0 +1,8 @@
+
+Between architectures, the compiled magic at /usr/lib/file/magic.mgc
+differs only in the endianness. The libmagic library can auto-detect
+wrong endianness and handle that situation gracefully, at a significant
+performance cost though.
+
+Therefore: If you run file/libmagic in a mixed-endianness multi-arch
+setup, choose the architecture for libmagic-mgc wisely.

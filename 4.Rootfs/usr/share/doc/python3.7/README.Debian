@@ -1,0 +1,95 @@
+
+  Python 3.7 for Debian
+  ---------------------
+
+This is Python 3.7 packaged for Debian.
+
+This document contains information specific to the Debian packages of
+Python 3.7.
+
+
+
+   [TODO: This document is not yet up-to-date with the packages.]
+
+Currently, it features those two main topics:
+
+  1. Release notes for the Debian packages:
+  2. Notes for developers using the Debian Python packages:
+
+Release notes and documentation from the upstream package are installed
+in /usr/share/doc/python3.7/.
+
+There's a mailing list for discussion of issues related to Python on Debian
+systems: debian-python@lists.debian.org. The list is not intended for
+general Python problems, but as a forum for maintainers of Python-related
+packages and interested third parties.
+
+
+
+1. Release notes for the Debian packages:
+
+
+Results of the regression test:
+------------------------------
+
+The package does successfully run the regression tests for all included
+modules. Seven packages are skipped since they are platform-dependent and
+can't be used with Linux.
+
+
+2. Notes for developers using the Debian python packages:
+
+See the draft of the Debian Python policy in /usr/share/doc/python.
+
+distutils can be found in the python3.7-dev package. Development files
+like the python library or Makefiles can be found in the python3.7-dev
+package in /usr/lib/python3.7/config. Therefore, if you need to install 
+a pure python extension, you only need python3.7. On the other hand, to 
+install a C extension, you need python3.7-dev.
+
+a) Locally installed Python add-ons
+
+    /usr/local/lib/python3.7/site-packages/
+    /usr/local/lib/site-python/ (version-independent modules)
+
+b) Python add-ons packaged for Debian
+
+    /usr/lib/python3.7/site-packages/
+    /usr/lib/site-python/ (version-independent modules)
+
+Note that no package must install files directly into /usr/lib/python3.7/
+or /usr/local/lib/python3.7/. Only the site-packages directory is allowed
+for third-party extensions.
+
+Use of the new `package' scheme is strongly encouraged. The `ni' interface
+is obsolete in python 1.5.
+
+Header files for extensions go into /usr/include/python3.7/.
+
+
+Installing extensions for local use only:
+----------------------------------------
+
+Consider using distutils ...
+
+Most extensions use Python's Makefile.pre.in. Note that Makefile.pre.in
+by default will install files into /usr/lib/, not into /usr/local/lib/,
+which is not allowed for local extensions. You'll have to change the
+Makefile accordingly. Most times, "make prefix=/usr/local install" will
+work.
+
+
+Packaging python extensions for Debian:
+--------------------------------------
+
+Maintainers of Python extension packages should read
+
+	/usr/share/doc/python/python-policy.txt.gz
+
+ 
+
+
+    03/09/98
+    Gregor Hoffleit <flight@debian.org>
+
+Last change: 2001-12-14

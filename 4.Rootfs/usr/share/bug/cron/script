@@ -1,0 +1,28 @@
+#!/bin/sh
+# reportbug output generator script for cron package
+
+# reportbug expects output on fd 3
+exec 1>&3 2>&3
+
+echo "--- EDITOR:"
+if [ -n "$EDITOR" ] ; then
+       	echo "not set"
+else
+       	echo $EDITOR
+fi
+echo
+
+echo "--- /usr/bin/editor:"
+readlink -f /usr/bin/editor
+echo
+
+echo "--- /usr/bin/crontab:"
+ls -l /usr/bin/crontab
+echo
+
+for dir in /var/spool/cron /var/spool/cron/crontabs /etc/cron.d /etc/cron.daily /etc/cron.hourly /etc/cron.monthly /etc/cron.weekly ; do
+	echo "--- $dir:"
+	ls -ld $dir
+	echo
+done
+

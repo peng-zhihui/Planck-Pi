@@ -1,0 +1,12 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libmpdec.so.2.4.2
+/usr/share
+/usr/share/doc
+/usr/share/doc/libmpdec2
+/usr/share/doc/libmpdec2/changelog.Debian.gz
+/usr/share/doc/libmpdec2/changelog.gz
+/usr/share/doc/libmpdec2/copyright
+/usr/lib/arm-linux-gnueabi/libmpdec.so.2

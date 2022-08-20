@@ -1,0 +1,2 @@
+application/vnd.debian.binary-package; /usr/lib/mime/debian-view %s; needsterminal; description=Debian GNU/Linux Package; nametemplate=%s.deb; priority=0
+#audio/basic; /usr/lib/mime/playaudio %s; description=Basic uLaw Audio; nametemplate=%s.au; priority=0

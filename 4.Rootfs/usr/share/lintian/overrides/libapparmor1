@@ -1,0 +1,9 @@
+# Upstream does not ship a changelog.
+libapparmor1 binary: no-upstream-changelog
+
+# The shared library needs to be in /lib, the static library should be
+# in the same directory as the shared library, and the unversioned
+# symlink should be in the same directory as the static library
+# (#919705). See Lintian bug #843932, that suggests this requirement
+# of Lintian's might be unfounded.
+libapparmor1 binary: dev-pkg-without-shlib-symlink lib/x86_64-linux-gnu/libapparmor.so.1.6.0 usr/lib/x86_64-linux-gnu/libapparmor.so

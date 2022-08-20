@@ -1,0 +1,20 @@
+Source: ca-certificates-local
+Section: misc
+Priority: extra
+Maintainer: System Administrator <root@localhost.localdomain>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+
+Package: ca-certificates-local
+Architecture: all
+Depends: ca-certificates (>= 20130119), ${misc:Depends}
+Description: Local CA certificates
+ This package includes local CA certificates to be installed in
+ /usr/local/share/ca-certificates. The CA certificates installed by this
+ package will be implicitly trusted.
+ .
+ This is an example stub source package that includes a dummy CA
+ certificate in the local/ directory. Remove the dummy certificate, copy
+ your trusted local root CA (in PEM format with the filename ending in
+ ".crt") to the local/ directory, edit files in the debian/ directory as
+ desired, and build your custom package.

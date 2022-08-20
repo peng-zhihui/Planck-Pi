@@ -1,0 +1,37 @@
+The C implementation of dpkg was originally written by:
+
+	Ian Jackson <ijackson@chiark.greenend.org.uk>
+
+based on the Perl implementation by:
+
+	Matt Welsh <mdw@sunsite.unc.edu>
+	Carl Streeter <streeter@cae.wisc.edu>
+	Ian Murdock <imurdock@debian.org>
+
+
+It is currently maintained by:
+
+	Guillem Jover <guillem@debian.org>
+
+and has previously been maintained by:
+
+	Raphaël Hertzog <hertzog@debian.org> (2008-2015)
+	Christian Perrier <bubulle@debian.org> (2006-2008)
+	Frank Lichtenheld <djpig@debian.org> (2006-2009)
+	Brendan O'Dea <bod@debian.org> (2006-2007)
+	Scott James Remnant <scott@netsplit.com> (2004-2005)
+	Adam Heath <doogie@brainfood.com> (2001-2003)
+	Wichert Akkerman <wakkerma@debian.org> (1999-2003)
+	Ben Collins <bcollins@debian.org> (1999-2001)
+	Daniel Jacobowitz <dan@debian.org> (1998)
+	J.H.M. Dassen (Ray) <jdassen@wi.LeidenUniv.nl> (1998)
+	James Troup <jjtroup@comp.brad.ac.uk> (1998)
+	Nils Rennebarth <nils@debian.org> (1998)
+	Klee Dienes <klee@debian.org> (1997)
+	Guy Maor <maor@ece.utexas.edu> (1997)
+	Heiko Schlittermann <hs@schlittermann.de> (1996)
+
+
+Countless other people have contributed to dpkg (see THANKS) and provided
+code for which they claim copyright (see debian/copyright).  Many thanks
+to them all.

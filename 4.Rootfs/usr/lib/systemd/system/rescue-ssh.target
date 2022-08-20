@@ -1,0 +1,6 @@
+[Unit]
+Description=Rescue with network and ssh
+Documentation=man:systemd.special(7)
+Requires=network-online.target ssh.service
+After=network-online.target ssh.service
+AllowIsolate=yes

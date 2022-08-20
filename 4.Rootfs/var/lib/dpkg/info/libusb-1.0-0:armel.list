@@ -1,0 +1,13 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libusb-1.0.so.0.1.0
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libusb-1.0-0
+/usr/share/doc/libusb-1.0-0/README
+/usr/share/doc/libusb-1.0-0/changelog.Debian.gz
+/usr/share/doc/libusb-1.0-0/changelog.gz
+/usr/share/doc/libusb-1.0-0/copyright
+/lib/arm-linux-gnueabi/libusb-1.0.so.0

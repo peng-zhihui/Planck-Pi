@@ -1,0 +1,30 @@
+#!/bin/sh
+# This script is useful to check whether an interface is up and,
+# if not, it attempts to bring it back. This can be necessary
+# if your ISP provider causes occasional outages.
+# Some ISPs are known to termine connections when they reach
+# 24 hours to "prevent abuse".
+# Run this script through cron (every 5 minutes? your call)
+# and ensure that ifstate is located where it is defined below.
+#
+# NOTE: This script is just provided as an example. If you want this
+# feature you might be better off installing ifplugd which provides
+# similar functionality (but more featureful) out of the box.
+
+# TODO:
+# Improve it so it can find out (eg from /run/network/ifstate)
+# whether an interface was brought down
+# unexpectedly, or if a clean "ifdown" was issued.
+
+iface="$1"
+ifstate=/usr/local/sbin/ifstate
+
+if [ `$ifstate "$iface"` = DOWN ]
+then
+    logger -s "Trying to bring $iface back up..."
+    ifdown "$iface"
+    ifup "$iface"
+    [ `$ifstate "$iface"` = UP ] && logger -s "$iface now up again"
+fi
+
+exit 0

@@ -1,0 +1,50 @@
+#!/bin/sh
+
+set -e
+
+check_password() {
+    if [ ! "$SUDO_FORCE_REMOVE" = "yes" ]; then
+	# let's check whether the root account is locked.
+	# if it is, we're not going another step. No Sirreee!
+	passwd=$(getent shadow root|cut -f2 -d:)
+	passwd1=$(echo "$passwd" |cut -c1)
+	# Note: we do need the 'xfoo' syntax here, since POSIX special-cases
+	# the $passwd value '!' as negation.
+	if [ "x$passwd" = "x*" ] || [ "x$passwd1" = "x!" ]; then
+	    # yup, password is locked
+	    echo "You have asked that the sudo package be removed,"
+	    echo "but no root password has been set."
+	    echo "Without sudo, you may not be able to gain administrative privileges."
+	    echo
+	    echo "If you would prefer to access the root account with su(1)"
+	    echo "or by logging in directly,"
+	    echo "you must set a root password with \"sudo passwd\"."
+	    echo 
+	    echo "If you have arranged other means to access the root account,"
+	    echo "and you are sure this is what you want,"
+	    echo "you may bypass this check by setting an environment variable "
+	    echo "(export SUDO_FORCE_REMOVE=yes)."
+	    echo
+	    echo "Refusing to remove sudo."
+	    exit 1
+	fi
+    fi
+}
+	
+case $1 in
+	remove)
+		check_password;
+		;;
+	*)
+		;;
+esac
+
+# Automatically added by dh_installinit/12.1.1
+if [ -x "/etc/init.d/sudo" ] && [ "$1" = remove ]; then
+	invoke-rc.d sudo stop || exit 1
+fi
+# End automatically added section
+
+
+exit 0
+

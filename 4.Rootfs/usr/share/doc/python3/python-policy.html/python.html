@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 2. Python Packaging</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Debian Python Policy" /><link rel="up" href="index.html" title="Debian Python Policy" /><link rel="prev" href="python3.html" title="Chapter 1. On the move to Python 3" /><link rel="next" href="module_packages.html" title="Chapter 3. Packaged Modules" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 2. Python Packaging</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="python3.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="module_packages.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="python"></a>Chapter 2. Python Packaging</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="section"><a href="python.html#versions">2.1. Versions</a></span></dt><dt><span class="section"><a href="python.html#base">2.2. Main packages</a></span></dt><dt><span class="section"><a href="python.html#minimal">2.3. Minimal packages</a></span></dt><dt><span class="section"><a href="python.html#interpreter">2.4. Python Interpreter</a></span></dt><dd><dl><dt><span class="section"><a href="python.html#interpreter_name">2.4.1. Interpreter Name</a></span></dt><dt><span class="section"><a href="python.html#interpreter_loc">2.4.2. Interpreter Location</a></span></dt></dl></dd><dt><span class="section"><a href="python.html#paths">2.5. Module Path</a></span></dt><dt><span class="section"><a href="python.html#runtimes_hooks">2.6. Hooks for updates to installed runtimes</a></span></dt><dt><span class="section"><a href="python.html#docs">2.7. Documentation</a></span></dt></dl></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="versions"></a>2.1. Versions</h2></div></div></div><p>
+	  At any given time, the binary package <code class="literal">python3</code>
+	  will represent the current default Debian Python 3 version; the
+	  binary package <code class="literal">python</code> will represent the
+	  current default Debian Python 2 version. As far as is reasonable,
+	  Python 3 and Python 2 should be treated as separate runtime
+	  systems with minimal interdependencies.
+	</p><p>
+	  In some cases, Python policy explicitly references Python helper
+	  tools. For Debian Stretch, the <code class="literal">dh-python</code>
+	  package provides the only such tools; earlier helpers have been
+	  removed from Debian.
+	</p><p>
+	  It is a design goal to fully specify required interfaces and
+	  functions in policy for Python 3 and to avoid enshrining specific
+	  implementation details in policy. Except as noted, policy for
+	  Python 2 is the same as Python 3 with the exception of the
+	  different major version number as needed to distinguish them.
+	</p><p>
+	  The default Debian Python version, for each of Python 3 and Python
+	  2, should always be the latest stable upstream version that can be
+	  fully integrated in Debian.
+	</p><p>
+	  There may be newer supported or unsupported versions included in
+	  Debian if they are not fully integrated for a particular release.
+	</p><p>
+	  Apart from the default version, legacy versions of Python or beta
+	  releases of future upstream versions may be included as well in
+	  Debian, as long as they are needed by other packages, or as long
+	  as it seems reasonable to provide them.
+	</p><p>
+	  Note: For the scope of this document, a Python version is
+	  synonymous with all micro versions within that minor version. e.g.
+	  Python 3.5.0 and 3.5.1 are micro versions of the same Python
+	  version 3.5, but Python 3.4 and 3.5 are indeed different versions.
+	</p><p>
+	  For any version, the main binary package must be called
+	  <code class="literal">python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em></code>.
+	</p><p>
+	  The set of currently supported Python 3 versions can be found
+	  in <code class="filename">/usr/share/python3/debian_defaults</code>; the supported
+	  interface to this information is
+	  through <code class="filename">/usr/bin/py3versions</code>.
+	  The set of currently supported Python 2 versions can be found in
+	  <code class="filename">/usr/share/python/debian_defaults</code>; the supported
+	  interface to this information is <code class="filename">/usr/bin/pyversions</code>.
+	</p><p>
+	  These files are in Python <code class="literal">configparser</code> format. They
+	  define (in the <code class="literal">DEFAULT</code> section) the following options:
+	  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">default-version</code>: The name of the interpreter for
+	      the current default Debian Python.</p></li><li class="listitem"><p><code class="literal">supported-versions</code>: The set of interpreter names
+	      currently supported and for which modules should be built and
+	      byte-compiled. This includes <code class="literal">default-version</code>.</p></li><li class="listitem"><p><code class="literal">old-versions</code>: The set of interpreter names which
+	      might still be on the system but for which modules should not
+	      be built.</p></li><li class="listitem"><p><code class="literal">unsupported-versions</code>: The set of interpreter
+	      names which should not be supported at all, that is modules
+	      should not be built or byte-compiled for these. This includes
+	      (is a superset of) <code class="literal">old-versions</code>.</p></li></ul></div><p>
+	</p><p>
+	  Newer versions might also appear in <code class="literal">unsupported-versions</code>
+	  before being moved to <code class="literal">supported-versions</code>.
+	</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="base"></a>2.2. Main packages</h2></div></div></div><p>
+	  For every Python version provided in Debian, the binary
+	  package <code class="literal">python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em></code> shall
+	  provide a complete distribution for <span class="emphasis"><em>deployment</em></span> of Python
+	  scripts and applications. The package must ensure that the binary
+	  <code class="filename">/usr/bin/python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em></code> is provided.
+	</p><p>
+	  Installation of <code class="literal">python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em></code>
+	  shall provide the modules of the upstream Python distribution with
+	  some exceptions.
+	</p><p>
+	  Excluded are modules that cannot be included for licensing reasons
+	  (for example the <code class="literal">profile</code> module), for dependency tracking
+	  purposes (for example the GPL-licensed <code class="literal">gdbm</code> module), or
+	  that should not be included for packaging reasons (for example
+	  the <code class="literal">tk</code> module which depends on Xorg).
+	</p><p>
+	  Some tools and files for the <span class="emphasis"><em>development</em></span> of Python
+	  modules are split off in a separate binary package
+	  <code class="literal">python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em>-dev</code>.
+	</p><p>
+	  Documentation will be provided separately as well.
+	</p><p>
+	  At any time, the <code class="literal">python3</code> binary package must
+	  ensure that <code class="filename">/usr/bin/python3</code> is provided, as a
+	  symlink to the current <code class="filename">python3.<em class="replaceable"><code>Y</code></em></code>
+	  executable. The package must depend on
+	  the <code class="literal">python3.<em class="replaceable"><code>Y</code></em></code> package that installs
+	  the executable.
+	</p><p>
+	  The version of the <code class="literal">python3</code> package must be
+	  greater than or equal to 3.<em class="replaceable"><code>Y</code></em> and lower than
+	  3.<em class="replaceable"><code>Y+1</code></em>.
+	</p><p>
+	  At any time, the <code class="literal">python</code> binary package must
+	  ensure that <code class="filename">/usr/bin/python2</code> is provided, as a
+	  symlink to the current <code class="filename">python2.<em class="replaceable"><code>Y</code></em></code>
+	  executable. The package must depend on
+	  the <code class="literal">python2.<em class="replaceable"><code>Y</code></em></code> package that installs
+	  the executable.
+	</p><p>
+	  The version of the <code class="literal">python</code> package must be
+	  greater than or equal to 2.<em class="replaceable"><code>Y</code></em> and lower than
+	  2.<em class="replaceable"><code>Y+1</code></em>.
+	</p><p>
+	  The <code class="literal">python</code> binary package must also ensure
+	  that <code class="filename">/usr/bin/python</code> is provided, as a symlink to the
+	  current <code class="filename">python2.<em class="replaceable"><code>Y</code></em></code> executable. See
+	  <a class="ulink" href="https://www.python.org/dev/peps/pep-0394/" target="_blank">PEP 394</a> for details.
+	</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="minimal"></a>2.3. Minimal packages</h2></div></div></div><p>
+	  For every Python version provided in Debian, the binary package
+	  <code class="literal">python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em>-minimal</code> might
+	  exist and should not be depended upon by other packages except the
+	  Python runtime packages themselves.
+	</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="interpreter"></a>2.4. Python Interpreter</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="python.html#interpreter_name">2.4.1. Interpreter Name</a></span></dt><dt><span class="section"><a href="python.html#interpreter_loc">2.4.2. Interpreter Location</a></span></dt></dl></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="interpreter_name"></a>2.4.1. Interpreter Name</h3></div></div></div><p>
+	    The different Python major versions require different
+	    interpreters (see <a class="xref" href="python.html#base" title="2.2. Main packages">Section 2.2, “Main packages”</a>).
+	  </p><p>
+	    Python scripts that require the default Python 3 version should
+	    specify <code class="filename">python3</code> as the interpreter name.
+	  </p><p>
+	    Python scripts that require the default Python 2 version should
+	    specify <code class="filename">python2</code> as the interpreter name.
+	  </p><p>
+	    Python scripts may specify <code class="filename">python</code> as the
+	    interpreter name only if they do not require any particular
+	    version of Python. (Note: this means any python2 version)
+	  </p><p>
+	    Python scripts that only work with a specific Python minor
+	    version must explicitly use the versioned interpreter name
+	    (<code class="filename">python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em></code>).
+	  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="interpreter_loc"></a>2.4.2. Interpreter Location</h3></div></div></div><p>
+	    Python scripts should specify the Debian Python interpreter, to
+	    ensure that the Debian Python installation is used and all
+	    dependencies on additional Python modules are met.
+	  </p><p>
+	    The preferred specification for the Python 3 interpreter is
+	    <code class="filename">/usr/bin/python3</code> (or
+	    <code class="filename">/usr/bin/python3.<em class="replaceable"><code>Y</code></em></code> if it requires Python
+	    3.<em class="replaceable"><code>Y</code></em>).
+	  </p><p>
+	    The preferred specification for the Python 2 interpreter is
+	    <code class="filename">/usr/bin/python2</code> (or
+	    <code class="filename">/usr/bin/python2.<em class="replaceable"><code>Y</code></em></code> if it requires Python
+	    2.<em class="replaceable"><code>Y</code></em>).
+	  </p><p>
+	    Scripts requiring the default Python 2 version may instead
+	    specify the interpreter <code class="filename">/usr/bin/python</code>.
+	  </p><p>
+	    Maintainers should not override the Debian Python interpreter
+	    using <code class="filename">/usr/bin/env <em class="replaceable"><code>name</code></em></code>. This is not
+	    advisable as it bypasses Debian's dependency checking and makes
+	    the package vulnerable to incomplete local installations of
+	    Python.
+	  </p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="paths"></a>2.5. Module Path</h2></div></div></div><p>
+	  By default, Python modules are searched in the directories listed
+	  in the <code class="literal">PYTHONPATH</code> environment variable and in
+	  the <code class="literal">sys.path</code> Python variable. For all supported Debian
+	  releases, <code class="literal">sys.path</code> does not include
+	  a <code class="filename">/usr/lib/python<em class="replaceable"><code>X</code></em><em class="replaceable"><code>Y</code></em>.zip</code> entry.
+	</p><p>
+	  Directories with private Python modules must be absent from the
+	  <code class="literal">sys.path</code>.
+	</p><p>
+	  Public Python 3 modules must be installed in the system Python 3
+	  modules directory, <code class="filename">/usr/lib/python3/dist-packages</code>.
+	</p><p>
+	  Public Python 2 modules must be installed in the system Python 2
+	  modules directory
+	  <code class="filename">/usr/lib/python2.<em class="replaceable"><code>Y</code></em>/dist-packages</code>, where
+	  2.<em class="replaceable"><code>Y</code></em> is the Python 2 version.
+	</p><p>
+	  A special directory is dedicated to public Python modules
+	  installed by the local administrator,
+	  <code class="filename">/usr/lib/python3/dist-packages</code> for all Python 3 versions,
+	  <code class="filename">/usr/local/lib/python2.<em class="replaceable"><code>Y</code></em>/dist-packages</code> for
+	  Python 2.
+	</p><p>
+	  For local installation of Python modules by the system
+	  administrator, special directories are reserved. The
+	  directory <code class="filename">/usr/local/lib/python3/site-packages</code> is in
+	  the Python 3 runtime module search path. The
+	  directory <code class="filename">/usr/local/lib/python2.<em class="replaceable"><code>Y</code></em>/site-packages</code>
+	  is in the Python 2.<em class="replaceable"><code>Y</code></em> runtime module search path.
+	</p><p>
+	  Additional information on appending site-specific paths to the
+	  module search path is available in the official documentation of
+	  the <code class="literal">site</code> module.
+	</p><p>
+	  Python modules which work with multiple supported Python 2
+	  versions must install to version-specific locations, for instance
+	  <code class="filename">/usr/lib/python2.6/dist-packages/foo.py</code> and
+	  <code class="filename">/usr/lib/python2.7/dist-packages/foo.py</code>. These should
+	  point to a common file.
+	</p><p>
+	  Architecture-independent public Python 3 modules must be installed
+	  to <code class="filename">/usr/lib/python3/dist-packages</code>.
+	</p><p>
+	  Architecture-independent public Python 2 modules should be
+	  installed to <code class="filename">/usr/lib/python2.7/dist-packages</code>. The
+	  historical location for this was <code class="filename">/usr/share/pyshared</code>.
+	  Since Python 2.7 is the last Python 2 version and the only
+	  supported version in Wheezy and later releases, a version-specific
+	  location is sufficient.
+	</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="runtimes_hooks"></a>2.6. Hooks for updates to installed runtimes</h2></div></div></div><p>
+	  The <code class="literal">python</code> binary package has special hooks to
+	  allow other packages to act upon updates to the installed
+	  runtimes.
+	</p><p>
+	  This mechanism is required to handle changes of the default Python
+	  runtime in some packages and to enable the Python packaging
+	  helpers.
+	</p><p>
+	  There are three supported hook types which come in the form of
+	  scripts which are invoked from the maintainer scripts of the
+	  Python runtime packages when specific installations,
+	  removals, or upgrades occur.
+	</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+	      <code class="filename">/usr/share/python3/runtime.d/*.rtinstall</code>,
+	      <code class="filename">/usr/share/python/runtime.d/*.rtinstall</code>: These
+	      are called when a runtime is installed or becomes supported.
+	      The first argument is <code class="literal">rtinstall</code>, the second argument
+	      is the affected runtime (for
+	      example <code class="filename">python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em></code>) and the
+	      third and fourth argument are the old and new version of this
+	      packaged runtime if this runtime was already installed but
+	      unsupported.
+	    </p></li><li class="listitem"><p>
+	      <code class="filename">/usr/share/python3/runtime.d/*.rtremove</code>,
+	      <code class="filename">/usr/share/python/runtime.d/*.rtremove</code>: These are
+	      called when a runtime is removed or stops being supported. The
+	      first argument is <code class="literal">rtremove</code>, and the second argument
+	      is the affected runtime (for
+	      example <code class="filename">python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em></code>).
+	    </p></li><li class="listitem"><p>
+	      <code class="filename">/usr/share/python3/runtime.d/*.rtupdate</code>,
+	      <code class="filename">/usr/share/python/runtime.d/*.rtupdate</code>: These are
+	      called when the default runtime changes. The first argument is
+	      either <code class="literal">pre-rtupdate</code>, called before changing the
+	      default runtime, or <code class="literal">rtupdate</code>, called when changing
+	      the default runtime, or <code class="literal">post-rtupdate</code>, called
+	      immediately afterwards. The second argument is the old default
+	      runtime (for
+	      example <code class="filename">python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em></code>), and the
+	      third argument is the new default runtime (for example
+	      <code class="filename">python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Z</code></em></code>).
+	    </p></li></ol></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="docs"></a>2.7. Documentation</h2></div></div></div><p>
+	  Python documentation is split out in separate binary packages
+	  <code class="literal">python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em>-doc</code>.
+	</p><p>
+	  The binary package <code class="literal">python3-doc</code> will always
+	  provide the documentation for the default Debian Python 3 version.
+	  The binary package <code class="literal">python-doc</code> will always
+	  provide the documentation for the default Debian Python 2 version.
+	</p><p>
+	  TODO: Policy for documentation of third party packages.
+	</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="python3.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="module_packages.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 1. On the move to Python 3 </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 3. Packaged Modules</td></tr></table></div></body></html>

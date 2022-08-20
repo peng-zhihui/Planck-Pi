@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/session.conf 1.10.0-4\~ dbus -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.conf 1.10.0-4\~ dbus -- "$@"
+# End automatically added section

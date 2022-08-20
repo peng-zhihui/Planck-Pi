@@ -1,0 +1,11 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libudev.so.1.6.13
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libudev1
+/usr/share/doc/libudev1/changelog.Debian.gz
+/usr/share/doc/libudev1/copyright
+/lib/arm-linux-gnueabi/libudev.so.1

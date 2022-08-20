@@ -1,0 +1,10 @@
+[Unit]
+Description=getty on tty2-tty6 if dbus and logind are not available
+ConditionPathExists=/dev/tty0
+ConditionPathExists=!/lib/systemd/system/dbus.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/systemctl --no-block start getty@tty2.service getty@tty3.service getty@tty4.service getty@tty5.service getty@tty6.service
+RemainAfterExit=true
+

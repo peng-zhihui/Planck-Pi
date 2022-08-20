@@ -1,0 +1,98 @@
+Enabling persistent logging in journald
+=======================================
+
+To enable persistent logging, create /var/log/journal:
+
+  mkdir -p /var/log/journal
+  systemd-tmpfiles --create --prefix /var/log/journal
+
+systemd will make the journal files owned by the "systemd-journal" group and
+add an ACL for read permissions for users in the "adm" group.
+To grant a user read access to the system journal, add them to one of the two
+groups.
+
+This will allow you to look at previous boot logs with e. g.
+"journalctl -b -1".
+
+If you enable persistent logging, consider uninstalling rsyslog or any other
+system-log-daemon, to avoid logging everything twice.
+
+Debugging boot/shutdown problems
+================================
+
+The "debug-shell" service starts a root shell on VT 9 which is available very
+early during boot and very late during shutdown. You can temporarily enable
+this when booting the system does not get sufficiently far to get a desktop or
+even the text console logins (getty), or when shutdown hangs eternally.
+
+For boot problems the recommended way is to append "systemd.debug-shell" to the
+kernel command line in the bootloader.
+For shutdown problems, run "systemctl start debug-shell" as root, then shut
+down.
+
+WARNING: Please avoid "systemctl enable debug-shell" as this will start the
+debug shell permanently which is a SECURITY HOLE as it allows unauthenticated
+and unrestricted root access to your computer if you forget to disable it!
+Please only enable it if you cannot pass "systemd.debug-shell" to the boot
+loader for some reason, and then immediately run "systemctl disable debug-shell"
+after booting.
+
+Once the boot/shutdown problem happened, switch to VT9 (Ctrl+Alt+F9). There you
+can use the usual systemctl or journalctl commands, or any other Linux shell
+command to list or kill processes. For example, run "systemctl list-jobs" to
+see what's currently being run, or "systemctl" to find units which are not in
+the expected state (e. g. "failed" for boot or still "active" during shutdown),
+and then get more detailed information with "systemctl status -l foo.service"
+to get a service "foo"'s status and recent logging.
+
+In situations where the debug shell is not available, you can generate a
+/shutdown-log.txt file instead:
+1. Boot with these kernel command line options:
+    systemd.log_level=debug systemd.log_target=kmsg log_buf_len=1M
+2. Save the following script as /lib/systemd/system-shutdown/debug.sh and make it executable:
+    #!/bin/sh
+    mount -o remount,rw /
+    dmesg > /shutdown-log.txt
+    mount -o remount,ro /
+3. Reboot
+
+Enable and use networkd
+=======================
+networkd is a small and lean service to configure network interfaces, designed
+mostly for server use cases in a world with hotplugged and virtualized
+networking. Its configuration is similar in spirit and abstraction level to
+ifupdown, but you don't need any extra packages to configure bridges, bonds,
+vlan etc. It is not very suitable for managing WLANs yet; NetworkManager is
+still much more appropriate for such Desktop use cases.
+
+networkd is not enabled by default; run
+
+  systemctl enable systemd-networkd
+
+if you want to use it. After that you need to create some *.network
+configuration files. In the simplest case you just want to run DHCP on all
+available Ethernet interfaces:
+
+--- /etc/systemd/network/all-eth.network ---
+[Match]
+Name=e*
+[Network]
+DHCP=yes
+
+This will match on both the kernel "ethN" as well as the predictable interface
+names "en*". Please see man systemd.network(5) for all available configuration
+options and examples.
+
+You need to make sure that interfaces handled by networkd are not handled by
+ifupdown (/etc/network/interfaces) and NetworkManager.
+
+Note that interfaces brought up/down will *not* run hooks in
+/etc/network/if-*.d/.
+
+It is recommended to use networkd together with systemd-resolved(8) to
+dynamically manage /etc/resolv.conf:
+
+  systemctl enable systemd-resolved
+  ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+
+Debian's networkd has been modified to also work with the resolvconf package.

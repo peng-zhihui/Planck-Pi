@@ -1,0 +1,36 @@
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] On node 0 totalpages: 16384
+Feb 14 10:12:15 ubuntu kernel: [    0.000000]   Normal zone: 128 pages used for memmap
+Feb 14 10:12:15 ubuntu kernel: [    0.000000]   Normal zone: 0 pages reserved
+Feb 14 10:12:15 ubuntu kernel: [    0.000000]   Normal zone: 16384 pages, LIFO batch:3
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] pcpu-alloc: [0] 0 
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] On node 0 totalpages: 16384
+Feb 14 10:12:25 ubuntu kernel: [    0.000000]   Normal zone: 128 pages used for memmap
+Feb 14 10:12:25 ubuntu kernel: [    0.000000]   Normal zone: 0 pages reserved
+Feb 14 10:12:25 ubuntu kernel: [    0.000000]   Normal zone: 16384 pages, LIFO batch:3
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] pcpu-alloc: [0] 0 
+Apr  3 14:01:53 planck kernel: [    0.000000] On node 0 totalpages: 16384
+Apr  3 14:01:53 planck kernel: [    0.000000]   Normal zone: 128 pages used for memmap
+Apr  3 14:01:53 planck kernel: [    0.000000]   Normal zone: 0 pages reserved
+Apr  3 14:01:53 planck kernel: [    0.000000]   Normal zone: 16384 pages, LIFO batch:3
+Apr  3 14:01:53 planck kernel: [    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+Apr  3 14:01:53 planck kernel: [    0.000000] pcpu-alloc: [0] 0 
+Apr  3 14:01:52 localhost kernel: [    0.000000] On node 0 totalpages: 16384
+Apr  3 14:01:52 localhost kernel: [    0.000000]   Normal zone: 128 pages used for memmap
+Apr  3 14:01:52 localhost kernel: [    0.000000]   Normal zone: 0 pages reserved
+Apr  3 14:01:52 localhost kernel: [    0.000000]   Normal zone: 16384 pages, LIFO batch:3
+Apr  3 14:01:52 localhost kernel: [    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+Apr  3 14:01:52 localhost kernel: [    0.000000] pcpu-alloc: [0] 0 
+Apr  3 14:01:52 localhost kernel: [    0.000000] On node 0 totalpages: 16384
+Apr  3 14:01:52 localhost kernel: [    0.000000]   Normal zone: 128 pages used for memmap
+Apr  3 14:01:52 localhost kernel: [    0.000000]   Normal zone: 0 pages reserved
+Apr  3 14:01:52 localhost kernel: [    0.000000]   Normal zone: 16384 pages, LIFO batch:3
+Apr  3 14:01:52 localhost kernel: [    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+Apr  3 14:01:52 localhost kernel: [    0.000000] pcpu-alloc: [0] 0 
+Apr  3 14:23:22 localhost kernel: [    0.000000] On node 0 totalpages: 16384
+Apr  3 14:23:22 localhost kernel: [    0.000000]   Normal zone: 128 pages used for memmap
+Apr  3 14:23:22 localhost kernel: [    0.000000]   Normal zone: 0 pages reserved
+Apr  3 14:23:22 localhost kernel: [    0.000000]   Normal zone: 16384 pages, LIFO batch:3
+Apr  3 14:23:22 localhost kernel: [    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+Apr  3 14:23:22 localhost kernel: [    0.000000] pcpu-alloc: [0] 0 

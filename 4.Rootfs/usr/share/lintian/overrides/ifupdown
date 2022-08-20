@@ -1,0 +1,3 @@
+ifupdown: init.d-script-possible-missing-stop etc/init.d/networking 1
+ifupdown: systemd-service-file-refers-to-unusual-wantedby-target lib/systemd/system/networking.service network-online.target
+ifupdown: systemd-service-file-refers-to-unusual-wantedby-target lib/systemd/system/ifupdown-wait-online.service network-online.target

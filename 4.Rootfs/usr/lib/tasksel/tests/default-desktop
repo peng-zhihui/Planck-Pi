@@ -1,0 +1,39 @@
+#!/bin/sh
+# Test-default-desktop: 3 $desktopname
+# 
+# Will check if tasksel/desktop has been preseeded to "$desktopname",
+# or if it's the default desktop for the architecture.
+# If so, marks the task for installation.
+#
+# Otherwise, exits with the provided value.
+# (3 will display the task not marked for installation; ).
+set +e
+
+DEFAULT="$2"
+DESKTOPNAME="$3"
+
+if ! [ "$NEW_INSTALL" ]; then
+	exit $DEFAULT
+fi
+
+. /usr/share/debconf/confmodule
+. /usr/lib/tasksel/default_desktop
+
+check_desktop_wanted() {
+	# see if the desktop test thinks the system wants a desktop
+	/usr/lib/tasksel/tests/desktop
+	if [ "$?" = 2 ]; then
+		exit 2
+	fi
+}
+
+if db_get "tasksel/desktop"; then
+	if echo "$RET" | grep -q "$DESKTOPNAME"; then
+		check_desktop_wanted
+	fi
+else
+	if [ "$DESKTOPNAME" = "$(default_desktop_for_arch $(dpkg --print-architecture))" ]; then
+		check_desktop_wanted
+	fi
+fi
+exit $DEFAULT

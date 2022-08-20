@@ -1,0 +1,2 @@
+libXext 6 libxext6 (>= 2:1.3.0)
+udeb: libXext 6 libxext6-udeb (>= 2:1.3.0)

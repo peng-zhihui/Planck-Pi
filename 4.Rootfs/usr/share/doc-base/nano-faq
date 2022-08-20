@@ -1,0 +1,10 @@
+Document: nano-faq
+Title: GNU nano Frequently Asked Questions (FAQ)
+Author: Chris Allegreta, David Lawrence Ramsey and others.
+Abstract: This documents provides answers to frequently asked questions
+ about the GNU nano text editor.
+Section: Editors
+
+Format: HTML
+Index: /usr/share/doc/nano/faq.html
+Files: /usr/share/doc/nano/faq.html

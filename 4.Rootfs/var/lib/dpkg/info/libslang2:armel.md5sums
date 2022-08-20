@@ -1,0 +1,9 @@
+31cb0a4963f74c15654b06ef50c23c59  lib/arm-linux-gnueabi/libslang.so.2.3.2
+fb314bb7bbf436df7ae182de11be087d  usr/share/doc/libslang2/NEWS.gz
+d5af9414143dbd915f13ed10dedba5b5  usr/share/doc/libslang2/README
+056feb259802ba39d139e1c8694ac6b2  usr/share/doc/libslang2/changelog.Debian.gz
+e3e3ce73f93920a449f165460a07dc4a  usr/share/doc/libslang2/changelog.gz
+33632ca35d82ed3cbad54edf2400f5f8  usr/share/doc/libslang2/copyright
+c201384d166351a4c878e129ee431f96  usr/share/doc/libslang2/slang.txt.gz
+9d4c6e4ada08b21f86ad09c90f334025  usr/share/doc/libslang2/slangfun.txt.gz
+5ed2c967fb0a3b7ea9987f381dc653d2  usr/share/lintian/overrides/libslang2

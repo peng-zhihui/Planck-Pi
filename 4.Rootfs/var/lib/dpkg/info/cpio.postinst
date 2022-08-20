@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = configure ]; then
+    update-alternatives --install /bin/mt mt /bin/mt-gnu 10 \
+      --slave \
+	/usr/share/man/man1/mt.1.gz mt.1.gz /usr/share/man/man1/mt-gnu.1.gz
+fi

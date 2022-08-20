@@ -1,0 +1,32 @@
+TODO for net-tools
+
+[ ] pt_BR man pages translation revision, it was done for net-tools 1.33...
+[ ] more translations! see the contents of the po directory and ABOUT-NLS
+[ ] netstat ddp support
+[ ] lib/netrom_rt.c rprint should not rewind _PATH_PROCNET_NR_NEIGH
+[ ] ARPHRD_METRICOM [1.3.82]
+[ ] include proxy arp description into man page.
+[ ] netstat -i: XOVR!=compressed
+[ ] nettools.8 man-page
+[ ] lib/ddp.c: /etc/atalk.names support
+[ ] ARPHRD_LOOPBACK in new kernels, ok? dont think so :-/
+[ ] ARPHRD_LOCALTLK and aarp?
+[ ] ARCNET support? linux/drivers/net/arcnet.c
+[ ] ifconfig support for isdn4linux, linefill...
+[ ] Wilfred's Suggestion for config files for route and ifconfig (expand arp
+    file format)
+[ ] make netstat display more interesting states from interface
+	(CSLIP? BSDCOMP?)
+[ ] netstat netconfiguration info screen (forwarding, supplied protocols...)
+[ ] net-features.h in all tools
+[ ] check netstat -o
+[ ] supply some informations about new features to HOWTOs
+[ ] Config file only works with bash not ash.
+[ ] Token ring is almost totally untested.
+[ ] additional tools for IPX, AX.25 etc be bundled [ipxripd004, ipx_* tools
+	from caldera, kissattach] into existing bins
+[ ] "SIOCAX25OPTRT" [Joerg (DL1BKE)]. 1.3.75
+[ ] dummy NOARP?! (2. default route for preveting hostunreachables on linedrop)
+[ ] ppp_dev_stat called for each dev in ifconfig, why? (1.3.17)
+[ ] linux/include/net/br.h?
+[ ] get rid of local ipx.h copy

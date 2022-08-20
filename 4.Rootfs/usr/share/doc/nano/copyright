@@ -1,0 +1,53 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: nano
+Source: https://nano-editor.org/dist/
+Comment:
+ This package was debianized by Jordi Mallach <jordi@debian.org> on
+ Wed,  8 Dec 1999 19:39:12 +0100.
+ .
+ GNU nano main authors are Chris Allegreta <chrisa@asty.org>,
+ David Lawrence Ramsey <pooka109@cox.net> and
+ Benno Schulenberg <bensberg@justemail.net>.
+ 
+Files: *
+Copyright: © 1999-2011, 2013-2016 Free Software Foundation, Inc.
+           © 2014-2016 The contributors to GNU nano
+License: GPL-3+
+
+Files: doc/*.1 doc/*.5 doc/*.texi
+Copyright: © 1999-2011, 2013-2016 Free Software Foundation, Inc.
+License: GFDL-NIV+ or GPL-3+
+
+Files: debian/*
+Copyright: Jordi Mallach <jordi@debian.org>
+License: GPL-3+
+
+License: GPL-3+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 3, or (at your option)
+ any later version.
+ .
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ can be found in /usr/share/common-licenses/GPL-3.
+
+License: GFDL-NIV+
+ Permission is granted to copy, distribute and/or modify this document
+ under the terms of the GNU Free Documentation License, Version 1.2
+ or any later version published by the Free Software Foundation;
+ with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+ A copy of the license is included in the section entitled "GNU
+ Free Documentation License".
+ .
+ On Debian systems, the complete text of the GNU Free Documentation License
+ can be found in /usr/share/common-licenses/GFDL-1.2.

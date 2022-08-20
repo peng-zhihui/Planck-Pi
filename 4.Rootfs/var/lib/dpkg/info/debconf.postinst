@@ -1,0 +1,75 @@
+#!/bin/sh
+set -e
+
+if [ -z "$DEBIAN_HAS_FRONTEND" ] && [ "$1" = configure ] && [ -n "$2" ] && \
+   dpkg --compare-versions "$2" lt 1.1.0; then
+	# Transition from old database format before debconf starts up.
+	if dpkg --compare-versions "$2" lt 0.9.00; then
+		if [ -e /var/lib/debconf/config.db -o -e /var/lib/debconf/templates.db ]; then
+			/usr/share/debconf/transition_db.pl
+		fi
+		# This package used to add itself to apt.conf. That could result in
+		# a zero-byte file, since it no longer does. Detect that and remove
+		# the file.
+		if [ ! -s /etc/apt/apt.conf ]; then
+			rm -f /etc/apt/apt.conf
+		fi
+	fi
+	
+	# Fix up broken db's before debconf starts up.
+	if dpkg --compare-versions "$2" lt 1.0.25; then
+		/usr/share/debconf/fix_db.pl
+	fi
+	
+	# configdb splits into passworded and non-passworded parts, before debconf
+	# starts up. Do so only if the debconf.conf has the new databases in it.
+	if dpkg --compare-versions "$2" lt 1.1.0 &&
+	   perl -e 'use Debconf::Db; Debconf::Db->load; for (@ARGV) { exit 1 unless
+	            Debconf::DbDriver->driver($_) }' config passwords; then
+	   	# copies in only the passwords, of course
+	   	debconf-copydb config passwords
+		# makes a new config with only non-passwords in it
+		debconf-copydb config newconfig \
+			-c Name:newconfig \
+			-c Driver:File \
+			-c Reject-Type:password \
+			-c Filename:/var/cache/debconf/newconfig.dat \
+			-c Mode:644
+		mv -f /var/cache/debconf/newconfig.dat /var/cache/debconf/config.dat
+	fi
+fi
+
+. /usr/share/debconf/confmodule
+
+if [ "$1" = configure ] && [ -n "$2" ] && dpkg --compare-versions "$2" lt 1.3.11; then
+	# Remove old debconf database, and associated cruft in /var/lib/debconf.
+	# In fact, the whole directory can go! Earlier versions of debconf in the
+	# 0.9.x series kept it just in case, so make sure to delete it on upgrade
+	# from any of those versions, or even older versions.
+	if dpkg --compare-versions "$2" lt 0.9.50; then
+		rm -rf /var/lib/debconf
+	fi
+
+	# Kill db cruft.
+	if dpkg --compare-versions "$2" lt 0.9.73; then
+		# It may not be present, if upgrading from long ago.
+		db_unregister foo/bar || true
+		db_unregister debconf/switch-to-slang || true
+	fi
+	if dpkg --compare-versions "$2" lt 1.3.11; then
+		db_unregister debconf/showold || true
+	fi
+
+	# The Text frontend became the Readline frontend.
+	if dpkg --compare-versions "$2" lt 1.0.10; then
+		db_get debconf/frontend || true
+		if [ "$RET" = Text ]; then
+			db_set debconf/frontend Readline || true
+		fi
+	fi
+fi
+
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/bash_completion.d/debconf 1.5.58~ -- "$@"
+# End automatically added section
+

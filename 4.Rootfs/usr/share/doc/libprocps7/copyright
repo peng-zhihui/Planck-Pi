@@ -1,0 +1,103 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: procps-ng
+Source: https://gitlab.com/procps-ng/procps
+
+Files: *
+Copyright: 1998-2004 Albert Cahalan
+           1991 Tony Rems <rembo@unisoft.com>
+           1993 Larry Greenfield
+           1996 Charles Blake
+           1999 Mike Coleman <mkc@acm.org>
+           2004 Nicholas Miell
+           2003 Chris Rivera
+           2003 Robert Love <rml@tech9.net>
+           2008 Morty Abzug
+           2009 Jarrod Lowe <procps@rrod.net>
+           1992 Branko Lankester
+           ???? David Engel <david@ods.com>
+           1992-1998 Michael K. Johnson <johnsonm@sunsite.unc.edu>
+           2012 Craig Small <csmall@enc.com.au>
+           1995      Martin Schulze <joey@infodrom.north.de>
+License: LGPL-2.1+
+
+Files: top/*
+Copyright: 2002-2014 James C. Warner
+License: LGPL-2.0+
+
+Files: pgrep.*
+Copyright: 2000 Kjetil Torgrim Homme <kjetilho@ifi.uio.no>
+           2002,2006 Albert Cahalan
+           2012 Roberto Polli <rpolli@babel.it>
+License: GPL-2.0+
+
+Files: pidof.*
+Copyright: 2013  Jaromir Capik <jcapik@redhat.com>
+License: GPL-2.0+
+
+Files: free.*
+Copyright: 2011 Sami Kerola <kerolasa@iki.fi>
+           2002-2003 Robert Love <rml@tech9.net>
+           1992 Brian Edmonds
+           1992 Rafal Maszkowski
+           2004 Albert Cahalan
+License: GPL-2.0+
+
+Files: sysctl.*
+Copyright: 1999 George Staikos
+License: GPL-2.0+
+
+Files: debian/*
+Copyright: 1997-2015 Craig Small <csmall@debian.org>
+           1996-1997 Helmut Geyer <Helmut.Geyer@iwr.uni-heidelberg.de>
+License: GPL-2.0+
+
+License: GPL-2.0+
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+
+License: LGPL-2.0+
+ This package is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU Lesser General
+ Public License can be found in "/usr/share/common-licenses/LGPL-2".
+
+License: LGPL-2.1+
+ This package is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU Lesser General
+ Public License can be found in "/usr/share/common-licenses/LGPL-2.1".

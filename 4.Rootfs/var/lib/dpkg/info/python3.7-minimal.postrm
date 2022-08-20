@@ -1,0 +1,13 @@
+#! /bin/sh
+
+set -e
+
+if [ "$1" = "remove" ]; then
+
+    if [ -f /var/lib/python/python3.7_installed ]; then
+	rm -f /var/lib/python/python3.7_installed
+	rmdir --ignore-fail-on-non-empty /var/lib/python 2>/dev/null
+    fi
+
+    rmdir --parents /usr/local/lib/python3.7 2>/dev/null || true
+fi

@@ -1,0 +1,8 @@
+GNU Sed was first authored by Jay Fenlason (hack@gnu.org)
+and later modified by Tom Lord (lord@gnu.org).
+
+Ken Pizzini (ken@gnu.org) and Paolo Bonzini (bonzini@gnu.org)
+took over and maintained it for many years.
+
+GNU Sed is currently being maintained by Jim Meyering (jim@meyering.net)
+and Assaf Gordon (agn@gnu.org).

@@ -1,0 +1,586 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: vim
+Source: https://github.com/vim/vim
+
+Files: *
+Copyright: 2001-2017 Bram Moolenaar <Bram@vim.org>
+           2006 Benji Fisher <benji@member.ams.org>
+           1999-2016 Charles E. Campbell, Jr. <drchip@campbellfamily.biz>
+           2003 Fred Barnes
+           2003 Mario Schweigler
+           2004-2008 Michael Geddes
+           2006 Martin Krischik
+           2015 Christian Brabandt
+           2014 David Necas (Yeti)
+           2009-2013 Steven Oliver
+           2012 Hong Xu
+           2001-2016 MURAOKA Taro <koron.kaoriya@gmail.com>
+           2001 Bohdan Vlasyuk <bohdan@vstu.edu.ua>
+           2003-2017 Ernest Adrogué <eadrogue@gmx.net>
+           2005,2006,2008,2010 Kevin Patrick Scannell <kscanne@gmail.com>
+           1997 Olaf Seibert
+           1997 Heiko Erhardt
+           2002 E. I. DuPont de Nemours and Company, Inc
+           Pablo Ariel Kohan
+           2017 Eugene Ciurana
+           2017 Ken Takata
+License: Vim
+
+Files: runtime/doc/*
+Copyright: 1988-2003 Bram Moolenaar <Bram@vim.org>
+License: OPL-1+
+Comment: No license options are exercised.  See https://bugs.debian.org/384019
+ for discussions confirming DFSG-ness of this license when no options are
+ exercised.
+
+Files: runtime/syntax/cmake.vim
+       runtime/syntax/tpp.vim
+       runtime/indent/cmake.vim
+Copyright: Andy Cedilnik <andy.cedilnik@kitware.com>
+           Karthik Krishnan <kartik.krishnan@kitware.com>
+           Dimitri Merejkowsky <d.merej@gmail.com>
+           Gerfried Fuchs <alfie@ist.org>
+License: BSD-3-clause
+
+Files: runtime/ftplugin/wast.vim
+       runtime/indent/wast.vim
+       runtime/syntax/json.vim
+       runtime/syntax/proto.vim
+       runtime/syntax/wast.vim
+Copyright: 2013, Jeroen Ruigrok van der Werven, Eli Parra
+           2008 Google Inc.
+           2016 rhysd
+License: Expat
+
+Files: runtime/syntax/tmux.vim
+Copyright: Eric Pruitt <eric.pruitt@gmail.com>
+License: BSD-2-clause
+
+Files: runtime/syntax/rust.vim
+       runtime/autoload/rust.vim
+       runtime/autoload/rustfmt.vim
+       runtime/ftplugin/rust.vim
+       runtime/indent/rust.vim
+       runtime/compiler/cargo.vim
+Copyright: 2015 The Rust Project Developers
+License: Apache or Expat
+
+Files: runtime/tools/efm_perl.pl
+Copyright: 2001 Joerg Ziefle <joerg.ziefle@gmx.de>
+License: GPL-1+ or Artistic-1
+
+Files: src/libvterm/*
+Copyright: 2008 Paul Evans <leonerd@leonerd.org.uk>
+License: Expat
+
+Files: src/regexp.c
+Copyright: 1986 University of Toronto
+License: Vim-Regexp
+
+Files: src/if_xcmdsrv.c
+Copyright: Copyright (c) 1989-1993 The Regents of the University of California.
+License: UC
+
+Files: src/tee/tee.c
+Copyright: 1996, Paul Slootman
+License: public-domain
+
+Files: src/xxd/*
+Copyright: 1990-1998 by Juergen Weigert (jnweiger@informatik.uni-erlangen.de)
+License: Expat or GPL-2
+
+Files: src/gui_at_fs.c
+Copyright: 1989 Software Research Associates, Inc., Tokyo, Japan
+License: SRA
+
+Files: src/gui_at_sb.* src/install-sh
+Copyright: 1987, 1988, 1994 X Consortium
+License: X11
+
+Files: src/gui_gtk_vms.h
+Copyright: 2000 Compaq Computer Corporation
+License: Compaq
+
+Files: src/pty.c
+Copyright: 1993 Juergen Weigert (jnweiger@immd4.informatik.uni-erlangen.de)
+           1993 Michael Schroeder (mlschroe@immd4.informatik.uni-erlangen.de)
+           1987 Oliver Laumann
+License: GPL-2+
+
+Files: src/iscygpty.*
+Copyright: 2015-2017 K.Takata
+License: Expat or Vim
+
+Files: src/xpm/*
+Copyright: 1989-95 GROUPE BULL
+License: XPM
+
+Files: src/xdiff/*
+Copyright: 2003-2016 Davide Libenzi, Johannes E. Schindelin
+License: LGPL-2.1+
+
+Files: src/xdiff/xhistogram.c
+Copyright: 2010 Google Inc. and other copyright owners as documented in JGit's IP log
+License: EDL-1
+
+License: Vim
+ I)  There are no restrictions on distributing unmodified copies of Vim except
+     that they must include this license text.  You can also distribute
+     unmodified parts of Vim, likewise unrestricted except that they must
+     include this license text.  You are also allowed to include executables
+     that you made from the unmodified Vim sources, plus your own usage
+     examples and Vim scripts.
+ .
+ II) It is allowed to distribute a modified (or extended) version of Vim,
+     including executables and/or source code, when the following four
+     conditions are met:
+     1) This license text must be included unmodified.
+     2) The modified Vim must be distributed in one of the following five ways:
+        a) If you make changes to Vim yourself, you must clearly describe in
+           the distribution how to contact you.  When the maintainer asks you
+           (in any way) for a copy of the modified Vim you distributed, you
+           must make your changes, including source code, available to the
+           maintainer without fee.  The maintainer reserves the right to
+           include your changes in the official version of Vim.  What the
+           maintainer will do with your changes and under what license they
+           will be distributed is negotiable.  If there has been no negotiation
+           then this license, or a later version, also applies to your changes.
+           The current maintainer is Bram Moolenaar <Bram@vim.org>.  If this
+           changes it will be announced in appropriate places (most likely
+           vim.sf.net, www.vim.org and/or comp.editors).  When it is completely
+           impossible to contact the maintainer, the obligation to send him
+           your changes ceases.  Once the maintainer has confirmed that he has
+           received your changes they will not have to be sent again.
+        b) If you have received a modified Vim that was distributed as
+           mentioned under a) you are allowed to further distribute it
+           unmodified, as mentioned at I).  If you make additional changes the
+           text under a) applies to those changes.
+        c) Provide all the changes, including source code, with every copy of
+           the modified Vim you distribute.  This may be done in the form of a
+           context diff.  You can choose what license to use for new code you
+           add.  The changes and their license must not restrict others from
+           making their own changes to the official version of Vim.
+        d) When you have a modified Vim which includes changes as mentioned
+           under c), you can distribute it without the source code for the
+           changes if the following three conditions are met:
+           - The license that applies to the changes permits you to distribute
+             the changes to the Vim maintainer without fee or restriction, and
+             permits the Vim maintainer to include the changes in the official
+             version of Vim without fee or restriction.
+           - You keep the changes for at least three years after last
+             distributing the corresponding modified Vim.  When the maintainer
+             or someone who you distributed the modified Vim to asks you (in
+             any way) for the changes within this period, you must make them
+             available to him.
+           - You clearly describe in the distribution how to contact you.  This
+             contact information must remain valid for at least three years
+             after last distributing the corresponding modified Vim, or as long
+             as possible.
+        e) When the GNU General Public License (GPL) applies to the changes,
+           you can distribute the modified Vim under the GNU GPL version 2 or
+           any later version.
+     3) A message must be added, at least in the output of the ":version"
+        command and in the intro screen, such that the user of the modified Vim
+        is able to see that it was modified.  When distributing as mentioned
+        under 2)e) adding the message is only required for as far as this does
+        not conflict with the license used for the changes.
+     4) The contact information as required under 2)a) and 2)d) must not be
+        removed or changed, except that the person himself can make
+        corrections.
+ .
+ III) If you distribute a modified version of Vim, you are encouraged to use
+      the Vim license for your changes and make them available to the
+      maintainer, including the source code.  The preferred way to do this is
+      by e-mail or by uploading the files to a server and e-mailing the URL.
+      If the number of changes is small (e.g., a modified Makefile) e-mailing a
+      context diff will do.  The e-mail address to be used is
+      <maintainer@vim.org>
+ .
+ IV)  It is not allowed to remove this license from the distribution of the Vim
+      sources, parts of it or from a modified version.  You may use this
+      license for previous Vim releases instead of the license that they came
+      with, at your option.
+
+License: OPL-1+
+ I. REQUIREMENTS ON BOTH UNMODIFIED AND MODIFIED VERSIONS
+ .
+ The Open Publication works may be reproduced and distributed in whole or in
+ part, in any medium physical or electronic, provided that the terms of this
+ license are adhered to, and that this license or an incorporation of it by
+ reference (with any options elected by the author(s) and/or publisher) is
+ displayed in the reproduction.
+ .
+ Proper form for an incorporation by reference is as follows:
+ .
+     Copyright (c) <year> by <author's name or designee>. This material may be
+     distributed only subject to the terms and conditions set forth in the Open
+     Publication License, vX.Y or later (the latest version is presently
+     available at http://www.opencontent.org/openpub/).
+ .
+ The reference must be immediately followed with any options elected by the
+ author(s) and/or publisher of the document (see section VI).
+ .
+ Commercial redistribution of Open Publication-licensed material is permitted.
+ .
+ Any publication in standard (paper) book form shall require the citation of the
+ original publisher and author. The publisher and author's names shall appear on
+ all outer surfaces of the book. On all outer surfaces of the book the original
+ publisher's name shall be as large as the title of the work and cited as
+ possessive with respect to the title.
+ .
+ .
+ II. COPYRIGHT
+ .
+ The copyright to each Open Publication is owned by its author(s) or designee.
+ .
+ .
+ III. SCOPE OF LICENSE
+ .
+ The following license terms apply to all Open Publication works, unless
+ otherwise explicitly stated in the document.
+ .
+ Mere aggregation of Open Publication works or a portion of an Open Publication
+ work with other works or programs on the same media shall not cause this
+ license to apply to those other works. The aggregate work shall contain a
+ notice specifying the inclusion of the Open Publication material and
+ appropriate copyright notice.
+ .
+ SEVERABILITY. If any part of this license is found to be unenforceable in any
+ jurisdiction, the remaining portions of the license remain in force.
+ .
+ NO WARRANTY. Open Publication works are licensed and provided "as is" without
+ warranty of any kind, express or implied, including, but not limited to, the
+ implied warranties of merchantability and fitness for a particular purpose or a
+ warranty of non-infringement.
+ .
+ .
+ IV. REQUIREMENTS ON MODIFIED WORKS
+ .
+ All modified versions of documents covered by this license, including
+ translations, anthologies, compilations and partial documents, must meet the
+ following requirements:
+ .
+    1. The modified version must be labeled as such.
+    2. The person making the modifications must be identified and the
+       modifications dated.
+    3. Acknowledgement of the original author and publisher if applicable must
+       be retained according to normal academic citation practices.
+    4. The location of the original unmodified document must be identified.
+    5. The original author's (or authors') name(s) may not be used to assert or
+       imply endorsement of the resulting document without the original author's
+       (or authors') permission.
+ .
+ .
+ V. GOOD-PRACTICE RECOMMENDATIONS
+ .
+ In addition to the requirements of this license, it is requested from and
+ strongly recommended of redistributors that:
+ .
+    1. If you are distributing Open Publication works on hardcopy or CD-ROM, you
+       provide email notification to the authors of your intent to redistribute
+       at least thirty days before your manuscript or media freeze, to give the
+       authors time to provide updated documents. This notification should
+       describe modifications, if any, made to the document.
+    2. All substantive modifications (including deletions) be either clearly
+       marked up in the document or else described in an attachment to the
+       document.
+    3. Finally, while it is not mandatory under this license, it is considered
+       good form to offer a free copy of any hardcopy and CD-ROM expression of
+       an Open Publication-licensed work to its author(s).
+ .
+ .
+ VI. LICENSE OPTIONS
+ .
+ The author(s) and/or publisher of an Open Publication-licensed document may
+ elect certain options by appending language to the reference to or copy of the
+ license. These options are considered part of the license instance and must be
+ included with the license (or its incorporation by reference) in derived works.
+ .
+ A. To prohibit distribution of substantively modified versions without the
+ explicit permission of the author(s). "Substantive modification" is defined as
+ a change to the semantic content of the document, and excludes mere changes in
+ format or typographical corrections.
+ .
+ To accomplish this, add the phrase `Distribution of substantively modified
+ versions of this document is prohibited without the explicit permission of the
+ copyright holder.' to the license reference or copy.
+ .
+ B. To prohibit any publication of this work or derivative works in whole or in
+ part in standard (paper) book form for commercial purposes is prohibited unless
+ prior permission is obtained from the copyright holder.
+ .
+ To accomplish this, add the phrase 'Distribution of the work or derivative of
+ the work in any standard (paper) book form is prohibited unless prior
+ permission is obtained from the copyright holder.' to the license reference or
+ copy.
+
+License: GPL-2
+ On Debian systems, the complete text of the GPL version 2 license can be
+ found in `/usr/share/common-licenses/GPL-2'.
+
+License: GPL-2+
+ On Debian systems, the complete text of the GPL version 2 license can be
+ found in `/usr/share/common-licenses/GPL-2'.
+
+License: GPL-1+
+ On Debian systems, the complete text of the GPL version 1 license can be
+ found in `/usr/share/common-licenses/GPL-1'.
+
+License: LGPL-2.1+
+ On Debian systems, the complete text of the LGPL version 2 license can be
+ found in `/usr/share/common-licenses/LGPL-2.1'.
+
+License: Artistic-1
+ On Debian systems, the complete text of the Artistic version 1 license
+ can be found in `/usr/share/common-licenses/Artistic'.
+
+License: Vim-Regexp
+ Permission is granted to anyone to use this software for any
+ purpose on any computer system, and to redistribute it freely,
+ subject to the following restrictions:
+ .
+ 1. The author is not responsible for the consequences of use of
+        this software, no matter how awful, even if they arise
+        from defects in it.
+ .
+ 2. The origin of this software must not be misrepresented, either
+        by explicit claim or by omission.
+ .
+ 3. Altered versions must be plainly marked as such, and must not
+        be misrepresented as being the original software.
+
+License: Apache
+ On Debian systems, the complete text of the Apache version 2.0 license can be
+ found in `/usr/share/common-licenses/Apache-2.0'.
+
+License: Expat
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to
+ deal in the Software without restriction, including without limitation the
+ rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ sell copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+ BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+License: SRA
+ Permission to use, copy, modify, and distribute this software and its
+ documentation for any purpose and without fee is hereby granted, provided
+ that the above copyright notice appear in all copies and that both that
+ copyright notice and this permission notice appear in supporting
+ documentation, and that the name of Software Research Associates not be used
+ in advertising or publicity pertaining to distribution of the software
+ without specific, written prior permission.  Software Research Associates
+ makes no representations about the suitability of this software for any
+ purpose.  It is provided "as is" without express or implied warranty.
+ .
+ SOFTWARE RESEARCH ASSOCIATES DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS
+ SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS,
+ IN NO EVENT SHALL SOFTWARE RESEARCH ASSOCIATES BE LIABLE FOR ANY SPECIAL,
+ INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
+ OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ PERFORMANCE OF THIS SOFTWARE.
+
+License: X11
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE X
+ CONSORTIUM BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ .
+ Except as contained in this notice, the name of the X Consortium shall not be
+ used in advertising or otherwise to promote the sale, use or other dealings in
+ this Software without prior written authorization from the X Consortium.
+
+License: UC
+ Permission is hereby granted, without written agreement and without
+ license or royalty fees, to use, copy, modify, and distribute this
+ software and its documentation for any purpose, provided that the
+ above copyright notice and the following two paragraphs appear in
+ all copies of this software.
+ .
+ IN NO EVENT SHALL THE UNIVERSITY OF CALIFORNIA BE LIABLE TO ANY PARTY FOR
+ DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT
+ OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF THE UNIVERSITY OF
+ CALIFORNIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ .
+ THE UNIVERSITY OF CALIFORNIA SPECIFICALLY DISCLAIMS ANY WARRANTIES,
+ INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+ AND FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
+ ON AN "AS IS" BASIS, AND THE UNIVERSITY OF CALIFORNIA HAS NO OBLIGATION TO
+ PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+
+License: public-domain
+ This source code is released into the public domain. It is provided on an
+ as-is basis and no responsibility is accepted for its failure to perform
+ as expected. It is worth at least as much as you paid for it!
+
+License: Compaq
+ 1. GRANT
+ Compaq Computer Corporation ("COMPAQ") grants you the right to use,
+ modify, and distribute the following source code (the "Software")
+ on any number of computers. You may use the Software as part of
+ creating a software program or product intended for commercial or
+ non-commercial distribution in machine-readable source code, binary,
+ or executable formats. You may distribute the Software as
+ machine-readable source code provided this license is not removed
+ from the Software and any modifications are conspicuously indicated.
+ 2. COPYRIGHT
+ The Software is owned by COMPAQ and its suppliers and is protected by
+ copyright laws and international treaties.  Your use of the Software
+ and associated documentation is subject to the applicable copyright
+ laws and the express rights and restrictions of these terms.
+ 3. RESTRICTIONS
+ You may not remove any copyright, trademark, or other proprietary
+ notices from the Software or the associated
+ You are responsible for compliance with all applicable export or
+ re-export control laws and regulations if you export the Software.
+ This license is governed by and is to be construed under the laws
+ of the State of Texas.
+ .
+ DISCLAIMER OF WARRANTY AND LIABILITY
+ Compaq shall not be liable for technical or editorial errors or
+ omissions contained herein. The information contained herein is
+ subject to change without notice.
+ .
+ THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND.
+ THE ENTIRE RISK ARISING OUT OF THE USE OF THIS SOFTWARE REMAINS WITH
+ RECIPIENT.  IN NO EVENT SHALL COMPAQ BE LIABLE FOR ANY DIRECT,
+ CONSEQUENTIAL, INCIDENTAL, SPECIAL, PUNITIVE OR OTHER DAMAGES
+ WHATSOEVER (INCLUDING WITHOUT LIMITATION DAMAGES FOR LOSS OF BUSINESS
+ PROFITS, BUSINESS INTERRUPTION, OR LOSS OF BUSINESS INFORMATION),
+ EVEN IF COMPAQ HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES
+ AND WHETHER IN AN ACTION OF CONTRACT OR TORT INCLUDING NEGLIGENCE.
+
+License: XPM
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to
+ deal in the Software without restriction, including without limitation the
+ rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ sell copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ GROUPE BULL BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+ AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ .
+ Except as contained in this notice, the name of GROUPE BULL shall not be
+ used in advertising or otherwise to promote the sale, use or other dealings
+ in this Software without prior written authorization from GROUPE BULL.
+
+License: BSD-3-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+ * Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ .
+ * Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+ .
+ * Neither the name of Kitware, Inc. nor the names of Contributors
+   may be used to endorse or promote products derived from this
+   software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: BSD-2-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ 1. Redistributions of source code must retain the above copyright notice, this
+    list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: EDL-1
+ This program and the accompanying materials are made available
+ under the terms of the Eclipse Distribution License v1.0 which
+ accompanies this distribution, is reproduced below, and is
+ available at http://www.eclipse.org/org/documents/edl-v10.php
+ .
+ All rights reserved.
+ .
+ Redistribution and use in source and binary forms, with or
+ without modification, are permitted provided that the following
+ conditions are met:
+ .
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ .
+ - Redistributions in binary form must reproduce the above
+   copyright notice, this list of conditions and the following
+   disclaimer in the documentation and/or other materials provided
+   with the distribution.
+ .
+ - Neither the name of the Eclipse Foundation, Inc. nor the
+   names of its contributors may be used to endorse or promote
+   products derived from this software without specific prior
+   written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+ CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

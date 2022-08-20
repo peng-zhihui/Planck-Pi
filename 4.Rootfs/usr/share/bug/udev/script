@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# We don’t clean up this directory because there is no way to know when
+# reportbug finished running, and reportbug needs the files around.
+# Given that those are just a couple of kilobytes in size and people
+# generally don’t file a lot of bugs, I don’t think it’s a big deal.
+DIR=$(mktemp -d)
+
+echo "-- BEGIN ATTACHMENTS --" >&3
+
+udevadm info --export-db >$DIR/udev-database.txt
+echo "$DIR/udev-database.txt" >&3
+
+echo "-- END ATTACHMENTS --" >&3

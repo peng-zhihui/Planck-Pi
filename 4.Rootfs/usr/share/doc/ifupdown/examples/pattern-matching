@@ -1,0 +1,32 @@
+# Match all interfaces starting with "eth". This will bring up eth0 and eth1
+# at boot time, if those interfaces exist.
+
+auto /eth*
+iface eth0 inet dhcp
+iface eth1 inet static
+	address 93.184.216.34
+
+# Match all interfaces starting with "eth", and bring them up using the same
+# stanza.
+
+auto /eth*/=foo
+iface foo inet dhcp
+
+# Match an interface by MAC address, and use the configuration from logical
+# interface foo to bring it up.
+
+auto mac/01:23:45:67:89:ad/=foo
+iface foo inet6 dhcp
+
+# Match the first Ethernet interface on Linux. These contain the value "1" in
+# the sysfs file "type".
+
+auto type/1/1=bar
+iface bar inet dhcp
+
+# Match the second wireless interface on Linux. These have a directory called
+# "wireless" in their sysfs directory. The pattern * matches if this exists.
+
+auto wireless/*/2=baz
+iface baz inet6 dhcp
+

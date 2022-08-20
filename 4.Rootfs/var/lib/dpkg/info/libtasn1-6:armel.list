@@ -1,0 +1,15 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libtasn1.so.6.5.5
+/usr/share
+/usr/share/doc
+/usr/share/doc/libtasn1-6
+/usr/share/doc/libtasn1-6/AUTHORS
+/usr/share/doc/libtasn1-6/README
+/usr/share/doc/libtasn1-6/THANKS
+/usr/share/doc/libtasn1-6/changelog.Debian.gz
+/usr/share/doc/libtasn1-6/changelog.gz
+/usr/share/doc/libtasn1-6/copyright
+/usr/lib/arm-linux-gnueabi/libtasn1.so.6

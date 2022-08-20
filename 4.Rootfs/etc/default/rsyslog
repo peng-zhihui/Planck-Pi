@@ -1,0 +1,4 @@
+# Options for rsyslogd
+# -x disables DNS lookups for remote messages
+# See rsyslogd(8) for more details
+RSYSLOGD_OPTIONS=""

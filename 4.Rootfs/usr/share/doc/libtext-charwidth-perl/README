@@ -1,0 +1,63 @@
+Text::CharWidth version 0.04
+============================
+
+This is a module to provide equivalent feature as wcwidth(3) and
+wcswidth(3).  This also provides mblen(3) equivalent subroutine.
+
+mbwidth() and mbswidth() are provided subroutines corresponding
+wcwidth(3) and wcswidth(3) in C language.  The prefix "mb" expresses
+that they handles "multibyte character" in C meaning, i.e., character
+encoding specified by LC_CTYPE locale.
+
+These subroutines are used to get the width of characters on terminal.
+Though most characters have width of 1, there are exceptions.
+Fullwidth characters are characters with width of 2.  Most of east
+Asian characters such as Hiragana, Katakana, Hangul, Han Ideogram
+are fullwidth.  Combining characters are characters with width of 0.
+Unicode has many combining characters like diacritical marks.  There
+are languages which need combining characters such as Thai and
+Vietnamese.
+
+Thus, if you would like to format international texts on terminal,
+you will have to be aware of variation of character width and will
+want to use this module.
+
+mblen() returns the number of bytes for the first character of
+the given string.  In 8bit character encodings, it is always 1.
+However, in multibyte encodings, this may be more than 1.
+
+The parameter is given in locale encoding, not UTF-8 string.
+(Of course locale encoding is UTF-8 in UTF-8 locales.)
+
+
+Prerequisites
+-------------
+
+This module requires your system to have wcwidth(), wcswidth(), and
+mblen() functions which are complian with the Single Unix Specification.
+
+
+Build and Install
+-----------------
+
+Please use standard way to build and install this module:
+
+   perl Makefile.PL
+   make
+   make install
+
+
+COPYRIGHT AND LICENCE
+---------------------
+
+Copyright (C) 2003 Tomohiro KUBOTA <kubota@debian.org>
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms of either:
+
+    a) the GNU General Public License as published by the Free Software
+       Foundation; either version 1, or (at your option) any later
+       version, or
+
+    b) the "Artistic License" which comes with Perl.
+

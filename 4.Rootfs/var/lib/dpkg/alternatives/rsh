@@ -1,0 +1,9 @@
+auto
+/usr/bin/rsh
+rsh.1.gz
+/usr/share/man/man1/rsh.1.gz
+
+/usr/bin/ssh
+20
+/usr/share/man/man1/ssh.1.gz
+

@@ -1,0 +1,33 @@
+
+Start-Date: 2022-04-03  13:19:38
+Commandline: /usr/bin/apt install ssh
+Install: libxdmcp6:armel (1:1.1.2-3, automatic), libkrb5-3:armel (1.17-3+deb10u3, automatic), libgssapi-krb5-2:armel (1.17-3+deb10u3, automatic), libdbus-1-3:armel (1.12.20-0+deb10u1, automatic), dbus:armel (1.12.20-0+deb10u1, automatic), libwrap0:armel (7.6.q-28, automatic), openssh-sftp-server:armel (1:7.9p1-10+deb10u2, automatic), libk5crypto3:armel (1.17-3+deb10u3, automatic), libx11-6:armel (2:1.6.7-1+deb10u2, automatic), libexpat1:armel (2.2.6-2+deb10u4, automatic), krb5-locales:armel (1.17-3+deb10u3, automatic), libxau6:armel (1:1.0.8-1+b2, automatic), libxcb1:armel (1.13.1-2, automatic), libkrb5support0:armel (1.17-3+deb10u3, automatic), ssh:armel (1:7.9p1-10+deb10u2), ucf:armel (3.0038+nmu1, automatic), libkeyutils1:armel (1.6-6, automatic), libxmuu1:armel (2:1.1.2-2+b3, automatic), libpam-systemd:armel (241-7~deb10u8, automatic), ncurses-term:armel (6.1+20181013-2+deb10u2, automatic), openssh-server:armel (1:7.9p1-10+deb10u2, automatic), libx11-data:armel (2:1.6.7-1+deb10u2, automatic), openssh-client:armel (1:7.9p1-10+deb10u2, automatic), libedit2:armel (3.1-20181209-1, automatic), xauth:armel (1:1.0.10-1, automatic), libxext6:armel (2:1.3.3-1+b2, automatic)
+End-Date: 2022-04-03  13:19:53
+
+Start-Date: 2022-04-03  13:22:06
+Commandline: /usr/bin/apt install net-tools usbutils ssh
+Install: libusb-1.0-0:armel (2:1.0.22-2, automatic), net-tools:armel (1.60+git20180626.aebd88e-1), usb.ids:armel (2019.07.27-0+deb10u1, automatic), usbutils:armel (1:010-3)
+End-Date: 2022-04-03  13:22:08
+
+Start-Date: 2022-04-03  13:53:46
+Commandline: /usr/bin/apt install sudo
+Install: sudo:armel (1.8.27-1+deb10u3)
+End-Date: 2022-04-03  13:53:47
+
+Start-Date: 2022-04-03  14:01:01
+Commandline: /usr/bin/apt install python3
+Requested-By: pi (1000)
+Install: libpython3.7-minimal:armel (3.7.3-2+deb10u3, automatic), libsqlite3-0:armel (3.27.2-3+deb10u1, automatic), python3.7:armel (3.7.3-2+deb10u3, automatic), python3:armel (3.7.3-1), mime-support:armel (3.62, automatic), libmagic1:armel (1:5.35-4+deb10u2, automatic), libmpdec2:armel (2.4.2-2, automatic), libpython3.7-stdlib:armel (3.7.3-2+deb10u3, automatic), python3.7-minimal:armel (3.7.3-2+deb10u3, automatic), python3-minimal:armel (3.7.3-1, automatic), libmagic-mgc:armel (1:5.35-4+deb10u2, automatic), libpython3-stdlib:armel (3.7.3-1, automatic), xz-utils:armel (5.2.4-1, automatic), libreadline7:armel (7.0-5, automatic), bzip2:armel (1.0.6-9.2~deb10u1, automatic), file:armel (1:5.35-4+deb10u2, automatic)
+End-Date: 2022-04-03  14:01:10
+
+Start-Date: 2022-04-03  14:20:51
+Commandline: apt-get install haveged
+Requested-By: pi (1000)
+Install: libhavege1:armel (1.9.1-7, automatic), haveged:armel (1.9.1-7)
+End-Date: 2022-04-03  14:21:38
+
+Start-Date: 2022-04-03  14:28:50
+Commandline: apt install wget
+Requested-By: pi (1000)
+Install: publicsuffix:armel (20211109.1735-0+deb10u1, automatic), openssl:armel (1.1.1n-0+deb10u1, automatic), libpsl5:armel (0.20.2-2, automatic), libpcre2-8-0:armel (10.32-5, automatic), ca-certificates:armel (20200601~deb10u2, automatic), wget:armel (1.20.1-1.1)
+End-Date: 2022-04-03  14:29:59

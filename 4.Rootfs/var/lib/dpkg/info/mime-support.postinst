@@ -1,0 +1,18 @@
+#! /bin/sh
+
+set -e
+
+# dpkg triggers support for update-mime
+if [ "$1" = "triggered" ]; then
+    if which update-mime > /dev/null; then update-mime --triggered; fi
+    exit 0
+fi
+
+
+# Remove the old status directory (and any orphaned install-mime program)
+rm -fr /var/lib/mime
+rm -f  /usr/sbin/install-mime
+
+
+# Run the update program
+if which update-mime > /dev/null; then update-mime --triggered; fi

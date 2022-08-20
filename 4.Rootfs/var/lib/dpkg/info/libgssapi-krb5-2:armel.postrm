@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+if [ $1 = "purge" ] ; then
+    rm -f /etc/gss/mech.d/README 2>/dev/null
+fi
+
+

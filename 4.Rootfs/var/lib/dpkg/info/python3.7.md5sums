@@ -1,0 +1,15 @@
+eb4c032af0a4869230cd2631792f978e  usr/bin/pydoc3.7
+382c7ec7e8caf2e225751d9f55f015e6  usr/bin/pygettext3.7
+2dd3cf03bbb788485ccf00d4d3265ed7  usr/share/applications/python3.7.desktop
+f3f63fdb47e436ae828cce3afe4b44bc  usr/share/doc/python3.7/ACKS.gz
+8fb701a43d27e618638e7a9cf9cbfc24  usr/share/doc/python3.7/NEWS.gz
+4dd083eef8a9bf50a7dbc306be2f739d  usr/share/doc/python3.7/README.Debian
+4fbff76ef127a1ef5cb6ba58c678e640  usr/share/doc/python3.7/README.rst.gz
+4995a4ce8a4c607692b42c99590ab1f9  usr/share/doc/python3.7/changelog.Debian.gz
+d8c47e21fcd8f5a22f90828d568b0084  usr/share/doc/python3.7/copyright
+c7d0557661ee61683821b538df194961  usr/share/lintian/overrides/python3.7
+a1a09e2b6d0baf3f3c6ad814c5508add  usr/share/man/man1/pdb3.7.1.gz
+16a263aebedf8a81f6d50b2313128a4c  usr/share/man/man1/pydoc3.7.1.gz
+90cf8dfcb6b3c2741f64c36c6842a256  usr/share/man/man1/pygettext3.7.1.gz
+9f9c85f23667a9a942aa0de9588e5918  usr/share/man/man1/pysetup3.7.1.gz
+d183cb64badc9865b14c18fb0059b39f  usr/share/pixmaps/python3.7.xpm

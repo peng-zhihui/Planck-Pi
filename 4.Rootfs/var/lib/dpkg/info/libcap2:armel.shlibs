@@ -1,0 +1,2 @@
+libcap 2 libcap2 (>= 1:2.10)
+udeb: libcap 2 libcap2-udeb (>= 1:2.10)

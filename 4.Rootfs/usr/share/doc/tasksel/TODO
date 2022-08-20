@@ -1,0 +1,12 @@
+Now that debconf-apt-progress is used and tasksel can run inside debconf,
+it would be nice to convert it so tasksel starts debconf in the beginning,
+and runs everything under debconf, except perhaps any manual package
+selection that the user might decide to do. This would reduce startup
+delays and also the delay between the two debconf runs it does now.
+
+Also, to better handle the case of one task being removed while another is
+installed, use debconf-apt-progress with waypoints.
+
+----
+
+Move more data from tasks/* to task packages.

@@ -1,0 +1,5 @@
+9384211c040498204783c0a53044564c  usr/lib/arm-linux-gnueabi/libgssapi_krb5.so.2.2
+7e936a5ba409ae87002f91d80bfd6de4  usr/share/doc/libgssapi-krb5-2/NEWS.Debian.gz
+5581a0bc02cd8f6e684ef457f4c56686  usr/share/doc/libgssapi-krb5-2/changelog.Debian.gz
+55245d0f2c5677eb816754f87456a1e7  usr/share/doc/libgssapi-krb5-2/copyright
+ff06c79275a2e9c2cece1bdf3d8d1b3b  usr/share/lintian/overrides/libgssapi-krb5-2

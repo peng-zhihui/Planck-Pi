@@ -1,0 +1,119 @@
+Feb 14 10:12:16 ubuntu systemd-logind[132]: New seat seat0.
+Feb 14 10:13:47 ubuntu systemd-logind[154]: New seat seat0.
+Feb 14 10:13:48 ubuntu sshd[159]: Server listening on 0.0.0.0 port 22.
+Feb 14 10:12:25 ubuntu systemd-logind[128]: New seat seat0.
+Feb 14 10:12:28 ubuntu sshd[155]: Server listening on 0.0.0.0 port 22.
+Feb 14 10:12:35 ubuntu login[152]: pam_unix(login:account): account root has password changed in future
+Feb 14 10:12:35 ubuntu login[152]: pam_env(login:session): Unable to open env file: /etc/default/locale: No such file or directory
+Feb 14 10:12:35 ubuntu login[152]: pam_unix(login:session): session opened for user root by LOGIN(uid=0)
+Feb 14 10:12:36 ubuntu systemd-logind[128]: New session c1 of user root.
+Feb 14 10:12:36 ubuntu systemd: pam_unix(systemd-user:account): account root has password changed in future
+Feb 14 10:12:36 ubuntu systemd: pam_unix(systemd-user:session): session opened for user root by (uid=0)
+Feb 14 10:12:37 ubuntu login[177]: ROOT LOGIN  on '/dev/ttyS0'
+Apr  3 14:01:54 planck systemd-logind[133]: New seat seat0.
+Apr  3 14:01:56 planck sshd[156]: Server listening on 0.0.0.0 port 22.
+Apr  3 14:02:03 planck login[155]: pam_unix(login:auth): authentication failure; logname=LOGIN uid=0 euid=0 tty=/dev/ttyS0 ruser= rhost=  user=pi
+Apr  3 14:02:05 planck login[155]: FAILED LOGIN (1) on '/dev/ttyS0' FOR 'pi', Authentication failure
+Apr  3 14:02:15 planck login[155]: pam_env(login:session): Unable to open env file: /etc/default/locale: No such file or directory
+Apr  3 14:02:15 planck login[155]: pam_unix(login:session): session opened for user root by LOGIN(uid=0)
+Apr  3 14:02:16 planck systemd-logind[133]: New session c1 of user root.
+Apr  3 14:02:16 planck systemd: pam_unix(systemd-user:session): session opened for user root by (uid=0)
+Apr  3 14:02:18 planck login[180]: ROOT LOGIN  on '/dev/ttyS0'
+Apr  3 14:02:21 planck su: (to root) root on ttyS0
+Apr  3 14:02:21 planck su: pam_env(su:session): Unable to open env file: /etc/default/locale: No such file or directory
+Apr  3 14:02:21 planck su: pam_unix(su:session): session opened for user root by root(uid=0)
+Apr  3 14:02:26 planck su: (to pi) root on ttyS0
+Apr  3 14:02:26 planck su: pam_env(su:session): Unable to open env file: /etc/default/locale: No such file or directory
+Apr  3 14:02:26 planck su: pam_unix(su:session): session opened for user pi by root(uid=0)
+Apr  3 14:03:08 planck su: pam_unix(su:session): session closed for user pi
+Apr  3 14:03:18 planck su: (to pi) root on ttyS0
+Apr  3 14:03:18 planck su: pam_env(su:session): Unable to open env file: /etc/default/locale: No such file or directory
+Apr  3 14:03:18 planck su: pam_unix(su:session): session opened for user pi by root(uid=0)
+Apr  3 14:03:43 planck sudo:       pi : unable to resolve host planck
+Apr  3 14:03:43 planck sudo:       pi : problem with defaults entries ; TTY=ttyS0 ; PWD=/root ; USER=root ; 
+Apr  3 14:03:43 planck sudo:       pi : TTY=ttyS0 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/passwd
+Apr  3 14:03:44 planck sudo: pam_unix(sudo:session): session opened for user root by root(uid=0)
+Apr  3 14:03:57 planck passwd[214]: pam_unix(passwd:chauthtok): password changed for root
+Apr  3 14:03:57 planck sudo: pam_unix(sudo:session): session closed for user root
+Apr  3 14:04:31 planck sudo:       pi : unable to resolve host planck
+Apr  3 14:04:31 planck sudo:       pi : problem with defaults entries ; TTY=ttyS0 ; PWD=/root ; USER=root ; 
+Apr  3 14:04:31 planck sudo:       pi : TTY=ttyS0 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/nano /etc/hosts
+Apr  3 14:04:31 planck sudo: pam_unix(sudo:session): session opened for user root by root(uid=0)
+Apr  3 14:04:40 planck sudo: pam_unix(sudo:session): session closed for user root
+Apr  3 14:04:52 planck sudo:       pi : TTY=ttyS0 ; PWD=/home/pi ; USER=root ; COMMAND=/usr/bin/apt update
+Apr  3 14:04:52 planck sudo: pam_unix(sudo:session): session opened for user root by root(uid=0)
+Apr  3 14:06:23 planck sudo: pam_unix(sudo:session): session closed for user root
+Apr  3 14:06:32 planck sudo:       pi : TTY=ttyS0 ; PWD=/home/pi ; USER=root ; COMMAND=/usr/sbin/halt
+Apr  3 14:06:32 planck sudo: pam_unix(sudo:session): session opened for user root by root(uid=0)
+Apr  3 14:06:34 planck sudo: pam_unix(sudo:session): session closed for user root
+Apr  3 14:06:35 planck sshd[156]: Received signal 15; terminating.
+Apr  3 14:01:52 localhost systemd-logind[135]: New seat seat0.
+Apr  3 14:02:05 localhost login[154]: pam_unix(login:auth): authentication failure; logname=LOGIN uid=0 euid=0 tty=/dev/ttyS0 ruser= rhost=  user=pi
+Apr  3 14:02:08 localhost login[154]: FAILED LOGIN (1) on '/dev/ttyS0' FOR 'pi', Authentication failure
+Apr  3 14:02:11 localhost sshd[158]: Server listening on 0.0.0.0 port 22.
+Apr  3 14:02:14 localhost login[154]: pam_unix(login:auth): check pass; user unknown
+Apr  3 14:02:14 localhost login[154]: pam_unix(login:auth): authentication failure; logname=LOGIN uid=0 euid=0 tty=/dev/ttyS0 ruser= rhost= 
+Apr  3 14:02:16 localhost login[154]: FAILED LOGIN (2) on '/dev/ttyS0' FOR 'UNKNOWN', Authentication failure
+Apr  3 14:02:23 localhost login[154]: FAILED LOGIN (3) on '/dev/ttyS0' FOR 'pi', Authentication failure
+Apr  3 14:02:27 localhost login[154]: pam_env(login:session): Unable to open env file: /etc/default/locale: No such file or directory
+Apr  3 14:02:27 localhost login[154]: pam_unix(login:session): session opened for user root by LOGIN(uid=0)
+Apr  3 14:02:28 localhost systemd-logind[135]: New session c1 of user root.
+Apr  3 14:02:28 localhost systemd: pam_unix(systemd-user:session): session opened for user root by (uid=0)
+Apr  3 14:02:29 localhost login[184]: ROOT LOGIN  on '/dev/ttyS0'
+Apr  3 14:02:32 localhost su: (to pi) root on ttyS0
+Apr  3 14:02:32 localhost su: pam_env(su:session): Unable to open env file: /etc/default/locale: No such file or directory
+Apr  3 14:02:32 localhost su: pam_unix(su:session): session opened for user pi by root(uid=0)
+Apr  3 14:02:42 localhost sudo:       pi : TTY=ttyS0 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/passwd pi
+Apr  3 14:02:42 localhost sudo: pam_unix(sudo:session): session opened for user root by root(uid=0)
+Apr  3 14:02:47 localhost passwd[202]: pam_unix(passwd:chauthtok): password changed for pi
+Apr  3 14:02:47 localhost sudo: pam_unix(sudo:session): session closed for user root
+Apr  3 14:03:00 localhost sudo:       pi : TTY=ttyS0 ; PWD=/root ; USER=root ; COMMAND=/usr/sbin/reboot
+Apr  3 14:03:00 localhost sudo: pam_unix(sudo:session): session opened for user root by root(uid=0)
+Apr  3 14:03:01 localhost sudo: pam_unix(sudo:session): session closed for user root
+Apr  3 14:03:02 localhost su: pam_unix(su:session): session closed for user pi
+Apr  3 14:03:02 localhost sshd[158]: Received signal 15; terminating.
+Apr  3 14:01:52 localhost systemd-logind[134]: New seat seat0.
+Apr  3 14:02:05 localhost login[154]: pam_env(login:session): Unable to open env file: /etc/default/locale: No such file or directory
+Apr  3 14:02:05 localhost login[154]: pam_unix(login:session): session opened for user pi by LOGIN(uid=0)
+Apr  3 14:02:05 localhost systemd-logind[134]: New session c1 of user pi.
+Apr  3 14:02:06 localhost systemd: pam_unix(systemd-user:session): session opened for user pi by (uid=0)
+Apr  3 14:02:59 localhost sshd[178]: Server listening on 0.0.0.0 port 22.
+Apr  3 14:19:49 localhost sudo:       pi : TTY=ttyS0 ; PWD=/home/pi ; USER=root ; COMMAND=/usr/bin/apt-get install haveged
+Apr  3 14:19:49 localhost sudo: pam_unix(sudo:session): session opened for user root by pi(uid=0)
+Apr  3 14:22:13 localhost sudo: pam_unix(sudo:session): session closed for user root
+Apr  3 14:22:51 localhost sudo:       pi : TTY=ttyS0 ; PWD=/home/pi ; USER=root ; COMMAND=/usr/bin/nano /etc/fstab
+Apr  3 14:22:52 localhost sudo: pam_unix(sudo:session): session opened for user root by pi(uid=0)
+Apr  3 14:22:59 localhost sudo: pam_unix(sudo:session): session closed for user root
+Apr  3 14:23:15 localhost sudo:       pi : TTY=ttyS0 ; PWD=/home/pi ; USER=root ; COMMAND=/usr/sbin/reboot
+Apr  3 14:23:15 localhost sudo: pam_unix(sudo:session): session opened for user root by pi(uid=0)
+Apr  3 14:23:17 localhost sudo: pam_unix(sudo:session): session closed for user root
+Apr  3 14:23:23 localhost systemd-logind[133]: New seat seat0.
+Apr  3 14:23:30 localhost sshd[157]: Server listening on 0.0.0.0 port 22.
+Apr  3 14:25:02 localhost login[155]: pam_env(login:session): Unable to open env file: /etc/default/locale: No such file or directory
+Apr  3 14:25:02 localhost login[155]: pam_unix(login:session): session opened for user pi by LOGIN(uid=0)
+Apr  3 14:25:03 localhost systemd-logind[133]: New session c1 of user pi.
+Apr  3 14:25:03 localhost systemd: pam_unix(systemd-user:session): session opened for user pi by (uid=0)
+Apr  3 14:25:16 localhost sudo:       pi : TTY=ttyS0 ; PWD=/home/pi ; USER=root ; COMMAND=/usr/bin/nano .profile
+Apr  3 14:25:16 localhost sudo: pam_unix(sudo:session): session opened for user root by pi(uid=0)
+Apr  3 14:25:28 localhost sudo: pam_unix(sudo:session): session closed for user root
+Apr  3 14:25:34 localhost sudo:       pi : TTY=ttyS0 ; PWD=/home/pi ; USER=root ; COMMAND=/usr/bin/nano .profile
+Apr  3 14:25:34 localhost sudo: pam_unix(sudo:session): session opened for user root by pi(uid=0)
+Apr  3 14:25:38 localhost sudo: pam_unix(sudo:session): session closed for user root
+Apr  3 14:25:47 localhost sudo:       pi : TTY=ttyS0 ; PWD=/home/pi ; USER=root ; COMMAND=/usr/sbin/ifconfig
+Apr  3 14:25:47 localhost sudo: pam_unix(sudo:session): session opened for user root by pi(uid=0)
+Apr  3 14:25:47 localhost sudo: pam_unix(sudo:session): session closed for user root
+Apr  3 14:27:05 localhost sudo:       pi : TTY=ttyS0 ; PWD=/home/pi ; USER=root ; COMMAND=/usr/bin/ping 127.0.0.1
+Apr  3 14:27:05 localhost sudo: pam_unix(sudo:session): session opened for user root by pi(uid=0)
+Apr  3 14:27:07 localhost sudo: pam_unix(sudo:session): session closed for user root
+Apr  3 14:27:11 localhost sudo:       pi : TTY=ttyS0 ; PWD=/home/pi ; USER=root ; COMMAND=/usr/bin/ping www.baidu.com
+Apr  3 14:27:11 localhost sudo: pam_unix(sudo:session): session opened for user root by pi(uid=0)
+Apr  3 14:27:12 localhost sudo: pam_unix(sudo:session): session closed for user root
+Apr  3 14:27:26 localhost sudo:       pi : TTY=ttyS0 ; PWD=/home/pi ; USER=root ; COMMAND=/usr/bin/apt install wget
+Apr  3 14:27:26 localhost sudo: pam_unix(sudo:session): session opened for user root by pi(uid=0)
+Apr  3 14:30:26 localhost sudo: pam_unix(sudo:session): session closed for user root
+Apr  3 14:31:14 localhost sudo:       pi : TTY=ttyS0 ; PWD=/home/pi ; USER=root ; COMMAND=/usr/bin/df -h
+Apr  3 14:31:14 localhost sudo: pam_unix(sudo:session): session opened for user root by pi(uid=0)
+Apr  3 14:31:14 localhost sudo: pam_unix(sudo:session): session closed for user root
+Apr  3 14:31:32 localhost sudo:       pi : TTY=ttyS0 ; PWD=/home/pi ; USER=root ; COMMAND=/usr/sbin/poweroff
+Apr  3 14:31:32 localhost sudo: pam_unix(sudo:session): session opened for user root by pi(uid=0)
+Apr  3 14:31:34 localhost sudo: pam_unix(sudo:session): session closed for user root

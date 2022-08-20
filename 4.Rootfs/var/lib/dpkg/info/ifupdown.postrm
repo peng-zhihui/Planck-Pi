@@ -1,0 +1,78 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+  purge)
+    # Note: We don't remove /etc/network/interfaces
+    rm -f /etc/network/run/ifstate
+
+    if [ -L /etc/network/run ] ; then
+      rm -f /etc/network/run
+    elif [ -d /etc/network/run ] ; then
+      rmdir --ignore-fail-on-non-empty /etc/network/run
+    fi
+    ;;
+esac
+
+# Automatically added by dh_installinit/12
+if [ "$1" = "purge" ] ; then
+	update-rc.d networking remove >/dev/null
+fi
+# End automatically added section
+# Automatically added by dh_installdeb/12
+dpkg-maintscript-helper rm_conffile /etc/default/ifupdown 0.7\~\+ ifupdown -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init.d/ifupdown 0.7\~\+ ifupdown -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init.d/ifupdown-clean 0.7\~beta1 ifupdown -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/networking.conf 0.8.25\~ ifupdown -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/network-interface-container.conf 0.8.25\~ ifupdown -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/network-interface-security.conf 0.8.25\~ ifupdown -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/network-interface.conf 0.8.25\~ ifupdown -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/network/if-up.d/upstart 0.8.29\~ ifupdown -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/network/if-down.d/upstart 0.8.29\~ ifupdown -- "$@"
+# End automatically added section
+# Automatically added by dh_installsystemd/12
+if [ -d /run/systemd/system ]; then
+	systemctl --system daemon-reload >/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_installsystemd/12
+if [ "$1" = "remove" ]; then
+	if [ -x "/usr/bin/deb-systemd-helper" ]; then
+		deb-systemd-helper mask 'ifupdown-wait-online.service' >/dev/null || true
+	fi
+fi
+
+if [ "$1" = "purge" ]; then
+	if [ -x "/usr/bin/deb-systemd-helper" ]; then
+		deb-systemd-helper purge 'ifupdown-wait-online.service' >/dev/null || true
+		deb-systemd-helper unmask 'ifupdown-wait-online.service' >/dev/null || true
+	fi
+fi
+# End automatically added section
+# Automatically added by dh_installsystemd/12
+if [ -d /run/systemd/system ]; then
+	systemctl --system daemon-reload >/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_installsystemd/12
+if [ -d /run/systemd/system ]; then
+	systemctl --system daemon-reload >/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_installsystemd/12
+if [ "$1" = "remove" ]; then
+	if [ -x "/usr/bin/deb-systemd-helper" ]; then
+		deb-systemd-helper mask 'networking.service' >/dev/null || true
+	fi
+fi
+
+if [ "$1" = "purge" ]; then
+	if [ -x "/usr/bin/deb-systemd-helper" ]; then
+		deb-systemd-helper purge 'networking.service' >/dev/null || true
+		deb-systemd-helper unmask 'networking.service' >/dev/null || true
+	fi
+fi
+# End automatically added section
+
+

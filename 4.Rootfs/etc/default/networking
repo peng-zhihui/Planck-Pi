@@ -1,0 +1,31 @@
+# Configuration for networking init script being run during
+# the boot sequence
+
+# Set to 'no' to skip interfaces configuration on boot
+#CONFIGURE_INTERFACES=yes
+
+# Don't configure these interfaces. Shell wildcards supported/
+#EXCLUDE_INTERFACES=
+
+# Set to 'yes' to enable additional verbosity
+#VERBOSE=no
+
+# Method to wait for the network to become online,
+# for services that depend on a working network:
+# - ifup: wait for ifup to have configured an interface.
+# - route: wait for a route to a given address to appear.
+# - ping/ping6: wait for a host to respond to ping packets.
+# - none: don't wait.
+#WAIT_ONLINE_METHOD=ifup
+
+# Which interface to wait for.
+# If none given, wait for all auto interfaces, or if there are none,
+# wait for at least one hotplug interface.
+#WAIT_ONLINE_IFACE=
+
+# Which address to wait for for route, ping and ping6 methods.
+# If none is given for route, it waits for a default gateway.
+#WAIT_ONLINE_ADDRESS=
+
+# Timeout in seconds for waiting for the network to come online.
+#WAIT_ONLINE_TIMEOUT=300

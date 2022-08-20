@@ -1,0 +1,87 @@
+#!/bin/sh
+
+set -e
+
+# remove old link
+
+if [ -L /etc/alternatives/sudo ]; then
+	rm /etc/alternatives/sudo
+fi
+
+# remove legacy conffile no longer delivered
+
+if [ -f /etc/sudoers.dist ]; then
+	rm /etc/sudoers.dist
+fi
+
+# complain if no sudoers file is present
+if [ ! -f /etc/sudoers ];then
+	echo "WARNING:  /etc/sudoers not present!";
+fi
+
+# make sure sudoers has the correct permissions and owner/group
+if [ -f /etc/sudoers ];then
+    chown root:root /etc/sudoers
+    chmod 440 /etc/sudoers
+fi
+
+# if we've gotten this far .. remove the saved, unchanged old sudoers file
+rm -f /etc/sudoers.pre-conffile
+
+# Automatically added by dh_installinit/12.1.1
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-deconfigure" ] || [ "$1" = "abort-remove" ] ; then
+	# In case this system is running systemd, we need to ensure that all
+	# necessary tmpfiles (if any) are created before starting.
+	if [ -d /run/systemd/system ] ; then
+		systemd-tmpfiles --create sudo.conf >/dev/null || true
+	fi
+fi
+# End automatically added section
+# Automatically added by dh_installinit/12.1.1
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-deconfigure" ] || [ "$1" = "abort-remove" ] ; then
+	if [ -x "/etc/init.d/sudo" ]; then
+		update-rc.d sudo defaults >/dev/null
+		if [ -n "$2" ]; then
+			_dh_action=restart
+		else
+			_dh_action=start
+		fi
+		invoke-rc.d sudo $_dh_action || exit 1
+	fi
+fi
+# End automatically added section
+
+
+# make sure we have a sudo group
+
+[ -n "`getent group sudo`" ] && exit 0   # we're finished if there is a group sudo:
+
+# start search with gid 27
+gid="27"
+while [ -n "`getent group $gid | cut -d: -f3`" ];do
+	gid=`expr $gid + 1`
+done
+
+
+if [ "$gid" -ne "27" ];then
+	echo "On Debian we normally use gid 27 for 'sudo'."
+	gname="`getent group 27 | cut -d: -f1`"
+	echo "However, on your system gid 27 is group '$gname'."
+	echo ""
+	echo "Would you like me to stop configuring sudo so that you can change this?"; 
+	while true;do
+		echo -n "(Enter 'yes' to stop, enter to continue): "
+		read ans
+		[ "$ans" = "" ] && break
+        	if [ "$ans" = "yes" -o "$ans" = "YES" ];then
+			echo "'dpkg --pending --configure' will restart the configuration."
+			exit 1;
+		fi
+		echo "Please enter exactly 'yes' to stop, or press the enter key to continue without stopping"
+	done
+fi
+
+echo "Creating group 'sudo' with gid = $gid";
+groupadd -g $gid sudo
+
+echo ""

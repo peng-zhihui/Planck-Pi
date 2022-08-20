@@ -1,0 +1,13 @@
+/.
+/usr
+/usr/lib
+/usr/lib/gcc
+/usr/lib/gcc/arm-linux-gnueabi
+/usr/lib/gcc/arm-linux-gnueabi/8
+/usr/share
+/usr/share/doc
+/usr/share/doc/gcc-8-base
+/usr/share/doc/gcc-8-base/README.Debian.armel.gz
+/usr/share/doc/gcc-8-base/TODO.Debian
+/usr/share/doc/gcc-8-base/changelog.Debian.gz
+/usr/share/doc/gcc-8-base/copyright

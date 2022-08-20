@@ -1,0 +1,12 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libxcb.so.1.1.0
+/usr/share
+/usr/share/doc
+/usr/share/doc/libxcb1
+/usr/share/doc/libxcb1/changelog.Debian.gz
+/usr/share/doc/libxcb1/changelog.gz
+/usr/share/doc/libxcb1/copyright
+/usr/lib/arm-linux-gnueabi/libxcb.so.1

@@ -1,0 +1,1345 @@
+Task: albanian-desktop
+Key: 
+  task-albanian-desktop
+Enhances: desktop
+Section: l10n
+Test-lang: sq
+
+Task: amharic
+Key: 
+  task-amharic
+Section: l10n
+Test-lang: am
+
+Task: amharic-desktop
+Key: 
+  task-amharic-desktop
+Enhances: desktop, amharic
+Section: l10n
+
+Task: amharic-kde-desktop
+Key: 
+  task-amharic-kde-desktop
+Enhances: kde-desktop, amharic-desktop
+Section: l10n
+
+Task: arabic
+Key: 
+  task-arabic
+Section: l10n
+Test-lang: ar
+
+Task: arabic-desktop
+Key: 
+  task-arabic-desktop
+Enhances: desktop, arabic
+Section: l10n
+
+Task: arabic-kde-desktop
+Key: 
+  task-arabic-kde-desktop
+Enhances: kde-desktop, arabic-desktop
+Section: l10n
+
+Task: asturian
+Key: 
+  task-asturian
+Section: l10n
+Test-lang: ast
+
+Task: asturian-desktop
+Key: 
+  task-asturian-desktop
+Enhances: asturian, desktop
+Section: l10n
+
+Task: basque
+Key: 
+  task-basque
+Section: l10n
+Test-lang: eu
+
+Task: basque-desktop
+Key: 
+  task-basque-desktop
+Enhances: desktop, basque
+Section: l10n
+
+Task: basque-kde-desktop
+Key: 
+  task-basque-kde-desktop
+Enhances: kde-desktop, basque-desktop
+Section: l10n
+
+Task: belarusian
+Key: 
+  task-belarusian
+Section: l10n
+Test-lang: be
+
+Task: belarusian-desktop
+Key: 
+  task-belarusian-desktop
+Enhances: desktop, belarusian
+Section: l10n
+
+Task: belarusian-kde-desktop
+Key: 
+  task-belarusian-kde-desktop
+Enhances: kde-desktop, belarusian-desktop
+Section: l10n
+
+Task: bengali
+Key: 
+  task-bengali
+Section: l10n
+Test-lang: bn
+
+Task: bengali-desktop
+Key: 
+  task-bengali-desktop
+Enhances: desktop, bengali
+Section: l10n
+
+Task: bengali-kde-desktop
+Key: 
+  task-bengali-kde-desktop
+Enhances: kde-desktop, bengali-desktop
+Section: l10n
+
+Task: bosnian
+Key: 
+  task-bosnian
+Section: l10n
+Test-lang: bs
+
+Task: bosnian-desktop
+Key: 
+  task-bosnian-desktop
+Enhances: desktop, bosnian
+Section: l10n
+Test-lang: bs
+
+Task: bosnian-kde-desktop
+Key: 
+  task-bosnian-kde-desktop
+Enhances: kde-desktop, bosnian-desktop
+Section: l10n
+
+Task: brazilian-portuguese
+Key: 
+  task-brazilian-portuguese
+Section: l10n
+Test-lang: pt_BR
+
+Task: brazilian-portuguese-desktop
+Key: 
+  task-brazilian-portuguese-desktop
+Enhances: desktop, brazilian-portuguese
+Section: l10n
+
+Task: brazilian-portuguese-kde-desktop
+Key: 
+  task-brazilian-portuguese-kde-desktop
+Enhances: kde-desktop, brazilian-portuguese-desktop
+Section: l10n
+
+Task: british-desktop
+Key: 
+  task-british-desktop
+Enhances: desktop
+Section: l10n
+Test-lang: en_GB
+
+Task: british-kde-desktop
+Key: 
+  task-british-kde-desktop
+Enhances: kde-desktop, british-desktop
+Section: l10n
+
+Task: bulgarian
+Key: 
+  task-bulgarian
+Enhances: cyrillic
+Section: l10n
+Test-lang: bg
+
+Task: bulgarian-desktop
+Key: 
+  task-bulgarian-desktop
+Enhances: desktop, bulgarian
+Section: l10n
+
+Task: bulgarian-kde-desktop
+Key: 
+  task-bulgarian-kde-desktop
+Enhances: kde-desktop, bulgarian-desktop
+Section: l10n
+
+Task: catalan
+Key: 
+  task-catalan
+Section: l10n
+Test-lang: ca_ES
+
+Task: catalan-desktop
+Key: 
+  task-catalan-desktop
+Enhances: desktop, catalan
+Section: l10n
+
+Task: catalan-kde-desktop
+Key: 
+  task-catalan-kde-desktop
+Enhances: kde-desktop, catalan-desktop
+Section: l10n
+
+Task: chinese-s
+Key: 
+  task-chinese-s
+Section: l10n
+Test-lang: zh_CN zh_SG
+
+Task: chinese-s-desktop
+Key: 
+  task-chinese-s-desktop
+Enhances: desktop, chinese-s
+Section: l10n
+
+Task: chinese-s-kde-desktop
+Key: 
+  task-chinese-s-kde-desktop
+Enhances: kde-desktop, chinese-s-desktop
+Section: l10n
+
+Task: chinese-t
+Key: 
+  task-chinese-t
+Section: l10n
+Test-lang: zh_TW zh_HK
+
+Task: chinese-t-desktop
+Key: 
+  task-chinese-t-desktop
+Enhances: desktop, chinese-t
+Section: l10n
+
+Task: chinese-t-kde-desktop
+Key: 
+  task-chinese-t-kde-desktop
+Enhances: kde-desktop, chinese-t-desktop
+Section: l10n
+
+Task: cinnamon-desktop
+Parent: desktop
+Relevance: 8
+Key: 
+  task-cinnamon-desktop
+Section: user
+Test-default-desktop: 3 cinnamon
+
+Task: croatian
+Key: 
+  task-croatian
+Section: l10n
+Test-lang: hr
+
+Task: croatian-desktop
+Key: 
+  task-croatian-desktop
+Enhances: desktop, croatian
+Section: l10n
+Test-lang: hr
+
+Task: croatian-kde-desktop
+Key: 
+  task-croatian-kde-desktop
+Enhances: kde-desktop, croatian-desktop
+Section: l10n
+
+Task: cyrillic
+Key: 
+  task-cyrillic
+Section: l10n
+Test-lang: be bg kz mk mn ru sr
+
+Task: cyrillic-desktop
+Key: 
+  task-cyrillic-desktop
+Enhances: desktop, cyrillic
+Section: l10n
+
+Task: cyrillic-kde-desktop
+Key: 
+  task-cyrillic-kde-desktop
+Enhances: kde-desktop, cyrillic-desktop
+Section: l10n
+
+Task: czech
+Key: 
+  task-czech
+Section: l10n
+Test-lang: cs
+
+Task: czech-desktop
+Key: 
+  task-czech-desktop
+Enhances: czech, desktop
+Section: l10n
+
+Task: czech-kde-desktop
+Key: 
+  task-czech-kde-desktop
+Enhances: kde-desktop, czech-desktop
+Section: l10n
+
+Task: danish
+Key: 
+  task-danish
+Section: l10n
+Test-lang: da
+
+Task: danish-desktop
+Key: 
+  task-danish-desktop
+Enhances: desktop, danish
+Section: l10n
+
+Task: danish-kde-desktop
+Key: 
+  task-danish-kde-desktop
+Enhances: kde-desktop, danish-desktop
+Section: l10n
+
+Task: desktop
+Relevance: 1
+Key: 
+  task-desktop
+Section: user
+Test-desktop: 1
+
+Task: dutch
+Key: 
+  task-dutch
+Section: l10n
+Test-lang: nl
+
+Task: dutch-desktop
+Key: 
+  task-dutch-desktop
+Enhances: desktop, dutch
+Section: l10n
+
+Task: dutch-kde-desktop
+Key: 
+  task-dutch-kde-desktop
+Enhances: kde-desktop, dutch-desktop
+Section: l10n
+
+Task: dzongkha-desktop
+Key: 
+  task-dzongkha-desktop
+Enhances: desktop
+Section: l10n
+Test-lang: dz
+
+Task: dzongkha-kde-desktop
+Key: 
+  task-dzongkha-kde-desktop
+Enhances: kde-desktop, dzongkha-desktop
+Section: l10n
+
+Task: english
+Key: 
+  task-english
+Section: l10n
+Test-lang: en
+
+Task: esperanto
+Key: 
+  task-esperanto
+Section: l10n
+Test-lang: eo
+
+Task: esperanto-desktop
+Key: 
+  task-esperanto-desktop
+Enhances: desktop, esperanto
+Section: l10n
+
+Task: esperanto-kde-desktop
+Key: 
+  task-esperanto-kde-desktop
+Enhances: kde-desktop, esperanto-desktop
+Section: l10n
+
+Task: estonian
+Key: 
+  task-estonian
+Section: l10n
+Test-lang: et
+
+Task: estonian-desktop
+Key: 
+  task-estonian-desktop
+Enhances: desktop, estonian
+Section: l10n
+
+Task: estonian-kde-desktop
+Key: 
+  task-estonian-kde-desktop
+Enhances: kde-desktop, estonian-desktop
+Section: l10n
+
+Task: finnish
+Key: 
+  task-finnish
+Section: l10n
+Test-lang: fi
+
+Task: finnish-desktop
+Key: 
+  task-finnish-desktop
+Enhances: finnish, desktop
+Section: l10n
+
+Task: finnish-kde-desktop
+Key: 
+  task-finnish-kde-desktop
+Enhances: kde-desktop, finnish-desktop
+Section: l10n
+
+Task: french
+Key: 
+  task-french
+Section: l10n
+Test-lang: fr
+
+Task: french-desktop
+Key: 
+  task-french-desktop
+Enhances: french, desktop
+Section: l10n
+
+Task: french-kde-desktop
+Key: 
+  task-french-kde-desktop
+Enhances: kde-desktop, french-desktop
+Section: l10n
+
+Task: galician
+Key: 
+  task-galician
+Section: l10n
+Test-lang: gl
+
+Task: galician-desktop
+Key: 
+  task-galician-desktop
+Enhances: galician, desktop
+Section: l10n
+
+Task: galician-kde-desktop
+Key: 
+  task-galician-kde-desktop
+Enhances: kde-desktop, galician-desktop
+Section: l10n
+
+Task: georgian-desktop
+Key: 
+  task-georgian-desktop
+Enhances: desktop
+Section: l10n
+Test-lang: ka
+
+Task: german
+Key: 
+  task-german
+Section: l10n
+Test-lang: de
+
+Task: german-desktop
+Key: 
+  task-german-desktop
+Enhances: desktop, german
+Section: l10n
+
+Task: german-kde-desktop
+Key: 
+  task-german-kde-desktop
+Enhances: kde-desktop, german-desktop
+Section: l10n
+
+Task: gnome-desktop
+Parent: desktop
+Relevance: 1
+Key: 
+  task-gnome-desktop
+Section: user
+Test-default-desktop: 3 gnome
+
+Task: greek
+Key: 
+  task-greek
+Section: l10n
+Test-lang: el
+
+Task: greek-desktop
+Key: 
+  task-greek-desktop
+Enhances: desktop, greek
+Section: l10n
+
+Task: greek-kde-desktop
+Key: 
+  task-greek-kde-desktop
+Enhances: kde-desktop, greek-desktop
+Section: l10n
+
+Task: gujarati
+Key: 
+  task-gujarati
+Section: l10n
+Test-lang: gu
+
+Task: gujarati-desktop
+Key: 
+  task-gujarati-desktop
+Enhances: desktop, gujarati
+Section: l10n
+
+Task: gujarati-kde-desktop
+Key: 
+  task-gujarati-kde-desktop
+Enhances: kde-desktop, gujarati-desktop
+Section: l10n
+
+Task: hebrew
+Key: 
+  task-hebrew
+Section: l10n
+Test-lang: he
+
+Task: hebrew-desktop
+Key: 
+  task-hebrew-desktop
+Enhances: desktop, hebrew
+Section: l10n
+
+Task: hebrew-gnome-desktop
+Key: 
+  task-hebrew-gnome-desktop
+Enhances: gnome-desktop, hebrew-desktop
+Section: l10n
+
+Task: hebrew-kde-desktop
+Key: 
+  task-hebrew-kde-desktop
+Enhances: kde-desktop, hebrew-desktop
+Section: l10n
+
+Task: hindi
+Key: 
+  task-hindi
+Section: l10n
+Test-lang: hi
+
+Task: hindi-desktop
+Key: 
+  task-hindi-desktop
+Enhances: desktop, hindi
+Section: l10n
+
+Task: hindi-kde-desktop
+Key: 
+  task-hindi-kde-desktop
+Enhances: kde-desktop, hindi-desktop
+Section: l10n
+
+Task: hungarian
+Key: 
+  task-hungarian
+Section: l10n
+Test-lang: hu
+
+Task: hungarian-desktop
+Key: 
+  task-hungarian-desktop
+Enhances: hungarian, desktop
+Section: l10n
+
+Task: hungarian-kde-desktop
+Key: 
+  task-hungarian-kde-desktop
+Enhances: kde-desktop, hungarian-desktop
+Section: l10n
+
+Task: icelandic
+Key: 
+  task-icelandic
+Section: l10n
+Test-lang: is
+
+Task: icelandic-desktop
+Key: 
+  task-icelandic-desktop
+Enhances: icelandic
+Section: l10n
+
+Task: icelandic-kde-desktop
+Key: 
+  task-icelandic-kde-desktop
+Enhances: kde-desktop, icelandic-desktop
+Section: l10n
+
+Task: indonesian-desktop
+Key: 
+  task-indonesian-desktop
+Enhances: desktop, indonesian
+Section: l10n
+Test-lang: id
+
+Task: indonesian-kde-desktop
+Key: 
+  task-indonesian-kde-desktop
+Enhances: kde-desktop, indonesian-desktop
+Section: l10n
+
+Task: irish
+Key: 
+  task-irish
+Section: l10n
+Test-lang: ga
+
+Task: irish-desktop
+Key: 
+  task-irish-desktop
+Enhances: irish, desktop
+Section: l10n
+
+Task: irish-kde-desktop
+Key: 
+  task-irish-kde-desktop
+Enhances: kde-desktop, irish-desktop
+Section: l10n
+
+Task: italian
+Key: 
+  task-italian
+Section: l10n
+Test-lang: it
+
+Task: italian-desktop
+Key: 
+  task-italian-desktop
+Enhances: desktop, italian
+Section: l10n
+
+Task: italian-kde-desktop
+Key: 
+  task-italian-kde-desktop
+Enhances: kde-desktop, italian-desktop
+Section: l10n
+
+Task: japanese
+Key: 
+  task-japanese
+Section: l10n
+Test-lang: ja
+
+Task: japanese-desktop
+Key: 
+  task-japanese-desktop
+Enhances: desktop, japanese
+Section: l10n
+
+Task: japanese-gnome-desktop
+Key: 
+  task-japanese-gnome-desktop
+Enhances: gnome-desktop, japanese-desktop
+Section: l10n
+
+Task: japanese-kde-desktop
+Key: 
+  task-japanese-kde-desktop
+Enhances: kde-desktop, japanese-desktop
+Section: l10n
+
+Task: kannada-desktop
+Key: 
+  task-kannada-desktop
+Enhances: desktop
+Section: l10n
+Test-lang: kn
+
+Task: kannada-kde-desktop
+Key: 
+  task-kannada-kde-desktop
+Enhances: kde-desktop, kannada-desktop
+Section: l10n
+
+Task: kazakh
+Key: 
+  task-kazakh
+Section: l10n
+Test-lang: kk
+
+Task: kazakh-desktop
+Key: 
+  task-kazakh-desktop
+Enhances: desktop, kazakh
+Section: l10n
+
+Task: kazakh-kde-desktop
+Key: 
+  task-kazakh-kde-desktop
+Enhances: kde-desktop, kazakh-desktop
+Section: l10n
+
+Task: kde-desktop
+Parent: desktop
+Relevance: 7
+Key: 
+  task-kde-desktop
+Section: user
+Test-default-desktop: 3 kde
+
+Task: khmer
+Key: 
+  task-khmer
+Section: l10n
+Test-lang: km
+
+Task: khmer-desktop
+Key: 
+  task-khmer-desktop
+Enhances: khmer, desktop
+Section: l10n
+
+Task: khmer-kde-desktop
+Key: 
+  task-khmer-kde-desktop
+Enhances: kde-desktop, khmer-desktop
+Section: l10n
+
+Task: korean
+Key: 
+  task-korean
+Section: l10n
+Test-lang: ko
+
+Task: korean-desktop
+Key: 
+  task-korean-desktop
+Enhances: desktop, korean
+Section: l10n
+
+Task: korean-gnome-desktop
+Key: 
+  task-korean-gnome-desktop
+Enhances: gnome-desktop, korean-desktop
+Section: l10n
+
+Task: korean-kde-desktop
+Key: 
+  task-korean-kde-desktop
+Enhances: kde-desktop, korean-desktop
+Section: l10n
+
+Task: kurdish
+Key: 
+  task-kurdish
+Section: l10n
+Test-lang: ku
+
+Task: kurdish-desktop
+Key: 
+  task-kurdish-desktop
+Enhances: desktop, kurdish
+Section: l10n
+
+Task: kurdish-kde-desktop
+Key: 
+  task-kurdish-kde-desktop
+Enhances: kde-desktop, kurdish-desktop
+Section: l10n
+
+Task: laptop
+Relevance: 9
+Key: 
+  task-laptop
+Section: user
+Test-laptop: 1
+
+Task: latvian
+Key: 
+  task-latvian
+Section: l10n
+Test-lang: lv
+
+Task: latvian-desktop
+Key: 
+  task-latvian-desktop
+Enhances: desktop, latvian
+Section: l10n
+
+Task: latvian-kde-desktop
+Key: 
+  task-latvian-kde-desktop
+Enhances: kde-desktop, latvian-desktop
+Section: l10n
+
+Task: lithuanian
+Key: 
+  task-lithuanian
+Section: l10n
+Test-lang: lt
+
+Task: lithuanian-desktop
+Key: 
+  task-lithuanian-desktop
+Enhances: desktop, lithuanian
+Section: l10n
+
+Task: lithuanian-kde-desktop
+Key: 
+  task-lithuanian-kde-desktop
+Enhances: kde-desktop, lithuanian-desktop
+Section: l10n
+
+Task: lxde-desktop
+Parent: desktop
+Relevance: 9
+Key: 
+  task-lxde-desktop
+Section: user
+Test-default-desktop: 3 lxde
+
+Task: lxqt-desktop
+Parent: desktop
+Relevance: 9
+Key: 
+  task-lxqt-desktop
+Section: user
+Test-default-desktop: 3 lxqt
+
+Task: macedonian
+Key: 
+  task-macedonian
+Section: l10n
+Test-lang: mk
+
+Task: macedonian-desktop
+Key: 
+  task-macedonian-desktop
+Enhances: desktop, macedonian
+Section: l10n
+
+Task: macedonian-kde-desktop
+Key: 
+  task-macedonian-kde-desktop
+Enhances: kde-desktop, macedonian-desktop
+Section: l10n
+
+Task: malayalam
+Key: 
+  task-malayalam
+Section: l10n
+Test-lang: ml
+
+Task: malayalam-desktop
+Key: 
+  task-malayalam-desktop
+Enhances: desktop, malayalam
+Section: l10n
+
+Task: malayalam-gnome-desktop
+Key: 
+  task-malayalam-gnome-desktop
+Enhances: gnome-desktop, malayalam-desktop
+Section: l10n
+
+Task: malayalam-kde-desktop
+Key: 
+  task-malayalam-kde-desktop
+Enhances: kde-desktop, malayalam-desktop
+Section: l10n
+
+Task: marathi
+Key: 
+  task-marathi
+Section: l10n
+Test-lang: mr
+
+Task: marathi-desktop
+Key: 
+  task-marathi-desktop
+Enhances: desktop, marathi
+Section: l10n
+
+Task: mate-desktop
+Parent: desktop
+Relevance: 8
+Key: 
+  task-mate-desktop
+Section: user
+Test-default-desktop: 3 mate
+
+Task: nepali-desktop
+Key: 
+  task-nepali-desktop
+Enhances: desktop
+Section: l10n
+Test-lang: ne
+
+Task: nepali-kde-desktop
+Key: 
+  task-nepali-kde-desktop
+Enhances: kde-desktop, nepali-desktop
+Section: l10n
+
+Task: northern-sami
+Key: 
+  task-northern-sami
+Section: l10n
+Test-lang: se
+
+Task: northern-sami-desktop
+Key: 
+  task-northern-sami-desktop
+Enhances: desktop
+Section: l10n
+Test-lang: se
+
+Task: norwegian
+Key: 
+  task-norwegian
+Section: l10n
+Test-lang: no nb nn
+
+Task: norwegian-desktop
+Key: 
+  task-norwegian-desktop
+Enhances: desktop, norwegian
+Section: l10n
+
+Task: norwegian-kde-desktop
+Key: 
+  task-norwegian-kde-desktop
+Enhances: kde-desktop, norwegian-desktop
+Section: l10n
+
+Task: persian
+Key: 
+  task-persian
+Section: l10n
+Test-lang: fa
+
+Task: persian-desktop
+Key: 
+  task-persian-desktop
+Enhances: desktop, persian
+Section: l10n
+
+Task: persian-kde-desktop
+Key: 
+  task-persian-kde-desktop
+Enhances: kde-desktop, persian-desktop
+Section: l10n
+
+Task: polish
+Key: 
+  task-polish
+Section: l10n
+Test-lang: pl
+
+Task: polish-desktop
+Key: 
+  task-polish-desktop
+Enhances: desktop, polish
+Section: l10n
+
+Task: polish-kde-desktop
+Key: 
+  task-polish-kde-desktop
+Enhances: kde-desktop, polish-desktop
+Section: l10n
+
+Task: portuguese
+Key: 
+  task-portuguese
+Section: l10n
+Test-lang: pt_PT pt_AO pt_CV pt_TL pt_GW pt_MZ pt_ST
+
+Task: portuguese-desktop
+Key: 
+  task-portuguese-desktop
+Enhances: portuguese, desktop
+Section: l10n
+
+Task: portuguese-kde-desktop
+Key: 
+  task-portuguese-kde-desktop
+Enhances: kde-desktop, portuguese-desktop
+Section: l10n
+
+Task: print-server
+Relevance: 4
+Key: 
+ task-print-server
+Section: server
+Test-desktop: 1
+
+Task: punjabi
+Key: 
+  task-punjabi
+Section: l10n
+Test-lang: pa
+
+Task: punjabi-desktop
+Key: 
+  task-punjabi-desktop
+Enhances: desktop, punjabi
+Section: l10n
+
+Task: punjabi-kde-desktop
+Key: 
+  task-punjabi-kde-desktop
+Enhances: kde-desktop, punjabi-desktop
+Section: l10n
+
+Task: romanian
+Key: 
+  task-romanian
+Section: l10n
+Test-lang: ro
+
+Task: romanian-desktop
+Key: 
+  task-romanian-desktop
+Enhances: desktop, romanian
+Section: l10n
+
+Task: romanian-kde-desktop
+Key: 
+  task-romanian-kde-desktop
+Enhances: kde-desktop, romanian-desktop
+Section: l10n
+
+Task: russian
+Key: 
+  task-russian
+Section: l10n
+Test-lang: ru
+
+Task: russian-desktop
+Key: 
+  task-russian-desktop
+Enhances: desktop, russian
+Section: l10n
+
+Task: russian-kde-desktop
+Key: 
+  task-russian-kde-desktop
+Enhances: kde-desktop, russian-desktop
+Section: l10n
+
+Task: serbian
+Key: 
+  task-serbian
+Section: l10n
+Test-lang: sr
+
+Task: serbian-desktop
+Key: 
+  task-serbian-desktop
+Enhances: desktop, serbian
+Section: l10n
+Test-lang: sr
+
+Task: serbian-kde-desktop
+Key: 
+  task-serbian-kde-desktop
+Enhances: kde-desktop, serbian-desktop
+Section: l10n
+
+Task: sinhala-desktop
+Key: 
+  task-sinhala-desktop
+Enhances: desktop
+Section: l10n
+Test-lang: si
+
+Task: sinhala-kde-desktop
+Key: 
+  task-sinhala-kde-desktop
+Enhances: kde-desktop, sinhala-desktop
+Section: l10n
+
+Task: slovak
+Key: 
+  task-slovak
+Section: l10n
+Test-lang: sk
+
+Task: slovak-desktop
+Key: 
+  task-slovak-desktop
+Enhances: slovak, desktop
+Section: l10n
+
+Task: slovak-kde-desktop
+Key: 
+  task-slovak-kde-desktop
+Enhances: kde-desktop, slovak-desktop
+Section: l10n
+
+Task: slovenian
+Key: 
+  task-slovenian
+Section: l10n
+Test-lang: sl
+
+Task: slovenian-desktop
+Key: 
+  task-slovenian-desktop
+Enhances: slovenian, desktop
+Section: l10n
+
+Task: slovenian-kde-desktop
+Key: 
+  task-slovenian-kde-desktop
+Enhances: kde-desktop, slovenian-desktop
+Section: l10n
+
+Task: south-african-english-desktop
+Key: 
+  task-south-african-english-desktop
+Enhances: desktop
+Section: l10n
+Test-lang: en_ZA
+
+Task: spanish
+Key: 
+  task-spanish
+Section: l10n
+Test-lang: es
+
+Task: spanish-desktop
+Key: 
+  task-spanish-desktop
+Enhances: desktop, spanish
+Section: l10n
+
+Task: spanish-kde-desktop
+Key: 
+  task-spanish-kde-desktop
+Enhances: kde-desktop, spanish-desktop
+Section: l10n
+
+Task: ssh-server
+Key: 
+  task-ssh-server
+Section: server
+Test-server: 1
+
+Task: standard
+Description: standard system utilities
+ This task sets up a basic user environment, providing a reasonably
+ small selection of services and tools usable on the command line.
+Packages: standard
+Section: user
+Test-new-install: mark skip
+
+Task: swedish
+Key: 
+  task-swedish
+Section: l10n
+Test-lang: sv
+
+Task: swedish-desktop
+Key: 
+  task-swedish-desktop
+Enhances: desktop, swedish
+Section: l10n
+
+Task: swedish-kde-desktop
+Key: 
+  task-swedish-kde-desktop
+Enhances: kde-desktop, swedish-desktop
+Section: l10n
+
+Task: tagalog
+Key: 
+  task-tagalog
+Section: l10n
+Test-lang: tl
+
+Task: tamil
+Key: 
+  task-tamil
+Section: l10n
+Test-lang: ta
+
+Task: tamil-desktop
+Key: 
+  task-tamil-desktop
+Enhances: desktop
+Section: l10n
+Test-lang: ta
+
+Task: tamil-gnome-desktop
+Key: 
+  task-tamil-gnome-desktop
+Enhances: gnome-desktop, tamil-desktop
+Section: l10n
+
+Task: telugu
+Key: 
+  task-telugu
+Section: l10n
+Test-lang: te
+
+Task: telugu-desktop
+Key: 
+  task-telugu-desktop
+Enhances: desktop, telugu
+Section: l10n
+
+Task: telugu-gnome-desktop
+Key: 
+  task-telugu-gnome-desktop
+Enhances: gnome-desktop, telugu-desktop
+Section: l10n
+
+Task: telugu-kde-desktop
+Key: 
+  task-telugu-kde-desktop
+Enhances: kde-desktop, telugu-desktop
+Section: l10n
+
+Task: thai
+Key: 
+  task-thai
+Section: l10n
+Test-lang: th
+
+Task: thai-desktop
+Key: 
+  task-thai-desktop
+Enhances: desktop, thai
+Section: l10n
+
+Task: thai-gnome-desktop
+Key: 
+  task-thai-gnome-desktop
+Enhances: gnome-desktop, thai-desktop
+Section: l10n
+
+Task: thai-kde-desktop
+Key: 
+  task-thai-kde-desktop
+Enhances: kde-desktop, thai-desktop
+Section: l10n
+
+Task: turkish
+Key: 
+  task-turkish
+Section: l10n
+Test-lang: tr
+
+Task: turkish-desktop
+Key: 
+  task-turkish-desktop
+Enhances: desktop, turkish
+Section: l10n
+
+Task: turkish-kde-desktop
+Key: 
+  task-turkish-kde-desktop
+Enhances: kde-desktop, turkish-desktop
+Section: l10n
+
+Task: ukrainian
+Key: 
+  task-ukrainian
+Section: l10n
+Test-lang: uk
+
+Task: ukrainian-desktop
+Key: 
+  task-ukrainian-desktop
+Enhances: desktop, ukrainian
+Section: l10n
+
+Task: ukrainian-kde-desktop
+Key: 
+  task-ukrainian-kde-desktop
+Enhances: kde-desktop, ukrainian-desktop
+Section: l10n
+
+Task: uyghur-desktop
+Key: 
+  task-uyghur-desktop
+Enhances: desktop
+Section: l10n
+Test-lang: ug
+
+Task: uyghur-kde-desktop
+Key: 
+  task-uyghur-kde-desktop
+Enhances: kde-desktop, uyghur-desktop
+Section: l10n
+
+Task: vietnamese-desktop
+Key: 
+  task-vietnamese-desktop
+Enhances: desktop
+Section: l10n
+Test-lang: vi
+
+Task: vietnamese-kde-desktop
+Key: 
+  task-vietnamese-kde-desktop
+Enhances: kde-desktop, vietnamese-desktop
+Section: l10n
+
+Task: web-server
+Relevance: 3
+Key: 
+  task-web-server
+Section: server
+
+Task: welsh
+Key: 
+  task-welsh
+Section: l10n
+Test-lang: cy
+
+Task: welsh-desktop
+Key: 
+  task-welsh-desktop
+Enhances: welsh, desktop
+Section: l10n
+
+Task: xfce-desktop
+Parent: desktop
+Relevance: 2
+Key: 
+  task-xfce-desktop
+Section: user
+Test-default-desktop: 3 xfce
+
+Task: xhosa-desktop
+Key: 
+  task-xhosa-desktop
+Enhances: desktop
+Section: l10n
+Test-lang: xh
+
+Task: xhosa-kde-desktop
+Key: 
+  task-xhosa-kde-desktop
+Enhances: kde-desktop, xhosa-desktop
+Section: l10n
+

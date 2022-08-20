@@ -1,0 +1,14 @@
+whiptail(1) is a lightweight replacement for dialog(1),
+to provide dialog boxes for shell scripts. It is built on the 
+newt windowing library rather than the ncurses library, allowing
+it to be smaller in embedded enviroments such as installers,
+rescue disks, etc.
+
+whiptail is designed to be drop-in compatible with dialog, but
+has less features: some dialog boxes are not implemented, such
+as tailbox, timebox, calendarbox, etc.
+
+Please see the whiptail(1) man page for details.
+
+Regards,
+Alastair McKinstry, 2003-06-08.

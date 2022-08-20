@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -e
+
+if [ -f /usr/lib/calendar/default ]; then
+  mv -f /usr/lib/calendar/default /etc/calendar/default.old
+
+  # don't kill installation if directory can't be removed
+  rmdir /usr/lib/calendar 2>/dev/null || true
+fi
+
+# handle name change of cron script
+if [ -f /etc/cron.daily/calendar ]; then
+  mv -f /etc/cron.daily/calendar /etc/cron.daily/bsdmainutils
+fi
+
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] ; then
+    update-alternatives \
+	--install /usr/bin/write write /usr/bin/bsd-write 100 \
+	--slave /usr/share/man/man1/write.1.gz write.1.gz /usr/share/man/man1/bsd-write.1.gz
+
+    update-alternatives \
+	--install /usr/bin/from from /usr/bin/bsd-from 10 \
+	--slave /usr/share/man/man1/from.1.gz from.1.gz /usr/share/man/man1/bsd-from.1.gz
+fi
+   
+

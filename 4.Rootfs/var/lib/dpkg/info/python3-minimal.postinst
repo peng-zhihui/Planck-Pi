@@ -1,0 +1,8 @@
+#! /bin/sh
+set -e
+
+if which py3compile >/dev/null 2>&1; then
+	py3compile -p python3-minimal /usr/share/python3/
+fi
+
+

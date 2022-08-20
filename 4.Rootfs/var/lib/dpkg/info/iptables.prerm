@@ -1,0 +1,30 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" != "upgrade" ]; then
+    update-alternatives --remove iptables /usr/sbin/iptables-legacy
+    update-alternatives --remove ip6tables /usr/sbin/ip6tables-legacy
+    update-alternatives --remove iptables /usr/sbin/iptables-nft
+    update-alternatives --remove ip6tables /usr/sbin/ip6tables-nft
+    update-alternatives --remove arptables /usr/sbin/arptables-nft
+    update-alternatives --remove ebtables /usr/sbin/ebtables-nft
+fi
+
+# compat symlinks for /sbin -> /usr/sbin move, to be dropped in buster+1
+if [ "$1" = "remove" ] ; then
+	LIST="/sbin/iptables
+	     /sbin/iptables-save
+	     /sbin/iptables-restore
+	     /sbin/ip6tables
+	     /sbin/ip6tables-save
+	     /sbin/ip6tables-restore"
+
+	for i in $LIST ; do
+		if [ -L "$i" ] ; then
+			rm $i
+		fi
+	done
+fi
+
+

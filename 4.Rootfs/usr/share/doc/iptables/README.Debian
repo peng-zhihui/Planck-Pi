@@ -1,0 +1,71 @@
+nftables & iptables
+===================
+
+nftables is the replacement of iptables by the Netfilter project.
+You are encouraged to migrate now to nftables.
+
+If you are developing a new firewall or network service, then writting a
+nftables ruleset from the beginnig should be fine.
+If you would like to migrate or translate your previous
+iptables/ip6tables/arptables/ebtables rulesets to nftables then keep reading.
+
+There are some tools in place to help you moving from iptables to nftables,
+following 2 basic approaches:
+
+ * command line translation
+   (iptables-translate, iptables-restore-translate,
+   ip6tables-translate, ip6tables-restore-translate)
+
+ * syntax reuse with nf_tables backend
+   (iptables-nft, iptables-nft-restore, iptables-nft-save,
+   ip6tables-nft, ip6tables-nft-restore, ip6tables-nft-save,
+   arptables-nft, arptables-nft-save, arptables-nft-restore,
+   ebtables-nft, ebtables-nft-save, ebtables-nft-restore)
+
+Documentation on how to use these tools can be found at:
+
+ * https://wiki.debian.org/Moving_from_iptables_to_nftables
+ * https://wiki.nftables.org/wiki-nftables/index.php/Moving_from_iptables_to_nftables
+ * xtables-nft(8) manpage
+ * xtables-translate(8) manpage
+
+alternatives
+============
+
+The legacy binaries are now installed as:
+
+ * /usr/sbin/iptables-legacy
+ * /usr/sbin/iptables-legacy-restore
+ * /usr/sbin/iptables-legacy-save
+ * /usr/sbin/ip6tables-legacy
+ * /usr/sbin/ip6tables-legacy-restore
+ * /usr/sbin/ip6tables-legacy-save
+ * /usr/sbin/arptables-legacy (in the arptables Debian package)
+ * /usr/sbin/ebtables-legacy (in the ebtables Debian package)
+
+The nft-based tools (tools which accepts the legacy syntax but use the nf_tables
+kernel subsystem) are installed as:
+
+ * /usr/sbin/iptables-nft
+ * /usr/sbin/iptables-nft-restore
+ * /usr/sbin/iptables-nft-save
+ * /usr/sbin/ip6tables-nft
+ * /usr/sbin/ip6tables-nft-restore
+ * /usr/sbin/ip6tables-nft-save
+ * /usr/sbin/arptables-nft
+ * /usr/sbin/arptables-nft-restore
+ * /usr/sbin/arptables-nft-save
+ * /usr/sbin/ebtables-nft
+ * /usr/sbin/ebtables-nft-restore
+ * /usr/sbin/ebtables-nft-save
+
+The iptables Debian package install both and gives the nft version more
+priority by default in the update-alternatives system. This means that if you
+install this package, you will be using the nft tools instead of the legacy
+ones.
+Remember, you can change this at runtime using the `update-alternatives`
+command.
+
+NOTE: make sure you don't mix iptables-legacy and iptables-nft rulesets in the
+same machine at the same time just for sanity and to avoid unexpected
+behaviours in your network.

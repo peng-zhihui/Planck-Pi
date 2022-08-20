@@ -1,0 +1,7 @@
+
+This directory contains Debian-specific fake help files and tags used by
+the "vim-tiny" package.  Their only purpose is to tell the user how to
+install the real VIM online help on Debian if she wants to (i.e.
+installing the "vim-runtime" package).
+
+ -- Stefano Zacchiroli <zack@debian.org>  Thu, 03 Nov 2005 22:16:23 +0100

@@ -1,0 +1,14 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libapparmor.so.1.6.0
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libapparmor1
+/usr/share/doc/libapparmor1/changelog.Debian.gz
+/usr/share/doc/libapparmor1/copyright
+/usr/share/lintian
+/usr/share/lintian/overrides
+/usr/share/lintian/overrides/libapparmor1
+/lib/arm-linux-gnueabi/libapparmor.so.1

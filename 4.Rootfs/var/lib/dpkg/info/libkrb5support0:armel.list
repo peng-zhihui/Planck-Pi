@@ -1,0 +1,12 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libkrb5support.so.0.1
+/usr/share
+/usr/share/doc
+/usr/share/doc/libkrb5support0
+/usr/share/doc/libkrb5support0/NEWS.Debian.gz
+/usr/share/doc/libkrb5support0/changelog.Debian.gz
+/usr/share/doc/libkrb5support0/copyright
+/usr/lib/arm-linux-gnueabi/libkrb5support.so.0

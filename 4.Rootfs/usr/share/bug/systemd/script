@@ -1,0 +1,43 @@
+#!/bin/bash
+
+cat <<EOF
+
+Providing additional information can help diagnose problems with systemd.
+Specifically, this would include:
+- fstab configuration (copy of /etc/fstab).
+- local modifications of unit files (output of systemd-delta).
+- state of running services and units (output of systemd-analyze dump).
+- enabled/disabled state of installed services.
+If this information is not relevant for your bug report or you have privacy
+concerns, please choose no.
+
+EOF
+
+yesno "Do you want to provide additional information [Y|n]? " yep
+[ "$REPLY" = yep ] || exit 0
+
+# We don’t clean up this directory because there is no way to know when
+# reportbug finished running, and reportbug needs the files around.
+# Given that those are just a couple of kilobytes in size and people
+# generally don’t file a lot of bugs, I don’t think it’s a big deal.
+DIR=$(mktemp -d)
+
+echo "-- BEGIN ATTACHMENTS --" >&3
+
+# remove highlighting escape codes from systemd-delta output
+systemd-delta --no-pager 2>&1 |sed "s%\x1b[^m]*m%%g" >$DIR/systemd-delta.txt
+echo "$DIR/systemd-delta.txt" >&3
+
+if [ -d /run/systemd/system ]; then
+    systemd-analyze --no-pager dump >$DIR/systemd-analyze-dump.txt 2>&1
+    echo "$DIR/systemd-analyze-dump.txt" >&3
+fi
+
+if [ -d /var/lib/systemd/deb-systemd-helper-enabled ]; then
+    head -n100 $(find /var/lib/systemd/deb-systemd-helper-enabled -type f | tr '\n' ' ') >$DIR/dsh-enabled.txt
+    echo "$DIR/dsh-enabled.txt" >&3
+fi
+
+echo "/etc/fstab" >&3
+
+echo "-- END ATTACHMENTS --" >&3

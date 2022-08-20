@@ -1,0 +1,21 @@
+This package Debianised by Steve Haslam <araqnid@debian.org> on 4th
+March 2000.
+
+It is currently maintained by Anibal Monsalve Salazar <anibal@debian.org>.
+
+Originally downloaded from CPAN:
+ <URL:http://search.cpan.org/search?dist=Text-Iconv>
+
+********************
+
+Copyright © 2000 Michael Piotrowski.  All Rights Reserved.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+********************
+
+See /usr/share/common-licenses/GPL-2 and
+/usr/share/common-licenses/Artistic for the basic licences Perl is
+based on, and /usr/share/doc/perl/copyright for the license for
+Perl itself.

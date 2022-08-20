@@ -1,0 +1,12 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libsmartcols.so.1.1.0
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libsmartcols1
+/usr/share/doc/libsmartcols1/changelog.Debian.gz
+/usr/share/doc/libsmartcols1/changelog.gz
+/usr/share/doc/libsmartcols1/copyright
+/lib/arm-linux-gnueabi/libsmartcols.so.1

@@ -1,0 +1,9 @@
+auto
+/usr/bin/rcp
+rcp.1.gz
+/usr/share/man/man1/rcp.1.gz
+
+/usr/bin/scp
+20
+/usr/share/man/man1/scp.1.gz
+

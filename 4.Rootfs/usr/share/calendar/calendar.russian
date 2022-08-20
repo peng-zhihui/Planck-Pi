@@ -1,0 +1,12 @@
+/*
+ * Russian calendar files
+ *
+ * $FreeBSD: head/usr.bin/calendar/calendars/calendar.russian 59948 2000-05-04 11:35:27Z phantom $
+ */
+
+#ifndef _calendar_russian_
+#define _calendar_russian_
+
+#include <ru_RU/calendar.all>
+
+#endif /* !_calendar_russian_ */

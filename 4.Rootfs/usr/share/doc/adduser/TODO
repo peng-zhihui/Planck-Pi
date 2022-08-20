@@ -1,0 +1,11 @@
+TODO for adduser
+----------------
+
+For adduser 3.x there is to do:
+
+ * make adduser also work with super (fix #)
+ * do not hard code /usr/share/perl5 in debian/rules (cf. perl policy)
+ * Use --msgid-bugs-address when using po4a in debian/rules
+ * Address lintian's "untranslatable debconf template"
+   This is triggered by adduser/title, which is not intended for translation.
+   The suggestion in the lintian output is to state "for internal use only" as part of the description, but this isn't the case; it's just a name.

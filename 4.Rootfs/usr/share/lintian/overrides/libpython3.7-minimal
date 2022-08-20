@@ -1,0 +1,5 @@
+# intentional
+libpython3.7-minimal binary: python-script-but-no-python-dep
+
+# lintian omission, multiarch string is encoded in the filename
+libpython3.7-minimal binary: arch-dependent-file-not-in-arch-specific-directory

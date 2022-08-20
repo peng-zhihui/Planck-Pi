@@ -1,0 +1,48 @@
+#!/bin/sh
+set -e
+
+action="$1"
+oldversion="$2"
+
+umask 022
+
+
+create_alternatives() {
+# Create alternatives for the various r* tools.
+# Make sure we don't change existing alternatives that a user might have
+# changed, but clean up after some old alternatives that mistakenly pointed
+# rlogin and rcp to ssh.
+	update-alternatives --quiet --remove rlogin /usr/bin/ssh
+	update-alternatives --quiet --remove rcp /usr/bin/ssh
+	for cmd in rsh rlogin rcp; do
+		scmd="s${cmd#r}"
+		if ! update-alternatives --display "$cmd" 2>/dev/null | \
+				grep -q "$scmd"; then
+			update-alternatives --quiet --install "/usr/bin/$cmd" "$cmd" "/usr/bin/$scmd" 20 \
+				--slave "/usr/share/man/man1/$cmd.1.gz" "$cmd.1.gz" "/usr/share/man/man1/$scmd.1.gz"
+		fi
+	done
+}
+
+set_ssh_agent_permissions() {
+	if ! getent group ssh >/dev/null; then
+		addgroup --system --quiet ssh
+	fi
+	if ! dpkg-statoverride --list /usr/bin/ssh-agent >/dev/null; then
+		chgrp ssh /usr/bin/ssh-agent
+		chmod 2755 /usr/bin/ssh-agent
+	fi
+}
+
+
+if [ "$action" = configure ]; then
+	create_alternatives
+	set_ssh_agent_permissions
+fi
+
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/ssh/moduli 1:7.9p1-8~ -- "$@"
+# End automatically added section
+
+
+exit 0

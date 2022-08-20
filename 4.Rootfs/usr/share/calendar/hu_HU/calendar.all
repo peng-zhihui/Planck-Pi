@@ -1,0 +1,13 @@
+/*
+ * Magyar kalendárium
+ *
+ * $FreeBSD: head/usr.bin/calendar/calendars/hu_HU.ISO8859-2/calendar.all 133833 2004-08-16 09:31:09Z dwmalone $
+ */
+
+#ifndef _hu_HU_all_
+#define _hu_HU_all_
+
+#include <hu_HU/calendar.unnepek>
+#include <hu_HU/calendar.nevnapok>
+
+#endif /* !_hu_HU_all_ */

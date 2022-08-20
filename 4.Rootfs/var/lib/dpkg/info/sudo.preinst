@@ -1,0 +1,22 @@
+#!/bin/sh -e
+
+case "$1" in
+  install|upgrade)
+    if [ -n "$2" ] && dpkg --compare-versions "$2" le "1.7.4p4-4"; then
+
+      SUDOERS="/etc/sudoers"
+
+      if [ -e "$SUDOERS" ]; then
+        md5sum="$(md5sum $SUDOERS | sed -e 's/ .*//')"
+        if [ "$md5sum" = "c310ef4892a00cca8134f6e4fcd64b6d" ] ||      #lenny
+           [ "$md5sum" = "c5dab0f2771411ed7e67d6dab60a311f" ] ||      #squeeze
+           [ "$md5sum" = "45437b4e86fba2ab890ac81db2ec3606" ]; then   #wheezy
+	    # move unchanged sudoers file to avoid conffile question
+            mv "$SUDOERS" "$SUDOERS.pre-conffile"
+        fi
+      fi
+    fi
+  ;;
+esac
+
+

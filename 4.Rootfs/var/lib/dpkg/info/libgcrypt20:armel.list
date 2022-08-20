@@ -1,0 +1,16 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libgcrypt.so.20.2.4
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libgcrypt20
+/usr/share/doc/libgcrypt20/AUTHORS.gz
+/usr/share/doc/libgcrypt20/NEWS.gz
+/usr/share/doc/libgcrypt20/README.gz
+/usr/share/doc/libgcrypt20/THANKS.gz
+/usr/share/doc/libgcrypt20/changelog.Debian.gz
+/usr/share/doc/libgcrypt20/changelog.gz
+/usr/share/doc/libgcrypt20/copyright
+/lib/arm-linux-gnueabi/libgcrypt.so.20

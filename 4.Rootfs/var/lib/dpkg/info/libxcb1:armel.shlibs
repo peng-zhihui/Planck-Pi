@@ -1,0 +1,2 @@
+libxcb 1 libxcb1 (>= 1.12)
+udeb: libxcb 1 libxcb1-udeb (>= 1.12)

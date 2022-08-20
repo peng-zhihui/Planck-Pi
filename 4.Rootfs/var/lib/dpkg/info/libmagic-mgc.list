@@ -1,0 +1,17 @@
+/.
+/usr
+/usr/lib
+/usr/lib/file
+/usr/lib/file/magic.mgc
+/usr/share
+/usr/share/doc
+/usr/share/doc/libmagic-mgc
+/usr/share/doc/libmagic-mgc/README.Debian
+/usr/share/doc/libmagic-mgc/changelog.Debian.gz
+/usr/share/doc/libmagic-mgc/changelog.gz
+/usr/share/doc/libmagic-mgc/copyright
+/usr/share/file
+/usr/share/file/magic
+/usr/share/misc
+/usr/share/file/magic.mgc
+/usr/share/misc/magic.mgc

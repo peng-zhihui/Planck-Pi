@@ -1,0 +1,8 @@
+1c00d256a9d7ae75d0baa0472192f7b6  lib/arm-linux-gnueabi/libdbus-1.so.3.19.13
+8e4987b430d0bca9c729aacc048d5cdf  usr/share/doc/libdbus-1-3/AUTHORS.gz
+3f0a696bf144e121c5db1f8dbae10e42  usr/share/doc/libdbus-1-3/NEWS.gz
+c2ccbf47bb6c6ee6f5154a89863ade80  usr/share/doc/libdbus-1-3/README.gz
+d4fae2da731032b1ace81309f178a45a  usr/share/doc/libdbus-1-3/changelog.Debian.gz
+a46dbfafef4a76ece7bf07172be7c116  usr/share/doc/libdbus-1-3/changelog.gz
+8caeab292befe4a6ffc224d0ab0e87db  usr/share/doc/libdbus-1-3/copyright
+cf3c7c2cd5aec205c5899ff0ddda1ff7  usr/share/lintian/overrides/libdbus-1-3

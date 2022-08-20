@@ -1,0 +1,2 @@
+# we want prerm to be #!/bin/dash so that it runs no matter what
+dash binary: unusual-control-interpreter

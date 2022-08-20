@@ -1,0 +1,12 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libseccomp.so.2.3.3
+/usr/share
+/usr/share/doc
+/usr/share/doc/libseccomp2
+/usr/share/doc/libseccomp2/changelog.Debian.gz
+/usr/share/doc/libseccomp2/changelog.gz
+/usr/share/doc/libseccomp2/copyright
+/usr/lib/arm-linux-gnueabi/libseccomp.so.2

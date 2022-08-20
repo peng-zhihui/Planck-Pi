@@ -1,0 +1,25 @@
+#!/bin/sh
+
+case $1 in
+prereqs)
+	echo "udev"
+	exit 0
+	;;
+esac
+
+. /usr/share/initramfs-tools/hook-functions
+
+mkdir -p $DESTDIR/lib/udev/rules.d/
+for rules in 55-dm.rules 60-persistent-storage-dm.rules 95-dm-notify.rules; do
+	if   [ -e /etc/udev/rules.d/$rules ]; then
+		cp -p /etc/udev/rules.d/$rules $DESTDIR/lib/udev/rules.d/
+	elif [ -e /lib/udev/rules.d/$rules ]; then
+		cp -p /lib/udev/rules.d/$rules $DESTDIR/lib/udev/rules.d/
+	else
+		exit 1
+	fi
+done
+
+copy_exec /sbin/dmsetup
+
+manual_add_modules dm_mod

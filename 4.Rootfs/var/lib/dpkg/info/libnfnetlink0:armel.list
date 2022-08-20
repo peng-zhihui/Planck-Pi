@@ -1,0 +1,12 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libnfnetlink.so.0.2.0
+/usr/share
+/usr/share/doc
+/usr/share/doc/libnfnetlink0
+/usr/share/doc/libnfnetlink0/changelog.Debian.armel.gz
+/usr/share/doc/libnfnetlink0/changelog.Debian.gz
+/usr/share/doc/libnfnetlink0/copyright
+/usr/lib/arm-linux-gnueabi/libnfnetlink.so.0

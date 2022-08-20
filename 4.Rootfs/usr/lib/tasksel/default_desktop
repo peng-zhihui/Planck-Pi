@@ -1,0 +1,16 @@
+# Shell library to get the default desktop that tasksel will select 
+# for an architecture.
+#
+# This may be used outside of tasksel (eg, by debian-cd) so should be a
+# stable interface.
+
+default_desktop_for_arch() {
+	case "$1" in
+		i386) echo gnome ;;
+		amd64) echo gnome ;;
+		# gnome only works on linux,
+		# and only on arches with 3d hardware
+		# or llvmpipe. See #765839.
+		*) echo xfce ;;
+	esac
+}

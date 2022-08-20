@@ -1,0 +1,16 @@
+/*
+ * $FreeBSD: head/usr.bin/calendar/calendars/pt_BR.UTF-8/calendar.all 219937 2011-03-23 21:22:03Z edwin $
+ *
+ * Originally submitted by Renato Tambellini <rtsanch@gmail.com>
+ *
+ * Brazilian calendar
+ */
+
+#ifndef _pt_BR_UTF_8_all_
+#define _pt_BR_UTF_8_all_
+
+#include <pt_BR/calendar.holidays>
+#include <pt_BR/calendar.commemorative>
+#include <pt_BR/calendar.mcommemorative>
+
+#endif /* !_pt_BR.UTF_8_all_ */

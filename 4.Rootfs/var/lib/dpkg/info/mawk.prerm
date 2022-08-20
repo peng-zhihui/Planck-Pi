@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" != "upgrade" ]; then
+  update-alternatives --remove awk /usr/bin/mawk
+fi
+
+

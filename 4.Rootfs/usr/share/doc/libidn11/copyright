@@ -1,0 +1,425 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Libidn
+Upstream-Contact: Simon Josefsson <simon@josefsson.org>
+Source: https://www.gnu.org/software/libidn/
+
+Files: *
+Copyright: Copyright (C) 2002-2012  Simon Josefsson
+License: GPL-3+
+ The command-line tools, the build environment, the self-tests, the
+ Emacs Lisp code, and the examples are licensed under the GPLv3+.  For
+ example quoting src/idn.c:
+ .
+ * idn.c --- Command line interface to libidn.
+ * Copyright (C) 2003-2012 Simon Josefsson
+ *
+ * This file is part of GNU Libidn.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the full text of the GNU General Public License
+ version 3 can be found in the `/usr/share/common-licenses/GPL-3'
+ file.
+
+Files: doc/libidn.texi
+Copyright: Copyright 2002-2012 Simon Josefsson.
+License: GFDL-1.3+
+ This is the manual, licensed under GFDLv1.3+, quoting the file:
+ .
+  Copyright @copyright{} 2002-2012 Simon Josefsson.
+ .
+  Permission is granted to copy, distribute and/or modify this document
+  under the terms of the GNU Free Documentation License, Version 1.3 or
+  any later version published by the Free Software Foundation; with no
+  Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+  copy of the license is included in the section entitled ``GNU Free
+  Documentation License''.
+ .
+ On Debian systems, the complete text of the GNU Free Documentation
+ License Version 1.3 can be found in the file
+ `/usr/share/common-licenses/GFDL-1.3'.
+
+Files: csharp/*
+Copyright: Copyright (C) 2004-2012 Free Software Foundation, Inc.
+License: LGPL-3+ or GPL-2+
+ The C# library is dual-licensed under LGPLv3+ and GPLv2+.  For
+ example quoting csharp/IDNA.cs:
+ .
+ // Copyright (C) 2004-2012 Free Software Foundation, Inc.
+ //
+ // Author: Alexander Gnauck AG-Software, mailto:gnauck@ag-software.de
+ //
+ // This file is part of GNU Libidn.
+ //
+ // GNU Libidn is free software: you can redistribute it and/or
+ // modify it under the terms of either:
+ //
+ //   * the GNU Lesser General Public License as published by the Free
+ //     Software Foundation; either version 3 of the License, or (at
+ //     your option) any later version.
+ //
+ // or
+ //
+ //   * the GNU General Public License as published by the Free
+ //     Software Foundation; either version 2 of the License, or (at
+ //     your option) any later version.
+ //
+ // or both in parallel, as here.
+ //
+ // GNU Libidn is distributed in the hope that it will be useful,
+ // but WITHOUT ANY WARRANTY; without even the implied warranty of
+ // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ // General Public License for more details.
+ //
+ // You should have received copies of the GNU General Public License and
+ // the GNU Lesser General Public License along with this program.  If
+ // not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the full text of the GNU Lesser General Public
+ License version 3.0 can be found in the
+ `/usr/share/common-licenses/LGPL-3' file, and the full text of the
+ GNU General Public License version 2.0 can be found in the
+ `/usr/share/common-licenses/GPL-2' file.
+
+Files: java/*
+Copyright: Copyright (C) 2004-2007  Free Software Foundation, Inc.
+License: LGPL-3+ or GPL-2+
+ The Java library is dual-licensed under LGPLv3+ and GPLv2+.  For
+ example quoting java/gnu/inet/encoding/IDNA.java:
+ .
+   Copyright (C) 2004-2012 Free Software Foundation, Inc.
+   Author: Oliver Hitz
+ .
+   This file is part of GNU Libidn.
+ .
+   GNU Libidn is free software: you can redistribute it and/or
+   modify it under the terms of either:
+ .
+     * the GNU Lesser General Public License as published by the Free
+       Software Foundation; either version 3 of the License, or (at
+       your option) any later version.
+ .
+   or
+ .
+     * the GNU General Public License as published by the Free
+       Software Foundation; either version 2 of the License, or (at
+       your option) any later version.
+ .
+   or both in parallel, as here.
+ .
+   GNU Libidn is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   General Public License for more details.
+ .
+   You should have received copies of the GNU General Public License and
+   the GNU Lesser General Public License along with this program.  If
+   not, see <http://www.gnu.org/licenses/>.
+
+Files: gl/* gltests/* build-aux/* GNUmakefile maint.mk
+Copyright: Copyright (C) 2007 Free Software Foundation, Inc.
+License: GPL-3+
+ These files are copied from gnulib, and the copyright is normally
+ held by Free Software Foundation, Inc.  For example gl/strerror.c:
+ .
+   Copyright (C) 2007-2012 Free Software Foundation, Inc.
+ .
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 3 of the License, or
+   (at your option) any later version.
+ .
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+ .
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+Files: lib/*
+Copyright: Copyright (C) 2002-2012  Simon Josefsson
+License: LGPL-3+ or GPL-2+
+ The C library is dual-licensed under LGPLv3+ and GPLv2+.  For
+ example quoting lib/stringprep.c:
+ .
+   Copyright (C) 2002-2012 Simon Josefsson
+ .
+   This file is part of GNU Libidn.
+ .
+   GNU Libidn is free software: you can redistribute it and/or
+   modify it under the terms of either:
+ .
+     * the GNU Lesser General Public License as published by the Free
+       Software Foundation; either version 3 of the License, or (at
+       your option) any later version.
+ .
+   or
+ .
+     * the GNU General Public License as published by the Free
+       Software Foundation; either version 2 of the License, or (at
+       your option) any later version.
+ .
+   or both in parallel, as here.
+ .
+   GNU Libidn is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   General Public License for more details.
+ .
+   You should have received copies of the GNU General Public License and
+   the GNU Lesser General Public License along with this program.  If
+   not, see <http://www.gnu.org/licenses/>.
+
+Files: lib/gen-unicode-tables.pl
+Copyright: Copyright (C) 2004, 2005, 2006, 2007, 2008 Simon Josefsson
+           Copyright (C) 1998, 1999 Tom Tromey
+           Copyright (C) 2001 Red Hat Software
+License: GPL-3+
+ This file is originally from glib, quoting the file:
+ .
+ #    Copyright (C) 2004-2012 Simon Josefsson
+ #    Copyright (C) 1998, 1999 Tom Tromey
+ #    Copyright (C) 2001 Red Hat Software
+ .
+ # This program is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+ # the Free Software Foundation, either version 3 of the License, or
+ # (at your option) any later version.
+ #
+ # This program is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ .
+ # I consider the output of this program to be unrestricted.  Use it as
+ # you will.
+
+Files: lib/punycode.?
+Copyright: Copyright (C) 2002-2015 Simon Josefsson
+License: LGPL-3+ or GPL-2+
+ This file was originally written by Adam M. Costello and is released
+ under the following license -- see http://www.nicemice.net/idn/
+ .
+ * Disclaimer and license: Regarding this entire document or any
+ * portion of it (including the pseudocode and C code), the author
+ * makes no guarantees and is not responsible for any damage resulting
+ * from its use.  The author grants irrevocable permission to anyone
+ * to use, modify, and distribute it in any way that does not diminish
+ * the rights of anyone else to use, modify, and distribute it,
+ * provided that redistributed derivative works do not contain
+ * misleading author or version information.  Derivative works need
+ * not be licensed under similar terms.
+ .
+ The file has been modified and is now distributed under dual LGPLv3+
+ and GPLv2+, quoting the file:
+ .
+   Copyright (C) 2002-2015 Simon Josefsson
+ .
+   This file is part of GNU Libidn.
+ .
+   GNU Libidn is free software: you can redistribute it and/or
+   modify it under the terms of either:
+ .
+     * the GNU Lesser General Public License as published by the Free
+       Software Foundation; either version 3 of the License, or (at
+       your option) any later version.
+ .
+   or
+ .
+     * the GNU General Public License as published by the Free
+       Software Foundation; either version 2 of the License, or (at
+       your option) any later version.
+ .
+   or both in parallel, as here.
+ .
+   GNU Libidn is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   General Public License for more details.
+ .
+   You should have received copies of the GNU General Public License and
+   the GNU Lesser General Public License along with this program.  If
+   not, see <http://www.gnu.org/licenses/>.
+
+Files: lib/nfkc.c
+Copyright: Copyright (C) 2002, 2003, 2004, 2006, 2007,
+                         2008, 2009  Simon Josefsson
+           Copyright (C) 1999, 2000 Tom Tromey
+           Copyright 2000 Red Hat, Inc.
+License: LGPL-3+ or GPL-2+
+ This file contains some functions derived from glib under LGPLv2+ but
+ the entire file uses the dual LGPLv3+ and GPLv2+ license, quoting the file:
+ .
+   Copyright (C) 2002-2012 Simon Josefsson
+ .
+   This file is part of GNU Libidn.
+ .
+   GNU Libidn is free software: you can redistribute it and/or
+   modify it under the terms of either:
+ .
+     * the GNU Lesser General Public License as published by the Free
+       Software Foundation; either version 3 of the License, or (at
+       your option) any later version.
+ .
+   or
+ .
+     * the GNU General Public License as published by the Free
+       Software Foundation; either version 2 of the License, or (at
+       your option) any later version.
+ .
+   or both in parallel, as here.
+ .
+   GNU Libidn is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   General Public License for more details.
+ .
+   You should have received copies of the GNU General Public License and
+   the GNU Lesser General Public License along with this program.  If
+   not, see <http://www.gnu.org/licenses/>.
+ .
+ /* Code from GLIB gmacros.h starts here. */
+ .
+ /* GLIB - Library of useful routines for C programming
+  * Copyright (C) 1995-1997  Peter Mattis, Spencer Kimball and Josh MacDonald
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+  * version 2 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the GNU
+  * Lesser General Public License for more details.
+ .
+ /* Code from GLIB gunicode.h starts here. */
+ .
+ /* gunicode.h - Unicode manipulation functions
+  *
+  *  Copyright (C) 1999, 2000 Tom Tromey
+  *  Copyright 2000, 2005 Red Hat, Inc.
+  *
+  * The Gnome Library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public License as
+  * published by the Free Software Foundation; either version 2 of the
+  * License, or (at your option) any later version.
+  *
+  * The Gnome Library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  * Lesser General Public License for more details.
+ .
+ /* Code from GLIB gutf8.c starts here. */
+ .
+ /* gutf8.c - Operations on UTF-8 strings.
+  *
+  * Copyright (C) 1999 Tom Tromey
+  * Copyright (C) 2000 Red Hat, Inc.
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+  * version 2 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the GNU
+  * Lesser General Public License for more details.
+ .
+ /* Code from GLIB gunidecomp.c starts here. */
+ .
+ /* decomp.c - Character decomposition.
+  *
+  *  Copyright (C) 1999, 2000 Tom Tromey
+  *  Copyright 2000 Red Hat, Inc.
+  *
+  * The Gnome Library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public License as
+  * published by the Free Software Foundation; either version 2 of the
+  * License, or (at your option) any later version.
+  *
+  * The Gnome Library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  * Lesser General Public License for more details.
+ .
+ On Debian systems, the full text of the GNU Lesser General Public
+ License version 2 can be found in the
+ `/usr/share/common-licenses/LGPL-2' file.
+
+Files: lib/gl/* lib/gltests/*
+Copyright: Copyright (C) 2007 Free Software Foundation, Inc.
+License: LGPL-2.1+
+ These files are copied from gnulib, and the copyright is normally
+ held by Free Software Foundation, Inc.  For example lib/gl/strverscmp.c:
+ .
+   Copyright (C) 1997, 2000, 2002, 2004, 2006, 2009-2012 Free Software
+   Foundation, Inc.
+   This file is part of the GNU C Library.
+   Contributed by Jean-François Bignolles <bignolle@ecoledoc.ibp.fr>, 1997.
+ .
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU Lesser General Public License as published by
+   the Free Software Foundation; either version 2.1, or (at your option)
+   any later version.
+ .
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU Lesser General Public License for more details.
+ .
+   You should have received a copy of the GNU Lesser General Public
+   License along
+   with this program; if not, write to the Free Software Foundation,
+   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */
+  .
+ On Debian systems, the full text of the GNU Lesser General Public
+ License version 2.1 can be found in the
+ `/usr/share/common-licenses/LGPL-2.1' file.
+
+Files: doc/gdoc
+Copyright: Copyright (c) 2002-2012 Simon Josefsson
+           Copyright (c) 2001, 2002 Nikos Mavrogiannopoulos
+           Copyright (c) 1998 Michael Zucchi
+License: GPL-3+
+ This tool is used to generate texinfo snippets and man pages from the
+ source code.
+ .
+ # This program is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+ # the Free Software Foundation, either version 3 of the License, or
+ # (at your option) any later version.
+ #
+ # This program is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+Files: doc/man/*
+Copyright: Copyright © 2002-2012 Simon Josefsson.
+License: GAP
+ These are the auto-generated man pages.  For example doc/man/stringprep.3:
+ .
+  Copyright © 2002-2012 Simon Josefsson.
+  Copying  and  distribution  of this file, with or without modification,
+  are permitted in any medium  without  royalty  provided  the  copyright
+  notice and this notice are preserved.

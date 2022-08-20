@@ -1,0 +1,11 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libgcc_s.so.1
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/lintian
+/usr/share/lintian/overrides
+/usr/share/lintian/overrides/libgcc1
+/usr/share/doc/libgcc1

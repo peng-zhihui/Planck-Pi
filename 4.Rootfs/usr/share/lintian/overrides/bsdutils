@@ -1,0 +1,1 @@
+bsdutils: setgid-binary usr/bin/wall 2755 root/tty

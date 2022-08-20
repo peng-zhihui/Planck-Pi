@@ -1,0 +1,15 @@
+Authors of GNU tar.
+
+Public domain tar was written by John Gilmore, with contributions from
+Henry Spencer, Fred Fish, Ian Darwin, Geoff Collyer, Stan Barber, Guy
+Harris, Dave Brower, Richard Todd, Michael Rendell, Stu Heiss, and
+Rich Salz.
+
+The FSF version, named GNU tar, was derived from public domain tar by
+Jay Fenlason and Joy Kendall.  Amy Gorin and Melissa Weisshaus
+contributed to the manual.  GNU tar has been maintained in turn by
+Thomas Bushnell BSG, François Pinard, Paul Eggert, and Sergey
+Poznyakoff.
+
+Many others have contributed to GNU tar; please see the files THANKS
+and ChangeLog.

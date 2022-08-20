@@ -1,0 +1,16 @@
+This package was debianized by Max Kellermann <max@duempel.org> on
+Wed Sep 20 22:57:38 CEST 2006
+
+It was downloaded from http://www.netfilter.org/downloads.html
+
+Upstream Author: Netfilter Core Team <coreteam@netfilter.org>
+
+Copyright:
+
+(C) 2001-2005 Netfilter Core Team <coreteam@netfilter.org>
+
+ this software may be used and distributed according to the terms of the gnu
+ general public license, incorporated herein by reference.
+
+On Debian GNU/Linux systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL'.

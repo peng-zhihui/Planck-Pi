@@ -1,0 +1,30 @@
+# Debian specific udev rules for backwards compatibility
+
+# needed for old tape drivers, http://bugs.debian.org/657948
+SUBSYSTEM=="scsi", ENV{DEVTYPE}=="scsi_device", TEST!="[module/sg]", RUN{builtin}+="kmod load sg"
+
+# device permissions
+KERNEL=="mISDNtimer", GROUP="dialout"
+KERNEL=="mwave", GROUP="dialout"
+KERNEL=="nvram", GROUP="kmem", MODE="0640"
+KERNEL=="pktcdvd", GROUP="cdrom", MODE="0644"
+KERNEL=="lirc[0-9]*", GROUP="video"
+KERNEL=="legousbtower*", MODE="0666"
+KERNEL=="sonypi", MODE="0666"
+KERNEL=="mmtimer", MODE="0644"
+KERNEL=="sgi_*", MODE="0666"
+KERNEL=="z90crypt", MODE="0666"
+
+# These rules will create symlinks for CD/DVD drives, to help old
+# programs which are unable to automatically discover the devices.
+# The first detected device gets the symlink, but this is not stable across
+# reboots.
+ENV{ID_CDROM_CD_RW}=="?*", \
+  PROGRAM="/bin/sh -c 'ln -s %k /run/udev/link.cdrw 2>/dev/null; [ `readlink /run/udev/link.cdrw` = %k ]", \
+  SYMLINK+="cdrw", OPTIONS+="link_priority=-100"
+ENV{ID_CDROM_DVD}=="?*", \
+  PROGRAM="/bin/sh -c 'ln -s %k /run/udev/link.dvd 2>/dev/null; [ `readlink /run/udev/link.dvd` = %k ]", \
+  SYMLINK+="dvd", OPTIONS+="link_priority=-100"
+ENV{ID_CDROM_DVD_RW}=="?*", \
+  PROGRAM="/bin/sh -c 'ln -s %k /run/udev/link.dvdrw 2>/dev/null; [ `readlink /run/udev/link.dvdrw` = %k ]", \
+  SYMLINK+="dvdrw", OPTIONS+="link_priority=-100"

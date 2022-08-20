@@ -1,0 +1,86 @@
+#!/usr/bin/perl
+#
+# Generate a report of the status of interfaces configured
+# by 'ifupdown'
+# (c) 2004 Javier Fernandez-Sanguino <jfs@debian.org>
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+
+$statefile="/run/network/ifstate";
+$configfile="/etc/network/interfaces";
+
+open (IFACE,"<$configfile") || die ("Could not open $configfile: $!\n");
+while (<IFACE>) {
+	chomp;
+	if ( /^iface\s+(\w+)\s+/ ) {
+		$configured{$1}=$_; 
+	}
+}
+
+close IFACE;
+
+open (IPLINK,"ip link show|") || die ("Could not execute ip: $!\n");
+while (<IPLINK>) {
+	chomp;
+# FORMAT
+# #: AAAA: <XXXXX,UP> mtu 16436 qdisc noqueue
+	if ( /^\d+: (\w+):.*?\<.*?,UP.*?\>/ ) {
+		$iplink{$1}=$_;
+	}
+}
+close IPLINK;
+
+
+open (STATE,"<$statefile") || die ("Could not open $statefile: $!\n");
+$line = 0;
+while (<STATE>) {
+	chomp;
+	$line++;
+# Format is IFACE=IFACE
+	if ( /^(\w+)=(\w+)$/ ) {
+		$iface = $1;
+		$ifaces = $2;
+		if ( $iface ne $ifaces ) {
+			print STDERR "Error in $statefile (line $line), interface names do not match ('$iface' and '$ifaces')\n";
+		} else {
+			check_status($iface);
+		}
+	} else {
+		print STDERR "Error in $statefile (line $line), unknown content\n";
+	}
+
+}
+close STATE;
+
+exit 0;
+
+sub check_status {
+	my ($int) = @_;
+	print "$int: ";
+	my $status = "UP";
+# Check if it's really up, this is done basically because ifupdown
+# might not have configured it properly even if it thinks he has
+# (sample: ifconfig croaks when wrong parameters are used and 
+# ifupdown does not detect that the system call went awry)
+	$status = "ERROR_NOT_REALLY_UP" if ! defined ($iplink{$int}) ;
+	if ( defined ( $configured{$int} ) ) {
+		$status .= ",CONFIGURED";
+	} else {
+		$status .= ",MANUALLY_CONFIGURED";
+	}
+	print "$status\n";
+	return 0;
+}

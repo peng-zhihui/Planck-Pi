@@ -1,0 +1,16 @@
+auto
+/usr/sbin/iptables
+iptables-restore
+/usr/sbin/iptables-restore
+iptables-save
+/usr/sbin/iptables-save
+
+/usr/sbin/iptables-legacy
+10
+/usr/sbin/iptables-legacy-restore
+/usr/sbin/iptables-legacy-save
+/usr/sbin/iptables-nft
+20
+/usr/sbin/iptables-nft-restore
+/usr/sbin/iptables-nft-save
+

@@ -1,0 +1,2 @@
+?package(tasksel):needs="text" section="Applications/System/Administration"\
+  title="Debian Task selector" command="su-to-root -c tasksel"

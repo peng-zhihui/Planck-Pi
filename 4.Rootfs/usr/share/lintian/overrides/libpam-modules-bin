@@ -1,0 +1,6 @@
+# yes, we know it's sgid, that's the whole point...
+libpam-modules-bin: setgid-binary sbin/unix_chkpwd 2755 root/shadow
+# these manpages are in libpam-modules as they document both the module and
+# the helper binary
+libpam-modules-bin: binary-without-manpage sbin/pam_tally
+libpam-modules-bin: binary-without-manpage sbin/pam_tally2

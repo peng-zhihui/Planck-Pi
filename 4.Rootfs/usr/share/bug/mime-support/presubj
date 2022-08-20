@@ -1,0 +1,13 @@
+Please consider registering MIME media types to the Internet Assigned Numbers
+Authority (IANA) before requiring their inclusion in /etc/mime.types.
+Simplified registration procedures for vendor and personal trees are being
+implemented with the update of RFC 4288[1], that states: "it should rarely, if
+ever, be necessary to use unregistered types.  Therefore, use of types in the
+'x.' tree is strongly discouraged."  I have confirmed that the process is
+fairly quick and painless by registering text/vnd.debian.copyright[2] for
+machine-readable Debian copyright files.
+
+[1] http://tools.ietf.org/html/draft-ietf-appsawg-media-type-regs-14
+[2] http://www.iana.org/assignments/media-types/text/vnd.debian.copyright
+
+ -- Charles Plessy  Tue, 08 Jan 2013 06:31:07 +0900

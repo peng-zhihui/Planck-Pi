@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenSSH Agent
+Documentation=man:ssh-agent(1)
+Before=graphical-session-pre.target
+ConditionPathExists=/etc/X11/Xsession.options
+Wants=dbus.socket
+After=dbus.socket
+
+[Service]
+ExecStart=/usr/lib/openssh/agent-launch start
+ExecStopPost=/usr/lib/openssh/agent-launch stop

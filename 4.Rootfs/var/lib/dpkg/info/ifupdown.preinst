@@ -1,0 +1,31 @@
+#!/bin/sh
+set -e
+
+if [ ! -d /etc/network ]; then
+  mkdir -p /etc/network
+fi
+
+if [ -f /etc/network/interfaces ] && ! grep -q '^[^#]' /etc/network/interfaces
+then
+  f=/etc/network/interfaces
+  if [ `md5sum < $f | cut -f1 -d ' '` = "4ed352919f69a77ad302ad1593204405" ]; then
+    if [ `wc -c < /etc/network/interfaces` -eq 2466 ]; then
+      echo -n "Removing old dummy /etc/network/interfaces: "
+      rm /etc/network/interfaces
+      echo "done."
+    fi
+  fi
+fi
+
+# Automatically added by dh_installdeb/12
+dpkg-maintscript-helper rm_conffile /etc/default/ifupdown 0.7\~\+ ifupdown -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init.d/ifupdown 0.7\~\+ ifupdown -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init.d/ifupdown-clean 0.7\~beta1 ifupdown -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/networking.conf 0.8.25\~ ifupdown -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/network-interface-container.conf 0.8.25\~ ifupdown -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/network-interface-security.conf 0.8.25\~ ifupdown -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/network-interface.conf 0.8.25\~ ifupdown -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/network/if-up.d/upstart 0.8.29\~ ifupdown -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/network/if-down.d/upstart 0.8.29\~ ifupdown -- "$@"
+# End automatically added section
+

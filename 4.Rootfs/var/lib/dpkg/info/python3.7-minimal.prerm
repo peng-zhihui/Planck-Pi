@@ -1,0 +1,36 @@
+#! /bin/sh
+
+set -e
+
+case "$1" in
+    remove)
+	if [ "$DEBIAN_FRONTEND" != noninteractive ]; then
+	    echo "Unlinking and removing bytecode for runtime python3.7"
+	fi
+	for hook in /usr/share/python3/runtime.d/*.rtremove; do
+	    [ -x $hook ] || continue
+	    $hook rtremove python3.7 || continue
+	done
+
+	if which update-binfmts >/dev/null; then
+	    update-binfmts --package python3.7 --remove python3.7 /usr/bin/python3.7
+	fi
+
+	localsite=/usr/local/lib/python3.7/dist-packages
+	[ -d $localsite ] && rmdir $localsite 2>/dev/null || true
+	[ -d $(dirname $localsite) ] \
+	    && rmdir $(dirname $localsite) 2>/dev/null || true
+        ;;
+    upgrade)
+        ;;
+    deconfigure)
+        ;;
+    failed-upgrade)
+        ;;
+    *)
+        echo "prerm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+

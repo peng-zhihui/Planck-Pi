@@ -1,0 +1,24 @@
+/*
+ * World wide calendar files, except national calendars
+ *
+ * $FreeBSD: src/usr.bin/calendar/calendars/calendar.world,v 1.5 2003/02/15 10:57:20 seanc Exp $
+ */
+
+#ifndef _calendar_world_
+#define _calendar_world_
+
+#include <calendar.birthday>
+#include <calendar.christian>
+#include <calendar.computer>
+#include <calendar.history>
+#include <calendar.lotr>
+#include <calendar.holiday>
+#include <calendar.judaic>
+#include <calendar.music>
+#include <calendar.pagan>
+#include <calendar.discordian>
+#include <calendar.debian>
+#include <calendar.eu>
+#include <calendar.ubuntu>
+
+#endif /* !_calendar_world_ */

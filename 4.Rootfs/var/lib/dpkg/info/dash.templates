@@ -1,0 +1,97 @@
+Template: dash/sh
+Type: boolean
+Default: true
+Description: Use dash as the default system shell (/bin/sh)?
+ The system shell is the default command interpreter for shell scripts.
+ .
+ Using dash as the system shell will improve the system's overall
+ performance. It does not alter the shell presented to interactive
+ users.
+Description-bg.UTF-8: Използване на dash като системна обвивка (/bin/sh)?
+ Системната обвивка се използва по подразбиране от скриптовете на обвивката.
+ .
+ Използването на dash като системна обвивка ще подобри бързодействието на системата като цяло. Тази настройка не променя обвивката на интерактивните потребители.
+Description-cs.UTF-8: Použít dash jako výchozí systémový shell (/bin/sh)?
+ Systémový shell je výchozí příkazový interpret shellových skriptů.
+ .
+ Použití dash jako systémového shellu celkově zlepší výkon systému. Toto nastavení nijak neovlivní interaktivní shell jednotlivých uživatelů.
+Description-da.UTF-8: Brug dash som standardsystemskal (/bin/sh)?
+ Systemskallen er standardkommandofortolkeren til skalskript.
+ .
+ Brug af dash som systemskal vil forbedre systemets generelle ydeevne. Den ændrer ikke på skallen vist til interaktive brugere.
+Description-de.UTF-8: Dash als Standard-Systemshell (/bin/sh) verwenden?
+ Die Systemshell ist der Standard-Kommandointerpreter für Shell-Skripte.
+ .
+ Dash als Systemshell zu verwenden verbessert die Gesamtleistung des Systems. Dies verändert nicht die interaktiven Benutzern präsentierte Shell.
+Description-es.UTF-8: ¿Desea utilizar dash como el intérprete de órdenes predeterminado del sistema (/bin/sh)?
+ El intérprete de órdenes del sistema es el que se utiliza de forma predeterminada para todos los programas y scripts.
+ .
+ El uso de dash como el intérprete de órdenes del sistema mejorará el rendimiento general de éste. Esto no altera el intérprete de órdenes que utilizan los usuarios interactivos.
+Description-eu.UTF-8: Erabili dash sistemako shell lehenetsi gisa (/bin/sh)?
+ Sistemako shell-a komandoen interpretatzaile lehenetsia da shell-eko script-entzako.
+ .
+ Dash erabiltzean (sistemako shell lehenetsi gisa) sistemako errendimendu orokorra hobetzen da. Honek ez du aldatzen erabiltzaileekin elkarreragiteko aurkezten den shell-a.
+Description-fi.UTF-8: Käytetäänkö dashia järjestelmän oletuskomentotulkkina (/bin/sh)?
+ Komentosarjat ajetaan oletuksena järjestelmän komentotulkilla.
+ .
+ Järjestelmän suorituskykyä voidaan parantaa käyttämällä dashia järjestelmän oletuskomentotulkkina. Tämä ei vaikuta käyttäjille näytettäviin komentotulkkeihin.
+Description-fr.UTF-8: Utiliser Dash comme interpréteur de ligne de commande par défaut pour le système (/bin/sh)?
+ Le shell système est l'interpréteur de commandes utilisé par le système.
+ .
+ Utiliser Dash comme interpréteur de ligne de commande du système améliorera les performances globales. Cela ne change pas l'interpréteur utilisé interactivement par les utilisateurs.
+Description-id.UTF-8: Gunakan dash sebagai sistem shell bawaan (/bin/sh)?
+ Sistem shell adalah perintah intepreter bawaan untuk skrip shell
+ .
+ Menggunakan dash sebagai sistem shell akan meningkatkan performa keseluruhan sistem. Ini tidak mengubah shell yang disajikan ke pengguna interaktif
+Description-it.UTF-8: Usare dash come shell di sistema (/bin/sh)?
+ La shell di sistema è l'interprete dei comandi predefinito negli script della shell.
+ .
+ Usando dash come shell di sistema miglioreranno le prestazioni generali del sistema. Non verrà cambiata la shell presentata agli utenti interattivi.
+Description-ja.UTF-8: dash をデフォルトのシステムシェル (/bin/sh) として使いますか?
+ システムシェルはシェルスクリプト用のデフォルトのコマンドインタプリタです。
+ .
+ dash をシステムシェルとして使うことは、システム全体のパフォーマンスを改善します。対話的に利用しているユーザのシェルについては、変更しません。
+Description-nl.UTF-8: Wilt u dash gebruiken als de standaard systeemshell (/bin/sh)?
+ De systeemshell is de standaard commandovertolker voor shell scripts.
+ .
+ Als u dash als de systeemshell gebruikt, zal dit de prestaties van het systeem ten goede komen. Het verandert niets aan de shell die interactieve gebruikers te zien krijgen.
+Description-pl.UTF-8: Użyć dasha jako domyślnej powłoki systemowej (/bin/sh)?
+ Powłoka systemowa jest domyślnym interpreterem poleceń dla skryptów powłoki
+ .
+ Użycie programu dash jako powłoki systemowej poprawi ogólną wydajność systemu. Wybranie tej opcji nie zmieni powłoki zwykłych użytkowników.
+Description-pt.UTF-8: Utilizar o dash como shell predefinida do sistema (/bin/sh)?
+ A shell do sistema é o interpretador de comandos predefinido para scripts da shell.
+ .
+ Utilizar o dash como shell do sistema irá melhorar a performance em geral do sistema. Não altera a shell apresentada aos utilizadores interactivos.
+Description-pt_BR.UTF-8: Usar o dash como shell padrão do sistema (/bin/sh)?
+ O shell do sistema é o interpretador de comandos padrão para shell scripts.
+ .
+ Usar o dash como shell do sistema irá melhorar o desempenho geral do sistema. Isso não altera o shell apresentado para usuários interativos.
+Description-ro.UTF-8: Se folosește dash ca shell implicit pentru sistem (/bin/sh)?
+ Un shell de sistem este interpretorul de comenzi implicit pentru scripturi shell.
+ .
+ Folosind dash ca shell pentru sistem va îmbunătăți performanța generală a sistemului. Această schimbare nu va afecta ce shell este folosit pentru utilizatorii interactivi.
+Description-ru.UTF-8: Использовать dash в качестве системной оболочки по умолчанию (/bin/sh)?
+ Системная оболочка -- это командный интерпретатор для сценариев оболочки командной строки.
+ .
+ Использование dash в качестве системной оболочки улучшит общую производительность системы. Это не изменит оболочки командной строки, используемые пользователями.
+Description-sk.UTF-8: Použiť dash ako východzí systémový shell (/bin/sh)?
+ Systémový shell je východzí príkazový interpret shellových skriptov.
+ .
+ Použitie dash ako systémového shellu celkovo zlepší výkon systému. Toto nastavenie nijako neovplyvní interaktívny shell jednotlivých používateľov.
+Description-sr.UTF-8: Користити (dash) као подразумијевани систем (shell) (/bin/sh)?
+ Системски (shell) је подразумијавани тумач за (shell) скрипте.
+ .
+ Кориштењем (dash) повећавају се свеукупне систмеске перформансе. Не мијења(shell) представљен интерактивним корисницима.
+Description-sv.UTF-8: Ska dash användas som standardskal (/bin/sh)?
+ Systemskalet är kommandotolken för skript skrivna för skalet.
+ .
+ Att använda dash som systemskal kommer att inverka positivt på drifthastigheten av hela systemet. Det kommer inte innebära att användarnas skal byts ut.
+Description-tr.UTF-8: 'dash' öntanımlı sistem kabuğu (/bin/sh) olarak kullanılsın mı?
+ Sistem kabuğu, kabuk betiklerinin kullandığı öntanımlı komut yorumlayıcısıdır.
+ .
+ dash'i sistem kabuğu olarak kullanmak sistemin başarımını artırır. Etkileşimli kullanıcıların kabukları bu değişiklikten etkilenmez.
+Description-vi.UTF-8: Dùng dash làm trình bao hệ thống mặc định (/bin/sh) ?
+ Trình bao hệ thống là bộ thông thích lệnh mặc định cho văn lệnh trình bao.
+ .
+ Dùng dash làm trình bao hệ thống thì tăng cường hiệu suất toàn cục của hệ thống. Nó không sửa đổi trình bao được hiển thị cho người dùng tương tác (v.d. bash, tcsh).

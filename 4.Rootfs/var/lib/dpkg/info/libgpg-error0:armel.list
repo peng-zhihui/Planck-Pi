@@ -1,0 +1,13 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libgpg-error.so.0.26.1
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libgpg-error0
+/usr/share/doc/libgpg-error0/README.gz
+/usr/share/doc/libgpg-error0/changelog.Debian.gz
+/usr/share/doc/libgpg-error0/changelog.gz
+/usr/share/doc/libgpg-error0/copyright
+/lib/arm-linux-gnueabi/libgpg-error.so.0

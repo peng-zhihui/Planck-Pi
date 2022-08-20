@@ -1,0 +1,1117 @@
+#!/bin/bash
+#                               -*- Mode: Sh -*-
+# updateConfFile.sh ---
+# Author           : Manoj Srivastava ( srivasta@glaurung.green-gryphon.com )
+# Created On       : Fri Feb  1 03:41:47 2002
+# Created On Node  : glaurung.green-gryphon.com
+# Last Modified By : Manoj Srivastava
+# Last Modified On : Tue Jun  6 09:48:22 2006
+# Last Machine Used: glaurung.internal.golden-gryphon.com
+# Update Count     : 186
+# Status           : Unknown, Use with caution!
+# HISTORY          :
+# Description      :
+#
+# This script attempts to provide conffile like handling for files not
+# shipped in a Debian package, but handled by the postinst. Using this
+# script, one may ship a bunch of default cofiguration files somewhere
+# in /usr (/usr/share/<pkg> is a good location), and maintain files in
+# /etc.
+#
+# The motivation for this script was to provide conffile like handling
+# for start files for emacs lisp packages (for example,
+# /etc/emacs21/site-stard.d/50psgml-init.el) These start files are not
+# shipped with the package, instead, they are installed during the
+# post installation configuration phase by the script
+# /usr/lib/emacsen-common/emacs-package-install $package_name.
+#
+# This script is meant to be invoked by the packages install script at
+# /usr/lib/emacsen-common/packages/install/$package_name for each
+# flavour of installed emacsen by calling it with the proper values of
+# new file (/usr/share/emacs/site-lisp/<pkg>/<pkg>-init.el), and dest file
+# (/etc/emacs21/site-stard.d/50<pkg>-init.el)), and it should do the rest.
+#
+
+# make sure we exit on error
+set -e
+
+# set the version and revision
+progname="$(basename $0)"
+pversion='Revision: 3.00 '
+
+unset GREP_OPTIONS
+
+######################################################################
+########                                                     #########
+########              Utility functions                      #########
+########                                                     #########
+######################################################################
+setq() {
+    # Variable Value Doc_string
+    if [ "x$2" = "x" ]; then
+	echo >&2 "$progname: Unable to determine $3"
+	exit 1;
+    else
+	if [ "x$VERBOSE" != "x" ]; then
+	    echo >&2 "$progname: $3 is $2";
+	fi
+	eval "$1=\"\$2\"";
+    fi
+}
+
+# Usage: get_file_metadate file_name
+get_file_metadata()
+{
+    if [ -e "$1" ]; then
+        # get file modification date without the nanoseconds and timezone info
+        local moddate="$(date +"%F %T" --date $(stat --format '@%Y' "$1"))"
+        # print file_name user.group permissions above_date
+        stat --format "%n %U.%G 0%a $moddate" "$1"
+    else
+        echo "/dev/null"
+    fi
+}
+
+# Runs the diff command with approrpiate arguments
+# Usage run_diff diff|sdiff diff_opts old_file new_file
+run_diff()
+{
+    local diff_cmd="$1"
+    local diff_opt="$2"
+    local old_file="$3"
+    local new_file="$4"
+
+    # Note: get_file_metadata not in quotes to ignore "\n" characters
+    local old_file_label=$(get_file_metadata "$old_file")
+    local new_file_label=$(get_file_metadata "$new_file")
+
+    [ -e "$old_file" ] || old_file=/dev/null
+    [ -e "$new_file" ] || new_file=/dev/null
+
+    if [ "$diff_cmd" = "diff" ] ; then
+      diff "$diff_opt" --label "$old_file_label" "$old_file" \
+            --label "$new_file_label" "$new_file" || true
+    elif [ "$diff_cmd" = "sdiff" ] ; then
+      # unfortunatelly the sdiff command does not support --label option
+      local out="$(sdiff "$diff_opt" "$old_file" "$new_file")" || true
+      [ -z "$out" ] || printf "Old file: %s\nNew file: %s\n\n%s" \
+                               "$old_file_label" "$new_file_label" "$out"
+    else
+      echo "Unknown diff command: $diff_cmd" >&2
+      exit 1
+    fi
+}
+
+
+# Use debconf to show the differences
+# Usage: show_diff actual_file_differences file_stat_differences
+show_diff() {
+    if [ -z "$1" ]; then
+	DIFF="There are no non-white space differences in the files."
+    else
+        if  [ 99999 -lt "$(echo $1 | wc -c | awk '{print $1; }')" ]; then
+            DIFF="The differences between the files are too large to display."
+        else
+            DIFF="$1"
+        fi
+    fi
+    if [ "$DEBCONF_OK" = "YES" ] && [ "$DEBIAN_HAS_FRONTEND" ]; then
+	templ=ucf/show_diff
+	db_capb escape
+	db_subst $templ DIFF "$(printf %s "$DIFF" | debconf-escape -e)"
+	db_fset $templ seen false
+	db_input critical $templ || true
+	db_go || true
+	db_get $templ
+	# may contain sensitive information, so clear
+	# immediatly after use so it is never written
+	# to disk
+	db_subst $templ DIFF ""
+	db_reset $templ
+	db_capb
+    else
+        if [ -z "$my_pager" ]; then
+	    echo "$DIFF" | sensible-pager
+        else
+	    echo "$DIFF" | $my_pager
+        fi
+    fi
+}
+
+withecho () {
+        echo "$@" >&2
+        "$@"
+}
+
+usageversion () {
+        cat >&2 <<END
+Debian GNU/Linux $progname $pversion.
+           Copyright (C) 2002-2005 Manoj Srivastava.
+This is free software; see the GNU General Public Licence for copying
+conditions.  There is NO warranty.
+
+Usage: $progname  [options] new_file  destination
+Options:
+     -h,     --help          print this message
+     -s foo, --src-dir  foo  Set the src dir (historical md5sums live here)
+             --sum-file bar  Force the historical md5sums to be read from
+                             this file.  Overrides any setting of --src-dir.
+     -d[n], --debug=[n]      Set the Debug level to N. Please note there must
+                             be no spaces before the debug level
+     -n,     --no-action     Dry run. No action is actually taken.
+     -v,     --verbose       Make the script verbose
+             --three-way     Register this file in the cache, and turn on the
+                             diff3 option allowing the merging of maintainer
+                             changes into a (potentially modified) local
+                             configuration file. )
+             --state-dir bar Set the state directory to bar instead of the
+                             default '/var/lib/ucf'. Used mostly for testing.
+             --debconf-ok    Indicate that it is ok for ucf to use an already
+                             running debconf instance for prompting.
+             --debconf-template bar
+                             Specify an alternate, caller-provided debconf
+                             template to use for prompting.
+Usage: $progname  -p  destination
+     -p,     --purge         Remove any reference to destination from records
+
+By default, the directory the new_file lives in is assumed to be the src-dir,
+which is where we look for any historical md5sums.
+
+END
+
+}
+
+######################################################################
+########                                                     #########
+########        file and hash save/restore functions         #########
+########                                                     #########
+######################################################################
+purge_md5sum () {
+    for i in $(/usr/bin/seq 6 -1 0); do
+	if [ -e "${statedir}/hashfile.${i}" ]; then
+	    if [ "X$docmd" = "XYES" ]; then
+		cp -pf "${statedir}/hashfile.${i}" \
+		    "${statedir}/hashfile.$(($i+1))"
+	    else
+		echo cp -pf "${statedir}/hashfile.${i}" \
+                          "${statedir}/hashfile.$(($i+1))"
+	    fi
+	fi
+    done
+    if [ -e "$statedir/hashfile" ]; then
+	if [ "X$docmd" = "XYES" ]; then
+	    cp -pf "$statedir/hashfile"  "$statedir/hashfile.0"
+	else
+	    echo cp -pf "$statedir/hashfile"  "$statedir/hashfile.0"
+	fi
+	if [ "X$docmd" = "XYES" ]; then
+	    set +e
+	    if [ "X$VERBOSE" != "X" ]; then
+		echo >&2 "egrep -v [[:space:]]${safe_dest_file}$ $statedir/hashfile"
+		egrep -v "[[:space:]]${safe_dest_file}$"  "$statedir/hashfile" >&2 \
+		    || true;
+	    fi
+	    #echo "egrep -v [[:space:]]${safe_dest_file}$ $statedir/hashfile"
+	    egrep -v "[[:space:]]${safe_dest_file}$" "$statedir/hashfile" > \
+		"$statedir/hashfile.tmp" || true;
+	    if [ "X$docmd" = "XYES" ]; then
+		mv -f "$statedir/hashfile.tmp"  "$statedir/hashfile"
+	    else
+		echo mv -f "$statedir/hashfile.tmp"  "$statedir/hashfile"
+	    fi
+	    set -e
+	fi
+    fi
+    test -n "$VERBOSE" && echo >&2 "The cache file is $cached_file"
+    if [ ! -z "$cached_file" -a -f "$statedir/cache/$cached_file" ]; then
+	$action rm -f "$statedir/cache/$cached_file"
+    fi
+}
+
+replace_md5sum () {
+    for i in $(/usr/bin/seq 6 -1 0); do
+	if [ -e "${statedir}/hashfile.${i}" ]; then
+	    if [ "X$docmd" = "XYES" ]; then
+		cp -pf "${statedir}/hashfile.${i}" \
+		    "${statedir}/hashfile.$(($i+1))"
+	    else
+		echo cp -pf "${statedir}/hashfile.${i}" \
+		    "${statedir}/hashfile.$(($i+1))"
+	    fi
+	fi
+    done
+    if [ -e "$statedir/hashfile" ]; then
+	if [ "X$docmd" = "XYES" ]; then
+	    cp -pf "$statedir/hashfile"  "$statedir/hashfile.0"
+	else
+	    echo cp -pf "$statedir/hashfile"  "$statedir/hashfile.0"
+	fi
+	if [ "X$docmd" = "XYES" ]; then
+	    set +e
+	    if [ "X$VERBOSE" != "X" ]; then
+		echo >&2 "(egrep -v \"[[:space:]]${safe_dest_file}$\" \"$statedir/hashfile\";"
+		egrep -v "[[:space:]]${safe_dest_file}$"  "$statedir/hashfile" >&2 || true;
+		md5sum "$orig_new_file" | sed "s|$orig_new_file|$dest_file|" >&2;
+	    fi
+	    egrep -v "[[:space:]]${safe_dest_file}$" "$statedir/hashfile" > \
+		"$statedir/hashfile.tmp" || true;
+	    md5sum "$orig_new_file" | sed "s|$orig_new_file|$dest_file|" >> \
+		"$statedir/hashfile.tmp";
+	    mv -f "$statedir/hashfile.tmp"  "$statedir/hashfile"
+	    set -e
+	else
+	    echo "(egrep -v \"[[:space:]]${safe_dest_file}$\" \"$statedir/hashfile\""
+	    echo " md5sum \"$orig_new_file\" | sed \"s|$orig_new_file|$dest_file|\"; "
+	    echo ") | sort > \"$statedir/hashfile\""
+	fi
+    else
+	if [ "X$docmd" = "XYES" ]; then
+	    md5sum "$orig_new_file" | sed "s|$orig_new_file|$dest_file|"  > \
+		"$statedir/hashfile"
+	else
+	    echo " md5sum \"$orig_new_file\" | sed \"s|$orig_new_file|$dest_file|\" >" \
+		"\"$statedir/hashfile\""
+	fi
+    fi
+    file_size=$(stat -c '%s' "$orig_new_file")
+    if [ "X$THREEWAY" != "X" ] || [ "$file_size" -lt 25600 ]; then
+	$action cp -pf "$orig_new_file" "$statedir/cache/$cached_file"
+    fi
+    # cp -pf "$orig_new_file" "$dest_file.${DIST_SUFFIX}"
+}
+
+replace_conf_file () {
+    # do not mangle $dest_file since it's the one registered in the hashfile
+    # or we have been ask to register
+    real_file="$dest_file"
+    if [ -L "$dest_file" ]; then
+	real_file="$(readlink -nf $dest_file || :)"
+	if [ "x$real_file" = "x" ]; then
+	    echo >&2 "$dest_file is a broken symlink!"
+	    $action rm -f "$dest_file";
+	    real_file="$dest_file"
+	fi
+    fi
+    if [ -e "$real_file" ]; then
+	if [ -z "$RETAIN_OLD" ]; then
+	    #echo "Saving  ${real_file}.${OLD_SUFFIX},  in case."
+	    if [ "x$VERBOSE" != "x" ]; then
+		echo >&2 "Not saving ${real_file}, since it was unmodified"
+	    fi
+	else
+	    $action cp -pf "${real_file}" "${real_file}.${OLD_SUFFIX}"
+	fi
+    fi
+    $action cp -pf "$new_file" "${real_file}"
+    replace_md5sum;
+}
+
+# Escape single quotes in the arguments passed in
+quote_single() {
+    echo "$1" | sed -e "s,','\\\\'',g"
+}
+
+
+
+######################################################################
+########                                                     #########
+########              Command line args                      #########
+########                                                     #########
+######################################################################
+#
+# Long term variables#
+#
+docmd='YES'
+action='withecho'
+action=
+DEBUG=0
+VERBOSE=''
+statedir='/var/lib/ucf';
+THREEWAY=
+
+DIST_SUFFIX="ucf-dist"
+NEW_SUFFIX="ucf-new"
+OLD_SUFFIX="ucf-old"
+ERR_SUFFIX="merge-error"
+# save up the cmdline with proper quoting/escaping
+for arg in "$@"; do
+    saved="${saved:+$saved }'$(quote_single "$arg")'"
+done
+
+# Note that we use `"$@"' to let each command-line parameter expand to a
+# separate word. The quotes around `$@' are essential!
+# We need TEMP as the `eval set --' would nuke the return value of getopt.
+TEMP=$(getopt -a -o hs:d::D::nv -n "$progname" \
+      --long help,src-dir:,sum-file:,dest-dir:,debug::,DEBUG::,no-action,purge,verbose,three-way,debconf-ok,debconf-template:,state-dir: \
+             -- "$@")
+
+# Note the quotes around `$TEMP': they are essential!
+eval set -- "$TEMP"
+
+while true ; do
+    case "$1" in
+	-h|--help) usageversion;                        exit 0 ;;
+	-n|--no-action) action='echo'; docmd='NO';      shift  ;;
+	-v|--verbose) VERBOSE=1;                        shift  ;;
+	-s|--src-dir)
+	    opt_source_dir="$2";                       shift 2 ;;
+	--sum-file)
+	    opt_old_mdsum_file="$2";		  shift 2 ;;
+	--state-dir)
+	    opt_state_dir="$2";                        shift 2 ;;
+	--debconf-template)
+	    override_template="$2";                    shift 2 ;;
+	-D|-d|--debug|--DEBUG)
+            # d has an optional argument. As we are in quoted mode,
+            # an empty parameter will be generated if its optional
+            # argument is not found.
+	    case "$2" in
+		"") setq DEBUG 1    "The Debug value"; shift 2 ;;
+		*)  setq DEBUG "$2" "The Debug value"; shift 2 ;;
+	    esac ;;
+        -p|--purge) PURGE=YES;                         shift   ;;
+       --three-way) THREEWAY=YES;                       shift   ;;
+       --debconf-ok) DEBCONF_OK=YES;                    shift   ;;
+	--)  shift ;                                   break   ;;
+	*) echo >&2 "Internal error!" ; exit 1 ;;
+    esac
+done
+
+
+######################################################################
+########                                                     #########
+########              Sanity checking                        #########
+########                                                     #########
+######################################################################
+# Need to run as root, or else the
+if test "$(id -u)" != 0; then
+    if [ "$docmd" = "YES" ]; then
+        echo "$progname: Need to be run as root." >&2
+        echo "$progname: Setting up no action mode." >&2
+        action='echo'; docmd='NO';
+    fi
+fi
+
+if [ "X$PURGE" = "XYES" ]; then
+    if [ $# != 1 ]; then
+	echo >&2 "*** ERROR: Need exactly one argument when purging, got $#";
+	echo >&2 ""
+	usageversion;
+	exit 2 ;
+    fi
+    temp_dest_file="$1";
+    if [ -e "$temp_dest_file" ]; then
+        setq dest_file "$(readlink -q -m $temp_dest_file)" "The Destination file";
+    else
+        setq dest_file "$temp_dest_file" "The Destination file";
+    fi
+else
+    if [ $# != 2 ]; then
+	echo >&2 "*** ERROR: Need exactly two arguments, got $#";
+	echo >&2 ""
+	usageversion;
+	exit 2 ;
+    fi
+    temp_new_file="$1";
+    temp_dest_file="$2";
+
+    if [ ! -e "${temp_new_file}" ]; then
+	echo >&2 "Error: The new file ${temp_new_file} does not exist!";
+	exit 1;
+    fi
+    setq new_file  "$(readlink -q -m $temp_new_file)"  "The new file";
+    if [ -e "$temp_dest_file" ]; then
+        setq dest_file "$(readlink -q -m $temp_dest_file)" "The Destination file";
+    else
+        setq dest_file "$temp_dest_file" "The Destination file";
+    fi
+fi
+
+
+safe_dest_file=$(echo "$dest_file" | perl -nle 'print "\Q$_\E\n"')
+
+
+
+######################################################################
+########                                                     #########
+########              Set Default Values                     #########
+########                                                     #########
+######################################################################
+# Load site defaults and over rides.
+if [ -f /etc/ucf.conf ]; then
+    . /etc/ucf.conf
+fi
+
+# Command line, env variable, config file, or default
+if [ ! "x$opt_source_dir" = "x" ]; then
+    setq source_dir "$opt_source_dir" "The Source directory"
+elif [ ! "x$UCF_SOURCE_DIR" = "x" ]; then
+    setq source_dir "$UCF_SOURCE_DIR" "The Source directory"
+elif [ ! "x$conf_source_dir" = "x" ]; then
+    setq source_dir "$conf_source_dir" "The Source directory"
+else
+    if [ "X$new_file" != "X" ]; then
+	setq source_dir "$(dirname $new_file)" "The Source directory"
+    else
+	setq source_dir "/tmp" "The Source directory"
+    fi
+
+fi
+
+if [ "X$PAGER" != "X" ] && which "$PAGER" >/dev/null 2>&1 ; then
+    my_pager="$(which $PAGER)";
+elif [ -s /usr/bin/pager ] &&
+     [ "X$(readlink -e /usr/bin/pager || :)" != "X" ]; then
+    my_pager=/usr/bin/pager
+elif [ -x /usr/bin/sensible-pager ]; then
+    my_pager=/usr/bin/sensible-pager
+elif [ -x /bin/more ]; then
+    my_pager=/bin/more
+else
+    my_pager=
+fi
+
+
+# Command line, env variable, config file, or default
+if [ ! "x$opt_state_dir" = "x" ]; then
+    setq statedir "$opt_state_dir" "The State directory"
+elif [ ! "x$UCF_STATE_DIR" = "x" ]; then
+    setq statedir "$UCF_STATE_DIR" "The State directory"
+elif [ ! "x$conf_state_dir" = "x" ]; then
+    setq statedir "$conf_state_dir" "The State directory"
+else
+    setq statedir '/var/lib/ucf'  "The State directory"
+fi
+
+# Command line, env variable, config file, or default
+if [ ! "x$opt_force_conffold" = "x" ]; then
+    setq force_conffold "$opt_force_conffold" "Keep the old file"
+elif [ ! "x$UCF_FORCE_CONFFOLD" = "x" ]; then
+    setq force_conffold "$UCF_FORCE_CONFFOLD" "Keep the old file"
+elif [ ! "x$conf_force_conffold" = "x" ]; then
+    setq force_conffold "$conf_force_conffold" "Keep the old file"
+else
+    force_conffold=''
+fi
+
+# Command line, env variable, config file, or default
+if [ ! "x$opt_force_conffnew" = "x" ]; then
+    setq force_conffnew "$opt_force_conffnew" "Replace the old file"
+elif [ ! "x$UCF_FORCE_CONFFNEW" = "x" ]; then
+    setq force_conffnew "$UCF_FORCE_CONFFNEW" "Replace the old file"
+elif [ ! "x$conf_force_conffnew" = "x" ]; then
+    setq force_conffnew "$conf_force_conffnew" "Replace the old file"
+else
+    force_conffnew=''
+fi
+
+# Command line, env variable, config file, or default
+if [ ! "x$opt_force_conffmiss" = "x" ]; then
+    setq force_conffmiss "$opt_force_conffmiss" "Replace any missing files"
+elif [ ! "x$UCF_FORCE_CONFFMISS" = "x" ]; then
+    setq force_conffmiss "$UCF_FORCE_CONFFMISS" "Replace any missing files"
+elif [ ! "x$conf_force_conffmiss" = "x" ]; then
+    setq force_conffmiss "$conf_force_conffmiss" "Replace any missing files"
+else
+    force_conffmiss=''
+fi
+
+if [ -n "$opt_old_mdsum_file" ]; then
+    setq old_mdsum_file "$opt_old_mdsum_file" "The md5sum is found here"
+elif [ ! "x$UCF_OLD_MDSUM_FILE" = "x" ]; then
+    setq old_mdsum_file "$UCF_OLD_MDSUM_FILE" "The md5sum is found here"
+elif [ ! "x$conf_old_mdsum_file" = "x" ]; then
+    setq old_mdsum_file "$conf_old_mdsum_file" "Replace the old file"
+elif [ ! "x${new_file}" = "x" ]; then
+    old_mdsum_file="$source_dir/$(basename ${new_file}).md5sum";
+else
+    old_mdsum_file="";
+fi
+
+
+######################################################################
+########                                                     #########
+########               More Sanity checking                  #########
+########                                                     #########
+######################################################################
+if [ "X$force_conffold" != "X" -a "X$force_conffnew" != "X" ]; then
+    echo >&2 "Error: Only one of force_conffold and force_conffnew should";
+    echo >&2 "       be set";
+    exit 1;
+fi
+
+# VERBOSE of 0 is supposed to be the same as not setting VERBOSE
+if [ "X$VERBOSE" = "X0" ]; then
+    VERBOSE=''
+fi
+
+
+#
+if [ -e "$statedir/hashfile" -a ! -w "$statedir/hashfile" ]; then
+    echo >&2 "ucf: do not have write privilege to the state data"
+    if [ "X$docmd" = "XYES" ]; then
+	exit 1;
+    fi
+fi
+
+if [ ! -d $statedir/cache ]; then
+    $action mkdir -p $statedir/cache ;
+fi
+
+# test and see if this file exists in the database
+if [ -e "$statedir/hashfile" ]; then
+    if [ "X$VERBOSE" != "X" ]; then
+	echo >&2 "The hash file exists"
+	echo >&2 egrep "[[:space:]]${safe_dest_file}$" "$statedir/hashfile"
+	egrep "[[:space:]]${safe_dest_file}$" "$statedir/hashfile" >&2 || true
+    fi
+    lastsum=$(egrep "[[:space:]]${safe_dest_file}$" "$statedir/hashfile" | \
+                   awk '{print $1;}' )
+fi
+
+if [ ! "x${new_file}" = "x" ]; then
+    old_mdsum_dir="$source_dir/"$(basename "${new_file}")".md5sum.d";
+else
+    old_mdsum_dir="";
+fi
+
+cached_file="$(echo $dest_file | tr / :)"
+######################################################################
+########                                                     #########
+########                  Debugging dump                     #########
+########                                                     #########
+######################################################################
+
+if [ $DEBUG -gt 0 ]; then
+    cat >&2 <<EOF
+The new start file is      \`$new_file\'
+The destination is         \`$dest_file\' (\`$safe_dest_file\')
+The history is kept under  \'$source_dir\'
+The file may be cached at \'$statedir/cache/$cached_file\'
+EOF
+    if [ -s "$dest_file" ]; then
+	echo "The destination file exists, and has md5sum:"
+	md5sum "$dest_file"
+    else
+	echo "The destination file does not exist."
+    fi
+    if [ "X$lastsum" != "X" ]; then
+	echo "The old md5sum exists, and is:"
+	echo "$lastsum"
+    else
+	echo "The old md5sum does not exist."
+        if [ -d "$old_mdsum_dir" -o -f "$old_mdsum_file" ]; then
+            echo "However, there are historical md5sums around."
+        fi
+    fi
+    if [ -e "$new_file" ]; then
+	echo "The new file exists, and has md5sum:"
+	md5sum "$new_file"
+    else
+	echo "The new file does not exist."
+    fi
+    if [ -d "$old_mdsum_dir" ]; then
+	echo "The historical md5sum dir $old_mdsum_dir exists"
+    elif [ -f "$old_mdsum_file" ]; then
+	echo "The historical md5sum file $old_mdsum_file exists"
+    else
+	echo "Historical md5sums are not available"
+    fi
+fi
+
+######################################################################
+########                                                     #########
+########        Short circuit if we are purging              #########
+########                                                     #########
+######################################################################
+
+if [ "X$PURGE" = "XYES" ]; then
+    if [ "X$VERBOSE" != "X" ]; then
+	echo >&2 "Preparing to purge ${dest_file}"
+    fi
+    purge_md5sum;
+    exit 0;
+fi
+
+
+# now we can restore $@
+eval set -- "$saved"
+
+######################################################################
+########                                                     #########
+########                  DebConf stuff                      #########
+########                                                     #########
+######################################################################
+
+# Is debconf already running? Kinda tricky, because it will be after the
+# confmodule is sourced, so only test before that.
+if [ -z "$DEBCONF_ALREADY_RUNNING" ]; then
+    if [ "$DEBIAN_HAS_FRONTEND" ]; then
+	DEBCONF_ALREADY_RUNNING='YES'
+    else
+	DEBCONF_ALREADY_RUNNING='NO'
+    fi
+fi
+
+export DEBCONF_ALREADY_RUNNING
+
+if [ -z "$DEBCONF_OK" ]; then
+    if [ "$DEBCONF_ALREADY_RUNNING" = 'YES' ]; then
+	DEBCONF_OK='NO'
+    else
+	DEBCONF_OK='YES'
+    fi
+fi
+
+# Time to start nagging the users who call ucf without debconf-ok
+if [ "$DEBCONF_ALREADY_RUNNING"  = 'YES' ] && [ "$DEBCONF_OK" = NO ]; then
+	# Commented out for now, uncomment after a while to begin nagging
+	# maintainers to fix their scripts.
+	cat \
+<<END
+*** WARNING: ucf was run from a maintainer script that uses debconf, but
+             the script did not pass --debconf-ok to ucf. The maintainer
+             script should be fixed to not stop debconf before calling ucf,
+             and pass it this parameter. For now, ucf will revert to using
+             old-style, non-debconf prompting. Ugh!
+
+             Please inform the package maintainer about this problem.
+END
+fi
+
+# Start up debconf or at least get the db_* commands available
+if [ -e /usr/share/debconf/confmodule ]; then
+    if test "$(id -u)" = 0; then
+	. /usr/share/debconf/confmodule
+
+	# Load our templates, just in case our template has
+	# not been loaded or the Debconf DB lost or corrupted
+	# since then, but only if it is OK to use debconf.
+        if [ "$DEBCONF_OK" = 'YES' ]; then
+            db_x_loadtemplatefile "$(dpkg-query --control-path ucf templates)" ucf
+        fi
+    else
+        echo >&2 "$progname: Not loading confmodule, since we are not running as root."
+    fi
+    # Only set the title if debconf was not already running.
+    # If it was running, then we do not want to clobber the
+    # title used for configuring the whole package with debconf.
+    if [ "$DEBCONF_ALREADY_RUNNING" = 'NO' ]; then
+	if ! db_settitle ucf/title 2>/dev/null; then
+      	    # Older debconf that does not support that command.
+            if test "$(id -u)" = 0; then
+		db_title "Modified configuration file"
+            else
+                echo >&2 "$progname: Not changing title, since we are not running as root."
+            fi
+	fi
+    fi
+fi
+
+
+
+######################################################################
+########                                                     #########
+########                Start Processing                     #########
+########                                                     #########
+######################################################################
+
+orig_new_file="$new_file"	# Since sometimes we replace the newfile below
+newsum=$(md5sum "$new_file" | awk '{print $1}')
+
+# Determine the action for the current file. The default is to ask,
+# with non-replacement being the norm.
+# If the config dir exists
+#   if file in always overwrite, state +=1;
+#   fi
+#   if file in never overwrite, state +=2;
+#   fi
+#   if file in ask; state +=4
+#   fi
+#   if state == 0; then state = default
+#   if state >= 4; ask
+#   if state == 3;  ask
+#   if state == 2; exit
+#   if state == 1; then replace_conffile; exit
+
+######################################################################
+########                                                     #########
+########               Do the replacement                    #########
+########                                                     #########
+######################################################################
+# Step 1: If we have no record of this file, and dest file
+#         does, We need to determine how to initialize the
+#         ${old_mdsum_prefix}.old file..
+if [ -e "$dest_file" ]; then
+    destsum=$(md5sum "$dest_file"  | awk '{print $1}');
+    if [ "X$lastsum" = "X" ]; then
+#      a: If we have a directory containing historical md5sums of this
+#         file in question, we should look and see if the currently
+#         installed file matches any of the old md5sums; in which case
+#         it can be silently replaced.
+	if [ -d "$old_mdsum_dir" -o -f "$old_mdsum_file" ]; then
+	    if [ -d "$old_mdsum_dir"  ]; then
+		for file in ${old_mdsum_dir}/*; do
+		    oldsum="$(awk '{print $1}' $file)";
+		    if [ "$oldsum" = "$destsum"  ]; then
+			if [ "X$force_conffold" = "X" ]; then
+#                           Bingo! replace, set the md5sum, and we are done
+			    if [ "X$VERBOSE" != "X" ]; then
+				echo >&2 \
+				    "Replacing config file $dest_file with new version"
+			    fi
+			    replace_conf_file;
+			    exit 0;
+			else
+			    replace_md5sum;
+			    cp -pf "$orig_new_file" "$dest_file.${DIST_SUFFIX}"
+			    exit 0;
+			fi
+		    fi
+		done
+	    elif [ -f "$old_mdsum_file" ]; then
+		oldsum=$(egrep "^${destsum}" "$old_mdsum_file" || true)
+		if [ "X$oldsum" != "X" ]; then
+#                    Bingo
+		    if [ "X$force_conffold" = "X" ]; then
+			if [ "X$VERBOSE" != "X" ]; then
+			    echo >&2 \
+				"Replacing config file $dest_file with new version"
+			fi
+			replace_conf_file;
+			exit 0;
+		    else
+			replace_md5sum;
+			cp -pf "$orig_new_file" "$dest_file.${DIST_SUFFIX}"
+			exit 0;
+		    fi
+		fi
+	    fi
+#	   Well, nothing matched. We now check to see if the
+#	   maintainer has an opinion on how to set the ``md5sum of the
+#	   previously installed version'', since we have no way of
+#	   determining that automatically. Please note that unless
+#	   there are limited number of previously released packages
+#	   (like just one), the maintainer is also making a guess at
+#	   this point by supplying a historical md5sum default file.
+	    if [ "X$VERBOSE" != "X" ]; then
+		echo >&2 "Histotical md5sums did not match."
+	    fi
+	    if [ -d "$old_mdsum_dir"  ]; then
+		if [ -e "${old_mdsum_dir}/default" ]; then
+		    if [ "X$VERBOSE" != "X" ]; then
+			echo >&2 "However, a default entry exists, using it."
+		    fi
+		    lastsum="$(awk '{print $1;}' ${old_mdsum_dir}/default)"
+		    do_replace_md5sum=1;
+		fi
+	    elif [ -f "$old_mdsum_file" ]; then
+		oldsum=$(egrep "[[:space:]]default$" "$old_mdsum_file" | \
+		    awk '{print $1;}')
+		if [ "X$oldsum" != "X" ]; then
+#                    Bingo
+		    lastsum=$oldsum;
+		    do_replace_md5sum=1;
+		fi
+	    fi
+	fi
+
+#       At this point, we are almost certain that either the
+#       historical record of md5sums is not complete, or the user has
+#       changed the configuration file. Rather than guessing and
+#       chosing one of the historical md5sums, we fall through to the
+#       solution used if there had been no historical md5sums
+#       directory/file.
+	if [ "X$lastsum" = "X" ]; then
+#      b: We do not have a historical list of md5sums, or none
+#         matched, and we still need to initialize the
+#         ${old_mdsum_prefix}.old file. We can't determine whther or
+#         not they made any changes, so we err on the side of caution
+#         and ask'
+	    if [ "X$VERBOSE" != "X" ]; then
+		echo >&2 "No match found, we shall ask."
+	    fi
+	    lastsum='AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+	fi # the old md5sum file does not exist, and the historical
+	   # record failed
+    fi # the old md5sum file does not exist (bug))
+else  # "$dest_file" does not exist
+# Step 2: If destfile does not exist, create it, set the file
+#         "${old_mdsum_prefix}.old" to the md5sum of the new file, and we
+#         are done
+    if [ "X$lastsum" = "X" ]; then
+        # Ok, so there is no indication that the package was ever
+        # installed on this machine.
+	echo >&2 ""
+	echo >&2 "Creating config file $dest_file with new version"
+	replace_conf_file;
+	exit 0;
+    elif [ "$lastsum" = "$newsum" ]; then
+        # OK, new version of the file is the same as the last version
+        # we saw. Since the user apparently has deleted the file,
+        # nothing needs be done, unless we have been told differently
+        if [ "X$force_conffmiss" != "X" ]; then
+            echo >&2 ""
+	    echo >&2 "Recreating deleted config file $dest_file with new version, as asked"
+	    replace_conf_file;
+	    exit 0;
+        else
+            echo >&2 "Not replacing deleted config file $dest_file";
+        fi
+
+    else
+        # OK. New upstream version.
+        if [ "X$force_conffmiss" != "X" ]; then
+            # User has said to replace missing files, so we do so, no
+            # questions asked.
+            echo >&2 ""
+	    echo >&2 "Recreating deleted config file $dest_file with new version, as asked"
+	    replace_conf_file;
+	    exit 0;
+        else
+            # Even though the user has deleted this file, they should
+            # be asked now, unless specified otherwise.
+            if [ "X$force_conffold" = "X" ]; then
+                destsum='AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+            else
+                exit 0;
+	    fi
+        fi
+    fi
+fi
+
+# Here, the destfile exists.
+
+# step 3: If the old md5sum and the md5sum of the new file
+#         do not match, we need to take action.
+if [ "$lastsum" = "$newsum" ]; then
+    if [ "X$VERBOSE" != "X" ]; then
+	echo >&2 "md5sums match, nothing needs be done."
+    fi
+    if [ "X$do_replace_md5sum" != "X" ]; then
+	replace_md5sum;
+    fi
+    exit 0;			# Hah. Match. We are done.
+fi
+#      a: If the md5sum of the dest file is the same as lastsum, replace the
+#         destfile, saying we are replacing old config files
+if [ "$destsum" = "$lastsum" ]; then
+    if [ "X$force_conffold" = "X" ]; then
+	echo >&2 "Replacing config file $dest_file with new version"
+	replace_conf_file;
+	exit 0;
+    else
+	replace_md5sum;
+	cp -pf "$orig_new_file" "$dest_file.${DIST_SUFFIX}"
+	exit 0;
+    fi
+else
+#      b: If the md5sum of the dest file differs from lastsum, we need to ask
+#         the user what action to take.
+    if [ "X$force_conffnew" != "X" ]; then
+	echo >&2 "Replacing config file $dest_file with new version"
+	echo >&2 "since you asked for it."
+        if [ "$destsum" = "$newsum" ]; then
+            echo >&2 "The new and the old files are identical, AFAICS"
+        else
+            echo >&2 "The new and the old files are different"
+        fi
+	replace_conf_file;
+	exit 0;
+    fi
+    if [ "X$force_conffold" != "X" ]; then
+	replace_md5sum;
+	cp -pf "$orig_new_file" "$dest_file.${DIST_SUFFIX}"
+	exit 0;
+    fi
+#      c: If the destination file is the same as the new maintianer provided one,
+#         we need do nothing.
+    if [ "$newsum" = "$destsum" ]; then
+	if [ "X$VERBOSE" != "X" ]; then
+	    echo >&2 "md5sums of the file in place matches, nothing needs be done."
+	fi
+	replace_md5sum;
+	exit 0;			# Hah. Match. We are done.
+    fi
+
+
+    done='NO';
+    while [ "X$done" = "XNO" ]; do
+	if [ "$DEBCONF_OK" = "YES" ] && [ "$DEBIAN_HAS_FRONTEND" ]; then
+		# Use debconf to prompt.
+		if [ -e "$statedir/cache/$cached_file" ] && [ "X$THREEWAY" != "X" ]; then
+			templ=ucf/changeprompt_threeway
+		else
+			templ=ucf/changeprompt
+		fi
+		if [ "X$override_template" != "X" ]; then
+			choices="$(db_metaget $templ Choices-C)"
+			choices2="$(db_metaget $override_template Choices-C)"
+			if [ "$choices" = "$choices2" ]; then
+				templ=$override_template
+			fi
+		fi
+		db_fset "$templ" seen false
+		db_reset "$templ"
+		db_subst "$templ" FILE "$dest_file"
+		db_subst "$templ" NEW  "$new_file"
+		db_subst "$templ" BASENAME "$(basename $dest_file)"
+		db_input critical "$templ" || true
+		if ! db_go; then
+			# The current ucf interface does not provide a way for it
+			# to tell its caller that the user chose to back up.
+			# However, we could get here, if the caller turned on
+			# debconf's backup capb. The best thing to do seems to be
+			# to ignore requests to back up.
+			continue
+		fi
+		db_get "$templ"
+		ANSWER="$RET"
+	else
+            echo >&2 "Need debconf to interact"
+            exit 2
+########################################################################################
+# 		# Prompt without using debconf.                                        #
+# 		cat >&2 <<EOPRMT                                                       #
+# Configuration file \`$dest_file'                                                     #
+#  ==> File on system created by you or by a script.                                   #
+#  ==> File also in package provided by package maintainer.                            #
+#    What would you like to do about it ?  Your options are:                           #
+#     Y or I  : install the package maintainer's version                               #
+#     N or O  : keep your currently-installed version                                  #
+#       D     : show the differences between the versions                              #
+#       S     : show the side-by-side differences between the versions                 #
+# EOPRMT                                                                               #
+# 		if [ "X$THREEWAY" != "X" -a -e "$statedir/cache/$cached_file" ]; then  #
+# 			cat >&2 <<EOTD                                                 #
+#     3 or T  : show a three way difference between current, older,                    #
+#               and new versions of the file                                           #
+#       M     : Do a 3 way merge between current, older,                               #
+#               and new versions of the file [Very Experimental]                       #
+# EOTD                                                                                 #
+# 		fi                                                                     #
+# 		cat >&2 <<EOPEND                                                       #
+#       Z     : start a new shell to examine the situation                             #
+#  The default action is to keep your current version.                                 #
+# EOPEND                                                                               #
+# 		if [ "X$THREEWAY" != "X" -a -e "$statedir/cache/$cached_file" ]; then  #
+# 			echo -n >&2 "*** " $(basename "$dest_file") \                  #
+# 			    " (Y/I/N/O/D/3/T/M/Z) [default=N] ?"                       #
+# 		else                                                                   #
+# 			echo -n >&2 "*** " $(basename "$dest_file") \                  #
+# 			    " (Y/I/N/O/D/Z) [default=N] ?"                             #
+# 		fi                                                                     #
+#   		read -e ANSWER </dev/tty                                               #
+########################################################################################
+	fi
+
+	case "$ANSWER" in
+	    install_new|y|Y|I|i)
+		echo >&2 "Replacing config file $dest_file with new version"
+		RETAIN_OLD=YES
+		replace_conf_file;
+		exit 0;
+		;;
+	    diff|D|d)
+		DIFF="$(run_diff diff -uBbwt "$dest_file" "$new_file")"
+		show_diff "$DIFF"
+		;;
+	    sdiff|S|s)
+		DIFF="$(run_diff sdiff -BbW "$dest_file" "$new_file")"
+		show_diff "$DIFF"
+		;;
+	    diff_threeway|3|t|T)
+		if [ -e "$statedir/cache/$cached_file" \
+		    -a "X$THREEWAY" != "X" ]; then
+                    if [ -e "$dest_file" ]; then
+		        DIFF="$(diff3 -L Current -L Older -L New -A \
+			    "$dest_file" "$statedir/cache/$cached_file" \
+			    "$new_file")"  || true
+                    else
+                        DIFF="$(diff3 -L Current -L Older -L New -A \
+			    /dev/null "$statedir/cache/$cached_file" \
+			    "$new_file")"  || true
+                    fi
+		    show_diff "$DIFF"
+		else
+		    DIFF="$(run_diff diff -uBbwt "$dest_file" "$new_file")"
+		    show_diff "$DIFF"
+		fi
+		;;
+	    merge_threeway|M|m)
+		echo >&2 "Merging changes into the new version"
+		if [ -e "$statedir/cache/$cached_file" \
+		    -a "X$THREEWAY" != "X" ]; then
+		    ret=0
+		    diff3 -L Current -L Older -L New -m \
+			"$dest_file" "$statedir/cache/$cached_file" \
+			"$new_file" > "$dest_file.${NEW_SUFFIX}" || ret=$?
+                    case "$ret" in
+                        0)
+		            new_file="$dest_file.${NEW_SUFFIX}"
+		            RETAIN_OLD=YES
+		            replace_conf_file
+			    rm -f "$dest_file.${NEW_SUFFIX}" # don't need this around no mo'
+			    exit 0
+                            ;;
+                        *)
+			    mv "$dest_file.${NEW_SUFFIX}" "$dest_file.${ERR_SUFFIX}"
+			    db_subst ucf/conflicts_found dest_file "$dest_file"
+			    db_subst ucf/conflicts_found ERR_SUFFIX "${ERR_SUFFIX}"
+			    db_input critical ucf/conflicts_found || true
+			    db_go || true
+			    ;;
+                    esac
+		else
+		    replace_conf_file
+		    rm -f "$dest_file.${NEW_SUFFIX}" # don't need this around no mo'
+		    exit 0
+		fi
+		;;
+	    shell|Z|z)
+                # We explicitly connect STDIN and STDOUT to the
+                # script's controlling terminal, so even if STDIN is
+                # fed by a pipe, as is the case when run from
+                # /usr/bin/debconf, the shell should be fully
+                # functional. However, the test for a controlling
+                # terminal uses /usr/bin/tty, which consults only
+                # STDIN. As far as I can tell, when run from debconf,
+                # ucf will _never_ use the current terminal. If the
+                # goal is to check for access to a terminal, the test
+                # should be for foreground process group membership,
+                # not a terminal connected to STDIN (tty -s), and not
+                # a terminal it doesn't necessarily own (tty -s
+                # </dev/tty). The easiest way do this from a shell is
+                # probably with /bin/ps.
+                if ps -o stat= --ppid $$ | grep -q '+'; then
+		    bash >/dev/tty </dev/tty || true
+                elif [ -n "$DISPLAY" ]; then
+                    x-terminal-emulator || true
+                else
+                    # Don't know what to do
+                    echo >&2 "No terminal, and no DISPLAY set, can't fork shell."
+                    sleep 3;
+                fi
+		;;
+	    keep_current|n|N|o|O|'')
+		replace_md5sum;
+
+		cp -pf "$orig_new_file" "$dest_file.${DIST_SUFFIX}"
+		exit 0;
+		;;
+	    *)
+		if [ "$DEBCONF_OK" = "YES" ]; then
+			echo "Error: unknown response from debconf:'$RET'" >&2
+			exit 1
+		else
+			echo
+			echo "Please answer with one of the single letters listed." >&2
+			echo
+		fi
+	esac
+    done
+fi
+
+db_stop
+
+exit 0;

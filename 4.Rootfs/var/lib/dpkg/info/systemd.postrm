@@ -1,0 +1,40 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    purge)
+        # clean up after manually enabled units in postinst
+        rm -f /etc/systemd/system/getty.target.wants/getty@tty1.service
+        rm -f /etc/systemd/system/multi-user.target.wants/remote-fs.target
+        rm -f /etc/systemd/system/sysinit.target.wants/systemd-timesyncd.service
+        rm -f /etc/systemd/system/dbus-org.freedesktop.timesync1.service
+        rmdir --ignore-fail-on-non-empty /etc/systemd/system/getty.target.wants 2> /dev/null || true
+        rmdir --ignore-fail-on-non-empty /etc/systemd/system/multi-user.target.wants 2> /dev/null || true
+        rmdir --ignore-fail-on-non-empty /etc/systemd/system/sysinit.target.wants 2> /dev/null || true
+
+        rm -f /var/lib/systemd/catalog/database
+        rmdir --ignore-fail-on-non-empty /var/lib/systemd/catalog 2> /dev/null || true
+
+        rm -rf /var/lib/systemd/backlight/
+        rm -rf /var/lib/systemd/rfkill/
+
+        rm -f /var/lib/systemd/clock
+        rm -f /var/lib/systemd/random-seed
+    ;;
+esac
+
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/X11/xinit/xinitrc.d/50-systemd-user.sh 228-3\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/systemd/bootchart.conf 230-1\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.hostname1.conf 233-3\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.locale1.conf 233-3\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.login1.conf 233-3\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.machine1.conf 228-5\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.network1.conf 233-3\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.resolve1.conf 233-3\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.systemd1.conf 233-3\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.timedate1.conf 233-3\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.systemd-shim.conf 239-15\~ systemd-shim -- "$@"
+# End automatically added section
+

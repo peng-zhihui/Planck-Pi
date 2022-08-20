@@ -1,0 +1,7 @@
+324665fe76b91e7627a5207b758507e0  usr/share/doc/systemd-sysv/changelog.Debian.gz
+bac4ecd2051a2313f03ac6abfdb303ec  usr/share/doc/systemd-sysv/copyright
+fd20971494f62e8612c9308588121010  usr/share/man/man1/init.1.gz
+b47470008db68b9dd872110aa38b8c16  usr/share/man/man8/halt.8.gz
+137fc1781e2aeb23e1022b8f33d6b8d4  usr/share/man/man8/runlevel.8.gz
+a96c5921b4b9dbb7199b8e67cd5d8525  usr/share/man/man8/shutdown.8.gz
+dbf9f773a70e959e945523a311b2e22e  usr/share/man/man8/telinit.8.gz

@@ -1,0 +1,2 @@
+libX11 6 libx11-6 (>= 2:1.6.0)
+udeb: libX11 6 libx11-6-udeb (>= 2:1.6.0)

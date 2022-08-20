@@ -1,0 +1,28 @@
+#! /bin/sh -e
+
+if test -z "$2" && test ! -f /etc/shells
+then
+        cp -p /usr/share/debianutils/shells /etc/shells
+fi
+
+case "$1" in
+    configure)
+    if which update-mime >/dev/null;
+    then
+	    update-mime
+    fi
+    if [ ! -e /usr/bin/which ]
+    then
+	    ln -s /bin/which /usr/bin/which
+    fi
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac

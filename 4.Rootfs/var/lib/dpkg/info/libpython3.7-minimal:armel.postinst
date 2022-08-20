@@ -1,0 +1,13 @@
+#! /bin/sh
+
+set -e
+
+if [ ! -f /etc/python3.7/sitecustomize.py ]; then
+    cat <<-EOF
+	# Empty sitecustomize.py to avoid a dangling symlink
+EOF
+fi
+
+
+
+exit 0

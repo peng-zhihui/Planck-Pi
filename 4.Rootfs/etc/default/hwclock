@@ -1,0 +1,19 @@
+# Defaults for the hwclock init script.  See hwclock(5) and hwclock(8).
+
+# This is used to specify that the hardware clock incapable of storing
+# years outside the range of 1994-1999.  Set to yes if the hardware is
+# broken or no if working correctly.
+#BADYEAR=no
+
+# Set this to yes if it is possible to access the hardware clock,
+# or no if it is not.
+#HWCLOCKACCESS=yes
+
+# Set this to any options you might need to give to hwclock, such
+# as machine hardware clock type for Alphas.
+#HWCLOCKPARS=
+
+# Set this to the hardware clock device you want to use, it should
+# probably match the CONFIG_RTC_HCTOSYS_DEVICE kernel config option.
+#HCTOSYS_DEVICE=rtc0
+

@@ -1,0 +1,99 @@
+Frequently Asked Questions about base-files
+===========================================
+
+* Questions about /etc/issue and /etc/debian_version:
+
+Q. I upgraded my system to the testing distribution and now my /etc/issue
+says "bullseye/sid". Should it not read "bullseye" or "testing"?
+
+Q. I upgraded my system to the unstable distribution and now my /etc/issue
+says "bullseye/sid". Should it not read "sid" or "unstable"?
+
+A. That would be nice, but it is not possible because of the way the
+testing distribution works. Packages uploaded for unstable reach
+testing after ten days, provided they are built for every released
+architecture, have no RC-bugs and their dependencies may be met in
+testing. You should consider the testing and unstable distributions as
+two sides of the same coin. Since the base-files package in testing
+was initially uploaded for unstable, the only sensible /etc/issue to
+have is one that is both valid for testing and unstable, hence
+"bullseye/sid" (or whatever is appropriate).
+
+Q. Why "bullseye/sid" and not "testing/unstable" as it used to be?
+
+A. The codename is a little bit more informative, as the meaning of
+"testing" changes over time.
+
+Q. Ok, but how do I know which distribution I'm running?
+
+A. If you are running testing or unstable, then /etc/debian_version is
+not a reliable way to know that anymore. Looking at the contents of
+your /etc/apt/sources.list file is probably a much better way.
+
+Q. There is a new point release and I've just upgraded my system.
+The /etc/debian_version file now says 10.x but /etc/issue still says 10.
+Is this ok?
+
+A. Yes. The release managers asked me not to touch /etc/issue, as that's
+a file which is often customized by the user. The /etc/debian_version file,
+on the other side, is updated at every point release, so that the exact
+Debian version is shown when used by tools like reportbug.
+
+* Other questions:
+
+Q. After upgrading my system recently, I noticed that some files from
+base-files do not match the ones which are installed on a fresh install
+of squeeze. Should I not be warned about that?
+
+A. Those files are configuration files, so they are completely under
+the control of the system admin. The files installed by base-files are
+just defaults. Changes in the default files are not important enough
+to warn the user, as it is also policy that prompting should be
+reduced to a minimum. This is also the reason they are not handled via
+dpkg's conffile mechanism.
+
+In either case, if you want to "upgrade" those files, just look at the
+postinst for base-files (i.e. /var/lib/dpkg/info/base-files.postinst)
+and you will see how they are created and where their master copies are:
+
+  install_from_default /usr/share/base-files/dot.profile   /root/.profile
+  install_from_default /usr/share/base-files/dot.bashrc    /root/.bashrc
+  install_from_default /usr/share/base-files/profile       /etc/profile
+  install_from_default /usr/share/base-files/motd          /etc/motd
+
+So, if you want your system to be as similar as possible to a newly
+installed squeeze system, you might want to sync these files manually.
+
+Note 1: Since base-files version 6.10, /etc/profile is automatically
+upgraded if it has not been modified from a previous default.
+
+Note 2: The file /etc/nsswitch.conf has been moved to libc-bin.
+
+
+Q. Why isn't license "foo" included in common-licenses?
+
+A. I delegate such decisions to the policy group. If you want to
+propose a new license you should make a policy proposal to modify the
+paragraph in policy saying "Packages distributed under the Apache
+license (version 2.0), the Artistic license, the GNU GPL (versions 1,
+2, or 3), the GNU LGPL (versions 2, 2.1, or 3), and the GNU FDL
+(versions 1.2 or 1.3) should refer to the corresponding files under
+/usr/share/common-licenses". The way of doing this is explained in the
+debian-policy package. As usual, you should always take a look at
+already reported bugs against debian-policy before submitting a new
+one.
+
+Q. I upgraded from woody to sarge. Should my system be FHS-compliant now?
+
+A. Achieving FHS compliance by upgrading would be tricky and prone to
+error in certain cases, so it is not a goal of base-files, nor it is
+planned to be. By default, some "mandatory" directories (like /opt,
+/srv or /media) are only created in the first install (performed by
+debootstrap), to keep the code as simple as possible, follow the
+principle of least surprise on upgrades, and also to give people the
+freedom to remove those directories without them being created again
+when base-files is upgraded. Therefore, if you are running any sort of
+compliance tests, you should do it on newly installed systems only.
+
+
+Santiago Vila <sanvila@debian.org>

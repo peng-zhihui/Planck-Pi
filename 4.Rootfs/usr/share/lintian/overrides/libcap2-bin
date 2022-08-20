@@ -1,0 +1,2 @@
+# ls -l produces "root root" as user and group names
+spelling-error-in-readme-debian root root (duplicate word) root

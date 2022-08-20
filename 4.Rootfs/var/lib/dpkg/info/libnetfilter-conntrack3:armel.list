@@ -1,0 +1,11 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libnetfilter_conntrack.so.3.7.0
+/usr/share
+/usr/share/doc
+/usr/share/doc/libnetfilter-conntrack3
+/usr/share/doc/libnetfilter-conntrack3/changelog.Debian.gz
+/usr/share/doc/libnetfilter-conntrack3/copyright
+/usr/lib/arm-linux-gnueabi/libnetfilter_conntrack.so.3

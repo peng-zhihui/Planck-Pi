@@ -1,0 +1,78 @@
+                         MIT Kerberos for Debian
+
+Kerberos Package Roadmap
+
+  Most systems using Kerberos should install at least krb5-user, which
+  contains the basic kinit, klist, and kdestroy binaries to manage user
+  Kerberos credentials, as well as other basic utilities.  In order to
+  use Kerberos passwords for local authentication and obtain Kerberos
+  credentials automatically when logging in, install and configure
+  libpam-krb5.
+
+  To log on to other systems using Kerberos authentication, most sites
+  will find a Kerberos-enabled sshd the most convenient. See the ssh documentation for information on enabling GSSAPI
+  authentication (which is how Kerberos authentication is done over the
+  ssh protocol).
+
+  Some sites will instead prefer to use Kerberos-enabled versions of the
+  standard Unix login utilities (rsh, rlogin, telnet, ftp).  The clients
+  are available in the krb5-clients package and the servers are available
+  in the krb5-rsh-server, krb5-telnetd, and krb5-ftpd packages.  Please
+  note that the telnetd and ftpd included in those packages do not use PAM
+  (this is not supported upstream and may or may not ever be supported);
+  they only support Kerberos and will not run other PAM modules.  For more
+  flexible login support, use Kerberos-enabled ssh instead.
+
+  The krb5-kdc and krb5-admin-server packages are only needed and used on
+  Kerberos KDCs, only one set of which is needed for each independently
+  managed Kerberos realm.  For more information on how to set up a
+  Kerberos realm using the Debian packages, install krb5-kdc and then read
+  /usr/share/doc/krb5-kdc/README.KDC.
+
+Documentation
+
+  All Kerberos binaries and most configuration files have manual pages.
+  For the info pages and reference manual, install krb5-doc.  If you need
+  additional information, see <http://web.mit.edu/kerberos/>.
+
+Debian-Specific Information
+
+  MIT distributes the Kerberos sources as a tarball and a PGP signature,
+  tarred up into a single .tar file.  In order to create the Debian
+  original upstream source (.orig.tar.gz), I untarred the parent tarball,
+  checked the PGP signature, and used the contained tarball as the
+  upstream source.  Since krb5-1.7, a separate "krb5-appl" tarball contains
+  the kerberized client utilities (rlogin, rsh, etc.) with a similar
+  nested-tarball scheme.
+
+  MIT Kerberos is built against the libcom_err and libss provided by the
+  e2fsprogs source package.  It is built against the version of db
+  included in src/util/db2 in the Kerberos sources.  In the future,
+  krb5-kdc may change to use db4, although doing so will make upgrades
+  somewhat difficult.
+
+  None of the sample clients and servers are installed.  As a general
+  rule, these are not useful unless you are doing development, and in such
+  a situation you probably want to build them from source.
+
+  Note that by default, no unencrypted services are enabled.  That means,
+  if you are using krb5-clients and the supporting server packages, you
+  need to use rlogin -x to connect to a Debian system and if you use rsh
+  or rcp without the -x option you will get an error that encryption is
+  required.  In this day and age, not encrypting network traffic is a good
+  way to get attacked.
+
+  If installed, krb5-rsh-server by default allows any user in the local
+  realm whose principal matches a local account name to log on to that
+  account.  See the klogind and kshd man pages.  If this isn't the
+  behavior you want, one option is to create an empty .k5login file in the
+  home directory of every user and then add principals to those files
+  where it's appropriate.  One way to do this for all newly created users
+  is:
+
+      touch /etc/skel/.k5login
+
+  This will cause an empty .k5login file to be put in the home directory
+  of newly created users.
+
+ -- Sam Hartman <hartmans@debian.org>, Wed,  2 Nov 2016 23:18:47 -0400

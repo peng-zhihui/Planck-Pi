@@ -1,0 +1,16 @@
+This is the Debian version of the newt library.
+newt was written by Erik Troan <ewt@redhat.com>.
+
+The original package was put together by Enrique Zanardi
+<ezanard@debian.org>, from sources obtained from:
+  ftp://ftp.redhat.com/pub/redhat/redhat-7.0-en/os/i386/SRPMS/newt-0.50.17-1.src.rpm
+Recent upstream versions can be found at: http://fedora.redhat.com/
+
+ Copyright (C) 1989, 1991 Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
+
+newt is available under the terms of the GNU Library General Public
+License, version 2. On Debian GNU/Linux systems, the complete text of this
+license can be found in `/usr/share/common-licenses/LGPL-2'.

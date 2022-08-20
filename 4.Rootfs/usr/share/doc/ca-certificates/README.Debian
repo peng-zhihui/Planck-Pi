@@ -1,0 +1,56 @@
+The Debian Package ca-certificates
+----------------------------------
+
+This package includes PEM files of CA certificates to allow SSL-based
+applications to check for the authenticity of SSL connections.
+
+Please note that Debian can neither confirm nor deny whether the
+certificate authorities whose certificates are included in this package
+have in any way been audited for trustworthiness or RFC 3647 compliance.
+Full responsibility to assess them belongs to the local system
+administrator.
+
+The CA certificates contained in this package are installed into
+/usr/share/ca-certificates/.
+
+The configuration file /etc/ca-certificates.conf is seeded with
+trust information through Debconf.  Just call 'dpkg-reconfigure
+ca-certificates' to adjust the settings to trust or disable the installed
+certificate authorities.  By default, all installed certificate authorities
+are configured to be trusted.
+
+'update-ca-certificates' will then update /etc/ssl/certs/ which may be
+used by various software in Debian.  It will also generate the hash
+symlinks and generate a single-file version in
+/etc/ssl/certs/ca-certificates.crt.  Some web browsers, email clients,
+and other software that use SSL maintain their own CA trust database and
+may not use the trusted CA certificates in this package.  Those packages
+that *do* use ca-certificates should depend on this package.  Users can
+see reverse dependencies with 'apt-cache showpkg ca-certificates'.
+
+How to install local CA certificates
+------------------------------------------------------------------
+
+If you want to install local certificate authorities to be implicitly
+trusted, please put the certificate files as single files ending with
+".crt" into /usr/local/share/ca-certificates/ and re-run
+'update-ca-certificates'.  If you remove local certificates from
+/usr/local/share/ca-certificates/, you can remove symlinks by running
+'update-ca-certificates --fresh'.  If you want to prepare a local
+package of your certificates, you should depend on ca-certificates,
+install the PEM files into /usr/local/share/ca-certificates/ as above
+and call 'update-ca-certificates' in the package's postinst, and should
+call 'update-ca-certificates --fresh' in the package's postrm.
+
+An example source package for building a local CA certificate package,
+using ca-certificates (>= 20130119) (since it uses triggers) can be
+found in /usr/share/doc/ca-certificates/examples/ca-certificates-local/.
+The README file in the above directory has step-by-step instructions for
+building a local CA certificate package.
+
+How certificates will be accepted into the ca-certificates package
+------------------------------------------------------------------
+
+ - Get it included in the Mozilla CA Certificate Store.
+   https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/
+

@@ -1,0 +1,14 @@
+/*
+ * Calendrier français
+ *
+ * $FreeBSD: head/usr.bin/calendar/calendars/fr_FR.ISO8859-1/calendar.all 95753 2002-04-29 20:57:36Z dwmalone $
+ */
+
+#ifndef _fr_FR_all_
+#define _fr_FR_all_
+
+#include <fr_FR/calendar.jferies>
+#include <fr_FR/calendar.fetes>
+#include <fr_FR/calendar.proverbes>
+
+#endif /* !_fr_FR_all_ */

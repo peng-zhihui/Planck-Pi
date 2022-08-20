@@ -1,0 +1,15 @@
+/* This is the system-wide default calendar file, used if calendar(1)
+ * is invoked by a user without a ~/calendar or ~/.calendar/calendar file.
+ * It may be edited or even deleted to reflect local policy.
+ *
+ * In the standard setup, we simply include the default calendar
+ * definitions from /usr/share/calendar/calendar.all.  If you want
+ * only some of those definitions, copy calendar.all to /etc/calendar
+ * and edit it there.  That way, your changes will be kept next time
+ * you upgrade.
+ *
+ * The search path for include files is:
+ *   /etc/calendar
+ *   /usr/share/calendar
+ */
+#include "calendar.all"

@@ -1,0 +1,192 @@
+Package: libxdmcp6
+Architecture: armel
+Auto-Installed: 1
+
+Package: libkrb5-3
+Architecture: armel
+Auto-Installed: 1
+
+Package: libgssapi-krb5-2
+Architecture: armel
+Auto-Installed: 1
+
+Package: libdbus-1-3
+Architecture: armel
+Auto-Installed: 1
+
+Package: dbus
+Architecture: armel
+Auto-Installed: 1
+
+Package: libwrap0
+Architecture: armel
+Auto-Installed: 1
+
+Package: openssh-sftp-server
+Architecture: armel
+Auto-Installed: 1
+
+Package: libk5crypto3
+Architecture: armel
+Auto-Installed: 1
+
+Package: libx11-6
+Architecture: armel
+Auto-Installed: 1
+
+Package: libexpat1
+Architecture: armel
+Auto-Installed: 1
+
+Package: krb5-locales
+Architecture: armel
+Auto-Installed: 1
+
+Package: libxau6
+Architecture: armel
+Auto-Installed: 1
+
+Package: libxcb1
+Architecture: armel
+Auto-Installed: 1
+
+Package: libkrb5support0
+Architecture: armel
+Auto-Installed: 1
+
+Package: ucf
+Architecture: armel
+Auto-Installed: 1
+
+Package: libkeyutils1
+Architecture: armel
+Auto-Installed: 1
+
+Package: libxmuu1
+Architecture: armel
+Auto-Installed: 1
+
+Package: libpam-systemd
+Architecture: armel
+Auto-Installed: 1
+
+Package: ncurses-term
+Architecture: armel
+Auto-Installed: 1
+
+Package: openssh-server
+Architecture: armel
+Auto-Installed: 1
+
+Package: libx11-data
+Architecture: armel
+Auto-Installed: 1
+
+Package: openssh-client
+Architecture: armel
+Auto-Installed: 1
+
+Package: libedit2
+Architecture: armel
+Auto-Installed: 1
+
+Package: xauth
+Architecture: armel
+Auto-Installed: 1
+
+Package: libxext6
+Architecture: armel
+Auto-Installed: 1
+
+Package: libusb-1.0-0
+Architecture: armel
+Auto-Installed: 1
+
+Package: usb.ids
+Architecture: armel
+Auto-Installed: 1
+
+Package: libpython3.7-minimal
+Architecture: armel
+Auto-Installed: 1
+
+Package: libsqlite3-0
+Architecture: armel
+Auto-Installed: 1
+
+Package: python3.7
+Architecture: armel
+Auto-Installed: 1
+
+Package: mime-support
+Architecture: armel
+Auto-Installed: 1
+
+Package: libmagic1
+Architecture: armel
+Auto-Installed: 1
+
+Package: libmpdec2
+Architecture: armel
+Auto-Installed: 1
+
+Package: libpython3.7-stdlib
+Architecture: armel
+Auto-Installed: 1
+
+Package: python3.7-minimal
+Architecture: armel
+Auto-Installed: 1
+
+Package: python3-minimal
+Architecture: armel
+Auto-Installed: 1
+
+Package: libmagic-mgc
+Architecture: armel
+Auto-Installed: 1
+
+Package: libpython3-stdlib
+Architecture: armel
+Auto-Installed: 1
+
+Package: xz-utils
+Architecture: armel
+Auto-Installed: 1
+
+Package: libreadline7
+Architecture: armel
+Auto-Installed: 1
+
+Package: bzip2
+Architecture: armel
+Auto-Installed: 1
+
+Package: file
+Architecture: armel
+Auto-Installed: 1
+
+Package: libhavege1
+Architecture: armel
+Auto-Installed: 1
+
+Package: publicsuffix
+Architecture: armel
+Auto-Installed: 1
+
+Package: openssl
+Architecture: armel
+Auto-Installed: 1
+
+Package: libpsl5
+Architecture: armel
+Auto-Installed: 1
+
+Package: libpcre2-8-0
+Architecture: armel
+Auto-Installed: 1
+
+Package: ca-certificates
+Architecture: armel
+Auto-Installed: 1
+

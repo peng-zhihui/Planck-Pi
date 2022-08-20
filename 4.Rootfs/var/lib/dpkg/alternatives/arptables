@@ -1,0 +1,12 @@
+auto
+/usr/sbin/arptables
+arptables-restore
+/usr/sbin/arptables-restore
+arptables-save
+/usr/sbin/arptables-save
+
+/usr/sbin/arptables-nft
+20
+/usr/sbin/arptables-nft-restore
+/usr/sbin/arptables-nft-save
+

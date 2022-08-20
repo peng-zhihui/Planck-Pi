@@ -1,0 +1,12 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libdns-export.so.1104.0.2
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libdns-export1104
+/usr/share/doc/libdns-export1104/changelog.Debian.gz
+/usr/share/doc/libdns-export1104/changelog.gz
+/usr/share/doc/libdns-export1104/copyright
+/lib/arm-linux-gnueabi/libdns-export.so.1104
