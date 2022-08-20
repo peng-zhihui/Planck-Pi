@@ -1,0 +1,52 @@
+#
+# Network configuration
+#
+
+menuconfig NET
+	bool "Networking support"
+	default y
+
+if NET
+
+config NET_RANDOM_ETHADDR
+	bool "Random ethaddr if unset"
+	help
+	  Selecting this will allow the Ethernet interface to function
+	  even when the ethaddr variable for that interface is unset.
+	  A new MAC address will be generated on every boot and it will
+	  not be added to the environment.
+
+config NETCONSOLE
+	bool "NetConsole support"
+	help
+	  Support the 'nc' input/output device for networked console.
+	  See README.NetConsole for details.
+
+config IP_DEFRAG
+	bool "Support IP datagram reassembly"
+	default n
+	help
+	  Selecting this will enable IP datagram reassembly according
+	  to the algorithm in RFC815.
+
+config NET_MAXDEFRAG
+	int "Size of buffer used for IP datagram reassembly"
+	depends on IP_DEFRAG
+	default 16384
+	range 1024 65536
+	help
+	  This defines the size of the statically allocated buffer
+	  used for reassembly, and thus an upper bound for the size of
+	  IP datagrams that can be received.
+
+config TFTP_BLOCKSIZE
+	int "TFTP block size"
+	default 1468
+	help
+	  Default TFTP block size.
+	  The MTU is typically 1500 for ethernet, so a TFTP block of
+	  1468 (MTU minus eth.hdrs) provides a good throughput with
+	  almost-MTU block sizes.
+	  You can also activate CONFIG_IP_DEFRAG to set a larger block.
+
+endif   # if NET

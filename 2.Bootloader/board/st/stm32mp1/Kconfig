@@ -1,0 +1,13 @@
+if TARGET_ST_STM32MP15x
+
+config SYS_BOARD
+	default "stm32mp1"
+
+config SYS_VENDOR
+	default "st"
+
+config SYS_CONFIG_NAME
+	default "stm32mp1"
+
+source "board/st/common/Kconfig"
+endif
