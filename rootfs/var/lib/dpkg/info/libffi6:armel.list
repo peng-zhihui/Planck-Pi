@@ -1,0 +1,11 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libffi.so.6.0.4
+/usr/share
+/usr/share/doc
+/usr/share/doc/libffi6
+/usr/share/doc/libffi6/changelog.Debian.gz
+/usr/share/doc/libffi6/copyright
+/usr/lib/arm-linux-gnueabi/libffi.so.6

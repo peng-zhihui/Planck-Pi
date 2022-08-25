@@ -1,0 +1,12 @@
+/*
+ * Ukrainian calendar files
+ *
+ * $FreeBSD: head/usr.bin/calendar/calendars/calendar.ukrainian 151825 2005-10-28 21:25:28Z ru $
+ */
+
+#ifndef _calendar_ukrainian_
+#define _calendar_ukrainian_
+
+#include <uk_UA/calendar.all>
+
+#endif /* !_calendar_ukrainian_ */

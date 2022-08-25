@@ -1,0 +1,47 @@
+#!/bin/sh
+
+# reportbug expects output on fd 3
+exec 1>&3 2>&3
+
+# Dump /etc/network/interfaces
+
+echo "--- /etc/network/interfaces:"
+if [ ! -e /etc/network/interfaces ]; then
+	echo "MISSING"
+	echo
+	exit 0
+fi
+
+cat /etc/network/interfaces
+echo
+
+# Check for source and source-directory stanzas
+
+(while read stanza value; do
+	dump() {
+		echo "--- $1:"
+		cat $1
+		echo
+	}
+
+	case "$stanza" in
+		source)
+			dump "$value"
+			;;
+		source-directory)
+			for file in "$value"/*; do
+				if [ -e "$file" ]; then
+					dump "$file"
+				fi
+			done
+			;;
+		*)
+			;;
+	esac
+done) < /etc/network/interfaces
+
+# List if-*.d scripts
+
+echo "--- up and down scripts installed:"
+LANG= ls -l /etc/network/if-*.d
+echo

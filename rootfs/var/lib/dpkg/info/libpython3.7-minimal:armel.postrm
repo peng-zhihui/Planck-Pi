@@ -1,0 +1,21 @@
+#! /bin/sh
+
+set -e
+
+if [ "$1" = "purge" ]; then
+    pc=$(dpkg-query -f '${db:Status-Abbrev} ${binary:Package}\n' -W libpython3.7-minimal \
+	| grep -v '^.n' | wc -l)
+    if [ "$pc" -lt 1 ]; then
+	find /usr/lib/python3.7 -depth -type d -name __pycache__ \
+	    | xargs -r rm -rf
+	rm -f /etc/python3.7/sitecustomize.py
+	rm -rf /etc/python3.7/__pycache__
+	if [ -d /etc/python3.7 ]; then
+	    rmdir --ignore-fail-on-non-empty /etc/python3.7
+	fi
+    fi
+fi
+
+
+
+exit 0

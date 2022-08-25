@@ -1,0 +1,26 @@
+[ This is just a pointer to a document, which you might find helpful]
+
+			Advanced Bash-Scripting Guide
+
+		A complete guide to shell scripting, using Bash
+
+			Mendel Cooper - Brindlesoft
+
+			thegrendel@theriver.com
+
+
+This tutorial assumes no previous knowledge of scripting or programming, but
+progresses rapidly toward an intermediate/advanced level of instruction
+(...all the while sneaking in little snippets of UNIX wisdom and lore). It
+serves as a textbook, a manual for self-study, and a reference and source
+of knowledge on shell scripting techniques. The exercises and heavily-
+commented examples invite active reader participation, under the premise that
+the only way to really learn scripting is to write scripts.
+
+The guide is availabe at http://tldp.org/LDP/abs/html/
+
+The latest update of this document, as an archived "tarball" including both
+the SGML source and rendered HTML, may be downloaded from the author's home
+site (http://personal.riverusers.com/~thegrendel/abs-guide-2.1.tar.bz2). See
+the change log for a revision history
+(http://personal.riverusers.com/~thegrendel/Change.log).

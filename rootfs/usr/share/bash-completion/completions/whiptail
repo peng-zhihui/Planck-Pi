@@ -1,0 +1,6 @@
+complete -W "--msgbox --yesno --infobox --inputbox --passwordbox --textbox --menu --checklist \
+		--radiochecklist --gauge --clear --defaultno --default-item \
+		--fb --nocancel --yes-button --no-button --ok-button \
+		--cancel-button -noitem --separate-output --output-fd \
+		--title --backtitle -scrolltext --toplefti \
+		--help"  -f whiptail

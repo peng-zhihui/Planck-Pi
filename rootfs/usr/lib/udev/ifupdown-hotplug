@@ -1,0 +1,132 @@
+#!/bin/sh -e
+#
+# run /sbin/{ifup,ifdown} with the --allow=hotplug option.
+#
+
+PATH='/sbin:/bin:/usr/sbin:/usr/bin'
+
+if [ -x /usr/bin/logger ]; then
+	LOGGER=/usr/bin/logger
+elif [ -x /bin/logger ]; then
+	LOGGER=/bin/logger
+else
+	unset LOGGER
+fi
+
+# for diagnostics
+if [ -t 1 -a -z "$LOGGER" ] || [ ! -e '/dev/log' ]; then
+	mesg() {
+		echo "$@" >&2
+	}
+elif [ -t 1 ]; then
+	mesg() {
+		echo "$@"
+		$LOGGER -t "${0##*/}[$$]" "$@"
+	}
+else
+	mesg() {
+		$LOGGER -t "${0##*/}[$$]" "$@"
+	}
+fi
+
+if [ -z "$INTERFACE" ]; then
+    mesg "Bad ifupdown udev helper invocation: \$INTERFACE is not set"
+    exit 1
+fi
+
+check_program() {
+    [ -x $1 ] && return 0
+
+    mesg "ERROR: $1 not found. You need to install the ifupdown package."
+    mesg "ifupdown udev helper $ACTION event for $INTERFACE not handled."
+    exit 1
+}
+
+wait_for_interface() {
+    local interface=$1
+    local state
+
+    while :; do
+	read state /sys/class/net/$interface/operstate 2>/dev/null || true
+	if [ "$state" != down ]; then
+		return 0
+	fi
+	sleep 1
+    done
+}
+
+net_ifup() {
+    check_program /sbin/ifup
+
+    # exit if the interface is not configured as allow-hotplug
+    TARGET_IFACE=$(/sbin/ifquery --allow hotplug -l "$INTERFACE" || true)
+    if [ -z "$TARGET_IFACE" ]; then
+        exit 0
+    fi
+
+    if [ -d /run/systemd/system ]; then
+        exec systemctl --no-block start $(systemd-escape --template ifup@.service $TARGET_IFACE)
+    fi
+
+    wait_for_interface lo
+
+    exec ifup --allow=hotplug $INTERFACE
+}
+
+net_ifdown() {
+    check_program /sbin/ifdown
+
+    # systemd will automatically ifdown the interface on device
+    # removal by binding the instanced service to the network device
+    if [ -d /run/systemd/system ]; then
+        exit 0
+    fi
+
+    exec ifdown --allow=hotplug $INTERFACE
+}
+
+do_everything() {
+
+case "$ACTION" in
+    add)
+    # these interfaces generate hotplug events *after* they are brought up
+    case $INTERFACE in
+	ppp*|ippp*|isdn*|plip*|lo|irda*|ipsec*)
+	exit 0 ;;
+    esac
+
+    net_ifup
+    ;;
+
+    remove)
+    # the pppd persist option may have been used, so it should not be killed
+    case $INTERFACE in
+	ppp*)
+	exit 0 ;;
+    esac
+
+    net_ifdown
+    ;;
+
+    *)
+    mesg "NET $ACTION event not supported"
+    exit 1
+    ;;
+esac
+
+}
+
+# under systemd we don't do synchronous operations, so we can run in the
+# foreground; we also need to, as forked children get killed right away under
+# systemd
+if [ -d /run/systemd/system ]; then
+    do_everything
+else
+    # under sysvinit we need to fork as we start the long-running
+    # "ifup". but there, forked processes won't get killed.
+    # When udev_log="debug" stdout and stderr are pipes connected to udevd.
+    # They need to be closed or udevd will wait for this process which will
+    # deadlock with udevsettle until the timeout.
+    exec > /dev/null 2> /dev/null
+    do_everything &
+fi

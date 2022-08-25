@@ -1,0 +1,81 @@
+The Debian Package ca-certificates-local
+----------------------------
+
+This package includes local CA certificates to be installed in
+/usr/local/share/ca-certificates. The CA certificates installed by this
+package will be implicitly trusted.
+
+This is an example stub source package that includes a dummy CA
+certificate in the local/ directory. Remove the dummy certificate, copy
+your trusted local root CA (in PEM format with the filename ending in
+".crt") to the local/ directory, edit files in the debian/ directory as
+desired, and build your custom package.
+
+----------------------------
+
+Steps to build your custom local root CA package from this example:
+
+- Check that your local root CA is in PEM-encoded format, the filename
+  ends in ".crt", and that it is properly usable by openssl; for example:
+
+  $ openssl x509 -text -in Deep_Thought_Dummy_Root_CA.crt
+  Certificate:
+      Data:
+          Version: 3 (0x2)
+          Serial Number: 66 (0x42)
+      Signature Algorithm: sha1WithRSAEncryption
+          Issuer: CN=Deep Thought Dummy Root CA
+          Validity
+              Not Before: Aug 29 00:00:00 2013 GMT
+              Not After : Aug 28 23:59:59 2042 GMT
+          Subject: CN=Deep Thought Dummy Root CA
+          Subject Public Key Info:
+              Public Key Algorithm: rsaEncryption
+                  Public-Key: (1024 bit)
+                  Modulus:
+                      00:a2:e3:00:b0:d2:fa:92:57:02:97:5e:80:e0:1a:
+                      <...>
+                      c5:6e:dc:50:7f:3f:34:b8:29
+                  Exponent: 65537 (0x10001)
+          X509v3 extensions:
+              X509v3 Basic Constraints: critical
+                  CA:TRUE
+              X509v3 Subject Key Identifier:
+                  C3:FF:DB:49:E2:8A:A4:26:62:19:74:F0:66:41:E1:5F:F7:4B:3F:A7
+              X509v3 Key Usage:
+                  Certificate Sign, CRL Sign
+              Netscape Cert Type:
+                  SSL CA, S/MIME CA, Object Signing CA
+      Signature Algorithm: sha1WithRSAEncryption
+           1f:32:49:f2:7f:ed:80:62:2e:49:b7:ce:84:b9:c1:c5:1a:f6:
+           <...>
+           32:2d
+  -----BEGIN CERTIFICATE-----
+  MIICEjCCAXugAwIBAgIBQjANBgkqhkiG9w0BAQUFADAlMSMwIQYDVQQDExpEZWVw
+  <...>
+  yTxhjDIt
+  -----END CERTIFICATE-----
+
+- Copy this example source package somewhere to build as a normal user,
+  for instance your home directory:
+
+  $ cp -a /usr/share/doc/ca-certificates/examples/ca-certificates-local ~/
+  $ cd ~/ca-certificates-local/
+
+- Remove the dummy CA certificate, copy your local root CA certificate(s)
+  to the local/ directory, and build the package:
+
+  $ rm local/Local_Root_CA.crt
+  $ cp /path/to/YourOrg_Root_CA.crt local/
+  $ dpkg-buildpackage
+
+- Install the package (or copy it to your local apt repository for
+  installation on lots of machines):
+
+  $ sudo dpkg -i ../ca-certificates-local_0.1_all.deb
+
+- Feel free to edit the files under the debian/ directory for items like
+  the maintainer name and email address, version, etc. to better reflect
+  your own organization. This is just an example to get you started with
+  a proper local root CA package.
+

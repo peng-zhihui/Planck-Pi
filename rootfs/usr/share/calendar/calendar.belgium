@@ -1,0 +1,57 @@
+/* Belgian history
+ * submitted by Nicolas Évrard <nicoe@wanadoo.be>
+ */
+
+#ifndef _calendar_belgium_
+#define _calendar_belgium_
+
+LANG=utf-8
+
+01 Jan	Regionalisation of Belgium, 1970
+11 Jan	Independance of the Belgian United States, 1790
+21 Jan	Austrian troops invade the Belgian United States, 1790
+06 Jan	Belgium becomes a federal state, 1993
+27 Feb	Belgian congressmen reveal the horrors in Congo, 1906
+01 Mar	France annexes the 'Province belgiques unies', 1793
+12 Mar	Referendum on the return of Leopold III (yes wins with 57.68%).
+	Huge differences between the Flemish (72% of yes) and the
+	Walloon (42% of yes), 1950
+29 Mar	The parliament vote the law legalizing abortion, 1990
+Apr	World fair in Bruxelles : 45,000,000 of visitors, 1958
+21 Apr	Women can vote for the first time, 1921
+07 May	Leopold III liberated in Austria, then transfered to Switzerland, 1945
+10 May	Nazi Germany invades Belgium, 1940
+10 May	A delegation tells Leopold III his return would be illtimed, 1945
+13 May	Baudouin abdicates. He does not want to sign the law on abortion, 1990
+22 May	Fire in the store "L'inno", 325 deaths, 1967
+25 May	The belgian government moves to France, 1940
+29 May	English hooligans in Heysel cause 39 deaths, 1985
+30 May	Belgian government moves to London, Leopold III stays in Laeken, 1940
+03 May	Letter from J. Destrée to the King : 'Sire, there is no belgian. There
+	is only Flemish and Walloon', 1912
+05 Jun	The parliament restores Baudouin, 1990
+07 Jun	Leopold III taken in Germany by Hitler's forces, 1944
+30 Jun	Congo gets its independence from Belgium, 1960
+03 Jul	Abolition of conscription, 1993
+16 Jul	Leopold III abdicates, 1951
+21 Jul	Oath of Leopold I, 1831
+21 Jul	Eddy Merckx wins his 5th 'Tour de France', 1974
+22 Jul	Return of Leopold III, 1950
+30 Jul	3 deaths in a demonstration against Leopold III, 1950
+30 Jul	Law transfering some power from the belgian states to the regions, 1988
+02 Aug	Belgium refuses the German ultimatum, 1914
+04 Aug	Germany violates the neutrality of Belgium, 1914
+08 Aug	Fire in the mine 'Le bois du Casier', 263 deaths, 1956
+11 Aug	Oath of Baudouin, son of Leopold III, 1950
+13 Aug	Dutroux Marc arrested (paedophiliac), 1996
+25 Aug	The opera "La muette de Portici" starts the belgian revolution, 1830
+03 Aug	Bruxelles liberated from Nazi forces, 1944
+08 Aug	Belgian parliament in exile comes back to Bruxelles, 1944
+09 Aug	Leopold III meets Hitler which grants freedom to the flemish POW, 1940
+22 Aug	Regency of the Prince Charles, 1944
+04 Oct	Belgium's declaration of independance, 1830
+10 Oct	Demonstrators against paedophilia are 300,000 in Bruxelles, 1996
+15 Nov	Congo becomes a property of Leopold II, 1884
+18 Nov	Leopold II leaves the Congo to Belgium, 1907
+
+#endif /* _calendar_belgium_ */

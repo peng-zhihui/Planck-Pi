@@ -1,0 +1,85 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: libnftnl
+Source: https://git.netfilter.org/libnftnl
+
+Files: *
+Copyright: 2013 Pablo Neira Ayuso <pablo@netfilter.org>
+License: GPL-2+
+
+Files: tests/nft-chain-test.c tests/nft-expr_*-test.c tests/nft-rule-test.c tests/nft-set-test.c tests/nft-table-test.c
+Copyright: 2012 Ana Rey Botello <anarey@gmail.com>
+License: GPL-2+
+
+Files: debian/*
+Copyright: 2014 Arturo Borrero Gonzalez <arturo@debian.org>
+License: GPL-2+
+
+Files: src/ruleset.c
+Copyright: 2012-2013 Pablo Neira Ayuso <pablo@nefilter.org>
+	   2013 Arturo Borrero Gonzalez <arturo.borrero.glez@gmail.com>
+	   2013 Alvaro Neira Ayuso <alvaroneay@gmail.com>
+License: GPL-2+
+
+Files: src/utils.c
+Copyright: 2012-2013 Pablo Neira Ayuso <pablo@nefilter.org>
+	   2013 Arturo Borrero Gonzalez <arturo.borrero.glez@gmail.com>
+License: GPL-2+
+
+Files: src/jansson.c
+Copyright: 2013 Alvaro Neira Ayuso <alvaroneay@gmail.com>
+License: GPL-2+
+
+Files: src/expr/masq.c src/expr/redir.c
+Copyright: 2014 Arturo Borrero Gonzalez <arturo.borrero.glez@gmail.com>
+License: GPL-2+
+
+Files: src/expr/queue.c
+Copyright: 2013 Eric Leblond <eric@regit.org>
+License: GPL-2+
+
+Files: src/expr/nat.c
+Copyright: 2012-2014 Pablo Neira Ayuso <pablo@netfilter.org>
+	   2012 Intel Corporation
+License: GPL-2+
+
+Files: examples/nft-chain-parse-add.c examples/nft-rule-parse-add.c examples/nft-table-parse-add.c examples/nft-set-parse-add.c
+Copyright: 2013 Pablo Neira Ayuso <pablo@nefilter.org>
+	   2013 Arturo Borrero Gonzalez <arturo.borrero.glez@gmail.com>
+License: GPL-2+
+
+Files: examples/nft-ruleset-get.c
+Copyright: 2013 Arturo Borrero Gonzalez <arturo.borrero.glez@gmail.com>
+License: GPL-2
+
+License: GPL-2+
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+
+License: GPL-2
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU Library General Public License as published by
+ the Free Software Foundation.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Library General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".

@@ -1,0 +1,549 @@
+libdbus-1.so.3 libdbus-1-3 #MINVER#
+| libdbus-1-3 (= 1.12.20-0+deb10u1)
+* Build-Depends-Package: libdbus-1-dev
+ LIBDBUS_1_3@LIBDBUS_1_3 1.9.14
+ LIBDBUS_PRIVATE_1.12.20@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_abort@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_append_user_from_current_process@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_atomic_dec@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_atomic_get@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_atomic_inc@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_bytes_sent@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_client_new@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_delete_unused_bytes@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_do_work@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_dump_supported_mechanisms@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_get_buffer@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_get_bytes_to_send@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_get_identity@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_get_unused_bytes@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_is_supported_mechanism@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_ref@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_return_buffer@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_server_new@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_set_context@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_set_credentials@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_set_mechanisms@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_auth_unref@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_clearenv@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_close@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_close_all@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_close_socket@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_concat_dir_and_file@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_connection_get_linux_security_label@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_connection_get_pending_fds_count@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_connection_get_stats@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_connection_lock@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_connection_ref_unlocked@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_connection_set_pending_fds_function@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_connection_unlock@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_connection_unref_unlocked@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_create_directory@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_create_uuid@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_add_pid@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_add_unix_uid@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_add_windows_sid@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_are_anonymous@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_are_empty@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_are_superset@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_clear@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_copy@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_get_pid@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_get_unix_uid@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_get_windows_sid@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_include@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_new@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_new_from_current_process@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_ref@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_same_user@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_to_string_append@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_credentials_unref@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_delete_directory@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_delete_file@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_dup@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_ensure_directory@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_ensure_standard_fds@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_error_from_errno@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_error_from_system_errno@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_exit@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_fd_set_close_on_exec@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_file_get_contents@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_first_type_in_signature@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_flush_caches@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_generate_random_ascii@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_generate_uuid@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_get_local_machine_uuid_encoded@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_get_monotonic_time@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_get_real_time@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_get_tmpdir@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_getenv@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_geteuid@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_getpid@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_getuid@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_group_info_unref@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_iter_get_int_key@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_iter_get_string_key@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_iter_get_uintptr_key@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_iter_get_value@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_iter_init@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_iter_next@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_iter_remove_entry@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_free_preallocated_entry@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_from_array@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_get_n_entries@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_insert_int@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_insert_string@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_insert_string_preallocated@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_insert_uintptr@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_lookup_int@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_lookup_string@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_lookup_uintptr@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_new@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_preallocate_entry@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_remove_int@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_remove_string@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_remove_uintptr@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_to_array@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_hash_table_unref@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_header_delete_field@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_header_get_byte_order@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_header_get_field_raw@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_header_set_field_basic@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_homedir_from_current_process@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_init_system_log@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_is_a_number@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_alloc_link@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_append@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_append_link@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_clear@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_copy@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_find_last@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_foreach@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_free_link@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_get_first@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_get_first_link@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_get_last@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_get_last_link@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_get_length@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_get_stats@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_insert_after@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_insert_after_link@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_insert_before_link@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_length_is_one@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_pop_first@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_pop_first_link@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_pop_last@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_prepend@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_prepend_link@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_remove@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_remove_last@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_remove_link@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_list_unlink@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_log@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_logv@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_lookup_user_bus@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_marshal_byteswap@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_marshal_read_uint32@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_marshal_set_uint32@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_mem_pool_alloc@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_mem_pool_dealloc@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_mem_pool_free@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_mem_pool_new@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_message_get_unix_fds@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_message_iter_get_args_valist@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_message_loader_get_buffer@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_message_loader_get_is_corrupted@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_message_loader_get_max_message_size@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_message_loader_get_unix_fds@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_message_loader_new@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_message_loader_pop_message@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_message_loader_queue_messages@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_message_loader_ref@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_message_loader_return_buffer@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_message_loader_return_unix_fds@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_message_loader_unref@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_no_memory_message@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_pending_call_new_unlocked@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_pending_call_ref_unlocked@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_pending_call_unref_and_unlock@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_pipe_close@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_pipe_init@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_pipe_init_stdout@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_pipe_invalidate@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_pipe_is_stdout_or_stderr@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_pipe_is_valid@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_pipe_write@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_poll@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_print_backtrace@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_printf_string_upper_bound@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_read@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_read_local_machine_uuid@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_read_socket@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_register_shutdown_func@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_rmutex_lock@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_rmutex_unlock@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_server_new_for_tcp_socket@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_server_ref_unlocked@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_server_toggle_all_watches@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_server_unref_unlocked@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_set_error_valist@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_sleep_milliseconds@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_socketpair@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_split_paths_and_append@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_strdup@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_strerror@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_strerror_from_errno@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_append@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_append_byte@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_append_int@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_append_len@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_append_printf@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_append_printf_valist@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_append_uint@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_array_contains@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_array_length@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_chop_white@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_compact@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_copy@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_copy_data@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_copy_len@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_copy_to_buffer_with_nul@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_delete@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_equal@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_equal_c_str@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_equal_len@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_equal_substring@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_find@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_find_blank@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_find_eol@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_find_to@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_free@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_hex_decode@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_hex_encode@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_init@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_init_const@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_init_const_len@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_init_from_string@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_insert_byte@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_insert_bytes@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_lengthen@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_move@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_parse_int@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_parse_uint@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_pop_line@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_replace_len@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_set_length@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_shorten@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_skip_blank@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_skip_white@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_split_on_byte@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_starts_with_c_str@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_steal_data@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_tolower_ascii@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_toupper_ascii@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_validate_nul@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_string_validate_utf8@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_timeout_disable@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_timeout_needs_restart@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_timeout_new@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_timeout_restart@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_timeout_restarted@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_timeout_unref@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_reader_delete@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_reader_get_current_type@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_reader_get_element_type@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_reader_get_signature@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_reader_init@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_reader_init_types_only@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_reader_next@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_reader_read_basic@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_reader_read_fixed_multi@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_reader_recurse@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_reader_set_basic@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_to_string@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_writer_init@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_writer_init_values_only@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_writer_recurse@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_writer_unrecurse@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_writer_write_basic@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_writer_write_fixed_multi@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_type_writer_write_reader@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_user_database_get_system@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_user_database_get_uid@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_user_database_get_username@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_user_database_lock_system@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_user_database_lookup@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_user_database_unlock_system@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_username_from_current_process@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_uuid_encode@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_validate_body_with_reason@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_validate_bus_name@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_validate_bus_namespace@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_validate_error_name@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_validate_interface@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_validate_member@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_validate_path@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_validate_signature_with_reason@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_variant_free@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_variant_get_length@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_variant_get_signature@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_variant_peek@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_variant_read@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_variant_write@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_verbose_bytes_of_string@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_warn@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_warn_check_failed@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_warn_return_if_fail@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_watch_get_oom_last_time@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_watch_get_pollable@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_watch_invalidate@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_watch_list_add_watch@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_watch_list_free@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_watch_list_new@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_watch_list_remove_watch@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_watch_list_set_functions@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_watch_new@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_watch_ref@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_watch_set_oom_last_time@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_watch_unref@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_write_socket@LIBDBUS_PRIVATE_1.12.20 0 1
+ _dbus_write_socket_with_unix_fds@LIBDBUS_PRIVATE_1.12.20 0 1
+ dbus_address_entries_free@LIBDBUS_1_3 1.9.14
+ dbus_address_entry_get_method@LIBDBUS_1_3 1.9.14
+ dbus_address_entry_get_value@LIBDBUS_1_3 1.9.14
+ dbus_address_escape_value@LIBDBUS_1_3 1.9.14
+ dbus_address_unescape_value@LIBDBUS_1_3 1.9.14
+ dbus_bus_add_match@LIBDBUS_1_3 1.9.14
+ dbus_bus_get@LIBDBUS_1_3 1.9.14
+ dbus_bus_get_id@LIBDBUS_1_3 1.9.14
+ dbus_bus_get_private@LIBDBUS_1_3 1.9.14
+ dbus_bus_get_unique_name@LIBDBUS_1_3 1.9.14
+ dbus_bus_get_unix_user@LIBDBUS_1_3 1.9.14
+ dbus_bus_name_has_owner@LIBDBUS_1_3 1.9.14
+ dbus_bus_register@LIBDBUS_1_3 1.9.14
+ dbus_bus_release_name@LIBDBUS_1_3 1.9.14
+ dbus_bus_remove_match@LIBDBUS_1_3 1.9.14
+ dbus_bus_request_name@LIBDBUS_1_3 1.9.14
+ dbus_bus_set_unique_name@LIBDBUS_1_3 1.9.14
+ dbus_bus_start_service_by_name@LIBDBUS_1_3 1.9.14
+ dbus_connection_add_filter@LIBDBUS_1_3 1.9.14
+ dbus_connection_allocate_data_slot@LIBDBUS_1_3 1.9.14
+ dbus_connection_borrow_message@LIBDBUS_1_3 1.9.14
+ dbus_connection_can_send_type@LIBDBUS_1_3 1.9.14
+ dbus_connection_close@LIBDBUS_1_3 1.9.14
+ dbus_connection_dispatch@LIBDBUS_1_3 1.9.14
+ dbus_connection_flush@LIBDBUS_1_3 1.9.14
+ dbus_connection_free_data_slot@LIBDBUS_1_3 1.9.14
+ dbus_connection_free_preallocated_send@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_adt_audit_session_data@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_data@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_dispatch_status@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_is_anonymous@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_is_authenticated@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_is_connected@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_max_message_size@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_max_message_unix_fds@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_max_received_size@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_max_received_unix_fds@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_object_path_data@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_outgoing_size@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_outgoing_unix_fds@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_server_id@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_socket@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_unix_fd@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_unix_process_id@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_unix_user@LIBDBUS_1_3 1.9.14
+ dbus_connection_get_windows_user@LIBDBUS_1_3 1.9.14
+ dbus_connection_has_messages_to_send@LIBDBUS_1_3 1.9.14
+ dbus_connection_list_registered@LIBDBUS_1_3 1.9.14
+ dbus_connection_open@LIBDBUS_1_3 1.9.14
+ dbus_connection_open_private@LIBDBUS_1_3 1.9.14
+ dbus_connection_pop_message@LIBDBUS_1_3 1.9.14
+ dbus_connection_preallocate_send@LIBDBUS_1_3 1.9.14
+ dbus_connection_read_write@LIBDBUS_1_3 1.9.14
+ dbus_connection_read_write_dispatch@LIBDBUS_1_3 1.9.14
+ dbus_connection_ref@LIBDBUS_1_3 1.9.14
+ dbus_connection_register_fallback@LIBDBUS_1_3 1.9.14
+ dbus_connection_register_object_path@LIBDBUS_1_3 1.9.14
+ dbus_connection_remove_filter@LIBDBUS_1_3 1.9.14
+ dbus_connection_return_message@LIBDBUS_1_3 1.9.14
+ dbus_connection_send@LIBDBUS_1_3 1.9.14
+ dbus_connection_send_preallocated@LIBDBUS_1_3 1.9.14
+ dbus_connection_send_with_reply@LIBDBUS_1_3 1.9.14
+ dbus_connection_send_with_reply_and_block@LIBDBUS_1_3 1.9.14
+ dbus_connection_set_allow_anonymous@LIBDBUS_1_3 1.9.14
+ dbus_connection_set_change_sigpipe@LIBDBUS_1_3 1.9.14
+ dbus_connection_set_data@LIBDBUS_1_3 1.9.14
+ dbus_connection_set_dispatch_status_function@LIBDBUS_1_3 1.9.14
+ dbus_connection_set_exit_on_disconnect@LIBDBUS_1_3 1.9.14
+ dbus_connection_set_max_message_size@LIBDBUS_1_3 1.9.14
+ dbus_connection_set_max_message_unix_fds@LIBDBUS_1_3 1.9.14
+ dbus_connection_set_max_received_size@LIBDBUS_1_3 1.9.14
+ dbus_connection_set_max_received_unix_fds@LIBDBUS_1_3 1.9.14
+ dbus_connection_set_route_peer_messages@LIBDBUS_1_3 1.9.14
+ dbus_connection_set_timeout_functions@LIBDBUS_1_3 1.9.14
+ dbus_connection_set_unix_user_function@LIBDBUS_1_3 1.9.14
+ dbus_connection_set_wakeup_main_function@LIBDBUS_1_3 1.9.14
+ dbus_connection_set_watch_functions@LIBDBUS_1_3 1.9.14
+ dbus_connection_set_windows_user_function@LIBDBUS_1_3 1.9.14
+ dbus_connection_steal_borrowed_message@LIBDBUS_1_3 1.9.14
+ dbus_connection_try_register_fallback@LIBDBUS_1_3 1.9.14
+ dbus_connection_try_register_object_path@LIBDBUS_1_3 1.9.14
+ dbus_connection_unref@LIBDBUS_1_3 1.9.14
+ dbus_connection_unregister_object_path@LIBDBUS_1_3 1.9.14
+ dbus_error_free@LIBDBUS_1_3 1.9.14
+ dbus_error_has_name@LIBDBUS_1_3 1.9.14
+ dbus_error_init@LIBDBUS_1_3 1.9.14
+ dbus_error_is_set@LIBDBUS_1_3 1.9.14
+ dbus_free@LIBDBUS_1_3 1.9.14
+ dbus_free_string_array@LIBDBUS_1_3 1.9.14
+ dbus_get_local_machine_id@LIBDBUS_1_3 1.9.14
+ dbus_get_version@LIBDBUS_1_3 1.9.14
+ dbus_internal_do_not_use_get_uuid@LIBDBUS_1_3 0 1
+ dbus_malloc0@LIBDBUS_1_3 1.9.14
+ dbus_malloc@LIBDBUS_1_3 1.9.14
+ dbus_message_allocate_data_slot@LIBDBUS_1_3 1.9.14
+ dbus_message_append_args@LIBDBUS_1_3 1.9.14
+ dbus_message_append_args_valist@LIBDBUS_1_3 1.9.14
+ dbus_message_contains_unix_fds@LIBDBUS_1_3 1.9.14
+ dbus_message_copy@LIBDBUS_1_3 1.9.14
+ dbus_message_demarshal@LIBDBUS_1_3 1.9.14
+ dbus_message_demarshal_bytes_needed@LIBDBUS_1_3 1.9.14
+ dbus_message_free_data_slot@LIBDBUS_1_3 1.9.14
+ dbus_message_get_allow_interactive_authorization@LIBDBUS_1_3 1.9.14
+ dbus_message_get_args@LIBDBUS_1_3 1.9.14
+ dbus_message_get_args_valist@LIBDBUS_1_3 1.9.14
+ dbus_message_get_auto_start@LIBDBUS_1_3 1.9.14
+ dbus_message_get_data@LIBDBUS_1_3 1.9.14
+ dbus_message_get_destination@LIBDBUS_1_3 1.9.14
+ dbus_message_get_error_name@LIBDBUS_1_3 1.9.14
+ dbus_message_get_interface@LIBDBUS_1_3 1.9.14
+ dbus_message_get_member@LIBDBUS_1_3 1.9.14
+ dbus_message_get_no_reply@LIBDBUS_1_3 1.9.14
+ dbus_message_get_path@LIBDBUS_1_3 1.9.14
+ dbus_message_get_path_decomposed@LIBDBUS_1_3 1.9.14
+ dbus_message_get_reply_serial@LIBDBUS_1_3 1.9.14
+ dbus_message_get_sender@LIBDBUS_1_3 1.9.14
+ dbus_message_get_serial@LIBDBUS_1_3 1.9.14
+ dbus_message_get_signature@LIBDBUS_1_3 1.9.14
+ dbus_message_get_type@LIBDBUS_1_3 1.9.14
+ dbus_message_has_destination@LIBDBUS_1_3 1.9.14
+ dbus_message_has_interface@LIBDBUS_1_3 1.9.14
+ dbus_message_has_member@LIBDBUS_1_3 1.9.14
+ dbus_message_has_path@LIBDBUS_1_3 1.9.14
+ dbus_message_has_sender@LIBDBUS_1_3 1.9.14
+ dbus_message_has_signature@LIBDBUS_1_3 1.9.14
+ dbus_message_is_error@LIBDBUS_1_3 1.9.14
+ dbus_message_is_method_call@LIBDBUS_1_3 1.9.14
+ dbus_message_is_signal@LIBDBUS_1_3 1.9.14
+ dbus_message_iter_abandon_container@LIBDBUS_1_3 1.9.14
+ dbus_message_iter_abandon_container_if_open@LIBDBUS_1_3 1.11.16+really1.11.16
+ dbus_message_iter_append_basic@LIBDBUS_1_3 1.9.14
+ dbus_message_iter_append_fixed_array@LIBDBUS_1_3 1.9.14
+ dbus_message_iter_close_container@LIBDBUS_1_3 1.9.14
+ dbus_message_iter_get_arg_type@LIBDBUS_1_3 1.9.14
+ dbus_message_iter_get_array_len@LIBDBUS_1_3 1.9.14
+ dbus_message_iter_get_basic@LIBDBUS_1_3 1.9.14
+ dbus_message_iter_get_element_count@LIBDBUS_1_3 1.9.16
+ dbus_message_iter_get_element_type@LIBDBUS_1_3 1.9.14
+ dbus_message_iter_get_fixed_array@LIBDBUS_1_3 1.9.14
+ dbus_message_iter_get_signature@LIBDBUS_1_3 1.9.14
+ dbus_message_iter_has_next@LIBDBUS_1_3 1.9.14
+ dbus_message_iter_init@LIBDBUS_1_3 1.9.14
+ dbus_message_iter_init_append@LIBDBUS_1_3 1.9.14
+ dbus_message_iter_init_closed@LIBDBUS_1_3 1.11.16+really1.11.16
+ dbus_message_iter_next@LIBDBUS_1_3 1.9.14
+ dbus_message_iter_open_container@LIBDBUS_1_3 1.9.14
+ dbus_message_iter_recurse@LIBDBUS_1_3 1.9.14
+ dbus_message_lock@LIBDBUS_1_3 1.9.14
+ dbus_message_marshal@LIBDBUS_1_3 1.9.14
+ dbus_message_new@LIBDBUS_1_3 1.9.14
+ dbus_message_new_error@LIBDBUS_1_3 1.9.14
+ dbus_message_new_error_printf@LIBDBUS_1_3 1.9.14
+ dbus_message_new_method_call@LIBDBUS_1_3 1.9.14
+ dbus_message_new_method_return@LIBDBUS_1_3 1.9.14
+ dbus_message_new_signal@LIBDBUS_1_3 1.9.14
+ dbus_message_ref@LIBDBUS_1_3 1.9.14
+ dbus_message_set_allow_interactive_authorization@LIBDBUS_1_3 1.9.14
+ dbus_message_set_auto_start@LIBDBUS_1_3 1.9.14
+ dbus_message_set_data@LIBDBUS_1_3 1.9.14
+ dbus_message_set_destination@LIBDBUS_1_3 1.9.14
+ dbus_message_set_error_name@LIBDBUS_1_3 1.9.14
+ dbus_message_set_interface@LIBDBUS_1_3 1.9.14
+ dbus_message_set_member@LIBDBUS_1_3 1.9.14
+ dbus_message_set_no_reply@LIBDBUS_1_3 1.9.14
+ dbus_message_set_path@LIBDBUS_1_3 1.9.14
+ dbus_message_set_reply_serial@LIBDBUS_1_3 1.9.14
+ dbus_message_set_sender@LIBDBUS_1_3 1.9.14
+ dbus_message_set_serial@LIBDBUS_1_3 1.9.14
+ dbus_message_type_from_string@LIBDBUS_1_3 1.9.14
+ dbus_message_type_to_string@LIBDBUS_1_3 1.9.14
+ dbus_message_unref@LIBDBUS_1_3 1.9.14
+ dbus_move_error@LIBDBUS_1_3 1.9.14
+ dbus_parse_address@LIBDBUS_1_3 1.9.14
+ dbus_pending_call_allocate_data_slot@LIBDBUS_1_3 1.9.14
+ dbus_pending_call_block@LIBDBUS_1_3 1.9.14
+ dbus_pending_call_cancel@LIBDBUS_1_3 1.9.14
+ dbus_pending_call_free_data_slot@LIBDBUS_1_3 1.9.14
+ dbus_pending_call_get_completed@LIBDBUS_1_3 1.9.14
+ dbus_pending_call_get_data@LIBDBUS_1_3 1.9.14
+ dbus_pending_call_ref@LIBDBUS_1_3 1.9.14
+ dbus_pending_call_set_data@LIBDBUS_1_3 1.9.14
+ dbus_pending_call_set_notify@LIBDBUS_1_3 1.9.14
+ dbus_pending_call_steal_reply@LIBDBUS_1_3 1.9.14
+ dbus_pending_call_unref@LIBDBUS_1_3 1.9.14
+ dbus_realloc@LIBDBUS_1_3 1.9.14
+ dbus_server_allocate_data_slot@LIBDBUS_1_3 1.9.14
+ dbus_server_disconnect@LIBDBUS_1_3 1.9.14
+ dbus_server_free_data_slot@LIBDBUS_1_3 1.9.14
+ dbus_server_get_address@LIBDBUS_1_3 1.9.14
+ dbus_server_get_data@LIBDBUS_1_3 1.9.14
+ dbus_server_get_id@LIBDBUS_1_3 1.9.14
+ dbus_server_get_is_connected@LIBDBUS_1_3 1.9.14
+ dbus_server_listen@LIBDBUS_1_3 1.9.14
+ dbus_server_ref@LIBDBUS_1_3 1.9.14
+ dbus_server_set_auth_mechanisms@LIBDBUS_1_3 1.9.14
+ dbus_server_set_data@LIBDBUS_1_3 1.9.14
+ dbus_server_set_new_connection_function@LIBDBUS_1_3 1.9.14
+ dbus_server_set_timeout_functions@LIBDBUS_1_3 1.9.14
+ dbus_server_set_watch_functions@LIBDBUS_1_3 1.9.14
+ dbus_server_unref@LIBDBUS_1_3 1.9.14
+ dbus_set_error@LIBDBUS_1_3 1.9.14
+ dbus_set_error_const@LIBDBUS_1_3 1.9.14
+ dbus_set_error_from_message@LIBDBUS_1_3 1.9.14
+ dbus_setenv@LIBDBUS_1_3 1.9.14
+ dbus_shutdown@LIBDBUS_1_3 1.9.14
+ dbus_signature_iter_get_current_type@LIBDBUS_1_3 1.9.14
+ dbus_signature_iter_get_element_type@LIBDBUS_1_3 1.9.14
+ dbus_signature_iter_get_signature@LIBDBUS_1_3 1.9.14
+ dbus_signature_iter_init@LIBDBUS_1_3 1.9.14
+ dbus_signature_iter_next@LIBDBUS_1_3 1.9.14
+ dbus_signature_iter_recurse@LIBDBUS_1_3 1.9.14
+ dbus_signature_validate@LIBDBUS_1_3 1.9.14
+ dbus_signature_validate_single@LIBDBUS_1_3 1.9.14
+ dbus_threads_init@LIBDBUS_1_3 1.9.14
+ dbus_threads_init_default@LIBDBUS_1_3 1.9.14
+ dbus_timeout_get_data@LIBDBUS_1_3 1.9.14
+ dbus_timeout_get_enabled@LIBDBUS_1_3 1.9.14
+ dbus_timeout_get_interval@LIBDBUS_1_3 1.9.14
+ dbus_timeout_handle@LIBDBUS_1_3 1.9.14
+ dbus_timeout_set_data@LIBDBUS_1_3 1.9.14
+ dbus_try_get_local_machine_id@LIBDBUS_1_3 1.11.16+really1.11.16
+ dbus_type_is_basic@LIBDBUS_1_3 1.9.14
+ dbus_type_is_container@LIBDBUS_1_3 1.9.14
+ dbus_type_is_fixed@LIBDBUS_1_3 1.9.14
+ dbus_type_is_valid@LIBDBUS_1_3 1.9.14
+ dbus_validate_bus_name@LIBDBUS_1_3 1.9.14
+ dbus_validate_error_name@LIBDBUS_1_3 1.9.14
+ dbus_validate_interface@LIBDBUS_1_3 1.9.14
+ dbus_validate_member@LIBDBUS_1_3 1.9.14
+ dbus_validate_path@LIBDBUS_1_3 1.9.14
+ dbus_validate_utf8@LIBDBUS_1_3 1.9.14
+ dbus_watch_get_data@LIBDBUS_1_3 1.9.14
+ dbus_watch_get_enabled@LIBDBUS_1_3 1.9.14
+ dbus_watch_get_fd@LIBDBUS_1_3 1.9.14
+ dbus_watch_get_flags@LIBDBUS_1_3 1.9.14
+ dbus_watch_get_socket@LIBDBUS_1_3 1.9.14
+ dbus_watch_get_unix_fd@LIBDBUS_1_3 1.9.14
+ dbus_watch_handle@LIBDBUS_1_3 1.9.14
+ dbus_watch_set_data@LIBDBUS_1_3 1.9.14

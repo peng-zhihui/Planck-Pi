@@ -1,0 +1,8 @@
+If you're looking for documentation on debconf, install the debconf-doc
+package and see debconf(7) and the other man pages in that package.
+
+That package also contains the full changelog for debconf, if anyone was
+wondering. The changelog in this package is reduced to avoid bloating base
+with all my years of changes.
+
+-- Joey Hess <joeyh@debian.org>

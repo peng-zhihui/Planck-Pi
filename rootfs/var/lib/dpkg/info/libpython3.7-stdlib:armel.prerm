@@ -1,0 +1,43 @@
+#! /bin/sh
+
+set -e
+
+remove_bytecode()
+{
+    pkg=$1
+    max=$(LANG=C LC_ALL=C xargs --show-limits < /dev/null 2>&1 | awk '/Maximum length/ {print int($NF / 4)}')
+    dpkg -L $pkg \
+	| awk -F/ 'BEGIN {OFS="/"} /\.py$/ {$NF=sprintf("__pycache__/%s.*.py[co]", substr($NF,1,length($NF)-3)); print}' \
+	| xargs --max-chars="$max" echo \
+	| while read files; do rm -f $files; done
+    # source and bytecode filename mismatch
+    rm -f /usr/lib/python3.7/__pycache__/__phello__.cpython-*.py*
+    find /usr/lib/python3 /usr/lib/python3.7 \
+	\( -name dist-packages -prune \) -o \
+	\( -name __pycache__ -type d -empty -print \) \
+	| xargs -r rm -rf
+}
+
+case "$1" in
+    remove)
+	pc=$(dpkg-query -f '${db:Status-Abbrev} ${binary:Package}\n' -W libpython3.7-stdlib \
+	     | grep -v '^.n' | wc -l)
+	if [ "$pc" -le 1 ]; then
+	    remove_bytecode libpython3.7-stdlib:armel
+	fi
+        ;;
+    upgrade)
+	remove_bytecode libpython3.7-stdlib:armel
+	# byte compilation in python3.7 postinst, strict dependency
+        ;;
+    deconfigure)
+        ;;
+    failed-upgrade)
+        ;;
+    *)
+        echo "prerm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+

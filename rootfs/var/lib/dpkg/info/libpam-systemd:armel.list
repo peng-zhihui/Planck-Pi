@@ -1,0 +1,16 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/security
+/lib/arm-linux-gnueabi/security/pam_systemd.so
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libpam-systemd
+/usr/share/doc/libpam-systemd/changelog.Debian.gz
+/usr/share/doc/libpam-systemd/copyright
+/usr/share/man
+/usr/share/man/man8
+/usr/share/man/man8/pam_systemd.8.gz
+/usr/share/pam-configs
+/usr/share/pam-configs/systemd

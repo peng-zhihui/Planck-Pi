@@ -1,0 +1,33 @@
+#!/bin/bash -e
+
+# reportbug #169495
+if [ -z "$YESNO" ]; then
+  YESNO=$"yYnN"
+fi
+
+cat <<EOF
+I can automatically include various information about your apt configuration in
+your bug report.  This information may help to diagnose your problem.
+
+EOF
+
+yesno "May I include your apt configuration (/etc/apt/apt.conf et al)? [Y/n] " yep
+
+if [ "$REPLY" = "yep" ]; then
+  echo -e "\n-- apt-config dump --\n" >&3
+  apt-config dump >&3 2>&1
+fi
+
+for config in /etc/apt/preferences /etc/apt/preferences.d/* /etc/apt/sources.list /etc/apt/sources.list.d/* ; do
+  if [ -f $config ]; then
+    yesno "May I include your $config configuration file? [Y/n] " yep
+    if [ "$REPLY" = "yep" ]; then
+      echo -e "\n-- $config --\n" >&3
+      cat $config >&3
+    else
+      echo -e "\n-- ($config present, but not submitted) --\n" >&3
+    fi
+  else
+    echo -e "\n-- (no $config present) --\n" >&3
+  fi
+done

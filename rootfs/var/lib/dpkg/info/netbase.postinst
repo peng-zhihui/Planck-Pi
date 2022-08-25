@@ -1,0 +1,71 @@
+#!/bin/sh -e
+
+create_hosts_file() {
+  if [ -e /etc/hosts ]; then return 0; fi
+
+  cat > /etc/hosts <<-EOF
+	127.0.0.1	localhost
+	::1		localhost ip6-localhost ip6-loopback
+	ff02::1		ip6-allnodes
+	ff02::2		ip6-allrouters
+
+EOF
+}
+
+create_networks_file() {
+  if [ -e /etc/networks ]; then return 0; fi
+
+  cat > /etc/networks <<-EOF
+	default		0.0.0.0
+	loopback	127.0.0.0
+	link-local	169.254.0.0
+
+EOF
+}
+
+# create bindv6only.conf on new installs and upgrades from << 4.38
+create_bindv6only_conf() {
+  if [ -e /etc/sysctl.d/bindv6only.conf ]; then
+    return 0
+  fi
+  [ "$(uname -s)" = "Linux" ] || return 0
+  [ -d /etc/sysctl.d/ ] || mkdir /etc/sysctl.d/
+  if [ "$2" ] && dpkg --compare-versions "$2" ge "4.38"; then
+    return 0
+  fi
+
+  cat >> /etc/sysctl.d/bindv6only.conf <<-EOF
+# This sysctl sets the default value of the IPV6_V6ONLY socket option.
+#
+# When disabled, IPv6 sockets will also be able to send and receive IPv4
+# traffic with addresses in the form ::ffff:192.0.2.1 and daemons listening
+# on IPv6 sockets will also accept IPv4 connections.
+#
+# When IPV6_V6ONLY is enabled, daemons interested in both IPv4 and IPv6
+# connections must open two listening sockets.
+# This is the default behaviour of almost all modern operating systems.
+
+net.ipv6.bindv6only = 1
+EOF
+}
+
+case "$1" in
+    configure)
+    if [ -z "$2" ]; then
+	create_hosts_file
+	create_networks_file
+    fi
+    #create_bindv6only_conf "$@"
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+    echo "postinst called with unknown argument '$1'" >&2
+    exit 1
+    ;;
+esac
+
+
+

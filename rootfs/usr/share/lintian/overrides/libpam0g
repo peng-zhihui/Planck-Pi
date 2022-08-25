@@ -1,0 +1,8 @@
+# obvious multilib package false-positive; also the package name hasn't
+# changed since the glibc transition, go us!
+libpam0g: package-name-doesnt-match-sonames libpam0 libpam-misc0 libpamc0
+# yes, these are deliberately asked in the postinst because the checking
+# for daemons to be restarted needs to be done in the postinst and not 
+# before
+libpam0g: no-debconf-config
+libpam0g: postinst-uses-db-input

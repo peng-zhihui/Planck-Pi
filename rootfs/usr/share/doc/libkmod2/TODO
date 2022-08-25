@@ -1,0 +1,61 @@
+Features:
+=========
+
+* Add command for signing modules
+   - There is a script to sign modules in kernel tree, but we should be able to
+   sign modules by ourselves
+
+* Stop using NOFAIL() and fatal()
+
+* Protect index against OOM
+
+* Implement actions in kmod tool like 'insert', 'remove', 'info', etc
+
+* testsuite:
+   - when fake delete_module() succeeds, remove its entry from /sys/module
+   - improve coverage (use --enable-coverage to check the current state)
+
+* Stop using system() inside the library and use fork + exec instead
+
+* config: configs that do not need to be matched by fnmatch() could be using a
+  vector instead of a list. This way we could search in it by calling
+  bsearch().
+
+* config: implement the config handling in shared/ and use it in both depmod
+and libkmod
+
+* review API, maybe unify all of these getters:
+   - kmod_module_version_get_symbol()
+   - kmod_module_version_get_crc()
+   - kmod_module_symbol_get_symbol()
+   - kmod_module_symbol_get_crc()
+   - kmod_module_dependency_symbol_get_symbol()
+   - kmod_module_dependency_symbol_get_crc()
+   - kmod_module_versions_free_list()
+   - kmod_module_symbols_free_list()
+   - kmod_module_dependency_symbols_free_list()
+
+* libkmod API breaking changes:
+   - dedicated error value for all kmod_*_get_crc() functions. Currently there
+     is no way for callers to distinguish between a valid CRC=0 and the error
+     code 0.
+
+* index: drop the "open(), seek(), read()" implementation and use another one
+  with mmap(). When lookup() is called and the file is not mmaped, mmap it.
+  Another possibility is to drop the mmap implementation relying on VFS to have
+  the pages cached. This would simplify the interface exported by libkmod.
+  Measure performance before deciding.
+
+* depmod:
+   - join functions for text/binary outputs
+   - use new O_TMPFILE for tmp file creation
+
+Things to be added/removed in kernel (check what is really needed):
+===================================================================
+
+* list of currently loaded modules
+	- readdir() in /sys/modules: dir without a 'initstate' file means the
+	  module is builtin.
+
+* kill /proc/modules ?
+	- Unlikely, given other tools might depend on it

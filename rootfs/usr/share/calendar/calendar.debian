@@ -1,0 +1,71 @@
+/* Interesting dates around Debian, originally compiled by Infodrom */
+
+#ifndef _calendar_infodrom_debian_
+#define _calendar_infodrom_debian_
+
+/* Project leaders */
+Dec  1	Ian Jackson became Debian Project Leader, 1997
+Jan  1	Wichert Akkerman became Debian Project Leader, 1999
+Apr  1	Ben Collins became Debian Project Leader, 2001
+Apr 17	Bdale Garbee became Debian Project Leader, 2002
+Apr 17	Martin Michlmayr became Debian Project Leader, 2003
+Apr 17	Branden Robinson became Debian Project Leader, 2005
+Apr 17	Anthony Towns became Debian Project Leader, 2006
+Apr 17	Sam Hocevar became Debian Project Leader, 2007
+Apr 17	Steve McIntyre became Debian Project Leader, 2008
+Apr 17	Stefano Zacchiroli became Debian Project Leader, 2010
+Apr 17	Lucas Nussbaum became Debian Project Leader, 2013
+
+/* Days of death */
+Jul 11	Joel 'Espy' Klecker died at the age of 21, 2000
+Mar  1	Christopher Matthew Rutter died at the age of 19, 2001
+Mar 28	Fabrizio Polacco passed away, 2001
+Jul 21	Martin 'blendi' Butterweck died after battling leukemia, 2002
+May  9	Manuel 'ranty' Estrada Sainz died in car accident, 2004
+May  9	Andres 'ErConde' Garcia died in car accident, 2004
+Jul 30	Jens 'jensen' Schmalzig died in tragic accident, 2005
+Dec 26	Thiemo Seufer, died in a car accident, 2008
+Aug 20	Frans Pop, 2010
+Apr 17	Adrian 'cmot' von Bidder passed away, 2011
+
+/* Debian releases */
+Oct 26	Debian GNU/Linux 0.93R6 released, 1995
+Dec 11	Infomagic and Debian announce the botching of Debian 1.0, 1995
+Jun 17	Debian GNU/Linux 1.1 alias ``buzz'' released, 1996
+Dec 12	Debian GNU/Linux 1.2 alias ``rex'' released, 1996
+Jun  5	Debian GNU/Linux 1.3 alias ``bo'' released, 1997
+Jul 24	Debian GNU/Linux 2.0 alias ``hamm'' released, 1998
+Mar  9	Debian GNU/Linux 2.1 alias ``slink'' released, 1999
+Aug 15	Debian GNU/Linux 2.2 alias ``potato'' relased, 2000
+Jul 19	Debian GNU/Linux 3.0 alias ``woody'' released, 2002
+Jun  6	Debian GNU/Linux 3.1 alias ``sarge'' released, 2005
+Apr  8	Debian GNU/Linux 4.0 alias ``etch'' released, 2007
+Feb 14	Debian GNU/Linux 5.0 alias ``lenny'' released, 2009
+Feb  6	Debian GNU/Linux 6.0 alias ``squeeze'' released, 2011
+May  5	Debian GNU/Linux 7.0 alias ``wheezy'' released, 2013
+
+/* Notable bug report numbers */
+Jun  7	Debian Bug#100000 reported by David B. Harris, 2001
+Jul  4	Debian Bug#200000 reported by Michel Grentzinger, 2003
+Mar 17	Debian Bug#300000 reported by Florian Zumbiehl, 2005
+Nov 23	Debian Bug#400000 reported by Christian Perrier, 2006
+Sep 24	Debian Bug#500000 reported by Nobuhiro Iwamatsu, 2008
+Oct 12	Debian Bug#600000 reported by Cyril Brulebois, 2010
+Feb  7	Debian Bug#700000 reported by C=E9dric Boutillier, 2013
+
+/* Notable other dates */
+Aug 16	Ian Murdock founded Debian, 1993
+Jun  6	Incorporation of Software in the Public Interest completed, 1997
+Jul  5	Debian Social Contract ratified, 1997
+Aug 26	Open Hardware Certification Program started, 1997
+Feb 24	SPI applies to register the term OpenSource, 1998
+Jan  4	Joey Hess releases the first issue of DWN, 1999
+May  3	Debian Logo chosen, 1999
+Jun  2	Non-Profit status of SPI approved, 1999
+Apr 26	Debian Social Contract v1.1 ratified, 2004
+Jul 29	Debian adopts time-based release freezes, 2009
+Sep  5	Backports provided as an official Debian service, 2010
+Mar  3	Debian joins the Open Source Initiative as an affiliate, 2012
+Jun  3	Debian's Diversity Statement ratified, 2012
+
+#endif /* !_calendar_infodrom_debian_ */

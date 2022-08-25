@@ -1,0 +1,5 @@
+#!/bin/sh
+
+printf "Contents of /etc/logrotate.d\n" >&3
+ls -l /etc/logrotate.d >&3
+printf "\n" >&3

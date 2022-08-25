@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Appendix B. Packaging Tools</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Debian Python Policy" /><link rel="up" href="index.html" title="Debian Python Policy" /><link rel="prev" href="build_dependencies.html" title="Appendix A. Build Dependencies" /><link rel="next" href="upgrade.html" title="Appendix C. Upgrade Procedure" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Appendix B. Packaging Tools</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="build_dependencies.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="upgrade.html">Next</a></td></tr></table><hr /></div><div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a id="packaging_tools"></a>Appendix B. Packaging Tools</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="section"><a href="packaging_tools.html#distutils">B.1. distutils</a></span></dt><dt><span class="section"><a href="packaging_tools.html#setuptools">B.2. setuptools</a></span></dt><dt><span class="section"><a href="packaging_tools.html#dh-python">B.3. <code class="literal">dh-python</code></a></span></dt><dt><span class="section"><a href="packaging_tools.html#pybuild">B.4. pybuild</a></span></dt><dt><span class="section"><a href="packaging_tools.html#cdbs">B.5. CDBS</a></span></dt><dt><span class="section"><a href="packaging_tools.html#pysupport">B.6. <code class="literal">python-support</code> (removed)</a></span></dt><dt><span class="section"><a href="packaging_tools.html#pycentral">B.7. <code class="literal">python-central</code> (removed)</a></span></dt></dl></div><p>
+	This section describes the various tools to help package
+	Python programs and modules for Debian. Although none of these
+	tools are mandatory, their use is strongly encouraged, as the
+	above policy has been designed with them in mind (and vice
+	versa). This appendix is just an overview. If you use these
+	tools, you should read their full documentation.
+      </p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="distutils"></a>B.1. distutils</h2></div></div></div><p>
+	  The standard Python <code class="literal">distutils</code> module has been modified in
+	  Debian to change the default installation directory of public
+	  Python modules and to add a new flag to the <code class="literal">install</code>
+	  command to override the default, <code class="literal">--install-layout=</code>.
+	</p><p>
+	  Public Python modules installed with a modified distutils default
+	  to
+	  <code class="filename">/usr/local/lib/python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em>/dist-packages</code>
+	  for Python 2.6 and later. This directory is seen by the
+	  system-provided Python 2.6.
+	</p><p>
+	  When using a local Python installation, the default is
+	  <code class="filename">/usr/local/lib/python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em>/site-packages</code>
+	  which is only seen by the local Python installation.
+	</p><p>
+	  Using the <code class="literal">--install-layout=deb</code> flag to
+	  the <code class="literal">install</code> command of <code class="filename">setup.py</code> with a
+	  system-provided Python 2.6 or later versions, Python modules will
+	  be installed to
+	  <code class="filename">/usr/lib/python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em>/dist-packages</code>
+	  which is only seen by the system-provided Python, not by a local
+	  installation.
+	</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="setuptools"></a>B.2. setuptools</h2></div></div></div><p>
+          The related Python <code class="literal">setuptools</code> module has been modified in
+          Debian along the same lines as <code class="literal">distutils</code>.
+        </p><p>
+          Upstream focus on developments and improvements for Python packaging
+          tools has largely shifted away from <code class="literal">distutils</code> and to
+          <code class="literal">setuptools</code>.  They offer a similar API and at some point in
+          the future, <code class="literal">setuptools</code> may fully replace <code class="literal">distutils</code>
+          in Debian package builds.
+        </p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="dh-python"></a>B.3. <code class="literal">dh-python</code></h2></div></div></div><p>
+	  <code class="literal">dh-python</code> provides extensions
+	  for <code class="literal">debhelper</code> to make it easier to package
+	  Python modules and extensions. They calculate Python dependencies,
+	  add maintainer scripts to byte compile files, etc. Their use is
+	  not mandatory, but they are recommended by the Debian Python
+	  maintainers.
+	</p><p>
+	  See <code class="literal">man dh_python3</code> or <code class="literal">man dh_python2</code> for
+	  details.
+	</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="pybuild"></a>B.4. pybuild</h2></div></div></div><p>
+	  Pybuild is a Debian Python specific build system that invokes
+	  various build systems for requested Python versions in order to
+	  build modules and extensions. It supports automatically building
+	  for multiple Python versions.
+	</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cdbs"></a>B.5. CDBS</h2></div></div></div><p>
+	  The CDBS <code class="filename">python-distutils.mk</code> class helps packaging of
+	  distutils based Python packages.
+	</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="pysupport"></a>B.6. <code class="literal">python-support</code> (removed)</h2></div></div></div><p>
+	  <code class="literal">python-support</code> provided another way to manage
+	  Python modules. It has been removed from Debian Stretch and later
+	  releases.
+	</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="pycentral"></a>B.7. <code class="literal">python-central</code> (removed)</h2></div></div></div><p>
+	  <code class="literal">python-central</code> provided another way to manage
+	  Python modules. It has been removed from Debian Jessie and later
+	  releases.
+	</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="build_dependencies.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="upgrade.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Appendix A. Build Dependencies </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix C. Upgrade Procedure</td></tr></table></div></body></html>

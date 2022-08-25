@@ -1,0 +1,23 @@
+#!/bin/sh
+# helper script for launching ssh-agent, used by systemd unit
+set -e
+
+if [ ! -d "$XDG_RUNTIME_DIR" ]; then
+    echo 'This needs $XDG_RUNTIME_DIR to be set' >&2
+    exit 1
+fi
+
+if [ "$1" = start ]; then
+    if [ -z "$SSH_AUTH_SOCK" ] && grep -s -q '^use-ssh-agent$' /etc/X11/Xsession.options; then
+        S="$XDG_RUNTIME_DIR/openssh_agent"
+        dbus-update-activation-environment --verbose --systemd SSH_AUTH_SOCK=$S SSH_AGENT_LAUNCHER=openssh
+        exec ssh-agent -D -a $S
+    fi
+elif [ "$1" = stop ]; then
+    if [ "$SSH_AGENT_LAUNCHER" = openssh ]; then
+        dbus-update-activation-environment --systemd  SSH_AUTH_SOCK=
+    fi
+else
+    echo "Unknown command $1" >&2
+    exit 1
+fi

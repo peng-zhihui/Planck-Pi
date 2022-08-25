@@ -1,0 +1,22 @@
+#
+# Permissions 0700 on /root are intentional as people expect
+# the /root directory to be more private than /home/* directories.
+#
+base-files: non-standard-dir-perm root/ 0700 != 0755
+#
+# The /etc/os-release symlink is relative on purpose to avoid breaking dracut.
+# See Bug #755394 for details.
+#
+base-files: symlink-should-be-absolute etc/os-release ../usr/lib/os-release
+#
+# The purpose of having licenses here is precisely to allow
+# other packages to reference them.
+#
+base-files: extra-license-file usr/share/common-licenses/Artistic
+base-files: extra-license-file usr/share/common-licenses/BSD
+base-files: extra-license-file usr/share/common-licenses/GPL-1
+base-files: extra-license-file usr/share/common-licenses/GPL-2
+base-files: extra-license-file usr/share/common-licenses/GPL-3
+base-files: extra-license-file usr/share/common-licenses/LGPL-2
+base-files: extra-license-file usr/share/common-licenses/LGPL-2.1
+base-files: extra-license-file usr/share/common-licenses/LGPL-3

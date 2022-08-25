@@ -1,0 +1,352 @@
+#! /usr/bin/perl
+###############################################################################
+#
+#  Update-MIME:  Install programs into "/etc/mailcap", resolve conflicts,
+#                auto-uninstall, make dinner, and wash dishes.
+#
+#  Written by Brian White <bcwhite@pobox.com>.
+#
+#  This program has been placed in the public domain (the only true "free").
+#  Do whatever you wish with it, though I'd appreciate it if my name stayed
+#  on it as the original author.
+#
+###############################################################################
+
+umask(022);
+
+
+
+#
+# Program Constants
+#
+$debug		= 0;
+$conffile	= "/etc/update-mime.conf";
+$mailcap	= "/etc/mailcap";
+$mailcapdef	= "/usr/lib/mime/mailcap";
+$mimedir	= "/usr/lib/mime/packages";
+$appsdir	= "/usr/share/applications";
+$orderfile	= "/etc/mailcap.order";
+$defpriority    = 5;
+$localgen	= 0;
+
+
+# If the call comes from dpkg, only accept it if --triggered is passed
+# This is so that we don't get useless calls from packages' postinsts
+# that call update-mime due to dh_installmime adding that call for
+# when there was no triggers support.
+#
+# When this 'hack' is removed, mime-support's postinst should be updated
+# to not pass --triggered anymore in 'triggered'.
+if ($ENV{"DPKG_RUNNING_VERSION"} ne "" && $ARGV[0] ne "--triggered") {
+    exit (0);
+}
+
+
+# Allow local run
+if ($ARGV[0] eq "--local") {
+    $conffile	= "$ENV{HOME}/.update-mime.conf";
+    $mailcap	= "$ENV{HOME}/.mailcap";
+    $orderfile	= "$ENV{HOME}/.mailcap.order";
+    $localgen	= 1;
+}
+
+
+#
+# Allow local customizations
+#
+do $conffile if -f $conffile;
+
+
+#
+# Global Variables
+#
+%entries;
+%packages;
+%priorities;
+@order;
+$counter=1;
+
+
+sub ReadEntries
+{
+	my($pkg,$priority);
+
+#	foreach $file (glob "$mimedir/*") {
+	foreach $file (map { glob $_.'/*' } split ':',$mimedir) {
+		next if ($file =~ m!(^|/)(\.|\#)|(\~)$!);
+		($pkg) = ($file =~ m|/([^/]*)$|);
+		print STDERR "$pkg:\n" if $debug;
+
+		if (!defined $packages{$pkg}) {
+			$packages{$pkg} = [];
+		}
+
+		if (open(FILE,"<$file")) {
+			while (<FILE>) {
+				chomp;
+				next if m/^\s*$|^\s*\#/;
+				if (! m(^[a-zA-Z0-9*][a-zA-Z0-9!#\$&^_.+-]*/[a-zA-Z0-9*][a-zA-Z0-9!#\$&^_.+-]*;) ) {
+					print STDERR "Warning: mailcap line not starting with a media type in $pkg\n";
+					print STDERR "Problematic line: $_\n";
+				}
+				if (m/priority\s*=\s*(\d+)\s*($|;)/i) {
+					$priority=$1;
+				} else {
+					$priority=$defpriority;
+				}
+				if ($priority < 0 || $priority > 9) {
+					print STDERR "Error: priority of $priority is out of range (0 <= pri <= 9)\n";
+					print STDERR "       $_\n";
+					$priority=$defpriority;
+				}
+				$entries{$counter} = $_;
+				push @{$packages{$pkg}},$counter;
+				push @{$priorities{$priority}},$counter;
+				print STDERR "$counter: $_\n" if $debug;
+				$counter++;
+			}
+			close(FILE);
+		} else {
+			print STDERR "Warning: could not open file '$file' -- $!\n";
+		}
+	}
+}
+
+sub RecurseIntoDirectories
+{
+	my @files;
+	foreach my $dir (@_) {
+		next if ($dir =~ m!(^|/)(\.|\#)|(\~)$!);
+		my @entries = glob "$dir/*";
+		push @files, RecurseIntoDirectories(grep { -d $_ } @entries);
+		push @files, grep { -f $_ } @entries;
+	}
+	return @files;
+}
+
+sub ReadDesktopEntries
+{
+	my($pkg,$priority);
+
+	foreach $file (RecurseIntoDirectories(split ':',$appsdir)) {
+		next if ($file =~ m!(^|/)(\.|\#)|(\~)$!);
+		next unless ($file =~ m/\.desktop$/);
+		($pkg) = ($file =~ m|/([^/]*)\.desktop$|);
+		print STDERR "$pkg:\n" if $debug;
+
+		next if (defined $packages{$pkg});
+		$packages{$pkg} = [];
+
+		if (open(FILE,"<$file")) {
+			my($terminal, $name, $icon, $exec, @types) = ("test=test -n \"\$DISPLAY\"", $pkg);
+			while (<FILE>) {
+				chomp;
+				next if (m/^\s*$|^\s*\#/);
+				if (m/^Terminal=(\w+)/i) {
+					$terminal = "needsterminal" if ($1 eq "true");
+				}
+				elsif (m/^Name=(.+)/i) {
+					$name = $1;
+				}
+				elsif (m/^Icon=(.+)/i) {
+					$icon = $1;
+				}
+				elsif (m/Exec=(.*)$/i) {
+					$exec = $1;
+					$exec =~ s/%[fFuU]/%s/g;
+					$exec .= " %s" if ($exec !~ m/%s/);
+				}
+				elsif (m/MimeType=(.*)/i) {
+					push @types, split(/;/, $1);
+				}
+			}
+			if (!defined($exec) || !scalar(@types)) {
+				close(FILE);
+				next;
+			}
+			$exec =~ s/%c/$name/g;
+			$exec =~ s/%i/--icon $icon/g;
+			foreach $type (@types) {
+				my $entry = "$type; $exec; $terminal";
+				$priority=$defpriority;
+				$entries{$counter} = $entry;
+				push @{$packages{$pkg}},$counter;
+				push @{$priorities{$priority}},$counter;
+				print STDERR "$counter: $entry\n" if $debug;
+				$counter++;
+			}
+			close(FILE);
+		} else {
+			print STDERR "Warning: could not open file '$file' -- $!\n";
+		}
+	}
+}
+
+
+sub ReadOrder
+{
+	if (-e $orderfile) {
+		if (open(FILE,"<$orderfile")) {
+			while (<FILE>) {
+				chomp;
+				s/\s*\#.*$//;
+				next if m/^\s*$/;
+				push @order,$_;
+				/(.*):/;
+				my $pkg = $1;
+				unless( grep {/^$pkg$/} keys(%packages)) {
+					print STDERR "Warning: package $pkg listed in /etc/mailcap.order does not have mailcap entries.\n";
+				}
+			}
+			close(FILE);
+		} else {
+			print STDERR "Warning: could not open file '$orderfile' -- $!\n";
+		}
+	}
+}
+
+
+
+sub OrderEntries
+{
+	my(@entrylist,@orderlist,@templist,$priority,$entrycode,$ordercode);
+
+	foreach $priority (sort {$b <=> $a} keys %priorities) {
+		print STDERR " - Priority $priority:" if $debug;
+		@templist = @{$priorities{$priority}};
+		@templist = sort {
+			$ae  = $entries{$a};
+			$ac  = 0;
+			$ac += 1 if $ae =~ m!^\S+/\*!;
+			$ac += 2 if $ae =~ m!^\*/!;
+			$be  = $entries{$b};
+			$bc  = 0;
+			$bc += 1 if $be =~ m!^\S+/\*!;
+			$bc += 2 if $be =~ m!^\*/!;
+			$ac <=> $bc;
+		} @templist;
+		foreach $entry (@templist) {
+			print STDERR " $entry" if $debug;
+			push @entrylist,$entry;
+		}
+		print STDERR "\n" if $debug;
+	}
+
+	print STDERR "entrylist: @entrylist\n" if $debug;
+	foreach $ordercode (@order) {
+		my($pkg,$typ);
+		if ($ordercode =~ m/:/) {
+			($pkg,$typ) = ($ordercode =~ m/^(.*):(\S*)/);
+		} else {
+			$pkg = $ordercode;
+			$typ = "*/*";
+		}
+		$typ = "*/*" unless $typ;
+		print STDERR " - Ordering '$ordercode'...  (package=$pkg, type=$typ, orderlist=@orderlist)\n" if $debug;
+		$typ =~ s/\*/\.\*/g;
+		foreach $entrycode (@entrylist) {
+			next if grep(/^\Q$entrycode\E$/,@orderlist);
+			print STDERR "    - Checking entrycode '$entrycode' against (@{$packages{$pkg}})...\n" if $debug;
+			if (grep(/^\Q$entrycode\E$/,@{$packages{$pkg}})) {
+				$entry = $entries{$entrycode};
+				my($etype) = ($entry =~ m/^(.*?)(;|\s)/);
+				print STDERR "       - entry found, type=$etype, checking against '$typ'\n" if $debug;
+				if ($etype =~ m!^$typ$!) {
+#					print STDERR "       - matched!\n" if $debug;
+#					my($oaction) = ($ordercode =~ m/action=([^\s;]*)/i);
+#					my($eaction) = ($entry     =~ m/action=([^\s;]*)/i);
+#					$eaction="view" unless $eaction;
+#					print STDERR "       - checking entry action '$eaction' against '$oaction'\n" if $debug;
+#					if (!$oaction || $eaction =~ m/^($oaction)$/) {
+						push @orderlist,$entrycode;
+						print STDERR "       - matched!  (orderlist=@orderlist)\n" if $debug;
+#					}
+				}
+			}
+		}
+	}
+
+	foreach $entrycode (@entrylist) {
+		next if grep(/^\Q$entrycode\E$/,@orderlist);
+		push @orderlist,$entrycode;
+	}
+
+	print STDERR "orderlist: @orderlist\n" if $debug;
+	return @orderlist;
+}
+
+
+
+#
+# Generate new mailcap file
+#
+sub UpdateMailcap
+{
+	my(@entrylist) = @_;
+	my(@above,@user,@below,$state,$entrycode);
+	$state = 0;
+	if (!open(PATH,"<$mailcap")) {
+		if (!open(PATH,"<$mailcapdef")) {
+#			print STDERR "Warning: could not read '$mailcap' (update stopped) -- $!\n";
+#			print STDERR "         restore from backup or delete and re-install mime-support package";
+			return;
+		}
+	}
+
+	while (<PATH>) {
+		s/install-mime/update-mime/g;
+		if ($state == 0) {
+			push @above,$_;
+		}
+		$state=2 if ($state == 1 && /^\# ----- .* Ends /);
+		if ($state == 1) {
+			push @user,$_;
+		}
+		$state=1 if ($state == 0 && /^\# ----- .* Begins /);
+		if ($state == 2) {
+			push @below,$_;
+		}
+		$state=3 if ($state == 2);
+	}
+
+	close PATH;
+
+	if ($state == 3) {
+		my $newfile = join('',@above,@user,@below);
+		$newfile .= "\n###############################################################################\n\n";
+		foreach $entrycode (@entrylist) {
+			my $entry = $entries{$entrycode};
+			$entry =~ s/\s*priority\s*=\s*\d+\s*($|;)//;
+			$entry =~ s/\s*;\s*$//;
+			$newfile .= $entry."\n";
+		}
+
+		if (!open(PATH,">$mailcap.new")) {
+			print STDERR "Error: could not write '$mailcap.new' -- $!\n";
+			exit(1) unless ($debug);
+			open(PATH,">-");
+		}
+		print PATH $newfile;
+		close PATH;
+		if (!open(PATH,"<$mailcap.new")) {
+			die "Error: could not read generated '$mailcap.new' -- $!\n";
+		}
+		my $savfile = "";
+		$savfile .= $_ while (<PATH>);
+		if ($savfile ne $newfile) {
+			die "Error: contents of '$mailcap.new' do not match what was written -- abort\n";
+		}
+		rename "$mailcap.new","$mailcap";
+	} else {
+		print STDERR "Error: '$mailcap' is not in required format -- not updated\n";
+		print STDERR "       Restore from backup or delete and re-install mime-support package";
+	}
+}
+
+
+
+ReadEntries();
+ReadDesktopEntries();
+ReadOrder();
+@list = OrderEntries();
+UpdateMailcap(@list);

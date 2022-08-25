@@ -1,0 +1,13 @@
+#! /bin/sh -e
+
+install_from_default() {
+  if [ ! -f $2 ]; then
+    cp -p $1 $2
+  fi
+}
+
+if [ "$1" = "configure" ] && [ "$2" = "" ]; then
+  install_from_default /usr/share/readline/inputrc /etc/inputrc
+fi
+
+

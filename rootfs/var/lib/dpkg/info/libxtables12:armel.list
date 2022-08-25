@@ -1,0 +1,13 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libxtables.so.12.2.0
+/usr/share
+/usr/share/doc
+/usr/share/doc/libxtables12
+/usr/share/doc/libxtables12/NEWS.Debian.gz
+/usr/share/doc/libxtables12/changelog.Debian.gz
+/usr/share/doc/libxtables12/changelog.gz
+/usr/share/doc/libxtables12/copyright
+/usr/lib/arm-linux-gnueabi/libxtables.so.12

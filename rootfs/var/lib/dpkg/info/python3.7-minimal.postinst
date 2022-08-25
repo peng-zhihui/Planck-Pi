@@ -1,0 +1,82 @@
+#! /bin/sh
+
+set -e
+
+if [ ! -f /etc/python3.7/sitecustomize.py ]; then
+    cat <<-EOF
+	# Empty sitecustomize.py to avoid a dangling symlink
+EOF
+fi
+
+case "$1" in
+    configure)
+        # Create empty directories in /usr/local
+        if [ ! -e /usr/local/lib/python3.7 ]; then
+            mkdir -p /usr/local/lib/python3.7 2> /dev/null || true
+            chmod 2775 /usr/local/lib/python3.7 2> /dev/null || true
+            chown root:staff /usr/local/lib/python3.7 2> /dev/null || true
+        fi
+	localsite=/usr/local/lib/python3.7/dist-packages
+        if [ ! -e $localsite ]; then
+            mkdir -p $localsite 2> /dev/null || true
+            chmod 2775 $localsite 2> /dev/null || true
+            chown root:staff $localsite 2> /dev/null || true
+        fi
+
+	if which update-binfmts >/dev/null; then
+	    update-binfmts --import python3.7
+	fi
+
+    ;;
+esac
+
+if [ "$1" = configure ]; then
+
+    # only available before removal of the packaging package
+    rm -f /etc/python3.7/sysconfig.cfg
+
+    if ls -L /usr/lib/python3.7/sitecustomize.py >/dev/null 2>&1; then
+	filt='cat'
+    else
+	filt='fgrep -v sitecustomize.py'
+    fi
+    files=$(dpkg -L libpython3.7-minimal:armel \
+		| sed -n '/^\/usr\/lib\/python3.7\/.*\.py$/p' | $filt)
+    if [ -n "$files" ]; then
+	/usr/bin/python3.7 -E -S /usr/lib/python3.7/py_compile.py $files
+	if grep -sq '^byte-compile[^#]*optimize' /etc/python/debian_config; then
+	    /usr/bin/python3.7 -E -S -O /usr/lib/python3.7/py_compile.py $files
+	fi
+    else
+	echo >&2 "python3.7-minimal: can't get files for byte-compilation"
+    fi
+    bc=no
+    #if [ -z "$2" ] || dpkg --compare-versions "$2" lt 2.5-3 \
+    #    || [ -f /var/lib/python/python3.7_installed ]; then
+    #	bc=yes
+    #fi
+    if ! grep -sq '^supported-versions[^#]*python3.7' /usr/share/python/debian_defaults
+    then
+	# FIXME: byte compile anyway?
+	bc=no
+    fi
+    if [ "$bc" = yes ]; then
+	# new installation or installation of first version with hook support
+	if [ "$DEBIAN_FRONTEND" != noninteractive ]; then
+	    echo "Linking and byte-compiling packages for runtime python3.7..."
+	fi
+	version=$(dpkg -s python3.7-minimal | awk '/^Version:/ {print $2}')
+	for hook in /usr/share/python3/runtime.d/*.rtinstall; do
+	    [ -x $hook ] || continue
+	    $hook rtinstall python3.7 "$2" "$version"
+	done
+	if [ -f /var/lib/python/python3.7_installed ]; then
+	    rm -f /var/lib/python/python3.7_installed
+	    rmdir --ignore-fail-on-non-empty /var/lib/python 2>/dev/null
+	fi
+    fi
+fi
+
+
+
+exit 0

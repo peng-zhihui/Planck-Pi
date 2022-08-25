@@ -1,0 +1,16 @@
+Reporting missing or buggy detection
+
+* Wanted: Reproducers and file format description
+
+It's crucial to understand any mis-detection and being able to test
+any fix, so please provide something suitable: Attach a short
+sample, or send an information where to find it. Double-check this
+file neither contains sensitive data nor infringes a copyright.
+
+Also welcome: Pointers to documents that describe the file format.
+
+* Suggested bug severities
+
+  - Missing detection (just 'data'), or enhancements: wishlist
+  - Mis-detection: normal
+  - Overall correct detection, but with some errors: minor

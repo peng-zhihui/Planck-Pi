@@ -1,0 +1,46 @@
+#!/bin/sh
+set -e
+
+pkg=vim-tiny
+variant=tiny
+
+# remove /usr/bin/vim.variant as alternative for /usr/bin/vim
+
+remove_variant_alternative () {
+  for i in vi view ex editor rvim rview vimdiff vim; do
+    update-alternatives --remove $i /usr/bin/vim.$variant
+  done
+  case "$variant" in
+    gtk|gtk3|athena) # gui enabled variants
+      remove_gui_variant_alternative
+      ;;
+  esac
+}
+
+remove_gui_variant_alternative () {
+  for i in eview evim gview gvimdiff rgview rgvim gvim; do
+    update-alternatives --remove $i /usr/bin/vim.$variant
+  done
+}
+
+case "$1" in
+  # only remove in remove/deconfigure so we don't disrupt users' preferences
+  remove|deconfigure)
+    remove_variant_alternative
+    ;;
+
+  upgrade|failed-upgrade)
+    ;;
+
+  *)
+    echo "prerm called with unknown argument \`$1'" >&2
+    exit 0
+    ;;
+esac
+
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper symlink_to_dir /usr/share/doc/vim-tiny vim-common 2:8.0.1451-1\~ vim-tiny -- "$@"
+# End automatically added section
+
+
+exit 0

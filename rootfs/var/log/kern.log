@@ -1,0 +1,933 @@
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] Booting Linux on physical CPU 0x0
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] Linux version 5.4.77 (root@ubuntu) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #3 Sun Apr 3 07:12:26 UTC 2022
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] CPU: ARM926EJ-S [41069265] revision 5 (ARMv5TEJ), cr=0005317f
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] CPU: VIVT data cache, VIVT instruction cache
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] OF: fdt: Machine model: Planck Pi
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] Memory policy: Data cache writeback
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] cma: Reserved 16 MiB at 0x83000000
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] On node 0 totalpages: 16384
+Feb 14 10:12:15 ubuntu kernel: [    0.000000]   Normal zone: 128 pages used for memmap
+Feb 14 10:12:15 ubuntu kernel: [    0.000000]   Normal zone: 0 pages reserved
+Feb 14 10:12:15 ubuntu kernel: [    0.000000]   Normal zone: 16384 pages, LIFO batch:3
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] pcpu-alloc: [0] 0 
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 16256
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] Kernel command line: console=ttyS0,115200 earlyprintk rootwait consoleblank=0 net.ifnames=0 biosdevname=0 root=/dev/mmcblk0p3
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] Dentry cache hash table entries: 8192 (order: 3, 32768 bytes, linear)
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] Inode-cache hash table entries: 4096 (order: 2, 16384 bytes, linear)
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] Memory: 38744K/65536K available (6144K kernel code, 248K rwdata, 1676K rodata, 1024K init, 226K bss, 10408K reserved, 16384K cma-reserved)
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+Feb 14 10:12:15 ubuntu kernel: [    0.000000] random: get_random_bytes called from start_kernel+0x254/0x444 with crng_init=0
+Feb 14 10:12:15 ubuntu kernel: [    0.000042] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+Feb 14 10:12:15 ubuntu kernel: [    0.000112] clocksource: timer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+Feb 14 10:12:15 ubuntu kernel: [    0.000652] Console: colour dummy device 80x30
+Feb 14 10:12:15 ubuntu kernel: [    0.000734] Calibrating delay loop... 298.59 BogoMIPS (lpj=1492992)
+Feb 14 10:12:15 ubuntu kernel: [    0.070142] pid_max: default: 32768 minimum: 301
+Feb 14 10:12:15 ubuntu kernel: [    0.070550] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Feb 14 10:12:15 ubuntu kernel: [    0.070582] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Feb 14 10:12:15 ubuntu kernel: [    0.072047] CPU: Testing write buffer coherency: ok
+Feb 14 10:12:15 ubuntu kernel: [    0.073718] Setting up static identity map for 0x80100000 - 0x80100058
+Feb 14 10:12:15 ubuntu kernel: [    0.074779] devtmpfs: initialized
+Feb 14 10:12:15 ubuntu kernel: [    0.082293] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+Feb 14 10:12:15 ubuntu kernel: [    0.082347] futex hash table entries: 256 (order: -1, 3072 bytes, linear)
+Feb 14 10:12:15 ubuntu kernel: [    0.085781] pinctrl core: initialized pinctrl subsystem
+Feb 14 10:12:15 ubuntu kernel: [    0.087845] NET: Registered protocol family 16
+Feb 14 10:12:15 ubuntu kernel: [    0.090614] DMA: preallocated 256 KiB pool for atomic coherent allocations
+Feb 14 10:12:15 ubuntu kernel: [    0.092260] cpuidle: using governor menu
+Feb 14 10:12:15 ubuntu kernel: [    0.125654] SCSI subsystem initialized
+Feb 14 10:12:15 ubuntu kernel: [    0.125953] usbcore: registered new interface driver usbfs
+Feb 14 10:12:15 ubuntu kernel: [    0.126080] usbcore: registered new interface driver hub
+Feb 14 10:12:15 ubuntu kernel: [    0.126230] usbcore: registered new device driver usb
+Feb 14 10:12:15 ubuntu kernel: [    0.126622] mc: Linux media interface: v0.10
+Feb 14 10:12:15 ubuntu kernel: [    0.126721] videodev: Linux video capture interface: v2.00
+Feb 14 10:12:15 ubuntu kernel: [    0.126824] pps_core: LinuxPPS API ver. 1 registered
+Feb 14 10:12:15 ubuntu kernel: [    0.126839] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+Feb 14 10:12:15 ubuntu kernel: [    0.126885] PTP clock support registered
+Feb 14 10:12:15 ubuntu kernel: [    0.127722] ion_parse_dt_heap_common: id 4 type 4 name cma align 1000
+Feb 14 10:12:15 ubuntu kernel: [    0.128521] Advanced Linux Sound Architecture Driver Initialized.
+Feb 14 10:12:15 ubuntu kernel: [    0.130464] clocksource: Switched to clocksource timer
+Feb 14 10:12:15 ubuntu kernel: [    0.155435] thermal_sys: Registered thermal governor 'step_wise'
+Feb 14 10:12:15 ubuntu kernel: [    0.156033] NET: Registered protocol family 2
+Feb 14 10:12:15 ubuntu kernel: [    0.157257] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+Feb 14 10:12:15 ubuntu kernel: [    0.157317] TCP established hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Feb 14 10:12:15 ubuntu kernel: [    0.157360] TCP bind hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Feb 14 10:12:15 ubuntu kernel: [    0.157393] TCP: Hash tables configured (established 1024 bind 1024)
+Feb 14 10:12:15 ubuntu kernel: [    0.157637] UDP hash table entries: 256 (order: 0, 4096 bytes, linear)
+Feb 14 10:12:15 ubuntu kernel: [    0.157686] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes, linear)
+Feb 14 10:12:15 ubuntu kernel: [    0.158128] NET: Registered protocol family 1
+Feb 14 10:12:15 ubuntu kernel: [    0.160055] NetWinder Floating Point Emulator V0.97 (double precision)
+Feb 14 10:12:15 ubuntu kernel: [    0.161723] Initialise system trusted keyrings
+Feb 14 10:12:15 ubuntu kernel: [    0.162266] workingset: timestamp_bits=30 max_order=14 bucket_order=0
+Feb 14 10:12:15 ubuntu kernel: [    0.178044] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+Feb 14 10:12:15 ubuntu kernel: [    0.178551] jffs2: version 2.2. (NAND) (SUMMARY)  © 2001-2006 Red Hat, Inc.
+Feb 14 10:12:15 ubuntu kernel: [    0.258845] Key type asymmetric registered
+Feb 14 10:12:15 ubuntu kernel: [    0.258877] Asymmetric key parser 'x509' registered
+Feb 14 10:12:15 ubuntu kernel: [    0.259016] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 249)
+Feb 14 10:12:15 ubuntu kernel: [    0.259039] io scheduler mq-deadline registered
+Feb 14 10:12:15 ubuntu kernel: [    0.259053] io scheduler kyber registered
+Feb 14 10:12:15 ubuntu kernel: [    0.261266] sun4i-usb-phy 1c13400.phy: Couldn't request ID GPIO
+Feb 14 10:12:15 ubuntu kernel: [    0.270210] suniv-f1c100s-pinctrl 1c20800.pinctrl: initialized sunXi PIO driver
+Feb 14 10:12:15 ubuntu kernel: [    0.288928] Serial: 8250/16550 driver, 8 ports, IRQ sharing disabled
+Feb 14 10:12:15 ubuntu kernel: [    0.293842] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pa not found, using dummy regulator
+Feb 14 10:12:15 ubuntu kernel: [    0.294944] printk: console [ttyS0] disabled
+Feb 14 10:12:15 ubuntu kernel: [    0.315184] 1c25400.serial: ttyS0 at MMIO 0x1c25400 (irq = 27, base_baud = 6250000) is a 16550A
+Feb 14 10:12:15 ubuntu kernel: [    0.749482] printk: console [ttyS0] enabled
+Feb 14 10:12:15 ubuntu kernel: [    0.757666] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pd not found, using dummy regulator
+Feb 14 10:12:15 ubuntu kernel: [    0.772037] sun4i-drm soc:display-engine: bound 1e00000.display-frontend (ops 0xc073b028)
+Feb 14 10:12:15 ubuntu kernel: [    0.781005] sun4i-drm soc:display-engine: bound 1e60000.display-backend (ops 0xc073a868)
+Feb 14 10:12:15 ubuntu kernel: [    0.790004] sun4i-drm soc:display-engine: No panel or bridge found... RGB output disabled
+Feb 14 10:12:15 ubuntu kernel: [    0.798329] sun4i-drm soc:display-engine: bound 1c0c000.lcd-controller (ops 0xc0739408)
+Feb 14 10:12:15 ubuntu kernel: [    0.806839] sun4i-drm soc:display-engine: bound 1c0a000.tv-encoder (ops 0xc073a128)
+Feb 14 10:12:15 ubuntu kernel: [    0.814608] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
+Feb 14 10:12:15 ubuntu kernel: [    0.821255] [drm] No driver support for vblank timestamp query.
+Feb 14 10:12:15 ubuntu kernel: [    0.828218] [drm] Initialized sun4i-drm 1.0.0 20150629 for soc:display-engine on minor 0
+Feb 14 10:12:15 ubuntu kernel: [    0.899047] Console: switching to colour frame buffer device 90x36
+Feb 14 10:12:15 ubuntu kernel: [    0.925307] sun4i-drm soc:display-engine: fb0: sun4i-drmdrmfb frame buffer device
+Feb 14 10:12:15 ubuntu kernel: [    0.937948] SCSI Media Changer driver v0.25 
+Feb 14 10:12:15 ubuntu kernel: [    0.943658] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pc not found, using dummy regulator
+Feb 14 10:12:15 ubuntu kernel: [    0.955926] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+Feb 14 10:12:15 ubuntu kernel: [    0.962581] ehci-platform: EHCI generic platform driver
+Feb 14 10:12:15 ubuntu kernel: [    0.968199] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+Feb 14 10:12:15 ubuntu kernel: [    0.974526] ohci-platform: OHCI generic platform driver
+Feb 14 10:12:15 ubuntu kernel: [    0.980216] usbcore: registered new interface driver usb-storage
+Feb 14 10:12:15 ubuntu kernel: [    0.987772] i2c /dev entries driver
+Feb 14 10:12:15 ubuntu kernel: [    0.994181] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pe not found, using dummy regulator
+Feb 14 10:12:15 ubuntu kernel: [    1.005096] sun4i-csi 1cb0000.csi: Packed (RAW) format enabled.
+Feb 14 10:12:15 ubuntu kernel: [    1.012810] sunxi-wdt 1c20ca0.watchdog: Watchdog enabled (timeout=16 sec, nowayout=0)
+Feb 14 10:12:15 ubuntu kernel: [    1.022552] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pf not found, using dummy regulator
+Feb 14 10:12:15 ubuntu kernel: [    1.060624] sunxi-mmc 1c0f000.mmc: initialized, max. request size: 16384 KB
+Feb 14 10:12:15 ubuntu kernel: [    1.069629] usbcore: registered new interface driver usbhid
+Feb 14 10:12:15 ubuntu kernel: [    1.075317] usbhid: USB HID core driver
+Feb 14 10:12:15 ubuntu kernel: [    1.079487] sunxi-cedar 1c0e000.video-codec: sunxi cedar version 0.01alpha
+Feb 14 10:12:15 ubuntu kernel: [    1.086830] sunxi-cedar 1c0e000.video-codec: cedar-ve the get irq is 20
+Feb 14 10:12:15 ubuntu kernel: [    1.098181] debugfs: Directory '1c23c00.codec' with parent 'F1C100s Audio Codec' already present!
+Feb 14 10:12:15 ubuntu kernel: [    1.112422] sun4i-codec 1c23c00.codec: Codec <-> 1c23c00.codec mapping ok
+Feb 14 10:12:15 ubuntu kernel: [    1.127021] NET: Registered protocol family 17
+Feb 14 10:12:15 ubuntu kernel: [    1.131702] Key type dns_resolver registered
+Feb 14 10:12:15 ubuntu kernel: [    1.136969] Loading compiled-in X.509 certificates
+Feb 14 10:12:15 ubuntu kernel: [    1.154398] usb_phy_generic usb_phy_generic.0.auto: usb_phy_generic.0.auto supply vcc not found, using dummy regulator
+Feb 14 10:12:15 ubuntu kernel: [    1.166303] musb-hdrc musb-hdrc.1.auto: MUSB HDRC host driver
+Feb 14 10:12:15 ubuntu kernel: [    1.172295] musb-hdrc musb-hdrc.1.auto: new USB bus registered, assigned bus number 1
+Feb 14 10:12:15 ubuntu kernel: [    1.182749] hub 1-0:1.0: USB hub found
+Feb 14 10:12:15 ubuntu kernel: [    1.186766] hub 1-0:1.0: 1 port detected
+Feb 14 10:12:15 ubuntu kernel: [    1.193684] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 14 10:12:15 ubuntu kernel: [    1.209042] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+Feb 14 10:12:15 ubuntu kernel: [    1.215866] ALSA device list:
+Feb 14 10:12:15 ubuntu kernel: [    1.218846]   #0: F1C100s Audio Codec
+Feb 14 10:12:15 ubuntu kernel: [    1.223112] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+Feb 14 10:12:15 ubuntu kernel: [    1.231889] cfg80211: failed to load regulatory.db
+Feb 14 10:12:15 ubuntu kernel: [    1.237656] Waiting for root device /dev/mmcblk0p3...
+Feb 14 10:12:15 ubuntu kernel: [    1.266741] mmc0: host does not support reading read-only switch, assuming write-enable
+Feb 14 10:12:15 ubuntu kernel: [    1.280815] mmc0: new high speed SDHC card at address aaaa
+Feb 14 10:12:15 ubuntu kernel: [    1.288144] mmcblk0: mmc0:aaaa SC16G 14.8 GiB 
+Feb 14 10:12:15 ubuntu kernel: [    1.301295]  mmcblk0: p1 p2 p3
+Feb 14 10:12:15 ubuntu kernel: [    1.443750] EXT4-fs (mmcblk0p3): mounted filesystem with ordered data mode. Opts: (null)
+Feb 14 10:12:15 ubuntu kernel: [    1.452107] VFS: Mounted root (ext4 filesystem) readonly on device 179:3.
+Feb 14 10:12:15 ubuntu kernel: [    1.470208] devtmpfs: mounted
+Feb 14 10:12:15 ubuntu kernel: [    1.477686] Freeing unused kernel memory: 1024K
+Feb 14 10:12:15 ubuntu kernel: [    1.482487] Run /sbin/init as init process
+Feb 14 10:12:15 ubuntu kernel: [    1.623774] random: fast init done
+Feb 14 10:12:15 ubuntu kernel: [    7.709376] random: systemd: uninitialized urandom read (16 bytes read)
+Feb 14 10:12:15 ubuntu kernel: [    7.742864] random: systemd: uninitialized urandom read (16 bytes read)
+Feb 14 10:12:15 ubuntu kernel: [    7.791232] random: systemd: uninitialized urandom read (16 bytes read)
+Feb 14 10:12:15 ubuntu kernel: [   11.091940] EXT4-fs (mmcblk0p3): re-mounted. Opts: (null)
+Feb 14 10:12:15 ubuntu kernel: [   11.097409] ext4 filesystem being remounted at / supports timestamps until 2038 (0x7fffffff)
+Feb 14 10:12:15 ubuntu kernel: [   11.607826] Swap area shorter than signature indicates
+Feb 14 10:12:15 ubuntu kernel: [   20.350923] EXT4-fs (mmcblk0p3): re-mounted. Opts: (null)
+Feb 14 10:12:15 ubuntu kernel: [   20.356458] ext4 filesystem being remounted at / supports timestamps until 2038 (0x7fffffff)
+Feb 14 10:12:15 ubuntu kernel: [   20.676463] Swap area shorter than signature indicates
+Feb 14 10:12:15 ubuntu kernel: [   20.909861] using random self ethernet address
+Feb 14 10:12:15 ubuntu kernel: [   20.914473] using random host ethernet address
+Feb 14 10:12:15 ubuntu kernel: [   21.174070] usb0: HOST MAC ca:93:e0:56:52:2e
+Feb 14 10:12:15 ubuntu kernel: [   21.178487] usb0: MAC be:54:b3:b1:ac:54
+Feb 14 10:12:26 ubuntu kernel: [   31.840541] vcc3v0: disabling
+Feb 14 10:12:26 ubuntu kernel: [   31.843539] vcc5v0: disabling
+Feb 14 10:13:23 ubuntu kernel: [   88.880595] random: crng init done
+Feb 14 10:13:23 ubuntu kernel: [   88.884022] random: 7 urandom warning(s) missed due to ratelimiting
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] Booting Linux on physical CPU 0x0
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] Linux version 5.4.77 (root@ubuntu) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #3 Sun Apr 3 07:12:26 UTC 2022
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] CPU: ARM926EJ-S [41069265] revision 5 (ARMv5TEJ), cr=0005317f
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] CPU: VIVT data cache, VIVT instruction cache
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] OF: fdt: Machine model: Planck Pi
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] Memory policy: Data cache writeback
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] cma: Reserved 16 MiB at 0x83000000
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] On node 0 totalpages: 16384
+Feb 14 10:12:25 ubuntu kernel: [    0.000000]   Normal zone: 128 pages used for memmap
+Feb 14 10:12:25 ubuntu kernel: [    0.000000]   Normal zone: 0 pages reserved
+Feb 14 10:12:25 ubuntu kernel: [    0.000000]   Normal zone: 16384 pages, LIFO batch:3
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] pcpu-alloc: [0] 0 
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 16256
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] Kernel command line: console=ttyS0,115200 earlyprintk rootwait consoleblank=0 net.ifnames=0 biosdevname=0 root=/dev/mmcblk0p3
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] Dentry cache hash table entries: 8192 (order: 3, 32768 bytes, linear)
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] Inode-cache hash table entries: 4096 (order: 2, 16384 bytes, linear)
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] Memory: 38744K/65536K available (6144K kernel code, 248K rwdata, 1676K rodata, 1024K init, 226K bss, 10408K reserved, 16384K cma-reserved)
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+Feb 14 10:12:25 ubuntu kernel: [    0.000000] random: get_random_bytes called from start_kernel+0x254/0x444 with crng_init=0
+Feb 14 10:12:25 ubuntu kernel: [    0.000042] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+Feb 14 10:12:25 ubuntu kernel: [    0.000112] clocksource: timer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+Feb 14 10:12:25 ubuntu kernel: [    0.000652] Console: colour dummy device 80x30
+Feb 14 10:12:25 ubuntu kernel: [    0.000733] Calibrating delay loop... 298.59 BogoMIPS (lpj=1492992)
+Feb 14 10:12:25 ubuntu kernel: [    0.070142] pid_max: default: 32768 minimum: 301
+Feb 14 10:12:25 ubuntu kernel: [    0.070551] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Feb 14 10:12:25 ubuntu kernel: [    0.070583] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Feb 14 10:12:25 ubuntu kernel: [    0.072048] CPU: Testing write buffer coherency: ok
+Feb 14 10:12:25 ubuntu kernel: [    0.073720] Setting up static identity map for 0x80100000 - 0x80100058
+Feb 14 10:12:25 ubuntu kernel: [    0.074781] devtmpfs: initialized
+Feb 14 10:12:25 ubuntu kernel: [    0.082323] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+Feb 14 10:12:25 ubuntu kernel: [    0.082380] futex hash table entries: 256 (order: -1, 3072 bytes, linear)
+Feb 14 10:12:25 ubuntu kernel: [    0.085787] pinctrl core: initialized pinctrl subsystem
+Feb 14 10:12:25 ubuntu kernel: [    0.087851] NET: Registered protocol family 16
+Feb 14 10:12:25 ubuntu kernel: [    0.090613] DMA: preallocated 256 KiB pool for atomic coherent allocations
+Feb 14 10:12:25 ubuntu kernel: [    0.092267] cpuidle: using governor menu
+Feb 14 10:12:25 ubuntu kernel: [    0.125624] SCSI subsystem initialized
+Feb 14 10:12:25 ubuntu kernel: [    0.125920] usbcore: registered new interface driver usbfs
+Feb 14 10:12:25 ubuntu kernel: [    0.126041] usbcore: registered new interface driver hub
+Feb 14 10:12:25 ubuntu kernel: [    0.126197] usbcore: registered new device driver usb
+Feb 14 10:12:25 ubuntu kernel: [    0.126589] mc: Linux media interface: v0.10
+Feb 14 10:12:25 ubuntu kernel: [    0.126687] videodev: Linux video capture interface: v2.00
+Feb 14 10:12:25 ubuntu kernel: [    0.126793] pps_core: LinuxPPS API ver. 1 registered
+Feb 14 10:12:25 ubuntu kernel: [    0.126808] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+Feb 14 10:12:25 ubuntu kernel: [    0.126851] PTP clock support registered
+Feb 14 10:12:25 ubuntu kernel: [    0.127714] ion_parse_dt_heap_common: id 4 type 4 name cma align 1000
+Feb 14 10:12:25 ubuntu kernel: [    0.128512] Advanced Linux Sound Architecture Driver Initialized.
+Feb 14 10:12:25 ubuntu kernel: [    0.130447] clocksource: Switched to clocksource timer
+Feb 14 10:12:25 ubuntu kernel: [    0.155449] thermal_sys: Registered thermal governor 'step_wise'
+Feb 14 10:12:25 ubuntu kernel: [    0.156044] NET: Registered protocol family 2
+Feb 14 10:12:25 ubuntu kernel: [    0.157264] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+Feb 14 10:12:25 ubuntu kernel: [    0.157326] TCP established hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Feb 14 10:12:25 ubuntu kernel: [    0.157371] TCP bind hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Feb 14 10:12:25 ubuntu kernel: [    0.157403] TCP: Hash tables configured (established 1024 bind 1024)
+Feb 14 10:12:25 ubuntu kernel: [    0.157648] UDP hash table entries: 256 (order: 0, 4096 bytes, linear)
+Feb 14 10:12:25 ubuntu kernel: [    0.157696] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes, linear)
+Feb 14 10:12:25 ubuntu kernel: [    0.158146] NET: Registered protocol family 1
+Feb 14 10:12:25 ubuntu kernel: [    0.160079] NetWinder Floating Point Emulator V0.97 (double precision)
+Feb 14 10:12:25 ubuntu kernel: [    0.161757] Initialise system trusted keyrings
+Feb 14 10:12:25 ubuntu kernel: [    0.162306] workingset: timestamp_bits=30 max_order=14 bucket_order=0
+Feb 14 10:12:25 ubuntu kernel: [    0.178088] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+Feb 14 10:12:25 ubuntu kernel: [    0.178584] jffs2: version 2.2. (NAND) (SUMMARY)  © 2001-2006 Red Hat, Inc.
+Feb 14 10:12:25 ubuntu kernel: [    0.256485] Key type asymmetric registered
+Feb 14 10:12:25 ubuntu kernel: [    0.256517] Asymmetric key parser 'x509' registered
+Feb 14 10:12:25 ubuntu kernel: [    0.256656] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 249)
+Feb 14 10:12:25 ubuntu kernel: [    0.256677] io scheduler mq-deadline registered
+Feb 14 10:12:25 ubuntu kernel: [    0.256690] io scheduler kyber registered
+Feb 14 10:12:25 ubuntu kernel: [    0.258776] sun4i-usb-phy 1c13400.phy: Couldn't request ID GPIO
+Feb 14 10:12:25 ubuntu kernel: [    0.267820] suniv-f1c100s-pinctrl 1c20800.pinctrl: initialized sunXi PIO driver
+Feb 14 10:12:25 ubuntu kernel: [    0.286511] Serial: 8250/16550 driver, 8 ports, IRQ sharing disabled
+Feb 14 10:12:25 ubuntu kernel: [    0.291396] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pa not found, using dummy regulator
+Feb 14 10:12:25 ubuntu kernel: [    0.292501] printk: console [ttyS0] disabled
+Feb 14 10:12:25 ubuntu kernel: [    0.312750] 1c25400.serial: ttyS0 at MMIO 0x1c25400 (irq = 27, base_baud = 6250000) is a 16550A
+Feb 14 10:12:25 ubuntu kernel: [    0.747074] printk: console [ttyS0] enabled
+Feb 14 10:12:25 ubuntu kernel: [    0.755275] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pd not found, using dummy regulator
+Feb 14 10:12:25 ubuntu kernel: [    0.769467] sun4i-drm soc:display-engine: bound 1e00000.display-frontend (ops 0xc073b028)
+Feb 14 10:12:25 ubuntu kernel: [    0.778451] sun4i-drm soc:display-engine: bound 1e60000.display-backend (ops 0xc073a868)
+Feb 14 10:12:25 ubuntu kernel: [    0.787568] sun4i-drm soc:display-engine: No panel or bridge found... RGB output disabled
+Feb 14 10:12:25 ubuntu kernel: [    0.795890] sun4i-drm soc:display-engine: bound 1c0c000.lcd-controller (ops 0xc0739408)
+Feb 14 10:12:25 ubuntu kernel: [    0.804392] sun4i-drm soc:display-engine: bound 1c0a000.tv-encoder (ops 0xc073a128)
+Feb 14 10:12:25 ubuntu kernel: [    0.812164] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
+Feb 14 10:12:25 ubuntu kernel: [    0.818761] [drm] No driver support for vblank timestamp query.
+Feb 14 10:12:25 ubuntu kernel: [    0.825785] [drm] Initialized sun4i-drm 1.0.0 20150629 for soc:display-engine on minor 0
+Feb 14 10:12:25 ubuntu kernel: [    0.896637] Console: switching to colour frame buffer device 90x36
+Feb 14 10:12:25 ubuntu kernel: [    0.922911] sun4i-drm soc:display-engine: fb0: sun4i-drmdrmfb frame buffer device
+Feb 14 10:12:25 ubuntu kernel: [    0.935544] SCSI Media Changer driver v0.25 
+Feb 14 10:12:25 ubuntu kernel: [    0.941255] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pc not found, using dummy regulator
+Feb 14 10:12:25 ubuntu kernel: [    0.953515] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+Feb 14 10:12:26 ubuntu kernel: [    0.960045] ehci-platform: EHCI generic platform driver
+Feb 14 10:12:26 ubuntu kernel: [    0.965781] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+Feb 14 10:12:26 ubuntu kernel: [    0.972101] ohci-platform: OHCI generic platform driver
+Feb 14 10:12:26 ubuntu kernel: [    0.977787] usbcore: registered new interface driver usb-storage
+Feb 14 10:12:26 ubuntu kernel: [    0.985337] i2c /dev entries driver
+Feb 14 10:12:26 ubuntu kernel: [    0.991728] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pe not found, using dummy regulator
+Feb 14 10:12:26 ubuntu kernel: [    1.002648] sun4i-csi 1cb0000.csi: Packed (RAW) format enabled.
+Feb 14 10:12:26 ubuntu kernel: [    1.010222] sunxi-wdt 1c20ca0.watchdog: Watchdog enabled (timeout=16 sec, nowayout=0)
+Feb 14 10:12:26 ubuntu kernel: [    1.019961] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pf not found, using dummy regulator
+Feb 14 10:12:26 ubuntu kernel: [    1.058081] sunxi-mmc 1c0f000.mmc: initialized, max. request size: 16384 KB
+Feb 14 10:12:26 ubuntu kernel: [    1.067172] usbcore: registered new interface driver usbhid
+Feb 14 10:12:26 ubuntu kernel: [    1.072861] usbhid: USB HID core driver
+Feb 14 10:12:26 ubuntu kernel: [    1.077025] sunxi-cedar 1c0e000.video-codec: sunxi cedar version 0.01alpha
+Feb 14 10:12:26 ubuntu kernel: [    1.084363] sunxi-cedar 1c0e000.video-codec: cedar-ve the get irq is 20
+Feb 14 10:12:26 ubuntu kernel: [    1.095694] debugfs: Directory '1c23c00.codec' with parent 'F1C100s Audio Codec' already present!
+Feb 14 10:12:26 ubuntu kernel: [    1.109828] sun4i-codec 1c23c00.codec: Codec <-> 1c23c00.codec mapping ok
+Feb 14 10:12:26 ubuntu kernel: [    1.124540] NET: Registered protocol family 17
+Feb 14 10:12:26 ubuntu kernel: [    1.129088] Key type dns_resolver registered
+Feb 14 10:12:26 ubuntu kernel: [    1.134495] Loading compiled-in X.509 certificates
+Feb 14 10:12:26 ubuntu kernel: [    1.151988] usb_phy_generic usb_phy_generic.0.auto: usb_phy_generic.0.auto supply vcc not found, using dummy regulator
+Feb 14 10:12:26 ubuntu kernel: [    1.163880] musb-hdrc musb-hdrc.1.auto: MUSB HDRC host driver
+Feb 14 10:12:26 ubuntu kernel: [    1.169748] musb-hdrc musb-hdrc.1.auto: new USB bus registered, assigned bus number 1
+Feb 14 10:12:26 ubuntu kernel: [    1.180214] hub 1-0:1.0: USB hub found
+Feb 14 10:12:26 ubuntu kernel: [    1.184333] hub 1-0:1.0: 1 port detected
+Feb 14 10:12:26 ubuntu kernel: [    1.191246] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 14 10:12:26 ubuntu kernel: [    1.206589] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+Feb 14 10:12:26 ubuntu kernel: [    1.213417] ALSA device list:
+Feb 14 10:12:26 ubuntu kernel: [    1.216396]   #0: F1C100s Audio Codec
+Feb 14 10:12:26 ubuntu kernel: [    1.220793] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+Feb 14 10:12:26 ubuntu kernel: [    1.229449] cfg80211: failed to load regulatory.db
+Feb 14 10:12:26 ubuntu kernel: [    1.235278] Waiting for root device /dev/mmcblk0p3...
+Feb 14 10:12:26 ubuntu kernel: [    1.264503] mmc0: host does not support reading read-only switch, assuming write-enable
+Feb 14 10:12:26 ubuntu kernel: [    1.279057] mmc0: new high speed SDHC card at address aaaa
+Feb 14 10:12:26 ubuntu kernel: [    1.286460] mmcblk0: mmc0:aaaa SC16G 14.8 GiB 
+Feb 14 10:12:26 ubuntu kernel: [    1.300104]  mmcblk0: p1 p2 p3
+Feb 14 10:12:26 ubuntu kernel: [    1.344815] EXT4-fs (mmcblk0p3): INFO: recovery required on readonly filesystem
+Feb 14 10:12:26 ubuntu kernel: [    1.352235] EXT4-fs (mmcblk0p3): write access will be enabled during recovery
+Feb 14 10:12:26 ubuntu kernel: [    1.754523] random: fast init done
+Feb 14 10:12:26 ubuntu kernel: [    2.159065] random: crng init done
+Feb 14 10:12:26 ubuntu kernel: [    2.834441] EXT4-fs (mmcblk0p3): recovery complete
+Feb 14 10:12:26 ubuntu kernel: [    2.857458] EXT4-fs (mmcblk0p3): mounted filesystem with ordered data mode. Opts: (null)
+Feb 14 10:12:26 ubuntu kernel: [    2.865815] VFS: Mounted root (ext4 filesystem) readonly on device 179:3.
+Feb 14 10:12:26 ubuntu kernel: [    2.884034] devtmpfs: mounted
+Feb 14 10:12:26 ubuntu kernel: [    2.891455] Freeing unused kernel memory: 1024K
+Feb 14 10:12:26 ubuntu kernel: [    2.896086] Run /sbin/init as init process
+Feb 14 10:12:26 ubuntu kernel: [   22.077189] EXT4-fs (mmcblk0p3): re-mounted. Opts: (null)
+Feb 14 10:12:26 ubuntu kernel: [   22.082790] ext4 filesystem being remounted at / supports timestamps until 2038 (0x7fffffff)
+Feb 14 10:12:26 ubuntu kernel: [   24.668083] Adding 511964k swap on /opt/images/swap.  Priority:-2 extents:8 across:657400k SS
+Feb 14 10:12:26 ubuntu kernel: [   31.840671] vcc3v0: disabling
+Feb 14 10:12:26 ubuntu kernel: [   31.843676] vcc5v0: disabling
+Feb 14 10:12:26 ubuntu kernel: [   31.916581] EXT4-fs (mmcblk0p3): re-mounted. Opts: (null)
+Feb 14 10:12:26 ubuntu kernel: [   31.922210] ext4 filesystem being remounted at / supports timestamps until 2038 (0x7fffffff)
+Feb 14 10:12:26 ubuntu kernel: [   32.421538] using random self ethernet address
+Feb 14 10:12:26 ubuntu kernel: [   32.426008] using random host ethernet address
+Feb 14 10:12:26 ubuntu kernel: [   32.653321] usb0: HOST MAC ea:72:67:6d:19:6d
+Feb 14 10:12:26 ubuntu kernel: [   32.657730] usb0: MAC 9e:c9:9d:2d:5f:c0
+Feb 14 10:12:57 ubuntu kernel: [   64.141246] configfs-gadget gadget: high-speed config #1: c1
+Feb 14 10:13:54 ubuntu kernel: [  121.681065] configfs-gadget gadget: high-speed config #1: c1
+Apr  3 14:01:53 planck kernel: [    0.000000] Booting Linux on physical CPU 0x0
+Apr  3 14:01:53 planck kernel: [    0.000000] Linux version 5.4.77 (root@ubuntu) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #3 Sun Apr 3 07:12:26 UTC 2022
+Apr  3 14:01:53 planck kernel: [    0.000000] CPU: ARM926EJ-S [41069265] revision 5 (ARMv5TEJ), cr=0005317f
+Apr  3 14:01:53 planck kernel: [    0.000000] CPU: VIVT data cache, VIVT instruction cache
+Apr  3 14:01:53 planck kernel: [    0.000000] OF: fdt: Machine model: Planck Pi
+Apr  3 14:01:53 planck kernel: [    0.000000] Memory policy: Data cache writeback
+Apr  3 14:01:53 planck kernel: [    0.000000] cma: Reserved 16 MiB at 0x83000000
+Apr  3 14:01:53 planck kernel: [    0.000000] On node 0 totalpages: 16384
+Apr  3 14:01:53 planck kernel: [    0.000000]   Normal zone: 128 pages used for memmap
+Apr  3 14:01:53 planck kernel: [    0.000000]   Normal zone: 0 pages reserved
+Apr  3 14:01:53 planck kernel: [    0.000000]   Normal zone: 16384 pages, LIFO batch:3
+Apr  3 14:01:53 planck kernel: [    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+Apr  3 14:01:53 planck kernel: [    0.000000] pcpu-alloc: [0] 0 
+Apr  3 14:01:53 planck kernel: [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 16256
+Apr  3 14:01:53 planck kernel: [    0.000000] Kernel command line: console=ttyS0,115200 earlyprintk rootwait consoleblank=0 net.ifnames=0 biosdevname=0 root=/dev/mmcblk0p3
+Apr  3 14:01:53 planck kernel: [    0.000000] Dentry cache hash table entries: 8192 (order: 3, 32768 bytes, linear)
+Apr  3 14:01:53 planck kernel: [    0.000000] Inode-cache hash table entries: 4096 (order: 2, 16384 bytes, linear)
+Apr  3 14:01:53 planck kernel: [    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+Apr  3 14:01:53 planck kernel: [    0.000000] Memory: 38744K/65536K available (6144K kernel code, 248K rwdata, 1676K rodata, 1024K init, 226K bss, 10408K reserved, 16384K cma-reserved)
+Apr  3 14:01:53 planck kernel: [    0.000000] SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Apr  3 14:01:53 planck kernel: [    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+Apr  3 14:01:53 planck kernel: [    0.000000] random: get_random_bytes called from start_kernel+0x254/0x444 with crng_init=0
+Apr  3 14:01:53 planck kernel: [    0.000042] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+Apr  3 14:01:53 planck kernel: [    0.000112] clocksource: timer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+Apr  3 14:01:53 planck kernel: [    0.000651] Console: colour dummy device 80x30
+Apr  3 14:01:53 planck kernel: [    0.000733] Calibrating delay loop... 298.59 BogoMIPS (lpj=1492992)
+Apr  3 14:01:53 planck kernel: [    0.070142] pid_max: default: 32768 minimum: 301
+Apr  3 14:01:53 planck kernel: [    0.070550] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:53 planck kernel: [    0.070582] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:53 planck kernel: [    0.072046] CPU: Testing write buffer coherency: ok
+Apr  3 14:01:53 planck kernel: [    0.073719] Setting up static identity map for 0x80100000 - 0x80100058
+Apr  3 14:01:53 planck kernel: [    0.074781] devtmpfs: initialized
+Apr  3 14:01:53 planck kernel: [    0.082322] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+Apr  3 14:01:53 planck kernel: [    0.082378] futex hash table entries: 256 (order: -1, 3072 bytes, linear)
+Apr  3 14:01:53 planck kernel: [    0.085785] pinctrl core: initialized pinctrl subsystem
+Apr  3 14:01:53 planck kernel: [    0.087849] NET: Registered protocol family 16
+Apr  3 14:01:53 planck kernel: [    0.090610] DMA: preallocated 256 KiB pool for atomic coherent allocations
+Apr  3 14:01:53 planck kernel: [    0.092263] cpuidle: using governor menu
+Apr  3 14:01:53 planck kernel: [    0.125664] SCSI subsystem initialized
+Apr  3 14:01:53 planck kernel: [    0.125964] usbcore: registered new interface driver usbfs
+Apr  3 14:01:53 planck kernel: [    0.126086] usbcore: registered new interface driver hub
+Apr  3 14:01:53 planck kernel: [    0.126243] usbcore: registered new device driver usb
+Apr  3 14:01:53 planck kernel: [    0.126639] mc: Linux media interface: v0.10
+Apr  3 14:01:53 planck kernel: [    0.126739] videodev: Linux video capture interface: v2.00
+Apr  3 14:01:53 planck kernel: [    0.126845] pps_core: LinuxPPS API ver. 1 registered
+Apr  3 14:01:53 planck kernel: [    0.126860] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+Apr  3 14:01:53 planck kernel: [    0.126906] PTP clock support registered
+Apr  3 14:01:53 planck kernel: [    0.127764] ion_parse_dt_heap_common: id 4 type 4 name cma align 1000
+Apr  3 14:01:53 planck kernel: [    0.128555] Advanced Linux Sound Architecture Driver Initialized.
+Apr  3 14:01:53 planck kernel: [    0.130484] clocksource: Switched to clocksource timer
+Apr  3 14:01:53 planck kernel: [    0.155505] thermal_sys: Registered thermal governor 'step_wise'
+Apr  3 14:01:53 planck kernel: [    0.156098] NET: Registered protocol family 2
+Apr  3 14:01:53 planck kernel: [    0.157318] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:53 planck kernel: [    0.157379] TCP established hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:53 planck kernel: [    0.157424] TCP bind hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:53 planck kernel: [    0.157456] TCP: Hash tables configured (established 1024 bind 1024)
+Apr  3 14:01:53 planck kernel: [    0.157699] UDP hash table entries: 256 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:53 planck kernel: [    0.157747] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:53 planck kernel: [    0.158189] NET: Registered protocol family 1
+Apr  3 14:01:53 planck kernel: [    0.160131] NetWinder Floating Point Emulator V0.97 (double precision)
+Apr  3 14:01:53 planck kernel: [    0.161799] Initialise system trusted keyrings
+Apr  3 14:01:53 planck kernel: [    0.162343] workingset: timestamp_bits=30 max_order=14 bucket_order=0
+Apr  3 14:01:53 planck kernel: [    0.178124] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+Apr  3 14:01:53 planck kernel: [    0.178627] jffs2: version 2.2. (NAND) (SUMMARY)  © 2001-2006 Red Hat, Inc.
+Apr  3 14:01:53 planck kernel: [    0.258267] Key type asymmetric registered
+Apr  3 14:01:53 planck kernel: [    0.258300] Asymmetric key parser 'x509' registered
+Apr  3 14:01:53 planck kernel: [    0.258439] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 249)
+Apr  3 14:01:53 planck kernel: [    0.258462] io scheduler mq-deadline registered
+Apr  3 14:01:53 planck kernel: [    0.258476] io scheduler kyber registered
+Apr  3 14:01:53 planck kernel: [    0.260662] sun4i-usb-phy 1c13400.phy: Couldn't request ID GPIO
+Apr  3 14:01:53 planck kernel: [    0.269595] suniv-f1c100s-pinctrl 1c20800.pinctrl: initialized sunXi PIO driver
+Apr  3 14:01:53 planck kernel: [    0.288319] Serial: 8250/16550 driver, 8 ports, IRQ sharing disabled
+Apr  3 14:01:53 planck kernel: [    0.293199] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pa not found, using dummy regulator
+Apr  3 14:01:53 planck kernel: [    0.294304] printk: console [ttyS0] disabled
+Apr  3 14:01:53 planck kernel: [    0.314544] 1c25400.serial: ttyS0 at MMIO 0x1c25400 (irq = 27, base_baud = 6250000) is a 16550A
+Apr  3 14:01:53 planck kernel: [    0.748853] printk: console [ttyS0] enabled
+Apr  3 14:01:53 planck kernel: [    0.757038] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pd not found, using dummy regulator
+Apr  3 14:01:53 planck kernel: [    0.771361] sun4i-drm soc:display-engine: bound 1e00000.display-frontend (ops 0xc073b028)
+Apr  3 14:01:53 planck kernel: [    0.780219] sun4i-drm soc:display-engine: bound 1e60000.display-backend (ops 0xc073a868)
+Apr  3 14:01:53 planck kernel: [    0.789333] sun4i-drm soc:display-engine: No panel or bridge found... RGB output disabled
+Apr  3 14:01:53 planck kernel: [    0.797659] sun4i-drm soc:display-engine: bound 1c0c000.lcd-controller (ops 0xc0739408)
+Apr  3 14:01:53 planck kernel: [    0.806159] sun4i-drm soc:display-engine: bound 1c0a000.tv-encoder (ops 0xc073a128)
+Apr  3 14:01:53 planck kernel: [    0.813929] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
+Apr  3 14:01:53 planck kernel: [    0.820575] [drm] No driver support for vblank timestamp query.
+Apr  3 14:01:53 planck kernel: [    0.827542] [drm] Initialized sun4i-drm 1.0.0 20150629 for soc:display-engine on minor 0
+Apr  3 14:01:53 planck kernel: [    0.898355] Console: switching to colour frame buffer device 90x36
+Apr  3 14:01:53 planck kernel: [    0.924648] sun4i-drm soc:display-engine: fb0: sun4i-drmdrmfb frame buffer device
+Apr  3 14:01:53 planck kernel: [    0.937301] SCSI Media Changer driver v0.25 
+Apr  3 14:01:53 planck kernel: [    0.943007] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pc not found, using dummy regulator
+Apr  3 14:01:53 planck kernel: [    0.955284] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+Apr  3 14:01:53 planck kernel: [    0.961944] ehci-platform: EHCI generic platform driver
+Apr  3 14:01:53 planck kernel: [    0.967565] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+Apr  3 14:01:53 planck kernel: [    0.973881] ohci-platform: OHCI generic platform driver
+Apr  3 14:01:53 planck kernel: [    0.979578] usbcore: registered new interface driver usb-storage
+Apr  3 14:01:53 planck kernel: [    0.987123] i2c /dev entries driver
+Apr  3 14:01:53 planck kernel: [    0.993521] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pe not found, using dummy regulator
+Apr  3 14:01:53 planck kernel: [    1.004446] sun4i-csi 1cb0000.csi: Packed (RAW) format enabled.
+Apr  3 14:01:53 planck kernel: [    1.012187] sunxi-wdt 1c20ca0.watchdog: Watchdog enabled (timeout=16 sec, nowayout=0)
+Apr  3 14:01:53 planck kernel: [    1.021945] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pf not found, using dummy regulator
+Apr  3 14:01:53 planck kernel: [    1.060012] sunxi-mmc 1c0f000.mmc: initialized, max. request size: 16384 KB
+Apr  3 14:01:53 planck kernel: [    1.069114] usbcore: registered new interface driver usbhid
+Apr  3 14:01:53 planck kernel: [    1.074806] usbhid: USB HID core driver
+Apr  3 14:01:53 planck kernel: [    1.078968] sunxi-cedar 1c0e000.video-codec: sunxi cedar version 0.01alpha
+Apr  3 14:01:53 planck kernel: [    1.086309] sunxi-cedar 1c0e000.video-codec: cedar-ve the get irq is 20
+Apr  3 14:01:53 planck kernel: [    1.097643] debugfs: Directory '1c23c00.codec' with parent 'F1C100s Audio Codec' already present!
+Apr  3 14:01:53 planck kernel: [    1.111872] sun4i-codec 1c23c00.codec: Codec <-> 1c23c00.codec mapping ok
+Apr  3 14:01:53 planck kernel: [    1.126475] NET: Registered protocol family 17
+Apr  3 14:01:53 planck kernel: [    1.131171] Key type dns_resolver registered
+Apr  3 14:01:53 planck kernel: [    1.136429] Loading compiled-in X.509 certificates
+Apr  3 14:01:53 planck kernel: [    1.153843] usb_phy_generic usb_phy_generic.0.auto: usb_phy_generic.0.auto supply vcc not found, using dummy regulator
+Apr  3 14:01:53 planck kernel: [    1.165738] musb-hdrc musb-hdrc.1.auto: MUSB HDRC host driver
+Apr  3 14:01:53 planck kernel: [    1.171734] musb-hdrc musb-hdrc.1.auto: new USB bus registered, assigned bus number 1
+Apr  3 14:01:53 planck kernel: [    1.182164] hub 1-0:1.0: USB hub found
+Apr  3 14:01:53 planck kernel: [    1.186183] hub 1-0:1.0: 1 port detected
+Apr  3 14:01:53 planck kernel: [    1.193086] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Apr  3 14:01:53 planck kernel: [    1.208440] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+Apr  3 14:01:53 planck kernel: [    1.215274] ALSA device list:
+Apr  3 14:01:53 planck kernel: [    1.218255]   #0: F1C100s Audio Codec
+Apr  3 14:01:53 planck kernel: [    1.222508] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+Apr  3 14:01:53 planck kernel: [    1.231281] cfg80211: failed to load regulatory.db
+Apr  3 14:01:53 planck kernel: [    1.237038] Waiting for root device /dev/mmcblk0p3...
+Apr  3 14:01:53 planck kernel: [    1.266468] mmc0: host does not support reading read-only switch, assuming write-enable
+Apr  3 14:01:53 planck kernel: [    1.280844] mmc0: new high speed SDHC card at address aaaa
+Apr  3 14:01:53 planck kernel: [    1.288177] mmcblk0: mmc0:aaaa SC16G 14.8 GiB 
+Apr  3 14:01:53 planck kernel: [    1.301512]  mmcblk0: p1 p2 p3
+Apr  3 14:01:53 planck kernel: [    1.354621] EXT4-fs (mmcblk0p3): INFO: recovery required on readonly filesystem
+Apr  3 14:01:53 planck kernel: [    1.362039] EXT4-fs (mmcblk0p3): write access will be enabled during recovery
+Apr  3 14:01:53 planck kernel: [    1.664077] random: fast init done
+Apr  3 14:01:53 planck kernel: [    2.122630] random: crng init done
+Apr  3 14:01:53 planck kernel: [    2.662187] EXT4-fs (mmcblk0p3): recovery complete
+Apr  3 14:01:53 planck kernel: [    2.686330] EXT4-fs (mmcblk0p3): mounted filesystem with ordered data mode. Opts: (null)
+Apr  3 14:01:53 planck kernel: [    2.694644] VFS: Mounted root (ext4 filesystem) readonly on device 179:3.
+Apr  3 14:01:53 planck kernel: [    2.712759] devtmpfs: mounted
+Apr  3 14:01:53 planck kernel: [    2.720075] Freeing unused kernel memory: 1024K
+Apr  3 14:01:53 planck kernel: [    2.724859] Run /sbin/init as init process
+Apr  3 14:01:53 planck kernel: [   21.881192] EXT4-fs (mmcblk0p3): re-mounted. Opts: (null)
+Apr  3 14:01:53 planck kernel: [   21.886662] ext4 filesystem being remounted at / supports timestamps until 2038 (0x7fffffff)
+Apr  3 14:01:53 planck kernel: [   23.988588] Adding 511940k swap on /opt/images/swap.  Priority:-2 extents:14 across:571384k SS
+Apr  3 14:01:53 planck kernel: [   31.840823] vcc3v0: disabling
+Apr  3 14:01:53 planck kernel: [   31.843825] vcc5v0: disabling
+Apr  3 14:01:53 planck kernel: [   33.058199] EXT4-fs (mmcblk0p3): re-mounted. Opts: (null)
+Apr  3 14:01:53 planck kernel: [   33.063793] ext4 filesystem being remounted at / supports timestamps until 2038 (0x7fffffff)
+Apr  3 14:01:53 planck kernel: [   33.556909] using random self ethernet address
+Apr  3 14:01:53 planck kernel: [   33.561520] using random host ethernet address
+Apr  3 14:01:54 planck kernel: [   33.761335] usb0: HOST MAC 9e:b2:07:c0:3f:e3
+Apr  3 14:01:54 planck kernel: [   33.765743] usb0: MAC ee:32:d0:cc:bc:31
+Apr  3 14:01:52 localhost kernel: [    0.000000] Booting Linux on physical CPU 0x0
+Apr  3 14:01:52 localhost kernel: [    0.000000] Linux version 5.4.77 (root@ubuntu) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #3 Sun Apr 3 07:12:26 UTC 2022
+Apr  3 14:01:52 localhost kernel: [    0.000000] CPU: ARM926EJ-S [41069265] revision 5 (ARMv5TEJ), cr=0005317f
+Apr  3 14:01:52 localhost kernel: [    0.000000] CPU: VIVT data cache, VIVT instruction cache
+Apr  3 14:01:52 localhost kernel: [    0.000000] OF: fdt: Machine model: Planck Pi
+Apr  3 14:01:52 localhost kernel: [    0.000000] Memory policy: Data cache writeback
+Apr  3 14:01:52 localhost kernel: [    0.000000] cma: Reserved 16 MiB at 0x83000000
+Apr  3 14:01:52 localhost kernel: [    0.000000] On node 0 totalpages: 16384
+Apr  3 14:01:52 localhost kernel: [    0.000000]   Normal zone: 128 pages used for memmap
+Apr  3 14:01:52 localhost kernel: [    0.000000]   Normal zone: 0 pages reserved
+Apr  3 14:01:52 localhost kernel: [    0.000000]   Normal zone: 16384 pages, LIFO batch:3
+Apr  3 14:01:52 localhost kernel: [    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+Apr  3 14:01:52 localhost kernel: [    0.000000] pcpu-alloc: [0] 0 
+Apr  3 14:01:52 localhost kernel: [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 16256
+Apr  3 14:01:52 localhost kernel: [    0.000000] Kernel command line: console=ttyS0,115200 earlyprintk rootwait consoleblank=0 net.ifnames=0 biosdevname=0 root=/dev/mmcblk0p3
+Apr  3 14:01:52 localhost kernel: [    0.000000] Dentry cache hash table entries: 8192 (order: 3, 32768 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.000000] Inode-cache hash table entries: 4096 (order: 2, 16384 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+Apr  3 14:01:52 localhost kernel: [    0.000000] Memory: 38744K/65536K available (6144K kernel code, 248K rwdata, 1676K rodata, 1024K init, 226K bss, 10408K reserved, 16384K cma-reserved)
+Apr  3 14:01:52 localhost kernel: [    0.000000] SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Apr  3 14:01:52 localhost kernel: [    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+Apr  3 14:01:52 localhost kernel: [    0.000000] random: get_random_bytes called from start_kernel+0x254/0x444 with crng_init=0
+Apr  3 14:01:52 localhost kernel: [    0.000042] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+Apr  3 14:01:52 localhost kernel: [    0.000112] clocksource: timer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+Apr  3 14:01:52 localhost kernel: [    0.000652] Console: colour dummy device 80x30
+Apr  3 14:01:52 localhost kernel: [    0.000733] Calibrating delay loop... 298.59 BogoMIPS (lpj=1492992)
+Apr  3 14:01:52 localhost kernel: [    0.070142] pid_max: default: 32768 minimum: 301
+Apr  3 14:01:52 localhost kernel: [    0.070552] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.070584] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.072049] CPU: Testing write buffer coherency: ok
+Apr  3 14:01:52 localhost kernel: [    0.073720] Setting up static identity map for 0x80100000 - 0x80100058
+Apr  3 14:01:52 localhost kernel: [    0.074782] devtmpfs: initialized
+Apr  3 14:01:52 localhost kernel: [    0.082323] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+Apr  3 14:01:52 localhost kernel: [    0.082379] futex hash table entries: 256 (order: -1, 3072 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.085787] pinctrl core: initialized pinctrl subsystem
+Apr  3 14:01:52 localhost kernel: [    0.087851] NET: Registered protocol family 16
+Apr  3 14:01:52 localhost kernel: [    0.090612] DMA: preallocated 256 KiB pool for atomic coherent allocations
+Apr  3 14:01:52 localhost kernel: [    0.092265] cpuidle: using governor menu
+Apr  3 14:01:52 localhost kernel: [    0.125706] SCSI subsystem initialized
+Apr  3 14:01:52 localhost kernel: [    0.126009] usbcore: registered new interface driver usbfs
+Apr  3 14:01:52 localhost kernel: [    0.126130] usbcore: registered new interface driver hub
+Apr  3 14:01:52 localhost kernel: [    0.126286] usbcore: registered new device driver usb
+Apr  3 14:01:52 localhost kernel: [    0.126691] mc: Linux media interface: v0.10
+Apr  3 14:01:52 localhost kernel: [    0.126789] videodev: Linux video capture interface: v2.00
+Apr  3 14:01:52 localhost kernel: [    0.126898] pps_core: LinuxPPS API ver. 1 registered
+Apr  3 14:01:52 localhost kernel: [    0.126914] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+Apr  3 14:01:52 localhost kernel: [    0.126963] PTP clock support registered
+Apr  3 14:01:52 localhost kernel: [    0.127812] ion_parse_dt_heap_common: id 4 type 4 name cma align 1000
+Apr  3 14:01:52 localhost kernel: [    0.128610] Advanced Linux Sound Architecture Driver Initialized.
+Apr  3 14:01:52 localhost kernel: [    0.130541] clocksource: Switched to clocksource timer
+Apr  3 14:01:52 localhost kernel: [    0.155571] thermal_sys: Registered thermal governor 'step_wise'
+Apr  3 14:01:52 localhost kernel: [    0.156168] NET: Registered protocol family 2
+Apr  3 14:01:52 localhost kernel: [    0.157384] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.157446] TCP established hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.157491] TCP bind hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.157524] TCP: Hash tables configured (established 1024 bind 1024)
+Apr  3 14:01:52 localhost kernel: [    0.157766] UDP hash table entries: 256 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.157815] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.158265] NET: Registered protocol family 1
+Apr  3 14:01:52 localhost kernel: [    0.160201] NetWinder Floating Point Emulator V0.97 (double precision)
+Apr  3 14:01:52 localhost kernel: [    0.161870] Initialise system trusted keyrings
+Apr  3 14:01:52 localhost kernel: [    0.162409] workingset: timestamp_bits=30 max_order=14 bucket_order=0
+Apr  3 14:01:52 localhost kernel: [    0.178196] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+Apr  3 14:01:52 localhost kernel: [    0.178703] jffs2: version 2.2. (NAND) (SUMMARY)  © 2001-2006 Red Hat, Inc.
+Apr  3 14:01:52 localhost kernel: [    0.254057] Key type asymmetric registered
+Apr  3 14:01:52 localhost kernel: [    0.254090] Asymmetric key parser 'x509' registered
+Apr  3 14:01:52 localhost kernel: [    0.254229] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 249)
+Apr  3 14:01:52 localhost kernel: [    0.254252] io scheduler mq-deadline registered
+Apr  3 14:01:52 localhost kernel: [    0.254265] io scheduler kyber registered
+Apr  3 14:01:52 localhost kernel: [    0.256319] sun4i-usb-phy 1c13400.phy: Couldn't request ID GPIO
+Apr  3 14:01:52 localhost kernel: [    0.265388] suniv-f1c100s-pinctrl 1c20800.pinctrl: initialized sunXi PIO driver
+Apr  3 14:01:52 localhost kernel: [    0.284047] Serial: 8250/16550 driver, 8 ports, IRQ sharing disabled
+Apr  3 14:01:52 localhost kernel: [    0.288750] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pa not found, using dummy regulator
+Apr  3 14:01:52 localhost kernel: [    0.289850] printk: console [ttyS0] disabled
+Apr  3 14:01:52 localhost kernel: [    0.310091] 1c25400.serial: ttyS0 at MMIO 0x1c25400 (irq = 27, base_baud = 6250000) is a 16550A
+Apr  3 14:01:52 localhost kernel: [    0.744431] printk: console [ttyS0] enabled
+Apr  3 14:01:52 localhost kernel: [    0.752701] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pd not found, using dummy regulator
+Apr  3 14:01:52 localhost kernel: [    0.766897] sun4i-drm soc:display-engine: bound 1e00000.display-frontend (ops 0xc073b028)
+Apr  3 14:01:52 localhost kernel: [    0.775868] sun4i-drm soc:display-engine: bound 1e60000.display-backend (ops 0xc073a868)
+Apr  3 14:01:52 localhost kernel: [    0.784978] sun4i-drm soc:display-engine: No panel or bridge found... RGB output disabled
+Apr  3 14:01:52 localhost kernel: [    0.793305] sun4i-drm soc:display-engine: bound 1c0c000.lcd-controller (ops 0xc0739408)
+Apr  3 14:01:52 localhost kernel: [    0.801810] sun4i-drm soc:display-engine: bound 1c0a000.tv-encoder (ops 0xc073a128)
+Apr  3 14:01:52 localhost kernel: [    0.809463] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
+Apr  3 14:01:52 localhost kernel: [    0.816168] [drm] No driver support for vblank timestamp query.
+Apr  3 14:01:52 localhost kernel: [    0.823175] [drm] Initialized sun4i-drm 1.0.0 20150629 for soc:display-engine on minor 0
+Apr  3 14:01:52 localhost kernel: [    0.893930] Console: switching to colour frame buffer device 90x36
+Apr  3 14:01:52 localhost kernel: [    0.920139] sun4i-drm soc:display-engine: fb0: sun4i-drmdrmfb frame buffer device
+Apr  3 14:01:52 localhost kernel: [    0.932940] SCSI Media Changer driver v0.25 
+Apr  3 14:01:52 localhost kernel: [    0.938488] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pc not found, using dummy regulator
+Apr  3 14:01:52 localhost kernel: [    0.950891] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+Apr  3 14:01:52 localhost kernel: [    0.957422] ehci-platform: EHCI generic platform driver
+Apr  3 14:01:52 localhost kernel: [    0.963133] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+Apr  3 14:01:52 localhost kernel: [    0.969358] ohci-platform: OHCI generic platform driver
+Apr  3 14:01:52 localhost kernel: [    0.975150] usbcore: registered new interface driver usb-storage
+Apr  3 14:01:52 localhost kernel: [    0.982683] i2c /dev entries driver
+Apr  3 14:01:52 localhost kernel: [    0.988923] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pe not found, using dummy regulator
+Apr  3 14:01:52 localhost kernel: [    0.999845] sun4i-csi 1cb0000.csi: Packed (RAW) format enabled.
+Apr  3 14:01:52 localhost kernel: [    1.007578] sunxi-wdt 1c20ca0.watchdog: Watchdog enabled (timeout=16 sec, nowayout=0)
+Apr  3 14:01:52 localhost kernel: [    1.017312] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pf not found, using dummy regulator
+Apr  3 14:01:52 localhost kernel: [    1.053502] sunxi-mmc 1c0f000.mmc: initialized, max. request size: 16384 KB
+Apr  3 14:01:52 localhost kernel: [    1.062599] usbcore: registered new interface driver usbhid
+Apr  3 14:01:52 localhost kernel: [    1.068171] usbhid: USB HID core driver
+Apr  3 14:01:52 localhost kernel: [    1.072447] sunxi-cedar 1c0e000.video-codec: sunxi cedar version 0.01alpha
+Apr  3 14:01:52 localhost kernel: [    1.079679] sunxi-cedar 1c0e000.video-codec: cedar-ve the get irq is 20
+Apr  3 14:01:52 localhost kernel: [    1.091181] debugfs: Directory '1c23c00.codec' with parent 'F1C100s Audio Codec' already present!
+Apr  3 14:01:52 localhost kernel: [    1.105306] sun4i-codec 1c23c00.codec: Codec <-> 1c23c00.codec mapping ok
+Apr  3 14:01:52 localhost kernel: [    1.119889] NET: Registered protocol family 17
+Apr  3 14:01:52 localhost kernel: [    1.124571] Key type dns_resolver registered
+Apr  3 14:01:52 localhost kernel: [    1.129845] Loading compiled-in X.509 certificates
+Apr  3 14:01:52 localhost kernel: [    1.147296] usb_phy_generic usb_phy_generic.0.auto: usb_phy_generic.0.auto supply vcc not found, using dummy regulator
+Apr  3 14:01:52 localhost kernel: [    1.159171] musb-hdrc musb-hdrc.1.auto: MUSB HDRC host driver
+Apr  3 14:01:52 localhost kernel: [    1.165170] musb-hdrc musb-hdrc.1.auto: new USB bus registered, assigned bus number 1
+Apr  3 14:01:52 localhost kernel: [    1.175565] hub 1-0:1.0: USB hub found
+Apr  3 14:01:52 localhost kernel: [    1.179572] hub 1-0:1.0: 1 port detected
+Apr  3 14:01:52 localhost kernel: [    1.186464] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Apr  3 14:01:52 localhost kernel: [    1.202095] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+Apr  3 14:01:52 localhost kernel: [    1.208850] ALSA device list:
+Apr  3 14:01:52 localhost kernel: [    1.211937]   #0: F1C100s Audio Codec
+Apr  3 14:01:52 localhost kernel: [    1.216102] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+Apr  3 14:01:52 localhost kernel: [    1.224853] cfg80211: failed to load regulatory.db
+Apr  3 14:01:52 localhost kernel: [    1.230764] Waiting for root device /dev/mmcblk0p3...
+Apr  3 14:01:52 localhost kernel: [    1.246465] mmc0: host does not support reading read-only switch, assuming write-enable
+Apr  3 14:01:52 localhost kernel: [    1.260479] mmc0: new high speed SDHC card at address aaaa
+Apr  3 14:01:52 localhost kernel: [    1.267879] mmcblk0: mmc0:aaaa SC16G 14.8 GiB 
+Apr  3 14:01:52 localhost kernel: [    1.281260]  mmcblk0: p1 p2 p3
+Apr  3 14:01:52 localhost kernel: [    1.400480] EXT4-fs (mmcblk0p3): mounted filesystem with ordered data mode. Opts: (null)
+Apr  3 14:01:52 localhost kernel: [    1.408796] VFS: Mounted root (ext4 filesystem) readonly on device 179:3.
+Apr  3 14:01:52 localhost kernel: [    1.426952] devtmpfs: mounted
+Apr  3 14:01:52 localhost kernel: [    1.434374] Freeing unused kernel memory: 1024K
+Apr  3 14:01:52 localhost kernel: [    1.439049] Run /sbin/init as init process
+Apr  3 14:01:52 localhost kernel: [    1.594140] random: fast init done
+Apr  3 14:01:52 localhost kernel: [    7.679549] random: systemd: uninitialized urandom read (16 bytes read)
+Apr  3 14:01:52 localhost kernel: [    7.712758] random: systemd: uninitialized urandom read (16 bytes read)
+Apr  3 14:01:52 localhost kernel: [    7.761360] random: systemd: uninitialized urandom read (16 bytes read)
+Apr  3 14:01:52 localhost kernel: [   11.391252] EXT4-fs (mmcblk0p3): re-mounted. Opts: (null)
+Apr  3 14:01:52 localhost kernel: [   11.396722] ext4 filesystem being remounted at / supports timestamps until 2038 (0x7fffffff)
+Apr  3 14:01:52 localhost kernel: [   14.173152] Adding 511940k swap on /opt/images/swap.  Priority:-2 extents:14 across:571384k SS
+Apr  3 14:01:52 localhost kernel: [   21.209695] EXT4-fs (mmcblk0p3): re-mounted. Opts: (null)
+Apr  3 14:01:52 localhost kernel: [   21.215332] ext4 filesystem being remounted at / supports timestamps until 2038 (0x7fffffff)
+Apr  3 14:01:52 localhost kernel: [   21.635609] using random self ethernet address
+Apr  3 14:01:52 localhost kernel: [   21.640078] using random host ethernet address
+Apr  3 14:01:52 localhost kernel: [   21.857069] usb0: HOST MAC 0a:20:db:08:0e:19
+Apr  3 14:01:52 localhost kernel: [   21.861626] usb0: MAC 52:bd:e2:b0:a0:3a
+Apr  3 14:02:02 localhost kernel: [   31.840716] vcc3v0: disabling
+Apr  3 14:02:02 localhost kernel: [   31.843720] vcc5v0: disabling
+Apr  3 14:02:10 localhost kernel: [   40.518764] random: crng init done
+Apr  3 14:02:10 localhost kernel: [   40.522192] random: 7 urandom warning(s) missed due to ratelimiting
+Apr  3 14:01:52 localhost kernel: [    0.000000] Booting Linux on physical CPU 0x0
+Apr  3 14:01:52 localhost kernel: [    0.000000] Linux version 5.4.77 (root@ubuntu) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #3 Sun Apr 3 07:12:26 UTC 2022
+Apr  3 14:01:52 localhost kernel: [    0.000000] CPU: ARM926EJ-S [41069265] revision 5 (ARMv5TEJ), cr=0005317f
+Apr  3 14:01:52 localhost kernel: [    0.000000] CPU: VIVT data cache, VIVT instruction cache
+Apr  3 14:01:52 localhost kernel: [    0.000000] OF: fdt: Machine model: Planck Pi
+Apr  3 14:01:52 localhost kernel: [    0.000000] Memory policy: Data cache writeback
+Apr  3 14:01:52 localhost kernel: [    0.000000] cma: Reserved 16 MiB at 0x83000000
+Apr  3 14:01:52 localhost kernel: [    0.000000] On node 0 totalpages: 16384
+Apr  3 14:01:52 localhost kernel: [    0.000000]   Normal zone: 128 pages used for memmap
+Apr  3 14:01:52 localhost kernel: [    0.000000]   Normal zone: 0 pages reserved
+Apr  3 14:01:52 localhost kernel: [    0.000000]   Normal zone: 16384 pages, LIFO batch:3
+Apr  3 14:01:52 localhost kernel: [    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+Apr  3 14:01:52 localhost kernel: [    0.000000] pcpu-alloc: [0] 0 
+Apr  3 14:01:52 localhost kernel: [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 16256
+Apr  3 14:01:52 localhost kernel: [    0.000000] Kernel command line: console=ttyS0,115200 earlyprintk rootwait consoleblank=0 net.ifnames=0 biosdevname=0 root=/dev/mmcblk0p3
+Apr  3 14:01:52 localhost kernel: [    0.000000] Dentry cache hash table entries: 8192 (order: 3, 32768 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.000000] Inode-cache hash table entries: 4096 (order: 2, 16384 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+Apr  3 14:01:52 localhost kernel: [    0.000000] Memory: 38744K/65536K available (6144K kernel code, 248K rwdata, 1676K rodata, 1024K init, 226K bss, 10408K reserved, 16384K cma-reserved)
+Apr  3 14:01:52 localhost kernel: [    0.000000] SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Apr  3 14:01:52 localhost kernel: [    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+Apr  3 14:01:52 localhost kernel: [    0.000000] random: get_random_bytes called from start_kernel+0x254/0x444 with crng_init=0
+Apr  3 14:01:52 localhost kernel: [    0.000042] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+Apr  3 14:01:52 localhost kernel: [    0.000112] clocksource: timer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+Apr  3 14:01:52 localhost kernel: [    0.000652] Console: colour dummy device 80x30
+Apr  3 14:01:52 localhost kernel: [    0.000734] Calibrating delay loop... 298.59 BogoMIPS (lpj=1492992)
+Apr  3 14:01:52 localhost kernel: [    0.070142] pid_max: default: 32768 minimum: 301
+Apr  3 14:01:52 localhost kernel: [    0.070550] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.070582] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.072048] CPU: Testing write buffer coherency: ok
+Apr  3 14:01:52 localhost kernel: [    0.073719] Setting up static identity map for 0x80100000 - 0x80100058
+Apr  3 14:01:52 localhost kernel: [    0.074781] devtmpfs: initialized
+Apr  3 14:01:52 localhost kernel: [    0.082309] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+Apr  3 14:01:52 localhost kernel: [    0.082363] futex hash table entries: 256 (order: -1, 3072 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.085772] pinctrl core: initialized pinctrl subsystem
+Apr  3 14:01:52 localhost kernel: [    0.087828] NET: Registered protocol family 16
+Apr  3 14:01:52 localhost kernel: [    0.090588] DMA: preallocated 256 KiB pool for atomic coherent allocations
+Apr  3 14:01:52 localhost kernel: [    0.092237] cpuidle: using governor menu
+Apr  3 14:01:52 localhost kernel: [    0.125683] SCSI subsystem initialized
+Apr  3 14:01:52 localhost kernel: [    0.125987] usbcore: registered new interface driver usbfs
+Apr  3 14:01:52 localhost kernel: [    0.126109] usbcore: registered new interface driver hub
+Apr  3 14:01:52 localhost kernel: [    0.126259] usbcore: registered new device driver usb
+Apr  3 14:01:52 localhost kernel: [    0.126653] mc: Linux media interface: v0.10
+Apr  3 14:01:52 localhost kernel: [    0.126752] videodev: Linux video capture interface: v2.00
+Apr  3 14:01:52 localhost kernel: [    0.126855] pps_core: LinuxPPS API ver. 1 registered
+Apr  3 14:01:52 localhost kernel: [    0.126870] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+Apr  3 14:01:52 localhost kernel: [    0.126917] PTP clock support registered
+Apr  3 14:01:52 localhost kernel: [    0.127765] ion_parse_dt_heap_common: id 4 type 4 name cma align 1000
+Apr  3 14:01:52 localhost kernel: [    0.128556] Advanced Linux Sound Architecture Driver Initialized.
+Apr  3 14:01:52 localhost kernel: [    0.130485] clocksource: Switched to clocksource timer
+Apr  3 14:01:52 localhost kernel: [    0.155492] thermal_sys: Registered thermal governor 'step_wise'
+Apr  3 14:01:52 localhost kernel: [    0.156083] NET: Registered protocol family 2
+Apr  3 14:01:52 localhost kernel: [    0.157302] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.157365] TCP established hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.157409] TCP bind hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.157442] TCP: Hash tables configured (established 1024 bind 1024)
+Apr  3 14:01:52 localhost kernel: [    0.157682] UDP hash table entries: 256 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.157729] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes, linear)
+Apr  3 14:01:52 localhost kernel: [    0.158174] NET: Registered protocol family 1
+Apr  3 14:01:52 localhost kernel: [    0.160112] NetWinder Floating Point Emulator V0.97 (double precision)
+Apr  3 14:01:52 localhost kernel: [    0.161790] Initialise system trusted keyrings
+Apr  3 14:01:52 localhost kernel: [    0.162333] workingset: timestamp_bits=30 max_order=14 bucket_order=0
+Apr  3 14:01:52 localhost kernel: [    0.178135] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+Apr  3 14:01:52 localhost kernel: [    0.178631] jffs2: version 2.2. (NAND) (SUMMARY)  © 2001-2006 Red Hat, Inc.
+Apr  3 14:01:52 localhost kernel: [    0.261460] Key type asymmetric registered
+Apr  3 14:01:52 localhost kernel: [    0.261494] Asymmetric key parser 'x509' registered
+Apr  3 14:01:52 localhost kernel: [    0.261637] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 249)
+Apr  3 14:01:52 localhost kernel: [    0.261658] io scheduler mq-deadline registered
+Apr  3 14:01:52 localhost kernel: [    0.261671] io scheduler kyber registered
+Apr  3 14:01:52 localhost kernel: [    0.263752] sun4i-usb-phy 1c13400.phy: Couldn't request ID GPIO
+Apr  3 14:01:52 localhost kernel: [    0.272837] suniv-f1c100s-pinctrl 1c20800.pinctrl: initialized sunXi PIO driver
+Apr  3 14:01:52 localhost kernel: [    0.291511] Serial: 8250/16550 driver, 8 ports, IRQ sharing disabled
+Apr  3 14:01:52 localhost kernel: [    0.296216] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pa not found, using dummy regulator
+Apr  3 14:01:52 localhost kernel: [    0.297311] printk: console [ttyS0] disabled
+Apr  3 14:01:52 localhost kernel: [    0.317554] 1c25400.serial: ttyS0 at MMIO 0x1c25400 (irq = 27, base_baud = 6250000) is a 16550A
+Apr  3 14:01:52 localhost kernel: [    0.751883] printk: console [ttyS0] enabled
+Apr  3 14:01:52 localhost kernel: [    0.760025] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pd not found, using dummy regulator
+Apr  3 14:01:52 localhost kernel: [    0.774307] sun4i-drm soc:display-engine: bound 1e00000.display-frontend (ops 0xc073b028)
+Apr  3 14:01:52 localhost kernel: [    0.783284] sun4i-drm soc:display-engine: bound 1e60000.display-backend (ops 0xc073a868)
+Apr  3 14:01:52 localhost kernel: [    0.792405] sun4i-drm soc:display-engine: No panel or bridge found... RGB output disabled
+Apr  3 14:01:52 localhost kernel: [    0.800729] sun4i-drm soc:display-engine: bound 1c0c000.lcd-controller (ops 0xc0739408)
+Apr  3 14:01:52 localhost kernel: [    0.809175] sun4i-drm soc:display-engine: bound 1c0a000.tv-encoder (ops 0xc073a128)
+Apr  3 14:01:52 localhost kernel: [    0.816946] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
+Apr  3 14:01:52 localhost kernel: [    0.823595] [drm] No driver support for vblank timestamp query.
+Apr  3 14:01:52 localhost kernel: [    0.830682] [drm] Initialized sun4i-drm 1.0.0 20150629 for soc:display-engine on minor 0
+Apr  3 14:01:52 localhost kernel: [    0.901447] Console: switching to colour frame buffer device 90x36
+Apr  3 14:01:52 localhost kernel: [    0.927653] sun4i-drm soc:display-engine: fb0: sun4i-drmdrmfb frame buffer device
+Apr  3 14:01:52 localhost kernel: [    0.940310] SCSI Media Changer driver v0.25 
+Apr  3 14:01:52 localhost kernel: [    0.946024] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pc not found, using dummy regulator
+Apr  3 14:01:52 localhost kernel: [    0.958289] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+Apr  3 14:01:52 localhost kernel: [    0.964950] ehci-platform: EHCI generic platform driver
+Apr  3 14:01:52 localhost kernel: [    0.970660] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+Apr  3 14:01:52 localhost kernel: [    0.976888] ohci-platform: OHCI generic platform driver
+Apr  3 14:01:52 localhost kernel: [    0.982657] usbcore: registered new interface driver usb-storage
+Apr  3 14:01:52 localhost kernel: [    0.990096] i2c /dev entries driver
+Apr  3 14:01:52 localhost kernel: [    0.996503] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pe not found, using dummy regulator
+Apr  3 14:01:52 localhost kernel: [    1.007420] sun4i-csi 1cb0000.csi: Packed (RAW) format enabled.
+Apr  3 14:01:52 localhost kernel: [    1.015144] sunxi-wdt 1c20ca0.watchdog: Watchdog enabled (timeout=16 sec, nowayout=0)
+Apr  3 14:01:52 localhost kernel: [    1.024883] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pf not found, using dummy regulator
+Apr  3 14:01:52 localhost kernel: [    1.062963] sunxi-mmc 1c0f000.mmc: initialized, max. request size: 16384 KB
+Apr  3 14:01:52 localhost kernel: [    1.072118] usbcore: registered new interface driver usbhid
+Apr  3 14:01:52 localhost kernel: [    1.077690] usbhid: USB HID core driver
+Apr  3 14:01:52 localhost kernel: [    1.081958] sunxi-cedar 1c0e000.video-codec: sunxi cedar version 0.01alpha
+Apr  3 14:01:52 localhost kernel: [    1.089214] sunxi-cedar 1c0e000.video-codec: cedar-ve the get irq is 20
+Apr  3 14:01:52 localhost kernel: [    1.100718] debugfs: Directory '1c23c00.codec' with parent 'F1C100s Audio Codec' already present!
+Apr  3 14:01:52 localhost kernel: [    1.114834] sun4i-codec 1c23c00.codec: Codec <-> 1c23c00.codec mapping ok
+Apr  3 14:01:52 localhost kernel: [    1.129467] NET: Registered protocol family 17
+Apr  3 14:01:52 localhost kernel: [    1.134156] Key type dns_resolver registered
+Apr  3 14:01:52 localhost kernel: [    1.139433] Loading compiled-in X.509 certificates
+Apr  3 14:01:52 localhost kernel: [    1.156867] usb_phy_generic usb_phy_generic.0.auto: usb_phy_generic.0.auto supply vcc not found, using dummy regulator
+Apr  3 14:01:52 localhost kernel: [    1.168764] musb-hdrc musb-hdrc.1.auto: MUSB HDRC host driver
+Apr  3 14:01:52 localhost kernel: [    1.174758] musb-hdrc musb-hdrc.1.auto: new USB bus registered, assigned bus number 1
+Apr  3 14:01:52 localhost kernel: [    1.185159] hub 1-0:1.0: USB hub found
+Apr  3 14:01:52 localhost kernel: [    1.189177] hub 1-0:1.0: 1 port detected
+Apr  3 14:01:52 localhost kernel: [    1.196069] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Apr  3 14:01:52 localhost kernel: [    1.211620] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+Apr  3 14:01:52 localhost kernel: [    1.218372] ALSA device list:
+Apr  3 14:01:52 localhost kernel: [    1.221459]   #0: F1C100s Audio Codec
+Apr  3 14:01:52 localhost kernel: [    1.225634] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+Apr  3 14:01:52 localhost kernel: [    1.234409] cfg80211: failed to load regulatory.db
+Apr  3 14:01:52 localhost kernel: [    1.239997] Waiting for root device /dev/mmcblk0p3...
+Apr  3 14:01:52 localhost kernel: [    1.263366] mmc0: host does not support reading read-only switch, assuming write-enable
+Apr  3 14:01:52 localhost kernel: [    1.277455] mmc0: new high speed SDHC card at address aaaa
+Apr  3 14:01:52 localhost kernel: [    1.284835] mmcblk0: mmc0:aaaa SC16G 14.8 GiB 
+Apr  3 14:01:52 localhost kernel: [    1.298253]  mmcblk0: p1 p2 p3
+Apr  3 14:01:52 localhost kernel: [    1.440229] EXT4-fs (mmcblk0p3): mounted filesystem with ordered data mode. Opts: (null)
+Apr  3 14:01:52 localhost kernel: [    1.448591] VFS: Mounted root (ext4 filesystem) readonly on device 179:3.
+Apr  3 14:01:52 localhost kernel: [    1.466634] devtmpfs: mounted
+Apr  3 14:01:52 localhost kernel: [    1.474097] Freeing unused kernel memory: 1024K
+Apr  3 14:01:52 localhost kernel: [    1.478795] Run /sbin/init as init process
+Apr  3 14:01:52 localhost kernel: [    1.619459] random: fast init done
+Apr  3 14:01:52 localhost kernel: [    7.706237] random: systemd: uninitialized urandom read (16 bytes read)
+Apr  3 14:01:52 localhost kernel: [    7.739296] random: systemd: uninitialized urandom read (16 bytes read)
+Apr  3 14:01:52 localhost kernel: [    7.791215] random: systemd: uninitialized urandom read (16 bytes read)
+Apr  3 14:01:52 localhost kernel: [   10.951279] EXT4-fs (mmcblk0p3): re-mounted. Opts: (null)
+Apr  3 14:01:52 localhost kernel: [   10.956750] ext4 filesystem being remounted at / supports timestamps until 2038 (0x7fffffff)
+Apr  3 14:01:52 localhost kernel: [   14.146724] Adding 511940k swap on /opt/images/swap.  Priority:-2 extents:14 across:571384k SS
+Apr  3 14:01:52 localhost kernel: [   21.103689] EXT4-fs (mmcblk0p3): re-mounted. Opts: (null)
+Apr  3 14:01:52 localhost kernel: [   21.109243] ext4 filesystem being remounted at / supports timestamps until 2038 (0x7fffffff)
+Apr  3 14:01:52 localhost kernel: [   21.456668] using random self ethernet address
+Apr  3 14:01:52 localhost kernel: [   21.461331] using random host ethernet address
+Apr  3 14:01:52 localhost kernel: [   21.700832] usb0: HOST MAC 4e:f5:7e:a8:a7:df
+Apr  3 14:01:52 localhost kernel: [   21.705247] usb0: MAC a2:42:ca:73:3d:b7
+Apr  3 14:02:02 localhost kernel: [   31.840644] vcc3v0: disabling
+Apr  3 14:02:02 localhost kernel: [   31.843646] vcc5v0: disabling
+Apr  3 14:02:59 localhost kernel: [   88.800661] random: crng init done
+Apr  3 14:02:59 localhost kernel: [   88.804092] random: 7 urandom warning(s) missed due to ratelimiting
+Apr  3 14:06:32 localhost kernel: [  302.486974] configfs-gadget gadget: high-speed config #1: c1
+Apr  3 14:20:43 localhost kernel: [  360.685292] swapper: page allocation failure: order:0, mode:0xa20(GFP_ATOMIC), nodemask=(null)
+Apr  3 14:20:44 localhost kernel: [  360.693916] CPU: 0 PID: 0 Comm: swapper Not tainted 5.4.77 #3
+Apr  3 14:20:44 localhost kernel: [  360.699642] Hardware name: Allwinner suniv Family
+Apr  3 14:20:44 localhost kernel: [  360.704399] [<c010e444>] (unwind_backtrace) from [<c010b9c4>] (show_stack+0x10/0x14)
+Apr  3 14:20:44 localhost kernel: [  360.712142] [<c010b9c4>] (show_stack) from [<c01cd07c>] (warn_alloc+0xbc/0x15c)
+Apr  3 14:20:44 localhost kernel: [  360.719444] [<c01cd07c>] (warn_alloc) from [<c01cda0c>] (__alloc_pages_nodemask+0x8f0/0xcc4)
+Apr  3 14:20:44 localhost kernel: [  360.727861] [<c01cda0c>] (__alloc_pages_nodemask) from [<c01cdff8>] (page_frag_alloc+0x144/0x170)
+Apr  3 14:20:44 localhost kernel: [  360.736721] [<c01cdff8>] (page_frag_alloc) from [<c05a847c>] (__netdev_alloc_skb+0x70/0x158)
+Apr  3 14:20:44 localhost kernel: [  360.745147] [<c05a847c>] (__netdev_alloc_skb) from [<c04b619c>] (rx_submit+0x90/0x16c)
+Apr  3 14:20:44 localhost kernel: [  360.753068] [<c04b619c>] (rx_submit) from [<c04a8ecc>] (musb_g_giveback+0xc8/0x144)
+Apr  3 14:20:44 localhost kernel: [  360.760718] [<c04a8ecc>] (musb_g_giveback) from [<c04a1af4>] (musb_interrupt+0x128/0xd3c)
+Apr  3 14:20:44 localhost kernel: [  360.768882] [<c04a1af4>] (musb_interrupt) from [<c04ab568>] (sunxi_musb_interrupt+0xa4/0xb4)
+Apr  3 14:20:44 localhost kernel: [  360.777318] [<c04ab568>] (sunxi_musb_interrupt) from [<c014be4c>] (__handle_irq_event_percpu+0x40/0x134)
+Apr  3 14:20:44 localhost kernel: [  360.786786] [<c014be4c>] (__handle_irq_event_percpu) from [<c014bf68>] (handle_irq_event_percpu+0x28/0x7c)
+Apr  3 14:20:44 localhost kernel: [  360.796420] [<c014bf68>] (handle_irq_event_percpu) from [<c014bfe4>] (handle_irq_event+0x28/0x3c)
+Apr  3 14:20:44 localhost kernel: [  360.805281] [<c014bfe4>] (handle_irq_event) from [<c014f754>] (handle_fasteoi_irq+0x90/0x140)
+Apr  3 14:20:44 localhost kernel: [  360.813796] [<c014f754>] (handle_fasteoi_irq) from [<c014b288>] (generic_handle_irq+0x20/0x34)
+Apr  3 14:20:44 localhost kernel: [  360.822390] [<c014b288>] (generic_handle_irq) from [<c014b818>] (__handle_domain_irq+0x48/0xa8)
+Apr  3 14:20:44 localhost kernel: [  360.831090] [<c014b818>] (__handle_domain_irq) from [<c035a848>] (sun4i_handle_irq+0x3c/0x58)
+Apr  3 14:20:44 localhost kernel: [  360.839606] [<c035a848>] (sun4i_handle_irq) from [<c0102188>] (__irq_svc+0x68/0x84)
+Apr  3 14:20:44 localhost kernel: [  360.847236] Exception stack(0xc0a01f18 to 0xc0a01f60)
+Apr  3 14:20:44 localhost kernel: [  360.852273] 1f00:                                                       00000000 0005317f
+Apr  3 14:20:44 localhost kernel: [  360.860430] 1f20: 0005217f 60000013 00000000 ffffe000 c0a03288 00000000 c0a2e460 c0a0329c
+Apr  3 14:20:44 localhost kernel: [  360.868587] 1f40: c0a03228 00000001 600000d3 c0a01f68 c01093f8 c01093f0 60000013 ffffffff
+Apr  3 14:20:44 localhost kernel: [  360.876759] [<c0102188>] (__irq_svc) from [<c01093f0>] (arch_cpu_idle+0x24/0x34)
+Apr  3 14:20:44 localhost kernel: [  360.884146] [<c01093f0>] (arch_cpu_idle) from [<c013a3e4>] (do_idle+0x120/0x200)
+Apr  3 14:20:44 localhost kernel: [  360.891525] [<c013a3e4>] (do_idle) from [<c013a760>] (cpu_startup_entry+0xc/0x10)
+Apr  3 14:20:44 localhost kernel: [  360.898999] [<c013a760>] (cpu_startup_entry) from [<c0900ccc>] (start_kernel+0x39c/0x444)
+Apr  3 14:20:44 localhost kernel: [  360.907145] Mem-Info:
+Apr  3 14:20:44 localhost kernel: [  360.909440] active_anon:1324 inactive_anon:1401 isolated_anon:0
+Apr  3 14:20:44 localhost kernel: [  360.909440]  active_file:3186 inactive_file:4172 isolated_file:0
+Apr  3 14:20:44 localhost kernel: [  360.909440]  unevictable:0 dirty:12 writeback:0 unstable:0
+Apr  3 14:20:44 localhost kernel: [  360.909440]  slab_reclaimable:507 slab_unreclaimable:1056
+Apr  3 14:20:44 localhost kernel: [  360.909440]  mapped:6660 shmem:0 pagetables:200 bounce:0
+Apr  3 14:20:44 localhost kernel: [  360.909440]  free:1098 free_pcp:4 free_cma:1087
+Apr  3 14:20:44 localhost kernel: [  360.941889] Node 0 active_anon:5296kB inactive_anon:5604kB active_file:12744kB inactive_file:16688kB unevictable:0kB isolated(anon):0kB isolated(file):0kB mapped:26640kB dirty:48kB writeback:0kB shmem:0kB writeback_tmp:0kB unstable:0kB all_unreclaimable? no
+Apr  3 14:20:44 localhost kernel: [  360.964577] Normal free:4392kB min:936kB low:1168kB high:1400kB active_anon:5296kB inactive_anon:5604kB active_file:12744kB inactive_file:16688kB unevictable:0kB writepending:48kB present:65536kB managed:56152kB mlocked:0kB kernel_stack:392kB pagetables:800kB bounce:0kB free_pcp:16kB local_pcp:16kB free_cma:4348kB
+Apr  3 14:20:44 localhost kernel: [  360.992248] lowmem_reserve[]: 0 0
+Apr  3 14:20:44 localhost kernel: [  360.995557] Normal: 2*4kB (UC) 2*8kB (UC) 51*16kB (UC) 57*32kB (C) 17*64kB (C) 5*128kB (C) 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 4392kB
+Apr  3 14:20:44 localhost kernel: [  361.008335] 7483 total pagecache pages
+Apr  3 14:20:44 localhost kernel: [  361.012076] 116 pages in swap cache
+Apr  3 14:20:44 localhost kernel: [  361.015555] Swap cache stats: add 4902, delete 4786, find 289/414
+Apr  3 14:20:44 localhost kernel: [  361.021622] Free swap  = 494020kB
+Apr  3 14:20:44 localhost kernel: [  361.024922] Total swap = 511940kB
+Apr  3 14:20:44 localhost kernel: [  361.028224] 16384 pages RAM
+Apr  3 14:20:44 localhost kernel: [  361.031006] 0 pages HighMem/MovableOnly
+Apr  3 14:20:44 localhost kernel: [  361.034825] 2346 pages reserved
+Apr  3 14:20:44 localhost kernel: [  361.037955] 4096 pages cma reserved
+Apr  3 14:23:22 localhost kernel: [    0.000000] Booting Linux on physical CPU 0x0
+Apr  3 14:23:22 localhost kernel: [    0.000000] Linux version 5.4.77 (root@ubuntu) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #3 Sun Apr 3 07:12:26 UTC 2022
+Apr  3 14:23:22 localhost kernel: [    0.000000] CPU: ARM926EJ-S [41069265] revision 5 (ARMv5TEJ), cr=0005317f
+Apr  3 14:23:22 localhost kernel: [    0.000000] CPU: VIVT data cache, VIVT instruction cache
+Apr  3 14:23:22 localhost kernel: [    0.000000] OF: fdt: Machine model: Planck Pi
+Apr  3 14:23:22 localhost kernel: [    0.000000] Memory policy: Data cache writeback
+Apr  3 14:23:22 localhost kernel: [    0.000000] cma: Reserved 16 MiB at 0x83000000
+Apr  3 14:23:22 localhost kernel: [    0.000000] On node 0 totalpages: 16384
+Apr  3 14:23:22 localhost kernel: [    0.000000]   Normal zone: 128 pages used for memmap
+Apr  3 14:23:22 localhost kernel: [    0.000000]   Normal zone: 0 pages reserved
+Apr  3 14:23:22 localhost kernel: [    0.000000]   Normal zone: 16384 pages, LIFO batch:3
+Apr  3 14:23:22 localhost kernel: [    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+Apr  3 14:23:22 localhost kernel: [    0.000000] pcpu-alloc: [0] 0 
+Apr  3 14:23:22 localhost kernel: [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 16256
+Apr  3 14:23:22 localhost kernel: [    0.000000] Kernel command line: console=ttyS0,115200 earlyprintk rootwait consoleblank=0 net.ifnames=0 biosdevname=0 root=/dev/mmcblk0p3
+Apr  3 14:23:22 localhost kernel: [    0.000000] Dentry cache hash table entries: 8192 (order: 3, 32768 bytes, linear)
+Apr  3 14:23:22 localhost kernel: [    0.000000] Inode-cache hash table entries: 4096 (order: 2, 16384 bytes, linear)
+Apr  3 14:23:22 localhost kernel: [    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+Apr  3 14:23:22 localhost kernel: [    0.000000] Memory: 38744K/65536K available (6144K kernel code, 248K rwdata, 1676K rodata, 1024K init, 226K bss, 10408K reserved, 16384K cma-reserved)
+Apr  3 14:23:22 localhost kernel: [    0.000000] SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Apr  3 14:23:22 localhost kernel: [    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+Apr  3 14:23:22 localhost kernel: [    0.000000] random: get_random_bytes called from start_kernel+0x254/0x444 with crng_init=0
+Apr  3 14:23:22 localhost kernel: [    0.000042] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+Apr  3 14:23:22 localhost kernel: [    0.000112] clocksource: timer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+Apr  3 14:23:22 localhost kernel: [    0.000651] Console: colour dummy device 80x30
+Apr  3 14:23:22 localhost kernel: [    0.000733] Calibrating delay loop... 298.59 BogoMIPS (lpj=1492992)
+Apr  3 14:23:22 localhost kernel: [    0.070142] pid_max: default: 32768 minimum: 301
+Apr  3 14:23:22 localhost kernel: [    0.070551] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Apr  3 14:23:22 localhost kernel: [    0.070583] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Apr  3 14:23:22 localhost kernel: [    0.072048] CPU: Testing write buffer coherency: ok
+Apr  3 14:23:22 localhost kernel: [    0.073720] Setting up static identity map for 0x80100000 - 0x80100058
+Apr  3 14:23:22 localhost kernel: [    0.074782] devtmpfs: initialized
+Apr  3 14:23:22 localhost kernel: [    0.082324] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+Apr  3 14:23:22 localhost kernel: [    0.082380] futex hash table entries: 256 (order: -1, 3072 bytes, linear)
+Apr  3 14:23:22 localhost kernel: [    0.085790] pinctrl core: initialized pinctrl subsystem
+Apr  3 14:23:22 localhost kernel: [    0.087854] NET: Registered protocol family 16
+Apr  3 14:23:22 localhost kernel: [    0.090615] DMA: preallocated 256 KiB pool for atomic coherent allocations
+Apr  3 14:23:22 localhost kernel: [    0.092268] cpuidle: using governor menu
+Apr  3 14:23:22 localhost kernel: [    0.125637] SCSI subsystem initialized
+Apr  3 14:23:22 localhost kernel: [    0.125935] usbcore: registered new interface driver usbfs
+Apr  3 14:23:22 localhost kernel: [    0.126052] usbcore: registered new interface driver hub
+Apr  3 14:23:22 localhost kernel: [    0.126205] usbcore: registered new device driver usb
+Apr  3 14:23:22 localhost kernel: [    0.126603] mc: Linux media interface: v0.10
+Apr  3 14:23:22 localhost kernel: [    0.126698] videodev: Linux video capture interface: v2.00
+Apr  3 14:23:22 localhost kernel: [    0.126800] pps_core: LinuxPPS API ver. 1 registered
+Apr  3 14:23:22 localhost kernel: [    0.126816] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+Apr  3 14:23:22 localhost kernel: [    0.126860] PTP clock support registered
+Apr  3 14:23:22 localhost kernel: [    0.127710] ion_parse_dt_heap_common: id 4 type 4 name cma align 1000
+Apr  3 14:23:22 localhost kernel: [    0.128500] Advanced Linux Sound Architecture Driver Initialized.
+Apr  3 14:23:22 localhost kernel: [    0.130433] clocksource: Switched to clocksource timer
+Apr  3 14:23:22 localhost kernel: [    0.155405] thermal_sys: Registered thermal governor 'step_wise'
+Apr  3 14:23:22 localhost kernel: [    0.155996] NET: Registered protocol family 2
+Apr  3 14:23:22 localhost kernel: [    0.157210] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+Apr  3 14:23:22 localhost kernel: [    0.157271] TCP established hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Apr  3 14:23:22 localhost kernel: [    0.157314] TCP bind hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Apr  3 14:23:22 localhost kernel: [    0.157347] TCP: Hash tables configured (established 1024 bind 1024)
+Apr  3 14:23:22 localhost kernel: [    0.157594] UDP hash table entries: 256 (order: 0, 4096 bytes, linear)
+Apr  3 14:23:22 localhost kernel: [    0.157644] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes, linear)
+Apr  3 14:23:22 localhost kernel: [    0.158085] NET: Registered protocol family 1
+Apr  3 14:23:22 localhost kernel: [    0.160017] NetWinder Floating Point Emulator V0.97 (double precision)
+Apr  3 14:23:22 localhost kernel: [    0.161688] Initialise system trusted keyrings
+Apr  3 14:23:22 localhost kernel: [    0.162221] workingset: timestamp_bits=30 max_order=14 bucket_order=0
+Apr  3 14:23:22 localhost kernel: [    0.177997] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+Apr  3 14:23:22 localhost kernel: [    0.178488] jffs2: version 2.2. (NAND) (SUMMARY)  © 2001-2006 Red Hat, Inc.
+Apr  3 14:23:22 localhost kernel: [    0.255386] Key type asymmetric registered
+Apr  3 14:23:22 localhost kernel: [    0.255417] Asymmetric key parser 'x509' registered
+Apr  3 14:23:22 localhost kernel: [    0.255557] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 249)
+Apr  3 14:23:22 localhost kernel: [    0.255579] io scheduler mq-deadline registered
+Apr  3 14:23:22 localhost kernel: [    0.255592] io scheduler kyber registered
+Apr  3 14:23:22 localhost kernel: [    0.257658] sun4i-usb-phy 1c13400.phy: Couldn't request ID GPIO
+Apr  3 14:23:22 localhost kernel: [    0.266722] suniv-f1c100s-pinctrl 1c20800.pinctrl: initialized sunXi PIO driver
+Apr  3 14:23:22 localhost kernel: [    0.285398] Serial: 8250/16550 driver, 8 ports, IRQ sharing disabled
+Apr  3 14:23:22 localhost kernel: [    0.290111] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pa not found, using dummy regulator
+Apr  3 14:23:22 localhost kernel: [    0.291336] printk: console [ttyS0] disabled
+Apr  3 14:23:22 localhost kernel: [    0.311581] 1c25400.serial: ttyS0 at MMIO 0x1c25400 (irq = 27, base_baud = 6250000) is a 16550A
+Apr  3 14:23:22 localhost kernel: [    0.745874] printk: console [ttyS0] enabled
+Apr  3 14:23:22 localhost kernel: [    0.754122] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pd not found, using dummy regulator
+Apr  3 14:23:22 localhost kernel: [    0.768314] sun4i-drm soc:display-engine: bound 1e00000.display-frontend (ops 0xc073b028)
+Apr  3 14:23:22 localhost kernel: [    0.777296] sun4i-drm soc:display-engine: bound 1e60000.display-backend (ops 0xc073a868)
+Apr  3 14:23:22 localhost kernel: [    0.786413] sun4i-drm soc:display-engine: No panel or bridge found... RGB output disabled
+Apr  3 14:23:22 localhost kernel: [    0.794741] sun4i-drm soc:display-engine: bound 1c0c000.lcd-controller (ops 0xc0739408)
+Apr  3 14:23:22 localhost kernel: [    0.803249] sun4i-drm soc:display-engine: bound 1c0a000.tv-encoder (ops 0xc073a128)
+Apr  3 14:23:22 localhost kernel: [    0.811018] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
+Apr  3 14:23:22 localhost kernel: [    0.817617] [drm] No driver support for vblank timestamp query.
+Apr  3 14:23:22 localhost kernel: [    0.824628] [drm] Initialized sun4i-drm 1.0.0 20150629 for soc:display-engine on minor 0
+Apr  3 14:23:22 localhost kernel: [    0.895372] Console: switching to colour frame buffer device 90x36
+Apr  3 14:23:22 localhost kernel: [    0.921647] sun4i-drm soc:display-engine: fb0: sun4i-drmdrmfb frame buffer device
+Apr  3 14:23:22 localhost kernel: [    0.934382] SCSI Media Changer driver v0.25 
+Apr  3 14:23:22 localhost kernel: [    0.939924] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pc not found, using dummy regulator
+Apr  3 14:23:22 localhost kernel: [    0.952276] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+Apr  3 14:23:22 localhost kernel: [    0.958805] ehci-platform: EHCI generic platform driver
+Apr  3 14:23:22 localhost kernel: [    0.964543] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+Apr  3 14:23:22 localhost kernel: [    0.970868] ohci-platform: OHCI generic platform driver
+Apr  3 14:23:22 localhost kernel: [    0.976552] usbcore: registered new interface driver usb-storage
+Apr  3 14:23:22 localhost kernel: [    0.984088] i2c /dev entries driver
+Apr  3 14:23:22 localhost kernel: [    0.990342] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pe not found, using dummy regulator
+Apr  3 14:23:22 localhost kernel: [    1.001264] sun4i-csi 1cb0000.csi: Packed (RAW) format enabled.
+Apr  3 14:23:22 localhost kernel: [    1.008847] sunxi-wdt 1c20ca0.watchdog: Watchdog enabled (timeout=16 sec, nowayout=0)
+Apr  3 14:23:22 localhost kernel: [    1.018589] suniv-f1c100s-pinctrl 1c20800.pinctrl: 1c20800.pinctrl supply vcc-pf not found, using dummy regulator
+Apr  3 14:23:22 localhost kernel: [    1.056804] sunxi-mmc 1c0f000.mmc: initialized, max. request size: 16384 KB
+Apr  3 14:23:22 localhost kernel: [    1.065910] usbcore: registered new interface driver usbhid
+Apr  3 14:23:22 localhost kernel: [    1.071596] usbhid: USB HID core driver
+Apr  3 14:23:22 localhost kernel: [    1.075759] sunxi-cedar 1c0e000.video-codec: sunxi cedar version 0.01alpha
+Apr  3 14:23:22 localhost kernel: [    1.083103] sunxi-cedar 1c0e000.video-codec: cedar-ve the get irq is 20
+Apr  3 14:23:22 localhost kernel: [    1.094451] debugfs: Directory '1c23c00.codec' with parent 'F1C100s Audio Codec' already present!
+Apr  3 14:23:22 localhost kernel: [    1.108607] sun4i-codec 1c23c00.codec: Codec <-> 1c23c00.codec mapping ok
+Apr  3 14:23:22 localhost kernel: [    1.123336] NET: Registered protocol family 17
+Apr  3 14:23:22 localhost kernel: [    1.127905] Key type dns_resolver registered
+Apr  3 14:23:22 localhost kernel: [    1.133303] Loading compiled-in X.509 certificates
+Apr  3 14:23:22 localhost kernel: [    1.150780] usb_phy_generic usb_phy_generic.0.auto: usb_phy_generic.0.auto supply vcc not found, using dummy regulator
+Apr  3 14:23:22 localhost kernel: [    1.162649] musb-hdrc musb-hdrc.1.auto: MUSB HDRC host driver
+Apr  3 14:23:22 localhost kernel: [    1.168520] musb-hdrc musb-hdrc.1.auto: new USB bus registered, assigned bus number 1
+Apr  3 14:23:22 localhost kernel: [    1.178986] hub 1-0:1.0: USB hub found
+Apr  3 14:23:22 localhost kernel: [    1.183109] hub 1-0:1.0: 1 port detected
+Apr  3 14:23:22 localhost kernel: [    1.189909] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Apr  3 14:23:22 localhost kernel: [    1.205350] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+Apr  3 14:23:22 localhost kernel: [    1.212156] ALSA device list:
+Apr  3 14:23:22 localhost kernel: [    1.215136]   #0: F1C100s Audio Codec
+Apr  3 14:23:22 localhost kernel: [    1.219284] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+Apr  3 14:23:22 localhost kernel: [    1.228067] cfg80211: failed to load regulatory.db
+Apr  3 14:23:22 localhost kernel: [    1.233811] Waiting for root device /dev/mmcblk0p3...
+Apr  3 14:23:22 localhost kernel: [    1.259318] mmc0: host does not support reading read-only switch, assuming write-enable
+Apr  3 14:23:22 localhost kernel: [    1.270680] mmc0: new high speed SDHC card at address aaaa
+Apr  3 14:23:22 localhost kernel: [    1.277977] mmcblk0: mmc0:aaaa SC16G 14.8 GiB 
+Apr  3 14:23:22 localhost kernel: [    1.291361]  mmcblk0: p1 p2 p3
+Apr  3 14:23:22 localhost kernel: [    1.430116] EXT4-fs (mmcblk0p3): mounted filesystem with ordered data mode. Opts: (null)
+Apr  3 14:23:22 localhost kernel: [    1.438441] VFS: Mounted root (ext4 filesystem) readonly on device 179:3.
+Apr  3 14:23:22 localhost kernel: [    1.456599] devtmpfs: mounted
+Apr  3 14:23:22 localhost kernel: [    1.463786] Freeing unused kernel memory: 1024K
+Apr  3 14:23:22 localhost kernel: [    1.468484] Run /sbin/init as init process
+Apr  3 14:23:22 localhost kernel: [    1.608281] random: fast init done
+Apr  3 14:23:22 localhost kernel: [    7.711772] random: systemd: uninitialized urandom read (16 bytes read)
+Apr  3 14:23:22 localhost kernel: [    7.758210] random: systemd: uninitialized urandom read (16 bytes read)
+Apr  3 14:23:22 localhost kernel: [    7.823491] random: systemd: uninitialized urandom read (16 bytes read)
+Apr  3 14:23:22 localhost kernel: [   11.066506] EXT4-fs (mmcblk0p3): re-mounted. Opts: (null)
+Apr  3 14:23:22 localhost kernel: [   11.072134] ext4 filesystem being remounted at / supports timestamps until 2038 (0x7fffffff)
+Apr  3 14:23:22 localhost kernel: [   14.121067] Adding 511940k swap on /opt/images/swap.  Priority:-2 extents:14 across:571384k SS
+Apr  3 14:23:22 localhost kernel: [   22.422009] EXT4-fs (mmcblk0p3): re-mounted. Opts: (null)
+Apr  3 14:23:22 localhost kernel: [   22.427483] ext4 filesystem being remounted at / supports timestamps until 2038 (0x7fffffff)
+Apr  3 14:23:22 localhost kernel: [   22.839936] using random self ethernet address
+Apr  3 14:23:22 localhost kernel: [   22.844545] using random host ethernet address
+Apr  3 14:23:22 localhost kernel: [   23.021792] usb0: HOST MAC ea:59:0b:4e:e7:ac
+Apr  3 14:23:22 localhost kernel: [   23.026204] usb0: MAC 9a:ad:65:4f:54:9b
+Apr  3 14:23:23 localhost kernel: [   23.304467] configfs-gadget gadget: high-speed config #1: c1
+Apr  3 14:23:30 localhost kernel: [   30.496020] random: crng init done
+Apr  3 14:23:30 localhost kernel: [   30.499450] random: 7 urandom warning(s) missed due to ratelimiting
+Apr  3 14:23:31 localhost kernel: [   31.840505] vcc3v0: disabling
+Apr  3 14:23:31 localhost kernel: [   31.843503] vcc5v0: disabling

@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenBSD Secure Shell server per-connection daemon
+Documentation=man:sshd(8) man:sshd_config(5)
+After=auditd.service
+
+[Service]
+EnvironmentFile=-/etc/default/ssh
+ExecStart=-/usr/sbin/sshd -i $SSHD_OPTS
+StandardInput=socket
+RuntimeDirectory=sshd
+RuntimeDirectoryMode=0755

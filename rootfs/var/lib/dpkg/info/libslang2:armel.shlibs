@@ -1,0 +1,2 @@
+libslang 2 libslang2 (>= 2.3.2)
+udeb: libslang 2 libslang2-udeb (>= 2.3.2)

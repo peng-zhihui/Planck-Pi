@@ -1,0 +1,15 @@
+/.
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libtext-wrapi18n-perl
+/usr/share/doc/libtext-wrapi18n-perl/changelog.Debian.gz
+/usr/share/doc/libtext-wrapi18n-perl/changelog.gz
+/usr/share/doc/libtext-wrapi18n-perl/copyright
+/usr/share/doc/libtext-wrapi18n-perl/README
+/usr/share/man
+/usr/share/man/man3
+/usr/share/man/man3/Text::WrapI18N.3pm.gz
+/usr/share/perl5
+/usr/share/perl5/Text
+/usr/share/perl5/Text/WrapI18N.pm

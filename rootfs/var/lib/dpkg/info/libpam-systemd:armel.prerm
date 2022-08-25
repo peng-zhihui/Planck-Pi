@@ -1,0 +1,20 @@
+#! /bin/sh
+
+set -e
+
+# pam-auth-update --remove removes the named profile from the active config.
+# It arguably should be called during deconfigure as well, but deconfigure
+# can happen in some cases during a dist-upgrade and we don't want to
+# deconfigure all PAM modules in the middle of a dist-upgrade by accident.
+#
+# More importantly, with the current implementation, --remove also removes
+# all local preferences for the named config (such as whether it's enabled
+# or disabled), which we don't want to do on deconfigure.
+#
+# This may need to change later as pam-auth-update evolves.
+
+if [ "$1" = remove ] && [ "${DPKG_MAINTSCRIPT_PACKAGE_REFCOUNT:-1}" = 1 ]; then
+    pam-auth-update --package --remove systemd
+fi
+
+

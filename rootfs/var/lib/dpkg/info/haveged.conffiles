@@ -1,0 +1,3 @@
+/etc/apparmor.d/usr.sbin.haveged
+/etc/default/haveged
+/etc/init.d/haveged

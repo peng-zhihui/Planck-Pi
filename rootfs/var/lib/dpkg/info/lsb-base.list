@@ -1,0 +1,14 @@
+/.
+/lib
+/lib/lsb
+/lib/lsb/init-functions
+/lib/lsb/init-functions.d
+/lib/lsb/init-functions.d/20-left-info-blocks
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/lsb-base
+/usr/share/doc/lsb-base/NEWS.Debian.gz
+/usr/share/doc/lsb-base/README.Debian.gz
+/usr/share/doc/lsb-base/changelog.gz
+/usr/share/doc/lsb-base/copyright

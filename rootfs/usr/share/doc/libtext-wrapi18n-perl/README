@@ -1,0 +1,57 @@
+Text::WrapI18N version 0.06
+===========================
+
+This is a module which intends to substitute Text::Wrap,
+which supports internationalized texts including:
+ - multibyte encodings such as UTF-8, EUC-JP, EUC-KR, GB2312, and Big5,
+ - fullwidth characters like east Asian characters which appear in
+   UTF-8, EUC-JP, EUC-KR, GB2312, Big5, and so on,
+ - combining characters like diacritical marks which appear in UTF-8,
+   ISO-8859-11 (aka TIS-620), and so on, and
+ - languages which don't use whitespaces between words, like Chinese
+   and Japanese.
+
+The text is to be given in locale encoding, not always in UTF-8.
+(Of course locale encoding is UTF-8 in UTF-8 locales.)
+
+$Text::WrapI18N::columns is available like $Text::Wrap::columns.
+Also, $Text::WrapI18N::separator is available.
+
+However, $Text::WrapI18N::huge, $Text::WrapI18N::break, 
+$Text::WrapI18N::tabstop, and $Text::WrapI18N::unexpand are not
+available yet.
+
+This module is originally written for "debconf", a standard configuration
+system of Debian.
+
+
+Prerequisites
+-------------
+
+This needs Text::CharWidth module.
+
+
+Build and Install
+-----------------
+
+Please use standard way to build and install this module:
+
+   perl Makefile.PL
+   make
+   make install
+
+
+COPYRIGHT AND LICENCE
+---------------------
+
+Copyright (C) 2003 Tomohiro KUBOTA <kubota@debian.org>
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of either:
+
+    a) the GNU General Public License as published by the Free Software
+       Foundation; either version 1, or (at your option) any later
+       version, or
+
+    b) the "Artistic License" which comes with Perl.
+

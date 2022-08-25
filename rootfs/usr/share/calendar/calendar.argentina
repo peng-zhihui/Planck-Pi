@@ -1,0 +1,126 @@
+/*
+ * History of Argentina
+ * Prepared by J. Alejandro Noli <alejandro@janoli.com.ar>
+ * $Id$
+ */
+
+#ifndef _calendar_argentina_
+#define _calendar_argentina_
+
+LANG=utf-8
+
+Jan 01	Comienza a regir el Código Civil Argentino, obra de Vélez Sarsfield, 1871
+Jan 03	Usurpación de las Islas Malvinas, 1833
+Jan 18	Argentina y Chile reconocen la teoría de "las más altas cumbres", 1878
+Jan 31	Nacimiento Atahualpa Yupanqui, 1908
+Feb 03	Combate de San Lorenzo, 1813
+Feb 03	Batalla de Caseros, 1852
+Feb 10	Se sanciona la Ley Nacional de Elecciones, ley "Saenz Peña", 1912
+Feb 12	San Martín libra la Batalla de Chacabuco (Chile), 1817
+Feb 15	Nace Domingo Faustino Sarmiento, 1811
+Feb 18	Muere asesinado Juan Facundo Quiroga, 1835
+Feb 20	Batalla de Salta, al mando de Manuel Belgrano, 1813
+Feb 25	Nace José de San Martín en Yapeyú provincia de Corrientes, 1778
+Feb 27	Manuel Belgrano enarbola por primera vez la bandera celeste y blanca, 1812
+Mar 01	Muere en Mendoza el pionero de la aviación Jorge Newbery, 1914
+Mar 02	Pedro del Castillo funda la ciudad de Mendoza, 1561
+Mar 08	Belgrano y sus hombres derrotados en Tacuarí, 1811
+Mar 08	Día internacional de la mujer
+Mar 14	Muere en Southampton (Inglaterra) Juan Manuel de Rosas, 1877
+Mar 16	Se inaugura, fundada por Mariano Moreno, la Biblioteca Nacional, 1812
+Mar 20	Un terremoto destruye casi totalmente Mendoza, 1861
+Mar 21	Se funda la Universidad Nacional de Cuyo, 1939
+Apr 01	Primera misa en territorio argentino, 1520
+Apr 02	Fuerzas militares argentinas intentan recuperar las Islas Malvinas, 1982
+Apr 05	José de San Martín derrota a las fuerzas realistas en Maipo, 1818
+Apr 11	Es asesinado Justo J. de Urquiza en el Palacio San José, 1870
+May 01	Día de la Constitución Argentina, 1853
+May 07	Nacimiento Eva Perón en Los Toldos (Buenos Aires), 1919
+May 11	Día del Himno Nacional Argentino, 1813
+May 17	Día de la Armada, 1960
+May 18	Día de la Escarapela, 1935
+May 26	Formación del Primer Gobierno Patrio, 1810
+May 31	Primera fundación de la ciudad de San Miguel de Tucumán, 1565
+May 31	Se firma el Acuerdo de San Nicolás de los Arroyos, 1852
+May 31	Día Nacional de la Energía Atómica
+May 31	Día Nacional del Ecoturismo
+Jun 02	Día del Bombero Voluntario Argentino
+Jun 03	Nacimiento de Manuel Belgrano, 1770
+Jun 06	Día de la Ingeniería Argentina, 1870
+Jun 10	Guillermo Rawson funda la Cruz Roja Argentina, 1880
+Jun 10	Afirmación de los Derechos Argentinos sobre las Malvinas, 1973
+Jun 11	Juan de Garay funda por segunda vez Buenos Aires, 1580
+Jun 16	Muere Estanislao López, caudillo y gobernador de Santa Fe, 1838
+Jun 17	Día Nacional de la Libertad Latinoamericana
+Jun 19	Muere en Francia Juan Bautista Alberdi, 1884
+Jun 20	Día de la Bandera
+Jun 20	Fallecimiento de Manuel Belgrano, 1820
+Jun 22	Nacimiento del almirante Guillermo Brown en Irlanda, 1777
+Jun 24	Muere en un accidente de aviación Carlos Gardel, 1935
+Jun 26	Nacimiento de Bartolomé Mitre, 1821
+Jun 30	Día de la Prefectura Naval Argentina
+Jul 01	Muere Juan Domingo Perón, 1974
+Jul 03	Muere el político argentino Hipólito Yrigoyen, 1933
+Jul 04	Día Nacional del Médico Rural
+Jul 05	Segunda Invasión Inglesa rechazada por Liniers y la población, 1807
+Jul 08	Se promula la Ley 1420 de Educación común gratuita, 1884
+Jul 09	Declaración de la Independencia Argentina, 1816
+Jul 09	Se jura en Santa Fe la Constitución Nacional, 1853
+Jul 13	Día Nacional de las Telecomunicaciones
+Jul 17	Fallecimiento de Juan M. Fangio, 1995
+Jul 17	Día Nacional del Automovilismo Deportivo
+Jul 23	Día del Payador
+Jul 26	Entrevista en Guayaquil entre San Martín y Bolívar, 1822
+Jul 26	Muere en Buenos Aires Eva Perón, 1952
+Jul 28	Día de la Gendarmería Nacional
+Jul 29	Día de la Cultura Nacional
+Aug 12	Día de la Reconquista de Buenos Aires
+Aug 17	Paso a la inmortalidad de José Francisco de San Martín, 1850
+Aug 22	Día del Folklore Argentino
+Aug 23	El general Manuel Belgrano inicia la retirada hacia Tucumán, 1812
+Aug 24	Nace en Buenos Aires Jorge Luis Borges, 1899
+Aug 26	Nace en Bruselas el escritor Julio Cortázar, 1914
+Aug 26	Día Nacional de la Solidaridad
+Aug 27	Primera transmisión radiofónica, 1920
+Aug 29	Nace en Tucumán Juan Bautista Alberdi, 1810
+Aug 29	Viaje inaugural de la locomotora "La Porteña", 1857
+Aug 31	Delegados de 9 provincias suscriben el Pacto o Liga Unitaria, 1830
+Sep 02	Nace en Buenos Aires el escritor Esteban Echeverría, 1805
+Sep 02	Muere Bernardino Rivadavia, primer presidente argentino, 1845
+Sep 04	Día del inmigrante
+Sep 06	Nace el investigador argentino Luis Federico Leloir, 1906
+Sep 07	Mariano Moreno funda la Biblioteca Pública de Bs. As., 1810
+Sep 08	Día del agrigultor
+Sep 09	Muere en La Plata el político radical Ricardo Balbín, 1981
+Sep 11	Día del maestro en honor a la memoria de Domingo F. Sarmiento
+Sep 18	Nace en Buenos Aires Armando Discépolo, 1887
+Sep 22	Se inaugura en la Argentina la comunicación telegráfica, 1875
+Sep 23	Nace Mariano Moreno, secretario de la Primera Junta, 1778
+Sep 23	Se promulga la ley que establece el voto femenino, 1947
+Sep 24	Belgrano venció a los realistas en la Batalla de Tucumán, 1812
+Sep 27	Día Nacional de la Conciencia Ambiental
+Oct 08	Nace Juan Domingo Perón, 1895
+Oct 09	Día del Guardaparque Nacional
+Oct 10	Día Nacional de la Danza
+Oct 11	Día Nacional de la Patagonia
+Oct 14	Se crea la Universidad Tecnológica Nacional, 1959
+Oct 15	Se es concedido el Nobel de Medicina a César Milstein, 1984
+Oct 17	Nace en Buenos Aires el General Juan Lavalle, 1797
+Oct 18	Nace en Talar de Arroyo Largo (Entre Ríos) Justo José de Urquiza, 1801
+Oct 23	José de San Martín declara la libertad de imprenta en el Perú, 1821
+Oct 24	Día Nacional de la Astronomía
+Oct 29	Fundación de la Base Aérea Vice Comodoro Marambio de la Antártida Argentina, 1969
+Nov 05	Día Nacional de la Aviación Civil
+Nov 07	Día del Canillita
+Nov 09	Primera Transfusión de Sangre realizada por el argentino Dr. Luis Agote, 1914
+Nov 10	Día de la Tradición
+Nov 11	Se firma el Pacto de San José de Flores, 1859
+Nov 12	Muere Ángel Vicente Peñaloza, "El Chacho", 1863
+Nov 17	Día Nacional del Escultor
+Nov 20	Combate de la Vuelta de Obligado, 1845
+Nov 22	Día de la flor nacional: El Ceibo
+Dec 13	Por orden de Juan Lavalle es fusilado Manuel Dorrego, 1828
+Dec 13	Se descubre petróleo en Comodoro Rivadavia (Chubut), 1907
+Dec 25	Nace Rosario Vera Peñaloza, destacada educadora argentina, 1873
+
+#endif /* !_calendar_argentina_ */

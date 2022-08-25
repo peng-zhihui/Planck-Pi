@@ -1,0 +1,12 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libz.so.1.2.11
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/zlib1g
+/usr/share/doc/zlib1g/changelog.Debian.gz
+/usr/share/doc/zlib1g/changelog.gz
+/usr/share/doc/zlib1g/copyright
+/lib/arm-linux-gnueabi/libz.so.1

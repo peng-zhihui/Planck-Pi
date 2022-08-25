@@ -1,0 +1,39 @@
+# /etc/fstab: static file system information.
+#
+# The following is an example. Please see fstab(5) for further details.
+# Please refer to mount(1) for a complete description of mount options.
+#
+# Format:
+#  <file system>         <mount point>   <type>  <options>	<dump>	<pass>
+#
+# dump(8) uses the <dump> field to determine which file systems need
+# to be dumped. fsck(8) uses the <pass> column to determine which file
+# systems need to be checked--the root file system should have a 1 in
+# this field, other file systems a 2, and any file systems that should
+# not be checked (such as MS-DOS or NFS file systems) a 0.
+#
+# The `sw' option indicates that the swap partition is to be activated
+# with `swapon -a'.
+/dev/hda2	none		swap	sw				0 0
+
+# The `bsdgroups' option indicates that the file system is to be mounted
+# with BSD semantics (files inherit the group ownership of the directory
+# in which they live). `ro' can be used to mount a file system read-only.
+/dev/hda3	/		ext2	defaults			0 1
+/dev/hda5	/home		ext2	defaults			0 2
+/dev/hda6	/var		ext2	defaults			0 2
+/dev/hda7	/usr		ext2	defaults,ro			0 2
+/dev/hda8	/usr/local	ext2	defaults,bsdgroups		0 2
+
+# The `noauto' option indicates that the file system should not be mounted
+# with `mount -a'. `user' indicates that normal users are allowed to mount
+# the file system.
+/dev/cdrom	/cdrom		iso9660	defaults,noauto,ro,user		0 0
+/dev/fd0	/floppy		minix	defaults,noauto,user		0 0
+/dev/fd1	/floppy		minix	defaults,noauto,user		0 0
+
+# NFS file systems:
+server:/export/usr	/usr	nfs	defaults			0 0
+
+# proc file system:
+proc		/proc		proc	defaults			0 0

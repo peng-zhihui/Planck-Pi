@@ -1,0 +1,7 @@
+#! /bin/sh 
+set -e
+
+rm -rf /usr/share/python3/__pycache__
+rm -rf /usr/share/python3/debpython/__pycache__
+
+

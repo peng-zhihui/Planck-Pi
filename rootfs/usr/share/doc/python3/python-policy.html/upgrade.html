@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Appendix C. Upgrade Procedure</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Debian Python Policy" /><link rel="up" href="index.html" title="Debian Python Policy" /><link rel="prev" href="packaging_tools.html" title="Appendix B. Packaging Tools" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Appendix C. Upgrade Procedure</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="packaging_tools.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> </td></tr></table><hr /></div><div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a id="upgrade"></a>Appendix C. Upgrade Procedure</h1></div></div></div><p>
+	This section describes the procedure for the upgrade when the
+	default Python version is changed in the Debian <code class="literal">unstable</code>
+	release, requiring recompilation of many Python-related packages.
+      </p><p>
+	</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+	      Selected pre-releases and release candidates of new Python
+	      versions are uploaded to Debian <code class="literal">experimental</code> to
+	      support pre-transition work and testing.
+	    </p></li><li class="listitem"><p>
+	      Application and module maintainers make sourceful changes
+	      where needed to prepare for the new Python version when
+	      needed.
+	    </p></li><li class="listitem"><p>
+	      Have a long and heated discussion.
+	    </p></li><li class="listitem"><p>
+	      The Debian Python maintainer and module/application
+	      maintainers discuss the readiness for a new default Debian
+	      Python version and associated packaging/policy changes. Once
+	      there is some consensus, the Python maintainer announces the
+	      upgrade and uploads to <code class="literal">unstable</code>.
+	    </p></li><li class="listitem"><p>
+	      Upload of the Python core meta-packages <code class="literal">python</code>,
+	      <code class="literal">python-dev</code>, <code class="literal">python-doc</code> and
+	      several <code class="literal">python-<em class="replaceable"><code>module</code></em></code>, depending on
+	      the new <code class="literal">python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em></code>,
+	      <code class="literal">python<em class="replaceable"><code>X</code></em>.<em class="replaceable"><code>Y</code></em>-dev</code> and so on.
+	    </p></li><li class="listitem"><p>
+	      The Debian release team schedules rebuilds for packages that
+	      may need it. Packages that require additional manual work get
+	      updated and uploaded.
+	    </p></li></ol></div><p>
+      </p><p>
+	The necessary package builds are typcially done in three phases in
+	order to keep transitions as smooth as possible. For Python 3, there
+	is no general need to update architecture all packages for a new
+	Python 3 version. Only architecture any packages need to be rebuilt.
+	</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+	      The new Python 3 version is added to supported versions and
+	      packages that support multiple Python 3 versions are binNMUed.
+	      They now support both the new and older Python 3 versions.
+	      This requires transition assistance from the release team in
+	      the form of a transition tracker and binNMU scheduling, but is
+	      not a transition that can cause entanglements with other
+	      transitions in Debian.
+	    </p></li><li class="listitem"><p>
+	      Once the default Python 3 version is changed, binNMUs are done
+	      for packages that only support one Python 3 version. Some
+	      transient uninstallability is unavoidable. This is a
+	      transition that can entangle other transitions in Debian and
+	      requires more careful coordination with the release team.
+	    </p></li><li class="listitem"><p>
+	      After the old Python 3 version is dropped from supported
+	      versions then packages with multi-version support are binNMUed
+	      again to remove support for the old Python 3 version. This is
+	      not a true transition and only needs a tracker and binNMU
+	scheduling.
+	</p></li></ol></div><p>
+      </p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="packaging_tools.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> </td></tr><tr><td width="40%" align="left" valign="top">Appendix B. Packaging Tools </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

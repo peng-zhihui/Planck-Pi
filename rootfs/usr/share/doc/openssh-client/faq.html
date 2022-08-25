@@ -1,0 +1,1187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>OpenSSH FAQ</title>
+<link rev= "made" href= "mailto:www@openbsd.org">
+<meta name= "resource-type" content= "document">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name= "description"   content= "the OpenSSH FAQ page">
+<meta name= "keywords"      content= "OpenSSH,SSH,Secure Shell,faq">
+<meta name= "distribution"  content= "global">
+<meta name= "copyright"     content= "This document copyright 1999-2010 OpenBSD.">
+</head>
+
+<body bgcolor= "#ffffff" text= "#000000" link= "#23238E">
+<a href="http://www.openssh.com/index.html"><img alt="[OpenSSH]" height="30" width="141" src="images/smalltitle.gif" border="0"></a>
+<p>
+
+<h1>OpenSSH FAQ (Frequently asked questions)</h1>
+
+<hr>
+
+<blockquote>
+<h3><a href= "#1.0">1.0 - What Is OpenSSH and Where Can I Get It?</a></h3>
+<ul>
+<li><a href= "#1.1">1.1 - What is OpenSSH and where can I download it?</a>
+<li><a href= "#1.2">1.2 - Why should it be used?</a>
+<li><a href= "#1.3">1.3 - What Operating Systems are supported?</a>
+<li><a href= "#1.4">1.4 - What about copyright, usage and patents?</a>
+<li><a href= "#1.5">1.5 - Where should I ask for help?</a>
+<li><a href= "#1.6">1.6 - I have found a bug. Where do I report it?</a>
+</ul>
+
+<h3><a href= "#2.0">2.0 - General Questions</a></h3>
+<ul>
+<li><a href= "#2.1">2.1 - Why does ssh/scp make connections from low-numbered ports. My firewall blocks these.</a>
+<li><a href= "#2.2">2.2 - Why is the ssh client setuid root?</a>
+<li><a href= "#2.3">2.3 - Why does SSH 2.3 have problems interoperating with OpenSSH 2.1.1?</a>
+<li><a href= "#2.4">2.4 - Why does OpenSSH print: Dispatch protocol error: type 20</a>
+<li><a href= "#2.5">2.5 - Old versions of commercial SSH encrypt host keys with IDEA.</a>
+<li><a href= "#2.6">2.6 - What are these warning messages about key lengths?</a>
+<li><a href= "#2.7">2.7 - X11 and/or agent forwarding does not work.</a>
+<li><a href= "#2.8">2.8 - After upgrading OpenSSH I lost SSH2 support.</a>
+<li><a href= "#2.9">2.9 - sftp/scp fails at connection, but ssh is OK.</a>
+<li><a href= "#2.10">2.10 - Will you add [foo] to scp?</a>
+<li><a href= "#2.11">2.11 - How do I use port forwarding?</a>
+<li><a href= "#2.12">2.12 - My ssh connection freezes or drops out after N minutes of inactivity.</a>
+<li><a href= "#2.13">2.13 - How do I use scp to copy a file with a colon in it?</a>
+<li><a href= "#2.14">2.14 - Why does OpenSSH report its version to clients?</a>
+</ul>
+
+<h3><a href= "#3.0">3.0 - Portable OpenSSH Questions</a></h3>
+<ul>
+<li><a href= "#3.1">3.1 - Spurious PAM authentication messages in logfiles.</a>
+<li><a href= "#3.2">3.2 - Empty passwords not allowed with PAM authentication.</a>
+<li><a href= "#3.3">3.3 - ssh(1) takes a long time to connect or log in</a>
+<li><a href= "#3.4">3.4 - "Can't locate module net-pf-10" messages in log under Linux.</a>
+<li><a href= "#3.5">3.5 - Password authentication doesn't work (eg on Slackware 7.0 or Red Hat Linux 6.x)</a>
+<li><a href= "#3.6">3.6 - Configure or sshd(8) complain about lack of RSA support</a>
+<li><a href= "#3.7">3.7 - "scp: command not found" errors</a>
+<li><a href= "#3.8">3.8 - Unable to read passphrase</a>
+<li><a href= "#3.9">3.9 - 'configure' missing or make fails</a>
+<li><a href= "#3.10">3.10 - Hangs when exiting ssh</a>
+<li><a href= "#3.11">3.11 - Why does ssh hang on exit?</a>
+<li><a href= "#3.12">3.12 - I upgraded to OpenSSH 3.1 and X11 forwarding stopped working.</a>
+<li><a href= "#3.13">3.13 - I upgraded to OpenSSH 3.8 and some X11 programs stopped working.</a>
+<li><a href= "#3.14">3.14 - I copied my public key to authorized_keys but public-key authentication still doesn't work.</a>
+<li><a href= "#3.15">3.15 - OpenSSH versions and PAM behaviour.</a>
+<li><a href= "#3.16">3.16 - Why doesn't "w" or "who" on AIX 5.x show users logged in via ssh?</a>
+</ul>
+
+</blockquote>
+
+<hr>
+
+<h2><u><a name= "1.0">1.0 - What Is OpenSSH and Where Can I Get It?</a></u></h2>
+
+<h2><a name= "1.1">1.1 - What is OpenSSH and where can I download it?</a></h2>
+
+OpenSSH provides end-to-end encrypted replacement of applications such as
+telnet, rlogin, and ftp.
+Unlike these legacy applications, OpenSSH never passes anything
+(including username and password) over the wire in unencrypted form, and
+provides host authentication, to verify that you really are talking to
+the system that you think you are and that no one else can take over
+that session.
+
+<p>
+The OpenSSH suite includes the 
+<a href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh&amp;sektion=1">ssh(1)</a> 
+program which replaces rlogin and telnet, and 
+<a href="http://www.openbsd.org/cgi-bin/man.cgi?query=scp&amp;sektion=1">scp(1)</a> 
+which replaces 
+<a href="http://www.openbsd.org/cgi-bin/man.cgi?query=rcp&amp;sektion=1">rcp(1)</a> and 
+<a href="http://www.openbsd.org/cgi-bin/man.cgi?query=ftp&amp;sektion=1">ftp(1)</a>. 
+OpenSSH has also added 
+<a href="http://www.openbsd.org/cgi-bin/man.cgi?query=sftp&amp;sektion=1">sftp(1)</a> and 
+<a href="http://www.openbsd.org/cgi-bin/man.cgi?query=sftp-server&amp;sektion=8">sftp-server(8)</a> 
+which implement an easier solution for file-transfer. This is based upon the 
+<a href="http://www.openssh.com/txt/draft-ietf-secsh-filexfer-02.txt">secsh-filexfer</a> IETF draft.
+
+
+<p><strong>OpenSSH consists of a number of programs.</strong>
+
+<ul>
+<li><a href="http://www.openbsd.org/cgi-bin/man.cgi?query=sshd&amp;sektion=8">sshd(8)</a> - Server program run on the server machine. This listens for connections from client machines, and whenever it receives a connection, it performs authentication and starts serving the client.
+Its behaviour is controlled by the config file <i><a
+href="http://www.openbsd.org/cgi-bin/man.cgi?query=sshd_config&amp;sektion=5">
+sshd_config(5)</a></i>.
+<li><a href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh&amp;sektion=1">ssh(1)</a> - This is the client program used to log into another machine or to execute commands on the other machine. <i>slogin</i> is another name for this program.
+Its behaviour is controlled by the global config file <i><a
+href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh_config&amp;sektion=5">
+ssh_config(5)</a></i> and individual users' <i>$HOME/.ssh/config</i> files.
+<li><a href="http://www.openbsd.org/cgi-bin/man.cgi?query=scp&amp;sektion=1">scp(1)</a> - Securely copies files from one machine to another.
+<li><a href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh-keygen&amp;sektion=1">ssh-keygen(1)</a> - Used to create Pubkey Authentication (RSA or DSA) keys (host keys and user authentication keys).
+<li><a href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh-agent&amp;sektion=1">ssh-agent(1)</a> - Authentication agent.  This can be used to hold RSA keys for authentication.
+<li><a href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh-add&amp;sektion=1">ssh-add(1)</a> - Used to register new keys with the agent.
+<li><a href="http://www.openbsd.org/cgi-bin/man.cgi?query=sftp-server&amp;sektion=8">sftp-server(8)</a> - SFTP server subsystem.
+<li><a href="http://www.openbsd.org/cgi-bin/man.cgi?query=sftp&amp;sektion=1">sftp(1)</a> - Secure file transfer program.
+<li><a href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh-keyscan&amp;sektion=1">ssh-keyscan(1)</a> - gather ssh public keys.
+<li><a href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh-keysign&amp;sektion=8">ssh-keysign(8)</a> - ssh helper program for hostbased authentication.
+</ul>
+
+<h3>Downloading</h3>
+
+<p>
+The most recent version of OpenSSH is included with the current
+distribution of <a href="http://www.openbsd.org/">OpenBSD</a>, and
+installed as part of a basic install.
+
+<p>
+Today, most other operating systems include some version of OpenSSH
+(often re-badged or privately labeled), so most users can immediately
+use it.
+However, sometimes the included versions are quite old, and missing
+features of the current release of OpenSSH, and you may wish to install
+the current version, or install it on one of the few OSs that lacked it,
+and where the OS publisher does not make a modern version available.
+You may also wish to use OpenSSH on your embedded application.
+
+<p>
+Non-OpenBSD users will want to download, compile and install the
+multi-platform <a href="http://www.openssh.com/portable.html">Portable</a> distribution from a
+<a href="http://www.openssh.com/portable.html#mirrors">mirror</a> near you.
+
+
+<h2><a name= "1.2">1.2 - Why should it be used?</a></h2>
+
+<p>
+OpenSSH is a suite of tools to help secure your network 
+connections. Here is a list of features:
+
+
+<ul>
+	<li>Strong authentication.  Closes several security holes (e.g., IP, routing, and DNS spoofing).
+	<li>Improved privacy.  All communications are automatically and transparently encrypted.
+	<li>Secure X11 sessions.  The program automatically sets DISPLAY on the server machine, and forwards any X11 connections over the secure channel.
+	<li>Arbitrary TCP/IP ports can be redirected through the encrypted channel in both directions (e.g., for e-cash transactions).
+	<li>No retraining needed for normal users.
+	<li>Never trusts the network. Minimal trust on the remote side of the connection. Minimal trust on domain name servers. Pure RSA authentication never trusts anything but the private key.
+	<li>Client RSA-authenticates the server machine in the beginning of every connection to prevent trojan horses (by routing or DNS spoofing) and man-in-the-middle attacks, and the server RSA-authenticates the client machine before accepting <i>.rhosts</i> or <i>/etc/hosts.equiv</i> authentication (to prevent DNS, routing, or IP-spoofing).
+	<li>Host authentication key distribution can be centrally by the administration, automatically when the first connection is made to a machine.
+	<li>Any user can create any number of user authentication RSA keys for his/her own use.
+	<li>The server program has its own server RSA key which is automatically regenerated every hour.
+	<li>An authentication agent, running in the user's laptop or local workstation, can be used to hold the user's RSA authentication keys.
+	<li>The software can be installed and used (with restricted functionality) even without root privileges.
+	<li>The client is customizable in system-wide and per-user configuration files.
+	<li>Optional compression of all data with gzip (including forwarded X11 and TCP/IP port data), which may result in significant speedups on slow connections.
+	<li>Complete replacement for rlogin, rsh, and rcp.
+</ul>
+
+<p>
+Currently, almost all communications in computer networks are done
+without encryption.  As a consequence, anyone who has access to any
+machine connected to the network can listen in on any communication.
+This is being done by hackers, curious administrators, employers,
+criminals, industrial spies, and governments.  Some networks leak off
+enough electromagnetic radiation that data may be captured even from a
+distance.
+
+
+<p>
+When you log in, your password goes in the network in plain
+text.  Thus, any listener can then use your account to do any evil he
+likes.  Many incidents have been encountered worldwide where crackers
+have started programs on workstations without the owner's knowledge
+just to listen to the network and collect passwords.  Programs for
+doing this are available on the Internet, or can be built by a
+competent programmer in a few hours.
+
+
+<p>
+Businesses have trade secrets, patent applications in preparation,
+pricing information, subcontractor information, client data, personnel
+data, financial information, etc.  Currently, anyone with access to
+the network (any machine on the network) can listen to anything that
+goes in the network, without any regard to normal access restrictions.
+
+
+<p>
+Many companies are not aware that information can so easily be
+recovered from the network.  They trust that their data is safe
+since nobody is supposed to know that there is sensitive information
+in the network, or because so much other data is transferred in the
+network.  This is not a safe policy.
+
+
+<h2><a name= "1.3">1.3 - What operating systems are supported?</a></h2>
+
+<p>
+Even though OpenSSH is developed on 
+<a href="http://www.openbsd.org/">OpenBSD</a> a wide variety of 
+ports to other operating systems exist. The portable version of OpenSSH 
+is headed by <a href="mailto:djm@openbsd.org">Damien Miller</a>. 
+For a quick overview of the portable version of OpenSSH see 
+<a href="http://www.openssh.com/portable.html">OpenSSH Portable Release</a>.
+Currently, the supported operating systems are:
+
+
+<ul>
+	<li>OpenBSD
+	<li>NetBSD
+	<li>FreeBSD
+	<li>AIX 
+	<li>HP-UX 
+	<li>IRIX 
+	<li>Linux 
+	<li>NeXT 
+	<li>SCO 
+	<li>SNI/Reliant Unix 
+	<li>Solaris 
+	<li>Digital Unix/Tru64/OSF 
+	<li>Mac OS X 
+	<li>Cygwin
+</ul>
+
+<p>
+A list of vendors that include OpenSSH in their distributions 
+is located in the <a href="http://www.openssh.com/users.html">OpenSSH Users page</a>.
+
+<h2><a name= "1.4">1.4 - What about copyrights, usage and patents?</a></h2>
+<p>
+The OpenSSH developers have tried very hard to keep OpenSSH free of any 
+patent or copyright problems. To do this, some options had to be 
+stripped from OpenSSH. Namely support for patented algorithms.
+
+<p>
+OpenSSH does not support any patented transport algorithms. In SSH1 mode, 
+only 3DES and Blowfish are available options. In SSH2 mode, only 3DES, 
+Blowfish, CAST128, Arcfour and AES can be selected. 
+The patented IDEA algorithm is not supported.
+
+<p>
+OpenSSH provides support for both SSH1 and SSH2 protocols. 
+
+<p>
+Since the RSA patent has expired, there are no restrictions on the use 
+of RSA algorithm using software, including OpenBSD.
+
+<h2><a name= "1.5">1.5 - Where should I ask for help?</a></h2>
+<p>
+There are many places to turn to for help. In addition to the main
+<a href="http://www.openssh.com/index.html">OpenSSH website</a>, 
+there are many mailing lists to try. Before trying any mailing lists, 
+please search through all mailing list archives to see if your question 
+has already been answered. The OpenSSH Mailing List has been archived and 
+put in searchable form and can be found at 
+<a href="http://marc.info/?l=openssh-unix-dev&amp;r=1&amp;w=2">marc.info</a>.
+
+<p>
+For more information on subscribing to OpenSSH related mailing lists, 
+please see <a href="http://www.openssh.com/list.html">OpenSSH Mailing lists</a>.
+
+<h2><a name= "1.6">1.6 - I have found a bug. Where do I report it?</a></h2>
+<p>
+Information about submitting bug reports can be found at the OpenSSH
+<a href="http://www.openssh.com/report.html">Reporting bugs</a> page.
+<p>
+If you wish to report a security bug, please contact the private developers
+list &lt;<a href="mailto:openssh@openssh.com">openssh@openssh.com</a>&gt;.
+
+<h2><u><a name= "2.0">2.0 - General Questions</a></u></h2>
+
+<h2><a name= "2.1">2.1 - Why does ssh/scp make connections from low-numbered ports.</a></h2>
+<p>
+The OpenSSH client uses low numbered ports for rhosts and rhosts-rsa 
+authentication because the server needs to trust the username provided by 
+the client. To get around this, you can add the below example to your 
+<i>ssh_config</i> or <i>~/.ssh/config</i> file.
+
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+<b>UsePrivilegedPort no</b>
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+<p>
+Or you can specify this option on the command line, using the <b>-o</b> 
+option to 
+<a href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh&amp;sektion=1">ssh(1)</a> command.
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+$ <b>ssh -o "UsePrivilegedPort no" host.com</b>
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+<h2><a name= "2.2">2.2 - Why is the ssh client setuid root?</a></h2>
+
+<p>
+In conjunction with the previous question, (<a href="#2.1">2.1</a>)
+OpenSSH needs root authority to be able to bind to low-numbered ports to 
+facilitate <i>rhosts authentication</i>.
+A privileged port is also required for rhosts-rsa authentication to older
+SSH releases.
+
+<p>
+Additionally, for both <i>rhosts-rsa authentication</i> (in protocol 
+version 1) and <i>hostbased authentication</i> (in protocol version 2) 
+the ssh client needs to access the <i>private host key</i> in order to 
+authenticate the client machine to the server.
+OpenSSH versions prior to 3.3 required the <code>ssh</code> binary to be
+setuid root to enable this, and you may safely remove it if you don't
+want to use these authentication methods.
+
+<p>
+Starting in OpenSSH 3.3, <code>ssh</code> is not setuid by default.  <a
+href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh-keysign">ssh-keysign</a>,
+is used for access to the private hosts keys, and ssh does not use privileged
+source ports by default.  If you wish to use a privileged source port, you must
+manually set the setuid bit on <code>ssh</code>.
+
+<h2><a name= "2.3">2.3 - Why does SSH 2.3 have problems interoperating with OpenSSH 2.1.1?</a></h2>
+
+<p>
+SSH 2.3 and earlier versions contain a flaw in their HMAC implementation. 
+Their code was not supplying the full data block output from the digest, 
+and instead always provided 128 bits. For longer digests, this caused 
+SSH 2.3 to not interoperate with OpenSSH.
+
+<p>
+OpenSSH 2.2.0 detects that SSH 2.3 has this flaw. Recent versions of SSH 
+will have this bug fixed. Or you can add the following to 
+SSH 2.3 <i>sshd2_config</i>.
+
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+<b>Mac hmac-md5</b>
+               </td>
+        </tr>
+</table>
+</blockquote>
+
+<h2><a name= "2.4">2.4 - Why does OpenSSH print: Dispatch protocol error: type 20</a></h2>
+
+<p>
+Problems in interoperation have been seen because older versions of 
+OpenSSH did not support session rekeying. However the commercial SSH 2.3 
+tries to negotiate this feature, and you might experience connection 
+freezes or see the error message &quot;<b>Dispatch protocol error: 
+type 20 </b>&quot;. 
+To solve this problem, either upgrade to a recent OpenSSH release or 
+disable rekeying by adding the following to your commercial SSH 2.3's
+<i>ssh2_config</i> or <i>sshd2_config</i>.
+
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+<b>RekeyIntervalSeconds 0</b>
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+<h2><a name= "2.5">2.5 - Old versions of commercial SSH encrypt host keys with IDEA.</a></h2>
+
+<p>
+The old versions of SSH used a patented algorithm to encrypt their 
+<i>/etc/ssh/ssh_host_key</i>. This problem will manifest as 
+<a href="http://www.openbsd.org/cgi-bin/man.cgi?query=sshd&amp;sektion=8">sshd(8)</a> 
+not being able to read its host key. To solve this, use the command below 
+to convert your ssh_host_key to use 3DES. 
+<b>NOTE:</b> Use the 
+<a href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh-keygen&amp;sektion=1">ssh-keygen(1)</a> 
+program from the Commercial SSH product, *NOT* OpenSSH for the example 
+below.
+
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+# <b>ssh-keygen -u -f /etc/ssh/ssh_host_key</b>
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+<h2><a name= "2.6">2.6 - What are these warning messages about key lengths</a></h2>
+
+<p>
+Commercial SSH's 
+<a href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh-keygen&amp;sektion=1">ssh-keygen(1)</a> 
+program contained a bug which caused it to occasionally generate Pubkey 
+Authentication (RSA or DSA) keys which had their Most Significant Bit 
+(MSB) unset. Such keys were advertised as being full-length, but are 
+actually, half the time, smaller than advertised.
+
+<p>
+OpenSSH will print warning messages when it encounters such keys. To rid 
+yourself of these message, edit your <i>known_hosts</i> files and replace the 
+incorrect key length (usually "1024") with the correct key length 
+(usually "1023").
+
+<h2><a name= "2.7">2.7 - X11 and/or agent forwarding does not work.</a></h2>
+
+<p>
+Check your <i>ssh_config</i> and <i>sshd_config</i>. The default 
+configuration files disable authentication agent and X11 forwarding. To 
+enable it, put the line below in <i>sshd_config</i>:
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+<b>X11Forwarding yes</b>
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+<p>
+and put the following lines in <i>ssh_config</i>:
+
+<blockquote>
+<table border=0 width="800">
+	<tr>
+		<td nowrap bgcolor="#EEEEEE">
+<b>ForwardAgent yes</b><br>
+<b>ForwardX11 yes</b>
+		</td>
+	</tr>
+</table>
+</blockquote>
+
+<p>
+X11 forwarding requires a working <a
+href="http://www.openbsd.org/cgi-bin/man.cgi?query=xauth&amp;sektion=1"
+>xauth(1)</a> binary.  On OpenBSD this is in the <i>xbase</i> file
+set but will probably be different on other platforms.  For OpenSSH
+Portable, xauth must be either found at configure time or specified
+via <b>XAuthLocation</b> in sshd_config(5) and ssh_config(5).
+
+<p>
+Note on agent interoperability: There are two different and
+incompatible agent forwarding mechanisms within the SSH2 protocol.
+OpenSSH has always used an extension of the original SSH1 agent
+requests, however some commercial products use a different, non-free
+agent forwarding protocol.  This means that agent forwarding cannot
+be used between OpenSSH and those products.
+
+<p>
+<b>NOTE:</b> For users of Linux Mandrake 7.2, Mandrake modifies the 
+<i>XAUTHORITY</i> environment variable in <i>/etc/skel/.bashrc</i>, 
+and thus any bash user's home directory. This variable is set by OpenSSH 
+and for either of the above options to work, you need to comment out 
+the line:
+
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+<b># export XAUTHORITY=$HOME/.Xauthority</b>
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+<h2><a name= "2.8">2.8 - After upgrading OpenSSH I lost SSH2 support.</a></h2>
+
+<p>
+Between versions changes can be made to <i>sshd_config</i> or 
+<i>ssh_config</i>. You should always check on these changes when upgrading 
+versions of OpenSSH. After OpenSSH Version 2.3.0 you need to add the 
+following to your <i>sshd_config</i>:
+
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+<b>HostKey /etc/ssh_host_dsa_key</b><br>
+<b>HostKey /etc/ssh_host_rsa_key</b>
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+<h2><a name= "2.9">2.9 - sftp/scp fails at connection, but ssh is OK.</a></h2>
+
+<p>
+sftp and/or scp may fail at connection time if you have shell 
+initialization (.profile, .bashrc, .cshrc, etc) which produces output 
+for non-interactive sessions. This output confuses the sftp/scp client.  
+You can verify if your shell is doing this by executing:
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+<b>ssh yourhost /usr/bin/true</b>
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+<p>
+If the above command produces any output, then you need to modify your 
+shell initialization.
+
+<h2><a name= "2.10">2.10 - Will you add [foo] to scp?</a></h2>
+
+<p>
+Short Answer: no.
+
+<p>
+Long Answer: scp is not standardized. The closest thing it has to a
+specification is "what rcp does".  Since the same command is used on both ends
+of the connection, adding features or options risks breaking interoperability with other
+implementations.
+
+<p>
+New features are more likely in sftp, since the protocol is standardized
+(well, a <a href="http://www.ietf.org/html.charters/OLD/secsh-charter.html">
+draft standard</a>), extensible, and the client and server are decoupled.
+
+<h2><a name= "2.11">2.11 - How do I use port forwarding?</a></h2>
+
+<p>
+If the remote server is running sshd(8), it may be possible to
+``tunnel'' certain services via ssh.  This may be desirable, for
+example, to encrypt POP or SMTP connections, even though the software
+does not directly support encrypted communications.  Tunnelling uses
+port forwarding to create a connection between the client and server.
+The client software must be able to specify a non-standard port to
+connect to for this to work.
+
+<p>
+The idea is that the user connects to the remote host using ssh,
+and specifies which port on the client's machine should be used to
+forward connections to the remote server.  After that it is possible
+to start the service which is to be encrypted (e.g. fetchmail, irc)
+on the client machine, specifying the same local port passed to
+ssh, and the connection will be tunnelled through ssh.  By default,
+the system running the forward will only accept connections from
+itself.
+
+<p>
+The options most relevant to tunnelling are the -L and -R options,
+which allow the user to forward connections, the -D option, which
+permits dynamic port forwarding, the -g option, which permits other
+hosts to use port forwards, and the -f option, which instructs ssh
+to put itself in the background after authentication.  See the <a
+href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh&amp;sektion=1"
+>ssh(1)</a> man page for further details.
+
+<p>
+This is an example of tunnelling an IRC session from client machine
+``127.0.0.1'' (localhost) to remote server ``server.example.com'':
+
+<blockquote>
+<table border=0 width="800">
+	<tr>
+		<td nowrap bgcolor="#EEEEEE">
+<b>ssh -f -L 1234:server.example.com:6667 server.example.com sleep 10<br>
+irc -c '#users' -p 1234 pinky 127.0.0.1</b>
+	</td>
+	</tr>
+</table>
+</blockquote>
+
+<p>
+This tunnels a connection to IRC server server.example.com, joining
+channel ``#users'', using the nickname ``pinky''.  The local port used
+in this example is 1234.  It does not matter which port is used, as
+long as it's greater than 1023 (remember, only root can open sockets on
+privileged ports) and doesn't conflict with any ports already in use.
+The connection is forwarded to port 6667 on the remote server, since
+that's the standard port for IRC services.
+
+<p>
+The remote command ``sleep 10'' was specified to allow an amount
+of time (10 seconds, in the example) to start the service which is to
+be tunnelled.  If no connections are made within the time specified,
+ssh will exit.  If more time is required, the sleep(1) value can be
+increased appropriately or, alternatively, the example above could
+be added as a function to the user's shell.  See ksh(1) and csh(1)
+for more details about user-defined functions.
+
+<p>
+ssh also has an -N option, convenient for use with port forwarding:
+if -N is specified, it is not necessary to specify a remote command
+(``sleep 10'' in the example above).  However, use of this option
+causes ssh to wait around for ever (as opposed to exiting after a
+remote command has completed), and the user must take care to manually
+kill(1) the process afterwards.
+
+<h2><a name= "2.12">2.12 - My ssh connection freezes or drops out after N minutes of inactivity.</a></h2>
+
+<p>
+This is usually the result of a packet filter or NAT device
+timing out your TCP connection due to inactivity.  You can enable
+<b>ClientAliveInterval</b> in the server's <i><a
+href="http://www.openbsd.org/cgi-bin/man.cgi?query=sshd_config&amp;sektion=5">
+sshd_config</a></i>, or enable <b>ServerAliveInterval</b> in the
+client's <i><a
+href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh_config&amp;sektion=5">
+ssh_config</a></i> (the latter is available in OpenSSH 3.8 and newer).
+
+<p>
+Enabling either option and setting the interval for less than the time
+it takes to time out your session will ensure that the connection is
+kept "fresh" in the device's connection table.
+
+<h2><a name= "2.13">2.13 - How do I use scp to copy a file with a colon in it?</a></h2>
+
+<b><a
+href="http://www.openbsd.org/cgi-bin/man.cgi?query=scp&amp;sektion=1">
+scp</a></b> will interpret the component before the colon to be a remote
+server name and attempt to connect to it.  To prevent this, refer to
+the file by a relative or absolute path, eg:
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+$ scp ./source:file sshserver:
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+<h2><a name= "2.14">2.14 - Why does OpenSSH report its version to clients?</a></h2>
+
+<p>
+OpenSSH, like most SSH implementations, reports its name and version to clients
+when they connect, e.g.
+</p>
+
+<blockquote>
+SSH-2.0-OpenSSH_3.9
+</blockquote>
+
+<p>
+This information is used by clients and servers to enable protocol 
+compatibility tweaks to work around changed, buggy or missing features in 
+the implementation they are talking to. This protocol feature checking is 
+still required at present because versions with incompatibilities are still
+in wide use.
+</p>
+
+<h2><u><a name= "3.0">3.0 - Portable OpenSSH Questions</a></u></h2>
+
+<h2><a name= "3.1">3.1 - Spurious PAM authentication messages in logfiles.</a></h2>
+
+<p>
+The portable version of OpenSSH will generate spurious authentication 
+failures at every login, similar to:
+
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+&quot;<b>authentication failure; (uid=0) -&gt; root for sshd service</b>&quot;
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+<p>
+These are generated because OpenSSH first tries to determine whether a 
+user needs authentication to login (e.g. empty password). Unfortunately 
+PAM likes to log all authentication events, this one included.
+
+<p>
+If it annoys you too much, set &quot;<b>PermitEmptyPasswords no</b>&quot; 
+in <i>sshd_config</i>. This will quiet the error message at the expense 
+of disabling logins to accounts with no password set. 
+This is the default if you use the supplied <i>sshd_config</i> file.
+
+<h2><a name= "3.2">3.2 - Empty passwords not allowed with PAM authentication.</a></h2>
+
+<p>
+To enable empty passwords with a version of OpenSSH built with PAM you 
+must add the flag nullok to the end of the password checking module 
+in the <i>/etc/pam.d/sshd</i> file. For example:
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+auth required/lib/security/pam_unix.so shadow nodelay nullok
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+<p>
+This must be done in addition to setting &quot;<b>PermitEmptyPasswords 
+yes</b>&quot; in the <i>sshd_config</i> file. 
+
+<p>
+There is one caveat when using empty passwords with PAM authentication: 
+PAM will allow any password when authenticating an account with an empty 
+password. This breaks the check that 
+<a href="http://www.openbsd.org/cgi-bin/man.cgi?query=sshd&amp;sektion=8">sshd(8)</a> 
+uses to determine whether an account has no password set and grant 
+users access to the account regardless of the policy specified by 
+<b>PermitEmptyPasswords</b>. For this reason, it is recommended that you 
+do not add the <b>nullok</b> directive to your PAM configuration file 
+unless you specifically wish to allow empty passwords.
+
+
+<h2><a name= "3.3">3.3 - ssh(1) takes a long time to connect or log
+in</a></h2>
+
+<p>
+Large delays (more than 10 seconds) are typically caused by a problem with
+name resolution:
+<ul>
+<li>Some versions of glibc (notably glibc 2.1 shipped with Red Hat 6.1)
+can take a long time to resolve "IPv6 or IPv4" addresses from domain
+names. This can be worked around with by specifying <b>AddressFamily
+inet</b> option in <i>ssh_config</i>.</li>
+
+<li>There may be a DNS lookup problem, either at the client or server.
+You can use the <code>nslookup</code> command to check this on both client
+and server by looking up the other end's name and IP address.  In
+addition, on the server look up the name returned by the client's
+IP-name lookup.  You can disable most of the server-side lookups by
+setting <b>UseDNS no</b> in <i>sshd_config</i>.</li>
+</ul>
+
+<p>
+Delays less than 10 seconds can have other causes.
+
+<ul>
+
+<li>OpenSSH releases prior to 3.8 had an <i>moduli</i> file with
+moduli that were just smaller than what sshd would look for, and
+as a result, sshd would end up using moduli significantly larger
+than requested, which resulted in a speed penalty.  Replacing the
+<i>moduli</i> file will resolve this (note that in most cases this
+file will not be replaced during an upgrade and must be replaced
+manually).</li>
+
+<li>OpenSSH releases prior to 3.8 had a flaw in <code>ssh</code> that
+would cause it to request moduli larger than intended (which when
+combined with the above resulted in significant slowdowns).
+Upgrading the client to 3.8 or higher will resolve this issue.</li>
+
+<li>If either the client or server lack a kernel-based random number
+device (eg Solaris &lt; 9, AIX &lt; 5.2, HP-UX &lt; 11.11) and no
+substitute is available (eg <a href=
+"ftp://ftp.ayamura.org/pub/prngd/">prngd</a>) it's possible that
+one of the programs called by <code>ssh-rand-helper</code> to
+generate entropy is hanging.  This can be investigated by running
+it in debug mode:
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+/usr/local/libexec/ssh-rand-helper -vvv
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+Any significant delays should be investigated and rectified, or the
+corresponding commands should be removed from <i>ssh_prng_cmds</i>.
+</li>
+
+</ul>
+
+<h3>How slow is "slow"?</h3>
+Under normal conditions, the speed of SSH logins is dependant on
+CPU speed of client and server.  For comparison the following are
+typical connect times for <code>time ssh localhost true</code>
+with a 1024-bit RSA key on otherwise unloaded hosts.  OpenSSH and
+OpenSSL were compiled with gcc 3.3.x.
+
+<p>
+<table>
+<tr><th>CPU</th><th>Time (SSHv1)<a href="#3.3fn1">[1]</a></th>
+	<th>Time (SSHv2)</th></tr>
+<tr><td>170MHz SPARC/sun4m</td><td>0.74 sec</td><td>1.25 sec</td></tr>
+<tr><td>236MHz HPPA/8200<a href="#3.3fn2">[2]</a></td><td>0.44 sec</td>
+	<td>0.79 sec</td></tr>
+<tr><td>375MHz PowerPC/604e</td><td>0.38 sec</td><td>0.51 sec</td></tr>
+<tr><td>933MHz VIA Ezra</td><td>0.34 sec</td><td>0.44 sec</td></tr>
+<tr><td>2.1GHz Athlon XP 2600+</td><td>0.14 sec</td><td>0.22 sec</td></tr>
+</table>
+
+<br>
+
+<a name="3.3fn1">[1]</a> The SSHv1 protocol is faster but is
+cryptographically weaker than SSHv2.<br>
+
+<a name="3.3fn2">[2]</a> At the time of writing, gcc generates
+relatively slow code on HPPA for RSA and Diffie-Hellman operations
+(see <a href= "http://gcc.gnu.org/bugzilla/show_bug.cgi?id=7625">gcc
+bug #7625</a> and <a
+href="http://marc.info/?l=openssh-unix-dev&amp;m=102646106016694">
+discussion on openssh-unix-dev</a>).
+
+<h2><a name= "3.4">3.4 - "Can't locate module net-pf-10" messages in log under Linux.</a></h2>
+
+<p>
+The Linux kernel is looking (via modprobe) for protocol family 10 (IPv6). 
+Either load the appropriate kernel module, enter the correct alias in 
+<i>/etc/modules.conf</i> or disable IPv6 in <i>/etc/modules.conf</i>.
+
+
+<p>
+For some silly reason <i>/etc/modules.conf</i> may also be named 
+<i>/etc/conf.modules</i>.
+
+
+<h2><a name= "3.5">3.5 - Password authentication doesn't work (eg on Slackware 7.0 or Red Hat 6.x)</a></h2>
+
+<p>
+If the password is correct password the login is still denied, the
+usual cause is that the system is configured to use MD5-type passwords
+but the
+<a href="http://www.openbsd.org/cgi-bin/man.cgi?query=crypt&amp;sektion=3"
+>crypt(3)</a> function used by sshd doesn't understand them.
+
+<p>
+Affected accounts will have password strings in <i>/etc/passwd</i>
+or <i>/etc/shadow</i> that start with <b>$1$</b>.
+If password authentication fails for new accounts or accounts with
+recently changed passwords, but works for old accounts, this is the
+likely culprit.
+
+<p>
+The underlying cause is that some versions of OpenSSL have a crypt(3)
+function that does not understand MD5 passwords, and the link order of
+sshd means that OpenSSL's crypt(3) is used instead of the system's.
+OpensSSH's configure attempts to correct for this but is not always
+successful.
+
+<p>
+There are several possible solutions:
+
+<ul>
+<li>
+<p>
+Enable sshd's built-in support for MD5 passwords at build time.
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+./configure --with-md5-passwords [options]
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+This is safe even if you have both types of encryption as sshd will
+select the correct algorithm for each account automatically.
+
+<li>
+<p>
+If your system has a separate libcrypt library (eg Slackware 7) then you
+can manually add -lcrypt to the LIBS list so it's used instead of
+OpenSSL's:
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+LIBS=-lcrypt ./configure [options]
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+<li>
+<p>
+If your platforms supports PAM, you may configure sshd to use it
+(see <a href= "#3.15" >section 3.15</a>).  This will mean that sshd will
+not verify passwords itself but will defer to the configured PAM modules.
+</ul>
+
+<h2><a name= "3.6">3.6 - Configure or sshd(8) complain about lack of RSA or DSA support</a></h2>
+
+<p>
+Ensure that your OpenSSL libraries have been built to include RSA or DSA 
+support either internally or through RSAref.
+
+
+<h2><a name= "3.7">3.7 - "scp: command not found" errors</a></h2>
+
+<p>
+<a href="http://www.openbsd.org/cgi-bin/man.cgi?query=scp&amp;sektion=1">scp(1)</a> 
+must be in the default PATH on both the client and the server. You may 
+need to use the <b>--with-default-path</b> option to specify a custom 
+path to search on the server. This option replaces the default path, 
+so you need to specify all the current directories on your path as well 
+as where you have installed scp. For example:
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+$ <b>./configure --with-default-path=/bin:/usr/bin:/usr/local/bin:/path/to/scp</b>
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+<p>
+Note that configuration by the server's admin will take precedence over the
+setting of <b>--with-default-path</b>.  This includes resetting PATH in
+<i>/etc/profile</i>, PATH in <i>/etc/environment</i> on AIX, or (for 3.7p1 and
+above) setting PATH or SUPATH in <i>/etc/default/login</i> on Solaris or
+Reliant Unix.
+
+<h2><a name= "3.8">3.8 - Unable to read passphrase</a></h2>
+
+<p>
+Some operating systems set <i>/dev/tty</i> with incorrect modes, causing 
+the reading of passwords to fail with the following error:
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+You have no controlling tty.  Cannot read passphrase.
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+<p>
+The solution to this is to reset the permissions on <i>/dev/tty</i> 
+to mode 0666 and report the error as a bug to your OS vendor. 
+
+
+<h2><a name= "3.9">3.9 - 'configure' missing or make fails</a></h2>
+
+<p>
+If there is no 'configure' file in the tar.gz file that you downloaded 
+or make fails with "missing separator" errors, you have probably 
+downloaded the OpenBSD distribution of OpenSSH and are attempting to 
+compile it on another platform. Please refer to the information on the 
+<a href="http://www.openssh.com/portable.html">portable version</a>.
+
+
+<h2><a name= "3.10">3.10 - Hangs when exiting ssh</a></h2>
+
+<p>
+OpenSSH may hang when exiting.  This can occur when there is an active 
+background process.  This is known to occur on Linux and HP-UX.  
+The problem can be verified by doing the following:
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+$ <b>sleep 20 &amp; exit</b>
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+Try to use this instead:
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+$ <b>sleep 20 &lt; /dev/null &gt; /dev/null 2&gt;&amp;1 &amp;</b>
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+<p>
+A work around for bash users is to place <b>"shopt -s huponexit"</b> 
+in either /etc/bashrc  or ~/.bashrc.  Otherwise, consult your shell's 
+man page for an option to enable it to send a HUP signal to active 
+jobs when exiting.  See <a
+href="http://bugzilla.mindrot.org/show_bug.cgi?id=52">bug #52</a>
+for other workarounds.
+
+<h2><a name= "3.11">3.11 - Why does ssh hang on exit?</a></h2>
+
+<p>
+When executing
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+$ <b>ssh host command</b>
+                </td>
+        </tr>
+</table>
+</blockquote>
+ssh <b>needs</b> to hang, because it needs to wait:
+<ul>
+<li>
+until it can be sure that <code>command</code> does not need
+more input.
+<li>
+until it can be sure that <code>command</code> does not produce
+more output. 
+<li>
+until <code>command</code> exits because sshd needs to tell
+the exit status from <code>command</code> to ssh.
+</ul>
+<p>
+
+<h2><a name= "3.12">3.12 - I upgraded to OpenSSH 3.1 and X11
+forwarding stopped working.</a></h2>
+
+Starting with OpenSSH 3.1, the sshd x11 forwarding server listens on
+localhost by default; see the sshd <b>X11UseLocalhost</b> option to
+revert to prior behaviour if your older X11 clients do not function
+with this configuration.<p>
+
+In general, X11 clients using X11 R6 should work with the default
+setting.  Some vendors, including HP, ship X11 clients with R6
+and R5 libs, so some clients will work, and others will not work.
+This is true for HP-UX 11.X.<p>
+
+<h2><a name= "3.13">3.13 - I upgraded to OpenSSH 3.8 and some
+X11 programs stopped working.</a></h2>
+
+<p>
+As documented in the <a href="http://www.openssh.com/txt/release-3.8">3.8 release notes</a>,
+<code>ssh</code> will now use untrusted X11 cookies by 
+default.  The previous behaviour can be restored by setting
+<b>ForwardX11Trusted yes</b> in <i>ssh_config</i>.
+
+<p>
+Possible symptoms include:<br>
+<code>BadWindow (invalid Window parameter)<br>
+BadAccess (attempt to access private resource denied)<br>
+X Error of failed request:  BadAtom (invalid Atom parameter)<br>
+Major opcode of failed request:  20 (X_GetProperty)<br></code>
+
+<h2><a name= "3.14">3.14 - I copied my public key to authorized_keys
+but public-key authentication still doesn't work.</a></h2>
+
+<p>
+Typically this is caused by the file permissions on $HOME, $HOME/.ssh or
+$HOME/.ssh/authorized_keys being more permissive than sshd allows by default.
+
+<p>
+In this case, it can be solved by executing the following on the server.
+<blockquote>
+<table border=0 width="800">
+<tr>
+  <td nowrap bgcolor="#EEEEEE">
+$ <b>chmod go-w $HOME $HOME/.ssh</b><br>
+$ <b>chmod 600 $HOME/.ssh/authorized_keys</b><br>
+$ <b>chown `whoami` $HOME/.ssh/authorized_keys</b><br>
+  </td>
+</tr>
+</table>
+</blockquote>
+
+<p>
+If this is not possible for some reason, an alternative is to set
+<b>StrictModes no</b> in <i>sshd_config</i>, however this is not
+recommended.
+
+<h2><a name= "3.15">3.15 - OpenSSH versions and PAM behaviour.</a></h2>
+
+Portable OpenSSH has a configure-time option to enable sshd's use of the
+<a href="http://www.opengroup.org/onlinepubs/008329799/">PAM</a>
+(Pluggable Authentication Modules) interface.
+
+<blockquote>
+<table border=0 width="800">
+        <tr>
+                <td nowrap bgcolor="#EEEEEE">
+./configure --with-pam [options]
+                </td>
+        </tr>
+</table>
+</blockquote>
+
+To use PAM at all, this option must be provided at build time.
+The run-time behaviour when PAM is built in varies with the version of
+Portable OpenSSH, and on later versions it must also be enabled by setting
+<b>UsePAM</b> to <b>yes</b> in <i>sshd_config</i>.
+
+<p>
+The behaviour of the relevant authentications options when PAM support is built
+in is summarised by the following table.
+
+<p>
+<table border="1">
+  <tr> <th>Version</th> <th>UsePAM</th> <th>PasswordAuthentication</th> <th>ChallengeResponseAuthentication</th> </tr>
+  <tr>
+    <td>&lt;=3.6.1p2</td>
+    <td>Not applicable</td>
+    <td>Uses PAM</td>
+    <td>Uses PAM if <b>PAMAuthenticationViaKbdInt</b> is enabled</td>
+  </tr>
+  <tr>
+    <td>3.7p1 - 3.7.1p1</td>
+    <td>Defaults to <b>yes</b></td>
+    <td>Does not use PAM</td>
+    <td>Uses PAM if <b>UsePAM</b> is enabled</td>
+  </tr>
+  <tr>
+    <td>3.7.1p2 - 3.8.1p1</td>
+    <td>Defaults to <b>no</b></td>
+    <td>Does not use PAM <a href="#3.15fn1">[1]</a></td>
+    <td>Uses PAM if <b>UsePAM</b> is enabled</td>
+  </tr>
+  <tr>
+    <td>3.9p1</td>
+    <td>Defaults to <b>no</b></td>
+    <td>Uses PAM if <b>UsePAM</b> is enabled</td>
+    <td>Uses PAM if <b>UsePAM</b> is enabled</td>
+  </tr>
+</table>
+<p>
+
+<a name= "3.15fn1">[1]</a> Some vendors, notably Redhat/Fedora, have
+backported the PasswordAuthentication from 3.9p1 to their 3.8x based
+packages.  If you're using a vendor-supplied package then consult their
+documentation.
+
+<p>
+OpenSSH Portable's PAM interface still has problems with a few modules,
+however we hope that this number will reduce in the future.  As at the
+3.9p1 release, the known problems are:
+
+<ul>
+  <li>Modules relying on module-private data (eg pam_dhkeys, pam_krb5, AFS)
+  may fail to correctly establish credentials (bug <a
+  href="http://bugzilla.mindrot.org/show_bug.cgi?id=688">#688</a>) when
+  authenticating via <b>ChallengeResponseAuthentication</b>.
+  <b>PasswordAuthentication</b> with 3.9p1 and above should work.
+</ul>
+
+You can also check <a
+href="http://bugzilla.mindrot.org/buglist.cgi?product=Portable+OpenSSH&amp;bug_status=RESOLVED&amp;bug_status=NEW&amp;bug_status=ACCEPTED&amp;component=PAM+support"
+>bugzilla for current PAM issues</a>.
+
+<h2><a name= "3.16">3.16 - Why doesn't "w" or "who" on AIX 5.x show users
+logged in via ssh?</a></h2>
+
+Between AIX 4.3.3 and AIX 5.x, the format of the wtmp struct changed.  This
+means that sshd binaries built on AIX 4.x will not correctly write wtmp
+entries when run on AIX 5.x.  This can be fixed by simply recompiling 
+sshd on an AIX 5.x system and using that.
+
+<hr>
+<a href="http://www.openssh.com/index.html"><img height=24 width=24 src="back.gif" border=0 alt=OpenSSH></a>
+<a href="mailto:www@openbsd.org">www@openbsd.org</a>
+<br>
+<small>$OpenBSD: faq.html,v 1.113 2012/04/21 12:12:22 dtucker Exp $</small>
+
+</body>
+</html>

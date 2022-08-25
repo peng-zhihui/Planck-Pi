@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -d /run/systemd/system ]; then
+    systemctl kill -s HUP rsyslog.service
+else
+    invoke-rc.d rsyslog rotate > /dev/null
+fi
+

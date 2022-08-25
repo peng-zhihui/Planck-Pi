@@ -1,0 +1,403 @@
+Template: tasksel/first
+Type: multiselect
+Choices-C: ${CHOICES_C}
+Choices: ${CHOICES}
+Description: Choose software to install:
+ At the moment, only the core of the system is installed. To tune the
+ system to your needs, you can choose to install one or more of the
+ following predefined collections of software.
+Description-ar.UTF-8: اختيار البرامج التي ستثبّت:
+ لا شيء مثبّت حالياً سوى صميم النظام. لضبط التثبيت لاحتياجاتك يمكنك تثبيتواحد أو أكثر من مجموعات البرامج المعرّفة مسبقاً التّالية.
+Description-ast.UTF-8: Escueye software a instalar:
+ Pel momentu, namái el núcleu del sistema ta instaláu. P'axustar el sistema a les sos necesidaes, pue escoyer instalar una o más de les siguientes colleiciones de software predefiníes.
+Description-be.UTF-8: Абярыце праграмы, якія трэба ўсталяваць:
+ Зараз усталявана толькі ядро сістэмы. Каб удасканаліць сістэму адпаведна Вашым патрэбам, можна абраць адзін ці некалькі прадвызначаных набораў праграм.
+Description-bg.UTF-8: Изберете софтуер за инсталиране:
+ В момента са инсталирани само най-жизненоважните програми на Debian. За да нагласите системата към Вашите нужди, можете да изберете измежду един или повече от следните предварително зададени набори от софтуер.
+Description-bn.UTF-8: ইনস্টল করার জন্য সফটওয়্যার বেছে নিন:
+ এই মুহূর্তে, ডেবিয়ানের মূল অংশটুকুই কেবল ইনস্টল করা আছে। সিস্টেমকে আপনার পছন্দমত সাজানোর জন্য পূর্বনির্ধারিত এই সফটওয়্যার সংগ্রহগুলো থেকে আপনি এক বা একাধিক সংগ্রহ ইনস্টল করতে পারেন।
+Description-bs.UTF-8: Odaberite software za instalaciju:
+ Do sada je instaliran samo najosnovniji sistem. Da biste prilagodili sistem vašim potrebama, možete odabrati instalaciju jedne ili više sljedećih predefinisanih kolekcija software-a.
+Description-ca.UTF-8: Seleccioneu el programari a instal·lar:
+ Ara mateix, només s'ha instal·lat la base del sistema. Per a adequar la instal·lació a les vostres necessitats, podeu seleccionar instal·lar una o més de les següents col·leccions de programari.
+Description-cs.UTF-8: Zvolte programy k instalaci:
+ Momentálně je nainstalován pouze nutný základ operačního systému. Abyste si vyladili systém dle svých potřeb, můžete nyní nainstalovat jednu nebo více úloh. Úlohy jsou připravené kolekce souvisejícího softwaru.
+Description-cy.UTF-8: Dewis meddalwedd i'w sefydlu:
+ Ar hyn o bryd, dim ond craidd y system sydd wedi ei sefydlu. Er mwyn addasu'r system i'ch anghenion, gallwch ddewis sefydlu un neu fwy o'r casgliadau canlynol o feddalwedd.
+Description-da.UTF-8: Vælg programmer at installere:
+ For øjeblikket er kun systemets kerne installeret. For at tilpasse systemet til dine behov, kan du vælge at installere en eller flere af følgende foruddefinerede programsamlinger.
+Description-de.UTF-8: Welche Software soll installiert werden?
+ Momentan ist nur das Wichtigste des Systems installiert. Um das System an Ihre Bedürfnisse anzupassen, können Sie eine oder mehrere der folgenden vordefinierten Software-Sammlungen installieren.
+Description-dz.UTF-8: གཞི་བཙུགས་འབད་ནི་ལུ་ མཉན་ཆས་གདམ།
+ ད་ལྟོའི་དུས་སྐབས་འདི་ནང་  ནང་སྙིང་ རྐྱངམ་ཅིག་གཞི་བཙུགས་འབད་ཡི། རིམས་ལུགས་འདི་ ཁྱོད་རའི་མཁོ་འདོད་དང་བསྟུན་  འོག་ལུ་འཁོད་མི་ སྔ་གོང་ངེས་འཛིན་འབད་དེ་་ཡོད་མི་ མཉན་ཆས་བསྡུ་གསོག་གཅིག་ ཡང་ན་དེ་བ་ལྷགཔ་དེ་ཚུ་ གདམ་སྟེ་ གཞི་བཙུགས་འབད་བཏུབ།
+Description-el.UTF-8: Επιλογή του λογισμικού προς εγκατάσταση:
+ Αυτή τη στιγμή  έχουν εγκατασταθεί μόνο τα βασικά πακέτα του Debian. Για να ολοκληρώσετε την εγκατάσταση σύμφωνα με τις ανάγκες σας, μπορείτε να επιλέξετε την εγκατάσταση μιας ή και περισσοτέρων από τις ακόλουθες προκαθορισμένες συλλογές λογισμικού.
+Description-eo.UTF-8: Elektu instalotajn programojn:
+ Nuntempe, nur la baza sistemo estas instalita. Por agordi la sistemon al via bezono, vi povas instali iun aŭ plurajn sekvantajn antaŭelektitajn programarojn.
+Description-es.UTF-8: Elegir los programas a instalar:
+ De momento sólo está instalado el sistema básico. Puede escoger la instalación de las siguientes colecciones predefinidas de programas para adaptar más la instalación a sus necesidades.
+Description-et.UTF-8: Vali paigaldatav tarkvara:
+ Hetkel on paigaldatud vaid Debiani tuumik. Et paigaldus oma vajadustele häälestada, võid valida mõned järgnevaist eeldefineeritud tarkvara kogumitest.
+Description-eu.UTF-8: Instalatu nahi duzun softwarea aukeratu:
+ Momentu honetan, Sistema muina bakarrik duzu instalaturik. Instalakuntza zure beharretara egokitzeko, aurreaukeratutako pakete bilduma hauetako bat edo gehiago instalatu ditzakezu.
+Description-fa.UTF-8: نرم‌افزار های مورد نیاز برای نصب را انتخاب کنید:
+ در حال حاضر تنها هسته‌ی اولیه‌ی دبیان نصب شده است. برای تنظیم سیستم نصب شده با آنچه میخواهید، شما میتوانید از مجموعه های مقابل یک یا چند مجموعه ازپیش تعریف شده را برای نصب انتخاب کنید.
+Description-fi.UTF-8: Valitse asennettavat ohjelmat:
+ Tällä hetkellä vain Debianin peruskokoonpano on asennettuna. Voit muokata asennusta tarpeittesi mukaan valitsemalla asennettavaksi yhden tai useamman seuraavista ennalta määritellyistä ohjelmakokoelmista.
+Description-fr.UTF-8: Logiciels à installer :
+ Actuellement, seul le système de base est installé. Pour adapter l'installation à vos besoins, vous pouvez choisir d'installer un ou plusieurs ensembles prédéfinis de logiciels.
+Description-ga.UTF-8: Roghnaigh bogearraí le suiteáil:
+ Níl ach an bunchóras suiteáilte faoi láthair.  Chun an córas a chur in oiriúint duitse féin, is féidir leat ceann amháin nó níos mó de na bailiúcháin réamhshainithe bhogearraí seo a shuiteáil.
+Description-gl.UTF-8: Escolla o software que quere instalar:
+ Neste momento só está instalado o núcleo do sistema. Para axustar o sistema ás súas necesidades pode instalar unha ou varias das seguintes coleccións predefinidas de software.
+Description-gu.UTF-8: સ્થાપન કરવા માટે સોફ્ટવેર પસંદ કરો:
+ આ પરિસ્થિતિમાં, ફક્ત સિસ્ટમનો મુખ્ય ભાગ જ સ્થાપિત થશે. તમારી જરૂરિયાત મુજબ સિસ્ટમને ગોઠવવા માટે, તમે નીચેનાં એક અથવા વધુ પહેલેથી નક્કી કરેલ સોફ્ટવેરનાં ભાગો સ્થાપિત કરી શકો છો.
+Description-he.UTF-8: בחר תוכנה להתקנה:
+ ברגע זה, רק הליבה של המערכת מותקנת. כדי לכוונן את המערכת לצרכים שלך, תוכל לבחור להתקין אחד או יותר מאוספי התוכנה שהוגדרו מראש.
+Description-hi.UTF-8: संस्थापित करने के लिए सॉफ्टवेयर चुनें:
+ इस समय तंत्र का केवल क्रोड़ ही संस्थापित है. सिस्टम को अपनी आवश्यकतानुसार बनाने के लिए आप निम्नलिखित पूर्व परिभाषित सॉफ्टवेयर संकलनों में से एक या अधिक को संस्थापित करने के लिए चुन सकते हैं.
+Description-hr.UTF-8: Izaberite programe za instalaciju:
+ Trenutno je instaliran samo osnovni sustav. Kako bi prilagodili instalaciju svojim potrebama, možete birati među sljedećim predodređenim skupinama programa.
+Description-hu.UTF-8: Telepíthető szoftverek:
+ A Debian alaprendszer telepítés kész. Most jön az egyéni igényeknek megfelelő kialakítás. Ez az alábbi nagy szoftver összeállítások telepítésével is elkezdhető.
+Description-id.UTF-8: Pilih perangkat lunak yang ingin diinstal:
+ Saat ini hanya inti dari Debian yang terpasang. Untuk menyesuaikannya dengan kebutuhan anda, anda dapat memilih satu atau lebih kumpulan perangkat lunak yang telah didefinisikan berikut ini..
+Description-is.UTF-8: Veldu hugbúnað til uppsetningar:
+ Í augnablikinu er einungis búið að setja upp grunnbúnað kerfisins. Til að útbúa kerfið þannig að það henti þörfum þínum, geturðu valið uppsetningu á einum eða fleiri flokkum af samanvöldum hugbúnaði.
+Description-it.UTF-8: Scegliere il software da installare:
+ Al momento, solo la parte principale di Debian è installata. Per adattare l'installazione alle proprie esigenze, è possibile installare una o più delle seguenti collezioni predefinite di software.
+Description-ja.UTF-8: インストールするソフトウェアの選択:
+ 現時点では、システムのコアのみがインストールされている状態です。あなたのニーズに合うようにシステムを調整するために、以下の定義済みソフトウェアコレクションから 1 つ以上をインストールできます。
+Description-ka.UTF-8: ამოირჩიეთ დასაყენებელი პროგრამები:
+ ამჟამად გამიზნულია მხოლოდ ძირითადი სისტემის ინსტალაცია. სისტემის თქვენს საჭიროებებზე მოსარგებად, შეგიძლიათ დააყენოთ პროგრამული უზრუნველყოფის ერთი ან მეტი წინასწარ განსაზღვრული ნაკრები.
+Description-kk.UTF-8: Орнатылатын БҚ таңдау:
+ Қазір сізде жүйе ядросы ғана орнатылған. Жүйеңізді өзіңіз қалайтындай баптау үшін, сіз осында көрсетілген бір немесе бірнеше бағдарламалық қамтама жинақтарын орната аласыз.
+Description-km.UTF-8: ជ្រើស​កម្មវិធី​​​ត្រូវ​ដំឡើង ៖
+ នៅ​ពេលនេះ មាន​តែ​ផ្នែក​សំខាន់​របស់​ប្រព័ន្ធ​ត្រូវ​បាន​ដំឡើង ។ ដើម្បី​ត្រឡប់​ប្រព័ន្ធ​តាម​តម្រូវការ​របស់​អ្នក អ្នក​អាច​ជ្រើស​ដើម្បី​ដំឡើង​ការ​ប្រមូលផ្ដុំ​កម្មវិធី​ដែល​បាន​កំណត់​ជា​មុន​ដូច​ខាង​ក្រោម ។are.
+Description-kn.UTF-8: ಅನುಸ್ಥಾಪಿಸಲು ತಂತ್ರಾಂಶ ಆಯ್ಕೆ ಮಾಡಿ
+ ಈಗ ವ್ಯವಸ್ಥೆಯ ತಿರುಳುಭಾಗವನ್ನು ಮಾತ್ರ ಅನುಸ್ಥಾಪಿಸಲಾಗಿದೆ. ನಿಮ್ಮ ಅಗತ್ಯಗಳಿಗನುಸಾರ ವ್ಯವಸ್ಥೆಯನ್ನು ಬದಲಿಸಲು ಈ ಕೆಳಗಿನ ಒಂದು ಅಥವಾ ಹೆಚ್ಚು ಪೂರ್ವನಿರ್ಧಾರಿತ ತಂತ್ರಾಂಶ-ಸಂಗ್ರಹಗಳನ್ನು ಆಯ್ದುಕೊಳ್ಳಬಹುದು.
+Description-ko.UTF-8: 설치할 소프트웨어 선택:
+ 현재 시스템의 핵심적인 부분만 설치되어 있습니다. 필요에 맞게 시스템을 조정하려면, 다음 소프트웨어 모음 중 설치하고자 하는 소프트웨어 모음을 선택하십시오.
+Description-ku.UTF-8: Nivîsbariya were sazkirin hilbijêre:
+ Niha, tenê bingehê pergalê hatiye sazkirin. Niha dikarî pergalê li gorî pêwendiyên xwe mîheng bikî. Ji bo wê yek an çend ji koleksiyonên nivîsbariyê hilbijêre.
+Description-lt.UTF-8: Pasirinkite įdiegtinas programas:
+ Kol kas įdiegta tik pagrindinė sistemos dalis. Kad sistema labiau atitiktų Jūsų poreikius, galima parinkti ir įdiegti norimus žemiau apibrėžtus programinės įrangos rinkinius.
+Description-lv.UTF-8: Izvēlieties instalējamo programmatūru:
+ Pašreizējā brīdī instalēta ir tikai bāzes sistēma. Lai viegli pielāgotu sistēmu jūsu vajadzībām, var instalēt vienu vai vairākas programmu grupas no sekojošā saraksta.
+Description-mg.UTF-8: Fidio ny rindrankajy izay hapetraka :
+ Hatramin'izao dia mbola ny fototry ny system ihany no mipetraka ao anatin'ny milinao. Mba hanamboarana azy hifanaraka amin'ny izay ilainao azy dia afaka mametraka ny sasantsasany amin'ireto fikanbanan-drindrakajy ireto ianao.
+Description-mk.UTF-8: Одбери софтвер кој ќе се инсталира:
+ Во моментов е инсталиран само основниот систем. За да ја прилагодите инсталацијата по Вашите потреби, можете да одберете да се инсталираат една или повеќе од следните стандардни колекции на софтвер.
+Description-ml.UTF-8: ഇന്‍സ്റ്റാള്‍ ചെയ്യേണ്ട സോഫ്റ്റ്‌വെയര്‍ തെരഞ്ഞെടുക്കുക:
+ ഇപ്പോള്‍ സിസ്റ്റത്തിന്റെ കേന്ദ്ര ഭാഗങ്ങള്‍ മാത്രമേ ഇന്‍സ്റ്റാള്‍ ചെയ്തിട്ടുള്ളൂ. നിങ്ങളുടെ ആവശ്യത്തിനായി സിസ്റ്റം മാറ്റിയെടുക്കുന്നതിനു് നിങ്ങള്‍ക്കു് ഒന്നോ അതിലധികമോ നേരത്തെ തയ്യാറാക്കിയ സോഫ്റ്റ്‌വെയര്‍ ശേഖരങ്ങള്‍ ഇന്‍സ്റ്റാള്‍ ചെയ്യാന്‍ തെരഞ്ഞെടുക്കാം.
+Description-mr.UTF-8: स्थापनेसाठी सॉफ्टवेअर निवडा:
+ आतापर्यन्त, फक्त सिस्टीमचा गाभा अधिष्ठापित केलेला आहे. तुमच्या गरजांनुसार प्रणाली ट्युन करावयाची असल्यास, तुम्ही खाली दिलेल्या पूर्वनिर्धारित सॉफ्टवेअर संचांपैकी एक किंवा एकापेक्षा अधिकांची अधिष्ठापनेकरिता निवड करु शकता.
+Description-nb.UTF-8: Velg hvilke programmer du vil installere:
+ Nå er det bare grunnsystemet som er installert. For å tilpasse systemet til dine behov, så kan du velge å installere en eller flere av de følgende forhåndsvalgte gruppene av programvare.
+Description-ne.UTF-8: स्थापना गर्न सफ्टवेयर रोज्नुहोस्:
+ त्यो समयमा, डेवियनको कोर मात्र स्थापना भयो । तपाईँको आवश्यकता अनुसार प्रणालीलाई मिलान गर्न, तपाईँले निम्न पूर्व परिभाषित सफ्टवेयरको संकलनबाट एउटा वा धेरै स्थापना गर्न रोज्न सक्नुहुन्छ ।
+Description-nl.UTF-8: Welke software wilt u installeren?
+ Momenteel is enkel het kernsysteem geïnstalleerd. Om de installatie aan uw behoeften aan te passen kunt u een of meer van de voorgedefinieerde software-collecties installeren.
+Description-nn.UTF-8: Vel programvare som skal installerast:
+ På dette punktet er det berre hovudkomponentane i systemet som er installert. For å tilpasse systemet til det du treng, kan du installere ein eller fleire av desse førehandsdefinerte samlingar med programvare.
+Description-no.UTF-8: Velg hvilke programmer du vil installere:
+ Nå er det bare grunnsystemet som er installert. For å tilpasse systemet til dine behov, så kan du velge å installere en eller flere av de følgende forhåndsvalgte gruppene av programvare.
+Description-pa.UTF-8: ਇੰਸਟਾਲ ਕਰਨ ਲਈ ਸਾਫਟਵੇਅਰ ਚੋਣ:
+ ਇਸ ਮੌਕੇ ਉੱਤੇ ਸਿਰਫ਼ ਮੁੱਢਲਾ ਡੇਬੀਅਨ ਹੀ ਇੰਸਟਾਲ ਹੈ। ਸਿਸਟਮ ਨੂੰ ਆਪਣੀ ਲੋੜ ਮੁਤਾਬਕ ਤਿਆਰ ਕਰਨ ਲਈ, ਤੁਸੀਂ ਹੇਠ ਦਿੱਤੇ ਸਾਫਟਵੇਅਰ ਭੰਡਾਰ ਵਿੱਚ ਇੱਕ ਜਾਂ ਵੱਧ ਦੀ ਚੋਣ ਕਰ ਸਕਦੇ ਹੋ।
+Description-pl.UTF-8: Wybierz oprogramowanie do instalacji:
+ W tym momencie tylko podstawowy system jest zainstalowany. By dostosować instalację do Twoich potrzeb możesz wybrać instalację jednego lub więcej z poniższych predefiniowanych zestawów oprogramowania.
+Description-pt.UTF-8: Escolha o software a instalar:
+ Neste momento, apenas está instalado o coração do sistema. Para afinar o sistema de acordo com as suas necessidades, pode escolher instalar uma ou mais das seguintes colecções de software pré-definidas.
+Description-pt_BR.UTF-8: Escolha o software a ser instalado:
+ No momento, somente o básico do sistema está instalado. Para refinar seu sistema e deixá-lo de acordo com suas necessidades, você pode optar por instalar uma ou mais das coleções de software pré-definidas a seguir.
+Description-ro.UTF-8: Alegeți programele de instalat:
+ Momentan, numai partea esențială a sistemului este instalată. Pentru a configura sistemul pentru propriile necesități, puteți alege să instalați una sau mai multe din următoarele colecții predefinite de programe.
+Description-ru.UTF-8: Выберите устанавливаемое программное обеспечение:
+ В данный момент, установлена только основа системы. Исходя из ваших потребностей, вы можете выбрать один и более из уже готовых наборов программного обеспечения.
+Description-si.UTF-8: ස්ථාපනයට මෘදුකාංගය තෝරන්න:
+ මේ අවස්ථාවේ පද්ධතියේ මූලය පමණක් ස්ථාපනය වේ. ඔබේ අවශ්‍යතා සඳහා පද්ධතිය සීරුමාරු කිරීමට, ඔබට පහත පෙරනිවේශිත මෘදුකාංග එකතු වලින් එකක් හෝ කිහිපයක් ස්ථාපනය කල හැක.
+Description-sk.UTF-8: Zvoľte programy, ktoré sa nainštalujú:
+ Momentálne je nainštalovaný iba základ systému. Aby ste si vyladili systém podľa svojich potrieb, môžete teraz nainštalovať jednu alebo viac pripravených kolekcií súvisiaceho softvéru.
+Description-sl.UTF-8: Izberite programsko opremo, ki jo želite namestiti:
+ Trenutno je nameščeno samo jedro sistema. Sistem si lahko prilagodite, tako da namestite eno ali več vnaprej pripravljenih zbirk programske opreme.
+Description-sq.UTF-8: Zgjidh software për t'u instaluar:
+ Momentalisht, vetëm baza e sistemit është instaluar. Për të sintonizuar sistemin sipas nevojave të tua, mund të zgjidhësh të instalosh një koleksion të parapërcaktuar programesh nga lista e mëposhtme.
+Description-sr.UTF-8: Изаберите софтвер за инсталирање:
+ Тренутно је само срж система инсталиран. Можете изабрати једну или више предефинисаних колекција софтвера за инсталирање.
+Description-sr@latin.UTF-8: Izaberite softver za instaliranje:
+ Trenutno je samo srž sistema instaliran. Možete izabrati jednu ili više predefinisanih kolekcija softvera za instaliranje.
+Description-sv.UTF-8: Välj programvara att installera:
+ För närvarande är endast grunden av systemet installerat. För att anpassa systemet efter dina behov kan du välja att installera en eller flera av följande fördefinierade programvarusamlingar.
+Description-ta.UTF-8: நிறுவ வேண்டிய மென்பொருளை தேர்வு செய்க:
+ தற்போது இயங்குதளத்தின் அத்தியாவசிய பாகங்கள் மட்டுமே நிறுவப்பட்டுள்ளன. இதை உங்கள் விருப்பத்திற்கேற்றவாறு சீர்படுத்த நீங்கள் பின்வரும் முன்வரையறுக்கப்பட்ட மென்பொருள் திரட்டல்களில் ஒன்றோ அல்லது ஒன்றுக்கு மேற்பட்டவற்றையோ நிறுவ தேர்வு செய்யலாம்.
+Description-te.UTF-8: ప్రతిష్టాపించుటకు సాఫ్ట్ వేర్ (software) ఎన్నుకోండి:
+ ప్రస్తుతం వ్యవస్థ (సిస్టం [system]) పునాది (కోర్ [core]) మాత్రం ప్రతిష్టింపబడినది. వ్యవస్థను మీకు అనుగుణంగా మార్చుకొనుటకు మీరు ఈ క్రింది సాఫ్ట్ వేర్ (software) ప్యాకేజీల (packages) సంగ్రహము (collection) లో ఒకటి లేదా మరిన్ని ఎన్నుకొని ప్రతిష్టాపించుకొవచ్చు.
+Description-tg.UTF-8: Интихоби нармафзор барои насб:
+ Дар айни ҳол, танҳо системаи асосӣ насб карда шудааст. Барои мувофиқат кардани низом ба ниёзҳои худ, шумо метавонед як ё якчанд маҷмӯаи нармафзори пешмуайяншударо интихоб карда, насб намоед.
+Description-th.UTF-8: เลือกซอฟต์แวร์ที่จะติดตั้ง:
+ ขณะนี้ โปรแกรมได้ติดตั้งเฉพาะแกนของระบบเท่านั้น เพื่อที่จะปรับแต่งระบบให้เข้ากับความต้องการของคุณ คุณสามารถเลือกติดตั้งชุดซอฟต์แวร์ที่ได้รวบรวมเตรียมไว้ดังต่อไปนี้ตั้งแต่หนึ่งชุดขึ้นไป
+Description-tl.UTF-8: Pumili ng software na iluluklok:
+ Sa ngayon, ang pinaka-payak na sistema ng Debian ay nakaluklok. Upang maangkop ang pagkaluklok sa inyong mga pangangailangan, maaari kayong pumili na magluklok ng isa o ilan sa mga sumusunod na mga koleksyon ng software.
+Description-tr.UTF-8: Kurulacak yazılımları seçin:
+ Şu anda sistemin sadece temel kısmı kurulmuş durumda. Sistemi ihtiyaçlarınıza uygun hale getirmek için, önceden tanımlanmış aşağıdaki yazılım demetlerinden bir veya daha fazlasını kurmayı seçebilirsiniz.
+Description-ug.UTF-8: ئورنىتىدىغان يۇمشاق دېتالنى تاللاڭ:
+ نۆۋەتتە سىستېمىنىڭ يادرولۇق بۆلەكلىرىلا ئورنىتىلدى. سىستېمىنى تەڭشەپ تەلىپىڭىزگە لايىقلاشتۇرۇشتا، تۆۋەندىكى بىر ياكى كۆپ ئالدىن بەلگىلەنگەن يۇمشاق دېتاللار توپلىمىنى تاللاپ ئورناتسىڭىز بولىدۇ.
+Description-uk.UTF-8: Виберіть програмне забезпечення для встановлення:
+ На даний момент, встановлена тільки основна частина системи. Для того, щоб підлаштувати інсталяцію під ваші потреби, ви можете вибрати встановлення одного або кількох наступних наборів програмного забезпечення.
+Description-vi.UTF-8: Chọn phần mềm cần cài đặt:
+ Hiện thời chỉ lõi của hệ thống đã được cài đặt. Để điều chỉnh hệ thống thích hợp với nhu cầu của mình, bạn có khả năng chọn cài đặt một hoặc một vài những nhóm chương trình xác định sẵn sau.
+Description-wo.UTF-8: Tannal prograam yi ngay istale:
+ Fimune nii xulu sistem bi rekk lañu istaleegun. Ngir nga dëppale sistem bi ak say soxla, man ngaa tann yinga bëgg ci  prograam yii ñu dajale ba noppi defleen ay gurup.
+Description-zh_CN.UTF-8: 请选择要安装的软件：
+ 目前您仅安装了系统的核心部分。要想调整系统以使之符合您的需求，可以选择安装以下一个或多个预定义的软件集。
+Description-zh_TW.UTF-8: 選擇所要安裝的軟體：
+ 目前為止所安裝的只有系統的核心。您可以在下列預先準備的組合套件中再選擇一些軟體來進行安裝，以使得系統能更符合您的需求。
+
+Template: tasksel/tasks
+Type: multiselect
+Choices-C: ${CHOICES_C}
+Choices: ${CHOICES}
+Description: Choose software to install:
+ You can choose to install one or more of the following predefined
+ collections of software.
+Description-ar.UTF-8: اختيار البرامج التي ستثبّت:
+ يمكنك تثبيت واحد أو أكثر من مجموعات البرامج المعرّفة مسبقاً التّالية.
+Description-ast.UTF-8: Escueye software a instalar:
+ Pues escoyer instalar una o más de les siguiestes colleiciones de software predefiníes.
+Description-be.UTF-8: Абярыце праграмы, якія трэба ўсталяваць:
+ Вы можаце ўсталяваць адзін ці некалькі наступных набораў праграм.
+Description-bg.UTF-8: Изберете софтуер за инсталиране:
+ Можете да изберете един или повече от предварително зададените набори от софтуер.
+Description-bn.UTF-8: ইনস্টল করার জন্য সফটওয়্যার বেছে নিন:
+ আপনি এই পূর্বনির্ধারিত সফটওয়্যার সংগ্রহগুলো থেকে এক বা একাধিক সংগ্রহ ইনস্টল করতে পারেন।
+Description-bs.UTF-8: Odaberite software za instalaciju:
+ Možete odabrati jednu ili više sljedećih predefinisanih kolekcija software-a.
+Description-ca.UTF-8: Seleccioneu el programari a instal·lar:
+ Podeu seleccionar instal·lar una o més de les següents col·leccions de programari.
+Description-cs.UTF-8: Zvolte programy k instalaci:
+ Nyní můžete nainstalovat jednu nebo více předpřipravených úloh.
+Description-cy.UTF-8: Dewis meddalwedd i'w sefydlu:
+ Gallwch ddewis sefydlu un neu fwy o'r casgliadau canlynol o feddalwedd.
+Description-da.UTF-8: Vælg programmer at installere:
+ Du kan vælge at installere en eller flere af følgende foruddefinerede programsamlinger.
+Description-de.UTF-8: Welche Software soll installiert werden?
+ Sie können eine oder mehrere der folgenden vordefinierten Software-Sammlungen zur Installation auswählen.
+Description-dz.UTF-8: གཞི་བཙུགས་འབད་ནི་ལུ་ མཉན་ཆས་གདམ།
+ ཁྱོད་ཀྱི་ འོག་གི་སྔ་གོང་ངོས་འཛིན་འབད་མི་ མཉན་ཆས་བསྡུ་གསོག་ གཅིག་ཡང་ན་ དེ་ལས་ལྷགཔ་གདམ་སྟེ་གཞི་བཙུགས་འབད་བཏུབ།
+Description-el.UTF-8: Επιλογή του λογισμικού προς εγκατάσταση:
+ Μπορείτε να εγκαταστήσετε μία ή και περισσότερες από τις ακόλουθες προκαθορισμένες συλλογές λογισμικού.
+Description-eo.UTF-8: Elektu instalotajn programojn:
+ Vi povas instali unu aŭ plurajn el la sekvaj antaŭelektitaj programaroj.
+Description-es.UTF-8: Elegir los programas a instalar:
+ Puede elegir instalar una o más de las siguientes colecciones de programas predefinidas.
+Description-et.UTF-8: Vali paigaldatav tarkvara:
+ Võid paigaldada mõned järgnevaist eeldefineeritud tarkvara kogumitest.
+Description-eu.UTF-8: Instalatu nahi duzun softwarea aukeratu:
+ Aurrez definitutako software bilduma bat edo gehiago instalatzea aukera dezakezu.
+Description-fa.UTF-8: نرم‌افزار های مورد نیاز برای نصب را انتخاب کنید:
+ شما میتوانید از مجموعه های مقابل یک یا چند مجموعه ازپیش تعریف شده را برای نصب انتخاب کنید.
+Description-fi.UTF-8: Valitse asennettavat ohjelmat:
+ Voit valita asennettavaksi yhden tai useamman seuraavista ennalta määritellyistä ohjelmakokoelmista.
+Description-fr.UTF-8: Logiciels à installer :
+ Vous pouvez choisir d'installer un ou plusieurs des ensembles suivants de logiciels.
+Description-ga.UTF-8: Roghnaigh bogearraí le suiteáil:
+ Is féidir leat ceann amháin nó níos mó de na bailiúcháin réamhshainithe bhogearraí seo a shuiteáil.
+Description-gl.UTF-8: Escolla o software que quere instalar:
+ Pode instalar unha ou máis de entre as seguintes coleccións de software:
+Description-gu.UTF-8: સ્થાપન કરવા માટે સોફ્ટવેર પસંદ કરો:
+ તમે નીચેનાં એક અથવા વધુ પહેલેથી નક્કી કરેલ સોફ્ટવેરનાં ભાગો સ્થાપિત કરી શકો છો.
+Description-he.UTF-8: בחר תוכנה להתקנה:
+ תוכל לבחור להתקין אחד או יותר מאוספי התוכנה שהוגדרו מראש.
+Description-hi.UTF-8: संस्थापित करने के लिए सॉफ्टवेयर चुनें:
+ आप पूर्व परिभाषित निम्नलिखित सॉफ्टवेयर संकलनों में से एक या अधिक को संस्थापित करने के लिए चुन सकते हैं.
+Description-hr.UTF-8: Izaberite programe za instalaciju:
+ Možete izabrati jednu ili više sljedećih preodređenih skupina programa.
+Description-hu.UTF-8: Telepíthető szoftverek:
+ A következő, előre összeválogatott szoftver gyűjtemények telepíthetők.
+Description-id.UTF-8: Pilih perangkat lunak yang ingin diinstal:
+ Anda dapat memilih untuk memasang satu atau lebih kelompok perangkat lunak yang telah didefinisikan berikut ini.
+Description-is.UTF-8: Veldu hugbúnað til uppsetningar:
+ Þú getur valið að setja upp einn eða fleiri flokka af samanvöldum hugbúnaði.
+Description-it.UTF-8: Scegliere il software da installare:
+ È possibile installare una o più delle seguenti collezioni predefinite di software.
+Description-ja.UTF-8: インストールするソフトウェアの選択:
+ 以下の定義済みソフトウェアコレクションからインストールするものを 1 つ以上選択できます。
+Description-ka.UTF-8: ამოირჩიეთ დასაყენებელი პროგრამები:
+ შეგიძლიათ დააყენოთ პროგრამული უზრუნველყოფის ერთი ან მეტი წინასწარ განსაზღვრული ნაკრები.
+Description-kk.UTF-8: Орнатылатын БҚ таңдау:
+ Сіз осында көрсетілген бір немесе бірнеше бағдарламалық қамтама жинақтарын орната аласыз.
+Description-km.UTF-8: ជ្រើស​កម្មវិធី​​​ត្រូវ​ដំឡើង ៖
+ អ្នក​អាច​ជ្រើស​ដើម្បី​ដំឡើង​កម្មវិធី​មួយ ឬ​ច្រើន​ក្នុង​ចំណោម​កម្មវិធី​ដែល​បាន​ប្រមូលផ្ដុំ​ជាមុន​ដូច​​​ខាង​ក្រោម ៖
+Description-kn.UTF-8: ಅನುಸ್ಥಾಪಿಸಲು ತಂತ್ರಾಂಶ ಆಯ್ಕೆ ಮಾಡಿ
+ ಈ ಕೆಳಗಿನ ಒಂದು ಅಥವಾ ಹೆಚ್ಚು ಪೂರ್ವನಿರ್ಧಾರಿತ ತಂತ್ರಾಂಶ-ಸಂಗ್ರಹಗಳನ್ನು ಆಯ್ದುಕೊಳ್ಳಬಹುದು.
+Description-ko.UTF-8: 설치할 소프트웨어 선택:
+ 다음 미리 정의해 둔 소프트웨어 모음 중 설치하고자 하는 소프트웨어 모음을 선택하십시오.
+Description-ku.UTF-8: Nivîsbariya were sazkirin hilbijêre:
+ Dikarî yek an çend ji koleksiyonên nivîsbariyê hilbijêrî.
+Description-lt.UTF-8: Pasirinkite įdiegtinas programas:
+ Jūs galite pasirinkti vieną ar kelis iš žemiau apibrėžtų programinės įrangos rinkinių.
+Description-lv.UTF-8: Izvēlieties instalējamo programmatūru:
+ Jūs varat instalēt vienu vai vairākas programmu grupas no sekojošā saraksta.
+Description-mg.UTF-8: Fidio ny rindrankajy izay hapetraka :
+ Afaka mametraka ny iray na maromaro amin'ireto fikambanan-drindrankajy ireto ianao.
+Description-mk.UTF-8: Одбери софтвер кој ќе се инсталира:
+ Можете да одберете да инсталирате еден или повеќе од следните стандардниколекции на софтвер.
+Description-ml.UTF-8: ഇന്‍സ്റ്റാള്‍ ചെയ്യേണ്ട സോഫ്റ്റ്‌വെയര്‍ തെരഞ്ഞെടുക്കുക:
+ നിങ്ങള്‍ക്കു് ഒന്നോ അതിലധികമോ നേരത്തെ തയ്യാറാക്കിയ സോഫ്റ്റ്‌വെയര്‍ ശേഖരങ്ങള്‍ ഇന്‍സ്റ്റാള്‍ ചെയ്യാന്‍ തെരഞ്ഞെടുക്കാം.
+Description-mr.UTF-8: स्थापनेसाठी सॉफ्टवेअर निवडा:
+ तुम्ही खाली दिलेल्या पूर्वनिर्धारित सॉफ्टवेअर संचांपैकी एक किंवा एकापेक्षा अधिकांची अधिष्ठापनेकरिता निवड करु शकता.
+Description-nb.UTF-8: Velg hvilke programmer du vil installere:
+ Du kan velge å installere en eller flere av de forhåndsvalgte samlingene med programvare.
+Description-ne.UTF-8: स्थापना गर्न सफ्टवेयर रोज्नुहोस्:
+ तपाईँले निम्न पूर्व परिभाषित सफ्टवेयरको संकलनबाट एउटा वा धेरै स्थापना गर्न रोज्न सक्नुहुन्छ ।
+Description-nl.UTF-8: Welke software wilt u installeren?
+ U heeft de mogelijkheid om een of meer van de volgende voorgedefinieerde softwarecollecties te gebruiken.
+Description-nn.UTF-8: Vel programvare som skal installerast:
+ Du kan velje å installere ein eller fleire av desse førehandsdefinerte samlingane med programvare.
+Description-no.UTF-8: Velg hvilke programmer du vil installere:
+ Du kan velge å installere en eller flere av de forhåndsvalgte samlingene med programvare.
+Description-pa.UTF-8: ਇੰਸਟਾਲ ਕਰਨ ਲਈ ਸਾਫਟਵੇਅਰ ਚੋਣ:
+ ਤੁਸੀਂ ਹੇਠਾਂ ਦੇ ਸਾਫਟਵੇਅਰ ਭੰਡਾਰ ਵਿੱਚੋਂ ਇੱਕ ਜਾਂ ਵੱਧ ਭਾਗਾਂ ਨੂੰ ਇੰਸਟਾਲ ਕਰਨ ਲਈ ਚੋਣ ਕਰ ਸਕਦੇ ਹੋ।
+Description-pl.UTF-8: Wybierz oprogramowanie do instalacji:
+ Możesz wybrać jeden lub więcej z poniższych predefiniowanych zestawów oprogramowania.
+Description-pt.UTF-8: Escolha o software a instalar:
+ Pode escolher instalar uma ou mais das seguintes colecções de software pré-definidas.
+Description-pt_BR.UTF-8: Escolha o software a ser instalado:
+ Você pode optar por instalar uma ou mais das coleções de software pré-definidas a seguir.
+Description-ro.UTF-8: Alegeți programele de instalat:
+ Puteți alege să instalați una sau mai multe din următoarele colecții predefinite de programe.
+Description-ru.UTF-8: Выберите устанавливаемое программное обеспечение:
+ Вы можете выбрать для установки один и более заранее подобранный набор программного обеспечения.
+Description-si.UTF-8: ස්ථාපනයට මෘදුකාංගය තෝරන්න:
+ ඔබට පහත සඳහන් පෙරනිවේශිත මෘදුකාංග එකතු එකක් හෝ කිහිපයක් ස්ථාපනයට තෝරාගත හැක.
+Description-sk.UTF-8: Zvoľte programy, ktoré sa nainštalujú:
+ Teraz môžete nainštalovať jednu alebo viac pripravených kolekcií softvéru.
+Description-sl.UTF-8: Izberite programsko opremo, ki jo želite namestiti:
+ Izberete lahko eno ali več naslednjih zbirk vnaprej pripravljene programske opreme.
+Description-sq.UTF-8: Zgjidh software për t'u instaluar:
+ Mund të zgjedhësh të instalosh një koleksion software-i të parapërcaktuar nga lista e mëtejshme.
+Description-sr.UTF-8: Изаберите софтвер за инсталирање:
+ Можете изабрати једну или више предефинисаних колекција софтвера за инсталирање.
+Description-sr@latin.UTF-8: Izaberite softver za instaliranje:
+ Možete izabrati jednu ili više predefinisanih kolekcija softvera za instaliranje.
+Description-sv.UTF-8: Välj programvara att installera:
+ Du kan välja att installera en eller flera av följande fördefinierade programvarusamlingar.
+Description-ta.UTF-8: நிறுவ வேண்டிய மென்பொருளை தேர்வு செய்க:
+ நீங்கள் பின்வரும் முன்வரையறுக்கப்பட்ட மென்பொருள் திரட்டல்களில் ஒன்றோ அல்லது ஒன்றுக்கு மேற்பட்டவற்றையோ நிறுவ தேர்வு செய்யலாம்.
+Description-te.UTF-8: ప్రతిష్టాపించుటకు సాఫ్ట్ వేర్ (software) ఎన్నుకోండి:
+ ప్రతిష్టాపనకు మీరు ఈ క్రింది సాఫ్ట్ వేర్ (software) ప్యాకేజీల సంగ్రహము (కలెక్షన్ [collection]) లో ఒకటి లేదా మరిన్ని ఎన్నుకోవచ్చు
+Description-tg.UTF-8: Интихоби нармафзор барои насб:
+ Шумо метавонед як ё якчанд маҷмӯаи нармафзори пешмуайяншударо интихоб карда, насб намоед.
+Description-th.UTF-8: เลือกซอฟต์แวร์ที่จะติดตั้ง:
+ คุณสามารถเลือกติดตั้งชุดซอฟต์แวร์ที่ได้รวมรวมเตรียมไว้ดังต่อไปนี้ตั้งแต่หนึ่งชุดขึ้นไป
+Description-tl.UTF-8: Pumili ng software na iluluklok:
+ Maaaring pumili na iluklok ang isa o ilan sa mga sumusunod na mga koleksyon ng software.
+Description-tr.UTF-8: Kurulacak yazılımları seçin:
+ Önceden tanımlanmış aşağıdaki yazılım demetlerinden bir veya daha fazlasını kurmayı seçebilirsiniz.
+Description-ug.UTF-8: ئورنىتىدىغان يۇمشاق دېتالنى تاللاڭ:
+ تۆۋەندىكى بىر ياكى كۆپ ئالدىن بەلگىلەنگەن يۇمشاق دېتاللار توپلىمىنى تاللاپ ئورناتسىڭىز بولىدۇ.
+Description-uk.UTF-8: Виберіть програмне забезпечення для встановлення:
+ Ви можете встановити один або декілька наступних наборів програмного забезпечення.
+Description-vi.UTF-8: Chọn phần mềm cần cài đặt:
+ Có khả năng chọn cài đặt một hoặc một vài những nhóm chương trình xác định sẵn sau.
+Description-wo.UTF-8: Tannal prograam yi ngay istale:
+ Man ngaa istale yi nga soxla ci prograam yii ñu dajale ba noppi ci ay gurup.
+Description-zh_CN.UTF-8: 请选择要安装的软件：
+ 您可以选择安装以下一个或多个预定义的软件集。
+Description-zh_TW.UTF-8: 選擇所要安裝的軟體：
+ 您可以在下列預先準備的組合套件中，選擇一些軟體來進行安裝。
+
+Template: tasksel/desktop
+Type: multiselect
+Choices: gnome, kde, xfce, lxde, cinnamon, mate, lxqt
+Description: This can be preseeded to override the default desktop.
+Description-be.UTF-8: Каб замяніць стандартны працоўны стол, можна выкарыстаць preseed.
+Description-cs.UTF-8: Tímto je možno přebít volbu výchozího desktopového prostředí.
+Description-da.UTF-8: Dette kan forhåndskonfigureres for at overskrive standardskrivebordet.
+Description-de.UTF-8: Die Standardauswahl kann per Voreinstellung geändert werden, um eine andere Desktopumgebung auszuwählen.
+Description-fr.UTF-8: Cela peut être préconfiguré pour sélectionner le bureau par défaut.
+Description-hr.UTF-8: Pretpostavljeno desktop okruženje možete promijeniti putem preeseed postavke.
+Description-ko.UTF-8: 이 설정에 대해 미리 설정 기능을 이용해 기본 데스크톱을 바꿀 수 있습니다.
+Description-nb.UTF-8: Dette kan forhåndsutfulles for å overstyre forvalgt skrivebordsomgivelse.
+Description-nl.UTF-8: Dit kan via een antwoordbestand voorgeconfigureerd worden om de standaard werkomgeving te vervangen.
+Description-no.UTF-8: Dette kan forhåndsutfulles for å overstyre forvalgt skrivebordsomgivelse.
+Description-pt_BR.UTF-8: Isso pode ser pré configurado para sobrepor a área de trabalho padrão.
+Description-ro.UTF-8: Acest pas se poate preconfigura pentru a schimba interfața grafică implicită.
+Description-ru.UTF-8: Это можно автоматизировать для замены рабочего стола по умолчанию.
+
+Template: tasksel/title
+Type: title
+Description: Software selection
+Description-ar.UTF-8: انتقاء برامج
+Description-ast.UTF-8: Seleición de Software
+Description-be.UTF-8: Выбар праграм
+Description-bg.UTF-8: Избор на софтуер
+Description-bn.UTF-8: সফটওয়্যার নির্বাচন
+Description-bs.UTF-8: Izbor software-a
+Description-ca.UTF-8: Selecció del programari
+Description-cs.UTF-8: Výběr programů
+Description-cy.UTF-8: Dewis meddalwedd
+Description-da.UTF-8: Valg af programmer
+Description-de.UTF-8: Softwareauswahl
+Description-dz.UTF-8: མཉན་ཆས་ སེལ་འཐུ།
+Description-el.UTF-8: Επιλογή λογισμικού
+Description-eo.UTF-8: Programara selekto
+Description-es.UTF-8: Selección de programas
+Description-et.UTF-8: Tarkvara valik
+Description-eu.UTF-8: Software aukeraketa
+Description-fa.UTF-8: انتخاب نرم‌افزار
+Description-fi.UTF-8: Ohjelmavalikoima
+Description-fr.UTF-8: Sélection des logiciels
+Description-ga.UTF-8: Roghnú bogearraí
+Description-gl.UTF-8: Selección de software
+Description-gu.UTF-8: સોફ્ટવેર પસંદગી
+Description-he.UTF-8: בחירת תוכנה
+Description-hi.UTF-8: सॉफ्टवेयर संकलन
+Description-hr.UTF-8: Izbor programa
+Description-hu.UTF-8: Szoftver választás
+Description-id.UTF-8: Pemilihan perangkat lunak
+Description-is.UTF-8: Val hugbúnaðar
+Description-it.UTF-8: Selezione del software
+Description-ja.UTF-8: ソフトウェアの選択
+Description-ka.UTF-8: პროგრამათა ნაკრები
+Description-kk.UTF-8: Бағдарламалық қамтаманы таңдау
+Description-km.UTF-8: ជម្រើស​កម្មវិធី​
+Description-kn.UTF-8: ತಂತ್ರಾಂಶ ಆಯ್ಕೆ
+Description-ko.UTF-8: 소프트웨어 선택
+Description-ku.UTF-8: Hilbijartina nivîsbariyê
+Description-lt.UTF-8: Programinės įrangos pasirinkimas
+Description-lv.UTF-8: Programmatūras izvēle
+Description-mg.UTF-8: Fifidianana ny rindrankajy
+Description-mk.UTF-8: Избор на софтвер
+Description-ml.UTF-8: സോഫ്റ്റ്‌വെയര്‍ തെരഞ്ഞെടുക്കല്‍
+Description-mr.UTF-8: सॉफ्टवेअर निवड
+Description-nb.UTF-8: Programvareutvalg
+Description-ne.UTF-8: डेवियन सफ्टवेयर छनौट
+Description-nl.UTF-8: Software-selectie
+Description-nn.UTF-8: Programvareutval
+Description-no.UTF-8: Programvareutvalg
+Description-pa.UTF-8: ਸਾਫਟਵੇਅਰ ਚੋਣ
+Description-pl.UTF-8: Wybór oprogramowania
+Description-pt.UTF-8: Selecção de software
+Description-pt_BR.UTF-8: Seleção de software
+Description-ro.UTF-8: Selecția de programe
+Description-ru.UTF-8: Выбор программного обеспечения
+Description-si.UTF-8: මෘදුකාංග තෝරාගැනීම
+Description-sk.UTF-8: Voľba softvéru
+Description-sl.UTF-8: Izbira programske opreme
+Description-sq.UTF-8: Zgjedhja e software-it
+Description-sr.UTF-8: Избор софтвера
+Description-sr@latin.UTF-8: Izbor softvera
+Description-sv.UTF-8: Programvaruväljare
+Description-ta.UTF-8: மென்பொருள் தேர்வு
+Description-te.UTF-8: సాఫ్ట్ వేర్ (software) ఎంపిక
+Description-tg.UTF-8: Интихоби нармафзор
+Description-th.UTF-8: ชุดซอฟต์แวร์
+Description-tl.UTF-8: Pagpili ng software
+Description-tr.UTF-8: Yazılım seçimi
+Description-ug.UTF-8: يۇمشاق دېتال تاللاش
+Description-uk.UTF-8: Вибір програмного забезпечення
+Description-vi.UTF-8: Lựa chọn phần mềm
+Description-wo.UTF-8: Tann ay prograam
+Description-zh_CN.UTF-8: 软件选择
+Description-zh_TW.UTF-8: 選擇軟體

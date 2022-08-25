@@ -1,0 +1,122 @@
+Shadow SITES
+============
+
+Homepage
+	http://pkg-shadow.alioth.debian.org/
+
+FTP site
+	ftp://pkg-shadow.alioth.debian.org/pub/pkg-shadow
+
+SVN repository
+	anonymous read only access: svn://svn.debian.org/pkg-shadow/upstream
+
+SVN web interface
+	http://svn.debian.org/wsvn/pkg-shadow/upstream
+	or
+	http://svn.debian.org/viewsvn/pkg-shadow/upstream
+
+Mailing lists
+	for general discuss: pkg-shadow-devel@lists.alioth.debian.org
+	commit list: pkg-shadow-commits@lists.alioth.debian.org
+
+Mailing lists subscription
+	http://lists.alioth.debian.org/mailman/listinfo/pkg-shadow-devel
+	http://lists.alioth.debian.org/mailman/listinfo/pkg-shadow-commits
+
+Mailing lists archives:
+	http://lists.alioth.debian.org/pipermail/pkg-shadow-devel/
+	http://lists.alioth.debian.org/pipermail/pkg-shadow-commits/
+
+S/Key support:
+	Shadow can be built with S/Key support using the S/Key package from:
+
+	http://cvsweb.netbsd.org/bsdweb.cgi/src/lib/libskey/
+	or
+	http://gentoo.osuosl.org/distfiles/skey-1.1.5.tar.bz2
+
+Authors and contributors
+========================
+
+Thanks to at least the following people for sending patches, bug
+reports and various comments.  This list may be incomplete, I received
+a lot of mail...
+
+
+Adam Rudnicki <adam@v-lo.krakow.pl>
+Alan Curry <pacman@tardis.mars.net>
+Alexander O. Yuriev <alex@bach.cis.temple.edu>
+Algis Rudys <arudys@rice.edu>
+Andreas Jaeger <aj@arthur.rhein-neckar.de>
+Aniello Del Sorbo <anidel@edu-gw.dia.unisa.it>
+Anton Gluck <gluc@midway.uchicago.edu>
+Arkadiusz Miskiewicz <misiek@pld.org.pl>
+Ben Collins <bcollins@debian.org>
+Brian R. Gaeke <brg@dgate.org>
+Calle Karlsson <ckn@kash.se>
+Chip Rosenthal <chip@unicom.com>
+Chris Evans <lady0110@sable.ox.ac.uk>
+Cristian Gafton <gafton@sorosis.ro>
+Dan Walsh <dwalsh@redhat.com>
+Darcy Boese <possum@chardonnay.niagara.com>
+Dave Hagewood <admin@arrowweb.com>
+David A. Holland <dholland@hcs.harvard.edu>
+David Frey <David.Frey@lugs.ch>
+Ed Carp <ecarp@netcom.com>
+Floody <flood@evcom.net>
+Frank Denis <j@4u.net>
+George Kraft IV <gk4@us.ibm.com>
+Greg Mortensen <loki@world.std.com>
+Guido van Rooij
+Guy Maor <maor@debian.org>
+Hrvoje Dogan <hdogan@bjesomar.srce.hr>
+Jakub Hrozek <jhrozek@redhat.com>
+Janos Farkas <chexum@bankinf.banki.hu>
+Jay Soffian <jay@lw.net>
+Jesse Thilo <Jesse.Thilo@pobox.com>
+Joey Hess <joey@kite.ml.org>
+John Adelsberger <jja@umr.edu>
+Jonathan Hankins <jhankins@mailserv.homewood.k12.al.us>
+Jon Lewis <jlewis@lewis.org>
+Joshua Cowan <jcowan@hermit.reslife.okstate.edu>
+Judd Bourgeois <shagboy@bluesky.net>
+Juergen Heinzl <unicorn@noris.net>
+Juha Virtanen <jiivee@iki.fi>
+Julian Pidancet <julian.pidancet@gmail.com>
+Julianne Frances Haugh <jockgrrl@ix.netcom.com>
+Leonard N. Zubkoff <lnz@dandelion.com>
+Luca Berra <bluca@www.polimi.it>
+Lukáš Kuklínek <lkukline@redhat.com>
+Lutz Schwalowsky <schwalow@mineralogie.uni-hamburg.de>
+Marc Ewing <marc@redhat.com>
+Martin Bene <mb@sime.com>
+Martin Mares <mj@gts.cz>
+Michael Meskes <meskes@topsystem.de>
+Michael Talbot-Wilson <mike@calypso.bns.com.au>
+Mike Frysinger <vapier@gentoo.org>
+Mike Pakovic <mpakovic@users.southeast.net>
+Nicolas François <nicolas.francois@centraliens.net>
+Nikos Mavroyanopoulos <nmav@i-net.paiko.gr>
+Pavel Machek <pavel@bug.ucw.cz>
+Peter Vrabec <pvrabec@redhat.com>
+Phillip Street
+Rafał Maszkowski <rzm@icm.edu.pl>
+Rani Chouha <ranibey@smartec.com>
+Sami Kerola <kerolasa@rocketmail.com>
+Scott Garman <scott.a.garman@intel.com>
+Sebastian Rick Rijkers <srrijkers@gmail.com>
+Seraphim Mellos <mellos@ceid.upatras.gr>
+Shane Watts <shane@nexus.mlckew.edu.au>
+Steve M. Robbins <steve@nyongwa.montreal.qc.ca>
+Thorsten Kukuk <kukuk@suse.de>
+Tim Hockin <thockin@eagle.ais.net>
+Timo Karjalainen <timok@iki.fi>
+Ulisses Alonso Camaro <ulisses@pusa.eleinf.uv.es>
+Werner Fink <werner@suse.de>
+
+Maintainers
+===========
+
+Tomasz Kłoczko <kloczek@pld.org.pl> (2000-2007)
+Nicolas François <nicolas.francois@centraliens.net> (2007-2014)
+Serge E. Hallyn <serge@hallyn.com> (2014-now)
+

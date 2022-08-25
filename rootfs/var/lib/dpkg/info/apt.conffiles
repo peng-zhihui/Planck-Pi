@@ -1,0 +1,4 @@
+/etc/apt/apt.conf.d/01autoremove
+/etc/cron.daily/apt-compat
+/etc/kernel/postinst.d/apt-auto-removal
+/etc/logrotate.d/apt

@@ -1,0 +1,15 @@
+/.
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/publicsuffix
+/usr/share/doc/publicsuffix/README.Debian
+/usr/share/doc/publicsuffix/changelog.Debian.gz
+/usr/share/doc/publicsuffix/changelog.gz
+/usr/share/doc/publicsuffix/copyright
+/usr/share/doc/publicsuffix/examples
+/usr/share/doc/publicsuffix/examples/test_psl.txt
+/usr/share/publicsuffix
+/usr/share/publicsuffix/public_suffix_list.dafsa
+/usr/share/publicsuffix/public_suffix_list.dat
+/usr/share/publicsuffix/effective_tld_names.dat

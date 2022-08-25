@@ -1,0 +1,5 @@
+# the private library is for internal sharing only
+apt: package-name-doesnt-match-sonames
+apt: systemd-service-file-missing-install-key lib/systemd/system/apt-daily.service
+apt: shlib-calls-exit usr/lib*/libapt-private.so.0.0.0
+apt: no-symbols-control-file usr/lib*/libapt-private.so.0.0.0

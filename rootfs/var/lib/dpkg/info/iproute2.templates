@@ -1,0 +1,62 @@
+Template: iproute2/setcaps
+Type: boolean
+Default: false
+Description: Allow ordinary users to run ip vrf exec using capabilities?
+ iproute2 can be used to configure and use Virtual Routing and Forwarding (VRF)
+ functionality in the  kernel.
+ This normally requires root permissions, but sometimes it's useful to allow
+ ordinary users to execute commands from inside a virtual routing and forwarding
+ domain. E.g. ip vrf exec examplevrf ping 10.0.0.1
+ .
+ The ip command supports dropping capabilities, making an exception for ip vrf exec.
+ The drawback of setting the permissions is that if in the unlikely case of a
+ security critical bug being found before the ip command has dropped capabilities
+ then it could be used by an attacker to gain root permissions.
+ It's up to you to decide about the trade-offs and select the best setting for your
+ system.
+ This will give cap_dac_override, cap_net_admin and cap_sys_admin to /bin/ip.
+ .
+ More information about VRF can be found at:
+ https://www.kernel.org/doc/Documentation/networking/vrf.txt
+Description-de.UTF-8: Normalen Benutzern die Ausführung von »ip vrf exec« mittels Capabilities erlauben?
+ iproute2 kann zur Konfiguration und Verwendung der Funktionalität »Virtuelles Routing und Forwarding (Weiterleitung)« im Kernel verwandt werden. Dies benötigt normalerweise Root-Rechte, aber manchmal ist es nützlich, normalen Benutzern zu erlauben, Befehle von innerhalb einer virtuellen Routing- und Forwarding-Domain auszuführen. Z.B. ip vrf exec examplevrf ping 10.0.0.1
+ .
+ Der Befehl ip ermöglicht es, die Capabilities abzugeben und eine Ausnahme für »ip vrf exec« zu machen. Der Nachteil des Setzens der Berechtigungen ist, dass im unwahrscheinlichen Fall, dass ein sicherheitskritischer Fehler in dem Teil von ip, der vor der Abgabe der Capabilities ausgeführt wird, gefunden wird, ein Angreifer Root-Rechte erlangen könnte. Es obliegt Ihnen, den Zielkonflikt zu behandeln und die beste Einstellung für Ihr System auszuwählen. Dies gibt cap_dac_override, cap_net_admin und cap_sys_admin an /bin/ip.
+ .
+ Weitere Informationen über VRF können unter folgender Adresse gefunden werden: https://www.kernel.org/doc/Documentation/networking/vrf.txt
+Description-es.UTF-8: ¿Permitir que los usuarios comunes ejecuten ip vrf exec usando capacidades?
+ iproute2 se puede usar para configurar y usar la funcionalidad Virtual Routing and Forwarding (VRF) en el kernel. Esto normalmente requiere privilegios de root, pero a veces es útil para permitir que los usuarios comunes ejecuten órdenes dentro de un dominio de enrutamiento y reenvío virtual. Por ejemplo. ip vrf exec examplevrf ping 10.0.0.1
+ .
+ La orden ip admite caídas de capacidades, haciendo una excepción para ip vrf exec. El inconveniente de establecer los privilegios es que, en el caso improbable de que se encuentre un error crítico de seguridad antes de que la orden ip haya descartado las capacidades, un atacante podría usarlo para obtener privilegios de root. Depende de usted decidir sobre las compensaciones y seleccionar la mejor configuración para su sistema. Esto otorgará cap_dac_override, cap_net_admin y cap_sys_admin a /bin/ip.
+ .
+ Se puede encontrar más información sobre VRF en: https://www.kernel.org/doc/Documentation/networking/vrf.txt
+Description-fr.UTF-8: Voulez-vous permettre aux utilisateurs ordinaires d'exécuter « ip vrf exec » en utilisant des capacités ?
+ iproute2 peut être utilisé pour configurer et utiliser la fonctionnalité Virtual Routing and Forwarding (VRF — routage et transfert virtuels) dans le noyau. Cela nécessite normalement les droits du superutilisateur (root), mais il est parfois utile d'autoriser un utilisateur normal à exécuter ces commandes depuis un domaine de routage et transfert virtuels. Par exemple : ip vrf exec examplevrf ping 10.0.0.1
+ .
+ La commande ip gère la capacité de rejet, en faisait une exception pour ip vrf exec. L'inconvénient de configurer ces droits est que, dans un cas improbable de bogue critique de sécurité situé avant que la commande ip ait rejeté les capacités, il pourrait être utilisé par un attaquant pour obtenir les droits du superutilisateur (root). C'est à vous de trouver un compromis et de choisir le meilleur paramètre pour votre système. Cela va donner les capacités cap_dac_override, cap_net_admin et cap_sys_admin au binaire /bin/ip.
+ .
+ Pour plus d'informations sur VRF, veuillez consulter la page Web suivante : https://www.kernel.org/doc/Documentation/networking/vrf.txt
+Description-nl.UTF-8: Gewone gebruikers toelaten om bevoegdheden uit te oefenen met behulp van 'ip vrf exec'?
+ iproute2 kan gebruikt worden om de Virtuele Routering- en Forwardfunctionaliteit (VRF) van de kernel te configureren en te gebruiken. Normaal zijn daarvoor permissies van systeembeheerder vereist, maar soms is het nuttig om gewone gebruikers de toelating te geven om commando's uit te voeren van binnen een virtueel routering- en forwarddomein. Bijv. ip vrf exec voorbeeldvrf ping 10.0.0.1
+ .
+ Het commando ip ondersteunt het afwerpen van bevoegdheden en kan een uitzondering maken voor ip vrf exec. Het instellen van deze permissies heeft het volgende nadeel: in het onwaarschijnlijke scenario dat zich een vanuit veiligheidsoogpunt kritieke fout manifesteert vooraleer het ip-commando zich van zijn bevoegdheden kan ontdoen, kan een aanvaller daarvan gebruik maken om de rechten van systeembeheerder te verwerven. Het is aan u om de afweging te maken en de voor uw systeem beste instelling te selecteren. Dit zal /bin/ip de bevoegdheden cap_dac_override, cap_net_admin en cap_sys_admin toekennen.
+ .
+ Meer informatie over VRF is te vinden op: https://www.kernel.org/doc/Documentation/networking/vrf.txt
+Description-pt.UTF-8: Permitir que utilizadores comuns executem recursos ip vrf exec?
+ O iproute2 pode ser utilizado para configurar e usar as funcionalidades Virtual Routing e Forwarding (VRF) do kernel. É normalmente requerido permissões de root, no entanto por vezes é útil permitir que utilizadores comuns executem comandos de dentro de um domínio de 'routing' e 'forwarding' virtual. Por ex. ip vrf exec examplevrf ping 10.0.0.1
+ .
+ O comando ip suporta capacidades 'dropping', fazendo uma excepção ao ip vfr exec. O senão de configurar as permissões é que no caso improvável de um erro de segurança crítico ser encontrado antes do comando ip ter baixado (dropped) as capacidades, poder ser usado por um atacante para ganhar permissões root. É consigo decidir sobre os compromissos e seleccionar a melhor configuração para o seu sistema. Isto irá fornecer cap_dac_override, cap_net_admin e cap_sys_admin ao /bin/ip.
+ .
+ Mais informações sobre VRF podem ser encontradas em https://www.kernel.org/ doc/Documentation/networking/vrf.txt
+Description-pt_BR.UTF-8: Permitir que usuários comuns executem ip vrf exec usando capacidades ("capabilities")?
+ O iproute2 pode ser usado para configurar e usar a funcionalidade de Encaminhamento e Roteamento Virtual do kernel ("Virtual Routing and Forwarding" (VRF)). Isso normalmente exige permissões de root, mas algumas vezes é útil permitir que usuários comuns executem comandos a partir de um domínio de encaminhamento e roteamento virtual. Por exemplo: ip vrf exec vrfexemplo ping 10.0.0.1
+ .
+ O comando ip tem suporte a dispensar capacidades, fazendo uma exceção para ip vrf exec. A desvantagem de ajustar as permissões é que, no caso improvável de um bug crítico de segurança ser encontrado antes do comando ip ter dispensado capacidades, isso poderia ser usado por um atacante para obter permissões de root. Cabe a você decidir sobre os prós e os contras, e selecionar a melhor configuração para o seu sistema. Isso dará cap_dac_override, cap_net_admin e cap_sys_admin para /bin/ip.
+ .
+ Mais informação sobre VRF pode ser encontrada em: https://www.kernel.org/doc/Documentation/networking/vrf.txt
+Description-ru.UTF-8: Разрешить обычным пользователям запускать ip vrf exec, используя привилегии процессов?
+ Утилита iproute2 может использоваться для настройки и работы с функциональностью виртуальной маршрутизации и переадресации (VRF) ядра. Обычно для этого требуются права суперпользователя, но иногда полезно разрешить обычным пользователям выполнять команды изнутри домена виртуальной маршрутизации и переадресации. Например, ip vrf exec examplevrf ping 10.0.0.1
+ .
+ Команда ip поддерживает сброс привилегий процессов, делая исключение для ip vrf exec. Недостаток настройки прав доступа состоит в том, что в маловероятном случае критической с точки зрения безопасности ошибки до того как команда ip выполнит сброс привилегий процессов, она может использоваться злоумышленником для получения прав суперпользователя. Вам необходимо самостоятельно взвесить все за и против и выбрать для вашей системы наиболее подходящий вариант. Эта опция даст исполняемому файлу /bin/ip привилегии процессов cap_dac_override, cap_net_admin и cap_sys_admin.
+ .
+ Дополнительную информацию о виртуальной маршрутизации и переадресации (VRF) можно найти по адресу https://www.kernel.org/doc/Documentation/networking/vrf.txt

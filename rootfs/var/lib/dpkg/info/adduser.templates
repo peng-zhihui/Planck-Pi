@@ -1,0 +1,135 @@
+
+Template: adduser/title
+Type: title
+Description: Adduser
+Description-de.UTF-8: Adduser
+Description-fr.UTF-8: Adduser
+Description-nl.UTF-8: Adduser
+
+Template: adduser/homedir-permission
+Type: boolean
+Default: true
+Description: Do you want system-wide readable home directories?
+ By default, users' home directories are readable by all users on the
+ system. If you want to increase security and privacy, you might want
+ home directories to be readable only for their owners. But if in doubt,
+ leave this option enabled.
+ .
+ This will only affect home directories of users added from now
+ on with the adduser command.
+Description-ar.UTF-8: هل ترغب بجعل الأدلة المنزلية مقروءة للجميع؟
+ عادة، يمكن لأي مستخدم عرض الأدلة المنزلية على النظام. إن أردت زيادة مستوى الأمن والخصوصويّة على نظامك، قد ترغب بجعل الأدلّة المنزليّة مقروءة فقط من قبل المستخدمين المالكين لها. إن لم تكن متأكّداً، فاترك هذا الخيار مُمكّناً.
+ .
+ سوف يؤثر هذا فقط على أدلة المستخدمين المنزليّة الذي يضافون باستخدام برنامج adduser لاحقاً.
+Description-be.UTF-8: Ці хочаце вы, каб хатнія каталогі былі чытэльныя з усёй сістэмы?
+ Прадвызначана хатнія каталогі карыстальнікаў чытэльныя ўсімі карыстальнікамі сістэмы. Калі вы хочаце павялічыць бяспеку і сакрэтнасць, вам трэба задзейнічаць чытанне хатніх каталогаў толькі для іх уладальнікаў. Калі ж не, то пакіньце гэтую наладу ўключанай.
+ .
+ Гэта паўплывае толькі на хатнія каталогі карыстальнікаў, што будуць створаны адгэтуль камандай adduser.
+Description-ca.UTF-8: Voleu que els directoris personals siguen llegibles per tothom?
+ Per defecte, els directoris personals dels usuaris són llegibles per tots els usuaris del sistema. Si voleu incrementar la seguretat i privacitat, podeu crear els directoris personals amb lectura només per al seu propietari. Si esteu insegur, deixeu aquesta opció habilitada.
+ .
+ Aquesta opció només afecta a directoris d'usuari afegits a partir d'ara amb l'ordre adduser.
+Description-cs.UTF-8: Chcete domovské adresáře čitelné pro všechny uživatele v systému?
+ Standardně mohou všichni uživatelé systému prohlížet domovské adresáře ostatních uživatelů. Pokud chcete zvýšit bezpečnost/soukromí, můžete nastavit, aby si domovské adresáře mohli prohlížet pouze jejich vlastníci. Jestliže si nejste jisti, odpovězte kladně.
+ .
+ Toto nastavení ovlivní pouze domovské adresáře uživatelů založených od této chvíle.
+Description-da.UTF-8: Ønsker du globalt læsbare hjemmemapper?
+ Som standard kan indholdet af brugernes hjemmemapper læses af samtlige brugere på systemet. Hvis du ønsker at øge sikkerheden og brugernes privatliv, kan det være ønskværdigt at gøre hver brugers hjemmemappe læsbar kun for brugeren selv. Hvis du er i tvivl, så efterlad denne indstilling aktiveret.
+ .
+ Dette vil kun få indflydelse på hjemmemapper for brugere der tilføjes fra nu af med kommandoen adduser.
+Description-de.UTF-8: Wünschen Sie systemweit lesbare Home-Verzeichnisse?
+ Standardmäßig können die Home-Verzeichnisse von allen Benutzern eines Systems eingesehen werden. Falls Sie die Sicherheit/Privatsphäre Ihres Systems erhöhen wollen, sollten Sie einstellen, dass die Home-Verzeichnisse nur vom jeweiligen Besitzer eingesehen werden können. Falls Sie sich nicht sicher sind, lassen Sie diese Option aktiviert.
+ .
+ Dies wird lediglich die Home-Verzeichnisse von Benutzern betreffen, die ab jetzt mit dem Programm »adduser« hinzugefügt werden.
+Description-es.UTF-8: ¿Desea que los directorios personales de los usuarios sean legibles?
+ De manera predeterminada los directorios personales de los usuarios son legibles por todos los usuarios del sistema. Si desea incrementar la seguridad y privacidad del sistema puede querer que los directorios personales sólo sean legibles por sus respectivos dueños. Si no está seguro, se recomienda que deje esta opción activada.
+ .
+ Esto sólo afectará a los directorios personales de los usuarios que añada a partir de ahora con el programa «adduser».
+Description-eu.UTF-8: Etxe karpetak sistema osoarentzat irakurgarri izatea nahi al duzu?
+ Lehenespen bezala, erabiltzaileen etxe karpetak sistema osoko erabiltzaileek irakur ditzakete. Baina zuk segurtasuna eta pribatasuna areagotu nahi baduzu, karpetaren jabeak bakarrik irakurzeko ezarri nahi ditzakezu . Ziur ez bazaude sistema osoarentzat irakurketa gaitzea gomendatzen da.
+ .
+ Aldaketa honek hemendik aurrera eta adduser erabiliaz sortutako kontuen etxe direktorioetan eragingo du.
+Description-fi.UTF-8: Voivatko kaikki järjestelmän käyttäjät lukea kotihakemistoja?
+ Oletuksena kotihakemistot ovat kaikkien käyttäjien luettavissa. Jos haluat lisätä järjestelmäsi tietoturvaa ja yksityisyyden suojaa, voit antaa lukuoikeuden vain hakemiston omistajalle. Jos olet epävarma, jätä tämä valinta oletusarvoiseksi.
+ .
+ Tämä vaikuttaa vain adduser-ohjelmalla luotujen käyttäjien kotihakemistoihin.
+Description-fr.UTF-8: Voulez-vous des répertoires personnels lisibles par tous ?
+ Les répertoires personnels sont par défaut lisibles par tous les utilisateurs du système. Si vous voulez améliorer la sécurité et la confidentialité, vous pouvez décider que les répertoires personnels ne seront lisibles que par leur propriétaire. Dans le doute, cependant, vous devriez laisser cette option active.
+ .
+ Cela ne concernera que les répertoires personnels des utilisateurs qui seront ajoutés dans le futur, avec la commande « adduser ».
+Description-gl.UTF-8: ¿Quere directorios de usuario lexibles en todo o sistema?
+ Por defecto, os directorios iniciais dos usuarios son lexibles para tódolos usuarios do sistema. Se quere aumentar a seguridade e a intimidade, pode que prefira que os directorios iniciais só sexan lexibles aos seus propietarios. Se ten dúbidas, deixe activada esta opción.
+ .
+ Isto só ha afectar aos directorios dos usuarios engadidos a partires de agora coa orde "adduser".
+Description-it.UTF-8: Si vuole che le directory home siano leggibili da tutti?
+ Con la configurazione predefinita le directory home degli utenti sono leggibili da tutti gli utenti del sistema. Per incrementare sicurezza e privacy sul sistema è possibile rendere le directory home leggibili solo dai legittimi proprietari. Se non si è sicuri, lasciare attiva questa opzione.
+ .
+ Questa modifica ha effetto solo sulle directory home degli utenti che verranno creati con il comando adduser da adesso in poi.
+Description-ja.UTF-8: ホームディレクトリをほかのユーザから読めるようにしますか?
+ デフォルトではユーザのホームディレクトリはシステム上の全ユーザから読み取ることができます。 システムのセキュリティやプライバシーを改善するために、ホームディレクトリをその所有者のみ読み取り可能にしたいと思うかもしれません。しかし、よくわからなければ、この選択肢は「はい」のままにしておいてください。
+ .
+ これは、現時点以降に adduser コマンドで追加したユーザのホームディレクトリにのみ影響します。
+Description-ko.UTF-8: 홈 디렉토리를 시스템 전체에서 읽을 수 있도록 할까요?
+ 홈 디렉토리는 기본적으로 시스템의 모든 사용자가 볼 수 있습니다. 시스템의 보안 수준이나 사생활 보호 수준을 높이길 원한다면 홈 디렉토리를 본인만 볼 수 있도록 설정하기를 원할 것입니다. 확실하지 않다면 기본값 그대로 두십시오.
+ .
+ 이 설정은 추후에 adduser 프로그램으로 추가된 사용자의 홈 디렉토리에만 영향을 줍니다.
+Description-nb.UTF-8: Vil du ha at hjemmekatalogene skal være lesebare for alle på systemet?
+ Vanligvis kan alle brukerne på systemet lese hjemmekatalogene til hverandre. Hvis du vil øke sikkerheten og fortroligheten, så vil du kanskje at hjemmekatalogene kun skal være lesbare av eierne. Hvis du er usikker, la dette valget være aktivert. 
+ .
+ Dette vil kun påvirke hjemmekataloger for brukere opprettede fra nå av med adduser-kommandoen.
+Description-nl.UTF-8: Wilt u door iedereen leesbare thuismappen?
+ Standaard kunnen thuismappen door alle gebruikers op het systeem gelezen worden. Als u de veiligheid en privacy op uw systeem wilt verhogen, kunt u ervoor zorgen dat de thuismap van een gebruiker enkel leesbaar is voor die gebruiker zelf. Bij twijfel laat u de thuismappen best leesbaar voor iedereen.
+ .
+ Dit is slechts van toepassing op de thuismappen van gebruikers die u vanaf nu via het 'adduser'-commando aanmaakt.
+Description-no.UTF-8: Vil du ha at hjemmekatalogene skal være lesebare for alle på systemet?
+ Vanligvis kan alle brukerne på systemet lese hjemmekatalogene til hverandre. Hvis du vil øke sikkerheten og fortroligheten, så vil du kanskje at hjemmekatalogene kun skal være lesbare av eierne. Hvis du er usikker, la dette valget være aktivert. 
+ .
+ Dette vil kun påvirke hjemmekataloger for brukere opprettede fra nå av med adduser-kommandoen.
+Description-pl.UTF-8: Czy katalogi domowe mogą być przeglądane przez wszystkich?
+ Domyślnie katalogi domowe mogą być przeglądane przez wszystkich użytkowników systemu. Jeśli chcesz zwiększyć bezpieczeństwo i prywatność, możesz wskazać, by katalogi domowe były tylko do odczytu przez ich właścicieli. Jeśli nie jesteś pewien, co wybrać, pozostaw włączoną opcję przeglądania przez wszystkich.
+ .
+ Opcja ta dotyczy katalogów domowych nowych użytkowników dodanych od teraz poleceniem adduser.
+Description-pt.UTF-8: Deseja directórios 'home' que possam ser lidos por todo o sistema?
+ Por omissão, os directórios 'home' dos utilizadores são legíveis por todos os utilizadores no sistema. Se deseja aumentar a segurança e privacidade, você pode querer que os directórios 'home' sejam legíveis apenas pelos próprios donos. Em caso de dúvida, deixe esta opção habilitada.
+ .
+ Isto irá afectar apenas os directórios 'home' de utilizadores adicionados a partir de agora com o commando adduser.
+Description-pt_BR.UTF-8: Você deseja que os diretórios home sejam legíveis por todos?
+ Por padrão, os diretórios home são lidos por todos os usuários do sistema. Se você quer aumentar a segurança e a privacidade, você pode querer que os diretórios home sejam lidos apenas pelos seus donos. Mas se você está em dúvida, deixe essa opção habilitada.
+ .
+ Isto irá afetar somente os diretórios home dos usuários adicionados a partir de agora com o comando adduser.
+Description-ro.UTF-8: Doriți ca directoarele acasă să fie citibile per tot sistemul?
+ În mod implicit, directoarele acasă pot fi citite de către toți utilizatorii sistemului. Dacă doriți să măriți securitatea și secretizarea, probabil veți dori să faceți ca directoarele acasă să fie citibile doar pentru utilizatorul proprietar. Dacă vă îndoiți în legătură cu această decizie, , lăsați activată această opțiune.
+ .
+ Acest lucru va afecta directoarele acasă pentru utilizatorii care vor fi adăugați de acum înainte cu comanda adduser.
+Description-ru.UTF-8: Сделать домашние каталоги доступными для чтения всем в системе?
+ По умолчанию, домашние каталоги пользователей могут просматриваться всеми пользователями системы. В целях повышения безопасности и конфиденциальности вы можете сделать так, чтобы содержимое домашних каталогов было доступно только их владельцам. Но если не уверены, ответьте "Да".
+ .
+ Это коснётся только домашних каталогов пользователей, которые будут добавлены в систему с помощью команды adduser начиная с этого момента.
+Description-sk.UTF-8: Želáte si domovské adresáre s právom na čítanie pre všetkých?
+ Štandardne sú domovské adresáre používateľov čitateľné pre všetkých používateľov systému. Ak chcete zvýšiť bezpečnosť a súkromie, možno budete chcieť, aby domovské adresáre boli čitateľné iba pre ich vlastníkov. Ale ak ste na pochybách, nechajte túto voľbu zapnutú.
+ .
+ Táto voľba ovplyvní iba používateľské účty pridané od tejto chvíle príkazom adduser.
+Description-sr.UTF-8: Да ли желите да цијели систем очитава корисничке директоријуме
+ Подразумијевано је, да су кориснички директоријуми читљиви свим корисницима.Ако желите да повећате сигурност и приватност, можда бисте жељели да корисничкидирекоторијуми буду читљиви само за власнике. Ако сте у недоумици, оставитеову опцију омогућеном.
+ .
+ Ово ће утицати само на корисничке директоријуме корисника који ће бити придодатиод сада <adduser> командом.
+Description-sr@latin.UTF-8: Da li želite da cijeli sistem očitava korisničke direktorijume?
+ Podrazumijevano je, da su korisnički direktorijumi čitljivi svim korisnicima.Ako želite da povećate sigurnost i privatnost, možda biste željeli da korisničkidirekotorijumi budu čitljivi samo za vlasnike. Ako ste u nedoumici, ostaviteovu opciju omogućenom.
+ .
+ Ovo će uticati samo na korisničke direktorijume korisnika koji će biti pridodatiod sada <adduser> komandom.
+Description-sv.UTF-8: Vill du att hemkataloger ska vara läsbara för hela systemet?
+ Vanligtvis kan hemkataloger läsas av alla användare på systemet. Om du vill öka säkerheten/avskildheten i ditt system kan du överväga att ha dina hemkataloger läsbara enbart av användaren. Om du är osäker bör du svara ja för att göra hemkatalogerna läsbara för hela systemet.
+ .
+ Detta kommer endast att påverka hemkataloger tillhörande användare som läggs till med adduser senare.
+Description-tr.UTF-8: Ev dizinlerinin herkes tarafından okunabilmesini ister misiniz?
+ Öntanımlı olarak, kullanıcıların ev dizinlerine sistemdeki tüm kullanıcıların okuma erişimi yapmasına izin verilir. Daha yüksek güvenlik ve gizlilik için, ev dizinlerinin yalnızca sahipleri tarafından okunabilmesini isteyebilirsiniz. Şüpheye düştüğünüzde, 'Evet' diyerek ev dizinlerinin herkes tarafından okunabilir olmasını sağlayınız.
+ .
+ Bu yalnızca bundan sonra 'adduser' komutu ile eklenecek kullanıcıların ev dizinlerini etkileyecektir.
+Description-vi.UTF-8: Bạn có muốn cho phép toàn hệ thống đọc các thư mục riêng của người dùng không?
+ Mặc định là thư mục riêng của mỗi người dùng cho phép mọi người trên cùng hệ thống đọc. Nếu bạn muốn nâng cấp bảo mật và sự riêng tư, bạn có thể đặt thư mục riêng của người dùng chỉ cho người sở hữu đọc. Nếu vẫn còn lưỡng lự thì hãy bật tùy chọn.
+ .
+ Hành động này sẽ chỉ có tác động thư mục riêng của người dùng được thêm kể từ lúc này bằng lệnh “adduser”.
+Description-zh_CN.UTF-8: 您希望让主目录全局可读吗？
+ 默认设置下，用户的主目录对系统所有用户都可读。如果您想要提高系统的安全性或私密性，您也许想让用户的主目录只有该用户自己可读。如果您不确定，保持本选项开启。
+ .
+ 这只会影响到以后使用 adduser 程序添加的用户的主目录。

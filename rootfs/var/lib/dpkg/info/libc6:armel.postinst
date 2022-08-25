@@ -1,0 +1,226 @@
+#!/bin/sh
+set -e
+export LC_ALL=C
+
+type=$1
+preversion=$2
+
+checkpkgver () {
+    local status pkg
+    pkg=$1
+    status=$(dpkg -s $pkg 2>/dev/null | grep ^Status: | sed -e 's/^Status: \(.*\) \(.*\) \(.*\)/\3/g')
+    if [ -n "$status" ] && [ "$status" != "not-installed" ] && [ "$status" != "config-files" ]; then
+	echo $(dpkg -s $pkg 2>/dev/null | grep ^Version: | sed -e 's/^Version: *//');
+    fi
+}
+
+if [ "$type" = "configure" ]
+then
+    # We don't use a registry anymore, remove the old file
+    rm -f /etc/ld.so.hwcappkgs
+ 
+    # /etc/ld.so.nohwcap code:
+        # Handle upgrades when libc-opt package has been installed.
+    # When a /etc/ld.so.nohwcap file exists, ld.so only use libraries
+    # from /lib, and ignore all optimised libraries. This file is
+    # inconditionaly created in the preinst script of libc.
+ 
+    # We check the version between the current installed libc and
+    # all optimized packages. Due to multiarch, this has to be done
+    # independently of the architecture of the package.
+    all_upgraded=yes
+    for pkg in libc6.1-alphaev67 libc6-xen ; do
+        ver=$(dpkg-query -l $pkg 2>/dev/null | sed -e '/^[a-z][a-z]\s/!d;/^.[nc]/d;' -e "s/^..\s\+$pkg[0-9a-z:]*\s\+//;s/\s.*//g")
+        if [ -n "$ver" ] && [ "$ver" != "2.28-10+deb10u1" ]; then
+            all_upgraded=no
+        fi
+    done
+
+    # If the versions of all optimized packages are the same as the libc
+    # one, we could remove /etc/ld.so.nohwcap. Otherwise, it will be removed
+    # when all optimized packages are upgraded or removed.
+    if [ "$all_upgraded" = yes ] ; then
+        rm -f /etc/ld.so.nohwcap
+    fi
+
+
+    # Load debconf module if available
+    if [ -f /usr/share/debconf/confmodule ] ; then
+	. /usr/share/debconf/confmodule
+    fi
+
+    if [ -n "$preversion" ] && [ -x "$(which ischroot)" ] && ! ischroot; then
+	if dpkg --compare-versions "$preversion" lt 2.28; then
+	    check="apache2.2-common apache apache-ssl apache-perl autofs at"
+	    check="$check boa cucipop courier-authdaemon cron cups exim"
+	    check="$check exim4-base dovecot-common cucipop incron lprng lpr"
+	    check="$check lpr-ppd mysql-server nis openbsd-inetd"
+	    check="$check openldapd postgresql-common proftpd postfix postfix-tls"
+	    check="$check rsync samba sasl2-bin slapd smail sendmail snmpd ssh"
+	    check="$check spamassassin vsftpd wu-ftpd wu-ftpd-academ wwwoffle"
+	    check="$check webmin dropbear gdm"
+	    # NSS services check: 
+	    	    echo -n "Checking for services that may need to be restarted..."
+	    # Only get the ones that are installed, and configured
+	    check=$(dpkg -s $check 2> /dev/null | egrep '^Package:|^Status:' | awk '{if ($1 ~ /^Package:/) { package=$2 } else if ($0 ~ /^Status: .* installed$/) { print package }}')
+	    # some init scripts don't match the package names
+	    check=$(echo $check | \
+		    sed -e's/\bapache2.2-common\b/apache2/g' \
+			-e's/\bat\b/atd/g' \
+			-e's/\bdovecot-common\b/dovecot/g' \
+			-e's/\bexim4-base\b/exim4/g' \
+			-e's/\blpr\b/lpd/g' \
+			-e's/\blpr-ppd\b/lpd-ppd/g' \
+			-e's/\bmysql-server\b/mysql/g' \
+			-e's/\bsasl2-bin\b/saslauthd/g' \
+			-e's/\bsamba\b/smbd/g' \
+			-e's/\bpostgresql-common\b/postgresql/g' \
+		    )
+	    echo
+	    echo "Checking init scripts..."
+	    for service in $check; do
+		invoke-rc.d ${service} status >/dev/null 2>/dev/null && status=0 || status=$?
+		if [ "$status" = "0" ] || [ "$status" = "2" ] ; then
+		    services="$service $services"
+		elif [ "$status" = "100" ] ; then
+		    echo "WARNING: init script for $service not found."
+		fi
+	    done
+
+	    if [ -n "$services" ]; then
+
+	        if [ -f /usr/share/debconf/confmodule ] ; then
+		    db_version 2.0
+		    db_input critical libraries/restart-without-asking || true
+		    db_go || true
+		    db_get libraries/restart-without-asking
+		    if [ "$RET" != true ]; then
+			db_reset glibc/restart-services
+			db_set glibc/restart-services "$services"
+			db_input critical glibc/restart-services || true
+			db_go || true
+			db_get glibc/restart-services
+			if [ "x$RET" != "x" ]
+			then
+			    services="$RET"
+			else
+			    services=""
+			fi
+		    fi
+		else
+		    echo
+		    echo "Name Service Switch update in the C Library: post-installation question."
+		    echo
+		    echo "Running services and programs that are using NSS need to be restarted,"
+		    echo "otherwise they might not be able to do lookup or authentication any more"
+		    echo "(for services such as ssh, this can affect your ability to login)."
+		    echo "Note: restarting sshd/telnetd should not affect any existing connections."
+		    echo
+		    echo "The services detected are: "
+		    echo "        $services"
+		    echo
+		    echo "If other services have begun to fail mysteriously after this upgrade, it is"
+		    echo "probably necessary to restart them too.  We recommend that you reboot your"
+		    echo "machine after the upgrade to avoid NSS-related troubles."
+		    echo
+		    frontend=`echo "$DEBIAN_FRONTEND" | tr '[:upper:]' '[:lower:]'`
+		    if [ "$frontend" = noninteractive ]; then
+		    	echo "Non-interactive mode, restarting services"
+		    	answer=yes
+		    else
+		    	echo -n "Do you wish to restart services? [Y/n] "
+		    	read answer
+		    	case $answer in
+			    N*|n*) services="" ;;
+			    *) ;;
+		        esac
+		    fi
+		fi
+		echo
+		if [ "$services" != "" ]; then
+		    echo "Restarting services possibly affected by the upgrade:"
+		    failed=""
+		    for service in $services; do
+			case "$service" in
+			    gdm)
+				echo -n "  $service: reloading..."
+				if invoke-rc.d ${service} reload > /dev/null 2>&1; then
+				    echo "done."
+				else
+				    echo "FAILED! ($?)"
+				    failed="$service $failed"
+				fi
+				;;
+			    *)
+				echo -n "  $service: restarting..."
+				if invoke-rc.d ${service} restart > /dev/null 2>&1; then
+				    echo "done."
+				else
+				    echo "FAILED! ($?)"
+				    failed="$service $failed"
+				fi
+				;;
+			esac
+		    done
+		    echo
+		    if [ -n "$failed" ]; then
+	        	if [ -f /usr/share/debconf/confmodule ] ; then
+		    	    db_fset glibc/restart-failed seen false
+			    db_subst glibc/restart-failed services "$failed"
+			    db_input critical glibc/restart-failed || true
+			    db_go || true
+			else
+			    echo "The following services failed to start: $failed"
+			    echo
+			    echo "You will need to start these manually by running \`invoke-rc.d <service> start'"
+			    echo "If the service still fails to start, you may need to file a bug on"
+			    echo "${DPKG_MAINTSCRIPT_PACKAGE}:${DPKG_MAINTSCRIPT_ARCH} or the service involved."
+			    frontend=`echo "$DEBIAN_FRONTEND" | tr '[:upper:]' '[:lower:]'`
+			    if [ "$frontend" != noninteractive ]; then
+			    	echo
+			    	echo -n "Press ENTER to continue: "
+			    	read foo
+			    fi
+			fi
+		    else
+			echo "Services restarted successfully."
+                    fi
+		fi
+                # Shut down the frontend, to make sure none of the
+		# restarted services keep a connection open to it
+	        if [ -f /usr/share/debconf/confmodule ] ; then
+		    db_stop
+		fi
+	    else
+		echo "Nothing to restart."
+	    fi
+	fi # end upgrading and $preversion lt 2.28
+    fi # Upgrading
+
+    # Restart init.  Currently handles chroots, systemd and upstart, and
+    # assumes anything else is going to not fail at behaving like
+    # sysvinit:
+    TELINIT=yes
+    if ischroot 2>/dev/null; then
+        # Don't bother trying to re-exec init from a chroot:
+        TELINIT=no
+    elif [ -d /run/systemd/system ]; then
+        # Skip if systemd is the active PID 1, since systemd doesn't
+        # need a reexec for a clean shutdown
+        TELINIT=no
+    elif [ -x "`which initctl`" ]; then
+        UPSTART=$(initctl version 2>/dev/null | awk '/upstart/ {print $3}' | tr -d ')')
+        if dpkg --compare-versions "$UPSTART" lt-nl 1.6.1; then
+            # This is an old upstart that can't re-exec statefully:
+            TELINIT=no
+            touch /var/run/init.upgraded
+        fi
+    fi
+    if [ "$TELINIT" = "yes" ]; then
+        telinit u 2>/dev/null || true ; sleep 1
+    fi
+fi
+
+
+
+exit 0

@@ -1,0 +1,179 @@
+Contents of the python3.7-minimal package
+-----------------------------------------
+
+python3.7-minimal consists of a minimum set of modules which may be needed
+for python scripts used during the boot process.  If other packages
+are needed in these scripts, don't work around the missing module, but
+file a bug report against this package. The modules in this package
+are:
+
+  __builtin__		builtin
+  __future__		module
+  _abc			extension
+  _ast			extension
+  _bisect		extension
+  _blake2		extension
+  _bootlocale		module
+  _bytesio		builtin
+  _codecs		builtin
+  _collections		extension
+  _collections_abc	module
+  _compat_pickle	module
+  _datetime		extension
+  _elementtree		extension
+  _fileio		builtin
+  _functools		extension
+  _hashlib		extensionx
+  _heapq		extension
+  _imp			builtin
+  _io			builtin
+  _locale		extension
+  _md5			extension
+  _opcode		extension
+  _operator		extension
+  _pickle		extension
+  _posixsubprocess	extension
+  _py_abc		module
+  _random		extension
+  _sha1			extension
+  _sha3			extension
+  _sha256		extension
+  _sha512		extension
+  _signal		builtin
+  _sitebuiltins		module
+  _socket		extension
+  _sre			builtin
+  _ssl			extensionx
+  _stat			extension
+  _stringio		extension
+  _struct		extension
+  _string		builtin
+  _stringio		builtin
+  _strptime		module
+  _symtable		builtin
+  _thread		builtin
+  _threading_local	module
+  _tracemalloc		extension
+  _types		builtin
+  _weakref		builtin
+  _weakrefset		module
+  _warnings		builtin
+  configparser		module
+  abc			module
+  argparse		module
+  array			extension
+  ast			module
+  atexit		extension
+  base64		module
+  binascii		extension
+  bisect		module
+  builtins		builtin
+  calendar		module
+  cmath			extension
+  codecs		module
+  collections		package
+  compileall		module
+  contextlib		module
+  copy			module
+  copyreg		module
+  datetime		module
+  dis			module
+  encodings		package
+  enum			module
+  errno			builtin
+  exceptions		builtin
+  fcntl			extension
+  fnmatch		module
+  functools		module
+  gc			builtin
+  genericpath		module
+  getopt		module
+  glob			module
+  grp			extension
+  hashlib		module
+  heapq			module
+  imp			module
+  importlib		package
+  inspect		module
+  io			module
+  ipaddress		module
+  itertools		extension
+  keyword		module
+  linecache		module
+  locale		module
+  logging		package
+  marshal		builtin
+  math			extension
+  opcode		module
+  operator		module
+  optparse		module
+  os			module
+  pickle		module
+  pkgutil		module
+  platform		module
+  posix			builtin
+  posixpath		module
+  pwd			builtin
+  pyexpat		extension
+  py_compile		module
+  random		module
+  re			module
+  reprlib		module
+  runpy			module
+  select		extension
+  selectors		module
+  signal		module
+  socket		module
+  spwd			extension
+  sre_compile		module
+  sre_constants		module
+  sre_parse		module
+  ssl			module
+  stat			module
+  string		module
+  struct		module
+  subprocess		module
+  sys			builtin
+  sysconfig		module
+  syslog		extension
+  tempfile		module
+  textwrap		module
+  threading		module
+  time			extension
+  token			module
+  tokenize		module
+  traceback		module
+  tracemalloc		module
+  types			module
+  unicodedata		extension
+  warnings		module
+  weakref		module
+  zipimport		extension
+  zlib			extension
+
+Included are as well the codecs and stringprep modules, and the encodings
+modules for all encodings except the multibyte encodings and the bz2 codec.
+
+The following modules are excluded, their import is guarded from the
+importing module:
+
+  Used in       Excluded
+  ------------  ------------------------------------
+  io		_dummy_thread
+  os		nt ntpath os2 os2emxpath mac macpath
+		riscos riscospath riscosenviron
+  optparse	gettext
+  pickle	doctest
+  subprocess	threading_dummy
+
+This list was derived by looking at the modules in the perl-base package,
+then adding python specific "core modules".
+
+TODO's
+------
+
+- time.strptime cannot be used. The required _strptime module is not
+  included in the -minimal package yet. _strptime, locale, _locale and
+  calendar have to be added.
+
+- modules used very often in the testsuite: copy, cPickle, operator.

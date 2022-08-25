@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_installinit/12.1.1
+if [ -x "/etc/init.d/ssh" ] && [ "$1" = remove ]; then
+	invoke-rc.d ssh stop || exit 1
+fi
+# End automatically added section
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/network/if-up.d/openssh-server 1:7.9p1-1~ -- "$@"
+# End automatically added section
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/init/ssh.conf 1:7.5p1-6~ -- "$@"
+# End automatically added section
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper mv_conffile /etc/pam.d/ssh /etc/pam.d/sshd 1:4.7p1-4~ -- "$@"
+# End automatically added section
+# Automatically added by dh_systemd_start/12.1.1
+if [ -d /run/systemd/system ]; then
+	deb-systemd-invoke stop 'rescue-ssh.target' >/dev/null || true
+fi
+# End automatically added section

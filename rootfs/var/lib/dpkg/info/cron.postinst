@@ -1,0 +1,103 @@
+#!/bin/sh
+set -e
+
+crondir="/var/spool/cron"
+action="$1"
+
+if [ "$action" != configure ]; then
+    exit 0
+fi
+
+
+# Add group for crontabs
+getent group crontab > /dev/null 2>&1 || addgroup --system crontab
+
+# Fixup crontab binary for new group 'crontab'.
+if ! dpkg-statoverride --list /usr/bin/crontab > /dev/null ; then
+    dpkg-statoverride --update --add root crontab 2755 /usr/bin/crontab
+fi
+
+# Fixup crontab , directory and files for new group 'crontab'.
+# Can't use dpkg-statoverride for this because it doesn't cooperate nicely
+# with cron alternatives such as bcron
+if [ -d $crondir/crontabs ] ; then
+    chown root:crontab $crondir/crontabs
+    chmod 1730 $crondir/crontabs
+    # This used to be done conditionally. For versions prior to "3.0pl1-81"
+    # It has been disabled to suit cron alternative such as bcron. 
+    cd $crondir/crontabs
+    set +e
+
+    # Iterate over each entry in the spool directory, perform some sanity
+    # checks (see CVE-2017-9525), and chown/chgroup the crontabs
+    for tab_name in *
+    do
+        [ "$tab_name" = "*" ] && continue
+        tab_links=`stat -c '%h' "$tab_name"`
+        tab_owner=`stat -c '%U' "$tab_name"`
+
+        if [ ! -f "$tab_name" ]
+        then
+            echo "Warning: $tab_name is not a regular file!"
+            continue
+        elif [ "$tab_links" -ne 1 ]
+        then
+            echo "Warning: $tab_name has more than one hard link!"
+            continue
+        elif [ "$tab_owner" != "$tab_name" ]
+        then
+            echo "Warning: $tab_name name differs from owner $tab_owner!"
+            continue
+        fi
+
+		chown "$tab_owner:crontab" "$tab_name"
+		chmod 600 "$tab_name"
+    done
+    set -e
+fi
+
+
+# Automatically added by dh_installinit/12.1.1
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-deconfigure" ] || [ "$1" = "abort-remove" ] ; then
+	if [ -x "/etc/init.d/cron" ]; then
+		update-rc.d cron defaults >/dev/null
+		if [ -n "$2" ]; then
+			_dh_action=restart
+		else
+			_dh_action=start
+		fi
+		invoke-rc.d --skip-systemd-native cron $_dh_action || exit 1
+	fi
+fi
+# End automatically added section
+# Automatically added by dh_installsystemd/12.1.1
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-deconfigure" ] || [ "$1" = "abort-remove" ] ; then
+	# This will only remove masks created by d-s-h on package removal.
+	deb-systemd-helper unmask 'cron.service' >/dev/null || true
+
+	# was-enabled defaults to true, so new installations run enable.
+	if deb-systemd-helper --quiet was-enabled 'cron.service'; then
+		# Enables the unit on first installation, creates new
+		# symlinks on upgrades if the unit file has changed.
+		deb-systemd-helper enable 'cron.service' >/dev/null || true
+	else
+		# Update the statefile to add new symlinks (if any), which need to be
+		# cleaned up on purge. Also remove old symlinks.
+		deb-systemd-helper update-state 'cron.service' >/dev/null || true
+	fi
+fi
+# End automatically added section
+# Automatically added by dh_installsystemd/12.1.1
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-deconfigure" ] || [ "$1" = "abort-remove" ] ; then
+	if [ -d /run/systemd/system ]; then
+		systemctl --system daemon-reload >/dev/null || true
+		if [ -n "$2" ]; then
+			_dh_action=restart
+		else
+			_dh_action=start
+		fi
+		deb-systemd-invoke $_dh_action 'cron.service' >/dev/null || true
+	fi
+fi
+# End automatically added section
+

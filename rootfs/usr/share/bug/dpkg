@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+for d in /bin /sbin /lib /lib32 /libo32 /libx32 /lib64; do
+  if [ "$(readlink $d)" = "usr$d" ]; then
+    echo "System tainted due to merged-usr-via-symlinks." >&3
+    break
+  fi
+done

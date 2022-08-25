@@ -1,0 +1,56 @@
+#!/bin/sh
+
+set -e
+
+if test "$1" = configure
+then
+	if test -f /etc/init.d/logoutd
+	then 
+		if test "$(md5sum /etc/init.d/logoutd)" = "9080f92783dd53f6f2108e698c06bd53  /etc/init.d/logoutd"
+		then	
+			echo "removing logoutd cruft"
+			rm /etc/init.d/logoutd
+			update-rc.d logoutd remove
+		fi
+	fi
+fi
+rm -f /etc/pam.d/login.pre-upgrade 2>/dev/null
+
+if [ "$1" = "configure" ]; then
+	# Install faillog during initial installs only
+	if [ "$2" = "" ] && [ ! -f /var/log/faillog ] ; then
+		touch /var/log/faillog
+		chown root:root /var/log/faillog
+		chmod 644 /var/log/faillog
+	fi
+
+	# Create subuid/subgid if missing
+	if [ ! -e /etc/subuid ]; then
+		touch /etc/subuid
+		chown root:root /etc/subuid
+		chmod 644 /etc/subuid
+	fi
+
+	if [ ! -e /etc/subgid ]; then
+		touch /etc/subgid
+		chown root:root /etc/subgid
+		chmod 644 /etc/subgid
+	fi
+fi
+
+        # Create subuid/subgid if missing
+        if [ ! -e /etc/subuid ]; then
+                touch /etc/subuid
+                chown root:root /etc/subuid
+                chmod 644 /etc/subuid
+        fi
+
+        if [ ! -e /etc/subgid ]; then
+                touch /etc/subgid
+                chown root:root /etc/subgid
+                chmod 644 /etc/subgid
+        fi
+
+
+
+exit 0

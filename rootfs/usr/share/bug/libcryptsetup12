@@ -1,0 +1,38 @@
+#!/bin/bash
+
+cat <<EOF
+
+Providing additional information can help diagnose problems with cryptsetup.
+Specifically, this would include:
+- kernel cmdline (copy of /proc/cmdline).
+- crypttab configuration (copy of /etc/crypttab).
+- fstab configuration (copy of /etc/fstab).
+If this information is not relevant for your bug report or you have privacy
+concerns, please choose no.
+
+EOF
+
+yesno "Do you want to provide additional information [Y|n]? " yep
+[ "$REPLY" = yep ] || exit 0
+
+exec >&3
+
+echo "-- /proc/cmdline"
+cat /proc/cmdline
+echo
+
+if [ -r /etc/crypttab ]; then
+        echo "-- /etc/crypttab"
+        cat /etc/crypttab
+        echo
+fi
+
+if [ -r /etc/fstab ]; then
+        echo "-- /etc/fstab"
+        cat /etc/fstab
+        echo
+fi
+
+echo "-- lsmod"
+lsmod
+echo

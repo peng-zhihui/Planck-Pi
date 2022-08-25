@@ -1,0 +1,27 @@
+#!/bin/sh -e
+
+case "$1" in
+  purge)
+  rm -f /etc/udev/rules.d/70-persistent-*.rules
+  rmdir --ignore-fail-on-non-empty /etc/udev/rules.d/ 2> /dev/null || true
+  rm -f /lib/udev/hwdb.bin
+  rm -f /var/log/udev
+  ;;
+esac
+
+# Automatically added by dh_installinit/12.1.1
+if [ "$1" = "purge" ] ; then
+	update-rc.d udev remove >/dev/null
+fi
+# End automatically added section
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/init.d/udev-finish 226-1\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/udev-finish.conf 226-1\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/udev-fallback-graphics.conf 226-1\~ -- "$@"
+dpkg-maintscript-helper symlink_to_dir /usr/share/doc/udev libudev1 221-2\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/modprobe.d/fbdev-blacklist.conf 229-6\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/udev.conf 233-1\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/udevmonitor.conf 233-1\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/udevtrigger.conf 233-1\~ -- "$@"
+# End automatically added section
+

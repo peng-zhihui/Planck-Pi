@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+
+Files: *
+Copyright:
+ 1999-2002 Randolph Chung
+ 1999-2011 Joey Hess
+License: GPL-2
+ See /usr/share/common-licenses/GPL for the full text of the GPL.

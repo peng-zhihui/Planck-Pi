@@ -1,0 +1,10 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libsepol.so.1
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libsepol1
+/usr/share/doc/libsepol1/changelog.Debian.gz
+/usr/share/doc/libsepol1/copyright

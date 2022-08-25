@@ -1,0 +1,57 @@
+#!/usr/bin/perl
+#
+# passwd.expire.cron: sample expiry notification script for use as a cronjob
+#
+# Copyright 1999 by Ben Collins <bcollins@debian.org>, complete rights granted
+# for use, distribution, modification, etc.
+#
+# Usage:
+#	edit the listed options, including the actual email, then rename to
+#	/etc/cron.daily/passwd
+#
+#	If your users don't have a valid login shell (ie. they are ftp or mail
+#	users only), they will need some other way to change their password
+#	(telnet will work since login will handle password aging, or a poppasswd
+#	program, if they are mail users).
+
+# <CONFIG> #
+
+# should be same as /etc/adduser.conf
+$LOW_UID=1000;
+$HIGH_UID=29999;
+
+# this let's the MTA handle the domain,
+# set it manually if you want. Make sure
+# you also add the @ like "\@domain.com"
+$MAIL_DOM="";
+
+# </CONFIG> #
+
+# Set the current day reference
+$curdays = int(time() / (60 * 60 * 24));
+
+# Now go through the list
+
+open(SH, "< /etc/shadow");
+while (<SH>) {
+    @shent = split(':', $_);
+    @userent = getpwnam($shent[0]);
+    if ($userent[2] >= $LOW_UID && $userent[2] <= $HIGH_UID) {
+	if ($curdays > $shent[2] + $shent[4] - $shent[5] &&
+		$shent[4] != -1 && $shent[4] != 0 &&
+		$shent[5] != -1 && $shent[5] != 0) {
+	    $daysleft = ($shent[2] + $shent[4]) - $curdays;
+	    if ($daysleft == 1) { $days = "day"; } else {$days = "days"; }
+            if ($daysleft < 0) { next; }
+	    open (MAIL, "| mail -s '[WARNING] account will expire in $daysleft $days' $shent[0]${MAIL_DOM}");
+	    print MAIL <<EOF;
+Your account will expire in $daysleft $days. Please change your password before
+then or your account will expire
+EOF
+	    close (MAIL);
+	    # This makes sure we also get a list of almost expired users
+	    print "$shent[0]'s account will expire in $daysleft days\n";
+	}
+    }
+    @userent = getpwent();
+}

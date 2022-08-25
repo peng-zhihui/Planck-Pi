@@ -1,0 +1,16 @@
+bd9e7080e82a7b642202fe71117b3c0c  bin/bunzip2
+bd9e7080e82a7b642202fe71117b3c0c  bin/bzcat
+fae623b4d322b854f59ae2758e6c50b2  bin/bzdiff
+10a5a0be2ad3f47fff12daaf1c0256c5  bin/bzexe
+50ca8ce01a8178bf028b0bb84904a038  bin/bzgrep
+bd9e7080e82a7b642202fe71117b3c0c  bin/bzip2
+1dee7743871b7b6a15509436ea9a6090  bin/bzip2recover
+e243255b6cf3b9403df53cb9cd6176e1  bin/bzmore
+f842cfa6aded704b694cfbafa293164f  usr/share/doc/bzip2/changelog.Debian.gz
+782e8ca4fd6c91821fec8cf633902ef4  usr/share/doc/bzip2/changelog.gz
+8171a9bd4b60caf0ab19b02ec8495111  usr/share/doc/bzip2/copyright
+791ad9d729d9db901a68392928bd22eb  usr/share/man/man1/bzdiff.1.gz
+7fa1a1cc60d8439bc96ed621a626461b  usr/share/man/man1/bzexe.1.gz
+b6d41f037a65083a0daddd839a142de7  usr/share/man/man1/bzgrep.1.gz
+9470f880d3757ff5b043f4e977e91a50  usr/share/man/man1/bzip2.1.gz
+f03debbbd27ed377dcdf2e63436f89bf  usr/share/man/man1/bzmore.1.gz

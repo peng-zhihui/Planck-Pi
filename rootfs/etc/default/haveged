@@ -1,0 +1,5 @@
+# Configuration file for haveged
+
+# Options to pass to haveged:
+#   -w sets low entropy watermark (in bits)
+DAEMON_ARGS="-w 1024"

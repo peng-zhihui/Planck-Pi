@@ -1,0 +1,11 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libss.so.2.0
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libss2
+/usr/share/doc/libss2/changelog.Debian.gz
+/usr/share/doc/libss2/copyright
+/lib/arm-linux-gnueabi/libss.so.2

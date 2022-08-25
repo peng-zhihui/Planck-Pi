@@ -1,0 +1,28 @@
+README for Debian package of procps
+===================================
+
+ipv6 sysctl keys
+----------------
+Modern Debian kernel packages have the IPv6 module compiled in by default.
+This means that the /proc/sys/net/ipv6 directory exists when the procps
+startup script runs.
+
+However if you make your own kernel then you may make ipv6 a module and
+get a race condition between the netbase and procps startup scripts. This
+is because netbase, by default, causes ipv6 module to be loaded but
+they don't (and cannot) depend on each-other.
+
+The solution is to either:
+ - Not put ipv6 keys into /etc/sysctl.d/* or /etc/sysctl.conf
+ - Compile the ipv6 module into the kernel
+ - Load the module early by putting ipv6 into /etc/modules
+ - Make a init script dependency by adding netbase to the Required-Start
+   line in /etc/init.d/procps
+
+pgrep
+-----
+pgrep is a new program, using the Unix standard name for something that
+greps for processes.  If you are looking for Perl compatible regular
+expression grep, it is called pcregrep.
+
+ Craig Small <csmall@debian.org>

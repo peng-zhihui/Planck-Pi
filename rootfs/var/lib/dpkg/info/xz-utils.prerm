@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+if
+	test "$1" != upgrade ||
+	# downgrading to a pre-alternatives version
+	dpkg --compare-versions "$2" lt-nl 5.1.1alpha+20120614-1
+then
+	update-alternatives --remove lzma /usr/bin/xz
+fi
+

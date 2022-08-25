@@ -1,0 +1,12 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libcap.so.2.25
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libcap2
+/usr/share/doc/libcap2/changelog.Debian.gz
+/usr/share/doc/libcap2/changelog.gz
+/usr/share/doc/libcap2/copyright
+/lib/arm-linux-gnueabi/libcap.so.2

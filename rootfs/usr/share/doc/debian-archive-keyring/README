@@ -1,0 +1,27 @@
+README for the debian-archive-keyring package
+=============================================
+
+Introduction
+------------
+
+The Debian project signs its Release files that are stored on the
+Debian ftp-server and its mirrors with the keys contained in this
+packages.
+
+A quick overview about this package:
+
+* Each actively used key is placed in /etc/apt/trusted.gpg.d/ to
+  be used by "apt" and its apt-key command in versions 0.6 and later.
+  The signatures of acquired Release files is checked against this
+  key database. It hence contains all keys of still releases that
+  are still supported and need to be active.
+* /usr/share/keyrings/debian-archive-keyring.gpg:
+  A keyring including all actively used keys to sign Release files in
+  our supported releases is shipped in /usr/share/keyrings.
+* /usr/share/keyrings/debian-archive-removed-keys.gpg:
+  A keyring including all keys used by previous releases, which are
+  no longer supported. These keys are no longer used to sign
+  Release files.
+
+More information about the archive authentication feature can be found
+in the manpage apt-secure(8).

@@ -1,0 +1,50 @@
+#! /bin/sh
+set -e
+
+new_config_file()
+{
+    cat > /etc/python3/debian_config <<-EOF
+	[DEFAULT]
+	# how to byte-compile (comma separated: standard, optimize)
+	byte-compile = standard
+	EOF
+}
+
+case "$1" in
+    configure)
+	[ -d /etc/python3 ] || mkdir /etc/python3
+	[ -f /etc/python3/debian_config ] || new_config_file
+
+	oldv=$(echo $2 | sed 's/^\(...\).*/\1/')
+	if [ "$DEBIAN_FRONTEND" != noninteractive ]; then
+	    echo "running python rtupdate hooks for python3.7..."
+	fi
+	for hook in /usr/share/python3/runtime.d/*.rtupdate; do
+	    [ -x $hook ] || continue
+	    if ! $hook rtupdate python$oldv python3.7; then
+	        hb=$(basename $hook .rtupdate)
+	        echo >&2 "error running python rtupdate hook $hb"
+	        errors=yes
+	    fi
+	done
+	[ -z "$errors" ] || exit 4
+
+	if [ "$DEBIAN_FRONTEND" != noninteractive ]; then
+	    echo "running python post-rtupdate hooks for python3.7..."
+	fi
+	for hook in /usr/share/python3/runtime.d/*.rtupdate; do
+	    [ -x $hook ] || continue
+	    if ! $hook post-rtupdate python$oldv python3.7; then
+	        hb=$(basename $hook .rtupdate)
+	        echo >&2 "error running python post-rtupdate hook $hb"
+	        errors=yes
+	    fi
+	done
+	[ -z "$errors" ] || exit 5
+esac
+
+if which py3compile >/dev/null 2>&1; then
+	py3compile -p python3 /usr/share/python3/
+fi
+
+

@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+if [ "$1" = "purge" ] && \
+   [ "$(dpkg-query --show libwrap0 2> /dev/null | wc -l)" = 1 ]; then
+  rm -f /etc/hosts.allow /etc/hosts.deny
+fi
+
+

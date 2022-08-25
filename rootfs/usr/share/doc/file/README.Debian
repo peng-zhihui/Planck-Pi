@@ -1,0 +1,26 @@
+file for Debian
+---------------
+
+How users can inject their own magics for fun:
+
+  1. open /etc/magic and /etc/magic.mime with a text editor, as root,
+     and add your own magics.
+
+  2. have fun.
+
+
+How package maintainers can inject their own magics for profit:
+
+  1. place your magics as plain text files in
+     /usr/share/file/${binary_package_name}.
+
+  2. call 'file --compile ${binary_package_name}' from /usr/share/file
+     in your postinst script (maybe we should have a trigger for that
+     at some point). this will produce the binary magics
+     /usr/share/file/${binary_package_name}.mgc.
+
+  3. remove the binary magics in your postrm script.
+
+  4. profit.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 27 Mar 2010 11:22:58 +0100

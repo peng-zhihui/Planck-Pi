@@ -1,0 +1,74 @@
+Debian specific notes regarding haveged
+=======================================
+
+Concerns regarding the RDTSC instructions in virtualized environments
+---------------------------------------------------------------------
+
+PolarSSL issued a security advisory on 2011-12-05 regarding their
+implementation of the HAVEGE random generator and virtualized environment:
+<https://polarssl.org/tech-updates/security-advisories/polarssl-security-advisory-2011-02>
+
+When asked if the issue also applied to haveged, Gary Wuertz — haveged author —
+replied:
+
+First, there are significant differences between the polarssl and haveged
+implementations of HAVEGE. In general, haveged works much harder to provoke
+timing variations in the host (larger collection buffer, tuning collection code
+and walk table to the host L1 caches). See comparison below.
+I think items d) and e) in the comparison are items where polarssl is
+particularly weak.
+
+Second, since V1.5 haveged includes run time testing of haveged output. This is
+the only definitive way to deal with a poor timing source (virtual or
+otherwise). The test procedures are adapted from the German CC body, see:
+http://www.issihosts.com/haveged/ais31.html
+
+By default, AIS procedures A and B are run at start up and AIS procedure B is
+run continuously by the daemon. Procedure A is intended to detect statistical
+anomalies - it includes running the FIPS140-1 tests 257 times on successive
+20,000 bit samples and an auto-correlation test. Procedure B runs a series of
+bit distribution tests of a more theoretical nature, terminating with an
+entropy estimate on a 256000+2560 bit sample using Coron's estimator.
+Dispensing with procedure A during continuous tests is a performance
+enhancement. haveged output gets mixed with other sources in /dev/random and as
+long as haveged does not lie about the entropy it is feeding into the pool, all
+should be fine.
+
+AIS31 defines a retry strategy that a ideal generator should never fail, so any
+haveged testing failure terminates output. Note that the test procedures
+are not synchronized with collection but all haveged output is guaranteed to
+come from a buffer not containing any failed individual test.
+
+Comparison of the polarssl and haveged implementations of HAVEGE
+
+a) Both use approximately the same collection code:
+
+ * PolarSSL: havege.c inline macro
+ * haveged: oniteration.h
+
+b) Adaptation of collection code to host:
+
+ * PolarSSL: static
+   - collection buffer: 1024*sizeof(int),
+   - walk table: 8192 * sizeof(int),
+   - fill loop: 4 iterations
+ * haveged: dynamic (built in tuning or invocation parameters)
+   - collection buffer: 512*1024*sizeof(int32) (default, adjustable),
+   - walk table: (4K *sizeof(int32)) + (2 * size of L1 data cache) ,
+   - fill loop: number of iterations in that fit in a minimum of L1 instruction
+                cache or 64K (approximately)
+
+c) Timer source
+
+ * PolarSSL: hardware cycle counter, gettimeofday() fallback
+ * haveged: hardware cycle counter, clock_gettime() fallback
+
+d) Collector warmup
+
+ * PolarSSL: 1 fill
+ * haveged: 32 fills plus self test
+
+e) Run time testing
+
+ * PolarSSL: none
+ * haveged: Continuous and start-up AIS-31 tests (configurable)

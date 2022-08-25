@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/bash_completion.d/debconf 1.5.58~ -- "$@"
+# End automatically added section
+
+
+# Move conffile.
+if [ -e /etc/apt/apt.conf.d/debconf ]; then
+	mv -f /etc/apt/apt.conf.d/debconf /etc/apt/apt.conf.d/70debconf
+fi

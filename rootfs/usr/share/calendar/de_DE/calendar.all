@@ -1,0 +1,17 @@
+/*
+ * deutscher Kalender
+ *
+ * $FreeBSD: head/usr.bin/calendar/calendars/de_DE.ISO8859-1/calendar.all 78047 2001-06-11 03:08:46Z ache $
+ */
+
+#ifndef _de_DE_all_
+#define _de_DE_all_
+
+#include <de_DE/calendar.feiertag>
+#include <de_DE/calendar.geschichte>
+#include <de_DE/calendar.kirche>
+#include <de_DE/calendar.literatur>
+#include <de_DE/calendar.musik>
+#include <de_DE/calendar.wissenschaft>
+
+#endif /* !_de_DE_all_ */

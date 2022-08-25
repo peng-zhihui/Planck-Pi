@@ -1,0 +1,19 @@
+Things that should be done:
+ * Verify the files left in debian/tmp
+   + e.g. /etc/default/adduser should be installed
+ * Check the build system: rebuilding the package twoce in the same tree
+   doubles the size of the diff.gz file
+
+Other points (not related to the release of a syncronized shadow):
+ * compare the source with the usages and man pages
+   + probably add a sentence to chsh/chfn's manpages about authentication
+     required for ordinary users
+ * do something (a tool) for the variables in login.defs
+   In Debian, some tools are not compiled with the PAM support, so upstream
+   getdef.c won't be OK.
+   It should be nice to see in each man page the set of variables used.
+   The Debian package can now compile (export DEB_BUILD_OPTIONS='nostrip debug')
+   with the debugging informations. This may be used to extract the set of
+   variables used in Debian/for each tools.
+ * verify all the patches around (I've found patches for at least RedHat,
+   OWL, LFS, Mandriva, Gentoo; are they already applied?)

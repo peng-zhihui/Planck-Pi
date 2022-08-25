@@ -1,0 +1,113 @@
+20110101
+  - Finally update for OpenSSH 5.6p1
+  - Add GSSAPIServerIdentity option from Jim Basney
+ 
+20100308
+  - [ Makefile.in, key.c, key.h ]
+    Updates for OpenSSH 5.4p1
+  - [ servconf.c ]
+    Include GSSAPI options in the sshd -T configuration dump, and flag
+    some older configuration options as being unsupported. Thanks to Colin 
+    Watson.
+  -
+
+20100124
+  - [ sshconnect2.c ]
+    Adapt to deal with additional element in Authmethod structure. Thanks to
+    Colin Watson
+
+20090615
+  - [ gss-genr.c gss-serv.c kexgssc.c kexgsss.c monitor.c sshconnect2.c
+      sshd.c ]
+    Fix issues identified by Greg Hudson following a code review
+	Check return value of gss_indicate_mechs
+	Protect GSSAPI calls in monitor, so they can only be used if enabled
+	Check return values of bignum functions in key exchange
+	Use BN_clear_free to clear other side's DH value
+	Make ssh_gssapi_id_kex more robust
+	Only configure kex table pointers if GSSAPI is enabled
+	Don't leak mechanism list, or gss mechanism list
+	Cast data.length before printing
+	If serverkey isn't provided, use an empty string, rather than NULL
+
+20090201
+  - [ gss-genr.c gss-serv.c kex.h kexgssc.c readconf.c readconf.h ssh-gss.h
+      ssh_config.5 sshconnet2.c ]
+    Add support for the GSSAPIClientIdentity option, which allows the user
+    to specify which GSSAPI identity to use to contact a given server
+
+20080404
+  - [ gss-serv.c ]
+    Add code to actually implement GSSAPIStrictAcceptCheck, which had somehow
+    been omitted from a previous version of this patch. Reported by Borislav
+    Stoichkov
+
+20070317
+  - [ gss-serv-krb5.c ]
+    Remove C99ism, where new_ccname was being declared in the middle of a 
+    function
+
+20061220
+  - [ servconf.c ]
+    Make default for GSSAPIStrictAcceptorCheck be Yes, to match previous, and 
+    documented, behaviour. Reported by Dan Watson.
+
+20060910
+  - [ gss-genr.c kexgssc.c kexgsss.c kex.h monitor.c sshconnect2.c sshd.c
+      ssh-gss.h ]
+    add support for gss-group14-sha1 key exchange mechanisms
+  - [ gss-serv.c servconf.c servconf.h sshd_config sshd_config.5 ]
+    Add GSSAPIStrictAcceptorCheck option to allow the disabling of
+    acceptor principal checking on multi-homed machines.
+    <Bugzilla #928>
+  - [ sshd_config ssh_config ]
+    Add settings for GSSAPIKeyExchange and GSSAPITrustDNS to the sample
+    configuration files
+  - [ kexgss.c kegsss.c sshconnect2.c sshd.c ]
+    Code cleanup. Replace strlen/xmalloc/snprintf sequences with xasprintf()
+    Limit length of error messages displayed by client
+
+20060909
+  - [ gss-genr.c gss-serv.c ]
+    move ssh_gssapi_acquire_cred() and ssh_gssapi_server_ctx to be server
+    only, where they belong 
+    <Bugzilla #1225>
+
+20060829
+  - [ gss-serv-krb5.c ]
+    Fix CCAPI credentials cache name when creating KRB5CCNAME environment 
+    variable
+
+20060828
+  - [ gss-genr.c ]
+    Avoid Heimdal context freeing problem
+    <Fixed upstream 20060829>
+
+20060818
+  - [ gss-genr.c ssh-gss.h sshconnect2.c ]
+    Make sure that SPENGO is disabled 
+    <Bugzilla #1218 - Fixed upstream 20060818>
+
+20060421
+  - [ gssgenr.c, sshconnect2.c ]
+    a few type changes (signed versus unsigned, int versus size_t) to
+    fix compiler errors/warnings 
+    (from jbasney AT ncsa.uiuc.edu)
+  - [ kexgssc.c, sshconnect2.c ]
+    fix uninitialized variable warnings
+    (from jbasney AT ncsa.uiuc.edu)
+  - [ gssgenr.c ]
+    pass oid to gss_display_status (helpful when using GSSAPI mechglue)
+    (from jbasney AT ncsa.uiuc.edu)
+    <Bugzilla #1220 >
+  - [ gss-serv-krb5.c ]
+    #ifdef HAVE_GSSAPI_KRB5 should be #ifdef HAVE_GSSAPI_KRB5_H
+    (from jbasney AT ncsa.uiuc.edu)
+    <Fixed upstream 20060304>
+  - [ readconf.c, readconf.h, ssh_config.5, sshconnect2.c 
+    add client-side GssapiKeyExchange option
+    (from jbasney AT ncsa.uiuc.edu)
+  - [ sshconnect2.c ]
+    add support for GssapiTrustDns option for gssapi-with-mic
+    (from jbasney AT ncsa.uiuc.edu)
+    <gssapi-with-mic support is Bugzilla #1008>

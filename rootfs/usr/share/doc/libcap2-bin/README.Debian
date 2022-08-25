@@ -1,0 +1,45 @@
+Please check http://www.friedhoff.org/posixfilecaps.html to get more
+information on POSIX File Capabilities.
+
+
+Example: how to remove the SUID root bit from /bin/ping?
+--------------------------------------------------------
+
+Make sure you have kernel 2.6.24 or newer you have
+CONFIG_SECURITY_CAPABILITIES and CONFIG_SECURITY_FILE_CAPABILITIES
+enabled. The Debian kernels are fine.
+
+  $ ls -l /bin/ping
+  -rwsr-xr-x 1 root root 30736 2007-01-31 00:10 /bin/ping
+     ^
+That is not good.
+
+  $ sudo chmod 755 /bin/ping
+
+Or use dpkg-statoverride.
+
+  $ ls -l /bin/ping
+  -rwxr-xr-x 1 root root 30736 2007-01-31 00:10 /bin/ping
+
+That is better but ping fails.
+
+  $ ping -c1 localhost
+  ping: icmp open socket: Operation not permitted
+
+Now set the missing capability:
+
+  $ sudo setcap cap_net_raw+ep /bin/ping
+
+... and ping will work again.
+
+  $ ping -c1 localhost
+  PING localhost (127.0.0.1) 56(84) bytes of data.
+  64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.026 ms
+
+  --- localhost ping statistics ---
+  1 packets transmitted, 1 received, 0% packet loss, time 0ms
+  rtt min/avg/max/mdev = 0.026/0.026/0.026/0.000 ms
+
+
+
+Torsten Werner

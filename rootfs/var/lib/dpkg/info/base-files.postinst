@@ -1,0 +1,122 @@
+#!/bin/sh
+set -e
+
+install_local_dir() {
+  if [ ! -d $1 ]; then
+    mkdir -p $1
+  fi
+  if [ -f /etc/staff-group-for-usr-local ]; then
+    chown root:staff $1 2> /dev/null || true
+    chmod 2775 $1 2> /dev/null || true
+  fi
+}
+
+install_from_default() {
+  if [ ! -f $2 ]; then
+    cp -p /usr/share/base-files/$1 $2
+  fi
+}
+
+install_directory() {
+  if [ ! -d /$1 ]; then
+    mkdir /$1
+    chown root:$3 /$1
+    chmod $2 /$1
+  fi
+}
+
+migrate_directory() {
+  if [ ! -L $1 ]; then
+    rmdir $1
+    ln -s $2 $1
+  fi
+}
+
+update_to_current_default() {
+  if [ -f $2 ]; then
+    md5=`md5sum $2 | cut -f 1 -d " "`
+    if grep -q "$md5" /usr/share/base-files/$1.md5sums; then
+      if ! cmp -s /usr/share/base-files/$1 $2; then
+        cp -p /usr/share/base-files/$1 $2
+        echo Updating $2 to current default.
+      fi
+    fi
+  fi
+}
+
+if [ ! -e /etc/dpkg/origins/default ]; then
+  if [ -e /etc/dpkg/origins/debian ]; then
+    ln -sf debian /etc/dpkg/origins/default
+  fi
+fi
+
+if [ "$1" = "configure" ] && [ "$2" = "" ]; then
+  install_from_default dot.profile   /root/.profile
+  install_from_default dot.bashrc    /root/.bashrc
+  install_from_default profile       /etc/profile
+  install_from_default motd          /etc/motd
+  install_directory mnt       755 root
+  install_directory srv       755 root
+  install_directory opt       755 root
+  install_directory etc/opt   755 root
+  install_directory var/opt   755 root
+  install_directory media     755 root
+  install_directory var/mail 2775 mail
+  if [ ! -L /var/spool/mail ]; then
+    ln -s ../mail /var/spool/mail
+  fi
+  install_directory run/lock 1777 root
+  migrate_directory /var/run /run
+  migrate_directory /var/lock /run/lock
+
+  install_local_dir /usr/local
+  install_local_dir /usr/local/share
+  install_local_dir /usr/local/share/man
+  install_local_dir /usr/local/bin
+  install_local_dir /usr/local/games
+  install_local_dir /usr/local/lib
+  install_local_dir /usr/local/include
+  install_local_dir /usr/local/sbin
+  install_local_dir /usr/local/src
+  install_local_dir /usr/local/etc
+  ln -sf share/man /usr/local/man
+
+  if [ ! -f /var/log/wtmp ]; then
+    echo -n>/var/log/wtmp
+  fi
+  if [ ! -f /var/log/btmp ]; then
+    echo -n>/var/log/btmp
+  fi
+  if [ ! -f /var/log/lastlog ]; then
+    echo -n>/var/log/lastlog
+  fi
+  chown root:utmp /var/log/wtmp /var/log/btmp /var/log/lastlog
+  chmod 664 /var/log/wtmp /var/log/lastlog
+  chmod 660 /var/log/btmp
+  if [ ! -f /var/run/utmp ]; then
+    echo -n>/var/run/utmp
+  fi
+  chown root:utmp /var/run/utmp
+  chmod 664 /var/run/utmp
+fi
+
+if [ ! -d /var/lib/dpkg ]; then
+  mkdir -m 755 -p /var/lib/dpkg
+fi
+if [ ! -f /var/lib/dpkg/status ]; then
+  echo > /var/lib/dpkg/status
+  chmod 644 /var/lib/dpkg/status
+fi
+
+if [ ! -f /usr/info/dir ] && [ ! -f /usr/share/info/dir ]; then
+  install_from_default info.dir /usr/share/info/dir
+  chmod 644 /usr/share/info/dir
+fi
+
+if [ "$1" = "configure" ] && [ "$2" != "" ]; then
+  update_to_current_default profile       /etc/profile
+  update_to_current_default dot.profile   /root/.profile
+  if dpkg --compare-versions "$2" lt-nl "7.7"; then
+    install_directory mnt 755 root
+  fi
+fi

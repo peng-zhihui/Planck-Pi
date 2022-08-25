@@ -1,0 +1,7 @@
+# yes we do want to ship these
+dbus: package-contains-empty-directory usr/share/dbus-1/services/
+dbus: package-contains-empty-directory usr/share/dbus-1/system-services/
+
+# intentionally statically-enabled
+dbus: systemd-service-file-missing-install-key lib/systemd/system/dbus.service
+dbus: systemd-service-file-missing-install-key lib/systemd/system/multi-user.target.wants/dbus.service

@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper symlink_to_dir /usr/share/doc/ssh /usr/share/doc/openssh-client 1:6.6p1-8~ -- "$@"
+# End automatically added section

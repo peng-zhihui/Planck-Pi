@@ -1,0 +1,967 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Users and Groups in the Debian System</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="BOOK"
+><DIV
+CLASS="BOOK"
+><A
+NAME="USERS-AND-GROUPS"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="TITLE"
+><A
+NAME="AEN2"
+>Users and Groups in the Debian System</A
+></H1
+><H3
+CLASS="AUTHOR"
+><A
+NAME="AEN6"
+></A
+>Joey Hess</H3
+><H3
+CLASS="AUTHOR"
+><A
+NAME="AEN10"
+></A
+>Colin Watson</H3
+><H3
+CLASS="AUTHOR"
+><A
+NAME="AEN14"
+></A
+>David Mandelberg</H3
+><P
+CLASS="COPYRIGHT"
+>Copyright &copy; 2001, 2002, 2003, 2004, 2005, 2007 Joey Hess, Colin Watson, David Mandelberg</P
+><DIV
+CLASS="LEGALNOTICE"
+><P
+></P
+><A
+NAME="AEN28"
+></A
+><P
+>	This document is free; you can redistribute it and/or modify it
+	under the terms of version 2 of the GNU General Public License as
+	published by the Free Software Foundation.
+      </P
+><P
+>	This document is distributed in the hope that it will be useful, but
+	WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+	General Public License for more details.
+      </P
+><P
+>	You should have received a copy of the GNU General Public License
+	along with this document; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+	02110-1301, USA.
+      </P
+><P
+></P
+></DIV
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>1. <A
+HREF="#INTRODUCTION"
+>Introduction</A
+></DT
+><DT
+>2. <A
+HREF="#ENTRIES"
+>Users and Groups</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="CHAPTER"
+><HR><H1
+><A
+NAME="INTRODUCTION"
+></A
+>Chapter 1. Introduction</H1
+><P
+>      The Debian base-passwd package contains the master versions of
+      <TT
+CLASS="FILENAME"
+>/etc/passwd</TT
+> and <TT
+CLASS="FILENAME"
+>/etc/group</TT
+>.
+      The <B
+CLASS="COMMAND"
+>update-passwd</B
+> tool keeps the entries in these
+      master files in sync on all Debian systems. They comprise only "global
+      static" ids: that is, those which are reserved globally for the
+      benefit of packages which need to include files owned by those users
+      or groups, or need the ids compiled into binaries. Since this
+      reservation is a serious restriction, these ids must be allocated by
+      the base-passwd maintainer on request. In general, packages should
+      avoid requesting such ids where possible and instead allocate system
+      users or groups dynamically. See Debian Policy for further details.
+    </P
+><P
+>      The Debian Policy Manual reserves ranges for these global static users
+      and groups, but it makes no attempt to allocate individual numbers or
+      define their purposes. This document fills that gap by describing the
+      purposes of the individual entries in these master files.
+    </P
+><P
+>      This is a work in progress. Items in need of feedback are marked with
+      the "HELP" tag. Please send mail to
+      <CODE
+CLASS="EMAIL"
+>&#60;<A
+HREF="mailto:base-passwd@packages.debian.org"
+>base-passwd@packages.debian.org</A
+>&#62;</CODE
+> or file a bug with the
+      Debian bug tracking system if you have more information.
+    </P
+></DIV
+><DIV
+CLASS="CHAPTER"
+><HR><H1
+><A
+NAME="ENTRIES"
+></A
+>Chapter 2. Users and Groups</H1
+><P
+>      Many users have a corresponding group, and these pairs will be treated
+      together.
+    </P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>root</DT
+><DD
+><P
+>	    Root is (typically) the superuser.
+	  </P
+></DD
+><DT
+>daemon</DT
+><DD
+><P
+>	    Some unprivileged daemons that need to be able to write to some
+	    files on disk run as daemon.daemon (<B
+CLASS="COMMAND"
+>portmap</B
+>,
+	    <B
+CLASS="COMMAND"
+>atd</B
+>, <B
+CLASS="COMMAND"
+>lambdamoo</B
+>,
+	    <B
+CLASS="COMMAND"
+>mon</B
+>, and others). Daemons that don't need to
+	    own any files sometimes run as nobody.nogroup instead; it is
+	    generally better practice to use a dedicated user, and more
+	    complex or security-conscious daemons certainly do this. The
+	    daemon user is also handy for locally installed daemons,
+	    probably.
+	  </P
+><P
+>	    LSB 1.3 lists daemon as legacy, and says: "The 'daemon' UID/GID
+	    was used as an unprivileged UID/GID for daemons to execute under
+	    in order to limit their access to the system. Generally daemons
+	    should now run under individual UID/GIDs in order to further
+	    partition daemons from one another."
+	  </P
+></DD
+><DT
+>bin</DT
+><DD
+><P
+>	    HELP: No files on my system are owned by user or group bin. What
+	    good are they? Historically they were probably the owners of
+	    binaries in <TT
+CLASS="FILENAME"
+>/bin</TT
+>? It is not mentioned in
+	    the FHS, Debian Policy, or the changelogs of base-passwd or
+	    base-files.
+	  </P
+><P
+>	    LSB 1.3 lists bin as legacy, and says: "The 'bin' UID/GID is
+	    included for compatibility with legacy applications. New
+	    applications should no longer use the 'bin' UID/GID."
+	  </P
+></DD
+><DT
+>sys</DT
+><DD
+><P
+>	    Historically, the sys user and group
+	    <A
+HREF="http://article.olduse.net/109@Autzoo.UUCP"
+TARGET="_top"
+>owned the
+	    kernel sources and some related items like the include
+	    files</A
+>, but this was obsoleted long ago in favour of bin
+	    (now itself legacy; see above).
+	  </P
+></DD
+><DT
+>sync</DT
+><DD
+><P
+>	    The shell of user sync is <TT
+CLASS="FILENAME"
+>/bin/sync</TT
+>. Thus,
+	    if its password is set to something easy to guess (such as ""),
+	    anyone can sync the system at the console even if they have no
+	    account on the system.
+	  </P
+></DD
+><DT
+>games</DT
+><DD
+><P
+>	    Many games are sgid to games so they can write their high score
+	    files. This is explained in Debian Policy.
+	  </P
+></DD
+><DT
+>man</DT
+><DD
+><P
+>	    The <B
+CLASS="COMMAND"
+>man</B
+> program (sometimes) runs as user man,
+	    so it can write cat pages to <TT
+CLASS="FILENAME"
+>/var/cache/man</TT
+>
+	    and update its databases there.
+	  </P
+></DD
+><DT
+>lp</DT
+><DD
+><P
+>	    The <TT
+CLASS="FILENAME"
+>lp*</TT
+> devices are writable by this group
+	    so that users in it can access the parallel ports directly.
+	    Traditionally this job is taken by a printer daemon instead
+	    which will only need to run in this group.
+	  </P
+><P
+>	    The <B
+CLASS="COMMAND"
+>lpr</B
+> system keeps its spool directories
+	    owned by lp/lp. Its daemon and frontend tools (through setuid)
+	    run as user root.
+	  </P
+><P
+>	    HELP: what do other print systems (<B
+CLASS="COMMAND"
+>rlpr</B
+>,
+	    <B
+CLASS="COMMAND"
+>lprng</B
+>, ...) do?
+	  </P
+></DD
+><DT
+>mail</DT
+><DD
+><P
+>	    Mailboxes in <TT
+CLASS="FILENAME"
+>/var/mail</TT
+> are owned and
+	    writable by group mail, as is explained in Debian Policy. The
+	    user and group is used for other purposes as well by various
+	    MTAs and MUAs.
+	  </P
+></DD
+><DT
+>news</DT
+><DD
+><P
+>	    Various news servers and other associated programs (such as
+	    <B
+CLASS="COMMAND"
+>suck</B
+>) use user and group news in various
+	    ways. Files in the news spool are often owned by user and group
+	    news. Programs such as <B
+CLASS="COMMAND"
+>inews</B
+> that can be used
+	    to post news are typically sgid news.
+	  </P
+></DD
+><DT
+>uucp</DT
+><DD
+><P
+>	    The uucp user and group is used by the UUCP subsystem. It owns
+	    spool and configuration files. Users in the uucp group may run
+	    <B
+CLASS="COMMAND"
+>uucico</B
+>.
+	  </P
+></DD
+><DT
+>proxy</DT
+><DD
+><P
+>	    Like daemon, this user and group is used by some daemons
+	    (specifically, proxy daemons) that don't have dedicated user ids
+	    and that need to own files. For example, group proxy is used by
+	    <B
+CLASS="COMMAND"
+>pdnsd</B
+>, and <B
+CLASS="COMMAND"
+>squid</B
+> runs as
+	    user proxy.
+	  </P
+></DD
+><DT
+>majordom</DT
+><DD
+><P
+>	    Majordomo has a statically allocated uid on Debian systems for
+	    historical reasons. It is not installed on new systems.
+	  </P
+></DD
+><DT
+>postgres</DT
+><DD
+><P
+>	    Postgresql databases are owned by this user and group.
+	  </P
+></DD
+><DT
+>www-data</DT
+><DD
+><P
+>	    Some web servers run as www-data. Web content should
+	    <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>not</I
+></SPAN
+> be owned by this user, or a compromised
+	    web server would be able to rewrite a web site. Data written out
+	    by web servers will be owned by www-data.
+	  </P
+></DD
+><DT
+>backup</DT
+><DD
+><P
+>	    Presumably so backup/restore responsibilities can be locally
+	    delegated to someone without full root permissions?
+	  </P
+><P
+>	    HELP: Is that right? Amanda reportedly uses this, details?
+	  </P
+></DD
+><DT
+>operator</DT
+><DD
+><P
+>	    Historically, the operator user account was used by system
+	    operators with low privilege to dump filesystem backups to tape,
+	    and was in the root group so that it could do this. In Debian,
+	    the use of a utility such as <B
+CLASS="COMMAND"
+>sudo</B
+> to gain
+	    privilege is preferred over such highly-special-purpose
+	    accounts, and the operator user is no longer created by default.
+	    It had uid 37.
+	  </P
+><P
+>	    The operator group is used by <B
+CLASS="COMMAND"
+>dump -n</B
+> to
+	    notify logged-in operators via <B
+CLASS="COMMAND"
+>wall</B
+> when it
+	    requires operator attention. This is a historical use, and new
+	    applications should not behave this way. (If nothing else, the
+	    group should be configurable.)
+	  </P
+></DD
+><DT
+>list</DT
+><DD
+><P
+>	    Mailing list archives and data are owned by this user and group.
+	    Some mailing list programs may run as this user as well.
+	  </P
+></DD
+><DT
+>irc</DT
+><DD
+><P
+>	    Used by IRC daemons. A statically allocated user is needed only
+	    because of a bug in <B
+CLASS="COMMAND"
+>ircd</B
+>: it
+	    <CODE
+CLASS="FUNCTION"
+>setuid()</CODE
+>s itself to a compiled-in user id
+	    on startup.
+	  </P
+></DD
+><DT
+>gnats</DT
+><DD
+><P
+>	    Used by <B
+CLASS="COMMAND"
+>gnats</B
+>. This has a statically
+	    allocated user and group for purely historical reasons (it could
+	    equally well use a dynamic system user and group), but it's
+	    cumbersome to change now.
+	  </P
+></DD
+><DT
+>nobody, nogroup</DT
+><DD
+><P
+>	    Daemons that need not own any files sometimes run as user nobody
+	    and group nogroup, although using a dedicated user is far
+	    preferable. Thus, no files on a system should be owned by this
+	    user or group.
+	  </P
+><P
+>	    (Technically speaking, it does no harm for a file to be owned by
+	    group nogroup as long as the ownership confers no additional
+	    privileges, that is if the group and other permission bits are
+	    equal. However, this is sloppy practice and should be avoided.)
+	  </P
+><P
+>	    If root-squashing is in use over NFS, root access from the
+	    client is performed as user nobody on the server.
+	  </P
+></DD
+><DT
+>messagebus</DT
+><DD
+><P
+>	    The dbus daemon (<B
+CLASS="COMMAND"
+>dbus-daemon-1</B
+>) runs as this
+	    user and group.
+	  </P
+></DD
+><DT
+>postfix</DT
+><DD
+><P
+>	    Used by the <B
+CLASS="COMMAND"
+>postfix</B
+> MTA.
+	  </P
+></DD
+><DT
+>gdm</DT
+><DD
+><P
+>	    GDM (GNOME Display Manager) runs as this user/group.
+	  </P
+></DD
+><DT
+>saned</DT
+><DD
+><P
+>	    Added by sane-utils, but appear to be unused.
+	  </P
+></DD
+><DT
+>klog</DT
+><DD
+><P
+>	    Used by <B
+CLASS="COMMAND"
+>klogd</B
+>, the kernel logger.
+	  </P
+><P
+>	</P
+></DD
+><DT
+>syslog</DT
+><DD
+><P
+>	    Used by syslog, the general purpose logger.
+	  </P
+></DD
+></DL
+></DIV
+><P
+>      Other groups have no associated user.
+    </P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>adm</DT
+><DD
+><P
+>	    Group adm is used for system monitoring tasks. Members of this
+	    group can read many log files in <TT
+CLASS="FILENAME"
+>/var/log</TT
+>,
+	    and can use <B
+CLASS="COMMAND"
+>xconsole</B
+>.
+	  </P
+><P
+>	    Historically, <TT
+CLASS="FILENAME"
+>/var/log</TT
+> was
+	    <TT
+CLASS="FILENAME"
+>/usr/adm</TT
+> (and later
+	    <TT
+CLASS="FILENAME"
+>/var/adm</TT
+>), thus the name of the group.
+	  </P
+><P
+>	    HELP: Perhaps policy should state the purpose of this group so
+	    users may be safely added to it, in certainty that all they'll
+	    be able to do is read logs. Wouldn't hurt to rename it 'log'
+	    either ...
+	  </P
+></DD
+><DT
+>tty</DT
+><DD
+><P
+>	    Tty devices and <TT
+CLASS="FILENAME"
+>/dev/vcs*</TT
+> are owned by this
+	    group. This is used by <B
+CLASS="COMMAND"
+>write</B
+> and
+	    <B
+CLASS="COMMAND"
+>wall</B
+> to enable them to write to other
+	    people's ttys.
+	  </P
+></DD
+><DT
+>disk</DT
+><DD
+><P
+>	    Raw access to disks. Mostly equivalent to root access.
+	  </P
+><P
+>	    HELP: Well, I have some disk devices in
+	    <TT
+CLASS="FILENAME"
+>/dev</TT
+> owned by the group, but I can't see
+	    the point. On another system, I noticed that some of the files
+	    <B
+CLASS="COMMAND"
+>lilo</B
+> puts in <TT
+CLASS="FILENAME"
+>/boot</TT
+> are
+	    also owned by disk. I can imagine local uses for such a group,
+	    like if you want to give some users in the group direct access
+	    to some hard disk. But these uses I've found on my systems seem
+	    to preclude doing that easily; if I put a user in group disk
+	    here, they'd have write access to the root filesystem.
+	  </P
+></DD
+><DT
+>kmem</DT
+><DD
+><P
+>	    <TT
+CLASS="FILENAME"
+>/dev/kmem</TT
+> and similar files are readable by
+	    this group. This is mostly a BSD relic, but any programs that
+	    need direct read access to the system's memory can thus be made
+	    setgid kmem.
+	  </P
+></DD
+><DT
+>dialout</DT
+><DD
+><P
+>	    Full and direct access to serial ports. Members of this group
+	    can reconfigure the modem, dial anywhere, etc.
+	  </P
+></DD
+><DT
+>dip</DT
+><DD
+><P
+>	    The group's name stands for "Dialup IP". Being in group dip
+	    allows you to use tools such as <B
+CLASS="COMMAND"
+>pppd</B
+>,
+	    <B
+CLASS="COMMAND"
+>pon</B
+>, and <B
+CLASS="COMMAND"
+>poff</B
+> to make
+	    dialup connections to other systems using predefined
+	    configuration file(s) in the <TT
+CLASS="FILENAME"
+>/etc/ppp/peers</TT
+>
+	    directory.
+	  </P
+></DD
+><DT
+>fax</DT
+><DD
+><P
+>	    Allows members to use fax software to send or receive faxes.
+	  </P
+></DD
+><DT
+>voice</DT
+><DD
+><P
+>	    Voicemail, useful for systems that use modems as answering
+	    machines.
+	  </P
+></DD
+><DT
+>cdrom</DT
+><DD
+><P
+>	    This group can be used locally to give a set of users access to
+	    a CD-ROM drive.
+	  </P
+></DD
+><DT
+>floppy</DT
+><DD
+><P
+>	    This group can be used locally to give a set of users access to
+	    a floppy drive.
+	  </P
+></DD
+><DT
+>tape</DT
+><DD
+><P
+>	    This group can be used locally to give a set of users access to
+	    a tape drive.
+	  </P
+></DD
+><DT
+>sudo</DT
+><DD
+><P
+>	    Members of this group may run any command as any user when using
+	    <B
+CLASS="COMMAND"
+>sudo</B
+> or <B
+CLASS="COMMAND"
+>pkexec</B
+> (from the
+	    policykit-1 package, independently of whether the sudo package
+	    is installed).
+	  </P
+></DD
+><DT
+>audio</DT
+><DD
+><P
+>	    This group can be used locally to give a set of users access to
+	    an audio device.
+	  </P
+></DD
+><DT
+>src</DT
+><DD
+><P
+>	    This group owns source code, including files in
+	    <TT
+CLASS="FILENAME"
+>/usr/src</TT
+>. It can be used locally to give a
+	    user the ability to manage system source code.
+	  </P
+><P
+>	    HELP: <TT
+CLASS="FILENAME"
+>/usr/src</TT
+> is owned by group src and is
+	    setgid. This doesn't make files put there by foo-src packages
+	    necessarily be owned by group src though. If the intent is to
+	    make group src be able to manage source code, perhaps policy
+	    should say that foo-src packages make files in
+	    <TT
+CLASS="FILENAME"
+>/usr/src</TT
+> owned and writable by the group
+	    (and files in tarballs dropped there likewise)?
+	  </P
+></DD
+><DT
+>shadow</DT
+><DD
+><P
+>	    <TT
+CLASS="FILENAME"
+>/etc/shadow</TT
+> is readable by this group. Some
+	    programs that need to be able to access the file are setgid
+	    shadow.
+	  </P
+></DD
+><DT
+>utmp</DT
+><DD
+><P
+>	    This group can write to <TT
+CLASS="FILENAME"
+>/var/run/utmp</TT
+>,
+	    <TT
+CLASS="FILENAME"
+>/var/log/wtmp</TT
+>,
+	    <TT
+CLASS="FILENAME"
+>/var/log/lastlog</TT
+>, and similar files.
+	    Programs that need to be able to write to them (such as X
+	    terminal emulators) are setgid utmp.
+	  </P
+></DD
+><DT
+>video</DT
+><DD
+><P
+>	    This group can be used locally to give a set of users access to
+	    a video device.
+	  </P
+></DD
+><DT
+>plugdev</DT
+><DD
+><P
+>	    Members of this group can access removable devices in limited
+	    ways without explicit configuration in
+	    <TT
+CLASS="FILENAME"
+>/etc/fstab</TT
+>. This is useful for local users
+	    who expect to be able to insert and use CDs, USB drives, and so
+	    on.
+	  </P
+><P
+>	    Since <B
+CLASS="COMMAND"
+>pmount</B
+> (the original implementor of
+	    group plugdev) always mounts with the nodev and nosuid options
+	    and applies other checks, this group is not intended to be
+	    root-equivalent in the ways that the ability to mount
+	    filesystems might ordinarily allow. Implementors of semantics
+	    involving this group should be careful not to allow
+	    root-equivalence.
+	  </P
+></DD
+><DT
+>staff</DT
+><DD
+><P
+>	    Allows users to add local modifications to the system
+	    (<TT
+CLASS="FILENAME"
+>/usr/local</TT
+>, <TT
+CLASS="FILENAME"
+>/home</TT
+>)
+	    without needing root privileges. Compare with group 'adm', which
+	    is more related to monitoring/security.
+	  </P
+><P
+>	    Note that the ability to modify <TT
+CLASS="FILENAME"
+>/usr/local</TT
+>
+	    is effectively equivalent to root access (since
+	    <TT
+CLASS="FILENAME"
+>/usr/local</TT
+> is intentionally on search paths
+	    ahead of <TT
+CLASS="FILENAME"
+>/usr</TT
+>), and so you should only add
+	    trusted users to this group. Be careful in environments using
+	    NFS since acquiring another non-root user's privileges is often
+	    easier in such environments.
+	  </P
+></DD
+><DT
+>users</DT
+><DD
+><P
+>	    While Debian systems use the user-group system by default (each
+	    user has their own group), some prefer to use a more traditional
+	    group system. In that system, each user is a member of the
+	    'users' group.
+	  </P
+></DD
+><DT
+>lpadmin</DT
+><DD
+><P
+>	    Allows a user to add, modify, and remove printers from foomatic,
+	    cups, and possibly other printer databases.
+	  </P
+></DD
+><DT
+>sasl</DT
+><DD
+><P
+>	    Users in this group have read/write access to
+	    <TT
+CLASS="FILENAME"
+>/etc/sasldb</TT
+> and/or
+	    <TT
+CLASS="FILENAME"
+>/etc/sasldb2</TT
+>, wich are used to
+	    authentication with sasl. This is commonly used by IMAP, POP,
+	    and SMTP servers for authentication.
+	  </P
+></DD
+><DT
+>scanner</DT
+><DD
+><P
+>	    Users in this group can use scanner(s).
+	  </P
+></DD
+><DT
+>ssh</DT
+><DD
+><P
+>	    <B
+CLASS="COMMAND"
+>ssh-agent</B
+> is setgid to ssh in order to
+	    prevent ptrace attacks.
+	  </P
+></DD
+></DL
+></DIV
+><P
+>      Some users have no corresponding group.
+    </P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>sshd</DT
+><DD
+><P
+>	    Unprivileged user used by the privilege-separated
+	    <B
+CLASS="COMMAND"
+>sshd</B
+> when communicating with the network
+	    before successful authentication.
+	  </P
+></DD
+><DT
+>fetchmail</DT
+><DD
+><P
+>	    Used by the <B
+CLASS="COMMAND"
+>fetchmail</B
+> program.
+	  </P
+></DD
+><DT
+>cupsys</DT
+><DD
+><P
+>	    <ACRONYM
+CLASS="ACRONYM"
+>CUPS</ACRONYM
+> (Common Un*x Printing System) runs as
+	    this user. It is in group lp, so it can access printer devices. 
+	  </P
+></DD
+></DL
+></DIV
+></DIV
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,13 @@
+Please read the README file for detailed information about what needs to
+be done to install the ADDUSER Local System Additions program.  In brief:
+
+# cp --pr=t ./adduser.local /usr/local/sbin
+# chmod 755 /usr/local/sbin/adduser.local
+# cp ./adduser.local.conf /etc
+# editor /etc/adduser.local.conf         # The important step!
+# mkdir /etc/skel.other
+# cp --pr=t ./adduser.local.conf.examples/skel.other/index.html /etc/skel.other
+
+IMPORTANT: Do NOT just perform the above steps without knowing what you
+are doing!  In particular, the fourth step is very important for you to
+do correctly.

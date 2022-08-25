@@ -1,0 +1,13 @@
+PAM for Debian
+--------------
+
+PAM (Pluggable Authentication Modules) provides system administrators with a
+powerful method of controlling system access and methods of authentication.
+
+The documentation for PAM is packaged in the "libpam-doc" package. The
+"Linux-PAM System Administrator's Guide" covers configuring PAM, what
+modules are available etc. The documentation also includes "The Linux-PAM
+Application Developers' Guide" and "The Linux-PAM Module Writers' Guide".
+
+The Debian default configuration is to emulate the old UNIX authentication.
+

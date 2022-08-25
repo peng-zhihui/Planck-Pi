@@ -1,0 +1,2 @@
+libjson-c 3 libjson-c3 (>= 0.12.1+ds)
+udeb: libjson-c 3 libjson-c3-udeb (>= 0.12.1+ds)

@@ -1,0 +1,1 @@
+openssh-client: setuid-binary usr/lib/openssh/ssh-keysign 4755 root/root

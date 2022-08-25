@@ -1,0 +1,8 @@
+The documentation for this package is in /usr/share/doc/python3.7/.
+
+A draft of the "Debian Python Policy" can be found in
+
+        /usr/share/doc/python
+
+Sometime it will be moved to /usr/share/doc/debian-policy in the
+debian-policy package.

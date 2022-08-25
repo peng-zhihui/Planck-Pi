@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    configure)
+        if [ -x /usr/sbin/update-initramfs ]; then
+            update-initramfs -u
+        fi
+    ;;
+esac
+
+
+
+exit 0

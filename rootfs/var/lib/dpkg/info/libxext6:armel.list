@@ -1,0 +1,13 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libXext.so.6.4.0
+/usr/share
+/usr/share/doc
+/usr/share/doc/libxext6
+/usr/share/doc/libxext6/changelog.Debian.armel.gz
+/usr/share/doc/libxext6/changelog.Debian.gz
+/usr/share/doc/libxext6/changelog.gz
+/usr/share/doc/libxext6/copyright
+/usr/lib/arm-linux-gnueabi/libXext.so.6

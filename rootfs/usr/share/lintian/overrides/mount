@@ -1,0 +1,2 @@
+mount: setuid-binary bin/mount 4755 root/root
+mount: setuid-binary bin/umount 4755 root/root

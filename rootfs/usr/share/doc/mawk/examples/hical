@@ -1,0 +1,78 @@
+#!/usr/sh
+
+# @(#) hical - displays previous, current & next months - today highlighted
+# @(#) an "internationalizationable" version of a 3-month 'cal' display, it
+# @(#) may be edited for week to start with Sun or Mon & for local language
+
+prog=/tmp/hical.$$ ; trap 'rm -f $prog ; trap 0 ; exit' 0 1 2 3 15
+
+: ${so:=`tput smso`} ${se:=`tput rmso`}
+
+# USER EDITS MAY BE REQUIRED for the arguments to the 'date' command
+# the script presumes 'date' recognizes these arguments in these ways:
+#   w - Day of the week - Sunday = 0
+#   m - Month of year - 01 to 12
+#   d - Day of month - 01 to 31
+#   T - Time as HH:MM:SS
+#   Y - Year (including century), as decimal numbers
+DATE_ARGS='%w %m %d %T 19%y'
+
+# the 'awk' program file is written to a temporary file to avoid any
+# "arg list too long" error messages, yet have all the code in one file
+# observe when editing the program file that '\n' must be '\\n'
+# NOTE: to make this script portable /bin/echo has been used instead of the
+#  echo built into the shell for the 'bash' shell on Linux, use 'echo -e' in
+#  the next line (Modification made by Edward Betts <edward@debian.org>)
+/bin/echo '{
+# USER EDITS MAY BE REQUIRED (for FMT, day & month names, and the time stuff)
+# FMT = 0  # for weekdays ordered "Mo Tu We Th Fr Sa Su"
+  FMT = 1  # for weekdays ordered "Su Mo Tu We Th Fr Sa"
+  Header[0] = "Mo Tu We Th Fr Sa Su"
+  Header[1] = "Su Mo Tu We Th Fr Sa"
+  months    = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
+  time_is   = "The time is:" ; time_fmt = "%s   %s  %s %s\\n"
+# NO MORE USER EDITS REQUIRED (I think!)
+  split(months,M_Name) ; split("31 28 31 30 31 30 31 31 30 31 30 31",M_Len)
+  daynum  = $1 + FMT
+  Mon[2]  = $2 + 0
+  today   = $3 + 0
+  time    = $4
+  Year[1] = Year[2] = Year[3] = $NF
+  if ( Mon[2] ==  1 ) { Year[1] = Year[1] - 1 ; Mon[1] = 12 }
+    else              { Mon[1]  = Mon[2]  - 1 }
+  if ( Mon[2] == 12 ) { Year[3] = Year[3] + 1 ; Mon[3] =  1 }
+    else              { Mon[3]  = Mon[2]  + 1 }
+  if ( Year[2] % 4   == 0 && \
+       Year[2] % 100 != 0 || \
+       Year[2] % 400 == 0 ) M_Len[2] = 29
+  Start[2] = 7 - ( ( today - daynum ) % 7 )
+  Start[1] = 7 - ( ( M_Len[Mon[1]] - Start[2] ) % 7 )
+  Start[3] =       ( M_Len[Mon[2]] + Start[2] ) % 7
+  for (i=1;i<=3;i++) { while ( Start[i] >= 7 ) Start[i] -= 7 }
+  for (mm=1;mm<=3;mm++) {
+    if ( Year[mm] != Year[mm-1] )
+      printf( "%s            %s          %s\\n", so, Year[mm], se )
+    if ( mm == 1 ) printf( "%s    %s  %s\\n", so, Header[FMT], se )
+    j = k = 1
+    while ( j <= M_Len[Mon[mm]] ) {
+      line = ""
+      for (i=1;i<=7;i++) {
+        if ( Start[mm] > 0 || j > M_Len[Mon[mm]] ) { date = "" ; Start[mm]-- }
+          else date = j++
+        if ( mm == 2 && date == today ) { So = so ; Se = se }
+          else { So = Se = "" }
+        line = sprintf( "%s%s%2s%s ", line, So, date, Se )
+      }
+      m1 = substr(M_Name[Mon[mm]],k++,1)
+      printf( "%s %1s %s %s%s %s\\n", so, m1, se, line, so, se )
+    }
+  }
+  printf( time_fmt, so, time_is, time, se )
+}' >$prog
+
+date +"$DATE_ARGS" | ${AWK:=mawk} -f $prog so=$so se=$se
+
+exit 0
+
+# EOF 'hical'  - Tue Dec 19 19:19:19 EST 1994
+# Bob Stockler - bob@trebor.iglou.com - CIS: 72726,452

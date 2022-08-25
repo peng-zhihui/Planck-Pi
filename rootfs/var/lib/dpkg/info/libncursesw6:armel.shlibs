@@ -1,0 +1,4 @@
+libncursesw 6 libncursesw6 (>= 6.1)
+libformw 6 libncursesw6 (>= 6.1)
+libmenuw 6 libncursesw6 (>= 6.1)
+libpanelw 6 libncursesw6 (>= 6.1)

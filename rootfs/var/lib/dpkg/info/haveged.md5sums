@@ -1,0 +1,8 @@
+08459e2cfddf34fae71aa978f727bdcb  lib/systemd/system/haveged.service
+1e2f0139f999e8af4defa85714c7c7b0  usr/sbin/haveged
+3bd332dcf422e94584f3a463d27f760e  usr/share/doc/haveged/README.Debian
+b27146b009df8bdc8a73f7aa17ab3337  usr/share/doc/haveged/README.gz
+379fcb572a3cb0bab6062531e3a9ce1f  usr/share/doc/haveged/changelog.Debian.gz
+be0105675baa66e420c2e0fe95d932c4  usr/share/doc/haveged/changelog.gz
+03d24d0bf1f471a0b61706971a2a9acd  usr/share/doc/haveged/copyright
+16b2bcde3415d2194baa738a87af0480  usr/share/man/man8/haveged.8.gz

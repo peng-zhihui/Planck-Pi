@@ -1,0 +1,36 @@
+This package was debianized by Christopher L Cheney <ccheney@debian.org> on
+Wed, 13 Jun 2001 11:20:06 -0500.
+
+It was downloaded from https://www.kernel.org/pub/software/utils/i2c-tools/
+
+Upstream Authors:
+  Thomas Sailer <sailer@ife.ee.ethz.ch>
+  Johannes Erdfelt <johannes@sventech.com>
+  Greg Kroah-Hartman <greg@kroah.com>
+
+Copyright:
+  Copyright (C) 1999-2001, 2003 Thomas Sailer
+  Copyright (C) 2003-2005 David Brownell
+  Copyright (C) 2003 Aurelien Jarno
+  Copyright (C) 2009 Greg Kroah-Hartman
+
+License:
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+ 
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+  MA 02110-1301 USA.
+
+On Debian systems, the complete text of the GNU General Public
+License, version 2, can be found in /usr/share/common-licenses/GPL-2.
+

@@ -1,0 +1,11 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libcom_err.so.2.1
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libcom-err2
+/usr/share/doc/libcom-err2/changelog.Debian.gz
+/usr/share/doc/libcom-err2/copyright
+/lib/arm-linux-gnueabi/libcom_err.so.2

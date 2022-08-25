@@ -1,0 +1,12 @@
+#! /bin/sh -e
+
+case "$1" in
+    configure)
+	docdir=/usr/share/doc/libgcc1
+	if [ -d $docdir ] && [ ! -h $docdir ]; then
+	    rm -rf $docdir
+	    ln -s gcc-8-base $docdir
+	fi
+esac
+
+

@@ -1,0 +1,28 @@
+Public Suffix List
+==================
+
+This package installs the public suffix list in the standard
+machine-parseable format:
+
+ /usr/share/publicsuffix/public_suffix_list.dat
+
+The public suffix list can be used to group domains by ownership
+(e.g. for cookies, same-origin policies, spam collation, etc), and is
+maintained by people within Mozilla.
+
+You can read more about the public suffix list at
+https://publicsuffix.org/
+
+Changes to the contents of the public suffix list should be directed
+to the public suffix project, as described at
+https://publicsuffix.org/submit/
+
+This package also provides a symlink from the historical name of the
+public suffix file, which was effective_tld_names.dat.
+
+Changes to the debian packaging and distribution should be submitted
+to the debian BTS, preferably by running:
+
+  reportbug publicsuffix
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>, Fri, 15 May 2015 12:27:07 -0400

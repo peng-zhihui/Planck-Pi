@@ -1,0 +1,11 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libmnl.so.0.2.0
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libmnl0
+/usr/share/doc/libmnl0/changelog.Debian.gz
+/usr/share/doc/libmnl0/copyright
+/lib/arm-linux-gnueabi/libmnl.so.0

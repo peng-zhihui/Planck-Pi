@@ -1,0 +1,40 @@
+/*
+ * Interesting dates in Ubuntu history
+ * Matt Zimmerman <mdz@ubuntu.com>, 2005-10-24
+ */
+
+#ifndef _calendar_ubuntu
+#define _calendar_ubuntu
+
+LANG=utf-8
+
+/* Ubuntu releases */
+Oct 20	Ubuntu 4.10 (Warty Warthog) released, 2004
+Apr 08	Ubuntu 5.04 (Hoary Hedgehog) released, 2005
+Oct 13	Ubuntu 5.10 (Breezy Badger) released, 2005
+Jun 1	Ubuntu 6.06 LTS (Dapper Drake) released, 2006
+Oct 26	Ubuntu 6.10 (Edgy Eft) released, 2006
+Apr 19	Ubuntu 7.04 (Feisty Fawn) released, 2007
+Oct 18	Ubuntu 7.10 (Gutsy Gibbon) released, 2007
+Apr 24	Ubuntu 8.04 LTS (Hardy Heron) released, 2008
+Oct 30	Ubuntu 8.10 (Intrepid Ibex) released, 2008
+Apr 23	Ubuntu 9.04 (Jaunty Jackalope) released, 2009
+Oct 29	Ubuntu 9.10 (Karmic Koala) released, 2009
+Apr 29	Ubuntu 10.04 LTS (Lucid Lynx) released, 2010
+Oct 10	Ubuntu 10.10 (Maverick Meerkat) released, 2010
+Apr 28	Ubuntu 11.04 (Natty Narwhal) released, 2011
+Oct 13	Ubuntu 11.10 (Oneiric Ocelot) released, 2011
+Apr 26	Ubuntu 12.04 LTS (Precise Pangolin) released, 2012
+Oct 18	Ubuntu 12.10 (Quantal Quetzal) released, 2012
+Apr 25	Ubuntu 13.04 (Raring Ringtail) released, 2013
+Oct 17	Ubuntu 13.10 (Saucy Salamander) released, 2013
+Apr 17	Ubuntu 14.04 LTS (Trusty Tahr) released, 2014
+Oct 23	Ubuntu 14.10 (Utopic Unicorn) released, 2014
+Apr 23	Ubuntu 15.04 (Vivid Vervet) released, 2015
+Oct 22	Ubuntu 15.10 (Wily Wereworlf) released, 2015
+Apr 21	Ubuntu 16.04 LTS (Xenial Xerus) released, 2016
+Oct 20	Ubuntu 16.10 (Yakkety Yak) released, 2016
+
+/* Misc */
+
+#endif /* !_calendar_ubuntu_ */

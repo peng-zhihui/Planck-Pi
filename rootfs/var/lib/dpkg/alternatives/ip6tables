@@ -1,0 +1,16 @@
+auto
+/usr/sbin/ip6tables
+ip6tables-restore
+/usr/sbin/ip6tables-restore
+ip6tables-save
+/usr/sbin/ip6tables-save
+
+/usr/sbin/ip6tables-legacy
+10
+/usr/sbin/ip6tables-legacy-restore
+/usr/sbin/ip6tables-legacy-save
+/usr/sbin/ip6tables-nft
+20
+/usr/sbin/ip6tables-nft-restore
+/usr/sbin/ip6tables-nft-save
+

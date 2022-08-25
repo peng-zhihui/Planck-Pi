@@ -1,0 +1,19 @@
+#!/bin/sh
+# Hide all language tasks, and select any that match the current LANG
+# setting for installation.
+if [ "$NEW_INSTALL" ]; then
+	set -e
+	shift 1
+	baselang=${LANG%%_*}
+	fulllang=${LANG%%.*}
+	for locale in $@; do
+		if ( [ -n "$LANG" ] && [ "$LANG" = "$locale" ] ) || \
+		   ( [ -n "$fulllang" ] && [ "$fulllang" = "$locale" ] ) || \
+		   ( [ -n "$baselang" ] && [ "$baselang" = "$locale" ] ); then
+		   exit 0 # install without display
+		fi
+	done
+	exit 1 # do not display
+else
+	exit 1
+fi

@@ -1,0 +1,1 @@
+rsyslog: init.d-script-missing-dependency-on-remote_fs /etc/init.d/rsyslog: required-stop

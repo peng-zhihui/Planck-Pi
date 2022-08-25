@@ -1,0 +1,31 @@
+This package was debianized by
+Christian Schwarz <schwarz@monet.m.isar.de> on Mon, 18 Nov 1996 00:59:57 +0100
+J. Ramos Goncalves <ramos@debian.org> on Thu, 13 Feb 1997 23:15:18 +0000
+Nicolás Lichtmaier <nick@debian.org> on Sat, 18 Oct 1997 21:23:12 -0300
+Noël Köthe <noel@debian.org> on Mon, 18 Feb 2002 09:53:00 +0100
+
+It was downloaded from ftp://ftp.gnu.org/gnu/wget/
+	Homepage: http://www.gnu.org/directory/wget.html
+		  http://www.gnu.org/software/wget/wget.html
+
+Upstream Author: Giuseppe Scrivano <gscrivano@gnu.org>
+
+Copyright: (C) 2007 Free Software Foundation, Inc.
+
+Released under the terms of the GPL; see 
+/usr/share/common-licenses/GPL-3.
+
+"In addition, as a special exception, the Free Software Foundation
+gives permission to link the code of its release of Wget with the
+OpenSSL project's "OpenSSL" library (or with modified versions of it
+that use the same license as the "OpenSSL" library), and distribute
+the linked executables.  You must obey the GNU General Public License
+in all respects for all of the code used other than "OpenSSL".  If you
+modify this file, you may extend this exception to your version of the
+file, but you are not obligated to do so.  If you do not wish to do
+so, delete this exception statement from your version."
+
+The wget(1) manpage and the wget info page are distributed under the
+terms of the GNU Free Documentation License ; see
+/usr/share/common-licenses/GFDL-1.2
+

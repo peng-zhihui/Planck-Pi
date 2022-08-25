@@ -1,0 +1,11 @@
+The bridge-utils package provides hooks so you can set up a bridge interface in
+/etc/network/interfaces. Here is an example:
+
+auto br0
+iface br0 inet static
+	address 192.168.1.2/24
+	gateway 192.168.1.1
+	bridge_ports eth0 eth1
+
+Note that you do not have to specify separate iface stanzas for eth0 and eth1.
+For more information, type "man bridge-utils-interfaces".

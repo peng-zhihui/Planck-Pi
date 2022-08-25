@@ -1,0 +1,12 @@
+Periodic fstrim for SSD disks
+-----------------------------
+
+fstrim(8) is used on a mounted filesystem to discard blocks which are not in
+use by the filesystem. This is useful in particular for solid-state drives
+(SSDs).
+
+A systemd service and matching timer is available to periodically perform
+fstrim on relevant filesystems, but is *not* enabled by default. To enable it
+according to the default weekly cadence, just do the following as root:
+
+    systemctl enable fstrim.timer

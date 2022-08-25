@@ -1,0 +1,3 @@
+# The upstream command is called “systemctl reenable”, so we cannot just
+# rename it to “re-enable” :).
+init-system-helpers: spelling-error-in-manpage usr/share/man/man1/deb-systemd-helper.1p.gz reenable re-enable

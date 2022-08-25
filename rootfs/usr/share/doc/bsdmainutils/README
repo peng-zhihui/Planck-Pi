@@ -1,0 +1,30 @@
+This is bsdmainutils, a collection of userland programs from the *BSD source
+distributions. All of the program except for calendar(1) and lorder(1) come
+from FreeBSD, while these two come from OpenBSD. The calendars themselves
+mostly come from FreeBSD though, but not all.
+
+These sources were originally pacakged by Austin Donnelly
+<and1000@debian.org>, and were based heavily on bsdutils, which was
+originally put together by Ian Murdock <imurdock@gnu.ai.mit.edu>.
+
+After that, the package was maintained by Charles Briscoe-Smith
+<cpbs@debian.org>. He gathered data for the 1999-2001 calendar files from
+various sources on the Internet. Oliver Elphick, Julian Gilbey, Daniel
+Martin and Jaldhar H. Vyas provided much useful data on the various religous
+calendars.
+
+After Charles, Marco d'Itri <md@linux.it> maintained the package for almost
+two years, before Tollef Fog Heen <tfheen@debian.org> took over followed by
+Graham Wilson <bob@decoy.wox.org> and Daniel Baumann <daniel@debian.org>.
+The package is now maintained by Giacomo Catenazzi <cate@debian.org> and
+Michael Meskes <meskes@debian.org>.
+
+Graham Wilson replaced the FreeBSD calendar(1) with the calendar from
+OpenBSD(1), thanks to a suggestion from Matt Zimmerman. Nicolas Évrard provided
+calendar files for the EU and Belgium, and Martin Schulze provided a calendar
+with Debian dates.
+
+See /usr/share/doc/bsdmainutils/source.data.gz for more information on calendar
+sources.
+
+$Id$

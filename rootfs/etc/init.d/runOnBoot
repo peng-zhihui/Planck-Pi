@@ -1,0 +1,34 @@
+#!/bin/sh /etc/init.d/runOnBoot
+### BEGIN INIT INFO
+# Provides: runOnBoot Required-Start: $local_fs $syslog $network
+# Required-Stop: $local_fs $syslog $network Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6 Short-Description: runOnBoot startup Description:
+# runOnBoot auto startup 1.0
+### END INIT INFO
+
+#------------------------------------------------------------------------------
+mount -o remount,rw /
+
+swapon /opt/images/swap
+
+mkdir /sys/kernel/config/usb_gadget/gg
+cd /sys/kernel/config/usb_gadget/gg
+echo "0x0502" > idVendor
+echo "0x3235" > idProduct
+mkdir functions/rndis.rn0
+mkdir configs/c1.1
+ln -s functions/rndis.rn0 configs/c1.1/
+echo "musb-hdrc.1.auto" > UDC
+ifconfig usb0 192.168.137.2
+ifconfig usb0 up
+route add default gw 192.168.137.1
+
+
+# Demo to run a script ↓
+# script_path=/home/start.sh
+# if [ ! -r ${script_path} ]; then
+#     echo ${script_path} not existing;
+# fi
+# . ${myStart_spaddr}
+
+#------------------------------------------------------------------------------

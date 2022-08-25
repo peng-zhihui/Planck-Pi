@@ -1,0 +1,1 @@
+bsdmainutils: setgid-binary usr/bin/bsd-write 2755 root/tty

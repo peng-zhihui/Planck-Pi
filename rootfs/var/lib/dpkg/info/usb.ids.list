@@ -1,0 +1,13 @@
+/.
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/usb.ids
+/usr/share/doc/usb.ids/changelog.Debian.gz
+/usr/share/doc/usb.ids/copyright
+/usr/share/misc
+/var
+/var/lib
+/var/lib/usbutils
+/var/lib/usbutils/usb.ids
+/usr/share/misc/usb.ids

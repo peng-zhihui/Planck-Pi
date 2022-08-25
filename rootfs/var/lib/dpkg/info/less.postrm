@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = 'remove' ]; then
+  for file in lessfile lesspipe lesskey lessecho less; do
+    if [ -L /usr/bin/$file ]; then
+      rm /usr/bin/$file
+    fi
+  done
+fi
+
+

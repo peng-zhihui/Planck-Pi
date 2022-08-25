@@ -1,0 +1,4 @@
+?package(procps):needs="text" section="Applications/System/Monitoring" \
+        title="Top" \
+		description="Display Linux tasks" \
+		command="/usr/bin/top"

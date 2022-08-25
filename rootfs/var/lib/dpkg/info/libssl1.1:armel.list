@@ -1,0 +1,17 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/engines-1.1
+/usr/lib/arm-linux-gnueabi/engines-1.1/afalg.so
+/usr/lib/arm-linux-gnueabi/engines-1.1/capi.so
+/usr/lib/arm-linux-gnueabi/engines-1.1/padlock.so
+/usr/lib/arm-linux-gnueabi/libcrypto.so.1.1
+/usr/lib/arm-linux-gnueabi/libssl.so.1.1
+/usr/share
+/usr/share/doc
+/usr/share/doc/libssl1.1
+/usr/share/doc/libssl1.1/NEWS.Debian.gz
+/usr/share/doc/libssl1.1/changelog.Debian.gz
+/usr/share/doc/libssl1.1/changelog.gz
+/usr/share/doc/libssl1.1/copyright

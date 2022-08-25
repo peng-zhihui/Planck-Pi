@@ -1,0 +1,2 @@
+# this is the only package that can depend on it
+python3 binary: depends-on-python-minimal

@@ -1,0 +1,1230 @@
+libX11.so.6 libx11-6 #MINVER#
+| libx11-private
+ KeySymToUcs4@Base 0 1
+ XActivateScreenSaver@Base 0
+ XAddConnectionWatch@Base 0
+ XAddExtension@Base 0
+ XAddHost@Base 0
+ XAddHosts@Base 0
+ XAddPixel@Base 0
+ XAddToExtensionList@Base 0
+ XAddToSaveSet@Base 0
+ XAllPlanes@Base 0
+ XAllocClassHint@Base 0
+ XAllocColor@Base 0
+ XAllocColorCells@Base 0
+ XAllocColorPlanes@Base 0
+ XAllocIconSize@Base 0
+ XAllocNamedColor@Base 0
+ XAllocSizeHints@Base 0
+ XAllocStandardColormap@Base 0
+ XAllocWMHints@Base 0
+ XAllowEvents@Base 0
+ XAutoRepeatOff@Base 0
+ XAutoRepeatOn@Base 0
+ XBaseFontNameListOfFontSet@Base 0
+ XBell@Base 0
+ XBitmapBitOrder@Base 0
+ XBitmapPad@Base 0
+ XBitmapUnit@Base 0
+ XBlackPixel@Base 0
+ XBlackPixelOfScreen@Base 0
+ XCellsOfScreen@Base 0
+ XChangeActivePointerGrab@Base 0
+ XChangeGC@Base 0
+ XChangeKeyboardControl@Base 0
+ XChangeKeyboardMapping@Base 0
+ XChangePointerControl@Base 0
+ XChangeProperty@Base 0
+ XChangeSaveSet@Base 0
+ XChangeWindowAttributes@Base 0
+ XCheckIfEvent@Base 0
+ XCheckMaskEvent@Base 0
+ XCheckTypedEvent@Base 0
+ XCheckTypedWindowEvent@Base 0
+ XCheckWindowEvent@Base 0
+ XCirculateSubwindows@Base 0
+ XCirculateSubwindowsDown@Base 0
+ XCirculateSubwindowsUp@Base 0
+ XClearArea@Base 0
+ XClearWindow@Base 0
+ XClipBox@Base 0
+ XCloseDisplay@Base 0
+ XCloseIM@Base 0
+ XCloseOM@Base 0
+ XConfigureWindow@Base 0
+ XConnectionNumber@Base 0
+ XContextDependentDrawing@Base 0
+ XContextualDrawing@Base 0
+ XConvertCase@Base 0
+ XConvertSelection@Base 0
+ XCopyArea@Base 0
+ XCopyColormapAndFree@Base 0
+ XCopyGC@Base 0
+ XCopyPlane@Base 0
+ XCreateBitmapFromData@Base 0
+ XCreateColormap@Base 0
+ XCreateFontCursor@Base 0
+ XCreateFontSet@Base 0
+ XCreateGC@Base 0
+ XCreateGlyphCursor@Base 0
+ XCreateIC@Base 0
+ XCreateImage@Base 0
+ XCreateOC@Base 0
+ XCreatePixmap@Base 0
+ XCreatePixmapCursor@Base 0
+ XCreatePixmapFromBitmapData@Base 0
+ XCreateRegion@Base 0
+ XCreateSimpleWindow@Base 0
+ XCreateWindow@Base 0
+ XDefaultColormap@Base 0
+ XDefaultColormapOfScreen@Base 0
+ XDefaultDepth@Base 0
+ XDefaultDepthOfScreen@Base 0
+ XDefaultGC@Base 0
+ XDefaultGCOfScreen@Base 0
+ XDefaultRootWindow@Base 0
+ XDefaultScreen@Base 0
+ XDefaultScreenOfDisplay@Base 0
+ XDefaultString@Base 0
+ XDefaultVisual@Base 0
+ XDefaultVisualOfScreen@Base 0
+ XDefineCursor@Base 0
+ XDeleteContext@Base 0
+ XDeleteModifiermapEntry@Base 0
+ XDeleteProperty@Base 0
+ XDestroyIC@Base 0
+ XDestroyImage@Base 0
+ XDestroyOC@Base 0
+ XDestroyRegion@Base 0
+ XDestroySubwindows@Base 0
+ XDestroyWindow@Base 0
+ XDirectionalDependentDrawing@Base 0
+ XDisableAccessControl@Base 0
+ XDisplayCells@Base 0
+ XDisplayHeight@Base 0
+ XDisplayHeightMM@Base 0
+ XDisplayKeycodes@Base 0
+ XDisplayMotionBufferSize@Base 0
+ XDisplayName@Base 0
+ XDisplayOfIM@Base 0
+ XDisplayOfOM@Base 0
+ XDisplayOfScreen@Base 0
+ XDisplayPlanes@Base 0
+ XDisplayString@Base 0
+ XDisplayWidth@Base 0
+ XDisplayWidthMM@Base 0
+ XDoesBackingStore@Base 0
+ XDoesSaveUnders@Base 0
+ XDrawArc@Base 0
+ XDrawArcs@Base 0
+ XDrawImageString16@Base 0
+ XDrawImageString@Base 0
+ XDrawLine@Base 0
+ XDrawLines@Base 0
+ XDrawPoint@Base 0
+ XDrawPoints@Base 0
+ XDrawRectangle@Base 0
+ XDrawRectangles@Base 0
+ XDrawSegments@Base 0
+ XDrawString16@Base 0
+ XDrawString@Base 0
+ XDrawText16@Base 0
+ XDrawText@Base 0
+ XEHeadOfExtensionList@Base 0
+ XESetBeforeFlush@Base 0
+ XESetCloseDisplay@Base 0
+ XESetCopyEventCookie@Base 2:1.2.99.901
+ XESetCopyGC@Base 0
+ XESetCreateFont@Base 0
+ XESetCreateGC@Base 0
+ XESetError@Base 0
+ XESetErrorString@Base 0
+ XESetEventToWire@Base 0
+ XESetFlushGC@Base 0
+ XESetFreeFont@Base 0
+ XESetFreeGC@Base 0
+ XESetPrintErrorValues@Base 0
+ XESetWireToError@Base 0
+ XESetWireToEvent@Base 0
+ XESetWireToEventCookie@Base 2:1.2.99.901
+ XEmptyRegion@Base 0
+ XEnableAccessControl@Base 0
+ XEqualRegion@Base 0
+ XEventMaskOfScreen@Base 0
+ XEventsQueued@Base 0
+ XExtendedMaxRequestSize@Base 0
+ XExtentsOfFontSet@Base 0
+ XFetchBuffer@Base 0
+ XFetchBytes@Base 0
+ XFetchName@Base 0
+ XFillArc@Base 0
+ XFillArcs@Base 0
+ XFillPolygon@Base 0
+ XFillRectangle@Base 0
+ XFillRectangles@Base 0
+ XFilterEvent@Base 0
+ XFindContext@Base 0
+ XFindOnExtensionList@Base 0
+ XFlush@Base 0
+ XFlushGC@Base 0
+ XFontsOfFontSet@Base 0
+ XForceScreenSaver@Base 0
+ XFree@Base 0
+ XFreeColormap@Base 0
+ XFreeColors@Base 0
+ XFreeCursor@Base 0
+ XFreeEventData@Base 2:1.2.99.901
+ XFreeExtensionList@Base 0
+ XFreeFont@Base 0
+ XFreeFontInfo@Base 0
+ XFreeFontNames@Base 0
+ XFreeFontPath@Base 0
+ XFreeFontSet@Base 0
+ XFreeGC@Base 0
+ XFreeModifiermap@Base 0
+ XFreePixmap@Base 0
+ XFreeStringList@Base 0
+ XGContextFromGC@Base 0
+ XGeometry@Base 0
+ XGetAtomName@Base 0
+ XGetAtomNames@Base 0
+ XGetClassHint@Base 0
+ XGetCommand@Base 0
+ XGetDefault@Base 0
+ XGetErrorDatabaseText@Base 0
+ XGetErrorText@Base 0
+ XGetEventData@Base 2:1.2.99.901
+ XGetFontPath@Base 0
+ XGetFontProperty@Base 0
+ XGetGCValues@Base 0
+ XGetGeometry@Base 0
+ XGetICValues@Base 0
+ XGetIMValues@Base 0
+ XGetIconName@Base 0
+ XGetIconSizes@Base 0
+ XGetImage@Base 0
+ XGetInputFocus@Base 0
+ XGetKeyboardControl@Base 0
+ XGetKeyboardMapping@Base 0
+ XGetModifierMapping@Base 0
+ XGetMotionEvents@Base 0
+ XGetNormalHints@Base 0
+ XGetOCValues@Base 0
+ XGetOMValues@Base 0
+ XGetPixel@Base 0
+ XGetPointerControl@Base 0
+ XGetPointerMapping@Base 0
+ XGetRGBColormaps@Base 0
+ XGetScreenSaver@Base 0
+ XGetSelectionOwner@Base 0
+ XGetSizeHints@Base 0
+ XGetStandardColormap@Base 0
+ XGetSubImage@Base 0
+ XGetTextProperty@Base 0
+ XGetTransientForHint@Base 0
+ XGetVisualInfo@Base 0
+ XGetWMClientMachine@Base 0
+ XGetWMColormapWindows@Base 0
+ XGetWMHints@Base 0
+ XGetWMIconName@Base 0
+ XGetWMName@Base 0
+ XGetWMNormalHints@Base 0
+ XGetWMProtocols@Base 0
+ XGetWMSizeHints@Base 0
+ XGetWindowAttributes@Base 0
+ XGetWindowProperty@Base 0
+ XGetZoomHints@Base 0
+ XGrabButton@Base 0
+ XGrabKey@Base 0
+ XGrabKeyboard@Base 0
+ XGrabPointer@Base 0
+ XGrabServer@Base 0
+ XHeightMMOfScreen@Base 0
+ XHeightOfScreen@Base 0
+ XIMOfIC@Base 0
+ XIconifyWindow@Base 0
+ XIfEvent@Base 0
+ XImageByteOrder@Base 0
+ XInitExtension@Base 0
+ XInitImage@Base 0
+ XInitThreads@Base 0
+ XInsertModifiermapEntry@Base 0
+ XInstallColormap@Base 0
+ XInternAtom@Base 0
+ XInternAtoms@Base 0
+ XInternalConnectionNumbers@Base 0
+ XIntersectRegion@Base 0
+ XKeycodeToKeysym@Base 0
+ XKeysymToKeycode@Base 0
+ XKeysymToString@Base 0
+ XKillClient@Base 0
+ XLastKnownRequestProcessed@Base 0
+ XListDepths@Base 0
+ XListExtensions@Base 0
+ XListFonts@Base 0
+ XListFontsWithInfo@Base 0
+ XListHosts@Base 0
+ XListInstalledColormaps@Base 0
+ XListPixmapFormats@Base 0
+ XListProperties@Base 0
+ XLoadFont@Base 0
+ XLoadQueryFont@Base 0
+ XLocaleOfFontSet@Base 0
+ XLocaleOfIM@Base 0
+ XLocaleOfOM@Base 0
+ XLockDisplay@Base 0
+ XLookupColor@Base 0
+ XLookupKeysym@Base 0
+ XLookupString@Base 0
+ XLowerWindow@Base 0
+ XMapRaised@Base 0
+ XMapSubwindows@Base 0
+ XMapWindow@Base 0
+ XMaskEvent@Base 0
+ XMatchVisualInfo@Base 0
+ XMaxCmapsOfScreen@Base 0
+ XMaxRequestSize@Base 0
+ XMinCmapsOfScreen@Base 0
+ XMoveResizeWindow@Base 0
+ XMoveWindow@Base 0
+ XNewModifiermap@Base 0
+ XNextEvent@Base 0
+ XNextRequest@Base 0
+ XNoOp@Base 0
+ XOMOfOC@Base 0
+ XOffsetRegion@Base 0
+ XOpenDisplay@Base 0
+ XOpenIM@Base 0
+ XOpenOM@Base 0
+ XParseColor@Base 0
+ XParseGeometry@Base 0
+ XPeekEvent@Base 0
+ XPeekIfEvent@Base 0
+ XPending@Base 0
+ XPlanesOfScreen@Base 0
+ XPointInRegion@Base 0
+ XPolygonRegion@Base 0
+ XProcessInternalConnection@Base 0
+ XProtocolRevision@Base 0
+ XProtocolVersion@Base 0
+ XPutBackEvent@Base 0
+ XPutImage@Base 0
+ XPutPixel@Base 0
+ XQLength@Base 0
+ XQueryBestCursor@Base 0
+ XQueryBestSize@Base 0
+ XQueryBestStipple@Base 0
+ XQueryBestTile@Base 0
+ XQueryColor@Base 0
+ XQueryColors@Base 0
+ XQueryExtension@Base 0
+ XQueryFont@Base 0
+ XQueryKeymap@Base 0
+ XQueryPointer@Base 0
+ XQueryTextExtents16@Base 0
+ XQueryTextExtents@Base 0
+ XQueryTree@Base 0
+ XRaiseWindow@Base 0
+ XReadBitmapFile@Base 0
+ XReadBitmapFileData@Base 0
+ XRebindKeysym@Base 0
+ XRecolorCursor@Base 0
+ XReconfigureWMWindow@Base 0
+ XRectInRegion@Base 0
+ XRefreshKeyboardMapping@Base 0
+ XRegisterIMInstantiateCallback@Base 0
+ XRemoveConnectionWatch@Base 0
+ XRemoveFromSaveSet@Base 0
+ XRemoveHost@Base 0
+ XRemoveHosts@Base 0
+ XReparentWindow@Base 0
+ XResetScreenSaver@Base 0
+ XResizeWindow@Base 0
+ XResourceManagerString@Base 0
+ XRestackWindows@Base 0
+ XRootWindow@Base 0
+ XRootWindowOfScreen@Base 0
+ XRotateBuffers@Base 0
+ XRotateWindowProperties@Base 0
+ XSaveContext@Base 0
+ XScreenCount@Base 0
+ XScreenNumberOfScreen@Base 0
+ XScreenOfDisplay@Base 0
+ XScreenResourceString@Base 0
+ XSelectInput@Base 0
+ XSendEvent@Base 0
+ XServerVendor@Base 0
+ XSetAccessControl@Base 0
+ XSetAfterFunction@Base 0
+ XSetArcMode@Base 0
+ XSetAuthorization@Base 0
+ XSetBackground@Base 0
+ XSetClassHint@Base 0
+ XSetClipMask@Base 0
+ XSetClipOrigin@Base 0
+ XSetClipRectangles@Base 0
+ XSetCloseDownMode@Base 0
+ XSetCommand@Base 0
+ XSetDashes@Base 0
+ XSetErrorHandler@Base 0
+ XSetFillRule@Base 0
+ XSetFillStyle@Base 0
+ XSetFont@Base 0
+ XSetFontPath@Base 0
+ XSetForeground@Base 0
+ XSetFunction@Base 0
+ XSetGraphicsExposures@Base 0
+ XSetICFocus@Base 0
+ XSetICValues@Base 0
+ XSetIMValues@Base 0
+ XSetIOErrorHandler@Base 0
+ XSetIconName@Base 0
+ XSetIconSizes@Base 0
+ XSetInputFocus@Base 0
+ XSetLineAttributes@Base 0
+ XSetLocaleModifiers@Base 0
+ XSetModifierMapping@Base 0
+ XSetNormalHints@Base 0
+ XSetOCValues@Base 0
+ XSetOMValues@Base 0
+ XSetPlaneMask@Base 0
+ XSetPointerMapping@Base 0
+ XSetRGBColormaps@Base 0
+ XSetRegion@Base 0
+ XSetScreenSaver@Base 0
+ XSetSelectionOwner@Base 0
+ XSetSizeHints@Base 0
+ XSetStandardColormap@Base 0
+ XSetStandardProperties@Base 0
+ XSetState@Base 0
+ XSetStipple@Base 0
+ XSetSubwindowMode@Base 0
+ XSetTSOrigin@Base 0
+ XSetTextProperty@Base 0
+ XSetTile@Base 0
+ XSetTransientForHint@Base 0
+ XSetWMClientMachine@Base 0
+ XSetWMColormapWindows@Base 0
+ XSetWMHints@Base 0
+ XSetWMIconName@Base 0
+ XSetWMName@Base 0
+ XSetWMNormalHints@Base 0
+ XSetWMProperties@Base 0
+ XSetWMProtocols@Base 0
+ XSetWMSizeHints@Base 0
+ XSetWindowBackground@Base 0
+ XSetWindowBackgroundPixmap@Base 0
+ XSetWindowBorder@Base 0
+ XSetWindowBorderPixmap@Base 0
+ XSetWindowBorderWidth@Base 0
+ XSetWindowColormap@Base 0
+ XSetZoomHints@Base 0
+ XShrinkRegion@Base 0
+ XStoreBuffer@Base 0
+ XStoreBytes@Base 0
+ XStoreColor@Base 0
+ XStoreColors@Base 0
+ XStoreName@Base 0
+ XStoreNamedColor@Base 0
+ XStringListToTextProperty@Base 0
+ XStringToKeysym@Base 0
+ XSubImage@Base 0
+ XSubtractRegion@Base 0
+ XSupportsLocale@Base 0
+ XSync@Base 0
+ XSynchronize@Base 0
+ XTextExtents16@Base 0
+ XTextExtents@Base 0
+ XTextPropertyToStringList@Base 0
+ XTextWidth16@Base 0
+ XTextWidth@Base 0
+ XTranslateCoordinates@Base 0
+ XUndefineCursor@Base 0
+ XUngrabButton@Base 0
+ XUngrabKey@Base 0
+ XUngrabKeyboard@Base 0
+ XUngrabPointer@Base 0
+ XUngrabServer@Base 0
+ XUninstallColormap@Base 0
+ XUnionRectWithRegion@Base 0
+ XUnionRegion@Base 0
+ XUnloadFont@Base 0
+ XUnlockDisplay@Base 0
+ XUnmapSubwindows@Base 0
+ XUnmapWindow@Base 0
+ XUnregisterIMInstantiateCallback@Base 0
+ XUnsetICFocus@Base 0
+ XVaCreateNestedList@Base 0
+ XVendorRelease@Base 0
+ XVisualIDFromVisual@Base 0
+ XWMGeometry@Base 0
+ XWarpPointer@Base 0
+ XWhitePixel@Base 0
+ XWhitePixelOfScreen@Base 0
+ XWidthMMOfScreen@Base 0
+ XWidthOfScreen@Base 0
+ XWindowEvent@Base 0
+ XWithdrawWindow@Base 0
+ XWriteBitmapFile@Base 0
+ XXorRegion@Base 0
+ XcmsAddColorSpace@Base 0
+ XcmsAddFunctionSet@Base 0
+ XcmsAllocColor@Base 0
+ XcmsAllocNamedColor@Base 0
+ XcmsCCCOfColormap@Base 0
+ XcmsCIELabClipL@Base 0
+ XcmsCIELabClipLab@Base 0
+ XcmsCIELabClipab@Base 0
+ XcmsCIELabColorSpace@Base 0 1
+ XcmsCIELabQueryMaxC@Base 0
+ XcmsCIELabQueryMaxL@Base 0
+ XcmsCIELabQueryMaxLC@Base 0
+ XcmsCIELabQueryMinL@Base 0
+ XcmsCIELabToCIEXYZ@Base 0
+ XcmsCIELabWhiteShiftColors@Base 0
+ XcmsCIELuvClipL@Base 0
+ XcmsCIELuvClipLuv@Base 0
+ XcmsCIELuvClipuv@Base 0
+ XcmsCIELuvColorSpace@Base 0 1
+ XcmsCIELuvQueryMaxC@Base 0
+ XcmsCIELuvQueryMaxL@Base 0
+ XcmsCIELuvQueryMaxLC@Base 0
+ XcmsCIELuvQueryMinL@Base 0
+ XcmsCIELuvToCIEuvY@Base 0
+ XcmsCIELuvWhiteShiftColors@Base 0
+ XcmsCIEXYZColorSpace@Base 0 1
+ XcmsCIEXYZToCIELab@Base 0
+ XcmsCIEXYZToCIEuvY@Base 0
+ XcmsCIEXYZToCIExyY@Base 0
+ XcmsCIEXYZToRGBi@Base 0
+ XcmsCIEuvYColorSpace@Base 0 1
+ XcmsCIEuvYToCIELuv@Base 0
+ XcmsCIEuvYToCIEXYZ@Base 0
+ XcmsCIEuvYToTekHVC@Base 0
+ XcmsCIExyYColorSpace@Base 0 1
+ XcmsCIExyYToCIEXYZ@Base 0
+ XcmsClientWhitePointOfCCC@Base 0
+ XcmsConvertColors@Base 0
+ XcmsCreateCCC@Base 0
+ XcmsDefaultCCC@Base 0
+ XcmsDisplayOfCCC@Base 0
+ XcmsFormatOfPrefix@Base 0
+ XcmsFreeCCC@Base 0
+ XcmsLinearRGBFunctionSet@Base 0 1
+ XcmsLookupColor@Base 0
+ XcmsPrefixOfFormat@Base 0
+ XcmsQueryBlack@Base 0
+ XcmsQueryBlue@Base 0
+ XcmsQueryColor@Base 0
+ XcmsQueryColors@Base 0
+ XcmsQueryGreen@Base 0
+ XcmsQueryRed@Base 0
+ XcmsQueryWhite@Base 0
+ XcmsRGBColorSpace@Base 0 1
+ XcmsRGBToRGBi@Base 0
+ XcmsRGBiColorSpace@Base 0 1
+ XcmsRGBiToCIEXYZ@Base 0
+ XcmsRGBiToRGB@Base 0
+ XcmsScreenNumberOfCCC@Base 0
+ XcmsScreenWhitePointOfCCC@Base 0
+ XcmsSetCCCOfColormap@Base 0
+ XcmsSetCompressionProc@Base 0
+ XcmsSetWhiteAdjustProc@Base 0
+ XcmsSetWhitePoint@Base 0
+ XcmsStoreColor@Base 0
+ XcmsStoreColors@Base 0
+ XcmsTekHVCClipC@Base 0
+ XcmsTekHVCClipV@Base 0
+ XcmsTekHVCClipVC@Base 0
+ XcmsTekHVCColorSpace@Base 0 1
+ XcmsTekHVCQueryMaxC@Base 0
+ XcmsTekHVCQueryMaxV@Base 0
+ XcmsTekHVCQueryMaxVC@Base 0
+ XcmsTekHVCQueryMaxVSamples@Base 0
+ XcmsTekHVCQueryMinV@Base 0
+ XcmsTekHVCToCIEuvY@Base 0
+ XcmsTekHVCWhiteShiftColors@Base 0
+ XcmsUNDEFINEDColorSpace@Base 0 1
+ XcmsVisualOfCCC@Base 0
+ XkbAddDeviceLedInfo@Base 0
+ XkbAddGeomColor@Base 0
+ XkbAddGeomDoodad@Base 0
+ XkbAddGeomKey@Base 0
+ XkbAddGeomKeyAlias@Base 0
+ XkbAddGeomOutline@Base 0
+ XkbAddGeomOverlay@Base 0
+ XkbAddGeomOverlayKey@Base 0
+ XkbAddGeomOverlayRow@Base 0
+ XkbAddGeomProperty@Base 0
+ XkbAddGeomRow@Base 0
+ XkbAddGeomSection@Base 0
+ XkbAddGeomShape@Base 0
+ XkbAddKeyType@Base 0
+ XkbAllocClientMap@Base 0
+ XkbAllocCompatMap@Base 0
+ XkbAllocControls@Base 0
+ XkbAllocDeviceInfo@Base 0
+ XkbAllocGeomColors@Base 0
+ XkbAllocGeomDoodads@Base 0
+ XkbAllocGeomKeyAliases@Base 0
+ XkbAllocGeomKeys@Base 0
+ XkbAllocGeomOutlines@Base 0
+ XkbAllocGeomOverlayKeys@Base 0
+ XkbAllocGeomOverlayRows@Base 0
+ XkbAllocGeomOverlays@Base 0
+ XkbAllocGeomPoints@Base 0
+ XkbAllocGeomProps@Base 0
+ XkbAllocGeomRows@Base 0
+ XkbAllocGeomSectionDoodads@Base 0
+ XkbAllocGeomSections@Base 0
+ XkbAllocGeomShapes@Base 0
+ XkbAllocGeometry@Base 0
+ XkbAllocIndicatorMaps@Base 0
+ XkbAllocKeyboard@Base 0
+ XkbAllocNames@Base 0
+ XkbAllocServerMap@Base 0
+ XkbApplyCompatMapToKey@Base 0
+ XkbApplyVirtualModChanges@Base 0
+ XkbBell@Base 0
+ XkbBellEvent@Base 0
+ XkbChangeDeviceInfo@Base 0
+ XkbChangeEnabledControls@Base 0
+ XkbChangeKeycodeRange@Base 0
+ XkbChangeMap@Base 0
+ XkbChangeNames@Base 0
+ XkbChangeTypesOfKey@Base 0
+ XkbComputeEffectiveMap@Base 0
+ XkbComputeRowBounds@Base 0
+ XkbComputeSectionBounds@Base 0
+ XkbComputeShapeBounds@Base 0
+ XkbComputeShapeTop@Base 0
+ XkbCopyKeyType@Base 0
+ XkbCopyKeyTypes@Base 0
+ XkbDeviceBell@Base 0
+ XkbDeviceBellEvent@Base 0
+ XkbFindOverlayForKey@Base 0
+ XkbForceBell@Base 0
+ XkbForceDeviceBell@Base 0
+ XkbFreeClientMap@Base 0
+ XkbFreeCompatMap@Base 0
+ XkbFreeComponentList@Base 0
+ XkbFreeControls@Base 0
+ XkbFreeDeviceInfo@Base 0
+ XkbFreeGeomColors@Base 0
+ XkbFreeGeomDoodads@Base 0
+ XkbFreeGeomKeyAliases@Base 0
+ XkbFreeGeomKeys@Base 0
+ XkbFreeGeomOutlines@Base 0
+ XkbFreeGeomOverlayKeys@Base 0
+ XkbFreeGeomOverlayRows@Base 0
+ XkbFreeGeomOverlays@Base 0
+ XkbFreeGeomPoints@Base 0
+ XkbFreeGeomProperties@Base 0
+ XkbFreeGeomRows@Base 0
+ XkbFreeGeomSections@Base 0
+ XkbFreeGeomShapes@Base 0
+ XkbFreeGeometry@Base 0
+ XkbFreeIndicatorMaps@Base 0
+ XkbFreeKeyboard@Base 0
+ XkbFreeNames@Base 0
+ XkbFreeServerMap@Base 0
+ XkbGetAutoRepeatRate@Base 0
+ XkbGetAutoResetControls@Base 0
+ XkbGetCompatMap@Base 0
+ XkbGetControls@Base 0
+ XkbGetDetectableAutoRepeat@Base 0
+ XkbGetDeviceButtonActions@Base 0
+ XkbGetDeviceInfo@Base 0
+ XkbGetDeviceInfoChanges@Base 0
+ XkbGetDeviceLedInfo@Base 0
+ XkbGetGeometry@Base 0
+ XkbGetIndicatorMap@Base 0
+ XkbGetIndicatorState@Base 0
+ XkbGetKeyActions@Base 0
+ XkbGetKeyBehaviors@Base 0
+ XkbGetKeyExplicitComponents@Base 0
+ XkbGetKeyModifierMap@Base 0
+ XkbGetKeySyms@Base 0
+ XkbGetKeyTypes@Base 0
+ XkbGetKeyVirtualModMap@Base 0
+ XkbGetKeyboard@Base 0
+ XkbGetKeyboardByName@Base 0
+ XkbGetMap@Base 0
+ XkbGetMapChanges@Base 0
+ XkbGetNamedDeviceIndicator@Base 0
+ XkbGetNamedGeometry@Base 0
+ XkbGetNamedIndicator@Base 0
+ XkbGetNames@Base 0
+ XkbGetPerClientControls@Base 0
+ XkbGetState@Base 0
+ XkbGetUpdatedMap@Base 0
+ XkbGetVirtualMods@Base 0
+ XkbGetXlibControls@Base 0
+ XkbIgnoreExtension@Base 0
+ XkbInitCanonicalKeyTypes@Base 0
+ XkbKeyTypesForCoreSymbols@Base 0
+ XkbKeycodeToKeysym@Base 0
+ XkbKeysymToModifiers@Base 0
+ XkbLatchGroup@Base 0
+ XkbLatchModifiers@Base 0
+ XkbLibraryVersion@Base 0
+ XkbListComponents@Base 0
+ XkbLockGroup@Base 0
+ XkbLockModifiers@Base 0
+ XkbLookupKeyBinding@Base 0
+ XkbLookupKeySym@Base 0
+ XkbNoteControlsChanges@Base 0
+ XkbNoteDeviceChanges@Base 0
+ XkbNoteMapChanges@Base 0
+ XkbNoteNameChanges@Base 0
+ XkbOpenDisplay@Base 0
+ XkbQueryExtension@Base 0
+ XkbRefreshKeyboardMapping@Base 0
+ XkbResizeDeviceButtonActions@Base 0
+ XkbResizeKeyActions@Base 0
+ XkbResizeKeySyms@Base 0
+ XkbResizeKeyType@Base 0
+ XkbSelectEventDetails@Base 0
+ XkbSelectEvents@Base 0
+ XkbSetAtomFuncs@Base 0
+ XkbSetAutoRepeatRate@Base 0
+ XkbSetAutoResetControls@Base 0
+ XkbSetCompatMap@Base 0
+ XkbSetControls@Base 0
+ XkbSetDebuggingFlags@Base 0
+ XkbSetDetectableAutoRepeat@Base 0
+ XkbSetDeviceButtonActions@Base 0
+ XkbSetDeviceInfo@Base 0
+ XkbSetDeviceLedInfo@Base 0
+ XkbSetGeometry@Base 0
+ XkbSetIgnoreLockMods@Base 0
+ XkbSetIndicatorMap@Base 0
+ XkbSetMap@Base 0
+ XkbSetNamedDeviceIndicator@Base 0
+ XkbSetNamedIndicator@Base 0
+ XkbSetNames@Base 0
+ XkbSetPerClientControls@Base 0
+ XkbSetServerInternalMods@Base 0
+ XkbSetXlibControls@Base 0
+ XkbToControl@Base 0
+ XkbTranslateKey@Base 0
+ XkbTranslateKeyCode@Base 0
+ XkbTranslateKeySym@Base 0
+ XkbUpdateActionVirtualMods@Base 0
+ XkbUpdateKeyTypeVirtualMods@Base 0
+ XkbUpdateMapFromCore@Base 0
+ XkbUseExtension@Base 0
+ XkbVirtualModsToReal@Base 0
+ XkbXlibControlsImplemented@Base 0
+ XmbDrawImageString@Base 0
+ XmbDrawString@Base 0
+ XmbDrawText@Base 0
+ XmbLookupString@Base 0
+ XmbResetIC@Base 0
+ XmbSetWMProperties@Base 0
+ XmbTextEscapement@Base 0
+ XmbTextExtents@Base 0
+ XmbTextListToTextProperty@Base 0
+ XmbTextPerCharExtents@Base 0
+ XmbTextPropertyToTextList@Base 0
+ Xpermalloc@Base 0
+ XrmCombineDatabase@Base 0
+ XrmCombineFileDatabase@Base 0
+ XrmDestroyDatabase@Base 0
+ XrmEnumerateDatabase@Base 0
+ XrmGetDatabase@Base 0
+ XrmGetFileDatabase@Base 0
+ XrmGetResource@Base 0
+ XrmGetStringDatabase@Base 0
+ XrmInitialize@Base 0
+ XrmLocaleOfDatabase@Base 0
+ XrmMergeDatabases@Base 0
+ XrmParseCommand@Base 0
+ XrmPermStringToQuark@Base 0
+ XrmPutFileDatabase@Base 0
+ XrmPutLineResource@Base 0
+ XrmPutResource@Base 0
+ XrmPutStringResource@Base 0
+ XrmQGetResource@Base 0
+ XrmQGetSearchList@Base 0
+ XrmQGetSearchResource@Base 0
+ XrmQPutResource@Base 0
+ XrmQPutStringResource@Base 0
+ XrmQuarkToString@Base 0
+ XrmSetDatabase@Base 0
+ XrmStringToBindingQuarkList@Base 0
+ XrmStringToQuark@Base 0
+ XrmStringToQuarkList@Base 0
+ XrmUniqueQuark@Base 0
+ Xutf8DrawImageString@Base 0
+ Xutf8DrawString@Base 0
+ Xutf8DrawText@Base 0
+ Xutf8LookupString@Base 0
+ Xutf8ResetIC@Base 0
+ Xutf8SetWMProperties@Base 0
+ Xutf8TextEscapement@Base 0
+ Xutf8TextExtents@Base 0
+ Xutf8TextListToTextProperty@Base 0
+ Xutf8TextPerCharExtents@Base 0
+ Xutf8TextPropertyToTextList@Base 0
+ XwcDrawImageString@Base 0
+ XwcDrawString@Base 0
+ XwcDrawText@Base 0
+ XwcFreeStringList@Base 0
+ XwcLookupString@Base 0
+ XwcResetIC@Base 0
+ XwcTextEscapement@Base 0
+ XwcTextExtents@Base 0
+ XwcTextListToTextProperty@Base 0
+ XwcTextPerCharExtents@Base 0
+ XwcTextPropertyToTextList@Base 0
+ _Utf8GetConvByName@Base 0 1
+ _XAllocID@Base 0
+ _XAllocIDs@Base 0
+ _XAllocScratch@Base 0
+ _XAllocTemp@Base 0
+ _XAsyncErrorHandler@Base 0
+ _XCloseLC@Base 0 1
+ _XColor_to_XcmsRGB@Base 0 1
+ _XConnectXCB@Base 0 1
+ _XCopyEventCookie@Base 2:1.2.99.901
+ _XCopyToArg@Base 0 1
+ _XCreateMutex_fn@Base 0
+ _XDefaultError@Base 0
+ _XDefaultIOError@Base 0
+ _XDefaultOpenIM@Base 0 1
+ _XDefaultOpenOM@Base 0 1
+ _XDefaultWireError@Base 0
+ _XDeq@Base 0
+ _XDeqAsyncHandler@Base 0
+ _XEatData@Base 0
+ _XEatDataWords@Base 2:1.6.0
+ _XEnq@Base 0
+ _XError@Base 0
+ _XErrorFunction@Base 0
+ _XEventToWire@Base 0
+ _XEventsQueued@Base 0
+ _XF86BigfontFreeFontMetrics@Base 0 1
+ _XF86LoadQueryLocaleFont@Base 0
+ _XFetchEventCookie@Base 2:1.2.99.901
+ _XFlush@Base 0
+ _XFlushGCCache@Base 0
+ _XFreeAtomTable@Base 0 1
+ _XFreeDisplayLock_fn@Base 0 1
+ _XFreeDisplayStructure@Base 0 1
+ _XFreeEventCookies@Base 2:1.2.99.901
+ _XFreeExtData@Base 0
+ _XFreeMutex_fn@Base 0
+ _XFreeTemp@Base 0
+ _XFreeX11XCBStructure@Base 0 1
+ _XGetAsyncData@Base 0
+ _XGetAsyncReply@Base 0
+ _XGetBitsPerPixel@Base 0
+ _XGetHostname@Base 0
+ _XGetLCValues@Base 0 1
+ _XGetRequest@Base 2:1.4.99.1
+ _XGetScanlinePad@Base 0
+ _XGetWindowAttributes@Base 0
+ _XHeadOfDisplayList@Base 0 1
+ _XIMCompileResourceList@Base 0 1
+ _XIOError@Base 0
+ _XIOErrorFunction@Base 0
+ _XInitDisplayLock_fn@Base 0 1
+ _XInitIM@Base 0 1
+ _XInitImageFuncPtrs@Base 0
+ _XInitKeysymDB@Base 0
+ _XInitOM@Base 0 1
+ _XIsEventCookie@Base 2:1.2.99.901
+ _XKeyInitialize@Base 0 1
+ _XKeycodeToKeysym@Base 0 1
+ _XKeysymToKeycode@Base 0 1
+ _XKeysymToModifiers@Base 0 1
+ _XLockMutex_fn@Base 0
+ _XLookupKeysym@Base 0 1
+ _XLookupString@Base 0 1
+ _XNoticeCreateBitmap@Base 0 1
+ _XNoticePutBitmap@Base 0 1
+ _XOpenLC@Base 0 1
+ _XParseBaseFontNameList@Base 0 1
+ _XPollfdCacheAdd@Base 0
+ _XPollfdCacheDel@Base 0
+ _XPollfdCacheInit@Base 0
+ _XProcessInternalConnection@Base 0
+ _XProcessWindowAttributes@Base 0
+ _XPutBackEvent@Base 0
+ _XRead@Base 0
+ _XReadEvents@Base 0
+ _XReadPad@Base 0
+ _XRefreshKeyboardMapping@Base 0 1
+ _XRegisterFilterByMask@Base 0
+ _XRegisterFilterByType@Base 0
+ _XRegisterInternalConnection@Base 0
+ _XReply@Base 0
+ _XReverse_Bytes@Base 0
+ _XScreenOfWindow@Base 0
+ _XSend@Base 0
+ _XSetClipRectangles@Base 0
+ _XSetImage@Base 0
+ _XSetLastRequestRead@Base 0
+ _XStoreEventCookie@Base 2:1.2.99.901
+ _XTextHeight16@Base 0
+ _XTextHeight@Base 0
+ _XTranslateKey@Base 0 1
+ _XTranslateKeySym@Base 0 1
+ _XTryShapeBitmapCursor@Base 0 1
+ _XUnknownCopyEventCookie@Base 2:1.2.99.901
+ _XUnknownNativeEvent@Base 0
+ _XUnknownWireEvent@Base 0
+ _XUnknownWireEventCookie@Base 2:1.2.99.901
+ _XUnlockMutex_fn@Base 0
+ _XUnregisterFilter@Base 0
+ _XUnregisterInternalConnection@Base 0
+ _XUnresolveColor@Base 0 1
+ _XUpdateAtomCache@Base 0 1
+ _XUpdateGCCache@Base 0 1
+ _XVIDtoVisual@Base 0
+ _XWireToEvent@Base 0
+ _XcmsAddCmapRec@Base 0 1
+ _XcmsArcTangent@Base 0 1
+ _XcmsCIELabQueryMaxLCRGB@Base 0 1
+ _XcmsCIELab_prefix@Base 0 1
+ _XcmsCIELuvQueryMaxLCRGB@Base 0 1
+ _XcmsCIELuv_prefix@Base 0 1
+ _XcmsCIEXYZ_ValidSpec@Base 0 1
+ _XcmsCIEXYZ_prefix@Base 0 1
+ _XcmsCIEuvY_ValidSpec@Base 0 1
+ _XcmsCIEuvY_prefix@Base 0 1
+ _XcmsCIExyY_prefix@Base 0 1
+ _XcmsConvertColorsWithWhitePt@Base 0 1
+ _XcmsCopyCmapRecAndFree@Base 0 1
+ _XcmsCopyISOLatin1Lowered@Base 0 1
+ _XcmsCopyPointerArray@Base 0 1
+ _XcmsCosine@Base 0 1
+ _XcmsCubeRoot@Base 0 1
+ _XcmsDDColorSpaces@Base 0 1
+ _XcmsDDColorSpacesInit@Base 0 1
+ _XcmsDDConvertColors@Base 0 1
+ _XcmsDIColorSpaces@Base 0 1
+ _XcmsDIColorSpacesInit@Base 0 1
+ _XcmsDIConvertColors@Base 0 1
+ _XcmsDeleteCmapRec@Base 0 1
+ _XcmsEqualWhitePts@Base 0 1
+ _XcmsFreeIntensityMaps@Base 0 1
+ _XcmsFreePointerArray@Base 0 1
+ _XcmsGetElement@Base 0 1
+ _XcmsGetIntensityMap@Base 0 1
+ _XcmsGetProperty@Base 0 1
+ _XcmsInitDefaultCCCs@Base 0 1
+ _XcmsInitScrnInfo@Base 0 1
+ _XcmsLRGB_InitScrnDefault@Base 0 1
+ _XcmsPushPointerArray@Base 0 1
+ _XcmsRGB_prefix@Base 0 1
+ _XcmsRGB_to_XColor@Base 0 1
+ _XcmsRGBi_prefix@Base 0 1
+ _XcmsRegColorSpaces@Base 0 1
+ _XcmsRegFormatOfPrefix@Base 0 1
+ _XcmsResolveColor@Base 0 1
+ _XcmsResolveColorString@Base 0 1
+ _XcmsSCCFuncSets@Base 0 1
+ _XcmsSCCFuncSetsInit@Base 0 1
+ _XcmsSetGetColor@Base 0 1
+ _XcmsSetGetColors@Base 0 1
+ _XcmsSine@Base 0 1
+ _XcmsSquareRoot@Base 0 1
+ _XcmsTekHVCQueryMaxVCRGB@Base 0 1
+ _XcmsTekHVC_CheckModify@Base 0 1
+ _XcmsTekHVC_prefix@Base 0 1
+ _XcmsUnresolveColor@Base 0 1
+ _Xdebug@Base 0
+ _Xevent_to_mask@Base 0
+ _Xglobal_lock@Base 0
+ _Xi18n_lock@Base 0 1
+ _XimCbDispatch@Base 0 1
+ _XimCheckCreateICValues@Base 0 1
+ _XimCheckDataSize@Base 0 1
+ _XimCheckICMode@Base 0 1
+ _XimCheckIMMode@Base 0 1
+ _XimCheckIfLocalProcessing@Base 0 1
+ _XimCheckIfThaiProcessing@Base 0 1
+ _XimCheckLocalInputStyle@Base 0 1
+ _XimCommitCallback@Base 0 1
+ _XimConnect@Base 0 1
+ _XimDecodeICATTRIBUTE@Base 0 1
+ _XimDecodeIMATTRIBUTE@Base 0 1
+ _XimDecodeLocalICAttr@Base 0 1
+ _XimDecodeLocalIMAttr@Base 0 1
+ _XimDestroyIMStructureList@Base 0 1
+ _XimDispatchInit@Base 0 1
+ _XimEncodeICATTRIBUTE@Base 0 1
+ _XimEncodeIMATTRIBUTE@Base 0 1
+ _XimEncodeLocalICAttr@Base 0 1
+ _XimEncodeLocalIMAttr@Base 0 1
+ _XimError@Base 0 1
+ _XimErrorCallback@Base 0 1
+ _XimExtension@Base 0 1
+ _XimFilterWaitEvent@Base 0 1
+ _XimFlush@Base 0 1
+ _XimForwardEvent@Base 0 1
+ _XimForwardEventCallback@Base 0 1
+ _XimFreeCommitInfo@Base 0 1
+ _XimFreeProtoIntrCallback@Base 0 1
+ _XimFreeTransIntrCallback@Base 0 1
+ _XimGetAttributeID@Base 0 1
+ _XimGetCharCode@Base 0 1
+ _XimGetCurrentICValues@Base 0 1
+ _XimGetCurrentIMValues@Base 0 1
+ _XimGetICValueData@Base 0 1
+ _XimGetIMValueData@Base 0 1
+ _XimGetLocaleCode@Base 0 1
+ _XimGetMyEndian@Base 0 1
+ _XimGetResourceListRec@Base 0 1
+ _XimGetResourceListRecByQuark@Base 0 1
+ _XimGetWindowEventmask@Base 0 1
+ _XimICOfXICID@Base 0 1
+ _XimImSportRec@Base 0 1
+ _XimInitialResourceInfo@Base 0 1
+ _XimLcctstombs@Base 0 1
+ _XimLcctstoutf8@Base 0 1
+ _XimLcctstowcs@Base 0 1
+ _XimLocalCreateIC@Base 0 1
+ _XimLocalFilter@Base 0 1
+ _XimLocalGetICValues@Base 0 1
+ _XimLocalGetIMValues@Base 0 1
+ _XimLocalIMFree@Base 0 1
+ _XimLocalMbLookupString@Base 0 1
+ _XimLocalOpenIM@Base 0 1
+ _XimLocalSetICValues@Base 0 1
+ _XimLocalSetIMValues@Base 0 1
+ _XimLocalUtf8LookupString@Base 0 1
+ _XimLocalWcLookupString@Base 0 1
+ _XimLookupMBText@Base 0 1
+ _XimLookupUTF8Text@Base 0 1
+ _XimLookupWCText@Base 0 1
+ _XimMakeICAttrIDList@Base 0 1
+ _XimMakeIMAttrIDList@Base 0 1
+ _XimOpenIM@Base 0 1
+ _XimParseStringFile@Base 0 1
+ _XimProcError@Base 0 1
+ _XimProcSyncReply@Base 0 1
+ _XimProtoCreateIC@Base 0 1
+ _XimProtoEventToWire@Base 0 1
+ _XimProtoIMFree@Base 0 1
+ _XimProtoMbLookupString@Base 0 1
+ _XimProtoOpenIM@Base 0 1
+ _XimProtoUtf8LookupString@Base 0 1
+ _XimProtoWcLookupString@Base 0 1
+ _XimProtoWireToEvent@Base 0 1
+ _XimRead@Base 0 1
+ _XimRegProtoIntrCallback@Base 0 1
+ _XimRegisterDispatcher@Base 0 1
+ _XimRegisterFilter@Base 0 1
+ _XimRegisterIMInstantiateCallback@Base 0 1
+ _XimRegisterServerFilter@Base 0 1
+ _XimRegisterTriggerKeysCallback@Base 0 1
+ _XimReregisterFilter@Base 0 1
+ _XimResetIMInstantiateCallback@Base 0 1
+ _XimRespSyncReply@Base 0 1
+ _XimServerDestroy@Base 0 1
+ _XimSetCurrentICValues@Base 0 1
+ _XimSetCurrentIMValues@Base 0 1
+ _XimSetEventMaskCallback@Base 0 1
+ _XimSetHeader@Base 0 1
+ _XimSetICDefaults@Base 0 1
+ _XimSetICMode@Base 0 1
+ _XimSetICResourceList@Base 0 1
+ _XimSetICValueData@Base 0 1
+ _XimSetIMMode@Base 0 1
+ _XimSetIMResourceList@Base 0 1
+ _XimSetIMValueData@Base 0 1
+ _XimSetInnerICResourceList@Base 0 1
+ _XimSetInnerIMResourceList@Base 0 1
+ _XimSetLocalIMDefaults@Base 0 1
+ _XimShutdown@Base 0 1
+ _XimSync@Base 0 1
+ _XimSyncCallback@Base 0 1
+ _XimThaiCloseIM@Base 0 1
+ _XimThaiCreateIC@Base 0 1
+ _XimThaiFilter@Base 0 1
+ _XimThaiIMFree@Base 0 1
+ _XimThaiOpenIM@Base 0 1
+ _XimTransCallDispatcher@Base 0 1
+ _XimTransConf@Base 0 1
+ _XimTransFilterWaitEvent@Base 0 1
+ _XimTransFlush@Base 0 1
+ _XimTransInternalConnection@Base 0 1
+ _XimTransRead@Base 0 1
+ _XimTransRegisterDispatcher@Base 0 1
+ _XimTransWrite@Base 0 1
+ _XimTransportRec@Base 0 1
+ _XimTriggerNotify@Base 0 1
+ _XimUnRegisterIMInstantiateCallback@Base 0 1
+ _XimUnregisterFilter@Base 0 1
+ _XimUnregisterServerFilter@Base 0 1
+ _XimWrite@Base 0 1
+ _XimXConf@Base 0 1
+ _XimXTransBytesReadable@Base 0 1
+ _XimXTransClose@Base 0 1
+ _XimXTransCloseForCloning@Base 0 1
+ _XimXTransConnect@Base 0 1
+ _XimXTransDisconnect@Base 0 1
+ _XimXTransFreeConnInfo@Base 0 1
+ _XimXTransGetConnectionNumber@Base 0 1
+ _XimXTransGetHostname@Base 0 1
+ _XimXTransGetMyAddr@Base 0 1
+ _XimXTransGetPeerAddr@Base 0 1
+ _XimXTransIsLocal@Base 0 1
+ _XimXTransOpenCLTSClient@Base 0 1
+ _XimXTransOpenCOTSClient@Base 0 1
+ _XimXTransRead@Base 0 1
+ _XimXTransReadv@Base 0 1
+ _XimXTransSetOption@Base 0 1
+ _XimXTransSocketINET6Funcs@Base 0 1
+ _XimXTransSocketINETFuncs@Base 0 1
+ _XimXTransSocketLocalFuncs@Base 0 1
+ _XimXTransSocketTCPFuncs@Base 0 1
+ _XimXTransSocketUNIXFuncs@Base 0 1
+ _XimXTransWrite@Base 0 1
+ _XimXTransWritev@Base 0 1
+ _Ximctstombs@Base 0 1
+ _Ximctstoutf8@Base 0 1
+ _Ximctstowcs@Base 0 1
+ _XkbCopyFromReadBuffer@Base 0 1
+ _XkbFreeReadBuffer@Base 0 1
+ _XkbGetAtomNameFunc@Base 0 1
+ _XkbGetCharset@Base 0 1
+ _XkbGetConverters@Base 0 1
+ _XkbGetReadBufferCountedString@Base 0 1
+ _XkbGetReadBufferPtr@Base 0 1
+ _XkbInitReadBuffer@Base 0 1
+ _XkbInternAtomFunc@Base 0 1
+ _XkbNoteCoreMapChanges@Base 0 1
+ _XkbPeekAtReadBuffer@Base 0 1
+ _XkbReadBufferCopyKeySyms@Base 0 1
+ _XkbReadCopyKeySyms@Base 0 1
+ _XkbReadGetCompatMapReply@Base 0 1
+ _XkbReadGetGeometryReply@Base 0 1
+ _XkbReadGetIndicatorMapReply@Base 0 1
+ _XkbReadGetMapReply@Base 0 1
+ _XkbReadGetNamesReply@Base 0 1
+ _XkbReloadDpy@Base 0 1
+ _XkbSkipReadBufferData@Base 0 1
+ _XkbWriteCopyKeySyms@Base 0 1
+ _XkeyTable@Base 0 1
+ _XlcAddCT@Base 0 1
+ _XlcAddCharSet@Base 0 1
+ _XlcAddGB18030LocaleConverters@Base 0 1
+ _XlcAddLoader@Base 0 1
+ _XlcAddUtf8Converters@Base 0 1
+ _XlcAddUtf8LocaleConverters@Base 0 1
+ _XlcCloseConverter@Base 0 1
+ _XlcCompareISOLatin1@Base 0 1
+ _XlcCompileResourceList@Base 0 1
+ _XlcConvert@Base 0 1
+ _XlcCopyFromArg@Base 0 1
+ _XlcCopyToArg@Base 0 1
+ _XlcCountVaList@Base 0 1
+ _XlcCreateDefaultCharSet@Base 0 1
+ _XlcCreateLC@Base 0 1
+ _XlcCreateLocaleDataBase@Base 0 1
+ _XlcCurrentLC@Base 0 1
+ _XlcDbg_printValue@Base 0 1
+ _XlcDeInitLoader@Base 0 1
+ _XlcDefaultLoader@Base 0 1
+ _XlcDefaultMapModifiers@Base 0 1
+ _XlcDestroyLC@Base 0 1
+ _XlcDestroyLocaleDataBase@Base 0 1
+ _XlcFileName@Base 0 1
+ _XlcGenericLoader@Base 0 1
+ _XlcGenericMethods@Base 0 1
+ _XlcGetCSValues@Base 0 1
+ _XlcGetCharSet@Base 0 1
+ _XlcGetCharSetWithSide@Base 0 1
+ _XlcGetLocaleDataBase@Base 0 1
+ _XlcGetResource@Base 0 1
+ _XlcGetValues@Base 0 1
+ _XlcInitCTInfo@Base 0 1
+ _XlcInitLoader@Base 0 1
+ _XlcLocaleDirName@Base 0 1
+ _XlcLocaleLibDirName@Base 0 1
+ _XlcMapOSLocaleName@Base 0 1
+ _XlcNCompareISOLatin1@Base 0 1
+ _XlcOpenConverter@Base 0 1
+ _XlcParseCharSet@Base 0 1
+ _XlcParse_scopemaps@Base 0 1
+ _XlcPublicMethods@Base 0 1
+ _XlcRemoveLoader@Base 0 1
+ _XlcResetConverter@Base 0 1
+ _XlcResolveI18NPath@Base 0 1
+ _XlcResolveLocaleName@Base 0 1
+ _XlcSetConverter@Base 0 1
+ _XlcSetValues@Base 0 1
+ _XlcUtf8Loader@Base 0 1
+ _XlcVaToArgList@Base 0 1
+ _XlcValidModSyntax@Base 0 1
+ _Xlcmbstoutf8@Base 0 1
+ _Xlcmbstowcs@Base 0 1
+ _Xlcmbtowc@Base 0 1
+ _Xlcwcstombs@Base 0 1
+ _Xlcwctomb@Base 0 1
+ _XmbDefaultDrawImageString@Base 0 1
+ _XmbDefaultDrawString@Base 0 1
+ _XmbDefaultTextEscapement@Base 0 1
+ _XmbDefaultTextExtents@Base 0 1
+ _XmbDefaultTextPerCharExtents@Base 0 1
+ _XmbGenericDrawImageString@Base 0 1
+ _XmbGenericDrawString@Base 0 1
+ _XmbGenericTextEscapement@Base 0 1
+ _XmbGenericTextExtents@Base 0 1
+ _XmbGenericTextPerCharExtents@Base 0 1
+ _XmbTextListToTextProperty@Base 0 1
+ _XmbTextPropertyToTextList@Base 0 1
+ _Xmblen@Base 0
+ _Xmbstoutf8@Base 0 1
+ _Xmbstowcs@Base 0 1
+ _Xmbtowc@Base 0
+ _XomConvert@Base 0 1
+ _XomGenericDrawString@Base 0 1
+ _XomGenericOpenOM@Base 0 1
+ _XomGenericTextExtents@Base 0 1
+ _XomGetFontDataFromFontSet@Base 0 1
+ _XomInitConverter@Base 0 1
+ _XrmDefaultInitParseInfo@Base 0 1
+ _XrmInitParseInfo@Base 0 1
+ _XrmInternalStringToQuark@Base 0 1
+ _Xthread_self_fn@Base 0 1
+ _Xutf8DefaultDrawImageString@Base 0 1
+ _Xutf8DefaultDrawString@Base 0 1
+ _Xutf8DefaultTextEscapement@Base 0 1
+ _Xutf8DefaultTextExtents@Base 0 1
+ _Xutf8DefaultTextPerCharExtents@Base 0 1
+ _Xutf8GenericDrawImageString@Base 0 1
+ _Xutf8GenericDrawString@Base 0 1
+ _Xutf8GenericTextEscapement@Base 0 1
+ _Xutf8GenericTextExtents@Base 0 1
+ _Xutf8GenericTextPerCharExtents@Base 0 1
+ _Xutf8TextListToTextProperty@Base 0 1
+ _Xutf8TextPropertyToTextList@Base 0 1
+ _XwcDefaultDrawImageString@Base 0 1
+ _XwcDefaultDrawString@Base 0 1
+ _XwcDefaultTextEscapement@Base 0 1
+ _XwcDefaultTextExtents@Base 0 1
+ _XwcDefaultTextPerCharExtents@Base 0 1
+ _XwcFreeStringList@Base 0 1
+ _XwcGenericDrawImageString@Base 0 1
+ _XwcGenericDrawString@Base 0 1
+ _XwcGenericTextEscapement@Base 0 1
+ _XwcGenericTextExtents@Base 0 1
+ _XwcGenericTextPerCharExtents@Base 0 1
+ _XwcTextListToTextProperty@Base 0 1
+ _XwcTextPropertyToTextList@Base 0 1
+ _Xwcscmp@Base 0 1
+ _Xwcscpy@Base 0 1
+ _Xwcslen@Base 0 1
+ _Xwcsncmp@Base 0 1
+ _Xwcsncpy@Base 0 1
+ _Xwcstombs@Base 0 1
+ _Xwctomb@Base 0
+ _qfree@Base 0 1
+ read_EncodingInfo@Base 0 1
+ xlocaledir@Base 0 1

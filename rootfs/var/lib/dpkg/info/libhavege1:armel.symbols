@@ -1,0 +1,14 @@
+libhavege.so.1 libhavege1 #MINVER#
+ havege_create@Base 1.7
+ havege_destroy@Base 1.7
+ havege_ndcreate@Base 1.7
+ havege_nddestroy@Base 1.7
+ havege_ndread@Base 1.7
+ havege_ndsetup@Base 1.7
+ havege_rng@Base 1.7
+ havege_run@Base 1.7
+ havege_status@Base 1.7
+ havege_status_dump@Base 1.7
+ havege_test@Base 1.7
+ havege_tune@Base 1.7
+ havege_version@Base 1.9.0

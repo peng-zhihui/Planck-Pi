@@ -1,0 +1,67 @@
+/*
+ * United Kingdom of Great Britain and Northern Ireland
+ * compiled by Peter R Tynan
+ *
+ * $FreeBSD$
+ */
+
+#ifndef _calendar_unitedkingdom_
+#define _calendar_unitedkingdom_
+
+LANG=UTF-8
+
+01/01	New Year's Day bank holiday (If falls on the weekend the following
+	Monday is a bank holiday)
+01/02	2nd January (Scotland bank holiday (If falls on the weekend the
+	following Monday or Tuesday is a bank holiday))
+01/05	Twelfth Night
+01/25	Burns Night
+02/14	Valentine's Day
+037MonSecond	Commonwealth Day
+03/SunLast	British Summer Time begins
+03/01	Saint David's day (Wales)
+03/17	St Patrick's Day (Northern Ireland bank holiday (If falls on the
+	weekend the following Monday is a bank holiday))
+03/28	Lady Day (quarter day)
+04/01	April Fool's Day
+04/06	Start of the Tax year
+04/23	St. George's Day (England)
+05/MonFirst	Early May bank holiday
+05/MonLast	Spring bank holiday
+05/25	Towel Day
+06/SunThird	Father's Day
+06/SatLast	Armed Forces Day
+06/18	Waterloo Day
+06/24	Midsummer (quarter day)
+07/12	Battle of the Boyne (Northern Ireland bank holiday (If falls on the
+	weekend the following Monday is a bank holiday))
+08/SunFirst	Grandparents Day
+08/MonFirst	Summer bank holiday (Scotland)
+08/MonLast	Summer bank holiday (England, Wales and Northern Ireland)
+08/12*	Glorious Twelfth (the start of the Grouse shooting season (cannot fall
+	on a Sunday))
+09/15	Battle of Britain Day
+09/19	Talk Like a Pirate Day
+09/29	Michaelmas (quarter day)
+10/LastSun	British Summer Time ends
+10/21	Trafalgar Day
+10/31	Halloween (All Hollows' Eve)
+11/SunSecond	Remembrance Sunday
+11/05	Guy Fawkes Night
+11/11	Armistice Day
+11/17	Queene's Day
+11/30	St Andrew's Day (Scotland bank holiday ((If falls on the weekend the
+	following Monday is a bank holiday))
+12/24	Christmas Eve
+12/25	Christmas day bank holiday (If falls on the weekend the following
+	Monday is a bank holiday) (quarter day)
+12/26	Boxing day bank holiday (If falls on the weekend the following Monday
+	or Tuesday is a bank holiday)
+12/31	Hogmanay
+Easter-47	Pancake Day (Shrove Tuesday)
+Easter-21	Mothering Sunday
+Easter-2	Good Friday bank holiday
+Easter+0	Easter Sunday
+Easter+1	Easter Monday bank holiday
+
+#endif /* !_calendar_unitedkingdom_ */

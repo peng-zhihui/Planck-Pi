@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+# update grub on first install, so that the alternative init system boot
+# entries get updated
+if [ "$1" = configure ] && [ -z "$2" ] && [ -e /boot/grub/grub.cfg ] && which update-grub >/dev/null 2>&1; then
+    update-grub || true
+fi
+
+

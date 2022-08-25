@@ -1,0 +1,80 @@
+TODO file for gzip.
+
+Some of the planned features include:
+
+- Remove some of the old porting cruft, since we no longer support it.
+
+- Separate out the shell scripts like gzexe into a new little package;
+  these scripts are less used and less reliable and should be optional.
+
+- Internationalize by using gettext and setlocale.
+
+- Structure the sources so that the compression and decompression code
+  form a library usable by any program, and write both gzip and zip on
+  top of this library. This would ideally be a reentrant (thread safe)
+  library, but this would degrade performance. In the meantime, you can
+  look at the sample program zread.c.
+
+  The library should have one mode in which compressed data is sent
+  as soon as input is available, instead of waiting for complete
+  blocks. This can be useful for sending compressed data to/from interactive
+  programs.
+
+- Make it convenient to define alternative user interfaces (in
+  particular for windowing environments).
+
+- Support in-memory compression for arbitrarily large amounts of data
+  (zip currently supports in-memory compression only for a single buffer.)
+
+- Map files in memory when possible, this is generally much faster
+  than read/write. (zip currently maps entire files at once, this
+  should be done in chunks to reduce memory usage.)
+
+- Add a super-fast compression method, suitable for implementing
+  file systems with transparent compression. The lzrw series of algorithms
+  are available at http://www.ross.net/compression/.
+
+- Add a super-tight (but slow) compression method, suitable for long
+  term archives.  See, for example, US Patents 4,286,256 4,295,125
+  4,463,342 4,467,317 4,633,490 4,652,856 4,891,643 4,905,297
+  4,935,882 4,973,961 5,023,611 5,025,258, which have all expired.
+  More recent patent-free techniques may also be available.
+
+  Note: I will introduce new compression methods only if they are
+  significantly better in either speed or compression ratio than the
+  existing method(s). So the total number of different methods should
+  reasonably not exceed 3. (The current 9 compression levels are just
+  tuning parameters for a single method, deflation.)
+
+- Add optional error correction. One problem is that the current version
+  of ecc cannot recover from inserted or missing bytes. It would be
+  nice to recover from the most common error (transfer of a binary
+  file in ascii mode).
+
+- Add a block size (-b) option to improve error recovery in case of
+  failure of a complete sector. Each block could be extracted
+  independently, but this reduces the compression ratio.
+
+  For one possible approach to this, please see:
+
+    https://ozlabs.org/~rusty/gzip.rsync.patch
+
+- Use a larger window size to deal with some large redundant files that
+  'compress' currently handles better than gzip.
+
+- Implement the -e (encrypt) option.
+
+Send comments to <bug-gzip@gnu.org>.
+
+
+========================================================================
+
+Copyright (C) 1999, 2001, 2006, 2009-2018 Free Software Foundation, Inc.
+Copyright (C) 1992, 1993 Jean-loup Gailly
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the ``GNU Free
+Documentation License'' file as part of this distribution.

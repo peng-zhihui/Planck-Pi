@@ -1,0 +1,14 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libnettle.so.6.5
+/usr/share
+/usr/share/doc
+/usr/share/doc/libnettle6
+/usr/share/doc/libnettle6/NEWS.gz
+/usr/share/doc/libnettle6/README
+/usr/share/doc/libnettle6/changelog.Debian.gz
+/usr/share/doc/libnettle6/changelog.gz
+/usr/share/doc/libnettle6/copyright
+/usr/lib/arm-linux-gnueabi/libnettle.so.6

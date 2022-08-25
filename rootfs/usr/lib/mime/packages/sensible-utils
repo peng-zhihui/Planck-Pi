@@ -1,0 +1,1 @@
+text/html; /usr/bin/sensible-browser %s; description=HTML Text; nametemplate=%s.html; priority=6

@@ -1,0 +1,42 @@
+#!/bin/sh -e
+
+delete_if_md5_matches() {
+  local md5
+
+  if [ -e /etc/hosts ]; then
+  md5="$(md5sum /etc/hosts | sed -e 's/ .*//')"
+  case "$md5" in
+    05e70b0d3ac00a2fbc94781871ae9aa8) rm /etc/hosts ;;
+  esac
+  fi
+
+  if [ -e /etc/networks ]; then
+  md5="$(md5sum /etc/networks | sed -e 's/ .*//')"
+  case "$md5" in
+    d013c6de91b961753d4ba901347aa6c8) rm /etc/networks ;;
+  esac
+  fi
+}
+
+case "$1" in
+    remove)
+    ;;
+
+    purge)
+    if [ -d /etc/sysctl.d/ ]; then
+	rm -f /etc/sysctl.d/bindv6only.conf
+	rmdir --ignore-fail-on-non-empty /etc/sysctl.d/
+    fi
+    delete_if_md5_matches
+    ;;
+
+    upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+    ;;
+
+    *)
+    echo "postrm called with unknown argument '$1'" >&2
+    exit 1
+    ;;
+esac
+
+

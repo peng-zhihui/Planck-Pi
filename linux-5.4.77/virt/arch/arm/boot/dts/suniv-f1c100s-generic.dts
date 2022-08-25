@@ -1,0 +1,164 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR X11)
+
+/dts-v1/;
+#include "suniv-f1c100s.dtsi"
+
+/ {
+	model = "Planck Pi";
+	compatible = "allwinner,suniv-f1c200s",
+			 "allwinner,suniv-f1c100s";
+
+	aliases {
+		serial0 = &uart1;
+	};
+
+	chosen {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		ranges;
+
+		stdout-path = "serial0:115200n8";
+	};
+};
+
+&spi0 {
+	status = "okay";
+};
+
+&uart0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart0_pe_pins>;
+	// status = "okay";
+};
+
+&uart1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart1_pa_pins>;
+	status = "okay";
+};
+
+&mmc0 {
+	status = "okay";
+	broken-cd;
+};
+
+&otg_sram {
+	status = "okay";
+};
+
+&usb_otg {
+	dr_mode = "otg"; /* host device */
+	status = "okay";
+};
+
+&usbphy {
+	status = "okay";
+	usb0_id_det-gpios = <&pio 0 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; /* PA1 */
+};
+
+&cedar_ve {
+	status = "okay";
+};
+
+&ion {
+	status = "okay";
+};
+
+&de {
+	status = "okay";
+};
+
+&fe0 {
+	status = "okay";
+};
+
+&be0 {
+	status = "okay";
+};
+
+&tve0 {
+	status = "okay";
+};
+
+&tcon0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&lcd_rgb565_pins>;
+	status = "okay";
+};
+
+&codec {
+	allwinner,audio-routing =
+		"Headphone", "HP",
+		"Headphone", "HPCOM",
+		"LINEIN", "Line In",
+		"FMINL", "Left FM In",
+		"FMINR", "Right FM In",
+		"MIC", "Mic";
+	status = "okay";
+};
+
+&i2c0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&i2c0_pd_pins>;
+	status = "okay";
+
+	ov2640: camera@30 {
+		compatible = "ovti,ov2640";
+		reg = <0x30>;
+		pinctrl-0 = <&clk_out_pins>;
+		pinctrl-names = "default";
+		clocks = <&clk_out>;
+		clock-names = "xvclk";
+		assigned-clocks = <&clk_out>;
+		assigned-clock-rates = <24000000>;
+
+		port {
+			ov2640_ep: endpoint {
+				remote-endpoint = <&csi0_ep>;
+				bus-width = <8>;
+				hsync-active = <0>;
+				vsync-active = <0>;
+				pclk-sample = <1>;
+			};
+		};
+	};
+
+	ov5640: camera@3c {
+		compatible = "ovti,ov5640";
+		reg = <0x3c>;
+		pinctrl-0 = <&clk_out_pins>;
+		pinctrl-names = "default";
+		clocks = <&clk_out>;
+		clock-names = "xclk";
+		assigned-clocks = <&clk_out>;
+		assigned-clock-rates = <24000000>;
+		status = "disabled";
+
+		port {
+			ov5640_ep: endpoint {
+				remote-endpoint = <&csi0_ep>;
+				bus-width = <8>;
+				hsync-active = <0>;
+				vsync-active = <0>;
+				pclk-sample = <1>;
+			};
+		};
+	};
+};
+
+&csi0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&csi0_pins>;
+	packed-format;
+	status = "okay";
+
+	port {
+		csi0_ep: endpoint {
+			remote-endpoint = <&ov2640_ep>;
+			bus-width = <8>;
+			hsync-active = <0>;
+			vsync-active = <0>;
+			pclk-sample = <1>;
+		};
+	};
+};

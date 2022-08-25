@@ -1,0 +1,9 @@
+config VIDEO_SUNXI_CEDAR_ION
+	tristate "Allwinner CedarX Ion Driver"
+	depends on ARCH_SUNXI && OF_ADDRESS && HAS_DMA && MMU
+	select GENERIC_ALLOCATOR
+	select DMA_SHARED_BUFFER
+	select CMA
+	select DMA_CMA
+	help
+	  Allwinner libcdc compatible Ion driver.

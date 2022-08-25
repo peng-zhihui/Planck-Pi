@@ -1,0 +1,12 @@
+/*
+ * Hungarian calendar file(s)
+ *
+ * $FreeBSD: head/usr.bin/calendar/calendars/calendar.hungarian 133833 2004-08-16 09:31:09Z dwmalone $
+ */
+
+#ifndef _calendar_hungarian_
+#define _calendar_hungarian_
+
+#include <hu_HU/calendar.all>
+
+#endif /* !_calendar_hungarian_ */

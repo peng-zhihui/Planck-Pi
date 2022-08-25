@@ -1,0 +1,30 @@
+#!/bin/sh
+set -eu
+if [ "$1" = "upgrade" ]; then
+
+  # Fix up the location of the state files that previous versions used.
+
+  if [ -f /var/state/logrotate/status ]; then
+    if [ -f /var/lib/logrotate/status ]; then
+      rm /var/state/logrotate/status
+    else
+      mkdir -m 755 -p /var/lib/logrotate
+      mv /var/state/logrotate/status /var/lib/logrotate/status
+    fi
+    rm -rf /var/state/logrotate
+  fi
+
+  if [ -f /var/lib/logrotate.status ]; then
+    if [ -f /var/lib/logrotate/status ]; then
+      rm /var/lib/logrotate.status
+    else
+      mkdir -m 755 -p /var/lib/logrotate
+      mv /var/lib/logrotate.status /var/lib/logrotate/status
+    fi
+  fi
+
+fi
+
+
+
+exit 0

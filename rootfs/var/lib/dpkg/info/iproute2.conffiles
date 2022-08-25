@@ -1,0 +1,11 @@
+/etc/iproute2/bpf_pinning
+/etc/iproute2/ematch_map
+/etc/iproute2/group
+/etc/iproute2/nl_protos
+/etc/iproute2/rt_dsfield
+/etc/iproute2/rt_protos
+/etc/iproute2/rt_protos.d/README
+/etc/iproute2/rt_realms
+/etc/iproute2/rt_scopes
+/etc/iproute2/rt_tables
+/etc/iproute2/rt_tables.d/README

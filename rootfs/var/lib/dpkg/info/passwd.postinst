@@ -1,0 +1,53 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+configure)
+    # Fix permissions on various log files from old versions of the debian
+    # installer, some unrelated to passwd but we decided to put the fix
+    # here since there was no better place. This can safely be removed
+    # after etch is released.
+    if dpkg --compare-versions "$2" lt "1:4.0.14-9"; then
+	    for log in /var/log/base-config* \
+		    $(find /var/log/debian-installer/ /var/log/installer/ -type f 2>/dev/null ); do
+		if [ -e "$log" ]; then
+			chmod 600 "$log"
+		fi
+            done
+    fi
+
+    rm -f /etc/pam.d/passwd.pre-upgrade 2>/dev/null
+	if ! getent group shadow | grep -q '^shadow:[^:]*:42'
+	then
+		groupadd -g 42 shadow || (
+    			cat <<EOF
+Group ID 42 has been allocated for the shadow group.  You have either
+used 42 yourself or created a shadow group with a different ID.
+Please correct this problem and reconfigure with ``dpkg --configure passwd''.
+
+Note that both user and group IDs in the range 0-99 are globally
+allocated by the Debian project and must be the same on every Debian
+system.
+EOF
+    			exit 1
+		)
+	fi
+    ;;
+esac
+
+# Run shadowconfig only on new installs
+[ -z "$2" ] && shadowconfig on
+
+# Automatically added by dh_installinit/11.3.5
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-deconfigure" ] || [ "$1" = "abort-remove" ] ; then
+	# In case this system is running systemd, we need to ensure that all
+	# necessary tmpfiles (if any) are created before starting.
+	if [ -d /run/systemd/system ] ; then
+		systemd-tmpfiles --create passwd.conf >/dev/null || true
+	fi
+fi
+# End automatically added section
+
+
+exit 0

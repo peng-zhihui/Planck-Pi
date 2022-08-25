@@ -1,0 +1,25 @@
+#!/bin/sh
+set -e
+
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/ssh/moduli 1:7.9p1-8~ -- "$@"
+# End automatically added section
+
+
+case $1 in
+	purge)
+		# Remove all non-conffiles that ssh might create, so that we
+		# can smoothly remove /etc/ssh if and only if the user
+		# hasn't dropped some other files in there. Conffiles have
+		# already been removed at this point.
+		rm -f /etc/ssh/moduli /etc/ssh/primes
+		rm -f /etc/ssh/ssh_known_hosts /etc/ssh/ssh_known_hosts2
+		[ ! -d /etc/ssh ] || rmdir --ignore-fail-on-non-empty /etc/ssh
+
+		if which delgroup >/dev/null 2>&1; then
+			delgroup --quiet ssh > /dev/null || true
+		fi
+		;;
+esac
+
+exit 0

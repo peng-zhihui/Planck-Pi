@@ -1,0 +1,169 @@
+#!/bin/bash
+# SPDX-License-Identifier: GPL-2.0+
+#
+# Copyright (c) 2009 Greg Kroah-Hartman <greg@kroah.com>
+# Copyright (c) 2009 Randy Dunlap <rdunlap@xenotime.net>
+# Copyright (c) 2009 Frans Pop <elendil@planet.nl>
+
+print_string() {
+	file=$1
+	name=$2
+	if [ -f $file ]; then
+		echo "S:  $name=`cat $file`"
+	fi
+}
+
+class_decode() {
+	local class=$1		# v4: in hex
+
+	case $class in
+	"00") echo ">ifc " ;;
+	"01") echo "audio" ;;
+	"02") echo "commc" ;;
+	"03") echo "HID  " ;;
+	"05") echo "PID  " ;;
+	"06") echo "still" ;;
+	"07") echo "print" ;;
+	"08") echo "stor." ;;
+	"09") echo "hub  " ;;
+	"0a") echo "data " ;;
+	"0b") echo "scard" ;;
+	"0d") echo "c-sec" ;;
+	"0e") echo "video" ;;
+	"0f") echo "perhc" ;;
+	"dc") echo "diagd" ;;
+	"e0") echo "wlcon" ;;
+	"ef") echo "misc " ;;
+	"fe") echo "app. " ;;
+	"ff") echo "vend." ;;
+	"*")  echo "unk. " ;;
+	esac
+}
+
+print_endpoint() {
+	local eppath=$1
+
+	addr=`cat $eppath/bEndpointAddress`
+	attr=`cat $eppath/bmAttributes`
+	dir=`cat $eppath/direction`
+	eptype=`cat $eppath/type`
+	maxps_hex="0x`cat $eppath/wMaxPacketSize`"
+	# Extract MaxPS size (bits 0-10) and multiplicity values (bits 11-12)
+	maxps=`printf "%4i*%s\n" $(($maxps_hex & 0x7ff)) \
+				$((1 + (($maxps_hex >> 11) & 0x3)))`
+	interval=`cat $eppath/interval`
+
+	printf "E:  Ad=%s(%s) Atr=%s(%s) MxPS=%s Ivl=%s\n" \
+		$addr $dir $attr $eptype "$maxps" $interval
+}
+
+print_interface() {
+	local ifpath=$1
+
+	ifnum=`cat $ifpath/bInterfaceNumber`
+	altset=`cat $ifpath/bAlternateSetting`
+	numeps=`cat $ifpath/bNumEndpoints`
+	class=`cat $ifpath/bInterfaceClass`
+	subclass=`cat $ifpath/bInterfaceSubClass`
+	protocol=`cat $ifpath/bInterfaceProtocol`
+	if [ -L $ifpath/driver ]; then		# v4: allow for no driver
+		driver=`readlink $ifpath/driver`
+		driver=`basename "$driver"`
+	else
+		driver="(none)"
+	fi
+	classname=`class_decode $class`
+	printf "I:  If#=%2s Alt=%2i #EPs=%2i Cls=%s(%s) Sub=%s Prot=%s Driver=%s\n" \
+		0x${ifnum#0} ${altset#0} ${numeps#0} $class "$classname" $subclass \
+		$protocol $driver
+
+	for endpoint in $ifpath/ep_??
+	do
+		if [ -L $endpoint ]; then	# v4: verify endpoint exists
+			print_endpoint $endpoint
+		fi
+	done
+}
+
+print_device() {
+	local devpath=$1
+	local parent=$2
+	local level=$3
+	local count=$4
+
+	[ -d $devpath ] || return
+	cd $devpath
+
+	local busnum=`cat busnum`
+	local devnum=`cat devnum`
+
+	if [ $level -gt 0 ]; then
+		port=$((${devpath##*[-.]} - 1))
+	else
+		port=0
+	fi
+	speed=`cat speed`
+	maxchild=`cat maxchild`
+	printf "\nT:  Bus=%02i Lev=%02i Prnt=%02i Port=%02i Cnt=%02i Dev#=%3i Spd=%-3s MxCh=%2i\n" \
+		$busnum $level $parent $port $count $devnum $speed $maxchild
+
+	ver=`cat version`
+	devclass=`cat bDeviceClass`
+	devsubclass=`cat bDeviceSubClass`
+	devprotocol=`cat bDeviceProtocol`
+	maxps0=`cat bMaxPacketSize0`
+	numconfigs=`cat bNumConfigurations`
+	classname=`class_decode $devclass`
+	printf "D:  Ver=%5s Cls=%s(%s) Sub=%s Prot=%s MxPS=%2i #Cfgs=%3i\n" \
+		$ver $devclass "$classname" $devsubclass $devprotocol \
+		$maxps0 $numconfigs
+
+	vendid=`cat idVendor`
+	prodid=`cat idProduct`
+	revmajor=`cat bcdDevice | cut -c 1-2`
+	revminor=`cat bcdDevice | cut -c 3-4`
+	printf "P:  Vendor=%s ProdID=%s Rev=%s.%s\n" \
+		$vendid $prodid $revmajor $revminor
+
+	print_string manufacturer "Manufacturer"
+	print_string product Product
+	print_string serial SerialNumber
+
+	numifs=`cat bNumInterfaces`
+	cfgnum=`cat bConfigurationValue`
+	attr=`cat bmAttributes`
+	maxpower=`cat bMaxPower`
+	printf "C:  #Ifs=%2i Cfg#=%2i Atr=%s MxPwr=%s\n" \
+		$numifs $cfgnum $attr $maxpower
+
+	# There's not really any useful info in endpoint 00
+	#print_endpoint $devpath/ep_00
+
+	for interface in $busnum-*:?.*
+	do
+		print_interface $devpath/$interface
+	done
+
+	local devcount=0
+	for subdev in $busnum-*
+	do
+		echo "$subdev" | grep -Eq "^$busnum-[0-9]+(\.[0-9]+)*$" \
+			|| continue
+
+		devcount=$(($devcount + 1))
+		if [ -d $devpath/$subdev ]; then
+			print_device $devpath/$subdev \
+				$devnum $(($level +1)) $devcount
+		fi
+	done
+}
+
+if [ ! -d /sys/bus ]; then
+	echo "Error: directory /sys/bus does not exist; is sysfs mounted?" >&2
+	exit 1
+fi
+
+for device in /sys/bus/usb/devices/usb*
+do
+	print_device $device 0 0 0
+done

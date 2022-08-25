@@ -1,0 +1,87 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: vixie-cron
+Upstream-Contact: Paul Vixie <paul@vix.com>
+Source:
+ The original source for this package could be obtained from 
+ ftp://ftp.vix.com/pub/vixie/cron-3.0, although that link appears to have gone
+ down.
+
+Files: *
+Copyright: 1988, 1990, 1993, 1994, Paul Vixie <paul@vix.com>
+           1994, Ian Jackson <ian@davenant.greenend.org.uk>
+           1996-2005, Steve Greenland <stevegr@debian.org>
+           2005-2014, Javier Fernández-Sanguino Peña <jfs@debian.org>
+           2010-2016, Christian Kastner <ckk@debian.org>
+           Numerous contributions via the Debian BTS copyright their respective authors
+License: Paul-Vixie's-license
+
+Files: database.c
+Copyright: 1988, 1990, 1993, 1994 Paul Vixie <paul@vix.com>
+           1996-2005, Steve Greenland <stevegr@debian.org>
+           2003, Clint Adams <schizo@debian.org>
+           2010-2011, Christian Kastner <ckk@debian.org>
+           2011, Red Hat, Inc.
+License: Paul-Vixie's-license and GPL-2+ and ISC
+
+Files: debian/examples/cron-stats.pl
+Copyright: 2006, Javier Fernández-Sanguino Peña <jfs@debian.org>
+License: GPL-2+
+
+Files: debian/examples/cron-tasks-review.sh
+Copyright: 2011, Javier Fernández-Sanguino Peña <jfs@debian.org>
+License: GPL-2+
+
+Files: debian/examples/crontab2english.pl
+Copyright: 2001, Sean M. Burke
+License: Artistic
+
+License: Paul-Vixie's-license
+ Distribute freely, except: don't remove my name from the source or
+ documentation (don't take credit for my work), mark your changes (don't
+ get me blamed for your possible bugs), don't alter or remove this
+ notice.  May be sold if buildable source is provided to buyer.  No
+ warranty of any kind, express or implied, is included with this
+ software; use at your own risk, responsibility for damages (if any) to
+ anyone resulting from the use of this software rests entirely with the
+ user.
+
+License: GPL-2+
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+
+License: Artistic
+ This program is free software; you can redistribute it and/or modify it
+ under the terms of the "Artistic License" which comes with Debian.
+ .
+ THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR IMPLIED
+ WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES
+ OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+ .
+ On Debian systems, the complete text of the Artistic License
+ can be found in "/usr/share/common-licenses/Artistic".
+
+License: ISC
+ Permission to use, copy, modify, and distribute this software for any 
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND ISC DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS.  IN NO EVENT SHALL ISC BE LIABLE FOR 
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT 
+ OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.

@@ -1,0 +1,47 @@
+/* European Union history
+ * submitted by Nicolas Évrard <nicoe@wanadoo.be>
+ */
+
+#ifndef _calendar_eu_
+#define _calendar_eu_
+
+LANG=utf-8
+
+01 Jan	Creation of the Benelux (BElgium, the NEtherlands, LUXemburg), 1948
+01 Jan	United Kingdom, Denmark and Ireland enter in the EEC, 1973
+01 Jan	Greece enters the EEC, 1981
+01 Jan	Spain and Portugal join the EEC, 1982
+01 Jan	EEC becomes the EC by Maastricht's Treaty, 1993
+01 Jan	Austria, Finland and Sweden join the EC, 1995
+01 Jan	European Monetary Union between 11 countries of the EC (Denmark, United
+	Kingdom and Sweden refuse it, Greece does not match the criteria), 1999
+01 Jan	Greece enters the European Monetary Union, 2001
+01 Jan	Euro becomes fiduciary, 2002
+19 Feb	Shengen's Agreement signed, 1990
+18 Feb	Signing of the European Sole Deed, 1986
+13 Mar	Creation of the ECU (European Community Currency), 1979
+16 Mar	First european demonstration in Bruxelles, 1997
+21 Mar	W. Churchill proposes a European Council, 1943
+25 Mar	Belgium, France, Germany, Italy, Luxemburg and the Netherlands sign the
+	Rome's treaty founding the EEC and the Euratom, 1957
+08 Apr	Treaty on the fusion between the EEC, the CECA and the Euratom, 1965
+08 Apr	Meeting of the Ministers of Finances on the European Currency, 1995
+18 Apr	Paris' treaty instituting the CECA (an idea of R. Schuman), 1951
+24 Apr	European Monetary System founded, 1972
+05 May	Creation of the European Council, 1949
+20 May	Benelux proposes the Common Market, 1954
+27 May	European Community of Defense signed in Paris, 1952
+29 May	European Flag first appearance, 1986
+01 Jun	Summit of Messine, Foreign Ministers talk about the Common Market, 1955
+10 Jun	First election of the European Parliament, 1979
+01 Jul	Customs Union on some agricultural products, 1968
+01 Jul	Extension of the Customs Union, 1977
+01 Jul	Sole Market launched in EEC, 1981
+25 Jul	Belgo-luxemburger economical union, 1921
+05 Aug	European Monetary Agreement signed, 1955
+19 Sep	W. Churchill's speech suggesting United States of Europe, 1946
+23 Oct	UEO signed in Paris (military cooperation), 1954
+25 Oct	Creation of the PESC (military and security policy), 1998
+03 Dec	The ECU becomes the euro (€), 1995
+
+#endif /* _calendar_eu_ */

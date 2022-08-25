@@ -1,0 +1,59 @@
+The following options were used to configure sudo for Debian GNU/Linux.
+
+  --with-all-insults
+
+	Include all the insults in the binary, won't be enabled unless turned
+	on in the sudoers file.
+
+  --with-devel
+
+	Force flex and bison runs on each build.
+
+  --with-pam 
+	
+	Support for pluggable authentication modules.
+
+  --with-fqdn 
+
+	Allow use of fully qualified domain names in the sudoers file.
+
+  --with-logging=syslog
+  --with-logfac=authpriv 
+
+	Where logging information goes.
+
+  --with-env-editor 
+  --with-editor=/usr/bin/editor
+
+	Honor the EDITOR and VISUAL environment variables.  If they are not
+	present, default to the preferred systemwide default editor.
+
+  --with-timeout=15 
+  --with-password-timeout=0 
+  --with-passprompt="[sudo] password for %p: "
+
+	Allow 15 minutes before a user has to re-type their passord, versus
+	the sudo usual default of 5.  Never time out while waiting for a
+	password to be typed, this is important to Debian package developers 
+	using 'dpkg-buildpackage -rsudo'.  Make it clear which password is 
+	requested.
+
+  --disable-root-mailer
+
+	Send mail as the invoking user, not as root.
+
+  --with-sendmail=/usr/sbin/sendmail
+
+	Use Debian policy to know the location of sendmail instead of trying 
+	to detect it at build time.
+
+  --with-timedir=/var/lib/sudo
+  --mandir=/usr/share/man
+  --libexecdir=/usr/lib/sudo
+
+	Comply with Debian policy on suitable paths.
+
+  --with-ldap
+
+	Support for LDAP authentication, in the sudo-ldap package version only.
+

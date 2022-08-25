@@ -1,0 +1,15 @@
+# idlelib images
+libpython3.7-stdlib binary: image-file-in-usr-lib
+
+# license file referred by the standard library
+libpython3.7-stdlib binary: extra-license-file
+
+# template files
+libpython3.7-stdlib binary: interpreter-not-absolute usr/lib/python3.7/venv/scripts/posix/pydoc #!__VENV_PYTHON__
+libpython3.7-stdlib binary: unusual-interpreter usr/lib/python3.7/venv/scripts/posix/pydoc #!__VENV_PYTHON__
+
+# the split is the reason for that
+libpython3.7-stdlib binary: python-script-but-no-python-dep
+
+# lintian omission, multiarch string is encoded in the filename
+libpython3.7-stdlib binary: arch-dependent-file-not-in-arch-specific-directory

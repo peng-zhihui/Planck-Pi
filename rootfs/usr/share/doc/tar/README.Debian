@@ -1,0 +1,15 @@
+The options -Z, --compress, and --uncompress all require that there be a
+'compress' utility installed on the system.  If there is no compress installed
+on your system, you will get errors if you try to use these options to tar.  
+
+While the algorithm used by compress was originally encumbered by patents, 
+enough time has passed that 'ncompress' is now available in Debian main.
+
+- - - - -
+
+The tar upstream developers prefer to document using the 'info' format, but 
+unfortunately the info docs are under a license Debian considers non-free.  If
+you want the full, canonical documentation for tar and not just the man page
+that upstream provides as a courtesy to users, you might want to install the
+tar-doc package which can be found in Debian non-free.  Alternatively, you
+can find the tar doc online at https://www.gnu.org/software/tar/manual/

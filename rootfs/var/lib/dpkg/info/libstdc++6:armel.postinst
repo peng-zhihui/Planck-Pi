@@ -1,0 +1,18 @@
+#! /bin/sh -e
+
+case "$1" in
+    configure)
+	docdir=/usr/share/doc/libstdc++6
+	if [ -d $docdir ] && [ ! -h $docdir ]; then
+	    rm -rf $docdir
+	    ln -s gcc-8-base $docdir
+	fi
+
+	if [ -n "$2" ] && [ -d /usr/share/gcc-4.9 ] && dpkg --compare-versions "$2" lt 5.1.1-10; then
+	    find /usr/share/gcc-4.9/python -name __pycache__ -type d -print0 | xargs -r0 rm -rf
+	    find /usr/share/gcc-4.9/python -name '*.py[co]' -type f -print0 | xargs -r0 rm -f
+	    find /usr/share/gcc-4.9 -empty -delete 2>/dev/null || true
+	fi
+esac
+
+

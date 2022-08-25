@@ -1,0 +1,13 @@
+#!/bin/sh
+# Causes a task to be selected if the machine appears to be a laptop.
+
+if [ "$NEW_INSTALL" ]; then
+	if which laptop-detect >/dev/null 2>&1 && \
+		laptop-detect; then
+		exit 0 # hide; install
+	else
+		exit 1 # hide; do not install
+	fi
+else
+	exit 3
+fi

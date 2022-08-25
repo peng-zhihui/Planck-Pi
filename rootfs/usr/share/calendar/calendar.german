@@ -1,0 +1,12 @@
+/*
+ * German calendar file(s)
+ *
+ * $FreeBSD: head/usr.bin/calendar/calendars/calendar.german 78049 2001-06-11 04:24:43Z ache $
+ */
+
+#ifndef _calendar_german_
+#define _calendar_german_
+
+#include <de_DE/calendar.all>
+
+#endif /* !_calendar_german_ */

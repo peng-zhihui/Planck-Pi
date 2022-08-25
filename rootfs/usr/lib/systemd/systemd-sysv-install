@@ -1,0 +1,56 @@
+#!/bin/sh
+# This script is called by "systemctl enable/disable" when the given unit is a
+# SysV init.d script. It needs to call the distribution's mechanism for
+# enabling/disabling those, such as chkconfig, update-rc.d, or similar. This
+# can optionally take a --root argument for enabling a SysV init script
+# in a chroot or similar.
+set -eu
+
+usage() {
+    echo "Usage: $0 [--root=path] enable|disable|is-enabled <sysv script name>" >&2
+    exit 1
+}
+
+ROOT=
+
+# parse options
+eval set -- "$(getopt -o r: --long root: -- "$@")"
+while true; do
+    case "$1" in
+        -r|--root)
+            ROOT="$2"
+            shift 2 ;;
+        --) shift ; break ;;
+        *) usage ;;
+    esac
+done
+
+NAME="${2:-}"
+
+run() {
+    if [ -n "$ROOT" ] && [ "$ROOT" != "/" ]; then
+        _SKIP_SYSTEMD_NATIVE=1 chroot "$ROOT" /usr/sbin/update-rc.d "$@"
+    else
+        _SKIP_SYSTEMD_NATIVE=1 /usr/sbin/update-rc.d "$@"
+    fi
+}
+
+[ -n "$NAME" ] || usage
+
+case "$1" in
+    enable)
+        # call the command to enable SysV init script $NAME here..
+        run "$NAME" defaults
+        run "$NAME" enable
+        ;;
+    disable)
+        run "$NAME" defaults
+        run "$NAME" disable
+        ;;
+    is-enabled)
+        # exit with 0 if $NAME is enabled, non-zero if it is disabled
+        ls "$ROOT"/etc/rc[S5].d/S??"$NAME" >/dev/null 2>&1
+        ;;
+    *)
+        usage ;;
+esac

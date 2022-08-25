@@ -1,0 +1,46 @@
+#!/bin/sh
+# See deb-postinst(5).
+
+set -e
+
+# Create the database files if they don't already exist
+create_database() {
+    admindir=${DPKG_ADMINDIR:-/var/lib/dpkg}
+
+    for file in diversions statoverride status; do
+	if [ ! -f "$admindir/$file" ]; then
+	    touch "$admindir/$file"
+	fi
+    done
+}
+
+
+# Create log file and set default permissions if possible
+create_logfile() {
+    logfile=$DPKG_ROOT/var/log/dpkg.log
+
+    if [ ! -f "$logfile" ]; then
+        touch "$logfile"
+        chmod 644 "$logfile"
+        chown root:root "$logfile" 2>/dev/null || chown 0:0 "$logfile"
+    fi
+}
+
+
+case "$1" in
+    configure)
+	create_database
+	create_logfile
+	;;
+
+    abort-upgrade|abort-deconfigure|abort-remove)
+	;;
+
+    *)
+	echo "$0 called with unknown argument '$1'" 1>&2
+	exit 1
+	;;
+esac
+
+
+exit 0

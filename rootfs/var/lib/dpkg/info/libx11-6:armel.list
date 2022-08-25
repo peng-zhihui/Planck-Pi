@@ -1,0 +1,17 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libX11.so.6.3.0
+/usr/share
+/usr/share/doc
+/usr/share/doc/libx11-6
+/usr/share/doc/libx11-6/NEWS.Debian.gz
+/usr/share/doc/libx11-6/NEWS.gz
+/usr/share/doc/libx11-6/changelog.Debian.gz
+/usr/share/doc/libx11-6/changelog.gz
+/usr/share/doc/libx11-6/copyright
+/usr/share/lintian
+/usr/share/lintian/overrides
+/usr/share/lintian/overrides/libx11-6
+/usr/lib/arm-linux-gnueabi/libX11.so.6

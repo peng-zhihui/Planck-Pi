@@ -1,0 +1,84 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: haveged
+Source: http://www.issihosts.com/haveged/
+
+Files: *
+Copyright: 2009-2014 Gary Wuertz <gary@issiweb.com>
+License: GPL-3+
+
+Files: debian/*
+Copyright: 2009-2012 Steve Kostecke <steve@debian.org>
+           2011-2014 Jérémy Bobbio <lunar@debian.org>
+License: GPL-3+
+
+Files: src/havege.c src/havege.h
+       src/havegecollect.c src/havegecollect.h
+       src/haveged.c
+       src/havegetune.c
+Copyright: 2009-2014 Gary Wuertz <gary@issiweb.com>
+           2011-2012 BenEleventh Consulting manolson@beneleventh.com
+License: GPL-3+
+
+Files: src/havegetest.c
+       src/havegetest.h
+Copyright: 2014 Gary Wuertz <gary@issiweb.com>
+           2012 BenEleventh Consulting manolson@beneleventh.com
+License: GPL-3+
+
+Files: src/cpuid-43.h
+Copyright: 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
+License: GPL-3+
+
+Files: contrib/diags/data_prep.c
+Copyright: 2009-2011 Gary Wuertz <gary@issiweb.com>
+                2011 BenEleventh Consulting <manolson@beneleventh.com>
+License: GPL-3+
+
+Files: init.d/sysv.lsb init.d/sysv.redhat
+Copyright: 2011-2012 Gary Wuertz <gary@issiweb.com>
+           2011-2012 Jirka Hladky <hladky_dot_jiri_at_gmail_com>
+License: GPL-3+
+
+Files: nist/dfft.c
+Copyright: Public Domain
+License: public-domain
+ As the original fortran libraries are public domain, the C Fourier
+ routines in this file are hereby released to the public domain as
+ well.
+
+Files: nist/mconf.h
+Copyright: 1984, 1987, 1989, 1995 Stephen L. Moshier
+License: permissive-mconf
+ Some software in this archive may be from the book _Methods and
+ Programs for Mathematical Functions_ (Prentice-Hall or Simon & Schuster
+ International, 1989) or from the Cephes Mathematical Library, a
+ commercial product. In either event, it is copyrighted by the author.
+ What you see here may be used freely but it comes with no support or
+ guarantee.
+
+Files: nist/packtest.c
+Copyright: 1999 National Institute Of Standards & Technology
+License: permissive-nist
+ Permission to use, copy, and modify this software without
+ fee is hereby granted, provided that this entire notice is
+ included in all copies of any software which is or includes
+ a copy or modification of this software and in all copies
+ of the supporting documentation for such software.
+
+License: GPL-3+
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this package; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License can be found in `/usr/share/common-licenses/GPL-3'.

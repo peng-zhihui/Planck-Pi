@@ -1,0 +1,13 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libiptc.so.0.0.0
+/usr/share
+/usr/share/doc
+/usr/share/doc/libiptc0
+/usr/share/doc/libiptc0/NEWS.Debian.gz
+/usr/share/doc/libiptc0/changelog.Debian.gz
+/usr/share/doc/libiptc0/changelog.gz
+/usr/share/doc/libiptc0/copyright
+/usr/lib/arm-linux-gnueabi/libiptc.so.0

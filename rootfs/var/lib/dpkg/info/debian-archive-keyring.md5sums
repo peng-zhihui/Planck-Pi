@@ -1,0 +1,14 @@
+22b35891d08900545c4f319a970a49d1  usr/share/doc/debian-archive-keyring/README
+1afd49a6acdc06f1c6fe15d887af2230  usr/share/doc/debian-archive-keyring/changelog.gz
+3a39527c50bc61e28a31bd9c3de8e17f  usr/share/doc/debian-archive-keyring/copyright
+f5b8d048d75e0ba9a964c28daa0757cf  usr/share/keyrings/debian-archive-bullseye-automatic.gpg
+b6b2ad2c894ecfe479981fd0eadc1c92  usr/share/keyrings/debian-archive-bullseye-security-automatic.gpg
+045a5096301163f4b172d226e9d4dbb8  usr/share/keyrings/debian-archive-bullseye-stable.gpg
+9e93d0a43d3a60272034c15900e9df6f  usr/share/keyrings/debian-archive-buster-automatic.gpg
+f2d1b03b7a3c279ec66425d06aaab50f  usr/share/keyrings/debian-archive-buster-security-automatic.gpg
+4797ff6df738da65413ef710cf73936f  usr/share/keyrings/debian-archive-buster-stable.gpg
+b75c1d06cb97992028b8ad79b137c456  usr/share/keyrings/debian-archive-keyring.gpg
+79ca644da0b3fc190066904297fa70cc  usr/share/keyrings/debian-archive-removed-keys.gpg
+f8ca9f176f6a5747e113f62220671e0b  usr/share/keyrings/debian-archive-stretch-automatic.gpg
+986449e3c1ed5c157686f0166411b829  usr/share/keyrings/debian-archive-stretch-security-automatic.gpg
+67fa5396fa0900c0abd1058d98d9247e  usr/share/keyrings/debian-archive-stretch-stable.gpg

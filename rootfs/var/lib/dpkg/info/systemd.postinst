@@ -1,0 +1,195 @@
+#! /bin/sh
+
+set -e
+
+_systemctl() {
+    if [ -d /run/systemd/system ]; then
+        systemctl "$@"
+    fi
+}
+
+_update_catalog() {
+    journalctl --update-catalog || true
+}
+
+# Update Message Catalogs database and reload in response to dpkg triggers
+if [ "$1" = "triggered" ]; then
+    shift
+    for trigger in "$@"; do
+        case $trigger in
+            /usr/lib/systemd/catalog)
+                _update_catalog
+                ;;
+            /etc/init.d)
+                _systemctl daemon-reload || true
+                ;;
+        esac
+    done
+    exit 0
+fi
+
+# Enable getty and remote-fs.target by default on new installs
+if [ -z "$2" ]; then
+    systemctl enable getty@tty1.service || true
+    systemctl enable remote-fs.target || true
+fi
+
+# Enable timesyncd by default on new installs installs and upgrades
+if dpkg --compare-versions "$2" lt "218-11~"; then
+    systemctl enable systemd-timesyncd.service || true
+fi
+
+# Enable ondemand by default on new installs installs and upgrades
+if [ -e /lib/systemd/system/ondemand.service ] && dpkg --compare-versions "$2" lt "231-7~"; then
+    systemctl enable ondemand.service || true
+fi
+
+# Do a one-time migration of the local time setting
+if [ -z "$2" ]; then
+    if [ -f /etc/default/rcS ]; then
+        . /etc/default/rcS
+    fi
+    if [ "$UTC" = "no" ] && [ ! -e /etc/adjtime ]; then
+        printf "0.0 0 0.0\n0\nLOCAL\n" > /etc/adjtime
+    fi
+fi
+
+# Do a one-time migration of the TMPTIME setting
+if [ -z "$2" ]; then
+    if [ -f /etc/default/rcS ]; then
+        . /etc/default/rcS
+    fi
+    if [ ! -e /etc/tmpfiles.d/tmp.conf ]; then
+        case "$TMPTIME" in
+            -*|infinite|infinity)
+                cat > /etc/tmpfiles.d/tmp.conf <<EOF
+# Avoid clearing /tmp by shipping an empty /etc/tmpfiles.d/tmp.conf file
+# which overrides /usr/lib/tmpfiles.d/tmp.conf.
+# This file was automatically created because of local modifications in
+# /etc/default/rcS where TMPTIME was set to infinite.
+EOF
+                ;;
+        esac
+    fi
+fi
+
+# Do a one-time migration of the RAMTMP setting
+if [ -z "$2" ]; then
+    if [ -f /etc/default/rcS ]; then
+        . /etc/default/rcS
+    fi
+    if [ -f /etc/default/tmpfs ]; then
+        . /etc/default/tmpfs
+    fi
+    if [ "$RAMTMP" = "yes" ]; then
+        # systemctl enable will work even when systemd is not the active PID 1.
+        if [ ! -e /etc/systemd/system/tmp.mount ]; then
+            cp /usr/share/systemd/tmp.mount /etc/systemd/system/tmp.mount
+            systemctl enable tmp.mount || true
+        fi
+    fi
+fi
+
+# Create /etc/machine-id
+systemd-machine-id-setup
+
+# Setup system users and groups
+addgroup --quiet --system systemd-journal
+
+# We need to stop running services before we call adduser
+RESTART=""
+if dpkg --compare-versions "$2" lt-nl "239-6"; then
+    for s in systemd-networkd systemd-timesyncd systemd-resolved ; do
+        if _systemctl -q is-active $s; then
+            _systemctl stop $s
+            RESTART="$s $RESTART"
+        fi
+    done
+fi
+
+adduser --quiet --system --group --no-create-home --home /run/systemd \
+    --gecos "systemd Time Synchronization" systemd-timesync
+adduser --quiet --system --group --no-create-home --home /run/systemd \
+    --gecos "systemd Network Management" systemd-network
+adduser --quiet --system --group --no-create-home --home /run/systemd \
+    --gecos "systemd Resolver" systemd-resolve
+
+# Remove old state directory of systemd-timesyncd
+if dpkg --compare-versions "$2" lt-nl "240-3~"; then
+    if [ -L /var/lib/systemd/timesync ] ; then
+        rm /var/lib/systemd/timesync
+        rm -rf /var/lib/private/systemd/timesync
+    fi
+fi
+
+# Initial update of the Message Catalogs database
+_update_catalog
+
+if [ -n "$2" ]; then
+    _systemctl daemon-reexec || true
+    # don't restart logind; this can be done again once this gets implemented:
+    # https://github.com/systemd/systemd/issues/1163
+    _systemctl try-restart systemd-networkd.service || true
+    _systemctl try-restart systemd-resolved.service || true
+    _systemctl try-restart systemd-timesyncd.service || true
+    _systemctl try-restart systemd-journald.service || true
+fi
+
+# Restart services which we stopped earlier
+# This needs to run after daemon-rexec
+if dpkg --compare-versions "$2" lt-nl "239-6"; then
+    for s in $RESTART ; do
+        _systemctl start $s
+    done
+fi
+
+# Cleanup hwclock-save.service, which was shipped in jessie.
+if dpkg --compare-versions "$2" lt-nl "228-5~"; then
+   for t in reboot halt poweroff ; do
+       rm -f /etc/systemd/system/${t}.target.wants/hwclock-save.service
+       rmdir --ignore-fail-on-non-empty /etc/systemd/system/${t}.target.wants 2> /dev/null || true
+   done
+fi
+
+if dpkg --compare-versions "$2" lt-nl "235-3~"; then
+    # systemd-bus-proxyd got dropped before stretch, and never created any file
+    deluser --system systemd-bus-proxy || true
+fi
+
+if dpkg --compare-versions "$2" lt-nl "236-1~"; then
+    # Clean up old /var/lib/systemd/clock on upgrade.
+    # The clock file used by systemd-timesyncd is now stored in
+    # StateDirectory=systemd/timesync.
+    rm -f /var/lib/systemd/clock
+fi
+
+if dpkg --compare-versions "$2" lt-nl "239-12~"; then
+    # clean up bogus "nobody" group from #912525; ensure that it's a system group
+    if getent group nobody >/dev/null; then
+        delgroup --system nobody || true
+    fi
+fi
+
+# Automatically added by dh_installinit/12.1.1
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-deconfigure" ] || [ "$1" = "abort-remove" ] ; then
+	# In case this system is running systemd, we need to ensure that all
+	# necessary tmpfiles (if any) are created before starting.
+	if [ -d /run/systemd/system ] ; then
+		systemd-tmpfiles --create debian.conf home.conf journal-nocow.conf legacy.conf systemd-nologin.conf systemd.conf tmp.conf var.conf x11.conf >/dev/null || true
+	fi
+fi
+# End automatically added section
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/X11/xinit/xinitrc.d/50-systemd-user.sh 228-3\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/systemd/bootchart.conf 230-1\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.hostname1.conf 233-3\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.locale1.conf 233-3\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.login1.conf 233-3\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.machine1.conf 228-5\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.network1.conf 233-3\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.resolve1.conf 233-3\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.systemd1.conf 233-3\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.timedate1.conf 233-3\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/dbus-1/system.d/org.freedesktop.systemd-shim.conf 239-15\~ systemd-shim -- "$@"
+# End automatically added section
+

@@ -1,0 +1,10 @@
+
+- If you want to view Chinese text and see garbage on the screen, you can try
+  to set the environment variable "LESSCHARSET" to "utf-8" before running
+  less, e.g. "export LESSCHARSET=utf-8" or "setenv LESSCHARSET utf8" for
+  c-shells.
+ 
+- When an editor is invoked, the default for Debian's less is to fall back
+  to "/usr/bin/editor" if neither VISUAL nor EDITOR is defined in the
+  environment.
+

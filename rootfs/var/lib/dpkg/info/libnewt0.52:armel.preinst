@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+
+rm -f /etc/newt/palette*
+
+# Cleanup broken alternatives. See #868056
+update-alternatives --quiet --remove-all newt-palette >/dev/null 2>&1 || true
+
+
+
+exit 0
+~

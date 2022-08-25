@@ -1,0 +1,41 @@
+/*
+ * Observances in Thailand
+ */
+
+#ifndef _calendar_thai_
+#define _calendar_thai_
+
+LANG=UTF-8
+
+/* National Observances */
+01/SatSecond	National Children's Day (วันเด็กแห่งชาติ) in Thailand
+01/14	National Forest Conservation Day (วันอนุรักษ์ทรัพยากรป่าไม้ของชาติ) in Thailand
+01/16	Teacher's Day (วันครู) in Thailand
+01/18	Elephant Dual Day (วันยุทธหัตถี) in Thailand
+01/18	Royal Thai Armed Forces Day (วันกองทัพไทย) in Thailand
+02/02	Inventor's Day (วันนักประดิษฐ์) in Thailand
+02/03	Veterans' Day (วันทหารผ่านศึก) in Thailand
+02/24	National Artist Day (วันศิลปินแห่งชาติ) in Thailand
+03/31	King Nangklao Memorial Day (วันที่ระลึกพระบาทสมเด็จพระนั่งเกล้าเจ้าอยู่หัว) in Thailand
+04/01	Civil Service Day (วันข้าราชการพลเรือน) in Thailand
+04/02	Thai Heritage Conservation Day (วันอนุรักษ์มรดกไทย) in Thailand
+04/30	Consumer Protection Day (วันคุ้มครองผู้บริโภค) in Thailand
+06/26	Sunthorn Phu Day (วันสุนทรภู่) in Thailand
+07/29	National Thai Language Day (วันภาษาไทยแห่งชาติ) in Thailand
+08/18	National Science Day (วันวิทยาศาสตร์แห่งชาติ) in Thailand
+09/20	National Youth Day (วันเยาวชนแห่งชาติ) in Thailand
+09/24	Mahidol Day (วันมหิดล) in Thailand
+10/13	National Police Day (วันตำรวจ) in Thailand
+10/21	National Nurses' Day (วันพยาบางแห่งชาติ) in Thailand
+11/25	Vajiravudh Day (วันวชิราวุธ) in Thailand
+12/01	Damrong Rajanubhab Day (วันดำรงราชานุภาพ) in Thailand
+12/04	Thai Environment Day (วันสิ่งแวดล้อมไทย) in Thailand
+12/16	National Sports Day (วันกีฬาแห่งชาติ) in Thailand
+12/28	King Taksin Memorial Day (วันสมเด็จพระเจ้าตากสินมหาราช) in Thailand
+
+/* Other observances */
+02/02	National Agriculture Day (วันเกษตรแห่งชาติ) in Thailand
+07/01	National Scout Day (วันลูกเสือแห่งชาติ) in Thailand
+07/01	Mid-year Bank Holiday (วันหยุดกลางปีธนาคาร) in Thailand
+
+#endif /* !_calendar_thai_ */

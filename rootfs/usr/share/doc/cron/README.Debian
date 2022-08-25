@@ -1,0 +1,41 @@
+cron for DEBIAN
+----------------------
+
+This is the Debian GNU/Linux prepackaged and heavily modified version
+of Paul Vixie's cron subsystem.
+
+Debian's cron development is being done on Alioth:
+http://anonscm.debian.org/gitweb/?p=pkg-cron/cron.git
+
+This package was put together by Ian Jackson <iwj10@cus.cam.ac.uk>,
+from the standard sources to 3.0pl1, as posted to comp.sources.unix.
+Ian obtained them from
+src.doc.ic.ac.uk:/usenet/comp.sources.unix/volume27/vixie-cron.
+
+Debian's cron version introduces a significant number of changes:
+    * Support for /etc/cron.d   (drop-in dir for package crontabs)
+    * Debian-specific file locations and commands
+    * PAM support
+    * SELinux support
+    * auditlog support
+    * DST and other time-related changes/fixes
+    * SGID crontab(1) instead of SUID root
+    * numerous other smaller features and fixes.
+
+Users are STRONGLY advised to carefully check the man pages crontab(1)
+and crontab(5). System administrators should also read cron(8).
+
+File locations that are different than that indicated in 
+the cron distributions README:
+
+user crontabs: /var/spool/cron/crontabs/*
+log file:      Check your syslog settings, facility "cron"
+allow file:    /etc/cron.allow
+deny file:     /etc/cron.deny
+
+This package is now maintained by Javier Fernández-Sanguino Peña
+<jfs@debian.org> and Christian Kastner <ckk@debian.org>
+
+Historical note: The old subversion repository from before the
+migration to git can be found here:
+ http://svn.debian.org/wsvn/pkg-cron

@@ -1,0 +1,8 @@
+config VIDEO_SUNXI_CEDAR_VE
+	tristate "Allwinner CedarX VideoEngine Driver"
+    select DMA_SHARED_BUFFER
+	---help---
+	  This is the driver for sunxi video decoder, including h264/
+	  mpeg4/mpeg2/vc1/rmvb.
+	  To compile this driver as a module, choose M here: the
+	  module will be called cedar_dev.

@@ -1,0 +1,12 @@
+/*
+ * Croatian calendar files
+ *
+ * $FreeBSD: head/usr.bin/calendar/calendars/calendar.croatian 78049 2001-06-11 04:24:43Z ache $
+ */
+
+#ifndef _calendar_croatian_
+#define _calendar_croatian_
+
+#include <hr_HR/calendar.all>
+
+#endif /* !_calendar_croatian_ */

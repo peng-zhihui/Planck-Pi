@@ -1,0 +1,39 @@
+Perl Packages for Debian
+========================
+
+  perl             - Larry Wall's Practical Extracting and Report Language.
+  perl-base        - The Pathologically Eclectic Rubbish Lister.
+  perl-doc         - Perl documentation.
+  perl-debug       - Debug-enabled Perl interpreter.
+  libperl5.28      - Shared Perl library.
+  perl-modules-5.28 - Architecture independent core Perl modules.
+  libperl-dev      - Perl library: development files.
+
+To provide a minimal working perl, the ``perl-base'' package provides
+the /usr/bin/perl binary plus a basic set of libraries.
+
+The remainder of the application is included in the perl, perl-modules-5.28
+and perl-doc packages.
+
+See the 'README.source' file in the perl source package for information
+on building the package.
+
+perl-suid removed
+=================
+
+suidperl was removed upstream with 5.12, so the perl-suid package which
+used to be distributed in Debian has been removed too. Possible alternatives
+include using a simple setuid C wrapper to execute a perl script from a
+hard-coded location, or using a more general tool like sudo.
+
+Credits
+-------
+
+Previous maintainers of Debian Perl packages:
+
+  Ray Dassen <jdassen@WI.LeidenUniv.NL>,
+  Carl Streeter <streeter@cae.wisc.edu>,
+  Robert Sanders <Robert.Sanders@linux.org> and
+  Darren Stalder <torin@daft.com>.
+
+ -- Brendan O'Dea <bod@debian.org>  Tue,  8 Mar 2005 19:30:38 +1100

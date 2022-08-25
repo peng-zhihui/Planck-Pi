@@ -1,0 +1,40 @@
+#  SPDX-License-Identifier: LGPL-2.1+
+#
+#  This file is part of systemd.
+#
+#  systemd is free software; you can redistribute it and/or modify it
+#  under the terms of the GNU Lesser General Public License as published by
+#  the Free Software Foundation; either version 2.1 of the License, or
+#  (at your option) any later version.
+
+prefix=/usr
+systemdutildir=/lib/systemd
+systemdsystemunitdir=/lib/systemd/system
+systemdsystempresetdir=/lib/systemd/system-preset
+systemduserunitdir=/usr/lib/systemd/user
+systemduserpresetdir=/usr/lib/systemd/user-preset
+systemdsystemconfdir=/etc/systemd/system
+systemduserconfdir=/etc/systemd/user
+systemdsystemunitpath=${systemdsystemconfdir}:/etc/systemd/system:/run/systemd/system:/usr/local/lib/systemd/system:${systemdsystemunitdir}:/usr/lib/systemd/system:/lib/systemd/system
+systemduserunitpath=${systemduserconfdir}:/etc/systemd/user:/run/systemd/user:/usr/local/lib/systemd/user:/usr/local/share/systemd/user:${systemduserunitdir}:/usr/lib/systemd/user:/usr/share/systemd/user
+systemdsystemgeneratordir=/lib/systemd/system-generators
+systemdusergeneratordir=/usr/lib/systemd/user-generators
+systemdsleepdir=/lib/systemd/system-sleep
+systemdshutdowndir=/lib/systemd/system-shutdown
+tmpfilesdir=/usr/lib/tmpfiles.d
+sysusersdir=/usr/lib/sysusers.d
+sysctldir=/usr/lib/sysctl.d
+binfmtdir=/usr/lib/binfmt.d
+modulesloaddir=/usr/lib/modules-load.d
+catalogdir=/usr/lib/systemd/catalog
+systemuidmax=999
+systemgidmax=999
+dynamicuidmin=61184
+dynamicuidmax=65519
+containeruidbasemin=524288
+containeruidbasemax=1878982656
+
+Name: systemd
+Description: systemd System and Service Manager
+URL: https://www.freedesktop.org/wiki/Software/systemd
+Version: 241

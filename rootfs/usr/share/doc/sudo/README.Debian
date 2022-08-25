@@ -1,0 +1,56 @@
+The version of sudo that ships with Debian by default resets the
+environment, as described by the "env_reset" flag in the sudoers file.
+
+This implies that all environment variables are removed, except for
+LOGNAME, PATH, SHELL, TERM, DISPLAY, XAUTHORITY, XAUTHORIZATION, XAPPLRESDIR, 
+XFILESEARCHPATH, XUSERFILESEARCHPATH, LANG, LANGUAGE, LC_*, and USER.
+
+In case you want sudo to preserve more environment variables, you must
+specify the env_keep variable in the sudoers file. You should edit the
+sudoers file using the visudo tool.
+
+Examples:
+Preserve the default variables plus the EDITOR variable:
+
+    Defaults env_keep+="EDITOR"
+
+Preserve the default variables plus all variables starting with LC_:
+
+    Defaults env_keep+="LC_*"
+
+	- - - - -
+
+If you're using the sudo-ldap package, note that it is now configured to 
+look for /etc/sudo-ldap.conf.  Depending on your system configuration, it
+probably makes sense for this to be a symlink to /etc/ldap.conf, or perhaps
+to /etc/libnss-ldap.conf or /etc/pam_ldap.conf.  By default, no symlink or
+file is provided, you'll need to decide what to do and create a suitable
+file before sudo-ldap will work.
+
+	- - - - -
+
+As of version 1.7, sudo-ldap now requires the LDAP source to be specified
+in /etc/nsswitch.conf with a line like:
+
+  sudoers:	ldap
+
+	- - - - -
+
+Note that the support for the sss provider (libsss_sudo.so) that allows sudo
+to use SSSD as a cache for policies stored in LDAP is included in the sudo 
+package, not in the sudo-ldap package.  I have some hope that this turns out 
+to be a better overall solution for using sudo with LDAP, as the sudo-ldap 
+package is difficult to maintain and I'd love to be able to eliminate it!
+
+	- - - - -
+
+See the file OPTIONS in this directory for more information on the sudo
+build options used in building the Debian package.
+
+	- - - - -
+
+If you're having trouble grasping the fundamental idea of what sudo is all
+about, here's a succinct and humorous take on it...   
+
+	http://www.xkcd.com/c149.html
+

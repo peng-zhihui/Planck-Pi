@@ -1,0 +1,12 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/liblognorm.so.5.1.0
+/usr/share
+/usr/share/doc
+/usr/share/doc/liblognorm5
+/usr/share/doc/liblognorm5/changelog.Debian.gz
+/usr/share/doc/liblognorm5/changelog.gz
+/usr/share/doc/liblognorm5/copyright
+/usr/lib/arm-linux-gnueabi/liblognorm.so.5

@@ -1,0 +1,91 @@
+#!/bin/sh -e
+
+# adapted from postinst
+chrooted() {
+  if [ "$(stat -c %d/%i /)" = "$(stat -Lc %d/%i /proc/1/root 2>/dev/null)" ];
+  then
+    return 1
+  fi
+  return 0
+}
+
+check_kernel_features() {
+  # skip the check if udev is not already active
+  [ -d /run/udev/ ] || return 0
+
+  if [ -e /proc/kallsyms ]; then
+
+  local needed_symbols='inotify_init signalfd accept4 open_by_handle_at timerfd_create epoll_create'
+  for symbol in $needed_symbols; do
+    if ! egrep -q "^[a-fA-F0-9]+ T \.?sys_${symbol}$" /proc/kallsyms; then
+      cat <<END
+Since release 198, udev requires support for the following features in
+the running kernel:
+
+- inotify(2)            (CONFIG_INOTIFY_USER)
+- signalfd(2)           (CONFIG_SIGNALFD)
+- accept4(2)
+- open_by_handle_at(2)  (CONFIG_FHANDLE)
+- timerfd_create(2)     (CONFIG_TIMERFD)
+- epoll_create(2)       (CONFIG_EPOLL)
+END
+      exit 1
+    fi
+  done
+
+  fi
+
+  if ! grep -q '[[:space:]]devtmpfs$' /proc/filesystems; then
+    cat <<END
+Since release 176, udev requires support for the following features in
+the running kernel:
+
+- devtmpfs         (CONFIG_DEVTMPFS)
+END
+    exit 1
+  fi
+
+  if [ -d /sys/class/mem/null -a ! -L /sys/class/mem/null ] ||
+     [ -e /sys/block -a ! -e /sys/class/block ]; then
+    cat <<END
+The currently running kernel has the CONFIG_SYSFS_DEPRECATED option
+enabled, which is incompatible with udev.
+END
+    exit 1
+  fi
+}
+
+check_version() {
+  # $2 is non-empty when installing from the "config-files" state
+  [ -n "$2" ] || return 0
+
+  if dpkg --compare-versions $2 lt 204-4; then
+    # these must be checked first to allow aborting before changing anything
+    if chrooted; then
+      echo 'Running in a chroot, skipping the kernel versions checks!'
+    else
+      check_kernel_features
+      # suppress errors when the new rules files contain options not supported by
+      # the old daemon
+      udevadm control --log-priority=0 || true
+    fi
+  fi # 204-4
+}
+
+case "$1" in
+    install|upgrade|abort-upgrade)
+    check_version "$@"
+    ;;
+esac
+
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/init.d/udev-finish 226-1\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/udev-finish.conf 226-1\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/udev-fallback-graphics.conf 226-1\~ -- "$@"
+dpkg-maintscript-helper symlink_to_dir /usr/share/doc/udev libudev1 221-2\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/modprobe.d/fbdev-blacklist.conf 229-6\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/udev.conf 233-1\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/udevmonitor.conf 233-1\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/init/udevtrigger.conf 233-1\~ -- "$@"
+# End automatically added section
+

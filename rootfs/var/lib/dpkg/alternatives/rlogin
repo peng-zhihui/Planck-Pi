@@ -1,0 +1,9 @@
+auto
+/usr/bin/rlogin
+rlogin.1.gz
+/usr/share/man/man1/rlogin.1.gz
+
+/usr/bin/slogin
+20
+/usr/share/man/man1/slogin.1.gz
+

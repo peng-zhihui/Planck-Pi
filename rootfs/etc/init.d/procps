@@ -1,0 +1,34 @@
+#! /bin/sh
+# kFreeBSD do not accept scripts as interpreters, using #!/bin/sh and sourcing.
+if [ true != "$INIT_D_SCRIPT_SOURCED" ] ; then
+    set "$0" "$@"; INIT_D_SCRIPT_SOURCED=true . /lib/init/init-d-script
+fi
+### BEGIN INIT INFO
+# Provides:          procps
+# Required-Start:    mountkernfs $local_fs
+# Required-Stop:
+# Should-Start:      udev module-init-tools
+# X-Start-Before:    $network
+# Default-Start:     S
+# Default-Stop:
+# Short-Description: Configure kernel parameters at boottime
+# Description:  Loads kernel parameters that are specified in /etc/sysctl.conf
+### END INIT INFO
+#
+# written by Elrond <Elrond@Wunder-Nett.org>
+
+DESC="Setting kernel variables"
+DAEMON=/sbin/sysctl
+PIDFILE=none
+
+# Comment this out for sysctl to print every item changed
+QUIET_SYSCTL="-q"
+
+do_start_cmd() {
+	STATUS=0
+	$DAEMON $QUIET_SYSCTL --system || STATUS=$?
+	return $STATUS
+}
+
+do_stop() { return 0; }
+do_status() { return 0; }

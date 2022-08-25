@@ -1,0 +1,167 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: AppArmor
+Upstream-Contact: apparmor@lists.ubuntu.com
+Source: https://launchpad.net/apparmor
+
+Files: *
+Copyright: 1998-2010 Novell/SuSE/Immunix
+           2008-2014 Canonical Ltd.
+License: GPL-2+
+
+Files: changehat/pam_apparmor/*
+Copyright: 2006 SUSE Linux Products GmbH, Nuernberg, Germany
+           2002, 2003, 2004 SuSE GmbH Nuernberg, Germany
+           2002-2006 Novell/SuSE
+           2010 Canonical Ltd.
+License: BSD-3-clause or GPL-2+
+
+Files: changehat/mod_apparmor/*
+Copyright: 2004-2006 Novell
+           2014 Canonical Ltd.
+License: LGPL-2.1+
+
+Files: libraries/libapparmor/* parser/libapparmor_re/*
+Copyright: 1999-2008 Novell
+           2009-2013 Canonical Ltd.
+License: LGPL-2.1+
+
+Files: profiles/apparmor.d/abstractions/mysql
+Copyright: 2002-2006 Novell/SUSE
+           2013 Christian Boltz
+License: GPL-2
+
+Files: profiles/apparmor.d/usr.sbin.dnsmasq
+Copyright: 2009 John Dong <jdong@ubuntu.com>
+           2010 Canonical Ltd.
+License: GPL-2
+
+Files: profiles/apparmor.d/sbin.syslog-ng
+Copyright: 2006-2009 Novell/SUSE
+           2006 Christian Boltz
+           2010 Canonical Ltd.
+License: GPL-2
+
+Files: profiles/apparmor.d/usr.lib.dovecot.*
+Copyright: 2013 Christian Boltz
+License: GPL-2
+
+Files: profiles/apparmor.d/usr.lib.dovecot.auth
+Copyright: 2013 Christian Boltz
+           2014 Christian Wittmer
+License: GPL-2
+
+Files: profiles/apparmor.d/usr.lib.dovecot.deliver
+Copyright: 2009 Dulmandakh Sukhbaatar <dulmandakh@gmail.com>
+           2009-2014 Canonical Ltd.
+           2011-2013 Christian Boltz
+License: GPL-2
+
+Files: profiles/apparmor.d/usr.lib.dovecot.dovecot-auth
+Copyright: 2009-2013 Canonical Ltd.
+           2013 Christian Boltz
+License: GPL-2
+
+Files: profiles/apparmor.d/usr.lib.dovecot.imap profiles/apparmor.d/usr.lib.dovecot.pop3
+Copyright: 2009-2010 Canonical Ltd.
+           2011-2013 Christian Boltz
+License: GPL-2
+
+Files: profiles/apparmor.d/usr.lib.dovecot.imap-login profiles/apparmor.d/usr.lib.dovecot.pop3-login
+Copyright: 2009-2011 Canonical Ltd.
+           2013 Christian Boltz
+License: GPL-2
+
+Files: profiles/apparmor.d/usr.lib.dovecot.managesieve
+Copyright: 2013 Christian Boltz
+           2014 Christian Wittmer
+License: GPL-2
+
+Files: profiles/apparmor.d/usr.lib.dovecot.managesieve-login
+Copyright: 2009 Dulmandakh Sukhbaatar <dulmandakh@gmail.com>
+           2009-2011 Canonical Ltd.
+           2013 Christian Boltz
+           2014 Christian Wittmer
+License: GPL-2
+
+Files: profiles/apparmor/profiles/extras/usr.bin.mlmmj-make-ml.sh
+Copyright: 2002-2005 Novell/SUSE
+License: GPL-2
+
+Files: profiles/apparmor/profiles/extras/usr.bin.passwd
+Copyright: 2006 Volker Kuhlmann
+License: GPL-2
+
+Files: debian/*
+Copyright: 2007-2011 Canonical Ltd.
+License: GPL-2
+
+License: BSD-3-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+ 1. Redistributions of source code must retain any existing copyright
+    notice, and this entire permission notice in its entirety,
+    including the disclaimer of warranties.
+ .
+ 2. Redistributions in binary form must reproduce all prior and current
+    copyright notices, this list of conditions, and the following
+    disclaimer in the documentation and/or other materials provided
+    with the distribution.
+ .
+ 3. The name of any author may not be used to endorse or promote
+    products derived from this software without their specific prior
+    written permission.
+
+License: GPL-2
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; version 2 of the License.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License can be found in `/usr/share/common-licenses/GPL-2'.
+
+License: GPL-2+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License can be found in `/usr/share/common-licenses/GPL-2'.
+
+License: LGPL-2.1+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License can be found in `/usr/share/common-licenses/LGPL-2.1'.

@@ -1,0 +1,30 @@
+#!/bin/sh
+set -eu
+if [ "$1" = "purge" ]; then
+  rm -rf /var/lib/logrotate
+fi
+
+# Automatically added by dh_installsystemd/11.3.5
+if [ -d /run/systemd/system ]; then
+	systemctl --system daemon-reload >/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_installsystemd/11.3.5
+if [ "$1" = "remove" ]; then
+	if [ -x "/usr/bin/deb-systemd-helper" ]; then
+		deb-systemd-helper mask 'logrotate.timer' >/dev/null || true
+	fi
+fi
+
+if [ "$1" = "purge" ]; then
+	if [ -x "/usr/bin/deb-systemd-helper" ]; then
+		deb-systemd-helper purge 'logrotate.timer' >/dev/null || true
+		deb-systemd-helper unmask 'logrotate.timer' >/dev/null || true
+	fi
+fi
+# End automatically added section
+
+
+exit 0
+
+

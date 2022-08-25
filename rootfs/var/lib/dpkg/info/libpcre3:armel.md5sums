@@ -1,0 +1,10 @@
+3666acc042a3d9971d33ea5f11a73bba  lib/arm-linux-gnueabi/libpcre.so.3.13.3
+0bd21492601b6abd4aac0b70e566548f  usr/lib/arm-linux-gnueabi/libpcreposix.so.3.13.3
+6243b14c0d5f5cbbfe60a79f7a02cd39  usr/share/doc/libpcre3/AUTHORS
+0ea2c3402bf60d0973f2ae9feae84bbb  usr/share/doc/libpcre3/NEWS.gz
+9b5e25428ca3db7b1361d23fcf8a8645  usr/share/doc/libpcre3/README.Debian
+34e24fc18ff2c4206c683296d3d0430d  usr/share/doc/libpcre3/README.gz
+4230f07c100116800dc0d6b0e891882a  usr/share/doc/libpcre3/changelog.Debian.gz
+806991f4b2c2216624e72f035c3d97ce  usr/share/doc/libpcre3/changelog.gz
+b74684cdd7069616a57aa29cb658da63  usr/share/doc/libpcre3/copyright
+8fef8d0d78968f4d60cde4848385b7e8  usr/share/man/man3/pcrepattern.3.gz

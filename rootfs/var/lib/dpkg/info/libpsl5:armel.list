@@ -1,0 +1,12 @@
+/.
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libpsl.so.5.3.1
+/usr/share
+/usr/share/doc
+/usr/share/doc/libpsl5
+/usr/share/doc/libpsl5/changelog.Debian.gz
+/usr/share/doc/libpsl5/changelog.gz
+/usr/share/doc/libpsl5/copyright
+/usr/lib/arm-linux-gnueabi/libpsl.so.5

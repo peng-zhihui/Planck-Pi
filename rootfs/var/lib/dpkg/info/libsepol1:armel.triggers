@@ -1,0 +1,2 @@
+# Triggers added by dh_makeshlibs/11.3.2
+activate-noawait ldconfig

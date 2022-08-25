@@ -1,0 +1,92 @@
+Mawk -- an implementation of new/posix awk
+version 1.3.2
+
+Installation instructions in file INSTALL.
+
+Bug reports, comments, questions, etc. to 
+Mike Brennan, brennan@whidbey.com.
+ftp site: ftp.whidbey.net in ~/pub/brennan
+
+Version 1.3 implements a new internal design for arrays. See file
+CHANGES.
+
+Version 1.2.2 is best for MsDOS
+---------------------------------------------------------
+
+Changes from version 1.1.4 to 1.2:
+
+1) Limit on code size set by #define in sizes.h is gone.
+
+2) A number of obscure bugs have been fixed such as,
+   you can now make a recursive function call inside a for( i in A) loop.
+   Function calls with array parameters in loop expressions sometimes
+   generated erroneous internal code.
+
+   See RCS log comments in code for details.
+
+   Reported bugs are fixed.
+
+3) new -W options
+
+
+   -We file   :  reads commands from file and next argument, regardless
+	      of form, is ARGV[1].  Useful  for passing -v , -f etc to
+	      an awk program started with #!/.../mawk
+
+
+      #!/usr/local/bin/mawk -We
+
+      myprogram -v   works, while
+
+      #!/usr/local/bin/mawk -f
+
+      myprogram -v    gives error message
+	  mawk: option -v lacks argument 
+
+      This is really a posix bozo.  Posix says you end arguments with
+      -- , but this doesn't work with the #! convention.
+
+
+
+   -W interactive :  forces stdout to be unbuffered and stdin to
+	be line buffered.  Records from stdin are lines regardless of
+	the value of RS.  Useful for interaction with a mawk on a pipe.
+
+   -W dump, -Wd   :  disassembles internal code to stdout (used to be
+       stderr) and exits 0.
+
+4)  FS = "" causes each record to be broken into characters and placed
+     into $1,$2 ...
+
+     same with split(x,A,"") and split(x,A,//)
+
+
+5)  print > "/dev/stdout"  writes to stdout, exactly the same as
+    print
+    
+    This is useful for passing stdout to
+
+    function my_special_output_routine(s, file)
+    {
+	# do something fancy with s 
+	print s > file
+    }
+
+
+6) New built-in function fflush() -- copied from the lastest att awk.
+
+      fflush() : flushes stdout  and returns 0
+      fflush(file)  flushes file and returns 0; if file was not an
+      open output file then returns -1.
+
+7)  delete  A ;  -- removes all elements of the array A
+
+    intended to replace:
+
+	 for( i in A) delete A[i] 
+
+8)  mawk errors such as compilation failure, file open failure, etc.
+    now exit 2 which reserves exit 1 for the user.
+
+9)  No program now silently exits 0, prior behavior was to exit 2 with
+    an error message

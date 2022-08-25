@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+
+slave () {
+	dir=$1 filename=$2 target=$3
+	echo "--slave $dir/$filename $filename $dir/$target"
+}
+
+update-alternatives --install /usr/bin/lzma lzma /usr/bin/xz 20 $(
+	slave /usr/share/man/man1 lzma.1.gz xz.1.gz
+	slave /usr/bin unlzma unxz
+	slave /usr/share/man/man1 unlzma.1.gz unxz.1.gz
+	for util in cat more less diff cmp grep egrep fgrep
+	do
+		slave /usr/bin lz$util xz$util
+		slave /usr/share/man/man1 lz$util.1.gz xz$util.1.gz
+	done
+)
+

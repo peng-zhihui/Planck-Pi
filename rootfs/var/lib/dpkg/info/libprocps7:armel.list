@@ -1,0 +1,13 @@
+/.
+/lib
+/lib/arm-linux-gnueabi
+/lib/arm-linux-gnueabi/libprocps.so.7.1.0
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libprocps7
+/usr/share/doc/libprocps7/NEWS.Debian.gz
+/usr/share/doc/libprocps7/changelog.Debian.gz
+/usr/share/doc/libprocps7/changelog.gz
+/usr/share/doc/libprocps7/copyright
+/lib/arm-linux-gnueabi/libprocps.so.7

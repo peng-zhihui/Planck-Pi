@@ -1,0 +1,30 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = configure ]; then
+    # If we have setcap is installed, try setting cap_net_raw+ep,
+    # which allows us to install our binaries without the setuid
+    # bit.
+    if command -v setcap > /dev/null; then
+        if setcap cap_net_raw+ep /bin/ping; then
+            chmod u-s /bin/ping
+        else
+            echo "Setcap failed on /bin/ping, falling back to setuid" >&2
+            chmod u+s /bin/ping
+        fi
+    else
+        echo "Setcap is not installed, falling back to setuid" >&2
+        chmod u+s /bin/ping
+    fi
+fi
+
+
+
+exit 0
+
+# Local variables:
+# mode: shell-script
+# tab-width: 4
+# indent-tabs-mode: nil
+# end:

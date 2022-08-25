@@ -1,0 +1,8 @@
+#! /bin/sh -e
+
+case "$1" in
+    purge)
+	rm -f /etc/inputrc
+esac
+
+

@@ -1,0 +1,207 @@
+#!/bin/sh
+
+. /usr/share/debconf/confmodule
+
+set -e
+
+package_name()
+{
+    echo $(basename $0 .postinst)
+}
+
+# element() is a helper function for file-rc:
+element() {
+    local element list IFS
+
+    element="$1"
+
+    [ "$2" = "in" ] && shift
+    list="$2"
+    [ "$list" = "-" ] && return 1
+    [ "$list" = "*" ] && return 0
+
+    IFS=","
+    set -- $list
+    case $element in
+	"$1"|"$2"|"$3"|"$4"|"$5"|"$6"|"$7"|"$8"|"$9")
+	    return 0
+    esac
+    return 1
+}
+
+# filerc (runlevel, service) returns /etc/init.d/service, if service is
+# running in $runlevel:
+filerc() {
+    local runlevel basename
+    runlevel=$1
+    basename=$2
+    while read LINE
+    do
+	case $LINE in
+	    \#*|"") continue
+	esac
+
+	set -- $LINE
+	SORT_NO="$1"; STOP="$2"; START="$3"; CMD="$4"
+	[ "$CMD" = "/etc/init.d/$basename" ] || continue
+
+	if element "$runlevel" in "$START" || element "S" in "$START"
+	then
+	    echo "/etc/init.d/$basename"
+	    return 0
+	fi
+    done < /etc/runlevel.conf
+    echo ""
+}
+
+if [ "$1" = "configure" ]
+then
+    if [ ! -z "$2" ]; then
+	if dpkg --compare-versions "$2" lt 1.0.1g-2; then
+            echo -n "Checking for services that may need to be restarted..."
+            check="amanda-server anon-proxy apache2 apache-ssl"
+            check="$check apf-firewall asterisk bacula-director-common"
+            check="$check bacula-fd bacula-sd bind9 bip boinc-client"
+            check="$check boxbackup-client boxbackup-server bozo cfengine2"
+            check="$check cfengine3 citadel-server clamav-daemon clamav-freshclam"
+            check="$check clamcour collectd-core conserver-server courier-imap-ssl"
+            check="$check courier-mta-ssl courier-pop-ssl cyrus21-imapd"
+            check="$check cyrus21-pop3d cyrus-common cyrus-imspd dovecot-core"
+            check="$check ejabberd exim4 fetchmail freeradius ftpd-ssl gatling"
+            check="$check globus-gatekeeper inn inn2 libapache-mod-ssl lighttpd lldpd"
+            check="$check lwresd monit myproxy-server nagios-nrpe-server nginx-common"
+            check="$check ntp openntpd openssh-server openvpn partimage-server"
+            check="$check postfix postgresql-7.4 postgresql-8.0 postgresql-8.1"
+            check="$check postgresql-8.2 postgresql-9.1 postgresql-9.2 postgresql-9.3"
+            check="$check proftpd proftpd-ldap proftpd-basic"
+            check="$check proftpd-mysql proftpd-pgsql racoon sendmail slapd"
+            check="$check spamassassin ssh-nonfree stunnel4 syslog-ng tor unbound"
+            check="$check vsftpd"
+            # Only get the ones that are installed, and configured
+            check=$(dpkg -s $check 2> /dev/null | egrep '^Package:|^Status:' | awk '{if ($1 ~ /^Package:/) { package=$2 } else if ($0 ~ /^Status: .* installed$/) { print package }}')
+            # init script rewrites
+            check=$(echo $check | sed "
+                    # The name of proftpd-{ldap,mysql,pgsql,basic} init script is
+                    # same as "proftpd".
+                    s/proftpd-.*/proftpd/g;
+                    # dovecot-core ships its init script, but the
+                    # script name is dovecot for dovecot-{imapd,pop3d}.
+                    s/dovecot-core/dovecot/g;
+                    # openssh-server's init script it called ssh
+                    s/openssh-server/ssh/g;
+                    # bacula-director-common's init is bacula-director
+                    s/bacula-director-common/bacula-director/g;
+                    # citadel server
+                    s/citadel-server/citadel/g;
+                    # collectd
+                    s/collectd-core/collectd/g;
+                    # cyrus
+                    s/cyrus-common/cyrus-imapd/g;
+                    # nginx
+                    s/nginx-common/nginx/g;
+              ")
+            echo "done."
+	fi
+	if dpkg --compare-versions "$2" lt 1.0.1g-3; then
+            echo -n "Checking for services that may need to be restarted..."
+            check2="chef chef-expander chef-server-api"
+            check2="$check2 chef-solr pound postgresql-common"
+            check2="$check2 prosody puppet puppetmaster snmpd"
+
+            # Only get the ones that are installed, and configured
+            check2=$(dpkg -s $check2 2> /dev/null | egrep '^Package:|^Status:' | awk '{if ($1 ~ /^Package:/) { package=$2 } else if ($0 ~ /^Status: .* installed$/) { print package }}')
+            # init script rewrites
+            check2=$(echo $check2 | sed -r "
+                    s/chef\s/chef-client/g;
+                    s/chef-server-api/chef-server/g;
+                    s/postgresql-common/postgresql/g;
+              ")
+            echo "done."
+            if [ -n "$check2" ]; then
+                check="$check $check2"
+            fi
+       fi
+
+       if [ -n "$check" ]; then
+            db_version 2.0
+	    echo "Checking init scripts..."
+	    for service in $check; do
+		if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
+		   idl=$(ls /etc/init.d/${service} 2> /dev/null | head -n 1)
+		   if [ -n "$idl" ] && [ -x $idl ]; then
+			services="$service $services"
+		   else
+			echo "WARNING: init script for $service not found."
+		   fi
+		else
+		    if [ -f /usr/share/file-rc/rc ] || [ -f /usr/lib/file-rc/rc ] && [ -f /etc/runlevel.conf ]; then
+
+			idl=$(filerc $rl $service)
+		    else
+			idl=$(ls /etc/rc${rl}.d/S??${service} 2> /dev/null | head -n 1)
+		    fi
+		    if [ -n "$idl" ] && [ -x $idl ]; then
+		        services="$service $services"
+		    fi
+		fi
+	    done
+	    if [ -n "$services" ]; then
+		db_input critical libraries/restart-without-asking || true
+		db_go || true
+		db_get libraries/restart-without-asking
+		if [ "x$RET" != xtrue ]; then
+			db_reset libssl1.1/restart-services
+			db_set libssl1.1/restart-services "$services"
+			db_input critical libssl1.1/restart-services || true
+			db_go || true
+			db_get libssl1.1/restart-services
+
+			if [ "x$RET" != "x" ]
+			then
+				services=$RET
+				answer=yes
+			else
+				answer=no
+			fi
+		else
+			answer=yes
+		fi
+		echo
+		if [ "$answer" = yes ] && [ "$services" != "" ]; then
+		    echo "Restarting services possibly affected by the upgrade:"
+		    failed=""
+		    rl=$(runlevel | sed 's/.*\ //')
+		    for service in $services; do
+			if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
+			    idl="invoke-rc.d ${service}"
+			elif [ -f /usr/share/file-rc/rc ] || [ -f /usr/lib/file-rc/rc ] && [ -f /etc/runlevel.conf ]; then
+			    idl=$(filerc $rl $service)
+			else
+			    idl=$(ls /etc/rc${rl}.d/S??${service} 2> /dev/null | head -n 1)
+			fi
+
+			if ! $idl restart; then
+			    failed="$service $failed"
+			fi
+		    done
+		    echo
+		    if [ -n "$failed" ]; then
+			db_subst libssl1.1/restart-failed services "$failed"
+			db_input critical libssl1.1/restart-failed || true
+			db_go || true
+		    else
+			echo "Services restarted successfully."
+		    fi
+		    echo
+		fi
+	    else
+		echo "Nothing to restart."
+	    fi
+	    # Shut down the frontend, to make sure none of the
+	    # restarted services keep a connection open to it
+	    db_stop
+	fi # end upgrading and $2 lt 0.9.8c-2
+    fi # Upgrading
+fi
+
+

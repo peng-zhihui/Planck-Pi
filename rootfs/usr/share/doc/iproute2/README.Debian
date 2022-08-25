@@ -1,0 +1,7 @@
+iproute2 for Debian
+------------------
+
+If you want use tc with the atm based queue you have to install libatm1 first.
+Same applies to the tc filter action ipt which needs iptables installed.
+
+ -- Alexander Wirt <formorer@debian.org>  Fri, 28 Dec 2007 11:56:28 +0100

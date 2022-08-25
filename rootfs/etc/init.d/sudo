@@ -1,0 +1,44 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:          sudo
+# Required-Start:    $local_fs $remote_fs
+# Required-Stop:
+# X-Start-Before:    rmnologin
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: Provide limited super user privileges to specific users
+# Description: Provide limited super user privileges to specific users.
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+N=/etc/init.d/sudo
+
+set -e
+
+case "$1" in
+  start)
+	# make sure privileges don't persist across reboots
+	# if the /run/sudo directory doesn't exist, let's create it with the
+	# correct permissions and SELinux label
+	if [ -d /run/sudo ]
+	then
+                find /run/sudo -exec touch -d @0 '{}' \;
+	else
+		mkdir /run/sudo /run/sudo/ts
+		chown root:root /run/sudo /run/sudo/ts
+		chmod 0711 /run/sudo
+		chmod 0700 /run/sudo/ts
+		[ -x /sbin/restorecon ] && /sbin/restorecon /run/sudo /run/sudo/ts
+	fi
+	;;
+  stop|reload|restart|force-reload|status)
+	;;
+  *)
+	echo "Usage: $N {start|stop|restart|force-reload|status}" >&2
+	exit 1
+	;;
+esac
+
+exit 0

@@ -1,0 +1,122 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          dbus
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: D-Bus systemwide message bus
+# Description:       D-Bus is a simple interprocess messaging system, used
+#                    for sending messages between applications.
+### END INIT INFO
+# -*- coding: utf-8 -*-
+# Debian init.d script for D-BUS
+# Copyright © 2003 Colin Walters <walters@debian.org>
+# Copyright © 2005 Sjoerd Simons <sjoerd@debian.org>
+
+set -e
+
+DAEMON=/usr/bin/dbus-daemon
+UUIDGEN=/usr/bin/dbus-uuidgen
+UUIDGEN_OPTS=--ensure
+NAME=dbus
+DAEMONUSER=messagebus
+PIDDIR=/var/run/dbus
+PIDFILE=$PIDDIR/pid
+DESC="system message bus"
+
+test -x $DAEMON || exit 0
+
+. /lib/lsb/init-functions
+
+# Source defaults file; edit that file to configure this script.
+PARAMS=""
+if [ -e /etc/default/dbus ]; then
+  . /etc/default/dbus
+fi
+
+create_machineid() {
+  # Create machine-id file
+  if [ -x $UUIDGEN ]; then
+    $UUIDGEN $UUIDGEN_OPTS
+  fi
+}
+
+start_it_up()
+{
+  if [ ! -d $PIDDIR ]; then
+    mkdir -p $PIDDIR
+    chown $DAEMONUSER $PIDDIR
+    chgrp $DAEMONUSER $PIDDIR
+  fi
+
+  if ! mountpoint -q /proc/ ; then
+    log_failure_msg "Can't start $DESC - /proc is not mounted"
+    return
+  fi
+
+  if [ -e $PIDFILE ]; then
+    if $0 status > /dev/null ; then
+      log_success_msg "$DESC already started; not starting."
+      return
+    else
+      log_success_msg "Removing stale PID file $PIDFILE."
+      rm -f $PIDFILE
+    fi
+  fi
+
+  create_machineid
+
+  log_daemon_msg "Starting $DESC" "$NAME"
+  start-stop-daemon --start --quiet --pidfile $PIDFILE \
+    --exec $DAEMON -- --system $PARAMS
+  log_end_msg $?
+}
+
+shut_it_down()
+{
+  log_daemon_msg "Stopping $DESC" "$NAME"
+  start-stop-daemon --stop --retry 5 --quiet --oknodo --pidfile $PIDFILE \
+    --user $DAEMONUSER
+  # We no longer include these arguments so that start-stop-daemon
+  # can do its job even given that we may have been upgraded.
+  # We rely on the pidfile being sanely managed
+  # --exec $DAEMON -- --system $PARAMS
+  log_end_msg $?
+  rm -f $PIDFILE
+}
+
+reload_it()
+{
+  create_machineid
+  log_action_begin_msg "Reloading $DESC config"
+  dbus-send --print-reply --system --type=method_call \
+            --dest=org.freedesktop.DBus \
+            / org.freedesktop.DBus.ReloadConfig > /dev/null
+  # hopefully this is enough time for dbus to reload it's config file.
+  log_action_end_msg $?
+}
+
+case "$1" in
+  start)
+    start_it_up
+  ;;
+  stop)
+    shut_it_down
+  ;;
+  reload|force-reload)
+    reload_it
+  ;;
+  restart)
+    shut_it_down
+    start_it_up
+  ;;
+  status)
+    status_of_proc -p $PIDFILE $DAEMON $NAME && exit 0 || exit $?
+    ;;
+  *)
+    echo "Usage: /etc/init.d/$NAME {start|stop|reload|restart|force-reload|status}" >&2
+    exit 2
+  ;;
+esac
+

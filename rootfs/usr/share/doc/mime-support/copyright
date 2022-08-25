@@ -1,0 +1,27 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: git://anonscm.debian.org/collab-maint/mime-support.git
+
+Files: *
+Copyright: public-domain
+License: ad-hoc
+ This package was written by Brian White <bcwhite@pobox.com> and others.
+ It contains public information compiled from around the 'net and many people.
+ .
+ The "update-mime" program was written by Brian White and has been
+ placed in the public domain.
+
+Files: mailcap.man
+Copyright: (c) 1991 Bell Communications Research, Inc. (Bellcore)
+License: Bellcore
+ Permission to use, copy, modify, and distribute this material 
+ for any purpose and without fee is hereby granted, provided 
+ that the above copyright notice and this permission notice 
+ appear in all copies, and that the name of Bellcore not be 
+ used in advertising or publicity pertaining to this 
+ material without the specific, prior written permission 
+ of an authorized representative of Bellcore.  BELLCORE 
+ MAKES NO REPRESENTATIONS ABOUT THE ACCURACY OR SUITABILITY 
+ OF THIS MATERIAL FOR ANY PURPOSE.  IT IS PROVIDED "AS IS", 
+ WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES.
+Comment: Author: Nathaniel S. Borenstein
+

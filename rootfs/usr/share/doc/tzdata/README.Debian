@@ -1,0 +1,25 @@
+README for tzdata
+-----------------
+
+This package contains data required for the implementation of
+standard local time for many representative locations around the
+globe.
+
+Two different versions are provided:
+- The "posix" version is based on the Coordinated Universal Time (UTC).
+- The "right" version is based on the International Atomic Time (TAI),
+  and it includes the leap seconds.
+
+Most systems have their hardware clock set either to UTC, or to a 
+timezone with a fixed difference with UTC. Therefore the default 
+version provided by this package is the "posix" one.
+
+The TZDIR environment variable, when used together with the TZ one, 
+forces the system to use one of the two versions. Examples:
+
+- TZDIR=/usr/share/zoneinfo/posix TZ=Europe/Paris on a system with 
+  hardware clock set to UTC.
+- TZDIR=/usr/share/zoneinfo/right TZ=Europe/Paris on a system with 
+  hardware clock set to TAI.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sat, 06 Sep 2008 12:27:09 +0200

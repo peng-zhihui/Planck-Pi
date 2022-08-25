@@ -1,0 +1,8 @@
+#! /bin/sh
+set -e
+
+if which py3clean >/dev/null 2>&1; then
+	py3clean -p python3
+fi
+
+

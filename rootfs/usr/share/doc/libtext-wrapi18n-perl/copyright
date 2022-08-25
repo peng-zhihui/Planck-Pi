@@ -1,0 +1,24 @@
+This package was debianized by Tomohiro KUBOTA <kubota@debian.org> on
+Thu, 19 Jun 2003 23:09:55 +0900.
+
+It was downloaded from http://www.cpan.org/modules/by-module/Text/Text-WrapI18n-<version>.tar.gz
+
+Upstream Author: Tomohiro KUBOTA <kubota@debian.org>
+
+Copyright:
+
+Copyright (C) 2003 Tomohiro KUBOTA <kubota@debian.org>
+
+This library is free software; you can redistribute it and/or modify it
+under the same terms of either:
+
+    a) the GNU General Public License as published by the Free Software
+       Foundation; either version 1, or (at your option) any later
+       version, or
+
+    b) the "Artistic License" which comes with Perl.
+
+On Debian GNU/Linux systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL' and
+the Artistic Licence in `/usr/share/common-licenses/Artistic'.
+

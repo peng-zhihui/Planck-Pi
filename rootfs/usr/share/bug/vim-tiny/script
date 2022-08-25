@@ -1,0 +1,8 @@
+#!/bin/sh
+
+printf "\n--- real paths of main Vim binaries ---\n" >&3
+for f in vi vim gvim; do
+    if [ -L "/usr/bin/$f" ]; then
+        printf "/usr/bin/$f is $(readlink -f /usr/bin/$f)\n" >&3
+    fi
+done

@@ -1,0 +1,2 @@
+libcryptsetup 12 libcryptsetup12 (>= 2:2.1.0)
+udeb: libcryptsetup 12 libcryptsetup12-udeb (>= 2:2.1.0)

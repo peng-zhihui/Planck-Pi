@@ -1,0 +1,30 @@
+# This file controls the behaviour of line input editing for
+# programs that use the Gnu Readline library.
+#
+# Arrow keys in keypad mode
+#
+"\C-[OD"        backward-char
+"\C-[OC"        forward-char
+"\C-[OA"        previous-history
+"\C-[OB"        next-history
+#
+# Arrow keys in ANSI mode
+#
+"\C-[[D"        backward-char
+"\C-[[C"        forward-char
+"\C-[[A"        previous-history
+"\C-[[B"        next-history
+#
+# Arrow keys in 8 bit keypad mode
+#
+"\C-M-OD"       backward-char
+"\C-M-OC"       forward-char
+"\C-M-OA"       previous-history
+"\C-M-OB"       next-history
+#
+# Arrow keys in 8 bit ANSI mode
+#
+"\C-M-[D"       backward-char
+"\C-M-[C"       forward-char
+"\C-M-[A"       previous-history
+"\C-M-[B"       next-history

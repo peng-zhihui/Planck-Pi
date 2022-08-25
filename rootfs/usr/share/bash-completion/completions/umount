@@ -1,0 +1,57 @@
+_umount_module()
+{
+	local cur prev OPTS
+	COMPREPLY=()
+	cur="${COMP_WORDS[COMP_CWORD]}"
+	prev="${COMP_WORDS[COMP_CWORD-1]}"
+	case $prev in
+		'-t'|'--types')
+			local TYPES
+			TYPES="
+				$(\ls /lib/modules/$(uname -r)/kernel/fs | awk '{print $1, "no" $1}')
+				$(awk '{print $NF, "no" $NF}' /proc/filesystems)
+			"
+			COMPREPLY=( $(compgen -W "$TYPES" -- $cur) )
+			return 0
+			;;
+		'-h'|'--help'|'-V'|'--version')
+			return 0
+			;;
+		'-N'|'--namespace')
+			local NAMESPACE
+			NAMESPACE="$(lsns --type mnt --output PATH --noheadings)"
+			COMPREPLY=( $(compgen -W "$NAMESPACE" -- $cur) )
+			return 0
+			;;
+	esac
+	case $cur in
+		-*)
+			OPTS="	--all
+				--all-targets
+				--no-canonicalize
+				--detach-loop
+				--fake
+				--force
+				--internal-only
+				--namespace
+				--no-mtab
+				--lazy
+				--test-opts
+				--recursive
+				--read-only
+				--types
+				--quiet
+				--verbose
+				--help
+				--version"
+			COMPREPLY=( $(compgen -W "${OPTS[*]}" -- $cur) )
+			return 0
+			;;
+	esac
+
+	local oldifs=$IFS
+	IFS=$'\n'
+	COMPREPLY=( $( compgen -W '$(findmnt -lno TARGET | sed "s/\([[:blank:]]\)/\\\\\1/g")' -- "$cur" ) )
+	IFS=$oldifs
+}
+complete -F _umount_module umount

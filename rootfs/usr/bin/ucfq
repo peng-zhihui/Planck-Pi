@@ -1,0 +1,851 @@
+#!/usr/bin/perl
+#                              -*- Mode: Cperl -*-
+# ucfq ---
+# Author           : Manoj Srivastava ( srivasta@glaurung.internal.golden-gryphon.com )
+# Created On       : Wed Apr 12 14:51:16 2006
+# Created On Node  : glaurung.internal.golden-gryphon.com
+# Last Modified By : Manoj Srivastava
+# Last Modified On : Fri Apr 14 19:30:45 2006
+# Last Machine Used: glaurung.internal.golden-gryphon.com
+# Update Count     : 81
+# Status           : Unknown, Use with caution!
+# HISTORY          :
+# Description      :
+#
+# arch-tag: 1390e09f-ee31-4d7f-a968-bd539ea061a0
+#
+=head1 NAME
+
+ucfq - query ucf registry and hashfile about configuration file details.
+
+=cut
+
+use strict;
+
+
+package ucf;
+
+use strict;
+use Getopt::Long;
+
+# set the version and revision
+($main::MYNAME     = $main::0) =~ s|.*/||;
+$main::Author      = "Manoj Srivastava";
+$main::AuthorMail  = "srivasta\@debian.org";
+
+=head1 SYNOPSIS
+
+ usage: ucfq [options] (file|package)[file|package  ...]
+
+=cut
+
+
+{  # scope for ultra-private meta-object for class attributes
+
+  my %Ucf =
+    (
+     Optdesc  =>
+     {
+      'help|h'         => sub {print ucf->Usage();     exit 0;},
+      'with-colons|w!' => sub {$::ConfOpts{"Colons"}= "$_[1]";},
+      'state-dir=s'    => sub {$::ConfOpts{"StateDir"}= "$_[1]";},
+      'debug|d'        => sub {$::ConfOpts{"DEBUG"}+= "$_[1]";},
+      'verbose|v'      => sub {$::ConfOpts{"VERBOSE"}+= "$_[1]";}
+     },
+     Usage => qq(Usage: $main::MYNAME [options]
+Author: $main::Author <$main::AuthorMail>
+  where options are:
+ --help                This message.
+ --debug               Turn on debugging mode.
+ --verbose             Make the script more verbose.
+ --with-colons         A compact, machine readable version of the output.
+ --state-dir </path/>  Set the state directory to /path/ instead of the
+                       default /var/lib/ucf.
+
+),
+     Defaults =>
+     {
+      "Colons"   => 0,
+      "DEBUG"    => 0,
+      "VERBOSE"  => 0,
+      "StateDir" => '/var/lib/ucf'
+     }
+    );
+  # tri-natured: function, class method, or object method
+  sub _classobj {
+    my $obclass = shift || __PACKAGE__;
+    my $class   = ref($obclass) || $obclass;
+    no strict "refs";   # to convert sym ref to real one
+    return \%$class;
+  }
+
+  for my $datum (keys %Ucf ) {
+    no strict "refs";
+    *$datum = sub {
+      use strict "refs";
+      my ($self, $newvalue) = @_;
+      $Ucf{$datum} = $newvalue if @_ > 1;
+      return $Ucf{$datum};
+    }
+  }
+}
+
+=head1 OPTIONS
+
+=over 3
+
+=item B<--help> B<h> Print out a usage message.
+
+=item B<--debug> B<-d> Turn on debugging mode.
+
+=item B<--verbose> B<-v> Make the script more verbose..
+
+=item B<--with-colons> B<-w>
+
+=over 2
+
+Normally, the script presents the information in a human readable
+tabular format, but that may be harder for a machine to parse. With
+this option, the output is a compact, colon separated line, with no
+dividers, headers, or footer.
+
+=back
+
+=item B<--state-dr> dir
+
+=over 2
+
+Set the state directory to C</path/to/dir> instead of the default
+C</var/lib/ucf>.  Used mostly for testing.
+
+=back
+
+=back
+
+=cut
+
+
+=head1 DESCRIPTION
+
+
+This script takes a set of arguments, each of which is a package or a
+path to a configuration file, and outputs the associated package, if
+any, if the file exists on disk, and whether it has been modfied by te
+user.  The output is either a human readable tabular form, or a
+compact colon-separated machine friendly format.
+
+This script can potentially be used in package C<postinst> scripts
+during purge to query the system for configuration files that may
+still exist on the system, and whether these files have been locally
+modified by the user -- assuming that the package registered all the
+configuration files with B<ucf> using C<ucfr>.
+
+=cut
+
+
+
+
+=head1 INTERNALS
+
+=head2 Class Methods
+
+All class methods mediate access to class variables.  All class
+methods can be invoked with zero or one parameters. When invoked with
+the optional parameter, the class method sets the value of the
+underlying class data.  In either case, the value of the underlying
+variable is returned.
+
+=cut
+
+=head1 Class ucf
+
+This is a combination view and controller class that mediates between
+the user and the internal model classes.
+
+
+=head2 new
+
+This is the constructor for the class. It takes a number of optional
+parameters. If the parameter B<Colons> is present, then the output
+will be compact. The parameters B<DEBUG> and B<VERBOSE> turn on
+additional diagnostics from the script.
+
+=cut
+
+sub new {
+  my $this = shift;
+  my %params = @_;
+  my $class = ref($this) || $this;
+  my $self = {};
+
+  bless $self => $class;
+
+  # validate and sanitize the settings
+  $self->validate(%params);
+
+  return $self;
+}
+
+=head2 validate
+
+This routine is responsible for ensuring that the parameters passed in
+(presumably from the command line) are given preference.
+
+=cut
+
+sub validate{
+  my $this     = shift;
+  my %params   = @_;
+  my $defaults = $this->Defaults();
+
+
+  # Make sure runtime options override what we get from the config file
+  for my $option (keys %params) {
+    $this->{Con_Ref}->{"$option"} = $params{"$option"};
+  }
+
+  # Ensure that if default parameters have not been set on the comman
+  # line on in the configuration file, if any, we use the built in
+  # defaults.
+  for my $default (keys %$defaults) {
+    if (! defined $this->{Con_Ref}->{"$default"}) {
+      $this->{Con_Ref}->{"$default"} = $defaults->{"$default"};
+    }
+  }
+}
+
+=head2 get_config_ref
+
+This routine returns a reference to the configuration hash
+
+=cut
+
+sub get_config_ref {
+
+  my $this     = shift;
+  return $this->{Con_Ref};
+}
+
+=head2 dump_config
+
+This routine returns a C<Data::Dumper> for debugging purposes
+
+=cut
+
+sub dump_config {
+  my $this     = shift;
+  for (keys %{$this->{Con_Ref}}) {
+    print  "$_ = [${$this->{Con_Ref}}{$_}]\n"
+  }
+}
+
+=head2 process
+
+This routine is the work horse routine -- it parses the command line
+arguments, and queries the on disk databases, determines of the files
+exist, and have been modified.
+
+=cut
+
+
+sub process {
+  my $this      = shift;
+
+# Step 1: Process all arguments in sequence.
+# Step 2: determine if the arument given is a package name (no / in
+#         arg)
+
+  %{$this->{packages}}    = map { +"$_" => 1} grep {! m,/,} @ARGV;
+  %{$this->{configs}}     = map { +"$_" => 1} grep {  m,/,} @ARGV;
+  $this->{pkg_list}       = object_list->new;
+  $this->{file_list}      = object_list->new;
+  $this->{registry_proxy} =
+    registry->new("StateDir" => $this->{Con_Ref}->{StateDir});
+  $this->{hashfile_proxy} =
+    hashfile->new("StateDir" => $this->{Con_Ref}->{StateDir});
+
+  for (keys %{$this->{packages}} ) {
+    my $package = pkg->new('Name' => "$_");
+    $this->{pkg_list}->element($_, $package);
+  }
+  for (keys %{$this->{configs}}) {
+    warn "Need a fully qualified path name for config file \"$_\"\n"
+      unless m,^/,;
+    # Don't die for etch
+    exit 0 unless m,^/,;
+
+    my $file = conffile->new('Name' => "$_");
+    $this->{file_list}->element($_, $file);
+  }
+# Step 3: If so, gather all files associated with the package
+  for my $package ($this->{pkg_list}->list) {
+    my $pkg_files = $this->{registry_proxy}->list_files($package);
+    for my $file (@$pkg_files) {
+      if (! defined $this->{file_list}->element($file)) {
+        my $ret = conffile->new('Name' => "$file");
+        $this->{file_list}->element($file, $ret);
+      }
+      $this->{file_list}->element($file)->conffile_package($package);
+    }
+  }
+# Step 4: for all configuration files, determine package (unless
+#         already determined), if any
+# Step 5: For each configuration file, check if it exists
+# Step 6: For each existing file, see if it has been changed
+
+  for my $file ($this->{file_list}->list) {
+    $this->{file_list}->element($file)->conffile_hash($file, $this->{hashfile_proxy}->hash($file));
+    if (! defined $this->{file_list}->element($file)->conffile_package) {
+      $this->{file_list}->element($file)->conffile_package($this->{registry_proxy}->find_pkg($file));
+    }
+  }
+}
+
+=head2 report
+
+This routine generates a nicely formatted report based on the
+information gathered during the processing. There are two kinds of
+reports, the first being a user friendly tabular form, the second
+(turned on by the C<-w> option) a easily parseable colon separated
+report.
+
+=cut
+
+
+our ($out_pkg, $out_file, $there, $mod);
+
+format STDOUT_TOP =
+Configuration file                            Package             Exists Changed
+.
+
+format STDOUT =
+@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< @<<<<<<<<<<<<<<<<<< @|||   @|||
+$out_file,                                    $out_pkg,           $there,$mod
+.
+
+sub report {
+  my $this      = shift;
+  for my $file (sort $this->{file_list}->list) {
+    ($out_pkg, $out_file, $there, $mod) =
+      $this->{file_list}->element($file)->conffile_report;
+    if ($this->{Con_Ref}->{Colons}) {
+      print "$out_file:$out_pkg:$there:$mod\n";
+    }
+    else {
+      write;
+    }
+  }
+}
+
+=head1 Class registry
+
+This moel class encapsulates the package-configuration file
+associations registry.  It parses the data in the registry, and
+provides methods to query the registry based either on package name,
+or the full path of the configuration file.
+
+=cut
+
+package registry;
+use strict;
+
+=head2 new
+
+This is the constructor for the class.  It takes a required parameter
+B<StateDir>, and based on that, proceeds toparse the registry and
+populate internal data structures.
+
+=cut
+
+sub new {
+  my $this = shift;
+  my %params = @_;
+  my $class = ref($this) || $this;
+  my $self = {};
+
+  die "Missing required parameter StateDir"
+    unless $params{StateDir};
+
+  if (-e "$params{StateDir}/registry") {
+    if (! -r "$params{StateDir}/registry") {
+      die "Can't read registry file $params{StateDir}/registry:$!";
+    }
+    open (REG, "$params{StateDir}/registry") ||
+      die "Can't read registry file $params{StateDir}/registry:$!";
+    while (<REG>) {
+      chomp;
+      my ($pkg, $file) = m/^(\S+)\s+(\S+)$/;
+      $self->{Packages}->{$file} = $pkg;
+      if (exists $self->{List}->{$pkg}) {
+        push @{$self->{List}->{$pkg}}, $file;
+      }
+      else {
+        $self->{List}->{$pkg} = [ $file ];
+      }
+    }
+  }
+
+  bless $self => $class;
+
+  return $self;
+}
+
+=head2 list_files
+
+This routine queries the registry and lists all configuration files
+associated with the given package.  Takes the package name as a
+required parameter.
+
+=cut
+
+sub list_files {
+  my $this      = shift;
+  my $pkg       = shift;
+
+  if (exists $this->{List}->{$pkg}) {
+    return [ @{$this->{List}->{$pkg}} ];
+  }
+  else {
+    return [];
+  }
+}
+
+
+=head2 find_pkg
+
+This routine queries the registry for the package associated with the
+given file.  Takes the path of the configuration file as a required
+parameter.
+
+=cut
+
+sub find_pkg {
+  my $this      = shift;
+  my $file      = shift;
+
+  if (exists $this->{Packages}->{$file}) {
+    return $this->{Packages}->{$file};
+  }
+  else {
+    return undef;
+  }
+}
+
+=head1 Class hashfile
+
+This moel class encapsulates the configuration file hash database.  It
+parses the data in the database, and provides methods to query the
+hash of the configuration file.
+
+=cut
+
+package hashfile;
+use strict;
+
+sub new {
+  my $this = shift;
+  my %params = @_;
+  my $class = ref($this) || $this;
+  my $self = {};
+
+  die "Missing required parameter StateDir"
+    unless $params{StateDir};
+
+
+  if (-e "$params{StateDir}/hashfile") {
+    if (! -r "$params{StateDir}/hashfile") {
+      die "Can't read registry file $params{StateDir}/hashfile:$!";
+    }
+    open (HASH, "$params{StateDir}/hashfile") ||
+      die "Can't read registry file $params{StateDir}/hashfile:$!";
+    while (<HASH>) {
+      chomp;
+      my ($hash, $file) = m/^(\S+)\s+(\S+)$/;
+      $self->{$file} = $hash
+    }
+  }
+
+  bless $self => $class;
+
+  return $self;
+}
+
+
+=head2 hash
+
+This routine queries the database for the hash associated with the
+developers version of the given file.  Takes the path of the
+configuration file as a required parameter.
+
+=cut
+
+
+sub hash {
+  my $this      = shift;
+  my $file      = shift;
+  my $value     = shift;
+
+  if ($value) {
+    $this->{$file} = $value;
+  }
+  return $this->{$file};
+}
+
+=head1 class conffile
+
+This is the encapsulation of a configuration file metadata.
+
+=cut
+
+
+
+package conffile;
+use strict;
+use Cwd qw{abs_path};
+
+
+=head2 new
+
+This is the constructor for the class. It takes a number of optional
+parameters. If the parameter B<Colons> is present, then the output
+will be compact. The parameters B<DEBUG> and B<VERBOSE> turn on
+additional diagnostics from the script.
+
+=cut
+
+sub new {
+  my $this = shift;
+  my %params = @_;
+  my $class = ref($this) || $this;
+  my $self = {};
+
+  die "Missing required parameter Name"
+    unless $params{Name};
+  $self->{Name}    = $params{Name};
+  $self->{Package} = $params{Package}
+    if $params{Package};
+  $self->{Exists}  = 'Yes' if -e $self->{Name};
+  if ($self->{Exists}) {
+    $self->{Name}  = abs_path( $self->{Name});
+  }
+  bless $self => $class;
+
+  return $self;
+}
+
+
+=head2 conffile_package
+
+This routine is the accessor method of the internal attribute that
+holds package name associated with the file.  If an optional C<value>
+is present, updates the value of the attribute.
+
+=cut
+
+sub conffile_package {
+  my $this      = shift;
+  my $value     = shift;
+
+  if ($value ) {
+    $this->{Package} = $value;
+  }
+  if (exists $this->{Package}) {
+    return $this->{Package};
+  }
+  else {
+    return undef;
+  }
+}
+
+=head2 conffile_exists
+
+This routine is the accessor method of the internal attribute that
+holds the information whether the file exists on disk or not.
+
+=cut
+
+sub conffile_exists {
+  my $this      = shift;
+  my $name      = shift;
+  my $value     = shift;
+
+  die "Missing required parameter Name"
+    unless $name;
+  if (exists $this->{Exists}) {
+    return $this->{Exists};
+  }
+  else {
+    return undef;
+  }
+}
+
+=head2 conffile_modified
+
+This routine is the accessor method of the internal attribute that
+holds the information whether the file exists on disk or not.  If an
+optional C<value> is present, updates the value of the attribute.
+
+=cut
+
+sub conffile_modified {
+  my $this      = shift;
+  my $name      = shift;
+  my $value     = shift;
+
+  die "Missing required parameter Name"
+    unless $name;
+  if ($value ) {
+    $this->{Modified} = $value;
+  }
+  if (exists $this->{Modified}) {
+    return $this->{Modified};
+  }
+  else {
+    return undef;
+  }
+}
+
+=head2 conffile_hash
+
+This routine is the accessor method of the internal attribute that
+holds the hash for the developers version of the file.  If an optional
+C<value> is present, updates the value of the attribute.  It also
+notes whether or not the file is modified from the developers version.
+
+=cut
+
+sub conffile_hash {
+  my $this      = shift;
+  my $name      = shift;
+  my $value     = shift;
+
+  die "Missing required parameter Name"
+    unless $name;
+  if ($value ) {
+    $this->{Hash} = $value;
+    if (-e "$name") {
+      if (-x "/usr/bin/md5sum") {
+        open (NEWHASH, "/usr/bin/md5sum $name |") ||
+          die "Could not run md5sum: $!";
+        while (<NEWHASH>) {
+          chomp;
+          my ($hash, $dummy) = m/^(\S+)\s+(\S+)$/;
+          if ("$hash" ne "$value") {
+            $this->{Modified} = 'Yes';
+          }
+          else {
+            $this->{Modified} = 'No';
+          }
+        }
+        close NEWHASH;
+      }
+      else {
+        die "Could not find /usr/bin/md5sum .\n";
+      }
+    }
+  }
+  if (exists $this->{Hash}) {
+    return $this->{Hash};
+  }
+  else {
+    return undef;
+  }
+}
+
+sub conffile_report {
+  my $this      = shift;
+  return $this->{Package} ? $this->{Package} : "",
+    $this->{Name}, $this->{Exists} ? $this->{Exists} : "",
+      $this->{Modified}? $this->{Modified} : "";
+}
+
+
+=head1 CLASS PKG
+
+This is an encapsulation of package metadata.  Packages may be
+associated with configuration files.
+
+=cut
+
+
+package pkg;
+use strict;
+
+
+=head2 new
+
+This is the constructor for the class. It takes a number of optional
+parameters. If the parameter B<Colons> is present, then the output
+will be compact. The parameters B<DEBUG> and B<VERBOSE> turn on
+additional diagnostics from the script.
+
+=cut
+
+sub new {
+  my $this = shift;
+  my %params = @_;
+  my $class = ref($this) || $this;
+  my $self = {};
+
+  die "Missing required parameter Name"
+    unless $params{Name};
+  $self->{Name} = $params{Name};
+
+  bless $self => $class;
+
+  return $self;
+}
+
+sub list_files {
+  my $this   = shift;
+  return [];
+}
+
+=head1 CLASS object_list
+
+This is a clas which holds lists of object names, either packages or
+configuration file object names.  It provides methods to add, access,
+and remove objects, as well as an option to list all elements in the
+list.
+
+=cut
+
+package object_list;
+use strict;
+
+
+
+=head2 new
+
+This is the constructor for the class. It takes no arguments.
+
+=cut
+
+sub new {
+  my $this = shift;
+  my %params = @_;
+  my $class = ref($this) || $this;
+  my $self = {};
+
+  $self->{"List"} = ();
+
+  bless $self => $class;
+
+  return $self;
+}
+
+=head2 element
+
+This is an accessor method for elements of the list. If an optional
+value argument exists, it creates or updates the element associtated
+with the vaslue. Takes in a required name, which is used as a kay, and
+an optional value argument. The value is returned.
+
+=cut
+
+sub element {
+  my $this      = shift;
+  my $name      = shift;
+  my $value     = shift;
+
+  die "Missing required parameter Name"
+    unless $name;
+  if ($value) {
+    $this->{"List"}->{$name} =  $value;
+  }
+  if (exists $this->{"List"}->{$name}) {
+    return $this->{"List"}->{$name};
+  }
+  else {
+    return undef;
+  }
+}
+
+
+=head2 remove
+
+Removes elements from the list.  Take in an required name, which is
+used as the key for the element to delete.
+
+=cut
+
+sub remove {
+  my $this      = shift;
+  my $name      = shift;
+  die "Missing required parameter Name"
+    unless $name;
+  delete $this->{"List"}->{$name}
+    if (exists $this->{"List"}->{$name} );
+}
+
+=head2 list
+
+This routine lists all the elements in the list.  It does not take any
+options.
+
+=cut
+
+sub list {
+  my $this      = shift;
+
+  return keys %{$this->{"List"}};
+}
+
+package main;
+use Getopt::Long;
+
+sub main {
+  my $optdesc = ucf->Optdesc();
+  my $parser  = new Getopt::Long::Parser;
+  $parser->configure("bundling");
+  $parser->getoptions (%$optdesc);
+  my $query = ucf->new(%::ConfOpts);
+  $query->process;
+  $query->report;
+}
+
+&main;
+
+exit 0;
+
+=head1 CAVEATS
+
+This is very inchoate, at the moment, and needs testing.
+
+=cut
+
+=head1 BUGS
+
+None Known so far.
+
+=cut
+
+=head1 AUTHOR
+
+Manoj Srivastava <srivasta\@debian.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This script is a part of the Ucf package, and is
+
+Copyright (c) 2006 Manoj Srivastava <srivasta\@debian.org>
+
+This program is free software; you can redistribute it and / or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+=cut
+
+1;
+
+__END__

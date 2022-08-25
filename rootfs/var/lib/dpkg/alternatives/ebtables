@@ -1,0 +1,12 @@
+auto
+/usr/sbin/ebtables
+ebtables-restore
+/usr/sbin/ebtables-restore
+ebtables-save
+/usr/sbin/ebtables-save
+
+/usr/sbin/ebtables-nft
+20
+/usr/sbin/ebtables-nft-restore
+/usr/sbin/ebtables-nft-save
+

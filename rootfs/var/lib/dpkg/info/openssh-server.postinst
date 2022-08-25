@@ -1,0 +1,231 @@
+#!/bin/sh
+set -e
+
+. /usr/share/debconf/confmodule
+db_version 2.0
+
+action="$1"
+oldversion="$2"
+
+umask 022
+
+
+get_config_option() {
+	option="$1"
+
+	[ -f /etc/ssh/sshd_config ] || return
+
+	# TODO: actually only one '=' allowed after option
+	perl -lne '
+		s/[[:space:]]+/ /g; s/[[:space:]]+$//;
+		print if s/^[[:space:]]*'"$option"'[[:space:]=]+//i' \
+	   /etc/ssh/sshd_config
+}
+
+
+host_keys_required() {
+	hostkeys="$(get_config_option HostKey)"
+	if [ "$hostkeys" ]; then
+		echo "$hostkeys"
+	else
+		# No HostKey directives at all, so the server picks some
+		# defaults.
+		echo /etc/ssh/ssh_host_rsa_key
+		echo /etc/ssh/ssh_host_ecdsa_key
+		echo /etc/ssh/ssh_host_ed25519_key
+	fi
+}
+
+
+create_key() {
+	msg="$1"
+	shift
+	hostkeys="$1"
+	shift
+	file="$1"
+	shift
+
+	if echo "$hostkeys" | grep -x "$file" >/dev/null && \
+	   [ ! -f "$file" ] ; then
+		echo -n $msg
+		ssh-keygen -q -f "$file" -N '' "$@"
+		echo
+		if which restorecon >/dev/null 2>&1; then
+			restorecon "$file" "$file.pub"
+		fi
+		ssh-keygen -l -f "$file.pub"
+	fi
+}
+
+
+create_keys() {
+	hostkeys="$(host_keys_required)"
+
+	create_key "Creating SSH2 RSA key; this may take some time ..." \
+		"$hostkeys" /etc/ssh/ssh_host_rsa_key -t rsa
+	create_key "Creating SSH2 DSA key; this may take some time ..." \
+		"$hostkeys" /etc/ssh/ssh_host_dsa_key -t dsa
+	create_key "Creating SSH2 ECDSA key; this may take some time ..." \
+		"$hostkeys" /etc/ssh/ssh_host_ecdsa_key -t ecdsa
+	create_key "Creating SSH2 ED25519 key; this may take some time ..." \
+		"$hostkeys" /etc/ssh/ssh_host_ed25519_key -t ed25519
+}
+
+
+new_config=
+
+cleanup() {
+	if [ "$new_config" ]; then
+		rm -f "$new_config"
+	fi
+}
+
+
+create_sshdconfig() {
+	# XXX cjwatson 2016-12-24: This debconf template is very confusingly
+	# named; its description is "Disable SSH password authentication for
+	# root?", so true -> prohibit-password (the upstream default),
+	# false -> yes.
+	db_get openssh-server/permit-root-login
+	permit_root_login="$RET"
+	db_get openssh-server/password-authentication
+	password_authentication="$RET"
+
+	trap cleanup EXIT
+	new_config="$(tempfile)"
+	cp -a /usr/share/openssh/sshd_config "$new_config"
+	if [ "$permit_root_login" != true ]; then
+		sed -i 's/^#*PermitRootLogin .*/PermitRootLogin yes/' \
+			"$new_config"
+	fi
+	if [ "$password_authentication" != true ]; then
+		sed -i 's/^#PasswordAuthentication .*/PasswordAuthentication no/' \
+			"$new_config"
+	fi
+	mkdir -p /etc/ssh
+	ucf --three-way --debconf-ok \
+		--sum-file /usr/share/openssh/sshd_config.md5sum \
+		"$new_config" /etc/ssh/sshd_config
+	ucfr openssh-server /etc/ssh/sshd_config
+}
+
+fix_statoverride() {
+# Remove an erronous override for sshd (we should have overridden ssh)
+	if dpkg-statoverride --list /usr/sbin/sshd >/dev/null; then
+		dpkg-statoverride --remove /usr/sbin/sshd
+	fi
+}
+
+setup_sshd_user() {
+	if ! getent passwd sshd >/dev/null; then
+		adduser --quiet --system --no-create-home --home /run/sshd --shell /usr/sbin/nologin sshd
+	fi
+}
+
+if [ "$action" = configure ]; then
+	create_sshdconfig
+	create_keys
+	fix_statoverride
+	setup_sshd_user
+	# Renamed to /etc/ssh/moduli in 2.9.9 (!)
+	if dpkg --compare-versions "$2" lt-nl 1:4.7p1-1; then
+	    rm -f /etc/ssh/primes
+	fi
+	if dpkg --compare-versions "$2" lt-nl 1:5.5p1-6; then
+	    rm -f /run/sshd/.placeholder
+	fi
+	if dpkg --compare-versions "$2" lt-nl 1:6.5p1-2 && \
+	   deb-systemd-helper debian-installed ssh.socket && \
+	   deb-systemd-helper --quiet was-enabled ssh.service && \
+	   deb-systemd-helper --quiet was-enabled ssh.socket; then
+	    # 1:6.5p1-1 mistakenly left both ssh.service and ssh.socket
+	    # enabled.
+	    deb-systemd-helper disable ssh.socket >/dev/null || true
+	fi
+	if dpkg --compare-versions "$2" lt-nl 1:6.5p1-3 && \
+	   [ -d /run/systemd/system ]; then
+	    # We must stop the sysvinit-controlled sshd before we can
+	    # restart it under systemd.
+	    start-stop-daemon --stop --quiet --oknodo --pidfile /run/sshd.pid --exec /usr/sbin/sshd || true
+	fi
+	if dpkg --compare-versions "$2" lt-nl 1:7.9p1-5 && \
+	   [ -f /etc/ssh/moduli.dpkg-bak ]; then
+	    # Handle /etc/ssh/moduli being moved from openssh-client to
+	    # openssh-server.  If there were no user modifications, then we
+	    # don't need to do anything special here; but if there were,
+	    # then the dpkg-maintscript-helper calls from openssh-client's
+	    # maintainer scripts will have saved the old file as .dpkg-bak,
+	    # which we now move back into place.
+	    mv /etc/ssh/moduli.dpkg-bak /etc/ssh/moduli
+	fi
+fi
+
+# Automatically added by dh_systemd_enable/12.1.1
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-deconfigure" ] || [ "$1" = "abort-remove" ] ; then
+	# This will only remove masks created by d-s-h on package removal.
+	deb-systemd-helper unmask 'ssh.service' >/dev/null || true
+
+	# was-enabled defaults to true, so new installations run enable.
+	if deb-systemd-helper --quiet was-enabled 'ssh.service'; then
+		# Enables the unit on first installation, creates new
+		# symlinks on upgrades if the unit file has changed.
+		deb-systemd-helper enable 'ssh.service' >/dev/null || true
+	else
+		# Update the statefile to add new symlinks (if any), which need to be
+		# cleaned up on purge. Also remove old symlinks.
+		deb-systemd-helper update-state 'ssh.service' >/dev/null || true
+	fi
+fi
+# End automatically added section
+# Automatically added by dh_systemd_enable/12.1.1
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-deconfigure" ] || [ "$1" = "abort-remove" ] ; then
+	if deb-systemd-helper debian-installed 'ssh.socket'; then
+		# This will only remove masks created by d-s-h on package removal.
+		deb-systemd-helper unmask 'ssh.socket' >/dev/null || true
+
+		if deb-systemd-helper --quiet was-enabled 'ssh.socket'; then
+			# Create new symlinks, if any.
+			deb-systemd-helper enable 'ssh.socket' >/dev/null || true
+		fi
+	fi
+
+	# Update the statefile to add new symlinks (if any), which need to be cleaned
+	# up on purge. Also remove old symlinks.
+	deb-systemd-helper update-state 'ssh.socket' >/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_systemd_start/12.1.1
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-deconfigure" ] || [ "$1" = "abort-remove" ] ; then
+	if [ -d /run/systemd/system ]; then
+		systemctl --system daemon-reload >/dev/null || true
+		deb-systemd-invoke start 'rescue-ssh.target' >/dev/null || true
+	fi
+fi
+# End automatically added section
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper mv_conffile /etc/pam.d/ssh /etc/pam.d/sshd 1:4.7p1-4~ -- "$@"
+# End automatically added section
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/init/ssh.conf 1:7.5p1-6~ -- "$@"
+# End automatically added section
+# Automatically added by dh_installdeb/12.1.1
+dpkg-maintscript-helper rm_conffile /etc/network/if-up.d/openssh-server 1:7.9p1-1~ -- "$@"
+# End automatically added section
+# Automatically added by dh_installinit/12.1.1
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-deconfigure" ] || [ "$1" = "abort-remove" ] ; then
+	if [ -x "/etc/init.d/ssh" ]; then
+		update-rc.d ssh defaults >/dev/null
+		if [ -n "$2" ]; then
+			_dh_action=restart
+		else
+			_dh_action=start
+		fi
+		invoke-rc.d ssh $_dh_action || exit 1
+	fi
+fi
+# End automatically added section
+
+
+db_stop
+
+exit 0

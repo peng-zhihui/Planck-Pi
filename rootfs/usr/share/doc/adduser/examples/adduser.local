@@ -1,0 +1,849 @@
+#!/usr/bin/perl -w
+
+#########################################################################
+#                                                                       #
+#                  ADDUSER Local System Additions v4.9                  #
+#                Copyright (C) 1999-2013, John Zaitseff                 #
+#                                                                       #
+#########################################################################
+
+# Author:   John Zaitseff <J.Zaitseff@zap.org.au>
+# Date:     21st June, 2013
+# Version:  4.9
+
+# This program, once installed as /usr/local/sbin/adduser.local, is auto-
+# matically called by the adduser(8) system program on a Debian system.
+# This script completes the creation of a user account in a system-
+# dependent way.
+#
+# This script is automatically called by adduser with arguments "USERNAME
+# UID GID HOMEDIR".  See adduser(8) for more details.  In addition, this
+# script may be called manually; run "perldoc adduser.local" for more
+# details.
+
+
+# This program, including associated files, is free software.  You may
+# distribute it and/or modify it under the terms of the GNU General
+# Public License as published by the Free Software Foundation; either
+# Version 2 of the license, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+
+#########################################################################
+# Configuration parameters and default values
+
+use strict;			# Enforce better programming habits
+
+use locale;			# Allow locale-specific sorting, etc.
+use utf8;			# This script may use the UTF-8 character set
+use open ":locale";		# Use locale for standard input/output
+
+use Getopt::Long;		# Parse command line options
+use Pod::Usage;			# Display command line usage
+
+
+(our $O = $0)      =~ s,^.*/,,;	# Script name (without path)
+our $version       = "4.9";	# Script version
+
+our $copyright     =		# Copyright information
+"$O v$version: adduser(8) local system additions\n" .
+"Copyright (C) 1999-2013, John Zaitseff.\n";
+
+our @adduser       = ('/usr/sbin/adduser', '--quiet');	# adduser(8)
+our @chown         = ('/bin/chown', '-h');		# chown(1)
+our @install       = ('/usr/bin/install', '-p');	# install(1)
+
+our $procmounts    = '/proc/mounts';		# List of current mounts
+
+# These default values are extensively documented in adduser.local.conf.
+
+our $d_conffile    = '/etc/adduser.local.conf';	# Configuration file location
+our $d_skelother   = '/etc/skel.other';		# Location of skeleton files
+our $d_dirmode     = '2755';			# Octal mode for directories
+our $d_filemode    = '0644';			# Octal mode for files
+
+our $d_user        = '';	# Default service user name
+our $d_group       = '';	# Default service group name
+our $d_addtogroup  = 'false';	# Default for addtogroup variable
+our $d_homedir     = '';	# Default home directory
+our $d_subdir      = '';	# Default subdirectory
+our $d_althome     = 'false';	# Default for use alternate home directory
+our $d_mounted     = 'false';	# Default for checking if mounted
+our $d_mkdir       = 'false';	# Default for creating directory
+our $d_chgrpdir    = 'false';	# Default for chgrpdir variable
+our $d_mklink      = 'false';	# Default for creating symbolic link
+our $d_linkname    = '';	# Default for symbolic link name
+our $d_skelfile    = '';	# Default for skeleton file
+our $d_chgrpskel   = 'false';	# Default for chgrpskel variable
+
+# Strings appearing in the configuration file
+
+our $s_skelother   = 'skelother';
+our $s_dirmode     = 'dirmode';
+our $s_filemode    = 'filemode';
+
+our $s_service     = 'service';
+
+our $s_user        = 'user';
+our $s_group       = 'group';
+our $s_addtogroup  = 'addtogroup';
+our $s_homedir     = 'homedir';
+our $s_subdir      = 'subdir';
+our $s_althome     = 'althome';
+our $s_mounted     = 'mounted';
+our $s_mkdir       = 'mkdir';
+our $s_chgrpdir    = 'chgrpdir';
+our $s_mklink      = 'mklink';
+our $s_linkname    = 'linkname';
+our $s_skelfile    = 'skelfile';
+our $s_chgrpskel   = 'chgrpskel';
+
+our @s_false       = ('false', 'f', 'no',  'n', '0');
+our @s_true        = ('true',  't', 'yes', 'y', '1');
+
+# Strings internal to this program (as used by the %cv hash)
+
+our $s_svcuid      = '.svcuid';      # Storage for UID of service's user name
+our $s_svcgid      = '.svcgid';      # GID of service's user name or group name
+our $s_actualdir   = '.actualdir';   # Actual dir: homedir + subdir + username
+our $s_actuallink  = '.actuallink';  # Actual sym link: user homedir + linkname
+our $s_actualsrcf  = '.actualsrcf';  # Actual source file: skelother + skelfile
+our $s_actualdstf  = '.actualdstf';  # Actual dest file: actualdir + skelfile
+
+our $s_addtogroupB = '.addtogroupB'; # Boolean versions of variables
+our $s_althomeB    = '.althomeB';
+our $s_mountedB    = '.mountedB';
+our $s_mkdirB      = '.mkdirB';
+our $s_chgrpdirB   = '.chgrpdirB';
+our $s_mklinkB     = '.mklinkB';
+our $s_chgrpskelB  = '.chgrpskelB';
+
+# Function prototypes
+
+sub chkbool($$$$);
+sub lchown(@);
+sub showusage();
+sub showversion();
+sub showcmdlerr(@);
+
+
+#########################################################################
+# Initialise global variables
+
+our $conffile      = $d_conffile;	# Default configuration file
+our $verbose       = 1;			# Be verbose by default
+our $dryrun        = 0;			# NOT a dry run by default
+
+our @services      = ();		# No services to install by default
+
+# %cv is a hash for all configuration variables read in from the
+# configuration file.  Global variables are represented by their strings,
+# eg, $cv{"skelother"}.  Service-specific variables are represented by the
+# service string value, a comma, then their string, eg, $cv{"www","user"}.
+# The %cl hash plays a similar role, but contains the line number of the
+# configuration.
+
+our (%cv, %cl);
+
+$cv{$s_skelother} = $d_skelother;  $cl{$s_skelother} = 0;
+$cv{$s_dirmode}   = $d_dirmode;    $cl{$s_dirmode}   = 0;
+$cv{$s_filemode}  = $d_filemode;   $cl{$s_filemode}  = 0;
+
+# For safety's sake, initialise the PATH environment variable
+
+$ENV{PATH} = '/usr/sbin:/usr/bin:/sbin:/bin';
+
+# Declare some global variables
+
+our $username;			# Username for which adduser.local was called
+our $uid;			# User's UID
+our $gid;			# User's GID
+our $homedir;			# User's home directory
+
+
+#########################################################################
+# Process command-line arguments
+
+our $opt_help;
+our $opt_version;
+
+Getopt::Long::Configure("bundling");
+
+GetOptions('help|h|?'   => \$opt_help,
+	   'version|V'  => \$opt_version,
+	   'conf=s'     => \$conffile,
+	   'dry-run|n!' => \$dryrun,
+	   'verbose|v!' => \$verbose,
+	   'quiet|q'    => sub { $verbose = 0; },
+	  )
+    or showcmdlerr();
+
+showusage()   if $opt_help;
+showversion() if $opt_version;
+
+
+#########################################################################
+# Process additional command-line parameters: USERNAME [UID GID HOMEDIR]
+
+if ($#ARGV < 0) { showcmdlerr("$O: Missing USERNAME parameter"); }
+if ($#ARGV > 3) { showcmdlerr("$O: Too many command-line parameters"); }
+
+# Include some sanity checking.  These checks are not particularly
+# rigorous, as root can do anything anyway...  It is meant to stop silly
+# mistakes, not to stop thinking.  In any case, this script SHOULD only
+# be called from adduser(8)...
+
+die "$O: Only root can execute this program\n" if ($> != 0) and (! $dryrun);
+
+if ($#ARGV == 0) {
+    # Only a single parameter: USERNAME
+
+    $username = $ARGV[0];
+
+    (my $t_name, undef, $uid, $gid, undef, undef, undef, $homedir)
+	= getpwnam($username);
+
+    die "$O: No such user: $username\n" if ! defined($t_name);
+
+} elsif ($#ARGV == 3) {
+    # Four parameters: USERNAME UID GID HOMEDIR
+
+    $username = $ARGV[0];
+    $uid      = $ARGV[1];
+    $gid      = $ARGV[2];
+    $homedir  = $ARGV[3];
+
+    $homedir =~ s,/$,,;			# Remove trailing '/' if present
+    (my $t_name, undef, my $t_uid, my $t_gid) = getpwnam($username);
+
+    die "$O: No such user: $username\n" if ! defined($t_name);
+    die "$O: No such UID: $uid\n" if ! defined(getpwuid($uid));
+    die "$O: No such GID: $gid\n" if ! defined(getgrgid($gid));
+    die "$O: UID of user $username not the same as $uid\n" if $t_uid != $uid;
+    die "$O: GID of user $username not the same as $gid\n" if $t_gid != $gid;
+    die "$O: Directory does not exist: $homedir\n" if ! -d $homedir;
+
+} else {
+    showcmdlerr("$O: Missing UID, GID and/or HOMEDIR parameters");
+}
+
+
+#########################################################################
+# Process the configuration file
+
+if (! -r $conffile) {
+    warn "$O: Cannot read configuration file $conffile:\n";
+    warn "$O: $conffile: $!\n";
+
+    exit(0);
+}
+
+print "Processing configuration file $conffile\n" if $verbose;
+
+open(CONFFILE, $conffile) or die "$O: $conffile: $!\n";
+
+while (<CONFFILE>) {
+    my ($var, $svc, $val);
+
+    chomp;
+
+    # Skip comments and blank lines
+    next if /^\s*#/ or /^\s*$/;
+
+    # Try matching a global variable with or without quotes
+    if ((($var, $val) = /^\s*(\w+)\s*=\s*(.*)$/) == 2) {
+
+	# Remove trailing spaces and surrounding quotes
+	# (Technically, doing it this way is slightly sloppy)
+	$val =~ s/^(.*?)\s*$/$1/;
+	$val =~ s/^\"(.*)\"$/$1/;
+	$val =~ s/^\'(.*)\'$/$1/;
+
+	# Process the global variable
+	if ($var eq $s_service) {
+
+	    # Special global configuration variable "service"
+	    my $svc = $val;
+
+	    if (grep($_ eq $svc, @services)) {
+		warn "$O: Service \"$val\" redefined at $conffile:$.\n";
+		next;
+	    }
+
+	    push @services, $val;
+
+	    # Set up default values
+
+	    $cv{$svc,$s_user}       = $d_user;
+	    $cv{$svc,$s_group}      = $d_group;
+	    $cv{$svc,$s_addtogroup} = $d_addtogroup;
+	    $cv{$svc,$s_homedir}    = $d_homedir;
+	    $cv{$svc,$s_subdir}     = $d_subdir;
+	    $cv{$svc,$s_althome}    = $d_althome;
+	    $cv{$svc,$s_mounted}    = $d_mounted;
+	    $cv{$svc,$s_mkdir}      = $d_mkdir;
+	    $cv{$svc,$s_chgrpdir}   = $d_chgrpdir;
+	    $cv{$svc,$s_mklink}     = $d_mklink;
+	    $cv{$svc,$s_linkname}   = $d_linkname;
+	    $cv{$svc,$s_skelfile}   = $d_skelfile;
+	    $cv{$svc,$s_chgrpskel}  = $d_chgrpskel;
+
+	    $cl{$svc,$s_user}       = 0;
+	    $cl{$svc,$s_group}      = 0;
+	    $cl{$svc,$s_addtogroup} = 0;
+	    $cl{$svc,$s_homedir}    = 0;
+	    $cl{$svc,$s_subdir}     = 0;
+	    $cl{$svc,$s_althome}    = 0;
+	    $cl{$svc,$s_mounted}    = 0;
+	    $cl{$svc,$s_mkdir}      = 0;
+	    $cl{$svc,$s_chgrpdir}   = 0;
+	    $cl{$svc,$s_mklink}     = 0;
+	    $cl{$svc,$s_linkname}   = 0;
+	    $cl{$svc,$s_skelfile}   = 0;
+	    $cl{$svc,$s_chgrpskel}  = 0;
+	}
+	else {
+	    # Ordinary global variable
+
+	    if (! defined($cv{$var})) {
+		warn "$O: Unknown global variable \"$var\" at $conffile:$.\n";
+		next;
+	    }
+
+	    $cv{$var} = $val;
+	    $cl{$var} = $.;
+	}
+    }
+
+    # Try matching a service variable with or without quotes
+    elsif ((($var, $svc, $val) = /^\s*(\w+)\s*\[\s*(\w+)\s*\]\s*=\s*(.*)$/) == 3) {
+
+	# Remove trailing spaces and surrounding quotes
+	$val =~ s/^(.*?)\s*$/$1/;
+	$val =~ s/^\"(.*)\"$/$1/;
+	$val =~ s/^\'(.*)\'$/$1/;
+
+	if (! grep($_ eq $svc, @services)) {
+	    warn "$O: Undefined service \"$svc\" at $conffile:$.\n";
+	    next;
+	}
+	if (! defined($cv{$svc,$var})) {
+	    warn "$O: Unknown service variable \"$var\" at $conffile:$.\n";
+	    next;
+	}
+
+	$cv{$svc,$var} = $val;
+	$cl{$svc,$var} = $.;
+    }
+
+    # Otherwise, it is an error in the configuration file
+    else {
+	warn "$O: Could not parse line at $conffile:$.\n";
+	next;
+    }
+}
+
+close(CONFFILE) or die "$O: $conffile: $!\n";
+
+
+#########################################################################
+# Global variables sanity checking
+{
+    my $t;
+
+    # Check "skelother"
+
+    if (! -d $cv{$s_skelother}) {
+	warn "$O: Directory $cv{$s_skelother} does not exist\n";
+    }
+
+    # Check "dirmode"
+
+    $t = $cv{$s_dirmode};
+    if (($t !~ /^[01234567]{1,4}$/) or (oct($t) == 0)) {
+	warn "$O: Illegal value \"$t\" at $conffile:$cl{$s_dirmode}\n";
+	warn "$O: Global variable \"$s_dirmode\" set to $d_dirmode\n";
+	$cv{$s_dirmode} = $d_dirmode;
+    }
+
+    # Check "filemode"
+
+    $t = $cv{$s_filemode};
+    if (($t !~ /^[01234567]{1,4}$/) or (oct($t) == 0)) {
+	warn "$O: Illegal value \"$t\" at $conffile:$cl{$s_filemode}\n";
+	warn "$O: Global variable \"$s_filemode\" set to $d_filemode\n";
+	$cv{$s_filemode} = $d_filemode;
+    }
+}
+
+
+#########################################################################
+# Actually perform what is required, with appropriate error checking
+
+foreach my $svc (@services) {
+    my ($t_user, $t_group, $t_homedir);
+
+    print "Processing service \"$svc\"\n" if $verbose;
+
+    # Check validity of all boolean variables and convert them to true bools
+
+    chkbool($svc, $s_addtogroup, $s_addtogroupB, $d_addtogroup);
+    chkbool($svc, $s_althome,    $s_althomeB,    $d_althome);
+    chkbool($svc, $s_mounted,    $s_mountedB,    $d_mounted);
+    chkbool($svc, $s_mkdir,      $s_mkdirB,      $d_mkdir);
+    chkbool($svc, $s_chgrpdir,   $s_chgrpdirB,   $d_chgrpdir);
+    chkbool($svc, $s_mklink,     $s_mklinkB,     $d_mklink);
+    chkbool($svc, $s_chgrpskel,  $s_chgrpskelB,  $d_chgrpskel);
+
+    # Process the "user" configuration variable
+
+    if ($cv{$svc,$s_user} ne '') {
+	# Retrieve information about the specified service's user name
+
+	(my $t_user, undef, $cv{$svc,$s_svcuid}, $cv{$svc,$s_svcgid},
+	 undef, undef, undef, my $t_homedir) = getpwnam($cv{$svc,$s_user});
+
+	if (! defined($t_user)) {
+	    warn "$O: Illegal user name \"$cv{$svc,$s_user}\" at $conffile:$cl{$svc,$s_user}\n";
+	} else {
+	    $cv{$svc,$s_user} = $t_user;
+	}
+
+	# Only set home directory information if not specified by user
+	if ($cv{$svc,$s_homedir} eq '') {
+	    if ($cv{$svc,$s_althomeB}) {
+		$cv{$svc,$s_homedir} = $homedir;      # From command line
+	    } else {
+		$cv{$svc,$s_homedir} = $t_homedir;    # From service's home
+	    }
+	}
+
+	# If the group parameter is not specified, get the appropriate info
+	# from the user information
+	if ($cv{$svc,$s_svcgid} and ($cv{$svc,$s_group} eq '')) {
+	    ($cv{$svc,$s_group}) = getgrgid($cv{$svc,$s_svcgid});
+	}
+    }
+
+    # Process the "group" configuration variable
+
+    if ($cv{$svc,$s_group} ne '') {
+	# Retrieve info about the group.  Yes, it may have been done
+	# above, but specifying "group" can be done without specifying
+	# "user".  In addition, a different group can be specified from
+	# that used by "user".
+
+	($t_group, undef, $cv{$svc,$s_svcgid}) = getgrnam($cv{$svc,$s_group});
+
+	if (! defined($t_group)) {
+	    warn "$O: Illegal group name \"$cv{$svc,$s_group}\" at $conffile:$cl{$svc,$s_group}\n";
+
+	    $cv{$svc,$s_addtogroup} = 'false';   $cv{$svc,$s_addtogroupB} = 0;
+	    $cv{$svc,$s_chgrpdir}   = 'false';   $cv{$svc,$s_chgrpdirB}   = 0;
+	    $cv{$svc,$s_chgrpskel}  = 'false';   $cv{$svc,$s_chgrpskelB}  = 0;
+	}
+	else {
+	    $cv{$svc,$s_group} = $t_group;
+	}
+    }
+
+    # Process the "addtogroup" configuration variable
+
+    if ($cv{$svc,$s_addtogroupB} and ($cv{$svc,$s_group} ne '')) {
+
+	my $t = $cv{$svc,$s_group};
+	(my $t_group, undef, my $t_gid, my $t_members) = getgrnam $t;
+
+	# Check if the user is already a member of that group
+
+	if (($t_gid == $gid) or grep($_ eq $username, split(' ', $t_members))) {
+	    print "    User \"$username\" already in group \"$t\"\n"
+		if $verbose;
+	} else {
+	    print "    Adding user \"$username\" to group \"$t\"\n"
+		if $verbose;
+	    system(@adduser, $username, $t) if ! $dryrun;
+	}
+    }
+
+    # Process the "mounted" configuration variable
+
+    $cv{$svc,$s_homedir} =~ s,/$,,;		# Remove trailing / on homedir
+    $cv{$svc,$s_subdir}  =~ s,^/,,;		# Remove leading / on subdir
+    $cv{$svc,$s_subdir}  =~ s,/$,,;		# Remove trailing / on subdir
+
+    if (($cv{$svc,$s_homedir} ne '') and $cv{$svc,$s_mountedB}) {
+	# Need to check for "mounted" before checking for the existence of
+	# of the service's home directory.
+
+	if (! -r $procmounts) {
+	    warn "$O: $procmounts: $!\n";
+	} else {
+	    my ($t_dev, $t_mntpoint, $t_type, $t_options);
+	    my $ismounted = 0;
+	    my $t_dir = $cv{$svc,$s_homedir} . '/';
+
+	    # Open mounts table and process it
+
+	    open(MOUNTS, $procmounts) or die "$O: $procmounts: $!\n";
+	    while (<MOUNTS>) {
+		chomp;
+		($t_dev, $t_mntpoint, $t_type, $t_options) = split;
+		if ($t_mntpoint !~ m,/$,) { $t_mntpoint .= '/'; }
+
+		# Check if the service's home directory is mounted
+		# Skip "/" as that is always mounted
+		if (($t_mntpoint ne '/') and
+		    (substr($t_dir, 0, length($t_mntpoint)) eq $t_mntpoint)) {
+		    $ismounted = 1;
+		}
+	    }
+	    close(MOUNTS) or die "$O: $procmounts: $!\n";
+
+	    if (! $ismounted) {
+		print "    Directory $cv{$svc,$s_homedir} not mounted\n"
+		    if $verbose;
+		$cv{$svc,$s_homedir} = '';
+	    }
+	}
+    }
+
+    # Process the "homedir" and "subdir" configuration variables
+
+    if ($cv{$svc,$s_homedir} ne '') {
+	if (! -d $cv{$svc,$s_homedir}) {
+	    warn "$O: No such directory: $cv{$svc,$s_homedir}\n";
+	    $cv{$svc,$s_homedir} = '';
+	}
+	elsif (($cv{$svc,$s_subdir} ne '') and (! $cv{$svc,$s_althomeB})) {
+	    my $t = $cv{$svc,$s_homedir} . '/' . $cv{$svc,$s_subdir};
+	    if (! -d $t) {
+		warn "$O: No such directory: $t\n";
+		$cv{$svc,$s_subdir} = '';
+		$cv{$svc,$s_homedir} = '';
+	    }
+	}
+    }
+
+    # Calculate the actual directory to create (if necessary)
+
+    if ($cv{$svc,$s_homedir} ne '') {
+	$cv{$svc,$s_actualdir} = $cv{$svc,$s_homedir};
+	if ($cv{$svc,$s_subdir} ne '') {
+	    $cv{$svc,$s_actualdir} .= '/' . $cv{$svc,$s_subdir};
+	}
+	if (! $cv{$svc,$s_althomeB}) {
+	    $cv{$svc,$s_actualdir} .= '/' . $username;
+	}
+    }
+
+    # Process the "mkdir" and "chgrpdir" configuration variables
+
+    if (($cv{$svc,$s_homedir} ne '') and $cv{$svc,$s_mkdirB}) {
+	my $t = $cv{$svc,$s_actualdir};
+
+	if (-d $t) {
+	    print "    Directory $t already exists\n" if $verbose;
+	} elsif (-e $t) {
+	    warn "$O: Not a directory: $t\n";
+	    $cv{$svc,$s_homedir} = '';
+	} else {
+	    print "    Directory $t created\n" if $verbose;
+	    mkdir($t, oct($cv{$s_dirmode})) if ! $dryrun;
+		# Note that this newly-created directory will inherit the
+		# SGID (set group ID) bit from its parent directory.  This
+		# IS desired, hence, do NOT do a separate chmod()!
+	    if ($cv{$svc,$s_chgrpdirB}) {
+		chown($uid, $cv{$svc,$s_svcgid}, $t) if ! $dryrun;
+	    } else {
+		chown($uid, $gid, $t) if ! $dryrun;
+	    }
+	}
+    }
+
+    # Process the "mklink" and "linkname" configuration variables
+
+    if (($cv{$svc,$s_homedir} ne '') and $cv{$svc,$s_mklinkB}
+	and (-d $cv{$svc,$s_actualdir})) {
+
+	# Calculate the actual link name
+
+	$cv{$svc,$s_linkname} =~ s,/$,,;	# Remove trailing '/'
+
+	if ($cv{$svc,$s_linkname} eq '') {
+	    $cv{$svc,$s_actuallink} = $homedir . '/' . $svc;
+	} else {
+	    $cv{$svc,$s_actuallink} = $homedir . '/' . $cv{$svc,$s_linkname};
+	}
+
+	# Create the symbolic link, if needed
+
+	my $t = $cv{$svc,$s_actuallink};
+	if (-l $t) {
+	    print "    Symbolic link $t already exists\n"
+		if $verbose;
+	} elsif (-e $t) {
+	    warn "$O: Not a symbolic link: $t\n";
+	} else {
+	    print "    Symbolic link $t created\n" if $verbose;
+	    symlink($cv{$svc,$s_actualdir}, $t) if ! $dryrun;
+	    if ($cv{$svc,$s_chgrpdirB}) {
+		lchown($uid, $cv{$svc,$s_svcgid}, $t) if ! $dryrun;
+	    } else {
+		lchown($uid, $gid, $t) if ! $dryrun;
+	    }
+	}
+    }
+
+    # Process the "skelfile" and "chgrpskel" configuration variables
+
+    if (($cv{$svc,$s_homedir} ne '') and ($cv{$svc,$s_skelfile} ne '')
+	and (-d $cv{$svc,$s_actualdir})) {
+
+	my $t = $cv{$svc,$s_skelfile};
+	$cv{$svc,$s_actualsrcf} = $cv{$s_skelother} . '/' . $t;
+	$cv{$svc,$s_actualdstf} = $cv{$svc,$s_actualdir} . '/' . $t;
+
+	if (-e $cv{$svc,$s_actualdstf}) {
+	    print "    File $cv{$svc,$s_actualdstf} already exists\n"
+		if $verbose;
+	} elsif (! -r $cv{$svc,$s_actualsrcf}) {
+	    warn "$O: $cv{$svc,$s_actualsrcf}: $!\n";
+	} else {
+	    print "    File $cv{$svc,$s_actualdstf} created\n" if $verbose;
+	    if ($cv{$svc,$s_chgrpskelB}) {
+		system(@install, '-m', $cv{$s_filemode}, '-o', $uid,
+		       '-g', $cv{$svc,$s_svcgid},
+		       $cv{$svc,$s_actualsrcf}, $cv{$svc,$s_actualdstf})
+		    if ! $dryrun;
+	    } else {
+		system(@install, '-m', $cv{$s_filemode}, '-o', $uid, '-g',
+		       $gid, $cv{$svc,$s_actualsrcf}, $cv{$svc,$s_actualdstf})
+		    if ! $dryrun;
+	    }
+	}
+    }
+}
+
+
+#########################################################################
+# End of program
+
+exit(0);
+
+
+#########################################################################
+# Check that the configuration variable contains is a valid boolean value
+
+sub chkbool($$$$) {
+    my $svc = $_[0];		# Service name
+    my $var = $_[1];		# Partial hash key of variable to check
+    my $new = $_[2];		# Partial hash key of new variable (true bool)
+    my $def = $_[3];		# Default value, in case of error
+
+    my $val = $cv{$svc,$var};
+
+    if (grep($_ eq $val, @s_true)) {
+	$cv{$svc,$new} = 1;
+    } elsif (grep($_ eq $val, @s_false)) {
+	$cv{$svc,$new} = 0;
+    } else {
+	warn "$O: Illegal value \"$val\" at $conffile:$cl{$var}\n";
+	warn "$O: Variable \"$var\[$svc\]\" set to \"$def\"\n";
+
+	$cv{$svc,$var} = $def;
+	chkbool($svc, $var, $new, $def);
+    }
+}
+
+
+#########################################################################
+# A chown() that works with symbolic links
+
+sub lchown(@) {
+    # The chown() function does NOT change the ownership of symbolic links
+    # under Linux 2.1.81 or later.  Hence, make an external call to the
+    # chown(1) program.  This program MUST support the "-h" parameter.
+
+    my $t_uid = shift;
+    my $t_gid = shift;
+
+    system(@chown, '-h', "$t_uid:$t_gid", @_);
+}
+
+
+#########################################################################
+# Display usage information
+
+sub showusage() {
+    pod2usage(-message => $copyright, -exitval => 0);
+}
+
+
+#########################################################################
+# Display program version information
+
+sub showversion() {
+    print "$copyright\n";
+    print <<"DATAEND"
+This program is free software that is distributed under the GNU General
+Public License, version 2 or later.  See /usr/share/common-licenses/GPL
+for more information.
+DATAEND
+	;
+    exit(0);
+}
+
+
+#########################################################################
+# Show an error message relating to the command-line and terminate
+
+sub showcmdlerr(@) {
+    map { warn "$_\n" } @_;
+    die "Try `$O --help' for more information.\n";
+}
+
+
+__END__
+
+
+#########################################################################
+# Program documentation in POD format
+
+=head1 NAME
+
+adduser.local - adduser(8) local system additions
+
+=head1 SYNOPSIS
+
+/usr/local/sbin/adduser.local [B<--dry-run>] [B<--conf> FILE] [B<--quiet>]
+[B<--verbose>] [B<--help>] [B<--version>] USERNAME [UID GID HOMEDIR]
+
+=head1 DESCRIPTION
+
+The B<adduser.local> script, once installed as
+F</usr/local/sbin/adduser.local>, is automatically called by the
+adduser(8) system program on a Debian system.  This script completes the
+creation of a user account by parsing a system-dependent configuration
+file, F</etc/adduser.local.conf>.  That configuration file lists a number
+of "services" to be configured, where each service is simply a convenient
+name for directories that must be created, Unix groups to which the user
+must be added, files that need to be copied, symbolic links to be created
+and so on.
+
+This script is automatically called by adduser(8) with arguments
+I<USERNAME UID GID HOMEDIR>.  In addition, this script may be called
+manually.  In this case, only I<USERNAME> needs to be passed, along with
+options as described later in B<OPTIONS>.
+
+Note that adduser(8) can now perform I<some> of the tasks that
+B<adduser.local> does, particularly by using the EXTRA_GROUPS and
+ADD_EXTRA_GROUPS variables in F</etc/adduser.conf>.  However,
+B<adduser.local> is far more flexible than doing just that...
+
+=head1 OPTIONS
+
+=over 4
+
+=item B<-n>, B<--dry-run>
+
+Pretend to fulfil everything required, without actually doing anything.
+
+=item B<-c>, B<--conf> I<FILE>
+
+Use configuration file I<FILE> instead of the default
+F</etc/adduser.local.conf>.
+
+=item B<-q>, B<--quiet>
+
+Don't show extraneous output.
+
+=item B<-v>, B<--verbose>
+
+Show output about what was done (default).
+
+=item B<-h>, B<--help>
+
+Show a brief command-line summary.
+
+=item B<-V>, B<--version>
+
+Show the version of the B<adduser.local> script.
+
+=back
+
+=head1 RETURN VALUE
+
+B<adduser.local> returns a successful (zero) exit status if no severe
+errors were detected, otherwise a non-zero exit code is returned.
+
+=head1 EXAMPLES
+
+To add the user "john" to your system:
+
+    adduser john
+
+This automatically calls B<adduser.local> with the appropriate arguments.
+
+If you would like to rerun the B<adduser.local> script (such as after
+modifying its configuration file) for the user "john":
+
+    adduser.local john
+
+=head1 FILES
+
+=over 4
+
+=item F</etc/adduser.local.conf>
+
+Configuration for B<adduser.local>.  The default configuration is
+extensively documented.
+
+=back
+
+=head1 FEEDBACK
+
+Your comments, suggestions, corrections and enhancements are always warmly
+welcomed!  Please send these to:
+
+    Postal:   John Zaitseff,
+              The ZAP Group,
+              Unit 6, 116 Woodburn Road,
+              Berala, NSW, 2141,
+              Australia
+
+    E-mail:   J.Zaitseff@zap.org.au
+    Web:      http://www.zap.org.au/software/utils/adduser.local/
+    FTP:      ftp://ftp.zap.org.au/pub/utils/adduser.local/adduser.local.tar.gz
+
+=head1 COPYRIGHT
+
+Copyright (C) 1999-2013, John Zaitseff.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 2 of the License, or (at your
+option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+=head1 SEE ALSO
+
+adduser(8)
+
+=cut

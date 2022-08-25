@@ -1,0 +1,14 @@
+/.
+/etc
+/etc/xattr.conf
+/usr
+/usr/lib
+/usr/lib/arm-linux-gnueabi
+/usr/lib/arm-linux-gnueabi/libattr.so.1.1.2448
+/usr/share
+/usr/share/doc
+/usr/share/doc/libattr1
+/usr/share/doc/libattr1/changelog.Debian.gz
+/usr/share/doc/libattr1/changelog.gz
+/usr/share/doc/libattr1/copyright
+/usr/lib/arm-linux-gnueabi/libattr.so.1

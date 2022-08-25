@@ -1,0 +1,2 @@
+systemd: maintainer-script-calls-systemctl
+systemd: possibly-insecure-handling-of-tmp-files-in-maintainer-script

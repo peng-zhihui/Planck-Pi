@@ -1,0 +1,26 @@
+This package was debianized by Tomohiro KUBOTA <kubota@debian.org> on
+Thu, 19 Jun 2003 17:48:05 +0900.
+
+It was downloaded from http://www.cpan.org/modules/by-module/Text/Text-CharWidth-<version>.tar.gz
+
+Upstream Author: Tomohiro KUBOTA <kubota@debian.org>
+
+Copyright:
+
+Copyright (C) 2003 Tomohiro KUBOTA <kubota@debian.org>
+Copyright (C) 2001 Paul Marquess
+Copyright (C) 1999 Kenneth Albanowski
+
+This library is free software; you can redistribute it and/or modify it
+under the same terms of either:
+
+    a) the GNU General Public License as published by the Free Software
+       Foundation; either version 1, or (at your option) any later
+       version, or
+
+    b) the "Artistic License" which comes with Perl.
+
+On Debian GNU/Linux systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL-2' and
+the Artistic Licence in `/usr/share/common-licenses/Artistic'.
+

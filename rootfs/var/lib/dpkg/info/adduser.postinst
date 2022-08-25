@@ -1,0 +1,39 @@
+#!/bin/sh
+set -e
+
+# create an initial adduser configfile if it does not exist yet
+if [ ! -e "/etc/adduser.conf" ]; then
+	cp /usr/share/adduser/adduser.conf /etc/adduser.conf
+fi
+
+# modify adduser.conf
+if . /usr/share/debconf/confmodule
+then	
+	db_get adduser/homedir-changed || RET="false"
+	if [ "$RET" != "true" ]
+	then
+		db_get adduser/homedir-permission || RET="true"
+		if [ "$RET" = "false" ]
+		then
+			NEW_PERMISSION="0751"
+		else
+			NEW_PERMISSION="0755"
+		fi
+
+		if grep -q '^DIR_MODE=' /etc/adduser.conf
+		then
+			OLD_PERMISSION=$(cat /etc/adduser.conf|sed -ne 's/^DIR_MODE=\([0-9]*\).*$/\1/p')
+			if [ "$OLD_PERMISSION" != "$NEW_PERMISSION" ]; then
+				mv /etc/adduser.conf /etc/adduser.conf.dpkg-save
+				cat /etc/adduser.conf.dpkg-save | \
+				sed -e "s/^DIR_MODE=.*$/DIR_MODE=$NEW_PERMISSION/" > \
+				/etc/adduser.conf
+			fi
+		else
+			cp /etc/adduser.conf /etc/adduser.conf.dpkg-save
+			echo "DIR_MODE=$NEW_PERMISSION" >> /etc/adduser.conf
+		fi
+	fi
+fi
+
+

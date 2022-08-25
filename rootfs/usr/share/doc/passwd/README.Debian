@@ -1,0 +1,62 @@
+Read this file first for a brief overview of the new versions of login
+and passwd.
+
+
+---Shadow passwords
+
+The command `shadowconfig on' will turn on shadow password support.
+`shadowconfig off' will turn it back off.  If you turn on shadow
+password support, you'll gain the ability to set password ages and
+expirations with chage(1).
+
+NOTE: If you use the nscd package, you may have problems with a
+slight delay in updating the password information. You may notice
+this during upgrades of certain packages that try to add a system
+user and then access the users information immediately afterwards.
+To avoid this, it is suggested that you stop the nscd daemon before
+upgrades, then restart it again.
+
+---General configuration
+
+Most of the configuration for the shadow utilities is in
+/etc/login.defs.  See login.defs(5).  The defaults are quite
+reasonable.
+
+Also see the /etc/pam.d/* files for each program to configure the PAM
+support. PAM documentation is available in several formats in the
+libpam-doc package.
+
+
+---MD5 Encryption
+
+This is enabled now using the /etc/pam.d/* files. Examples are given.
+
+
+---Adding users and groups
+
+Though you may add users and groups with the SysV type commands,
+useradd and groupadd, I recommend you add them with Debian adduser
+version 3+.  adduser gives you more configuration and conforms to the
+Debian UID and GID allocation.
+
+Editing user and group parameters can be done with usermod and
+groupmod.  Removing users and groups can be done with userdel and
+groupdel.
+
+
+--- Group administration
+
+Local group allocation is much easier.  With gpasswd(1) you can
+designate users to administer groups.  They can then securely add or
+remove users from the group.
+
+
+--- What to read next?
+
+Read the manpages, the other files in this directory, and the Shadow
+Password HOWTO (included in the doc-linux package).  A large portion
+of these files deals with getting shadow installed.  You can, of
+course, ignore those parts.
+
+Also, the libpam-doc package will go a long way to allowing you to take
+full advantage of the PAM authentication scheme.

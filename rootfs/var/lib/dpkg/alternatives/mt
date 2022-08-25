@@ -1,0 +1,9 @@
+auto
+/bin/mt
+mt.1.gz
+/usr/share/man/man1/mt.1.gz
+
+/bin/mt-gnu
+10
+/usr/share/man/man1/mt-gnu.1.gz
+

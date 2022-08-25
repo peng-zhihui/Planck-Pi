@@ -1,0 +1,279 @@
+menu "RISC-V architecture"
+	depends on RISCV
+
+config SYS_ARCH
+	default "riscv"
+
+choice
+	prompt "Target select"
+	optional
+
+config TARGET_AX25_AE350
+	bool "Support ax25-ae350"
+
+config TARGET_MICROCHIP_ICICLE
+	bool "Support Microchip PolarFire-SoC Icicle Board"
+
+config TARGET_QEMU_VIRT
+	bool "Support QEMU Virt Board"
+
+config TARGET_SIFIVE_FU540
+	bool "Support SiFive FU540 Board"
+
+endchoice
+
+config SYS_ICACHE_OFF
+	bool "Do not enable icache"
+	default n
+	help
+	  Do not enable instruction cache in U-Boot.
+
+config SPL_SYS_ICACHE_OFF
+	bool "Do not enable icache in SPL"
+	depends on SPL
+	default SYS_ICACHE_OFF
+	help
+	  Do not enable instruction cache in SPL.
+
+config SYS_DCACHE_OFF
+	bool "Do not enable dcache"
+	default n
+	help
+	  Do not enable data cache in U-Boot.
+
+config SPL_SYS_DCACHE_OFF
+	bool "Do not enable dcache in SPL"
+	depends on SPL
+	default SYS_DCACHE_OFF
+	help
+	  Do not enable data cache in SPL.
+
+# board-specific options below
+source "board/AndesTech/ax25-ae350/Kconfig"
+source "board/emulation/qemu-riscv/Kconfig"
+source "board/microchip/mpfs_icicle/Kconfig"
+source "board/sifive/fu540/Kconfig"
+
+# platform-specific options below
+source "arch/riscv/cpu/ax25/Kconfig"
+source "arch/riscv/cpu/fu540/Kconfig"
+source "arch/riscv/cpu/generic/Kconfig"
+
+# architecture-specific options below
+
+choice
+	prompt "Base ISA"
+	default ARCH_RV32I
+
+config ARCH_RV32I
+	bool "RV32I"
+	select 32BIT
+	help
+	  Choose this option to target the RV32I base integer instruction set.
+
+config ARCH_RV64I
+	bool "RV64I"
+	select 64BIT
+	select PHYS_64BIT
+	help
+	  Choose this option to target the RV64I base integer instruction set.
+
+endchoice
+
+choice
+	prompt "Code Model"
+	default CMODEL_MEDLOW
+
+config CMODEL_MEDLOW
+	bool "medium low code model"
+	help
+	  U-Boot and its statically defined symbols must lie within a single 2 GiB
+	  address range and must lie between absolute addresses -2 GiB and +2 GiB.
+
+config CMODEL_MEDANY
+	bool "medium any code model"
+	help
+	  U-Boot and its statically defined symbols must be within any single 2 GiB
+	  address range.
+
+endchoice
+
+choice
+	prompt "Run Mode"
+	default RISCV_MMODE
+
+config RISCV_MMODE
+	bool "Machine"
+	help
+	  Choose this option to build U-Boot for RISC-V M-Mode.
+
+config RISCV_SMODE
+	bool "Supervisor"
+	help
+	  Choose this option to build U-Boot for RISC-V S-Mode.
+
+endchoice
+
+choice
+	prompt "SPL Run Mode"
+	default SPL_RISCV_MMODE
+	depends on SPL
+
+config SPL_RISCV_MMODE
+	bool "Machine"
+	help
+	  Choose this option to build U-Boot SPL for RISC-V M-Mode.
+
+config SPL_RISCV_SMODE
+	bool "Supervisor"
+	help
+	  Choose this option to build U-Boot SPL for RISC-V S-Mode.
+
+endchoice
+
+config RISCV_ISA_C
+	bool "Emit compressed instructions"
+	default y
+	help
+	  Adds "C" to the ISA subsets that the toolchain is allowed to emit
+	  when building U-Boot, which results in compressed instructions in the
+	  U-Boot binary.
+
+config RISCV_ISA_A
+	def_bool y
+
+config 32BIT
+	bool
+
+config 64BIT
+	bool
+
+config SIFIVE_CLINT
+	bool
+	depends on RISCV_MMODE || SPL_RISCV_MMODE
+	select REGMAP
+	select SYSCON
+	select SPL_REGMAP if SPL
+	select SPL_SYSCON if SPL
+	help
+	  The SiFive CLINT block holds memory-mapped control and status registers
+	  associated with software and timer interrupts.
+
+config ANDES_PLIC
+	bool
+	depends on RISCV_MMODE || SPL_RISCV_MMODE
+	select REGMAP
+	select SYSCON
+	select SPL_REGMAP if SPL
+	select SPL_SYSCON if SPL
+	help
+	  The Andes PLIC block holds memory-mapped claim and pending registers
+	  associated with software interrupt.
+
+config ANDES_PLMT
+	bool
+	depends on RISCV_MMODE || SPL_RISCV_MMODE
+	select REGMAP
+	select SYSCON
+	select SPL_REGMAP if SPL
+	select SPL_SYSCON if SPL
+	help
+	  The Andes PLMT block holds memory-mapped mtime register
+	  associated with timer tick.
+
+config RISCV_RDTIME
+	bool
+	default y if RISCV_SMODE || SPL_RISCV_SMODE
+	help
+	  The provides the riscv_get_time() API that is implemented using the
+	  standard rdtime instruction. This is the case for S-mode U-Boot, and
+	  is useful for processors that support rdtime in M-mode too.
+
+config SYS_MALLOC_F_LEN
+	default 0x1000
+
+config SMP
+	bool "Symmetric Multi-Processing"
+	depends on SBI_V01 || !RISCV_SMODE
+	help
+	  This enables support for systems with more than one CPU. If
+	  you say N here, U-Boot will run on single and multiprocessor
+	  machines, but will use only one CPU of a multiprocessor
+	  machine. If you say Y here, U-Boot will run on many, but not
+	  all, single processor machines.
+
+config SPL_SMP
+	bool "Symmetric Multi-Processing in SPL"
+	depends on SPL && SPL_RISCV_MMODE
+	default y
+	help
+	  This enables support for systems with more than one CPU in SPL.
+	  If you say N here, U-Boot SPL will run on single and multiprocessor
+	  machines, but will use only one CPU of a multiprocessor
+	  machine. If you say Y here, U-Boot SPL will run on many, but not
+	  all, single processor machines.
+
+config NR_CPUS
+	int "Maximum number of CPUs (2-32)"
+	range 2 32
+	depends on SMP || SPL_SMP
+	default 8
+	help
+	  On multiprocessor machines, U-Boot sets up a stack for each CPU.
+	  Stack memory is pre-allocated. U-Boot must therefore know the
+	  maximum number of CPUs that may be present.
+
+config SBI
+	bool
+	default y if RISCV_SMODE || SPL_RISCV_SMODE
+
+choice
+	prompt "SBI support"
+	default SBI_V02
+
+config SBI_V01
+	bool "SBI v0.1 support"
+	depends on SBI
+	help
+	  This config allows kernel to use SBI v0.1 APIs. This will be
+	  deprecated in future once legacy M-mode software are no longer in use.
+
+config SBI_V02
+	bool "SBI v0.2 support"
+	depends on SBI
+	help
+	  This config allows kernel to use SBI v0.2 APIs. SBI v0.2 is more
+	  scalable and extendable to handle future needs for RISC-V supervisor
+	  interfaces. For example, with SBI v0.2 HSM extension, only a single
+	  hart need to boot and enter operating system. The booting hart can
+	  bring up secondary harts one by one afterwards.
+
+	  Choose this option if OpenSBI v0.7 or above release is used together
+	  with U-Boot.
+
+endchoice
+
+config SBI_IPI
+	bool
+	depends on SBI
+	default y if RISCV_SMODE || SPL_RISCV_SMODE
+	depends on SMP
+
+config XIP
+	bool "XIP mode"
+	help
+	  XIP (eXecute In Place) is a method for executing code directly
+	  from a NOR flash memory without copying the code to ram.
+	  Say yes here if U-Boot boots from flash directly.
+
+config SHOW_REGS
+	bool "Show registers on unhandled exception"
+
+config STACK_SIZE_SHIFT
+	int
+	default 14
+
+config OF_BOARD_FIXUP
+	default y if OF_SEPARATE
+
+endmenu

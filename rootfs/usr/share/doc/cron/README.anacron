@@ -1,0 +1,14 @@
+To ease coordination with anacron, the invocation of the run-parts for
+the /etc/cron.daily, /etc/cron.weekly, and /etc/cron.monthly directories
+was changed to the form
+
+         test -e /usr/sbin/anacron || run-parts --report /etc/cron.daily
+
+What this means is that if anacron has been installed, it will
+be responsible for running those scripts. This is the standard
+configuration of anacron: if you simply install both cron and anacron,
+things will work as expected.
+
+However, if you have modified your anacron configuration
+(/etc/anacrontab), you may need to re-adjust it in order to accommodate
+this change.

@@ -1,0 +1,34 @@
+#!/bin/sh
+#
+# Controls behavior for a task on new install or not. 
+#
+# To enable this test insert your tasks stanza a keyword like:
+#
+# Test-new-install: mark skip
+#
+# This will cause the task to be marked for install on new install, and
+# hidden otherwise.
+
+if [ "$NEW_INSTALL" ]; then
+	var=$2
+else
+	var=$3
+fi
+
+case "$var" in
+	install)
+		exit 0 # do not display, but do install task
+	;;
+	skip)
+		exit 1 # do not display task
+	;;
+	mark)
+		exit 2 # display task, marked for installation
+	;;
+	show)
+		exit 3 # display task, not marked for installation
+	;;
+	*)
+		exit 1 # unknown value, skip the task
+	;;
+esac

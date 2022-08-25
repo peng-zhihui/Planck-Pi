@@ -1,0 +1,55 @@
+#!/bin/sh -e
+
+PREREQS=""
+
+prereqs() { echo "$PREREQS"; }
+
+case "$1" in
+    prereqs)
+    prereqs
+    exit 0
+    ;;
+esac
+
+. /usr/share/initramfs-tools/hook-functions
+
+mkdir -p "$DESTDIR/lib/systemd"
+copy_exec /lib/systemd/systemd-udevd      /lib/systemd
+copy_exec /bin/udevadm    /bin
+
+mkdir -p "$DESTDIR/etc/udev"
+cp -p /etc/udev/udev.conf "$DESTDIR/etc/udev/"
+
+# copy .link files containing interface naming definitions
+mkdir -p "$DESTDIR/lib/systemd/network/"
+find /lib/systemd/network -name '*.link' -execdir cp -pt "$DESTDIR/lib/systemd/network/" '{}' +
+if [ -d /etc/systemd/network ]; then
+  find /etc/systemd/network -name '*.link' -execdir cp -pt "$DESTDIR/lib/systemd/network/" '{}' +
+fi
+
+mkdir -p "$DESTDIR/lib/udev/rules.d/"
+for rules in 50-firmware.rules 50-udev-default.rules \
+        60-block.rules 60-persistent-storage.rules \
+        61-persistent-storage-android.rules 71-seat.rules 73-special-net-names.rules \
+        73-usb-net-by-mac.rules 75-net-description.rules \
+        80-net-setup-link.rules 80-drivers.rules; do
+  if   [ -e /etc/udev/rules.d/$rules ]; then
+    cp -p /etc/udev/rules.d/$rules "$DESTDIR/lib/udev/rules.d/"
+  elif [ -e /lib/udev/rules.d/$rules ]; then
+    cp -p /lib/udev/rules.d/$rules "$DESTDIR/lib/udev/rules.d/"
+  fi
+done
+
+# now copy all custom udev rules which don't have an equivalent in /lib (e. g.
+# 70-persistent-net.rules or similar); They might contain network names or
+# other bits which are relevant for the initramfs.
+for rules in /etc/udev/rules.d/*.rules; do
+  if [ -e "$rules" ] && [ ! -e "/lib/${rules#/etc/}" ]; then
+    cp -p "$rules" "$DESTDIR/lib/udev/rules.d/"
+  fi
+done
+
+for program in ata_id scsi_id; do
+  copy_exec /lib/udev/$program /lib/udev
+done
+copy_exec /sbin/blkid /sbin
